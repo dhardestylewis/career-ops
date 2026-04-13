@@ -1,0 +1,75 @@
+# Career-Ops Profile Configuration
+# Daniel Hardesty Lewis
+
+candidate:
+  full_name: "Daniel Hardesty Lewis"
+  email: "daniel@homecastr.com"
+  phone: "+1-713-371-7875"
+  location: "New York, NY"
+  linkedin: "linkedin.com/in/dhardestylewis"
+  portfolio_url: "https://dlewis.ai"
+  github: "github.com/dhardestylewis"
+  twitter: ""
+
+target_roles:
+  primary:
+    - "Staff ML Engineer"
+    - "Lead ML Engineer"
+    - "Senior ML Engineer"
+  archetypes:
+    - name: "ML Engineer / MLOps"
+      level: "Staff/Lead"
+      fit: "primary"
+    - name: "AI/ML Research Engineer"
+      level: "Senior/Staff"
+      fit: "primary"
+    - name: "Geospatial ML Engineer"
+      level: "Senior/Lead"
+      fit: "primary"
+    - name: "AI Consultant / Solutions Architect"
+      level: "Senior"
+      fit: "secondary"
+    - name: "Forward Deployed ML Engineer"
+      level: "Senior"
+      fit: "secondary"
+    - name: "Data Scientist (ML-heavy)"
+      level: "Staff/Lead"
+      fit: "adjacent"
+
+narrative:
+  headline: "ML systems builder — from supercomputers to production forecasting to founder"
+  exit_story: "Built and deployed ML systems at national scale (TACC, DARPA, NOAA), then founded three companies applying ML to real-world problems. Now completing MS at Columbia while building production forecasting systems that outperform Zillow."
+  superpowers:
+    - "End-to-end ML systems: data ingestion → training → evaluation → production serving"
+    - "Geospatial ML at scale (nationwide tract-level forecasting, HPC flood models)"
+    - "Probabilistic modeling and rigorous evaluation (diffusion models, calibration suites)"
+    - "Founding and shipping — three companies, real products, real users"
+    - "Cross-domain fluency (ML, geoscience, finance, urban planning, real estate)"
+  proof_points:
+    - name: "Homecastr"
+      url: "https://homecastr.com"
+      hero_metric: "8% forecast error beating Zillow's 8.4% benchmark nationwide"
+    - name: "PoliBOM"
+      url: "https://polibom.com"
+      hero_metric: "Top 5% YC entrant; KPMG launched competing product after seeing demo"
+    - name: "Summit Geospatial"
+      url: "https://summitgeospatial.com"
+      hero_metric: "Highest quality seamless elevation data for Texas, VP of IP spin-out"
+    - name: "TACC/TDIS"
+      url: ""
+      hero_metric: "Led principal project of $40M disaster resiliency initiative"
+    - name: "Columbia Financial Engineering Research"
+      url: ""
+      hero_metric: "Better than commercial R² on daily mutual fund return prediction"
+
+compensation:
+  target_range: "$180K-250K"
+  currency: "USD"
+  minimum: "$150K"
+  location_flexibility: "Remote preferred, open to hybrid in NYC. Willing to travel periodically."
+
+location:
+  country: "United States"
+  city: "New York"
+  timezone: "EST"
+  visa_status: "No sponsorship needed"
