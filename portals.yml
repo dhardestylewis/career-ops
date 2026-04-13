@@ -412,10 +412,11 @@ tracked_companies:
   # -- Contact Center AI & CX --
 
   - name: Ada
-    careers_url: https://job-boards.greenhouse.io/ada
+    careers_url: https://job-boards.greenhouse.io/ada18
+    api: https://boards-api.greenhouse.io/v1/boards/ada18/jobs
     scan_method: websearch
-    scan_query: '"ada.cx" OR "ada" "AI" "Solutions" OR "Engineer" site:jobs.ashbyhq.com OR site:job-boards.greenhouse.io'
-    notes: "Toronto + remote. AI customer service."
+    scan_query: '"ada.cx" OR "ada" "AI" "Solutions" OR "Engineer" site:job-boards.greenhouse.io/ada18'
+    notes: "Toronto + remote. AI customer service. Greenhouse slug changed to ada18."
     enabled: true
 
   - name: LivePerson
@@ -561,7 +562,7 @@ tracked_companies:
 
   - name: Weights & Biases
     careers_url: https://jobs.lever.co/wandb
-    notes: "MLOps platform."
+    notes: "MLOps platform. Acquired by CoreWeave (May 2025). Still hiring on Lever."
     enabled: true
 
   - name: Palantir
@@ -572,10 +573,10 @@ tracked_companies:
   # -- European tech (EMEA-friendly) --
 
   - name: Factorial
-    careers_url: https://job-boards.greenhouse.io/factorial
+    careers_url: https://careers.factorialhr.com/
     scan_method: websearch
-    scan_query: 'site:jobs.greenhouse.io/factorial'
-    notes: "Barcelona. HR SaaS unicorn."
+    scan_query: 'site:careers.factorialhr.com OR site:apply.workable.com/factorialhr'
+    notes: "Barcelona. HR SaaS unicorn. Moved from Greenhouse to own careers platform."
     enabled: true
 
   - name: Attio
@@ -586,24 +587,25 @@ tracked_companies:
     enabled: true
 
   - name: Tinybird
-    careers_url: https://jobs.ashbyhq.com/tinybird
+    careers_url: https://jobs.lever.co/tinybird
     scan_method: websearch
-    scan_query: 'site:tinybird.co/careers OR site:jobs.ashbyhq.com/tinybird'
-    notes: "Remote. Real-time data platform."
+    scan_query: 'site:jobs.lever.co/tinybird'
+    notes: "Remote. Real-time data platform. Moved from Ashby to Lever."
     enabled: true
 
   - name: Clarity AI
-    careers_url: https://jobs.lever.co/clarity-ai
+    careers_url: https://job-boards.eu.greenhouse.io/clarityai
+    api: https://boards-api.greenhouse.io/v1/boards/clarityai/jobs
     scan_method: websearch
-    scan_query: 'site:clarity.ai/careers OR site:jobs.lever.co/clarity-ai'
-    notes: "Madrid/Remote. Sustainability analytics with AI."
+    scan_query: 'site:job-boards.eu.greenhouse.io/clarityai OR site:clarity.ai/careers'
+    notes: "Madrid/Remote. Sustainability analytics with AI. Moved from Lever to Greenhouse EU."
     enabled: true
 
-  - name: Travelperk
-    careers_url: https://jobs.ashbyhq.com/travelperk
+  - name: Perk (formerly TravelPerk)
+    careers_url: https://jobs.ashbyhq.com/Perk
     scan_method: websearch
-    scan_query: 'site:jobs.ashbyhq.com/travelperk'
-    notes: "Barcelona. Business travel unicorn."
+    scan_query: 'site:jobs.ashbyhq.com/Perk'
+    notes: "Barcelona/London/Boston. Business travel unicorn. Rebranded to Perk, new Ashby slug."
     enabled: true
 
   # -- DACH & European AI ecosystem --
@@ -694,8 +696,10 @@ tracked_companies:
   # -- DACH logistics / mobility --
 
   - name: Forto
-    careers_url: https://jobs.lever.co/forto
-    notes: "Berlin DE. Digital freight forwarder, product & data roles, German + English."
+    careers_url: https://careers.forto.com/forto-jobs/
+    scan_method: websearch
+    scan_query: 'site:careers.forto.com "Engineer" OR "Solutions" OR "AI" OR "Data"'
+    notes: "Berlin DE. Digital freight forwarder, product & data roles. Moved from Lever to own careers platform."
     enabled: true
 
   # -- Switzerland / Austria AI --
@@ -810,8 +814,9 @@ tracked_companies:
     enabled: true
 
   - name: Vinted
-    careers_url: https://jobs.lever.co/vinted
-    notes: "Vilnius LT / Berlin. C2C marketplace unicorn, data science & ML roles."
+    careers_url: https://job-boards.greenhouse.io/vinteden
+    api: https://boards-api.greenhouse.io/v1/boards/vinteden/jobs
+    notes: "Vilnius LT / Berlin. C2C marketplace unicorn, data science & ML roles. Moved from Lever to Greenhouse (slug: vinteden)."
     enabled: true
 
   # -- Iberia AI --
@@ -841,7 +846,7 @@ tracked_companies:
   - name: Runway
     careers_url: https://job-boards.greenhouse.io/runwayml
     api: https://boards-api.greenhouse.io/v1/boards/runwayml/jobs
-    notes: "Generative AI video and creative tooling platform."
+    notes: "Generative AI video and creative tooling platform. Greenhouse board confirmed active."
     enabled: true
 
   - name: Hightouch
@@ -910,9 +915,9 @@ tracked_companies:
   # -- Geospatial / Climate / Earth Science AI --
 
   - name: Planet Labs
-    careers_url: https://job-boards.greenhouse.io/planet
-    api: https://boards-api.greenhouse.io/v1/boards/planet/jobs
-    notes: "SF. Earth observation satellites + ML. Geospatial ML roles."
+    careers_url: https://job-boards.greenhouse.io/planetlabs
+    api: https://boards-api.greenhouse.io/v1/boards/planetlabs/jobs
+    notes: "SF / Berlin. Earth observation satellites + ML. Geospatial ML roles. Greenhouse slug changed from 'planet' to 'planetlabs'."
     enabled: true
 
   - name: Descartes Labs
@@ -937,8 +942,9 @@ tracked_companies:
     enabled: true
 
   - name: ClimateAi
-    careers_url: https://jobs.lever.co/climateai
-    notes: "SF. Climate risk analytics with AI."
+    careers_url: https://job-boards.greenhouse.io/climateai
+    api: https://boards-api.greenhouse.io/v1/boards/climateai/jobs
+    notes: "SF. Climate risk analytics with AI. Moved from Lever to Greenhouse."
     enabled: true
 
   - name: Jupiter Intelligence
