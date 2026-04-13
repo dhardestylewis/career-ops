@@ -1,24 +1,12 @@
-# Personal data (user fills these)
-data/applications.md
-data/pipeline.md
-data/scan-history.tsv
-reports/*.md
-!reports/.gitkeep
+# Generated
 output/*
 !output/.gitkeep
 batch/logs/*
 !batch/logs/.gitkeep
 batch/batch-state.tsv
 batch/batch-input.tsv
-batch/tracker-additions/**/*.tsv
-!batch/tracker-additions/.gitkeep
 jds/*
 !jds/.gitkeep
-
-# User config and customization (never auto-updated)
-config/profile.yml
-portals.yml
-modes/_profile.md
 .update-dismissed
 .update-lock
 
