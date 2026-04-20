@@ -95,6 +95,8 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
 
     console.log("Attaching Resume natively...");
     try {
+        await page.waitForSelector('input[type="file"]', { timeout: 10000 }).catch(() => {});
+        await page.waitForSelector('input[type="file"]', { timeout: 10000 }).catch(() => {});
         const genericFileInput = page.locator('input[type="file"]');
         if (await genericFileInput.count() > 0) {
             await genericFileInput.first().setInputFiles(path.resolve(resumePath));
@@ -462,6 +464,11 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
     });
 
     if (isBatch) {
+        if (metrics.fillPercentage < 100) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+            metrics.status = 'Incomplete';
+            return metrics;
+        }
         // Live Submission Phase & Pagination Loop
         try {
             console.log("Locating Ashby Pagination/Submit block...");
@@ -507,15 +514,24 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 // Monitor for CAPTCHA
                 try {
                     console.log("Waiting for network resolution or CAPTCHA intercept...");
+                    let isCaptchaActive = false;
+                    
+                    const captchaWatcher = page.waitForSelector('iframe[title*="reCAPTCHA"], iframe[src*="captcha"], .g-recaptcha', { state: 'visible', timeout: 30000 })
+                        .then(() => {
+                            isCaptchaActive = true;
+                            console.log("\n⚠️ CAPTCHA DETECTED! Waiting indefinitely for you to solve it manually in the browser...\n");
+                        }).catch(() => {});
+                        
                     await Promise.race([
-                        page.waitForNavigation({ timeout: 15000, waitUntil: 'domcontentloaded' }).catch(()=>{}),
-                        page.waitForSelector('iframe[src*="captcha"]', { timeout: 15000 }).then(el => { if(el) throw new Error("CAPTCHA"); })
+                        page.waitForURL('**/application/success*', { timeout: 900000, waitUntil: 'domcontentloaded' }), // Wait up to 15 min if CAPTCHA is active
+                        page.waitForSelector('h1:has-text("Application Submitted")', { timeout: 900000 }),
+                        new Promise(resolve => setTimeout(resolve, 20000)).then(() => { if (!isCaptchaActive) throw new Error("TIMEOUT"); }) 
                     ]);
                     metrics.status = "Success";
                 } catch (navError) {
-                    if (navError.message === "CAPTCHA") {
-                        console.error("[WARN] CAPTCHA Intercepted. Application paused/failed.");
-                        metrics.status = "CAPTCHA_BLOCKED";
+                    if (navError.message === "TIMEOUT") {
+                        console.log("[INFO] Submission executed, waiting for network state timed out safely...");
+                        metrics.status = "Success_Unverified";
                     } else {
                         const errorMsg = page.locator('.ashby-application-form-error, [role="alert"]');
                         if (await errorMsg.count() > 0 && await errorMsg.isVisible()) {
@@ -591,5 +607,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         });
     });
 }
+
 
 

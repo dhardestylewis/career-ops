@@ -141,6 +141,8 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
     fs.writeFileSync('evaluation_stats_run.md', markdown);
     fs.writeFileSync('missing_dom.json', JSON.stringify(missingDOMData, null, 2));
     console.log("Artifact generation complete: evaluation_stats_run.md and missing_dom.json");
+    process.exit(0);
 })();
+
 
 
