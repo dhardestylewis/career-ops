@@ -1,8 +1,20 @@
-import { exec } from 'child_process';
 import fs from 'fs';
-import util from 'util';
+import path from 'path';
+import yaml from 'js-yaml';
+import { chromium } from 'playwright';
 
-const execPromise = util.promisify(exec);
+import { populateLever } from './auto-fill-lever.mjs';
+import { populateGreenhouse } from './auto-fill-greenhouse.mjs';
+import { populateAshby } from './auto-fill-ashby.mjs';
+
+// Dynamically extract Profile configuration
+let profileConfig = {};
+try {
+    const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
+    profileConfig = yaml.load(fileContents);
+} catch (e) {
+    console.log("⚠️ Could not load profile.yml");
+}
 
 // Identify targeted Job Endpoints from pipeline.md dynamically
 const rawPipeline = fs.readFileSync('data/pipeline.md', 'utf8').split('\n');
@@ -27,57 +39,97 @@ const shuffle = (array) => {
     return array;
 };
 
+// Aggregate a massive subset of targets for concurrent Multi-Tab execution
 const targets = [
-    ...shuffle(leverUrls).slice(0, 10).map(url => ({ url, run: 'autofill:lever' })),
-    ...shuffle(greenhouseUrls).slice(0, 10).map(url => ({ url, run: 'autofill:greenhouse' })),
-    ...shuffle(ashbyUrls).slice(0, 15).map(url => ({ url, run: 'autofill:ashby' }))
+    ...shuffle(leverUrls).slice(0, 10).map(url => ({ url, type: 'lever' })),
+    ...shuffle(greenhouseUrls).slice(0, 10).map(url => ({ url, type: 'greenhouse' })),
+    ...shuffle(ashbyUrls).slice(0, 10).map(url => ({ url, type: 'ashby' }))
 ];
 
 const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";
 
-console.log(`Starting headless evaluation over ${targets.length} endpoints...`);
+console.log(`Starting headless multi-tab validation over ${targets.length} queued endpoints...`);
 
 (async () => {
     const statsStore = [];
     
-    // Sequential execution to natively hijack Chrome profile lockfiles safely
-    const chunkSize = 1;
+    // Concurrent Multi-Tab Execution (Batching 5 tabs per unified Chromium Window)
+    const chunkSize = 5;
     
+    console.log(`Launching Unified Persistent Chrome Context from ${profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile'}`);
+    const launchArgs = ['--window-position=-10000,-10000'];
+    const audioPath = path.resolve('data/pronunciation.wav');
+    if (fs.existsSync(audioPath)) {
+        launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
+    }
+
+    const context = await chromium.launchPersistentContext(profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile', { 
+        headless: false, 
+        args: launchArgs,
+        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    });
+
+    console.log("\n==================================");
+    console.log("⌨️  PRESS [ENTER] AT ANY TIME TO PULL THE BROWSER ON SCREEN");
+    console.log("==================================\n");
+
+    process.stdin.once('data', async () => {
+        try {
+            console.log("\n[CDP] Intercepting Window State... Moving bounds on screen!");
+            const page = context.pages()[0] || await context.newPage();
+            const session = await context.newCDPSession(page);
+            const { windowId } = await session.send('Browser.getWindowForTarget');
+            await session.send('Browser.setWindowBounds', { windowId, bounds: { windowState: 'maximized' } });
+            console.log("✅ Window maximized.");
+        } catch(e) {
+            console.log("⚠️ Could not invoke CDP bindings: " + e.message);
+        }
+    });
+
+    await context.addInitScript(() => {
+        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+        window.navigator.chrome = { runtime: {} };
+    });
+
     for (let i = 0; i < targets.length; i += chunkSize) {
         const chunk = targets.slice(i, i + chunkSize);
-        console.log(`\nDispatching sequential profile execution [${i+1} of ${targets.length}]...`);
+        console.log(`\nDispatching multi-tab concurrent rendering chunk [${i + 1} to ${i + chunk.length} of ${targets.length}]...`);
         
-        const chunkPromises = chunk.map(async (target, idx) => {
-            const { url, run } = target;
+        const chunkPromises = chunk.map(async (target) => {
+            const { url, type } = target;
+            const page = await context.newPage();
             try {
-                const { stdout } = await execPromise(`npm run ${run} "${url}" "${resumePath}"`, {
-                    env: { ...process.env, BATCH_EVAL_MODE: 'true' }
-                });
-                
-                const match = stdout.match(/__TELEMETRY__(.*)__TELEMETRY__/);
-                if (match) {
-                    const payload = JSON.parse(match[1]);
-                    console.log(`[${run}] ✅ Fill Rate: ${payload.fillPercentage}% (${payload.filled}/${payload.total} fields) on ${url}`);
-                    return { url, status: 'Success', ...payload };
-                } else {
-                    console.log(`[${run}] ⚠️ Completed without telemetry on ${url}`);
-                    return { url, status: 'Script Exited cleanly but no telemetry found.', fillPercentage: 0 };
+                let metrics;
+                if (type === 'lever') {
+                    metrics = await populateLever(page, url, resumePath, profileConfig, true);
+                } else if (type === 'greenhouse') {
+                    metrics = await populateGreenhouse(page, url, resumePath, profileConfig, true);
+                } else if (type === 'ashby') {
+                    metrics = await populateAshby(page, url, resumePath, profileConfig, true);
                 }
+                
+                console.log(`[${type}] ✅ Fill Rate: ${metrics.fillPercentage}% (${metrics.filled}/${metrics.total} fields) on ${url} -> ${metrics.status}`);
+                await page.close();
+                return { url, status: metrics.status || 'Success', ...metrics };
             } catch (error) {
-                console.log(`[${run}] ❌ Script Error/Crash on ${url}`);
+                console.log(`[${type}] ❌ Script Error/Crash on ${url}`);
+                await page.close();
                 return { url, status: 'Error', fillPercentage: 0 };
             }
         });
 
+        // Resolve 5 background tabs concurrently
         const completedChunk = await Promise.all(chunkPromises);
         statsStore.push(...completedChunk);
     }
     
     console.log("\n==================================");
-    console.log("Batched Execution Complete. Dumping Output Artifact...");
+    console.log("Concurrent Multi-Tab Execution Complete. Dumping Output Artifacts...");
     
+    await context.close();
+
     // Write markdown artifact
-    let markdown = "# Headless Telemetry Report\n\n| URL | Fill Rate | Found | Filled | Status |\n|---|---|---|---|---|\n";
+    let markdown = "# Concurrent Multi-Tab Telemetry Report\n\n| URL | Fill Rate | Found | Filled | Status |\n|---|---|---|---|---|\n";
     const missingDOMData = {};
     for (const stat of statsStore) {
         markdown += `| ${stat.url.substring(0, 45)}... | ${stat.fillPercentage || 0}% | ${stat.total || 0} | ${stat.filled || 0} | ${stat.status} |\n`;
@@ -90,3 +142,5 @@ console.log(`Starting headless evaluation over ${targets.length} endpoints...`);
     fs.writeFileSync('missing_dom.json', JSON.stringify(missingDOMData, null, 2));
     console.log("Artifact generation complete: evaluation_stats_run.md and missing_dom.json");
 })();
+
+

@@ -1005,3 +1005,99 @@
 - [ ] https://jobs.lever.co/palantir/c62264f5-5da8-40fe-9b44-f7f0f0012e11 | Palantir | Forward Deployed Software Engineer - Autonomous Systems C2
 - [ ] https://jobs.lever.co/palantir/84131e3f-455e-47fc-9c11-898d95f09048 | Palantir | Forward Deployed Software Engineer - US Government
 - [ ] https://jobs.lever.co/palantir/ef824a5d-0932-4f96-9347-2e66cd5a7b83 | Palantir | Talent Strategist
+
+- [ ] https://job-boards.greenhouse.io/intercom/jobs/7603334 | Intercom | Account Executive, Emerging AI Products
+- [ ] https://job-boards.greenhouse.io/intercom/jobs/7820671 | Intercom | AI Infrastructure Engineer
+- [ ] https://job-boards.greenhouse.io/intercom/jobs/7818586 | Intercom | Engineering Manager, AI Models Infrastructure
+- [ ] https://job-boards.greenhouse.io/intercom/jobs/7464291 | Intercom | Senior AI Product Manager
+- [ ] https://job-boards.greenhouse.io/intercom/jobs/7825849 | Intercom | Senior Engineering Manager, Fin AI Agent
+- [ ] https://job-boards.greenhouse.io/intercom/jobs/7383950 | Intercom | Staff Product Engineer, AI
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5163917008 | Anthropic | Enterprise Account Executive, Retail
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5012991008 | Anthropic | Forward Deployed Engineer, Applied AI
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5192104008 | Anthropic | Global Leader, Applied AI Architects, Beneficial Deployments
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5117652008 | Anthropic | Manager of Solutions Architecture, Applied AI (Industries)
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5191437008 | Anthropic | Partner Business Systems & AI Operations Lead
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/4950664008 | Anthropic | Partner Solutions Architect, Applied AI
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5191785008 | Anthropic | Research Engineer, Safeguards Labs
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5192805008 | Anthropic | Solutions Architect, Applied AI (Commercial)
+- [ ] https://job-boards.greenhouse.io/ada18/jobs/5082073007 | Ada | Engineering Team Lead, Training
+- [ ] https://job-boards.greenhouse.io/ada18/jobs/5017211007 | Ada | Senior Product Designer, AI Manager Experience
+- [ ] https://jobs.ashbyhq.com/elevenlabs/3466ba20-f61f-4a51-a1ee-5a24a2217fa8 | ElevenLabs | Enterprise Solutions Engineer - Brazil 
+- [ ] https://jobs.ashbyhq.com/elevenlabs/46bad7dc-c8d7-403d-8b10-a2d71c005384 | ElevenLabs | Enterprise Solutions Engineer - LATAM 
+- [ ] https://jobs.ashbyhq.com/elevenlabs/38f16d41-7e7b-4094-b708-ee60f9d625c4 | ElevenLabs | Deployment Strategist - LATAM
+- [ ] https://jobs.ashbyhq.com/elevenlabs/25656a5a-06be-4d62-b529-00c52c48ee5e | ElevenLabs | Deployment Strategist - Brazil
+- [ ] https://jobs.ashbyhq.com/elevenlabs/2451b957-0ece-4e73-88e4-4196aac0ba86 | ElevenLabs | AI Creative Producer - Ads
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4659407005 | Glean | Forward Deployed Product Manager
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4651991005 | Glean | Founding Forward Deployed Engineer
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4632997005 | Glean | Machine Learning Engineer, Enterprise Brain
+- [ ] https://job-boards.greenhouse.io/gleanwork/jobs/4585960005 | Glean | Manager, AI Outcomes 
+- [ ] https://job-boards.eu.greenhouse.io/speechmatics/jobs/4823682101 | Speechmatics | Solutions Engineer
+- [ ] https://jobs.ashbyhq.com/sierra/08d96098-7213-44af-98da-f62366189f3b | Sierra | Strategist, Agent Development
+- [ ] https://jobs.ashbyhq.com/sierra/1162dcd2-b181-49d5-9316-342cd68acbed | Sierra | Software Engineer, Agent (Thai Speaking)
+- [ ] https://jobs.ashbyhq.com/langchain/0a5dd30c-6da1-4095-bd96-b16f27eeb333 | LangChain | Solutions Architect (Remote)
+- [ ] https://job-boards.eu.greenhouse.io/clarityai/jobs/4784776101 | Clarity AI | Senior MLE Staff Engineer
+- [ ] https://job-boards.eu.greenhouse.io/clarityai/jobs/4802689101 | Clarity AI | Staff AI Engineer
+- [ ] https://jobs.ashbyhq.com/n8n/f814f5ce-b615-413d-bbe0-b5786b3872e9 | n8n | AI Engineering Manager | Remote | Europe 
+- [ ] https://job-boards.greenhouse.io/blackforestlabs/jobs/5193512008 | Black Forest Labs | Member of Technical Staff - Post Training
+- [ ] https://job-boards.greenhouse.io/blackforestlabs/jobs/5193508008 | Black Forest Labs | Member of Technical Staff - Pretraining
+- [ ] https://job-boards.greenhouse.io/celonis/jobs/7704260003?gh_jid=7704260003 | Celonis | Senior AI Deployment Architect 
+- [ ] https://job-boards.greenhouse.io/celonis/jobs/7695046003?gh_jid=7695046003 | Celonis | Senior Applied AI Engineer - Manufacturing/Supply Chain
+- [ ] https://job-boards.greenhouse.io/celonis/jobs/7661631003?gh_jid=7661631003 | Celonis | Senior Applied AI Solutions Architect - Process Intelligence
+- [ ] https://job-boards.greenhouse.io/celonis/jobs/7695045003?gh_jid=7695045003 | Celonis | Senior Management & Technology Consultant - AI & Process Analytics
+- [ ] https://job-boards.greenhouse.io/celonis/jobs/7677452003?gh_jid=7677452003 | Celonis | Senior Solutions Architect
+- [ ] https://job-boards.greenhouse.io/contentful/jobs/7630156 | Contentful | Senior Solution Architect - Personalization Strategist
+- [ ] https://careers.hellofresh.com/global/en/job/7824767?gh_jid=7824767 | HelloFresh | Maintenance Technician I 
+- [ ] https://careers.hellofresh.com/global/en/job/7821977?gh_jid=7821977 | HelloFresh | Product Validation Technologist II
+- [ ] https://careers.hellofresh.com/global/en/job/7549802?gh_jid=7549802 | HelloFresh | Senior Analyst Global Retail Media (all genders)
+- [ ] https://careers.hellofresh.com/global/en/job/7758650?gh_jid=7758650 | HelloFresh | Senior Data Scientist, Menu Personalization 
+- [ ] https://sumup.com/careers/positions/7875407002?gh_jid=7875407002 | SumUp | Commercial(e) Terrain - Indépendant (Freelance)
+- [ ] https://sumup.com/careers/positions/7927596002?gh_jid=7927596002 | SumUp |  Commercial Terrain - Indépendant (Freelance)
+- [ ] https://sumup.com/careers/positions/7988602002?gh_jid=7988602002 | SumUp | Commercial Terrain - Indépendant (Freelance)
+- [ ] https://sumup.com/careers/positions/8511537002?gh_jid=8511537002 | SumUp | Commercial Terrain - Indépendant (Freelance)- Avignon
+- [ ] https://sumup.com/careers/positions/8398318002?gh_jid=8398318002 | SumUp | Training Manager (Field Sales)
+- [ ] https://jobs.lever.co/palantir/7fe8d9e5-9c33-4548-8efd-9f0a6c863ec6 | Palantir | Deployment Strategist
+- [ ] https://jobs.lever.co/palantir/6f5cf287-1d3e-4c10-abf6-18cf4c955ded | Palantir | Deployment Strategist - US Government
+- [ ] https://jobs.lever.co/palantir/6a104c4e-35d4-4a1f-98ef-bec00ae4b458 | Palantir | Deployment Strategist, Build to Apply - US Government
+- [ ] https://jobs.lever.co/palantir/a90eb029-19cc-413c-bd51-b8411053d7d4 | Palantir | Forward Deployed Enablement Engineer - Customer Success
+- [ ] https://jobs.lever.co/palantir/b57f08e9-546c-4b9b-8d21-db0ebbc11363 | Palantir | Forward Deployed Infrastructure Engineer - US Government
+- [ ] https://jobs.lever.co/palantir/2a817317-48a6-48b7-9a74-a98ccd2457d2 | Palantir | Forward Deployed Software Engineer
+- [ ] https://jobs.lever.co/palantir/ce8ca664-60dc-4f9a-8986-3c96673bcfdf | Palantir | Forward Deployed Software Engineer - US Government
+- [ ] https://jobs.lever.co/palantir/fef637bd-60f6-4603-b749-14e609c473a5 | Palantir | Talent Strategist
+- [ ] https://jobs.ashbyhq.com/decagon/73ef8e9d-a6b3-4817-ab02-893c4ac72bad | Decagon | Senior Solutions Engineer
+- [ ] https://www.scandit.com/careers/job-description/?gh_jid=7563167 | Scandit | Senior Machine Learning Engineer (Computer Vision)
+- [ ] https://www.scandit.com/careers/job-description/?gh_jid=7820556 | Scandit | Senior Solutions Consultant (Enterprise Retail)
+- [ ] https://jobs.ashbyhq.com/deepgram/844ec2d9-4256-4be0-a6c6-78ebf1391a78 | Deepgram | Solutions Architect (EST or PST)
+- [ ] https://jobs.ashbyhq.com/deepgram/be9609b4-b48d-4421-90e5-69049ad0d6ce | Deepgram | Solutions Architect (San Francisco, CA)
+- [ ] https://jobs.lever.co/mistral/d9f2767e-cdab-4e07-9944-20bbc468613d | Mistral AI | AI Deployment Strategist, Cybersecurity - Paris
+- [ ] https://jobs.lever.co/mistral/0b476d3a-5f0c-4dda-9a5e-bd5ed8515328 | Mistral AI | Applied AI, Forward Deployed Machine Learning Engineer - Palo Alto
+- [ ] https://jobs.lever.co/mistral/c2cf8b02-cb79-4e13-8717-25817813542d | Mistral AI | Systems Engineer, HPC
+- [ ] https://jobs.ashbyhq.com/faculty/35cb8d61-1346-468c-8064-cd6f33555477 | Faculty | Senior Data Scientist 
+- [ ] https://jobs.ashbyhq.com/faculty/ddaee792-5e2b-4f87-aa60-761798762de5 | Faculty | Machine Learning Engineer 
+- [ ] https://jobs.ashbyhq.com/faculty/c61dad1a-ac89-4802-9bcc-4e31726a04e0 | Faculty | Senior Machine Learning Engineer
+- [ ] https://jobs.ashbyhq.com/faculty/900b965b-a6ae-41e1-94cc-f90167854800 | Faculty | Lead Machine Learning Engineer 
+- [ ] https://jobs.ashbyhq.com/faculty/92c892cd-1f6c-443d-9cd8-e4902f9b7fb6 | Faculty | Lead Data Scientist 
+- [ ] https://jobs.ashbyhq.com/faculty/5e02b968-71cd-4db4-9739-75c7b1668dc1 | Faculty | Data Scientist 
+- [ ] https://careers.vinted.com/jobs/4807735101?gh_jid=4807735101 | Vinted | Lead Site Reliability Engineer, ML Platform
+- [ ] https://careers.vinted.com/jobs/4787849101?gh_jid=4787849101 | Vinted | Senior Backend Engineer, Order Fulfillment
+- [ ] https://careers.vinted.com/jobs/4788101101?gh_jid=4788101101 | Vinted | Senior Data Scientist, Help Experience (Eligible for Limited-time Relocation Bonus)
+- [ ] https://careers.vinted.com/jobs/4749559101?gh_jid=4749559101 | Vinted | Senior Data Scientist, Revenue (Eligible for Limited-time Relocation Bonus)
+- [ ] https://careers.vinted.com/jobs/4576525101?gh_jid=4576525101 | Vinted | Senior Data Scientist, Vinted Go Carrier Technology
+- [ ] https://careers.vinted.com/jobs/4709656101?gh_jid=4709656101 | Vinted | Senior MLOps Engineer, Buyer
+- [ ] https://careers.vinted.com/jobs/4774499101?gh_jid=4774499101 | Vinted | Senior Site Reliability Engineer, ML Platform
+- [ ] https://careers.vinted.com/jobs/4773261101?gh_jid=4773261101 | Vinted | Site Reliability Engineer, ML Platform
+- [ ] https://careers.vinted.com/jobs/4711453101?gh_jid=4711453101 | Vinted | Taxonomist, Supply Domain
+- [ ] https://careers.vinted.com/jobs/4813814101?gh_jid=4813814101 | Vinted | Training Specialist
+- [ ] https://jobs.lever.co/spotify/1bd333fe-a039-4aa7-9a84-941296bbe86b | Spotify | Data Scientist - Subscriptions
+- [ ] https://jobs.lever.co/spotify/7597d3d7-58d2-41b2-9f85-911d95c2c739 | Spotify | Machine Learning Engineer, Personalization
+- [ ] https://jobs.lever.co/spotify/19649848-0388-4311-a184-067d9ae77cf3 | Spotify | Senior Staff Machine Learning Engineer - Agentic Systems
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7782587 | Planet Labs | AI Engineer, Marketing
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7782286 | Planet Labs | Mission Operations Training Specialist
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7700271 | Planet Labs | PreSales Sr. Solutions Architect - French Defense and Intelligence
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7402921 | Planet Labs | Satellite Tasking Engineer, Collection Planning
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7603801 | Planet Labs | Senior Engineering Manager - AI Geospatial Assistant Team
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7572102 | Planet Labs | Senior Product Manager, AI Geo Assistant
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7603817 | Planet Labs | Software Engineer, AI Systems & Infrastructure - AI Geospatial Assistant Team
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7603803 | Planet Labs | Software Engineer, Applied GenAI Apps - AI Geospatial Assistant team
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7377994 | Planet Labs | Solutions Architect Deployment Strategist
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7760414 | Planet Labs | Solutions Architect I
+- [ ] https://jobs.ashbyhq.com/legora/508072d0-e2bc-4d32-bad9-e1581d238331 | Legora | Global Paid Media Director

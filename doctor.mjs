@@ -197,3 +197,5 @@ main().catch((err) => {
   console.error('doctor.mjs failed:', err.message);
   process.exit(1);
 });
+
+

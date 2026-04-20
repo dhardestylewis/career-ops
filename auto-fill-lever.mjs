@@ -7,7 +7,7 @@ let url = process.argv[2];
 if (url && url.includes('jobs.lever.co') && !url.endsWith('/apply') && !url.includes('?')) {
     url = url.replace(/\/$/, '') + '/apply';
 }
-const resumePath = process.argv[3];
+
 
 if (!url || !resumePath) {
     console.error("Usage: node auto-fill-lever.mjs <url> <resume-pdf-path>");
@@ -28,40 +28,8 @@ try {
     console.log("⚠️ Could not load profile.yml for advanced heuristics.");
 }
 
-(async () => {
-    // Check if running in headless telemetry batch evaluator
-    const isBatch = process.env.BATCH_EVAL_MODE === 'true';
-    
-    // Inject Virtual Microphone for Web Recorders (if config file exists)
-    const launchArgs = ['--window-position=-10000,-10000'];
-    const audioPath = path.resolve('data/pronunciation.wav');
-    if (fs.existsSync(audioPath)) {
-        launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
-    }
-    
-    let browser, context;
-    if (profileConfig?.execution?.chrome_profilePath) {
-        console.log(`Launching Persistent Chrome Context from ${profileConfig.execution.chrome_profilePath}`);
-        context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
-        browser = context; // Alias for cleanup
-    } else {
-        browser = await chromium.launch({ headless: false, args: launchArgs });
-        context = await browser.newContext({
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
-    }
-    
-    // Mask standard automated browser hooks to avoid Captcha triggers
-    await context.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-        window.navigator.chrome = { runtime: {} };
-    });
-
-    const page = await context.newPage();
+export async function populateLever(page, targetUrl, resumePath, profileConfig, isBatch = false) {
+    const url = targetUrl;
 
     console.log(`Navigating to ${url}...`);
     await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -638,7 +606,7 @@ try {
             await page.mouse.wheel(0, -Math.floor(Math.random() * 300) + 100);
             
             console.log("Locating Lever POST submit button...");
-            const submitBtn = page.locator('button.postings-btn[type="submit"]');
+            const submitBtn = page.locator('button.postings-btn:has-text("Submit"), button[data-qa="btn-submit"]');
             if (await submitBtn.count() > 0) {
                 const box = await submitBtn.first().boundingBox();
                 if (box) {
@@ -653,17 +621,22 @@ try {
                 // Monitor for proper CAPTCHA intercept or true URL resolution
                 try {
                     console.log("Waiting for network resolution or CAPTCHA intercept...");
+                    let isCaptchaActive = false;
+                    
+                    const captchaWatcher = page.waitForSelector('iframe[title*="reCAPTCHA"], iframe[src*="captcha"], .g-recaptcha', { state: 'visible', timeout: 30000 })
+                        .then(() => {
+                            isCaptchaActive = true;
+                            console.log("\n⚠️ CAPTCHA DETECTED! Waiting indefinitely for you to solve it manually in the browser...\n");
+                        }).catch(() => {});
+                        
                     await Promise.race([
-                        page.waitForURL('**/thanks*', { timeout: 20000, waitUntil: 'domcontentloaded' }),
-                        page.waitForSelector('h2:has-text("Application Submitted"), h1:has-text("Thank you")', { timeout: 20000 }),
-                        page.waitForSelector('iframe[src*="captcha"]', { timeout: 20000 }).then(el => { if(el) throw new Error("CAPTCHA"); })
+                        page.waitForURL('**/thanks*', { timeout: 900000, waitUntil: 'domcontentloaded' }), // Wait up to 15 min if CAPTCHA is active
+                        page.waitForSelector('h2:has-text("Application Submitted"), h1:has-text("Thank you")', { timeout: 900000 }),
+                        new Promise(resolve => setTimeout(resolve, 20000)).then(() => { if (!isCaptchaActive) throw new Error("TIMEOUT"); }) 
                     ]);
                     metrics.status = "Success";
                 } catch (navError) {
-                    if (navError.message === "CAPTCHA") {
-                        console.error("[WARN] CAPTCHA Intercepted. Application paused/failed.");
-                        metrics.status = "CAPTCHA_BLOCKED";
-                    } else {
+                    if (navError.message === "TIMEOUT") {
                         console.log("[INFO] Submission executed, waiting for network state timed out safely...");
                         const errorMsg = page.locator('.error-message');
                         if (await errorMsg.count() > 0 && await errorMsg.isVisible()) {
@@ -693,7 +666,44 @@ try {
         await page.pause();
     }
 
-    await browser.close();
-})();
+}
+
+
+
+
+import { fileURLToPath } from 'url';
+import { chromium } from 'playwright';
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    (async () => {
+        const isBatch = process.env.BATCH_EVAL_MODE === 'true';
+        const targetUrl = process.argv[2];
+        const targetResumeUrl = process.argv[3];
+        
+        const launchArgs = ['--window-position=-10000,-10000'];
+        const context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
+            headless: false, 
+            args: launchArgs,
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        });
+        
+        await context.addInitScript(() => {
+            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+            window.navigator.chrome = { runtime: {} };
+        });
+
+        const page = await context.newPage();
+        
+        try {
+            await populateLever(page, targetUrl, targetResumeUrl, profileConfig, isBatch);
+        } catch (e) {
+            console.error(e);
+        }
+        
+        // Let the unified handler deal with cleanup, but for CLI we kill here:
+        if (isBatch) {
+            await context.close();
+        }
+    })();
+}
 
 

@@ -177,3 +177,5 @@ generatePDF().catch((err) => {
   console.error('❌ PDF generation failed:', err.message);
   process.exit(1);
 });
+
+

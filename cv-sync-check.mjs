@@ -99,3 +99,5 @@ if (errors.length === 0 && warnings.length === 0) {
 
 console.log('');
 process.exit(errors.length > 0 ? 1 : 0);
+
+
