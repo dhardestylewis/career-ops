@@ -15,8 +15,10 @@
     "rollback": "node update-system.mjs rollback",
     "liveness": "node check-liveness.mjs",
     "scan": "node scan.mjs",
+    "start": "node auto-fill.mjs",
     "autofill:lever": "node auto-fill-lever.mjs",
-    "autofill:greenhouse": "node auto-fill-greenhouse.mjs"
+    "autofill:greenhouse": "node auto-fill-greenhouse.mjs",
+    "autofill:ashby": "node auto-fill-ashby.mjs"
   },
   "keywords": [
     "ai",

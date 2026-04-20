@@ -8,12 +8,14 @@ const execPromise = util.promisify(exec);
 const rawPipeline = fs.readFileSync('data/pipeline.md', 'utf8').split('\n');
 const leverUrls = [];
 const greenhouseUrls = [];
+const ashbyUrls = [];
 for (const line of rawPipeline) {
     if (!line.includes('- [ ]')) continue;
     const rawUrl = line.substring(line.indexOf('[ ]') + 3).split('|')[0].trim();
     const url = rawUrl.split('?')[0]; 
     if (url.includes('lever.co')) leverUrls.push(url);
-    if (url.includes('greenhouse.io')) greenhouseUrls.push(url);
+    if (url.includes('greenhouse.io') || rawUrl.includes('gh_jid=')) greenhouseUrls.push(rawUrl);
+    if (url.includes('ashbyhq.com')) ashbyUrls.push(url);
 }
 
 // Shuffle arrays for wide dispersion sampling
@@ -26,8 +28,9 @@ const shuffle = (array) => {
 };
 
 const targets = [
-    ...shuffle(leverUrls).slice(0, 25).map(url => ({ url, run: 'autofill:lever' })),
-    ...shuffle(greenhouseUrls).slice(0, 25).map(url => ({ url, run: 'autofill:greenhouse' }))
+    ...shuffle(leverUrls).slice(0, 10).map(url => ({ url, run: 'autofill:lever' })),
+    ...shuffle(greenhouseUrls).slice(0, 10).map(url => ({ url, run: 'autofill:greenhouse' })),
+    ...shuffle(ashbyUrls).slice(0, 15).map(url => ({ url, run: 'autofill:ashby' }))
 ];
 
 const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260304-staff-mle\\resume-dhl-20260304-staff-mle.pdf";
@@ -37,29 +40,37 @@ console.log(`Starting headless evaluation over ${targets.length} endpoints...`);
 (async () => {
     const statsStore = [];
     
-    for (let i = 0; i < targets.length; i++) {
-        const { url, run } = targets[i];
-        console.log(`\nEvaluating [${i+1}/${targets.length}]: ${url}`);
+    // Chunk execution for parallel headless browsers (limit to 5 concurrency to save RAM)
+    const chunkSize = 5;
+    
+    for (let i = 0; i < targets.length; i += chunkSize) {
+        const chunk = targets.slice(i, i + chunkSize);
+        console.log(`\nDispatching parallel execution block [${i+1} - ${Math.min(i + chunkSize, targets.length)}] of ${targets.length}...`);
         
-        try {
-            const { stdout } = await execPromise(`npm run ${run} "${url}" "${resumePath}"`, {
-                env: { ...process.env, BATCH_EVAL_MODE: 'true' }
-            });
-            
-            // Look for __TELEMETRY__ payload logged from the scripts
-            const match = stdout.match(/__TELEMETRY__(.*)__TELEMETRY__/);
-            if (match) {
-                const payload = JSON.parse(match[1]);
-                statsStore.push({ url, status: 'Success', ...payload });
-                console.log(`✅ Fill Rate: ${payload.fillPercentage}% (${payload.filled}/${payload.total} fields)`);
-            } else {
-                statsStore.push({ url, status: 'Script Exited cleanly but no telemetry found.', fillPercentage: 0 });
-                console.log(`⚠️ Completed without telemetry.`);
+        const chunkPromises = chunk.map(async (target, idx) => {
+            const { url, run } = target;
+            try {
+                const { stdout } = await execPromise(`npm run ${run} "${url}" "${resumePath}"`, {
+                    env: { ...process.env, BATCH_EVAL_MODE: 'true' }
+                });
+                
+                const match = stdout.match(/__TELEMETRY__(.*)__TELEMETRY__/);
+                if (match) {
+                    const payload = JSON.parse(match[1]);
+                    console.log(`[${run}] ✅ Fill Rate: ${payload.fillPercentage}% (${payload.filled}/${payload.total} fields) on ${url}`);
+                    return { url, status: 'Success', ...payload };
+                } else {
+                    console.log(`[${run}] ⚠️ Completed without telemetry on ${url}`);
+                    return { url, status: 'Script Exited cleanly but no telemetry found.', fillPercentage: 0 };
+                }
+            } catch (error) {
+                console.log(`[${run}] ❌ Script Error/Crash on ${url}`);
+                return { url, status: 'Error', fillPercentage: 0 };
             }
-        } catch (error) {
-            console.log(`❌ Script Error/Crash.`);
-            statsStore.push({ url, status: 'Error', fillPercentage: 0 });
-        }
+        });
+
+        const completedChunk = await Promise.all(chunkPromises);
+        statsStore.push(...completedChunk);
     }
     
     console.log("\n==================================");
