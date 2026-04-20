@@ -39,10 +39,21 @@ try {
         launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
     }
     
-    const browser = await chromium.launch({ headless: false, args: launchArgs });
-    const context = await browser.newContext({
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-    });
+    let browser, context;
+    if (profileConfig?.execution?.chrome_profilePath) {
+        console.log(`Launching Persistent Chrome Context from ${profileConfig.execution.chrome_profilePath}`);
+        context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
+            headless: false, 
+            args: launchArgs,
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        });
+        browser = context; // Alias for cleanup
+    } else {
+        browser = await chromium.launch({ headless: false, args: launchArgs });
+        context = await browser.newContext({
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        });
+    }
     
     // Mask standard automated browser hooks to avoid Captcha triggers
     await context.addInitScript(() => {
@@ -517,11 +528,26 @@ try {
                 const nextBtn = page.locator('button:has-text("Next")');
                 
                 if (await submitBtn.count() > 0 && await submitBtn.first().isVisible()) {
+                    console.log("Simulating native human intent vectors...");
+                    await page.mouse.wheel(0, Math.floor(Math.random() * 500) + 300);
+                    await page.waitForTimeout(Math.floor(Math.random() * 800) + 400);
+                    await page.mouse.wheel(0, -Math.floor(Math.random() * 300) + 100);
+                    
+                    const box = await submitBtn.first().boundingBox();
+                    if (box) {
+                        await page.mouse.move(box.x + (box.width / 2), box.y + (box.height / 2), { steps: Math.floor(Math.random() * 15) + 10 });
+                    }
+                    await page.waitForTimeout(Math.floor(Math.random() * 400) + 200);
+                    
                     await submitBtn.first().click();
                     console.log("Ashby Submission Button Clicked.");
                     isSubmitted = true;
                 } else if (await nextBtn.count() > 0 && await nextBtn.first().isVisible()) {
                     console.log("Ashby Pagination 'Next' Clicked.");
+                    const box = await nextBtn.first().boundingBox();
+                    if (box) {
+                        await page.mouse.move(box.x + (box.width / 2), box.y + (box.height / 2), { steps: Math.floor(Math.random() * 15) + 10 });
+                    }
                     await nextBtn.first().click();
                     await page.waitForTimeout(2000); // Wait for DOM DOM updates / React router
                 } else {

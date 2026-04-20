@@ -40,12 +40,12 @@ console.log(`Starting headless evaluation over ${targets.length} endpoints...`);
 (async () => {
     const statsStore = [];
     
-    // Chunk execution for parallel headless browsers (limit to 5 concurrency to save RAM)
-    const chunkSize = 5;
+    // Sequential execution to natively hijack Chrome profile lockfiles safely
+    const chunkSize = 1;
     
     for (let i = 0; i < targets.length; i += chunkSize) {
         const chunk = targets.slice(i, i + chunkSize);
-        console.log(`\nDispatching parallel execution block [${i+1} - ${Math.min(i + chunkSize, targets.length)}] of ${targets.length}...`);
+        console.log(`\nDispatching sequential profile execution [${i+1} of ${targets.length}]...`);
         
         const chunkPromises = chunk.map(async (target, idx) => {
             const { url, run } = target;
