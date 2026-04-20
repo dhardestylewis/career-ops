@@ -33,7 +33,7 @@ const targets = [
     ...shuffle(ashbyUrls).slice(0, 15).map(url => ({ url, run: 'autofill:ashby' }))
 ];
 
-const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260304-staff-mle\\resume-dhl-20260304-staff-mle.pdf";
+const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";
 
 console.log(`Starting headless evaluation over ${targets.length} endpoints...`);
 
