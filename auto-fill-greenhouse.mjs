@@ -28,7 +28,15 @@ try {
 (async () => {
     // Check if running in headless telemetry batch evaluator
     const isBatch = process.env.BATCH_EVAL_MODE === 'true';
-    const browser = await chromium.launch({ headless: false, args: ['--window-position=-10000,-10000'] });
+    
+    // Inject Virtual Microphone for Web Recorders (if config file exists)
+    const launchArgs = ['--window-position=-10000,-10000'];
+    const audioPath = path.resolve('data/pronunciation.wav');
+    if (fs.existsSync(audioPath)) {
+        launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
+    }
+    
+    const browser = await chromium.launch({ headless: false, args: launchArgs });
     const context = await browser.newContext({
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     });
@@ -45,7 +53,85 @@ try {
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
     console.log("Waiting for form elements to load...");
-    await page.waitForSelector('input[name="name"]', { timeout: 10000 }).catch(() => {});
+    await page.waitForSelector('#first_name', { timeout: 10000 }).catch(() => {});
+
+    console.log("Extracting Job Description context for Synthesizer...");
+    try {
+        const jdContainer = await page.locator('#header, #content');
+        if (await jdContainer.count() > 0) {
+            let shouldGenerate = true;
+            if (profileConfig?.execution?.cover_letters === "required_only") {
+                const clInputs = page.locator('input[type="file"][name*="cover"], input[type="file"][name*="comment"]');
+                let isReq = false;
+                if (await clInputs.count() > 0) {
+                    isReq = await clInputs.first().evaluate(el => {
+                        if (el.required || el.getAttribute('aria-required') === 'true') return true;
+                        let p = el;
+                        for(let i=0; i<4; i++) {
+                            if(!p) break;
+                            if (p.classList && p.classList.contains('required')) return true;
+                            if (p.textContent && p.textContent.includes('*')) return true;
+                            p = p.parentElement;
+                        }
+                        return false;
+                    });
+                }
+                if (!isReq) shouldGenerate = false;
+            }
+            
+            // Extract unresolved textareas and standard inputs for Dynamic QA
+            try {
+                let unresolved = [];
+                const areas = await page.$$('textarea, input[type="text"], input[type="number"], input[type="url"]');
+                for (const area of areas) {
+                    const ctx = await page.evaluateHandle(el => el.closest('.application-question, label, div.field') || el.parentElement, area);
+                    const labelText = ctx ? await ctx.textContent() : '';
+                    
+                    const isStandard = await area.evaluate((el, text) => {
+                         const n = (el.getAttribute('name') || '').toLowerCase();
+                         const id = (el.getAttribute('id') || '').toLowerCase();
+                         const p = (el.getAttribute('placeholder') || '').toLowerCase();
+                         const v = [n, id, p, text.toLowerCase()].join(' ');
+                         const skips = ['first name', 'last name', 'email', 'phone', 'linkedin', 'github', 'portfolio', 'website', 'url', 'cover letter', 'resume', 'password', 'location', 'city', 'address', 'company'];
+                         for (const s of skips) if (v.includes(s)) return true;
+                         if (el.getAttribute('type') === 'hidden') return true;
+                         return false;
+                    }, labelText);
+
+                    if (isStandard) continue;
+
+                    const id = await area.getAttribute('id') || await area.getAttribute('name') || '';
+                    if (labelText && id) {
+                        unresolved.push({ id, question: labelText.replace(/\n/g, ' ').trim() });
+                    }
+                }
+                fs.writeFileSync(path.resolve('data/unresolved_questions.json'), JSON.stringify(unresolved, null, 2));
+            } catch(e) {}
+
+            if (shouldGenerate || fs.existsSync(path.resolve('data/unresolved_questions.json'))) {
+                const jdText = await jdContainer.allInnerTexts();
+                fs.writeFileSync(path.resolve('data/job_description.txt'), jdText.join('\n\n'));
+                import('child_process').then(({ spawnSync }) => {
+                    spawnSync('node', [path.resolve('generate-cover-letter.mjs')], { stdio: 'inherit' });
+                });
+            } else {
+                console.log("Cover Letter is optional and no dynamic QA needed. Bypassing synthesis.");
+            }
+        }
+    } catch(e) {}
+
+    // FIll Dynamic QA Answers directly into the DOM
+    console.log("Mapping Dynamic QA responses to the DOM...");
+    try {
+        const answersPath = path.resolve('data/dynamic_answers.json');
+        if (fs.existsSync(answersPath)) {
+            const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
+            for (const [id, val] of Object.entries(answers)) {
+                const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
+                if (await el.count() > 0) await el.first().fill(val);
+            }
+        }
+    } catch(e) {}
 
     console.log("Attaching Resume natively...");
     try {
@@ -66,6 +152,30 @@ try {
         }
     } catch (e) {
         console.error("❌ Failed to attach resume automatically.", e.message);
+    }
+    
+    console.log("Attaching Cover Letter (if exists)...");
+    try {
+        let clPath = path.resolve('data/dynamic_cover_letter.pdf');
+        if (!fs.existsSync(clPath)) {
+            clPath = path.resolve('data/cover_letter.pdf');
+        }
+        
+        if (fs.existsSync(clPath)) {
+            const clInputs = page.locator('input[type="file"][name*="cover"], input[type="file"][name*="comment"]');
+            if (await clInputs.count() > 0) {
+                await clInputs.first().setInputFiles(clPath);
+                console.log("✅ Cover letter explicit attachment found.");
+            } else {
+                const genericFileInputs = page.locator('input[type="file"]');
+                if (await genericFileInputs.count() > 1) {
+                    await genericFileInputs.nth(1).setInputFiles(clPath);
+                    console.log("✅ Cover letter generic attachment filled.");
+                }
+            }
+        }
+    } catch (e) {
+        console.error("❌ Failed to attach cover letter automatically.", e.message);
     }
 
     console.log("Filling standard details...");
@@ -119,10 +229,20 @@ try {
             // Read question text robustly using native browser DOM traversal
             const lowerText = await select.evaluate((node) => {
                 const container = node.closest('div.field, div.custom-question, label, div');
-                return container ? container.textContent.toLowerCase() : '';
+                let text = container ? container.textContent.toLowerCase() : '';
+                
+                const labelledBy = node.getAttribute('aria-labelledby');
+                if (labelledBy) {
+                    const ids = labelledBy.split(' ');
+                    for (const lblId of ids) {
+                        const lbl = document.getElementById(lblId);
+                        if (lbl) text += ' ' + lbl.textContent.toLowerCase();
+                    }
+                }
+                return text;
             });
 
-            const options = await selectElement.$$eval('option', opts => opts.map(o => o.textContent.trim()));
+            const options = await select.$$eval('option', opts => opts.map(o => o.textContent.trim()));
 
             let targetValue = null;
             if (lowerText.includes('authorized to work') && lowerText.includes('without sponsorship')) {
@@ -133,6 +253,14 @@ try {
                 targetValue = 'Yes';
             } else if (lowerText.includes('past 6 months') || lowerText.includes('previously applied')) {
                 targetValue = 'No';
+            } else if (lowerText.includes('hear') || lowerText.includes('source') || lowerText.includes('find out')) {
+                const matchSrc = options.find(o => o && (
+                    o.toLowerCase().includes('linkedin') || 
+                    o.toLowerCase().includes('company website') || 
+                    o.toLowerCase().includes('direct') ||
+                    o.toLowerCase().includes('job board')
+                ));
+                if (matchSrc) targetValue = matchSrc;
             }
 
             if (targetValue) {
@@ -173,11 +301,74 @@ try {
     await safeSelect('job_application_disability_status', 'Decline to self-identify');
 
     console.log("Checking for modern React-Select Demographics & Location implementations...");
+    
+    // Dynamic React-Select traversal for obfuscated IDs (Anthropic/Glean)
+    try {
+        const comboboxes = await page.$$('input.select__input[role="combobox"]');
+        for (const box of comboboxes) {
+            try {
+                const lowerText = await box.evaluate((el) => {
+                    const ctx = el.closest('div.field, .application-question, label') || el.closest('div');
+                    let text = ctx ? ctx.textContent.toLowerCase() : '';
+                    
+                    const labelledBy = el.getAttribute('aria-labelledby');
+                    if (labelledBy) {
+                        const ids = labelledBy.split(' ');
+                        for (const lblId of ids) {
+                            const lbl = document.getElementById(lblId);
+                            if (lbl) text += ' ' + lbl.textContent.toLowerCase();
+                        }
+                    }
+                    return text;
+                });
+
+                let fillValue = null;
+                if (lowerText.includes('gender')) fillValue = 'Male';
+                else if (lowerText.includes('race') || lowerText.includes('hispanic')) fillValue = 'Hispanic or Latino';
+                else if (lowerText.includes('veteran')) fillValue = 'not a protected veteran';
+                else if (lowerText.includes('disability')) fillValue = 'Decline';
+                else if (lowerText.includes('sponsorship') || lowerText.includes('visa')) fillValue = 'No';
+                else if (lowerText.includes('authorized') || lowerText.includes('legally')) fillValue = 'Yes';
+                else if (lowerText.includes('hear') || lowerText.includes('source')) fillValue = 'LinkedIn';
+                
+                if (fillValue) {
+                    await box.evaluate((el) => { 
+                         el.style.opacity = "1"; 
+                         el.style.position = "static";
+                         el.style.display = "block";
+                         el.style.width = "auto";
+                    });
+                    const id = await box.evaluate(el => el.getAttribute('id'));
+                    const locator = id ? page.locator(`input.select__input[role="combobox"][id="${id}"]`).first() : box;
+                    
+                    await locator.focus({ force: true }).catch(()=>{});
+                    const currentVal = await locator.inputValue().catch(()=>'');
+                    if (!currentVal) {
+                        await locator.fill("").catch(()=>{});
+                        await locator.pressSequentially(fillValue, { delay: 50 }).catch(()=>{});
+                        await page.waitForTimeout(600);
+                        await locator.press('Enter').catch(()=>{});
+                        await page.waitForTimeout(300);
+                    }
+                }
+            } catch(e) {}
+        }
+    } catch(e) {}
+
     const safeReactSelect = async (id, value) => {
         try {
+            // Find input matching either explicit ID or aria-autocomplete combobox role
             const locator = page.locator(`input.select__input[id="${id}"]`);
-            if (await locator.count() > 0 && await locator.isVisible()) {
-                await locator.fill(value);
+            if (await locator.count() > 0) {
+                await locator.evaluate((el) => { 
+                     el.style.opacity = "1"; 
+                     el.style.position = "static";
+                     el.style.display = "block";
+                     el.style.width = "auto";
+                });
+                await locator.focus({ force: true });
+                await locator.fill("");
+                await locator.pressSequentially(value, { delay: 30 });
                 await page.waitForTimeout(500); // Wait for React-Select API to asynchronously filter matching options
                 await locator.press('Enter');
                 await page.waitForTimeout(200);
@@ -196,16 +387,22 @@ try {
     try {
         const minComp = profileConfig?.compensation?.target_range || profileConfig?.compensation?.minimum || '$180,000';
         const exitStory = profileConfig?.narrative?.exit_story || 'Client-facing modeling expertise';
+        const catchAll = profileConfig?.narrative?.catch_all || 'N/A - all relevant information is provided in the resume.';
         
         // Scan textareas specifically in case block wrappers fail on Greenhouse
         const allTextAreas = await page.$$('textarea');
         for (const area of allTextAreas) {
             try {
+                const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
                 const parentLabel = await area.$('xpath=ancestor::div[contains(@class,"field")] | ancestor::label | preceding-sibling::label');
                 const text = parentLabel ? await parentLabel.textContent() : '';
                 const lowerText = text ? text.toLowerCase() : '';
-                if (lowerText.includes('why') || lowerText.includes('interest') || lowerText.includes('reason') || lowerText.includes('cover letter') || lowerText.includes('achievement') || lowerText.includes('project') || lowerText.includes('hume')) {
+                const combinedLabel = ariaLabel + " " + lowerText;
+
+                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('hume')) {
                     if (!(await area.inputValue())) await area.fill(exitStory);
+                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
+                    if (!(await area.inputValue())) await area.fill(catchAll);
                 }
             } catch(e) {}
         }
@@ -220,6 +417,16 @@ try {
                     if (!(await input.inputValue())) await input.fill(minComp.toString());
                 } else if (ariaLabel.includes('notice period') || ariaLabel.includes('available to start')) {
                     if (!(await input.inputValue())) await input.fill("2-4 weeks");
+                } else if (ariaLabel.includes('linkedin')) {
+                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.linkedin || '');
+                } else if (ariaLabel.includes('website') || ariaLabel.includes('portfolio') || ariaLabel.includes('github')) {
+                    const u = ariaLabel.includes('website') || ariaLabel.includes('portfolio') ? profileConfig?.candidate?.portfolio_url : profileConfig?.candidate?.github;
+                    if (!(await input.inputValue())) await input.fill(u || '');
+                } else if (ariaLabel.includes('preferred') || ariaLabel.includes('pronounce')) {
+                    const name = profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel";
+                    if (!(await input.inputValue())) await input.fill(name);
+                } else if (ariaLabel.includes('title')) {
+                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.title || 'Engineer');
                 }
             } catch(e) {}
         }
@@ -239,22 +446,23 @@ try {
         }
 
         // Handle custom React-Select comboboxes by resolving their aria-labelledby
-        const allCombos = await page.$$('input.select__input[role="combobox"]');
+        const allCombos = await page.locator('input.select__input[role="combobox"]').elementHandles();
         for (const combo of allCombos) {
             try {
                 const ariaLabelledBy = await combo.getAttribute('aria-labelledby');
                 if (ariaLabelledBy) {
-                    // Greenhouse escapes dots and odd characters in dynamic IDs, but mostly pure alphanumeric
                     const labelEl = await page.$(`[id="${ariaLabelledBy}"]`);
                     if (labelEl) {
                         const labelText = ((await labelEl.textContent()) || '').toLowerCase();
                         if (labelText.includes('sponsorship') || labelText.includes('require visa')) {
-                             await combo.fill('No');
+                             await combo.focus();
+                             await combo.pressSequentially('No', { delay: 30 });
                              await page.waitForTimeout(300);
                              await combo.press('Enter');
                              await page.waitForTimeout(200);
-                        } else if (labelText.includes('authorized to work') || labelText.includes('right to work')) {
-                             await combo.fill('Yes');
+                        } else if (labelText.includes('authorized to work') || labelText.includes('right to work') || labelText.includes('eligibility')) {
+                             await combo.focus();
+                             await combo.pressSequentially('Yes', { delay: 30 });
                              await page.waitForTimeout(300);
                              await combo.press('Enter');
                              await page.waitForTimeout(200);
@@ -362,6 +570,103 @@ try {
                 }
             }
         } catch(e) {}
+        
+        // Handle specific ATS array fields like "Skills" or "Cloud tools" mapping
+        const skillsMap = profileConfig?.narrative?.skills || [];
+        if (skillsMap.length > 0) {
+            const allCheckboxes = await page.$$('input[type="checkbox"]');
+            for (const check of allCheckboxes) {
+                try {
+                    let labelText = (await check.getAttribute('aria-label') || '').toLowerCase();
+                    if (!labelText) {
+                         const lbl = await page.evaluateHandle(el => el.closest('label') || el.parentElement, check);
+                         if (lbl) labelText = ((await lbl.textContent()) || '').toLowerCase();
+                    }
+                    
+                    // If any skill exists entirely within this checkbox label, check it natively
+                    for (const skill of skillsMap) {
+                        if (labelText.includes(skill.toLowerCase())) {
+                            if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
+                            break;
+                        }
+                    }
+                } catch(e) {}
+            }
+        }
+        
+        // Handle Years of Experience generically
+        try {
+            const expBlocks = await page.$$('label, div');
+            for (const block of expBlocks) {
+                const txt = (await block.textContent() || '').toLowerCase();
+                if ((txt.includes('years') && txt.includes('experience')) || txt.includes('yoe')) {
+                    const inp = await block.$('input[type="number"], input[type="text"]');
+                    if (inp && !(await inp.inputValue())) {
+                        let yoe = profileConfig?.experience_years?.default_yoe || 5;
+                        for (const [key, val] of Object.entries(profileConfig?.experience_years || {})) {
+                            if (key !== 'default_yoe' && txt.includes(key.replace('_', ' '))) {
+                                yoe = val; break;
+                            }
+                        }
+                        await inp.fill(yoe.toString()).catch(()=>{});
+                    }
+                }
+            }
+        } catch(e) {}
+
+        // Handle Radio Matrices (Proficiency & Demographics)
+        try {
+            const radioGroups = await page.evaluate(() => {
+                let groups = {};
+                document.querySelectorAll('input[type="radio"]').forEach(r => {
+                    if (r.name) groups[r.name] = true;
+                });
+                return Object.keys(groups);
+            });
+            
+            for (const rName of radioGroups) {
+                const radios = page.locator(`input[type="radio"][name="${rName}"]`);
+                const count = await radios.count();
+                if (count > 0) {
+                    const groupLabelText = await radios.first().evaluate(el => {
+                        let n = el;
+                        for (let i = 0; i < 4; i++) { if (!n) break; n = n.parentElement; }
+                        return n ? (n.textContent || '').toLowerCase() : '';
+                    });
+                    
+                    let mapped = false;
+                    for (const [key, val] of Object.entries(profileConfig?.experience_years || {})) {
+                        if (key !== 'default_yoe' && groupLabelText.includes(key.replace('_', ' '))) {
+                            for (let i = 0; i < count; i++) {
+                                const r = radios.nth(i);
+                                const lbl = await r.evaluate(el => {
+                                    const l = el.closest('label') || el.parentElement;
+                                    return l ? (l.textContent || '').toLowerCase() : '';
+                                });
+                                if (lbl.includes('5') || lbl.includes('expert') || lbl.includes('advanced')) {
+                                    if (!(await r.isChecked())) await r.check({force: true}).catch(()=>{});
+                                    mapped = true; break;
+                                }
+                            }
+                        }
+                    }
+                    
+                    if (!mapped && count === 2) {
+                        const lbl1 = await radios.nth(0).evaluate(el => (el.closest('label') || el.parentElement)?.textContent?.toLowerCase() || '');
+                        const lbl2 = await radios.nth(1).evaluate(el => (el.closest('label') || el.parentElement)?.textContent?.toLowerCase() || '');
+                        if ((lbl1.includes('yes') && lbl2.includes('no')) || (lbl1.includes('no') && lbl2.includes('yes'))) {
+                            if (groupLabelText.includes('authorized') || groupLabelText.includes('legally')) {
+                                const authPos = lbl1.includes('yes') ? 0 : 1;
+                                if (profileConfig?.eeo_demographics?.authorized_to_work === "Yes") await radios.nth(authPos).check({force:true}).catch(()=>{});
+                            } else if (groupLabelText.includes('sponsorship') || groupLabelText.includes('visa')) {
+                                const spPos = lbl1.includes('no') ? 0 : 1;
+                                if (profileConfig?.eeo_demographics?.requires_sponsorship === "No") await radios.nth(spPos).check({force:true}).catch(()=>{});
+                            }
+                        }
+                    }
+                }
+            }
+        } catch(e) {}
     } catch(e) {}
 
     // -------------------------------------------------------------------------
@@ -372,18 +677,24 @@ try {
     await page.waitForTimeout(5000); 
 
     const metrics = await page.evaluate(() => {
-        const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="file"]), textarea, select'));
-        const total = inputs.length;
+        const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="file"]):not([tabindex="-1"][aria-hidden="true"]), textarea:not([name="g-recaptcha-response"]):not(.g-recaptcha-response), select'));
+        let total = inputs.length;
         let filled = 0;
         const missingDOM = [];
         
         for (const el of inputs) {
             let isFilled = false;
+            
+            if (window.getComputedStyle(el).opacity === '0' || el.offsetWidth === 0) {
+                total--; continue; // Skip actual non-interactable
+            }
+
             if (el.tagName === 'SELECT') {
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
-                if (el.type === 'radio' && el.name) {
-                   const group = document.querySelectorAll(`input[name="${el.name}"]`);
+                if (el.name) {
+                   const cleanName = el.name.split('[')[0]; 
+                   const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
                    isFilled = true;
@@ -395,9 +706,24 @@ try {
             if (isFilled) {
                 filled++;
             } else {
-                // Try to grab the parent label or container for better context
-                const container = el.closest('div.field, .application-question, label') || el;
-                missingDOM.push(container.outerHTML.substring(0, 1500)); // cap size to prevent giant payloads
+                let isReq = el.required || el.getAttribute('aria-required') === 'true';
+                if (!isReq) {
+                    let p = el;
+                    for (let i = 0; i < 4; i++) {
+                        if (!p) break;
+                        if (p.classList && p.classList.contains('required')) isReq = true;
+                        if (p.textContent && (p.textContent.includes('*') || p.textContent.includes('(required)'))) isReq = true;
+                        p = p.parentElement;
+                    }
+                }
+                
+                if (!isReq) {
+                    total--;
+                    continue;
+                }
+
+                const container = el.closest('div.field, label') || el.closest('div') || el;
+                missingDOM.push(container.outerHTML.substring(0, 1500));
             }
         }
         

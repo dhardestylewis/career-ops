@@ -39,6 +39,7 @@ target_roles:
 narrative:
   headline: "ML systems builder — from supercomputers to production forecasting to founder"
   exit_story: "Built and deployed ML systems at national scale (TACC, DARPA, NOAA) before founding three companies applying ML to real-world problems. Currently building production forecasting architectures at Homecastr that outperform Zillow's nationwide benchmark models."
+  catch_all: "N/A - all relevant information is provided in the resume."
   superpowers:
     - "End-to-end ML systems: data ingestion → training → evaluation → production serving"
     - "Geospatial ML at scale (nationwide tract-level forecasting, HPC flood models)"
@@ -61,6 +62,24 @@ narrative:
     - name: "Columbia Financial Engineering Research"
       url: ""
       hero_metric: "Better than commercial R² on daily mutual fund return prediction"
+  skills:
+    - "Python"
+    - "TypeScript"
+    - "JavaScript"
+    - "PyTorch"
+    - "TensorFlow"
+    - "React"
+    - "Node"
+    - "Docker"
+    - "Kubernetes"
+    - "AWS"
+    - "GCP"
+    - "SQL"
+    - "PostgreSQL"
+    - "Redis"
+    - "FastAPI"
+    - "Terraform"
+    - "Databricks"
 
 compensation:
   target_range: "$180K-250K"
@@ -81,3 +100,19 @@ eeo_demographics:
   disability: "Decline to self-identify"
   authorized_to_work: "Yes"
   requires_sponsorship: "No"
+
+experience_years:
+  default_yoe: 5
+  python: 8
+  javascript: 6
+  typescript: 5
+  react: 5
+  aws: 6
+  gcp: 3
+  docker: 6
+  kubernetes: 4
+  machine_learning: 7
+
+execution:
+  auto_submit: false
+  cover_letters: "required_only"

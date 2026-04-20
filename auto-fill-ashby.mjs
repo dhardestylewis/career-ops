@@ -4,13 +4,13 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 
 let url = process.argv[2];
-if (url && url.includes('jobs.lever.co') && !url.endsWith('/apply') && !url.includes('?')) {
-    url = url.replace(/\/$/, '') + '/apply';
+if (url && url.includes('jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
+    url = url.replace(/\/$/, '') + '/application';
 }
 const resumePath = process.argv[3];
 
 if (!url || !resumePath) {
-    console.error("Usage: node auto-fill-lever.mjs <url> <resume-pdf-path>");
+    console.error("Usage: node auto-fill-ashby.mjs <url> <resume-pdf-path>");
     process.exit(1);
 }
 
@@ -56,11 +56,11 @@ try {
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
     console.log("Waiting for form elements to load...");
-    await page.waitForSelector('input[name="name"]', { timeout: 10000 }).catch(() => {});
+    await page.waitForSelector('input', { timeout: 10000 }).catch(() => {});
 
     console.log("Extracting Job Description context for Synthesizer...");
     try {
-        const jdContainer = await page.locator('.postings-wrapper');
+        const jdContainer = await page.locator('h1, .ashby-job-posting-content');
         if (await jdContainer.count() > 0) {
             let shouldGenerate = true;
             if (profileConfig?.execution?.cover_letters === "required_only") {
@@ -87,7 +87,7 @@ try {
                 let unresolved = [];
                 const areas = await page.$$('textarea, input[type="text"], input[type="number"], input[type="url"]');
                 for (const area of areas) {
-                    const ctx = await page.evaluateHandle(el => el.closest('.application-question, label, div.field') || el.parentElement, area);
+                    const ctx = await page.evaluateHandle(el => el.closest('.application-question, label, div.field, div') || el.parentElement, area);
                     const labelText = ctx ? await ctx.textContent() : '';
                     
                     const isStandard = await area.evaluate((el, text) => {
@@ -110,10 +110,10 @@ try {
                 }
                 fs.writeFileSync(path.resolve('data/unresolved_questions.json'), JSON.stringify(unresolved, null, 2));
             } catch(e) {}
-
+            
             if (shouldGenerate || fs.existsSync(path.resolve('data/unresolved_questions.json'))) {
-                const jdText = await jdContainer.first().innerText();
-                fs.writeFileSync(path.resolve('data/job_description.txt'), jdText);
+                const jdText = await jdContainer.allInnerTexts();
+                fs.writeFileSync(path.resolve('data/job_description.txt'), jdText.join('\n\n'));
                 import('child_process').then(({ spawnSync }) => {
                     spawnSync('node', [path.resolve('generate-cover-letter.mjs')], { stdio: 'inherit' });
                 });
@@ -138,25 +138,17 @@ try {
 
     console.log("Attaching Resume natively...");
     try {
-        // Lever usually has an explicit file input for resumes
-        const fileInput = page.locator('input[type="file"][name="resume"]');
-        if (await fileInput.count() > 0) {
-            await fileInput.first().setInputFiles(path.resolve(resumePath));
+        const genericFileInput = page.locator('input[type="file"]');
+        if (await genericFileInput.count() > 0) {
+            await genericFileInput.first().setInputFiles(path.resolve(resumePath));
             console.log("✅ Resume attached.");
         } else {
-            console.log("⚠️ Could not locate standard resume file input. Looking for generic file inputs...");
-            const genericFileInput = page.locator('input[type="file"]');
-            if (await genericFileInput.count() > 0) {
-                await genericFileInput.first().setInputFiles(path.resolve(resumePath));
-                console.log("✅ Resume attached via generic input.");
-            } else {
-                console.log("❌ No file inputs found on the page.");
-            }
+            console.log("❌ No file inputs found on the page.");
         }
     } catch (e) {
         console.error("❌ Failed to attach resume automatically.", e.message);
     }
-    
+
     console.log("Attaching Cover Letter (if exists)...");
     try {
         let clPath = path.resolve('data/dynamic_cover_letter.pdf');
@@ -192,118 +184,23 @@ try {
         } catch (e) {}
     };
 
-    await safeFill('input[name="name"]', 'Daniel Hardesty Lewis');
-    await safeFill('input[name="email"]', 'daniel@homecastr.com');
-    await safeFill('input[name="phone"]', '+1 (713) 371-7875');
-    await safeFill('input[name="org"]', 'Homecastr');
-
-    // Standard Lever URL fields
-    await safeFill('input[name="urls[LinkedIn]"]', 'https://linkedin.com/in/dhardestylewis');
-    await safeFill('input[name="urls[GitHub]"]', 'https://github.com/dhardestylewis');
-    await safeFill('input[name="urls[Portfolio]"]', 'https://dlewis.ai');
-    await safeFill('input[name="urls[Other]"]', 'https://homecastr.com');
-    await safeFill('input[name="urls[Other website]"]', 'https://homecastr.com');
-
-    console.log("Detecting and setting Location dropdown (to trigger dynamic EEO questions)...");
+    // Basic Ashby native fields
+    await safeFill('input[name="name"]', profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis');
+    await safeFill('input[name="_systemfield_name"]', profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis');
     
-    // Autocomplete Location fields (Lever Location Autocomplete API)
-    try {
-        const locField = page.locator('#location-input');
-        if (await locField.count() > 0 && await locField.isVisible()) {
-            await locField.first().focus();
-            await locField.first().fill(""); // Clear first
-            await locField.first().pressSequentially('New York, New York', { delay: 50 });
-            await page.waitForTimeout(1500); // Wait for API
-            await page.keyboard.press('ArrowDown');
-            await page.waitForTimeout(100);
-            await page.keyboard.press('Enter');
-        }
-    } catch(e) {}
+    await safeFill('input[name="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+    await safeFill('input[name="_systemfield_email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+
+    // URLs and Profiles
+    const linkedin = profileConfig?.candidate?.linkedin || 'https://linkedin.com/in/dhardestylewis';
+    const github = profileConfig?.candidate?.github || 'https://github.com/dhardestylewis';
+    const website = profileConfig?.candidate?.portfolio_url || 'https://dlewis.ai';
     
-    const allSelects = await page.$$('select');
-    for (const select of allSelects) {
-        try {
-            const id = await select.getAttribute('id') || '';
-            const name = await select.getAttribute('name') || '';
-            
-            // Check contextual label
-            let labelText = '';
-            if (id) {
-                const labelEl = await page.$(`label[for="${id}"]`);
-                if (labelEl) labelText = await labelEl.textContent() || '';
-            }
-            if (!labelText) {
-                const parent = await page.evaluateHandle(el => el.closest('.application-question, label') || el.parentElement, select);
-                if (parent) labelText = await parent.textContent() || '';
-            }
-            const lowerLabel = labelText.toLowerCase();
-
-            const options = await select.$$eval('option', opts => opts.map(o => ({label: o.textContent, value: o.value})));
-            
-            // Geographic selects
-            const matchGeo = options.find(o => o.label && (o.label.toLowerCase().includes('united states') || o.label.toLowerCase().includes('new york')));
-            if (matchGeo && lowerLabel.includes('country')) {
-                await select.selectOption({ label: matchGeo.label }).catch(()=>{});
-            }
-            
-            // "How did you hear about us / Source" selects
-            if (lowerLabel.includes('hear') || lowerLabel.includes('source') || lowerLabel.includes('find out')) {
-                const matchSrc = options.find(o => o.label && (
-                    o.label.toLowerCase().includes('linkedin') || 
-                    o.label.toLowerCase().includes('company website') || 
-                    o.label.toLowerCase().includes('direct') ||
-                    o.label.toLowerCase().includes('job board')
-                ));
-                if (matchSrc) await select.selectOption({ label: matchSrc.label }).catch(()=>{});
-            }
-        } catch(e) {}
-    }
-
-    console.log("Waiting for asynchronous form elements to inject...");
-    await page.waitForTimeout(2000); // Give JS time to mount dynamic Demographic Questions
-
-    console.log("Filling demographic EEO fields...");
-    const safeSelect = async (name, value) => {
-        try {
-            const el = page.locator(`select[name="${name}"]`);
-            if (await el.count() > 0 && await el.isVisible()) {
-                // Try finding by generic partial text matching for max robust ATS mapping
-                const selectElement = await el.elementHandle();
-                const options = await selectElement.$$eval('option', opts => opts.map(o => o.textContent));
-                const match = options.find(o => o && o.toLowerCase().includes(value.toLowerCase()));
-                if (match) {
-                    await el.selectOption({ label: match });
-                }
-            }
-        } catch (e) {}
-    };
-
-    await safeSelect('eeoc[gender]', 'Male');
-    await safeSelect('eeoc[race]', 'Hispanic or Latino');
-    await safeSelect('eeoc[veteran]', 'not a protected veteran');
-    await safeSelect('eeoc[disability]', 'Decline to self-identify');
-
-    // Sponsorship questions are often custom radio fields on Lever. We attempt a safe check for common formulations
-    // of the work auth and sponsorship questions using generic label clicks if they exist.
-    try {
-        const labels = await page.$$('label');
-        for (const label of labels) {
-            const text = await label.textContent();
-            const lowerText = text.toLowerCase();
-            
-            // Work Authorization (Yes)
-            if (lowerText.includes('authorized to work') && !lowerText.includes('sponsorship')) {
-                const yesInput = await label.$('xpath=..//input[@type="radio" and translate(@value,"YES","yes")="yes" or following-sibling::text()[contains(translate(.,"YES","yes"), "yes")]]');
-                if (yesInput) await yesInput.check();
-            }
-            
-            // Sponsorship (No)
-            if (lowerText.includes('sponsorship') || lowerText.includes('require sponsorship')) {
-                const noInput = await label.$('xpath=..//input[@type="radio" and translate(@value,"NO","no")="no" or following-sibling::text()[contains(translate(.,"NO","no"), "no")]]');
-                if (noInput) await noInput.check();
-            }
-        }
-    } catch(e) {}
+    await safeFill('input[name="linkedin"]', linkedin);
+    await safeFill('input[name="github"]', github);
+    await safeFill('input[name="website"]', website);
+    await safeFill('input[name="urls[LinkedIn]"]', linkedin);
+    await safeFill('input[name="urls[GitHub]"]', github);
 
     console.log("Scanning for Custom ATS questions via Heuristic Engine...");
     try {
@@ -311,97 +208,96 @@ try {
         const exitStory = profileConfig?.narrative?.exit_story || 'Software engineering leader.';
         const catchAll = profileConfig?.narrative?.catch_all || 'N/A - all relevant information is provided in the resume.';
         
-        const questionBlocks = await page.$$('.application-question, label');
-        for (const block of questionBlocks) {
-            const lowerText = (await block.textContent()).toLowerCase();
-
-            // Ignore standard fields
-            if (lowerText.includes('resume') || lowerText.includes('cv') || lowerText.includes('email') || lowerText.includes('phone') || lowerText.includes('company')) {
-                continue;
-            }
-            if (lowerText.includes('name') && !lowerText.includes('preferred') && !lowerText.includes('pronounce')) {
-                continue;
-            }
-
-            // Heuristic 1: Privacy / Consent / Notice / Future Opportunities Checkboxes
-            if (lowerText.includes('privacy') || lowerText.includes('consent') || lowerText.includes('future') || lowerText.includes('acknowledge') || lowerText.includes('agree') || lowerText.includes('terms')) {
-                const check = await block.$('input[type="checkbox"]');
-                if (check && !(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
-            }
-
-            // Heuristic 2: Compensation / Salary Target
-            if (lowerText.includes('salary') || lowerText.includes('compensation') || lowerText.includes('expectations')) {
-                const txt = await block.$('input[type="text"], textarea');
-                if (txt && !(await txt.inputValue())) await txt.fill(minComp.toString());
-            }
-
-            // Heuristic 3: Cover Letter analogues / Why us / Interest / Achievements / Projects
-            if (lowerText.includes('why') || lowerText.includes('interest') || lowerText.includes('reason') || lowerText.includes('cover letter') || lowerText.includes('achievement') || lowerText.includes('project') || lowerText.includes('visa')) {
-                const area = await block.$('textarea');
-                if (area && !(await area.inputValue())) await area.fill(exitStory);
-            } else if (lowerText.includes('anything else') || lowerText.includes('additional info') || lowerText.includes('comments')) {
-                const area = await block.$('textarea');
-                if (area && !(await area.inputValue())) await area.fill(catchAll);
-            }
-
-            // Heuristic 4: Clearance 
-            if (lowerText.includes('clearance')) {
-                const t = await block.$('input[type="text"]');
-                if (t && !(await t.inputValue())) await t.fill("None");
-            }
-            
-            // Heuristic 5: Preferred Name & Pronunciation
-            if (lowerText.includes('preferred name') || lowerText.includes('pronounce')) {
-                const t = await block.$('input[type="text"]');
-                if (t && !(await t.inputValue())) await t.fill(profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel");
-            }
-
-            // Heuristic 6: Custom Array Dropdowns (How did you hear about us)
-            if (lowerText.includes('hear about') || lowerText.includes('source')) {
-                const sel = await block.$('select');
-                if (sel) {
-                    const opts = await sel.$$eval('option', os => os.map(o => o.textContent));
-                    let match = opts.find(o => o && o.toLowerCase().includes('linkedin'));
-                    if (!match) match = opts.find(o => o && o.toLowerCase().includes('job board'));
-                    if (match) await sel.selectOption({ label: match }).catch(()=>{});
-                }
-            }
+        // Scan custom inputs directly reading labels
+        const allInputs = await page.$$('input[type="text"], input[type="url"], input[type="email"], input[type="tel"], input[type="number"]');
+        for (const input of allInputs) {
+             try {
+                 const id = await input.getAttribute('id');
+                 if (!id) continue;
+                 const labelEl = await page.$(`label[for="${id}"]`);
+                 const labelText = labelEl ? (await labelEl.textContent() || '').toLowerCase() : '';
+                 const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
+                 const nameAttr = (await input.getAttribute('name') || '').toLowerCase();
+                 
+                 const combinedLabel = labelText + " " + ariaLabel + " " + nameAttr;
+                 
+                 if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
+                     if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+                 } else if (combinedLabel.includes('salary') || combinedLabel.includes('compensation') || combinedLabel.includes('expectations') || combinedLabel.includes('package')) {
+                     if (!(await input.inputValue())) await input.fill(minComp.toString());
+                 } else if (combinedLabel.includes('notice period') || combinedLabel.includes('available to start')) {
+                     if (!(await input.inputValue())) await input.fill("2-4 weeks");
+                 } else if (combinedLabel.includes('linkedin')) {
+                     if (!(await input.inputValue())) await input.fill(linkedin);
+                 } else if (combinedLabel.includes('website') || combinedLabel.includes('portfolio')) {
+                     if (!(await input.inputValue())) await input.fill(website);
+                 } else if (combinedLabel.includes('github')) {
+                     if (!(await input.inputValue())) await input.fill(github);
+                 }
+             } catch(e) {}
         }
         
-        // Custom Radio Buttons for dynamically injected Generic EEO structures (Spotify / EU forms)
+        const allTextAreas = await page.$$('textarea');
+        for (const area of allTextAreas) {
+            try {
+                const id = await area.getAttribute('id');
+                let labelText = '';
+                if (id) {
+                    const labelEl = await page.$(`label[for="${id}"]`);
+                    labelText = labelEl ? (await labelEl.textContent() || '').toLowerCase() : '';
+                }
+                const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
+                const combinedLabel = ariaLabel + " " + labelText;
+
+                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project')) {
+                    if (!(await area.inputValue())) await area.fill(exitStory);
+                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
+                    if (!(await area.inputValue())) await area.fill(catchAll);
+                }
+            } catch(e) {}
+        }
+        
+        // Custom Radio Buttons for dynamically injected Generic EEO structures
         try {
             const checkExactRadio = async (textLabel) => {
                 try {
                     const label = page.getByText(textLabel, { exact: true });
                     if (await label.count() > 0) {
                         const input = label.locator('xpath=..//input | .//input | preceding-sibling::input | following-sibling::input');
-                        if (await input.count() > 0) await input.first().check({ force: true });
-                        else await label.first().click({ force: true });
+                        if (await input.count() > 0) await input.first().check({ force: true }).catch(()=>{});
+                        else await label.first().click({ force: true }).catch(()=>{});
                     }
                 } catch(e) {}
             };
 
-            const checkFuzzyRadio = async (textLabel) => {
+            const checkFuzzyRadio = async (searchStr) => {
                 try {
-                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), "${textLabel.toLowerCase()}")]//input`);
-                    if (await input.count() > 0) await input.first().check({ force: true }).catch(()=>{});
+                    const strLower = searchStr.toLowerCase();
+                    const group = await page.$$(`label`);
+                    for (const l of group) {
+                        const txt = (await l.textContent() || "").toLowerCase();
+                        if (txt.includes(strLower)) {
+                            const input = await l.$('input');
+                            if (input && !(await input.isChecked())) {
+                                await input.check({force: true}).catch(()=>{});
+                            } else {
+                                await l.click({force: true}).catch(()=>{});
+                            }
+                        }
+                    }
                 } catch(e) {}
             };
 
             const gender = profileConfig?.eeo_demographics?.gender?.toLowerCase() || '';
             if (gender === 'male' || gender === 'm' || gender.includes('man') && !gender.includes('woman')) {
-                await checkExactRadio('He/him');
+                await checkExactRadio('Male');
                 await checkExactRadio('Man');
             }
             
             if (gender === 'female' || gender === 'f' || gender.includes('woman')) {
-                await checkExactRadio('She/her');
+                await checkExactRadio('Female');
                 await checkExactRadio('Woman');
             }
-            
-            // Catch custom Visa / Remote arrangement questions 
-            await checkFuzzyRadio('live outside');
-            await checkFuzzyRadio('do not want to relocate');
             
             const race = profileConfig?.eeo_demographics?.race?.toLowerCase() || '';
             if (race.includes('hispanic')) {
@@ -410,50 +306,65 @@ try {
             
             const veteran = profileConfig?.eeo_demographics?.veteran?.toLowerCase() || '';
             if (veteran.includes('not a protected')) {
-                // Safely handle literal 'No' 
-                const noLabels = await page.$$('label:has-text("No")');
-                for (let l of noLabels) await l.click({force:true}).catch(()=>{});
+                await checkFuzzyRadio('not a protected veteran');
             }
-        } catch(e) {}
-        
-        // Pronouns (often explicitly rendered as standalone labels)
-        try {
-            const gender = profileConfig?.eeo_demographics?.gender?.toLowerCase() || '';
-            if (gender.includes('male')) {
-                const heHimLabel = page.getByText('He/him', { exact: false });
-                if (await heHimLabel.count() > 0 && await heHimLabel.first().isVisible()) {
-                    await heHimLabel.first().click();
-                }
-            } else if (gender.includes('female')) {
-                const sheHerLabel = page.getByText('She/her', { exact: false });
-                if (await sheHerLabel.count() > 0 && await sheHerLabel.first().isVisible()) {
-                    await sheHerLabel.first().click();
-                }
+            
+            const disability = profileConfig?.eeo_demographics?.disability?.toLowerCase() || '';
+            if (disability.includes('decline')) {
+                await checkFuzzyRadio('decline to answer');
+                await checkFuzzyRadio('do not wish to answer');
+                await checkFuzzyRadio('decline to state');
+            } else if (disability.includes('no')) {
+                await checkFuzzyRadio('no, i do not have');
+                await checkExactRadio('No');
             }
-        } catch(e) {}
-        
-        // Handle specific ATS array fields like "Skills" or "Cloud tools" mapping
-        const skillsMap = profileConfig?.narrative?.skills || [];
-        if (skillsMap.length > 0) {
-            const allCheckboxes = await page.$$('input[type="checkbox"]');
-            for (const check of allCheckboxes) {
-                try {
-                    let labelText = (await check.getAttribute('aria-label') || '').toLowerCase();
-                    if (!labelText) {
-                         const lbl = await page.evaluateHandle(el => el.closest('label') || el.parentElement, check);
-                         if (lbl) labelText = ((await lbl.textContent()) || '').toLowerCase();
-                    }
-                    
-                    // If any skill exists entirely within this checkbox label, check it natively
-                    for (const skill of skillsMap) {
-                        if (labelText.includes(skill.toLowerCase())) {
-                            if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
-                            break;
+            
+            // Catch custom Visa questions 
+            await checkFuzzyRadio('authorized to work');
+            const sponsor = profileConfig?.eeo_demographics?.requires_sponsorship?.toLowerCase() || 'no';
+            if (sponsor === 'no') {
+                const sponsorLabels = await page.$$('label');
+                for (const label of sponsorLabels) {
+                    const text = (await label.textContent() || '').toLowerCase();
+                    if (text.includes('sponsorship') || text.includes('require visa')) {
+                        const noInput = await label.$('xpath=..//input[@type="radio" and translate(@value,"NO","no")="no" or following-sibling::text()[contains(translate(.,"NO","no"), "no")]]');
+                        if (noInput) await noInput.check({force: true}).catch(()=>{});
+                        else {
+                            // Ashby often places radio inside or next to label
+                            const genericNo = await page.$$(`label:has-text("No")`);
+                            for(let n of genericNo) { 
+                                const i = await n.$('input');
+                                if (i) await i.check({force:true}).catch(()=>{});
+                            }
                         }
                     }
-                } catch(e) {}
+                }
             }
-        }
+            
+            // Handle specific ATS array fields like "Skills" or "Cloud tools" mapping
+            const skillsMap = profileConfig?.narrative?.skills || [];
+            if (skillsMap.length > 0) {
+                const allCheckboxes = await page.$$('input[type="checkbox"]');
+                for (const check of allCheckboxes) {
+                    try {
+                        let labelText = (await check.getAttribute('aria-label') || '').toLowerCase();
+                        if (!labelText) {
+                             const lbl = await page.evaluateHandle(el => el.closest('label') || el.parentElement, check);
+                             if (lbl) labelText = ((await lbl.textContent()) || '').toLowerCase();
+                        }
+                        
+                        // If any skill exists entirely within this checkbox label, check it natively
+                        for (const skill of skillsMap) {
+                            if (labelText.includes(skill.toLowerCase())) {
+                                if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
+                                break;
+                            }
+                        }
+                    } catch(e) {}
+                }
+            }
+
+        } catch(e) {}
         
         // Handle Years of Experience generically
         try {
@@ -474,7 +385,7 @@ try {
                 }
             }
         } catch(e) {}
-
+        
         // Handle Radio Matrices (Proficiency & Demographics)
         try {
             const radioGroups = await page.evaluate(() => {
@@ -496,6 +407,7 @@ try {
                     });
                     
                     let mapped = false;
+                    // Check if it's a proficiency matrix asking about a config skill
                     for (const [key, val] of Object.entries(profileConfig?.experience_years || {})) {
                         if (key !== 'default_yoe' && groupLabelText.includes(key.replace('_', ' '))) {
                             for (let i = 0; i < count; i++) {
@@ -512,6 +424,7 @@ try {
                         }
                     }
                     
+                    // If not mapped, check if it's a generic Yes/No demographic (e.g. Authorized to work?)
                     if (!mapped && count === 2) {
                         const lbl1 = await radios.nth(0).evaluate(el => (el.closest('label') || el.parentElement)?.textContent?.toLowerCase() || '');
                         const lbl2 = await radios.nth(1).evaluate(el => (el.closest('label') || el.parentElement)?.textContent?.toLowerCase() || '');
@@ -528,17 +441,17 @@ try {
                 }
             }
         } catch(e) {}
+        
     } catch(e) {}
 
     // -------------------------------------------------------------------------
     // BATCH EVALUATION TELEMETRY DOM HOOK
     // -------------------------------------------------------------------------
-    // Validate DOM Telemetry immediately before taking any further action so it doesn't get cleared
     console.log("Analyzing form fill completion metrics...");
-    await page.waitForTimeout(5000); 
+    await page.waitForTimeout(4000); // allow async blur events
 
     const metrics = await page.evaluate(() => {
-        const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="file"]):not([tabindex="-1"][aria-hidden="true"]), textarea:not([name="g-recaptcha-response"]):not(.g-recaptcha-response), select'));
+        const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="file"]):not([tabindex="-1"][aria-hidden="true"]):not([readonly]), textarea:not([name="g-recaptcha-response"]):not(.g-recaptcha-response), select'));
         let total = inputs.length;
         let filled = 0;
         const missingDOM = [];
@@ -554,7 +467,7 @@ try {
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
                 if (el.name) {
-                   const cleanName = el.name.split('[')[0]; // Handle nested names like name[] or name[]_id
+                   const cleanName = el.name.split('[')[0]; 
                    const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
@@ -583,7 +496,7 @@ try {
                     continue;
                 }
 
-                const container = el.closest('div.field, .application-question, label') || el.closest('div') || el;
+                const container = el.closest('div.field, label') || el.closest('div') || el;
                 missingDOM.push(container.outerHTML.substring(0, 1500));
             }
         }
@@ -601,8 +514,6 @@ try {
         console.log("and click the SUBMIT button natively.");
         console.log("When you close the browser window, this script will exit.");
         console.log("-------------------------------------------------");
-
-        // Pause execution to hand off the live browser to the user
         await page.pause();
     }
 
