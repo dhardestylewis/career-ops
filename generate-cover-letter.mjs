@@ -195,3 +195,5 @@ Be concise, direct, and aggressive. If a question asks for links (github/portfol
         console.error("❌ Failed to generate dynamic synthesis:", e);
     }
 })();
+
+

@@ -327,3 +327,5 @@ switch (cmd) {
     console.log('Usage: node update-system.mjs [check|apply|rollback|dismiss]');
     process.exit(1);
 }
+
+

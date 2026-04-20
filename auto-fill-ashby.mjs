@@ -3,65 +3,11 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 
-let url = process.argv[2];
-if (url && url.includes('jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
-    url = url.replace(/\/$/, '') + '/application';
-}
-const resumePath = process.argv[3];
-
-if (!url || !resumePath) {
-    console.error("Usage: node auto-fill-ashby.mjs <url> <resume-pdf-path>");
-    process.exit(1);
-}
-
-if (!fs.existsSync(resumePath)) {
-    console.error(`Resume file not found at: ${resumePath}`);
-    process.exit(1);
-}
-
-// Dynamically extract Profile configuration for the Heuristics Engine
-let profileConfig = {};
-try {
-    const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
-    profileConfig = yaml.load(fileContents);
-} catch (e) {
-    console.log("⚠️ Could not load profile.yml for advanced heuristics.");
-}
-
-(async () => {
-    // Check if running in headless telemetry batch evaluator
-    const isBatch = process.env.BATCH_EVAL_MODE === 'true';
-    
-    // Inject Virtual Microphone for Web Recorders (if config file exists)
-    const launchArgs = ['--window-position=-10000,-10000'];
-    const audioPath = path.resolve('data/pronunciation.wav');
-    if (fs.existsSync(audioPath)) {
-        launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
+export async function populateAshby(page, targetUrl, resumePath, profileConfig, isBatch = false) {
+    let url = targetUrl;
+    if (url && url.includes('jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
+        url = url.replace(/\/$/, '') + '/application';
     }
-    
-    let browser, context;
-    if (profileConfig?.execution?.chrome_profilePath) {
-        console.log(`Launching Persistent Chrome Context from ${profileConfig.execution.chrome_profilePath}`);
-        context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
-        browser = context; // Alias for cleanup
-    } else {
-        browser = await chromium.launch({ headless: false, args: launchArgs });
-        context = await browser.newContext({
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
-    }
-    
-    // Mask standard automated browser hooks to avoid Captcha triggers
-    await context.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-        window.navigator.chrome = { runtime: {} };
-    });
-
-    const page = await context.newPage();
 
     console.log(`Navigating to ${url}...`);
     await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -597,5 +543,53 @@ try {
         await page.pause();
     }
 
-    await browser.close();
-})();
+    return metrics;
+}
+
+import { fileURLToPath } from 'url';
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    const { chromium } = await import('playwright');
+    import('path').then(path => {
+        import('fs').then(fs => {
+            import('js-yaml').then(yaml => {
+                (async () => {
+                    const isBatch = process.env.BATCH_EVAL_MODE === 'true';
+                    const targetUrl = process.argv[2];
+                    const targetResumeUrl = process.argv[3];
+                    
+                    let profileConfig = {};
+                    try {
+                        const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
+                        profileConfig = yaml.load(fileContents);
+                    } catch (e) {}
+
+                    const launchArgs = ['--window-position=-10000,-10000'];
+                    const context = await chromium.launchPersistentContext(profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile', { 
+                        headless: false, 
+                        args: launchArgs,
+                        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                    });
+                    
+                    await context.addInitScript(() => {
+                        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+                        window.navigator.chrome = { runtime: {} };
+                    });
+
+                    const page = await context.newPage();
+                    
+                    try {
+                        await populateAshby(page, targetUrl, targetResumeUrl, profileConfig, isBatch);
+                    } catch (e) {
+                        console.error(e);
+                    }
+                    
+                    if (isBatch) {
+                        await context.close();
+                    }
+                })();
+            });
+        });
+    });
+}
+
+

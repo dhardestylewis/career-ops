@@ -3,8 +3,8 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 
-const url = process.argv[2];
-const resumePath = process.argv[3];
+
+
 
 if (!url || !resumePath) {
     console.error("Usage: node auto-fill-lever.mjs <url> <resume-pdf-path>");
@@ -25,40 +25,8 @@ try {
     console.log("⚠️ Could not load profile.yml for advanced heuristics.");
 }
 
-(async () => {
-    // Check if running in headless telemetry batch evaluator
-    const isBatch = process.env.BATCH_EVAL_MODE === 'true';
-    
-    // Inject Virtual Microphone for Web Recorders (if config file exists)
-    const launchArgs = ['--window-position=-10000,-10000'];
-    const audioPath = path.resolve('data/pronunciation.wav');
-    if (fs.existsSync(audioPath)) {
-        launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
-    }
-    
-    let browser, context;
-    if (profileConfig?.execution?.chrome_profilePath) {
-        console.log(`Launching Persistent Chrome Context from ${profileConfig.execution.chrome_profilePath}`);
-        context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
-        browser = context; // Alias for cleanup
-    } else {
-        browser = await chromium.launch({ headless: false, args: launchArgs });
-        context = await browser.newContext({
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
-    }
-    
-    // Mask standard automated browser hooks to avoid Captcha triggers
-    await context.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-        window.navigator.chrome = { runtime: {} };
-    });
-
-    const page = await context.newPage();
+export async function populateGreenhouse(page, targetUrl, resumePath, profileConfig, isBatch = false) {
+    const url = targetUrl;
 
     console.log(`Navigating to ${url}...`);
     await page.goto(url, { waitUntil: 'domcontentloaded' });
@@ -831,7 +799,44 @@ try {
         await page.pause();
     }
 
-    await browser.close();
-})();
+}
+
+
+
+
+import { fileURLToPath } from 'url';
+import { chromium } from 'playwright';
+if (process.argv[1] === fileURLToPath(import.meta.url)) {
+    (async () => {
+        const isBatch = process.env.BATCH_EVAL_MODE === 'true';
+        const targetUrl = process.argv[2];
+        const targetResumeUrl = process.argv[3];
+        
+        const launchArgs = ['--window-position=-10000,-10000'];
+        const context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
+            headless: false, 
+            args: launchArgs,
+            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        });
+        
+        await context.addInitScript(() => {
+            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
+            window.navigator.chrome = { runtime: {} };
+        });
+
+        const page = await context.newPage();
+        
+        try {
+            await populateGreenhouse(page, targetUrl, targetResumeUrl, profileConfig, isBatch);
+        } catch (e) {
+            console.error(e);
+        }
+        
+        // Let the unified handler deal with cleanup, but for CLI we kill here:
+        if (isBatch) {
+            await context.close();
+        }
+    })();
+}
 
 

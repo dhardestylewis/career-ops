@@ -73,3 +73,5 @@ export function classifyLiveness({ status = 0, finalUrl = '', bodyText = '', app
 
   return { result: 'uncertain', reason: 'content present but no visible apply control found' };
 }
+
+

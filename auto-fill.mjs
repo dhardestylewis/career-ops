@@ -25,3 +25,5 @@ if (url.includes('lever.co')) {
     console.log("Currently supported: Lever, Greenhouse (inc. custom domains via ?gh_jid=), Ashby HQ");
     process.exit(1);
 }
+
+
