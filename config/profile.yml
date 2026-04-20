@@ -38,7 +38,7 @@ target_roles:
 
 narrative:
   headline: "ML systems builder — from supercomputers to production forecasting to founder"
-  exit_story: "Built and deployed ML systems at national scale (TACC, DARPA, NOAA), then founded three companies applying ML to real-world problems. Now completing MS at Columbia while building production forecasting systems that outperform Zillow."
+  exit_story: "Built and deployed ML systems at national scale (TACC, DARPA, NOAA) before founding three companies applying ML to real-world problems. Currently building production forecasting architectures at Homecastr that outperform Zillow's nationwide benchmark models."
   superpowers:
     - "End-to-end ML systems: data ingestion → training → evaluation → production serving"
     - "Geospatial ML at scale (nationwide tract-level forecasting, HPC flood models)"
@@ -73,3 +73,11 @@ location:
   city: "New York"
   timezone: "EST"
   visa_status: "No sponsorship needed"
+
+eeo_demographics:
+  gender: "Male"
+  race: "Hispanic or Latino"
+  veteran: "I am not a protected veteran"
+  disability: "Decline to self-identify"
+  authorized_to_work: "Yes"
+  requires_sponsorship: "No"
