@@ -1,26 +1,6 @@
 [
   {
-    "id": "c5dc9065-f53a-4639-b00a-8b30a4cb8ada",
-    "question": "What excites you about Deepgram?"
-  },
-  {
-    "id": "6713f4c9-87c5-48e7-a934-93db203d308c",
-    "question": "Which languages have you used professionally in the last five years, and what is the most complex system you built or owned with them?Write N/A if not applicable"
-  },
-  {
-    "id": "65f1a2bc-7786-4e04-9f7e-bbd261ff7344",
-    "question": "Describe a strategic POC you led. What made it hard and how did you de risk it to earn the technical win?"
-  },
-  {
-    "id": "e8a2d082-b3ab-4720-b9b2-bdf352dc0bc2",
-    "question": "Share a time you created a reusable demo, accelerator, or field guide that helped multiple customers."
-  },
-  {
-    "id": "ed80e7c9-3031-4599-9186-fa2a31cc47e8",
-    "question": "Which EU countries can you legally work from, and do you already have work authorization there?"
-  },
-  {
-    "id": "807ac700-d3e2-41bc-a253-3068efc849c0",
-    "question": "What is the most impressive thing you’ve personally built or automated with AI? Describe exactly what you did, how it worked, and the measurable outcomeWrite N/A if non-applicable"
+    "id": "feaa92b1-1afa-4393-8bdb-608b5483eb5a",
+    "question": "Anything else? (Optional)Is there anything else we should know about your candidacy or interest in Sierra?"
   }
 ]

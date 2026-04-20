@@ -16,11 +16,17 @@ try {
 export async function populateLever(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     const url = targetUrl;
 
-    console.log(`Navigating to ${url}...`);
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    // Lever's application form is at /apply - the base URL is just the job listing
+    const applyUrl = url.endsWith('/apply') ? url : url.replace(/\/$/, '') + '/apply';
+    console.log(`Navigating to ${applyUrl}...`);
+    await page.goto(applyUrl, { waitUntil: 'domcontentloaded' });
 
     console.log("Waiting for form elements to load...");
-    await page.waitForSelector('input[name="name"]', { timeout: 10000 }).catch(() => {});
+    // Wait for the full application form to mount (Lever uses SPA routing, inputs render asynchronously)
+    await page.waitForSelector('.application-form, form[action*="apply"], input[name="name"]', { timeout: 15000 }).catch(() => {});
+    // Secondary wait to ensure dynamic fields (URL inputs, location) have mounted
+    await page.waitForSelector('input[name="urls[LinkedIn]"]', { timeout: 8000 }).catch(() => {});
+    await page.waitForTimeout(500); // Final settle buffer
 
     console.log("Extracting Job Description context for Synthesizer...");
     try {
@@ -619,11 +625,13 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                     console.log("Waiting for network resolution or CAPTCHA intercept...");
                     let isCaptchaActive = false;
                     
-                    const captchaWatcher = page.waitForSelector('iframe[title*="reCAPTCHA"], iframe[src*="captcha"], .g-recaptcha', { state: 'visible', timeout: 30000 })
-                        .then(() => {
-                            isCaptchaActive = true;
-                            console.log("\n⚠️ CAPTCHA DETECTED! Waiting indefinitely for you to solve it manually in the browser...\n");
-                        }).catch(() => {});
+                    const captchaWatcher = page.waitForSelector(
+                        'iframe[title*="reCAPTCHA"], iframe[title*="hCaptcha"], iframe[title*="captcha"], iframe[src*="hcaptcha"], iframe[src*="captcha"], .g-recaptcha, #h-captcha, [data-hcaptcha-widget-id]',
+                        { state: 'visible', timeout: 30000 }
+                    ).then(() => {
+                        isCaptchaActive = true;
+                        console.log("\n⚠️ CAPTCHA DETECTED! Waiting indefinitely for you to solve it manually in the browser...\n");
+                    }).catch(() => {});
                         
                     await Promise.race([
                         page.waitForURL('**/thanks*', { timeout: 900000, waitUntil: 'domcontentloaded' }), // Wait up to 15 min if CAPTCHA is active
