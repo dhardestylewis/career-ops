@@ -1,0 +1,444 @@
+{
+  "inputs": [
+    {
+      "type": "file",
+      "name": "resume",
+      "id": "resume-upload-input",
+      "className": "application-file-input invisible-resume-upload"
+    },
+    {
+      "type": "text",
+      "name": "name",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "email",
+      "name": "email",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "phone",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "location",
+      "id": "location-input",
+      "className": "location-input"
+    },
+    {
+      "type": "hidden",
+      "name": "selectedLocation",
+      "id": "selected-location",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "org",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "urls[LinkedIn]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "urls[GitHub]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "urls[Portfolio]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][baseTemplate]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "checkbox",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field1]",
+      "id": "",
+      "className": "card-field-input"
+    },
+    {
+      "type": "text",
+      "name": "cards[a69a985a-eae9-4c14-90fb-b5a4b891523e][field2]",
+      "id": "",
+      "className": "card-field-input"
+    },
+    {
+      "type": "hidden",
+      "name": "cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][baseTemplate]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "radio",
+      "name": "cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "radio",
+      "name": "cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "radio",
+      "name": "cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][field1]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "radio",
+      "name": "cards[1c719ca9-5069-4afe-9e82-39ca420e0edb][field1]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "cards[3da58b41-acf5-40a1-945e-c7f047ef8050][baseTemplate]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "cards[a6197d84-549e-4a91-8bb0-6af972510013][baseTemplate]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "cards[f30bc442-2120-4db9-b5ac-2f9bf563cad9][baseTemplate]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "radio",
+      "name": "cards[f30bc442-2120-4db9-b5ac-2f9bf563cad9][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "radio",
+      "name": "cards[f30bc442-2120-4db9-b5ac-2f9bf563cad9][field0]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "radio",
+      "name": "cards[f30bc442-2120-4db9-b5ac-2f9bf563cad9][field1]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "radio",
+      "name": "cards[f30bc442-2120-4db9-b5ac-2f9bf563cad9][field1]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "cards[ce72d538-c9ad-41f3-8e9a-618d40c82e3a][baseTemplate]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "cards[0115ea30-cfcc-46c9-9546-7ec6eb84c85e][baseTemplate]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "eeo[disabilitySignature]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "text",
+      "name": "eeo[disabilitySignatureDate]",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "accountId",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "linkedInData",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "origin",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "referer",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "socialReferralKey",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "socialSource",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "resumeStorageId",
+      "id": "",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "h-captcha-response",
+      "id": "hcaptchaResponseInput",
+      "className": ""
+    },
+    {
+      "type": "hidden",
+      "name": "source",
+      "id": "",
+      "className": ""
+    }
+  ],
+  "resumeText": [
+    "<div class=\"content-wrapper application-page\"><div class=\"content\"><div class=\"section-wrapper accent-section small-accent page-full-width\"><div class=\"section page-centered posting-header\"><h2>Forward Deployed Software Engineer - Autonomous Systems C2</h2><div class=\"posting-categories\"><div href=\"#\" class=\"sort-by-time posting-category medium-category-label width-full capitalize-labels location\">Palo Alto, CA</div><div href=\"#\" class=\"sort-by-team posting-category medium-category-label capital",
+    "<div class=\"content\"><div class=\"section-wrapper accent-section small-accent page-full-width\"><div class=\"section page-centered posting-header\"><h2>Forward Deployed Software Engineer - Autonomous Systems C2</h2><div class=\"posting-categories\"><div href=\"#\" class=\"sort-by-time posting-category medium-category-label width-full capitalize-labels location\">Palo Alto, CA</div><div href=\"#\" class=\"sort-by-team posting-category medium-category-label capitalize-labels department\">Product Development /</",
+    "<div class=\"section-wrapper page-full-width\"><form id=\"application-form\" enctype=\"multipart/form-data\" method=\"POST\"><div class=\"section page-centered application-form\"><h4>Submit your application</h4><ul><li class=\"application-question resume\"><label><div class=\"application-label\">Resume/CV <span class=\"required\">✱</span></div><div class=\"application-field\"><a href=\"#\" class=\"postings-btn template-btn-utility visible-resume-upload\"><svg class=\" icon icon-paperclip\" width=\"16\" height=\"16\" viewBo",
+    "<div class=\"section page-centered application-form\"><h4>Submit your application</h4><ul><li class=\"application-question resume\"><label><div class=\"application-label\">Resume/CV <span class=\"required\">✱</span></div><div class=\"application-field\"><a href=\"#\" class=\"postings-btn template-btn-utility visible-resume-upload\"><svg class=\" icon icon-paperclip\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\"><path id=\"Vector\" d=\"M4 3.375C4 1.5125 5.5125 0 7.375 0C9.2375 0 10.75 1.5125 10.75 3.375V10.75C10.75 1",
+    "<label><div class=\"application-label\">Resume/CV <span class=\"required\">✱</span></div><div class=\"application-field\"><a href=\"#\" class=\"postings-btn template-btn-utility visible-resume-upload\"><svg class=\" icon icon-paperclip\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\"><path id=\"Vector\" d=\"M4 3.375C4 1.5125 5.5125 0 7.375 0C9.2375 0 10.75 1.5125 10.75 3.375V10.75C10.75 11.9937 9.74375 13 8.5 13C7.25625 13 6.25 11.9937 6.25 10.75V4.75C6.25 4.33437 6.58437 4 7 4C7.41563 4 7.75 4.33437 7.75 4.75V10.",
+    "<div class=\"application-label\">Resume/CV <span class=\"required\">✱</span></div>",
+    "<div class=\"application-field\"><a href=\"#\" class=\"postings-btn template-btn-utility visible-resume-upload\"><svg class=\" icon icon-paperclip\" width=\"16\" height=\"16\" viewBox=\"0 0 16 16\"><path id=\"Vector\" d=\"M4 3.375C4 1.5125 5.5125 0 7.375 0C9.2375 0 10.75 1.5125 10.75 3.375V10.75C10.75 11.9937 9.74375 13 8.5 13C7.25625 13 6.25 11.9937 6.25 10.75V4.75C6.25 4.33437 6.58437 4 7 4C7.41563 4 7.75 4.33437 7.75 4.75V10.75C7.75 11.1656 8.08437 11.5 8.5 11.5C8.91563 11.5 9.25 11.1656 9.25 10.75V3.375C9.25",
+    "<span class=\"default-label\">ATTACH RESUME/CV</span>",
+    "<span class=\"resume-upload-failure\"><div class=\"resume-upload-label\">Couldn't auto-read resume.</div></span>",
+    "<div class=\"resume-upload-label\">Couldn't auto-read resume.</div>",
+    "<span class=\"resume-upload-working\"><div class=\"loading-indicator\"></div><div class=\"resume-upload-label\">Analyzing resume...</div></span>",
+    "<div class=\"resume-upload-label\">Analyzing resume...</div>"
+  ]
+}

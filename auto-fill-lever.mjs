@@ -3,21 +3,6 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 
-let url = process.argv[2];
-if (url && url.includes('jobs.lever.co') && !url.endsWith('/apply') && !url.includes('?')) {
-    url = url.replace(/\/$/, '') + '/apply';
-}
-
-
-if (!url || !resumePath) {
-    console.error("Usage: node auto-fill-lever.mjs <url> <resume-pdf-path>");
-    process.exit(1);
-}
-
-if (!fs.existsSync(resumePath)) {
-    console.error(`Resume file not found at: ${resumePath}`);
-    process.exit(1);
-}
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -117,6 +102,7 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
 
     console.log("Attaching Resume natively...");
     try {
+        await page.waitForSelector('input[type="file"]', { timeout: 10000 }).catch(() => {});
         // Lever usually has an explicit file input for resumes
         const fileInput = page.locator('input[type="file"][name="resume"]');
         if (await fileInput.count() > 0) {
@@ -597,6 +583,16 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     });
 
     if (isBatch) {
+        if (metrics.fillPercentage < 100) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+            metrics.status = 'Incomplete';
+            return metrics;
+        }
+        if (metrics.fillPercentage < 100) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+            metrics.status = 'Incomplete';
+            return metrics;
+        }
         // Live Submission Phase
         try {
             console.log("Simulating native human intent vectors...");
@@ -672,7 +668,6 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
 
 
 import { fileURLToPath } from 'url';
-import { chromium } from 'playwright';
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async () => {
         const isBatch = process.env.BATCH_EVAL_MODE === 'true';
@@ -701,9 +696,18 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
+        if (metrics.fillPercentage < 100) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+            metrics.status = 'Incomplete';
+            return metrics;
+        }
             await context.close();
         }
     })();
 }
+
+
+
+
 
 

@@ -1,3 +1,6 @@
-2026/04/20-16:46:25.669 a188 Reusing MANIFEST C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Session Storage/MANIFEST-000001
-2026/04/20-16:46:25.673 a188 Recovering log #3
-2026/04/20-16:46:25.682 a188 Reusing old log C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Session Storage/000003.log 
+2026/04/20-17:39:01.705 9d74 Reusing MANIFEST C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Session Storage/MANIFEST-000001
+2026/04/20-17:39:01.708 9d74 Recovering log #3
+2026/04/20-17:39:01.712 9d74 Reusing old log C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Session Storage/000003.log 
+2026/04/20-17:40:53.860 56e4 Level-0 table #5: started
+2026/04/20-17:40:53.873 56e4 Level-0 table #5: 27774 bytes OK
+2026/04/20-17:40:53.876 56e4 Delete type=0 #3

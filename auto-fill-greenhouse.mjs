@@ -3,19 +3,6 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 
-
-
-
-if (!url || !resumePath) {
-    console.error("Usage: node auto-fill-lever.mjs <url> <resume-pdf-path>");
-    process.exit(1);
-}
-
-if (!fs.existsSync(resumePath)) {
-    console.error(`Resume file not found at: ${resumePath}`);
-    process.exit(1);
-}
-
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
 try {
@@ -120,6 +107,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             await buttonGroup.first().click();
         }
         
+        await page.waitForSelector('input[type="file"]', { timeout: 10000 }).catch(() => {});
         let fileInput = page.locator('input[type="file"][id="resume"]');
         if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"]');
         
@@ -736,6 +724,16 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     });
 
     if (isBatch) {
+        if (metrics.fillPercentage < 100) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+            metrics.status = 'Incomplete';
+            return metrics;
+        }
+        if (metrics.fillPercentage < 100) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+            metrics.status = 'Incomplete';
+            return metrics;
+        }
         // Live Submission Phase
         try {
             console.log("Simulating native human intent vectors...");
@@ -805,7 +803,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
 
 import { fileURLToPath } from 'url';
-import { chromium } from 'playwright';
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async () => {
         const isBatch = process.env.BATCH_EVAL_MODE === 'true';
@@ -834,9 +831,18 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
+        if (metrics.fillPercentage < 100) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+            metrics.status = 'Incomplete';
+            return metrics;
+        }
             await context.close();
         }
     })();
 }
+
+
+
+
 
 
