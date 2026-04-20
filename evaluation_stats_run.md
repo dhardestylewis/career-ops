@@ -1,0 +1,54 @@
+# Headless Telemetry Report
+
+| URL | Fill Rate | Found | Filled | Status |
+|---|---|---|---|---|
+| https://jobs.lever.co/palantir/8aba5995-653d-... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/spotify/6b8e77f1-666d-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/palantir/27bf5707-96fa-... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/spotify/d196c5ef-9eac-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/bf5bcae2-839b-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/c79ff8ed-6689-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/ef744f52-3ceb-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/spotify/de3f6a47-4d75-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/palantir/c62264f5-5da8-... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/spotify/fc593885-54e1-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/palantir/289ad049-7b4e-... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/spotify/f3616bfc-a2bb-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/spotify/40fee238-4ba5-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/e0db3860-0a80-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/pigment/a204cd46-bdae-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/7894fd8a-ffc9-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/pigment/01e58869-2094-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/0004f890-99d5-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/qonto/06c1f0cc-8f6f-447... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/palantir/74748e0e-a0bc-... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/825819e9-dc32-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/palantir/2f3a0a57-8f77-... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/spotify/a95830ad-c11f-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/3e8b03e7-ff33-4... | 0% | 0 | 0 | Success |
+| https://jobs.lever.co/mistral/6fc7ccb5-47bb-4... | 0% | 0 | 0 | Success |
+| https://job-boards.greenhouse.io/isomorphicla... | 24% | 29 | 7 | Success |
+| https://job-boards.greenhouse.io/airtable/job... | 36% | 14 | 5 | Success |
+| https://job-boards.greenhouse.io/isomorphicla... | 24% | 29 | 7 | Success |
+| https://job-boards.eu.greenhouse.io/polyai/jo... | 0% | 3 | 0 | Success |
+| https://job-boards.greenhouse.io/celonis/jobs... | 12% | 33 | 4 | Success |
+| https://job-boards.greenhouse.io/celonis/jobs... | 17% | 24 | 4 | Success |
+| https://job-boards.greenhouse.io/gleanwork/jo... | 21% | 19 | 4 | Success |
+| https://job-boards.greenhouse.io/celonis/jobs... | 0% | 1 | 0 | Success |
+| https://job-boards.greenhouse.io/celonis/jobs... | 17% | 29 | 5 | Success |
+| https://job-boards.greenhouse.io/anthropic/jo... | 19% | 31 | 6 | Success |
+| https://job-boards.greenhouse.io/celonis/jobs... | 0% | 1 | 0 | Success |
+| https://job-boards.greenhouse.io/anthropic/jo... | 22% | 27 | 6 | Success |
+| https://job-boards.greenhouse.io/celonis/jobs... | 17% | 24 | 4 | Success |
+| https://job-boards.greenhouse.io/arizeai/jobs... | 18% | 22 | 4 | Success |
+| https://job-boards.greenhouse.io/gleanwork/jo... | 22% | 18 | 4 | Success |
+| https://job-boards.greenhouse.io/airtable/job... | 38% | 16 | 6 | Success |
+| https://job-boards.greenhouse.io/anthropic/jo... | 18% | 33 | 6 | Success |
+| https://job-boards.greenhouse.io/intercom/job... | 40% | 10 | 4 | Success |
+| https://job-boards.greenhouse.io/contentful/j... | 25% | 16 | 4 | Success |
+| https://job-boards.greenhouse.io/celonis/jobs... | 17% | 24 | 4 | Success |
+| https://job-boards.greenhouse.io/intercom/job... | 19% | 32 | 6 | Success |
+| https://job-boards.eu.greenhouse.io/polyai/jo... | 33% | 12 | 4 | Success |
+| https://job-boards.greenhouse.io/anthropic/jo... | 18% | 39 | 7 | Success |
+| https://job-boards.greenhouse.io/anthropic/jo... | 19% | 31 | 6 | Success |
+| https://job-boards.eu.greenhouse.io/parloa/jo... | 17% | 30 | 5 | Success |
