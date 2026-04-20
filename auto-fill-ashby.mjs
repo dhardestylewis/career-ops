@@ -505,6 +505,60 @@ try {
     });
 
     if (isBatch) {
+        // Live Submission Phase & Pagination Loop
+        try {
+            console.log("Locating Ashby Pagination/Submit block...");
+            
+            let isSubmitted = false;
+            let safetyCounter = 0;
+            
+            while (!isSubmitted && safetyCounter < 5) {
+                const submitBtn = page.locator('button:has-text("Submit Application"), button[type="submit"]');
+                const nextBtn = page.locator('button:has-text("Next")');
+                
+                if (await submitBtn.count() > 0 && await submitBtn.first().isVisible()) {
+                    await submitBtn.first().click();
+                    console.log("Ashby Submission Button Clicked.");
+                    isSubmitted = true;
+                } else if (await nextBtn.count() > 0 && await nextBtn.first().isVisible()) {
+                    console.log("Ashby Pagination 'Next' Clicked.");
+                    await nextBtn.first().click();
+                    await page.waitForTimeout(2000); // Wait for DOM DOM updates / React router
+                } else {
+                    console.log("Ashby hit a dead-end on actionable buttons.");
+                    break;
+                }
+                safetyCounter++;
+            }
+
+            if (isSubmitted) {
+                // Monitor for CAPTCHA
+                try {
+                    console.log("Waiting for network resolution or CAPTCHA intercept...");
+                    await Promise.race([
+                        page.waitForNavigation({ timeout: 15000, waitUntil: 'domcontentloaded' }).catch(()=>{}),
+                        page.waitForSelector('iframe[src*="captcha"]', { timeout: 15000 }).then(el => { if(el) throw new Error("CAPTCHA"); })
+                    ]);
+                    metrics.status = "Success";
+                } catch (navError) {
+                    if (navError.message === "CAPTCHA") {
+                        console.error("[WARN] CAPTCHA Intercepted. Application paused/failed.");
+                        metrics.status = "CAPTCHA_BLOCKED";
+                    } else {
+                        const errorMsg = page.locator('.ashby-application-form-error, [role="alert"]');
+                        if (await errorMsg.count() > 0 && await errorMsg.isVisible()) {
+                            metrics.status = "Submission_Error";
+                        } else {
+                            metrics.status = "Success"; // Implicit assuming XHR passed
+                        }
+                    }
+                }
+            } else {
+                metrics.status = "Submit_Button_Missing";
+            }
+        } catch (e) {
+            metrics.status = "Submission_Exception";
+        }
         console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
     } else {
         console.log("-------------------------------------------------");

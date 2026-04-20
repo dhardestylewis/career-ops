@@ -592,6 +592,42 @@ try {
     });
 
     if (isBatch) {
+        // Live Submission Phase
+        try {
+            console.log("Locating Lever POST submit button...");
+            const submitBtn = page.locator('button.postings-btn[type="submit"]');
+            if (await submitBtn.count() > 0) {
+                await submitBtn.first().click();
+                console.log("Lever Submission Button Clicked.");
+                
+                // Monitor for CAPTCHA
+                try {
+                    console.log("Waiting for network resolution or CAPTCHA intercept...");
+                    await Promise.race([
+                        page.waitForNavigation({ timeout: 15000, waitUntil: 'domcontentloaded' }),
+                        page.waitForSelector('iframe[src*="captcha"]', { timeout: 15000 }).then(el => { if(el) throw new Error("CAPTCHA"); })
+                    ]);
+                    metrics.status = "Success";
+                } catch (navError) {
+                    if (navError.message === "CAPTCHA") {
+                        console.error("[WARN] CAPTCHA Intercepted. Application paused/failed.");
+                        metrics.status = "CAPTCHA_BLOCKED";
+                    } else {
+                        // Sometimes the navigation timeout fires because Lever uses async XHR post instead of page reload.
+                        const errorMsg = page.locator('.error-message');
+                        if (await errorMsg.count() > 0 && await errorMsg.isVisible()) {
+                            metrics.status = "Submission_Error";
+                        } else {
+                            metrics.status = "Success"; // Implicit assuming XHR passed
+                        }
+                    }
+                }
+            } else {
+                metrics.status = "Submit_Button_Missing";
+            }
+        } catch (e) {
+            metrics.status = "Submission_Exception";
+        }
         console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
     } else {
         console.log("-------------------------------------------------");
