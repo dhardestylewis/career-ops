@@ -101,18 +101,23 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
     console.log("Attaching Resume natively...");
     try {
-        // Greenhouse uses a generic data-source button for attachments, which surfaces a hidden file input when interrogated
-        const buttonGroup = page.locator('.resume-submit-group button[data-source="attach"]');
-        if (await buttonGroup.count() > 0) {
-            await buttonGroup.first().click();
+        // Try clicking the attach button to reveal hidden file input (Greenhouse v2)
+        const attachBtns = page.locator('button[data-source="attach"], .resume-submit-group button, a[data-source="attach"]');
+        if (await attachBtns.count() > 0) {
+            await attachBtns.first().click({ force: true }).catch(() => {});
+            await page.waitForTimeout(500);
         }
         
-        await page.waitForSelector('input[type="file"]', { timeout: 10000 }).catch(() => {});
-        let fileInput = page.locator('input[type="file"][id="resume"]');
-        if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"]');
+        await page.waitForSelector('input[type="file"]', { timeout: 8000 }).catch(() => {});
+        
+        // Try all known Greenhouse file input selectors in priority order
+        let fileInput = page.locator('#resume_upload');
+        if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"][id="resume"]');
+        if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"][name="resume"]');
+        if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"]').first();
         
         if (await fileInput.count() > 0) {
-            await fileInput.first().setInputFiles(path.resolve(resumePath));
+            await fileInput.setInputFiles(path.resolve(resumePath));
             console.log("✅ Resume attached.");
         } else {
             console.log("❌ Could not locate Greenhouse file input structure.");
@@ -191,15 +196,23 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     await safeFill('#email', 'daniel@homecastr.com');
     await safeFill('#phone', '+1 (713) 371-7875');
     await safeFill('#org', 'Homecastr');
+    await safeFill('#job_application_employer', 'Homecastr');
+    await safeFill('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
 
     // Standard Greenhouse URL and generic field mappings
     await safeFill('input[autocomplete="custom-network-linkedin"]', 'https://linkedin.com/in/dhardestylewis');
     await safeFill('input[autocomplete="custom-network-github"]', 'https://github.com/dhardestylewis');
     await safeFill('input[autocomplete="custom-network-portfolio"]', 'https://dlewis.ai');
-    
-    // Attempt broad catch for LinkedIn if custom tags aren't present
-    const linkedinBroad = page.locator('input[type="text"]').filter({ hasText: /linkedin/i });
-    if (await linkedinBroad.count() > 0) await linkedinBroad.first().fill('https://linkedin.com/in/dhardestylewis');
+    // ID/placeholder-based fallbacks
+    await safeFill('input[id*="linkedin"], input[name*="linkedin"]', 'https://linkedin.com/in/dhardestylewis');
+    await safeFill('input[id*="github"], input[name*="github"]', 'https://github.com/dhardestylewis');
+    await safeFill('input[id*="website"], input[id*="portfolio"]', 'https://dlewis.ai');
+    await safeFill('input[id*="twitter"]', '');
+    // Placeholder-based fallbacks
+    await safeFill('input[placeholder*="LinkedIn"], input[placeholder*="linkedin"]', 'https://linkedin.com/in/dhardestylewis');
+    await safeFill('input[placeholder*="GitHub"], input[placeholder*="github"]', 'https://github.com/dhardestylewis');
+    // Phone - Greenhouse uses type=tel in some forms
+    await safeFill('input[type="tel"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
 
     // Autocomplete Location fields (Greenhouse requires actual UI interaction for the auto-select dropdown)
     try {
@@ -392,10 +405,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const lowerText = text ? text.toLowerCase() : '';
                 const combinedLabel = ariaLabel + " " + lowerText;
 
-                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('hume')) {
+                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('hume') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('built') || combinedLabel.includes('fit') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your')) {
                     if (!(await area.inputValue())) await area.fill(exitStory);
                 } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
                     if (!(await area.inputValue())) await area.fill(catchAll);
+                } else {
+                    // Fallback: any required unfilled textarea gets catchAll
+                    const isReq = await area.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
+                    if (isReq && !(await area.inputValue())) await area.fill(catchAll);
                 }
             } catch(e) {}
         }
@@ -470,8 +487,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         for (const block of questionBlocks) {
             const lowerText = (await block.textContent()).toLowerCase();
 
-            // Ignore standard fields
-            if (lowerText.includes('resume') || lowerText.includes('cv') || lowerText.includes('name') || lowerText.includes('email') || lowerText.includes('phone') || lowerText.includes('company')) {
+            // Ignore standard fields — only skip if label is predominantly about that field
+            const skipTerms = ['upload resume', 'upload cv', 'first name', 'last name', 'email address', 'phone number', 'current company'];
+            if (skipTerms.some(t => lowerText.trim().startsWith(t) || lowerText.includes(`\n${t}`))) {
                 continue;
             }
 

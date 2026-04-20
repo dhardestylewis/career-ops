@@ -160,6 +160,14 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
     await safeFill('input[name="website"]', website);
     await safeFill('input[name="urls[LinkedIn]"]', linkedin);
     await safeFill('input[name="urls[GitHub]"]', github);
+    // ID/placeholder-based fallbacks for Ashby custom field naming variations
+    await safeFill('input[id*="linkedin"], input[placeholder*="LinkedIn"], input[placeholder*="linkedin"]', linkedin);
+    await safeFill('input[id*="github"], input[placeholder*="GitHub"], input[placeholder*="github"]', github);
+    await safeFill('input[id*="portfolio"], input[id*="website"], input[placeholder*="Portfolio"], input[placeholder*="portfolio"]', website);
+    await safeFill('input[name="_systemfield_phone"], input[name="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    await safeFill('input[placeholder*="Phone"], input[placeholder*="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    // Ashby uses type="tel" for phone with UUID names and placeholder like "1-415-555-1234..."
+    await safeFill('input[type="tel"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
 
     console.log("Scanning for Custom ATS questions via Heuristic Engine...");
     try {
@@ -208,10 +216,14 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
                 const combinedLabel = ariaLabel + " " + labelText;
 
-                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project')) {
+                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('built') || combinedLabel.includes('impactful') || combinedLabel.includes('contribution') || combinedLabel.includes('hard problem') || combinedLabel.includes('success') || combinedLabel.includes('workflow') || combinedLabel.includes('feature')) {
                     if (!(await area.inputValue())) await area.fill(exitStory);
-                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
+                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments') || combinedLabel.includes('tell us')) {
                     if (!(await area.inputValue())) await area.fill(catchAll);
+                } else {
+                    // Fallback: any unfilled required textarea gets the catchAll answer
+                    const isReq = await area.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
+                    if (isReq && !(await area.inputValue())) await area.fill(catchAll);
                 }
             } catch(e) {}
         }
