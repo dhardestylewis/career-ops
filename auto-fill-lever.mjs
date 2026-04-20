@@ -192,6 +192,32 @@ try {
 
     console.log("Filling standard details...");
     
+        let lastMousePosition = { x: 0, y: 0 };
+    const biometricClick = async (page, locator) => {
+        try {
+            if (await locator.count() === 0) return;
+            const box = await locator.first().boundingBox();
+            if (!box) { await locator.first().click({ force: true }); return; }
+            const targetX = box.x + (box.width * (0.3 + Math.random() * 0.4));
+            const targetY = box.y + (box.height * (0.3 + Math.random() * 0.4));
+            try {
+                const { path } = await import('ghost-cursor');
+                const route = path(lastMousePosition, { x: targetX, y: targetY });
+                for (const pt of route) {
+                    await page.mouse.move(pt.x, pt.y);
+                    await page.waitForTimeout(Math.random() * 3 + 1);
+                }
+            } catch(e) {
+                await page.mouse.move(targetX, targetY, { steps: 10 });
+            }
+            lastMousePosition = { x: targetX, y: targetY };
+            await page.waitForTimeout(Math.random() * 50 + 20);
+            await locator.first().click();
+        } catch (e) {
+            await locator.first().click({ force: true });
+        }
+    };
+
     const safeFill = async (selector, value) => {
         try {
             const el = page.locator(selector);
@@ -387,7 +413,7 @@ try {
                     if (await label.count() > 0) {
                         const input = label.locator('xpath=..//input | .//input | preceding-sibling::input | following-sibling::input');
                         if (await input.count() > 0) await input.first().check({ force: true });
-                        else await label.first().click({ force: true });
+                        else await biometricClick(page, label.first());
                     }
                 } catch(e) {}
             };
@@ -433,12 +459,12 @@ try {
             if (gender.includes('male')) {
                 const heHimLabel = page.getByText('He/him', { exact: false });
                 if (await heHimLabel.count() > 0 && await heHimLabel.first().isVisible()) {
-                    await heHimLabel.first().click();
+                    await biometricClick(page, heHimLabel.first());
                 }
             } else if (gender.includes('female')) {
                 const sheHerLabel = page.getByText('She/her', { exact: false });
                 if (await sheHerLabel.count() > 0 && await sheHerLabel.first().isVisible()) {
-                    await sheHerLabel.first().click();
+                    await biometricClick(page, sheHerLabel.first());
                 }
             }
         } catch(e) {}
@@ -621,15 +647,16 @@ try {
                 }
                 await page.waitForTimeout(Math.floor(Math.random() * 400) + 200);
                 
-                await submitBtn.first().click();
+                await biometricClick(page, submitBtn.first());
                 console.log("Lever Submission Button Clicked.");
                 
-                // Monitor for CAPTCHA
+                // Monitor for proper CAPTCHA intercept or true URL resolution
                 try {
                     console.log("Waiting for network resolution or CAPTCHA intercept...");
                     await Promise.race([
-                        page.waitForNavigation({ timeout: 15000, waitUntil: 'domcontentloaded' }),
-                        page.waitForSelector('iframe[src*="captcha"]', { timeout: 15000 }).then(el => { if(el) throw new Error("CAPTCHA"); })
+                        page.waitForURL('**/thanks*', { timeout: 20000, waitUntil: 'domcontentloaded' }),
+                        page.waitForSelector('h2:has-text("Application Submitted"), h1:has-text("Thank you")', { timeout: 20000 }),
+                        page.waitForSelector('iframe[src*="captcha"]', { timeout: 20000 }).then(el => { if(el) throw new Error("CAPTCHA"); })
                     ]);
                     metrics.status = "Success";
                 } catch (navError) {
@@ -637,12 +664,12 @@ try {
                         console.error("[WARN] CAPTCHA Intercepted. Application paused/failed.");
                         metrics.status = "CAPTCHA_BLOCKED";
                     } else {
-                        // Sometimes the navigation timeout fires because Lever uses async XHR post instead of page reload.
+                        console.log("[INFO] Submission executed, waiting for network state timed out safely...");
                         const errorMsg = page.locator('.error-message');
                         if (await errorMsg.count() > 0 && await errorMsg.isVisible()) {
                             metrics.status = "Submission_Error";
                         } else {
-                            metrics.status = "Success"; // Implicit assuming XHR passed
+                            metrics.status = "Success_Unverified";
                         }
                     }
                 }
@@ -668,3 +695,5 @@ try {
 
     await browser.close();
 })();
+
+

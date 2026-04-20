@@ -116,4 +116,4 @@ experience_years:
 execution:
   auto_submit: false
   cover_letters: "required_only"
-  chrome_profilePath: "C:\\Users\\dhl\\AppData\\Local\\Google\\Chrome\\User Data"
+  chrome_profilePath: "C:\\Users\\dhl\\data\\Portfolio\\career-ops\\data\\chrome-bot-profile"
