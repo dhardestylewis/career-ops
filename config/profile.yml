@@ -39,6 +39,7 @@ target_roles:
 narrative:
   headline: "ML systems builder — from supercomputers to production forecasting to founder"
   exit_story: "Built and deployed ML systems at national scale (TACC, DARPA, NOAA) before founding three companies applying ML to real-world problems. Currently building production forecasting architectures at Homecastr that outperform Zillow's nationwide benchmark models."
+  interest_statement: "I am highly motivated by frontier research and building applied AI systems that solve tangible, high-impact problems. Having built models at national scales and successfully founded multiple companies, my objective now is to join an intensely focused technical team pushing the boundaries of what is possible in the ML space."
   catch_all: "N/A - all relevant information is provided in the resume."
   superpowers:
     - "End-to-end ML systems: data ingestion → training → evaluation → production serving"

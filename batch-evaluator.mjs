@@ -39,11 +39,11 @@ const shuffle = (array) => {
     return array;
 };
 
-// Aggregate a massive subset of targets for concurrent Multi-Tab execution
+// Aggregate the massive subset of targets for concurrent Multi-Tab execution
 const targets = [
-    ...shuffle(leverUrls).slice(0, 10).map(url => ({ url, type: 'lever' })),
-    ...shuffle(greenhouseUrls).slice(0, 10).map(url => ({ url, type: 'greenhouse' })),
-    ...shuffle(ashbyUrls).slice(0, 10).map(url => ({ url, type: 'ashby' }))
+    // ...shuffle(leverUrls).map(url => ({ url, type: 'lever' })),
+    ...shuffle(greenhouseUrls).map(url => ({ url, type: 'greenhouse' })),
+    // ...shuffle(ashbyUrls).map(url => ({ url, type: 'ashby' }))
 ];
 
 const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";
@@ -57,7 +57,7 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
     const chunkSize = 5;
     
     console.log(`Launching Unified Persistent Chrome Context from ${profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile'}`);
-    const launchArgs = ['--window-position=-10000,-10000'];
+    const launchArgs = []; // Removed off-screen positioning so it launches visibly by default
     const audioPath = path.resolve('data/pronunciation.wav');
     if (fs.existsSync(audioPath)) {
         launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
@@ -109,11 +109,15 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
                 }
                 
                 console.log(`[${type}] ✅ Fill Rate: ${metrics.fillPercentage}% (${metrics.filled}/${metrics.total} fields) on ${url} -> ${metrics.status}`);
-                await page.close();
+                if (metrics.status !== 'Success_Unverified' && metrics.status !== 'Success') {
+                    // await page.close(); // Temporarily disabled: keep all executed tabs alive
+                } else {
+                    console.log(`⚠️ Keeping ${url} tab alive for potential CAPTCHA verification.`);
+                }
                 return { url, status: metrics.status || 'Success', ...metrics };
             } catch (error) {
                 console.log(`[${type}] ❌ Script Error/Crash on ${url}`);
-                await page.close();
+                // await page.close(); // Temporarily disabled to prevent losing CAPTCHA tabs that errantly throw
                 return { url, status: 'Error', fillPercentage: 0 };
             }
         });
@@ -121,26 +125,33 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
         // Resolve 5 background tabs concurrently
         const completedChunk = await Promise.all(chunkPromises);
         statsStore.push(...completedChunk);
+
+        // Dynamically flush metrics to disk after every chunk completes!
+        let markdown = "# Concurrent Multi-Tab Telemetry Report\n\n| URL | Fill Rate | Found | Filled | Status |\n|---|---|---|---|---|\n";
+        const missingDOMData = {};
+        for (const stat of statsStore) {
+            markdown += `| ${stat.url.substring(0, 45)}... | ${stat.fillPercentage || 0}% | ${stat.total || 0} | ${stat.filled || 0} | ${stat.status} |\n`;
+            if (stat.missingDOM && stat.missingDOM.length > 0) {
+                missingDOMData[stat.url] = stat.missingDOM;
+            }
+        }
+        fs.writeFileSync('evaluation_stats_run.md', markdown);
+        fs.writeFileSync('missing_dom.json', JSON.stringify(missingDOMData, null, 2));
     }
     
     console.log("\n==================================");
-    console.log("Concurrent Multi-Tab Execution Complete. Dumping Output Artifacts...");
+    console.log("Concurrent Massive Queue Execution Complete.");
     
-    await context.close();
-
-    // Write markdown artifact
-    let markdown = "# Concurrent Multi-Tab Telemetry Report\n\n| URL | Fill Rate | Found | Filled | Status |\n|---|---|---|---|---|\n";
-    const missingDOMData = {};
-    for (const stat of statsStore) {
-        markdown += `| ${stat.url.substring(0, 45)}... | ${stat.fillPercentage || 0}% | ${stat.total || 0} | ${stat.filled || 0} | ${stat.status} |\n`;
-        if (stat.missingDOM && stat.missingDOM.length > 0) {
-            missingDOMData[stat.url] = stat.missingDOM;
-        }
+    const needsCaptcha = statsStore.some(s => s.status === 'Success_Unverified' || s.status === 'Success');
+    if (needsCaptcha) {
+        console.log("\n⚠️ [ACTION REQUIRED] Browser context left open. Press ENTER to pull browser to screen and solve any pending CAPTCHAs on the open tabs.");
+        // We do not await context.close() here, the process stays alive
+        await new Promise(() => {}); 
+    } else {
+        await context.close();
     }
-    
-    fs.writeFileSync('evaluation_stats_run.md', markdown);
-    fs.writeFileSync('missing_dom.json', JSON.stringify(missingDOMData, null, 2));
-    console.log("Artifact generation complete: evaluation_stats_run.md and missing_dom.json");
+
+    console.log("Pipeline finalized.");
     process.exit(0);
 })();
 

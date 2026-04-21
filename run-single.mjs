@@ -51,17 +51,20 @@ const targets = [
         }
     });
 
-    for (const url of targets) {
-        console.log(`\n--- Running: ${url} ---`);
+    console.log(`\nLaunching all ${targets.length} tabs concurrently...\n`);
+
+    await Promise.all(targets.map(async (url) => {
         const page = await context.newPage();
         try {
             const metrics = await populateLever(page, url, resumePath, profileConfig, true);
-            console.log(`Result: ${metrics.fillPercentage}% → ${metrics.status}`);
+            console.log(`\n✅ ${url.split('/').slice(-1)[0]} → ${metrics.fillPercentage}% → ${metrics.status}`);
+            // Do NOT close page — leave open for CAPTCHA resolution
         } catch(e) {
-            console.log(`Error: ${e.message}`);
+            console.log(`\n❌ Error on ${url}: ${e.message}`);
         }
-        // Don't close page — leave it open for CAPTCHA
-    }
+    }));
 
-    console.log("\nAll targets dispatched. Browser stays open. Press ENTER to bring it to screen if CAPTCHA is waiting.");
+    console.log("\n==================================\nAll tabs filled and waiting. Press ENTER to bring browser to screen,\nthen click through each tab to solve CAPTCHAs.\n==================================");
+    // Keep process alive indefinitely until user manually closes the browser
+    await new Promise(() => {});
 })();

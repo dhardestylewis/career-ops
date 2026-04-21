@@ -134,7 +134,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
     
     const safeFill = async (selector, value) => {
         try {
-            const el = page.locator(selector);
+            const el = page.locator(selector).first();
             if (await el.count() > 0 && await el.isVisible()) {
                 await el.focus();
                 await el.pressSequentially(value, { delay: Math.floor(Math.random() * 30) + 15 });
@@ -192,7 +192,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                      if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.phone || '+1 (713) 371-7875');
                  } else if (combinedLabel.includes('salary') || combinedLabel.includes('compensation') || combinedLabel.includes('expectations') || combinedLabel.includes('package')) {
                      if (!(await input.inputValue())) await input.fill(minComp.toString());
-                 } else if (combinedLabel.includes('notice period') || combinedLabel.includes('available to start')) {
+                 } else if (combinedLabel.includes('notice period') || combinedLabel.includes('available to start') || combinedLabel.includes('earliest date') || combinedLabel.includes('join')) {
                      if (!(await input.inputValue())) await input.fill("2-4 weeks");
                  } else if (combinedLabel.includes('linkedin')) {
                      if (!(await input.inputValue())) await input.fill(linkedin);
@@ -200,6 +200,10 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                      if (!(await input.inputValue())) await input.fill(website);
                  } else if (combinedLabel.includes('github')) {
                      if (!(await input.inputValue())) await input.fill(github);
+                 } else {
+                     // Fallback: any unfilled required input gets the catchAll answer
+                     const isReq = await input.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
+                     if (isReq && !(await input.inputValue()) && (await input.getAttribute('type')) === 'text') await input.fill("N/A - See Resume");
                  }
              } catch(e) {}
         }
@@ -216,7 +220,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
                 const combinedLabel = ariaLabel + " " + labelText;
 
-                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('built') || combinedLabel.includes('impactful') || combinedLabel.includes('contribution') || combinedLabel.includes('hard problem') || combinedLabel.includes('success') || combinedLabel.includes('workflow') || combinedLabel.includes('feature')) {
+                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('built') || combinedLabel.includes('impactful') || combinedLabel.includes('contribution') || combinedLabel.includes('hard problem') || combinedLabel.includes('success') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('impressive') || combinedLabel.includes('proud')) {
                     if (!(await area.inputValue())) await area.fill(exitStory);
                 } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments') || combinedLabel.includes('tell us')) {
                     if (!(await area.inputValue())) await area.fill(catchAll);
@@ -290,27 +294,40 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 await checkExactRadio('No');
             }
             
-            // Catch custom Visa questions 
-            await checkFuzzyRadio('authorized to work');
-            const sponsor = profileConfig?.eeo_demographics?.requires_sponsorship?.toLowerCase() || 'no';
-            if (sponsor === 'no') {
-                const sponsorLabels = await page.$$('label');
-                for (const label of sponsorLabels) {
-                    const text = (await label.textContent() || '').toLowerCase();
-                    if (text.includes('sponsorship') || text.includes('require visa')) {
-                        const noInput = await label.$('xpath=..//input[@type="radio" and translate(@value,"NO","no")="no" or following-sibling::text()[contains(translate(.,"NO","no"), "no")]]');
-                        if (noInput) await noInput.check({force: true}).catch(()=>{});
+            // Generic structural answer picker for Ashby's complex grouped radio blocks
+            const answerComplexRadio = async (qText, ansText) => {
+                try {
+                    const locs = page.locator(`:text-matches("${qText}", "i")`);
+                    if (await locs.count() > 0) {
+                        const parent = locs.first().locator('xpath=..');
+                        const opt = parent.locator(`label:text-is("${ansText}")`);
+                        if (await opt.count() > 0) await opt.first().click({force: true});
                         else {
-                            // Ashby often places radio inside or next to label
-                            const genericNo = await page.$$(`label:has-text("No")`);
-                            for(let n of genericNo) { 
-                                const i = await n.$('input');
-                                if (i) await i.check({force:true}).catch(()=>{});
+                            const p2 = parent.locator('xpath=..');
+                            const o2 = p2.locator(`label:text-is("${ansText}")`);
+                            if (await o2.count() > 0) await o2.first().click({force: true});
+                            else {
+                                const p3 = p2.locator('xpath=..');
+                                const o3 = p3.locator(`label:text-is("${ansText}")`);
+                                if (await o3.count() > 0) await o3.first().click({force: true});
                             }
                         }
                     }
-                }
-            }
+                } catch (e) {}
+            };
+
+            // Catch custom Visa questions 
+            await answerComplexRadio('legal right to work', 'Yes');
+            await answerComplexRadio('authorized to work', 'Yes');
+            
+            const sponsor = profileConfig?.eeo_demographics?.requires_sponsorship?.toLowerCase() || 'no';
+            await answerComplexRadio('sponsor a visa', sponsor === 'no' ? 'No' : 'Yes');
+            await answerComplexRadio('require sponsorship', sponsor === 'no' ? 'No' : 'Yes');
+            await answerComplexRadio('require visa', sponsor === 'no' ? 'No' : 'Yes');
+            
+            // Hear about us
+            await answerComplexRadio('hear about from', 'LinkedIn');
+            await answerComplexRadio('hear about us', 'LinkedIn');
             
             // Handle specific ATS array fields like "Skills" or "Cloud tools" mapping
             const skillsMap = profileConfig?.narrative?.skills || [];
@@ -552,6 +569,29 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                             metrics.status = "Success"; // Implicit assuming XHR passed
                         }
                     }
+                }
+
+                // 2FA Email Verification Hook
+                const verifyInput = page.locator('input[name*="code"], input[name*="verify"], input[type="text"][placeholder*="character"], input[aria-label*="Security code"]');
+                if (await verifyInput.count() > 0 && await verifyInput.first().isVisible().catch(()=>false)) {
+                    console.log("\n⚠️ [2FA Triggered] Intercepting Verification Code from Email...");
+                    const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
+                    try {
+                        const { waitForVerificationCode } = await import('file:///' + path.resolve('email-interceptor.mjs').replace(/\\/g, '/'));
+                        const code = await waitForVerificationCode(emailAddress, 75);
+                        if (code) {
+                            await verifyInput.first().fill(code);
+                            await page.waitForTimeout(500);
+                            const confirmBtn = page.locator('button:has-text("Submit"), button:has-text("Confirm"), button:has-text("Verify")');
+                            if (await confirmBtn.count() > 0) await confirmBtn.first().click().catch(()=>{});
+                            metrics.status = "Success";
+                            console.log("✅ 2FA Verification successfully bypassed and injected!");
+                            await Promise.race([ page.waitForNavigation({ timeout: 10000 }).catch(()=>{}), page.waitForTimeout(4000) ]);
+                        } else {
+                            console.log("❌ Failed to intercept validation code. Pausing for manual entry.");
+                            metrics.status = "Success_Unverified";
+                        }
+                    } catch(err) { console.error("Email Interceptor Crash:", err.message); }
                 }
             } else {
                 metrics.status = "Submit_Button_Missing";
