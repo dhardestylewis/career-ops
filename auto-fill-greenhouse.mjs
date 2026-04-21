@@ -150,6 +150,31 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         console.error("❌ Failed to attach cover letter automatically.", e.message);
     }
 
+    console.log("Satisfying arbitrary extra file upload requirements...");
+    try {
+        const extraFiles = await page.$$('input[type="file"]');
+        for (const fileInput of extraFiles) {
+            const isFilled = await page.evaluate(el => el.files && el.files.length > 0, fileInput);
+            if (!isFilled) {
+                const isReq = await page.evaluate(el => {
+                    if (el.required || el.getAttribute('aria-required') === 'true') return true;
+                    let p = el.parentElement;
+                    for (let i=0; i<5; i++) {
+                        if (!p) break;
+                        if (p.classList && p.classList.contains('required')) return true;
+                        if (p.textContent && p.textContent.includes('*')) return true;
+                        p = p.parentElement;
+                    }
+                    return false;
+                }, fileInput);
+                if (isReq) {
+                    await fileInput.setInputFiles(resumePath).catch(()=>{});
+                    console.log("✅ Arbitrary required file attachment satisfied via Resume fallback.");
+                }
+            }
+        }
+    } catch(e) {}
+
     console.log("Filling standard details...");
     
         let lastMousePosition = { x: 0, y: 0 };
@@ -180,21 +205,26 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
     const safeFill = async (selector, value) => {
         try {
-            const el = page.locator(selector);
-            if (await el.count() > 0 && await el.isVisible()) {
-                // To avoid triggering CAPTCHAs with 0ms insertions, we focus and sequentially type like a human
-                await el.focus();
-                await el.pressSequentially(value, { delay: Math.floor(Math.random() * 30) + 15 });
-                await page.waitForTimeout(Math.floor(Math.random() * 300) + 100); // Random breath between fields
+            const els = page.locator(selector);
+            const count = await els.count();
+            for (let i = 0; i < count; i++) {
+                const el = els.nth(i);
+                if (await el.isVisible()) {
+                    await el.focus();
+                    await el.fill("");
+                    await el.pressSequentially(value, { delay: Math.floor(Math.random() * 30) + 15 });
+                    await page.waitForTimeout(Math.floor(Math.random() * 300) + 100); 
+                    break; // Successfully filled a visible node, stop searching
+                }
             }
         } catch (e) {}
     };
 
-    // Greenhouse explicitly separates First/Last name
-    await safeFill('#first_name', 'Daniel');
-    await safeFill('#last_name', 'Hardesty Lewis');
-    await safeFill('#email', 'daniel@homecastr.com');
-    await safeFill('#phone', '+1 (713) 371-7875');
+    // Greenhouse explicitly separates First/Last name but employer templates often alter IDs
+    await safeFill('input[id*="first_name"], input[name*="first_name"], input[autocomplete*="given-name"]', profileConfig?.candidate?.full_name?.split(' ')[0] || 'Daniel');
+    await safeFill('input[id*="last_name"], input[name*="last_name"], input[autocomplete*="family-name"]', profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || 'Hardesty Lewis');
+    await safeFill('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+    await safeFill('#phone, input[id*="phone"], input[name*="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
     await safeFill('#org', 'Homecastr');
     await safeFill('#job_application_employer', 'Homecastr');
     await safeFill('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
@@ -259,6 +289,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 targetValue = 'Yes';
             } else if (lowerText.includes('past 6 months') || lowerText.includes('previously applied')) {
                 targetValue = 'No';
+            } else if (lowerText.includes('phone') && (lowerText.includes('country') || lowerText.includes('code'))) {
+                const matchSrc = options.find(o => o && (o.includes('United States') || o.includes('+1')));
+                if (matchSrc) targetValue = matchSrc;
             } else if (lowerText.includes('hear') || lowerText.includes('source') || lowerText.includes('find out')) {
                 const matchSrc = options.find(o => o && (
                     o.toLowerCase().includes('linkedin') || 
@@ -289,10 +322,15 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     const safeSelect = async (id, value) => {
         try {
             const el = page.locator(`select[id="${id}"]`);
-            if (await el.count() > 0 && await el.isVisible()) {
-                const selectElement = await el.elementHandle();
+            if (await el.count() > 0 && await el.first().isVisible()) {
+                const selectElement = await el.first().elementHandle();
                 const options = await selectElement.$$eval('option', opts => opts.map(o => o.textContent));
-                const match = options.find(o => o && o.toLowerCase().includes(value.toLowerCase()));
+                // Add strict heuristic for gender to prevent matching 'Female' just because it has 'Male' inside the string
+                const match = options.find(o => {
+                    o = o ? o.toLowerCase() : '';
+                    if (value.toLowerCase() === 'male' && o.includes('female')) return false;
+                    return o.includes(value.toLowerCase());
+                });
                 if (match) {
                     await el.selectOption({ label: match });
                 }
@@ -329,14 +367,18 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 });
 
                 let fillValue = null;
-                if (lowerText.includes('gender')) fillValue = 'Male';
-                else if (lowerText.includes('race') || lowerText.includes('hispanic')) fillValue = 'Hispanic or Latino';
+                if ((lowerText.includes('phone') || lowerText.includes('dialing')) && (lowerText.includes('country') || lowerText.includes('code'))) fillValue = 'United States';
+                else if (lowerText.includes('gender') || lowerText.includes('identify') || lowerText.includes('sex')) fillValue = 'Male';
+                else if (lowerText.includes('hispanic') || lowerText.includes('latino')) fillValue = 'Yes';
+                else if (lowerText.includes('race')) fillValue = 'Hispanic or Latino';
                 else if (lowerText.includes('veteran')) fillValue = 'not a protected veteran';
                 else if (lowerText.includes('disability')) fillValue = 'Decline';
-                else if (lowerText.includes('sponsorship') || lowerText.includes('visa')) fillValue = 'No';
                 else if (lowerText.includes('authorized') || lowerText.includes('legally')) fillValue = 'Yes';
+                else if (lowerText.includes('relocat')) fillValue = 'Yes';
+                else if (lowerText.includes('sponsorship') || lowerText.includes('visa')) fillValue = 'No';
                 else if (lowerText.includes('hear') || lowerText.includes('source')) fillValue = 'LinkedIn';
                 
+                // Execute heuristic targeting if keyword mapped
                 if (fillValue) {
                     await box.evaluate((el) => { 
                          el.style.opacity = "1"; 
@@ -348,14 +390,36 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     const locator = id ? page.locator(`input.select__input[role="combobox"][id="${id}"]`).first() : box;
                     
                     await locator.focus({ force: true }).catch(()=>{});
-                    const currentVal = await locator.inputValue().catch(()=>'');
-                    if (!currentVal) {
+                    const isAlreadyFilled = await box.evaluate(el => !!el.closest('div').querySelector('[class*="single-value"]'));
+                    if (!isAlreadyFilled) {
                         await locator.fill("").catch(()=>{});
                         await locator.pressSequentially(fillValue, { delay: 50 }).catch(()=>{});
                         await page.waitForTimeout(600);
                         await locator.press('Enter').catch(()=>{});
                         await page.waitForTimeout(300);
                     }
+                }
+                
+                // Fallback for explicitly required esoteric Dropdowns (or if above fillValue failed to lock)
+                const isReq = await box.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
+                if (isReq) {
+                    try {
+                        const isFilled = await box.evaluate(el => !!el.closest('div').querySelector('[class*="single-value"]'));
+                        if (!isFilled) {
+                            const id = await box.evaluate(el => el.getAttribute('id'));
+                            const locator = id ? page.locator(`input.select__input[role="combobox"][id="${id}"]`).first() : box;
+                            await locator.focus({ force: true }).catch(()=>{});
+                            await locator.fill("").catch(()=>{}); // Clear bad typings
+                            await locator.press('ArrowDown').catch(()=>{}); // Expand menu
+                            await page.waitForTimeout(300);
+                            await locator.press('ArrowDown').catch(()=>{}); // Move to option 1
+                            await page.waitForTimeout(100);
+                            await locator.press('ArrowDown').catch(()=>{}); // Move to option 2 (skip 'Select...' placeholder)
+                            await page.waitForTimeout(100);
+                            await locator.press('Enter').catch(()=>{});
+                            await page.waitForTimeout(300);
+                        }
+                    } catch(e) {}
                 }
             } catch(e) {}
         }
@@ -405,7 +469,15 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const lowerText = text ? text.toLowerCase() : '';
                 const combinedLabel = ariaLabel + " " + lowerText;
 
-                if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('hume') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('built') || combinedLabel.includes('fit') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your')) {
+                const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate');
+                const isTechnical = combinedLabel.includes('describe') || combinedLabel.includes('experience') || combinedLabel.includes('background') || combinedLabel.includes('proud') || combinedLabel.includes('impressive') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('built') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your') || combinedLabel.includes('tools') || combinedLabel.includes('ai') || combinedLabel.includes('technologies');
+
+                if (combinedLabel.includes('years')) {
+                    if (!(await area.inputValue())) await area.fill("10");
+                } else if (isBehavioral) {
+                    const interest = profileConfig?.narrative?.interest_statement || exitStory;
+                    if (!(await area.inputValue())) await area.fill(interest);
+                } else if (isTechnical) {
                     if (!(await area.inputValue())) await area.fill(exitStory);
                 } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
                     if (!(await area.inputValue())) await area.fill(catchAll);
@@ -422,8 +494,24 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         for (const input of allInputs) {
             try {
                 const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
+                const parentLabel = await input.$('xpath=ancestor::div[contains(@class,"field")] | ancestor::label | preceding-sibling::label').catch(()=>null);
+                const text = parentLabel ? await parentLabel.textContent().catch(()=>'') : '';
+                const lowerText = text ? text.toLowerCase() : '';
+                const combinedLabel = ariaLabel + " " + lowerText;
                 
-                if (ariaLabel.includes('salary') || ariaLabel.includes('compensation') || ariaLabel.includes('expectations') || ariaLabel.includes('package')) {
+                const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate');
+                const isTechnical = combinedLabel.includes('describe') || combinedLabel.includes('experience') || combinedLabel.includes('background') || combinedLabel.includes('proud') || combinedLabel.includes('impressive') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('built') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your') || combinedLabel.includes('tools') || combinedLabel.includes('ai') || combinedLabel.includes('technologies');
+                
+                if (combinedLabel.includes('years')) {
+                    if (!(await input.inputValue())) await input.fill("10");
+                } else if (isBehavioral) {
+                    const interest = profileConfig?.narrative?.interest_statement || exitStory;
+                    if (!(await input.inputValue())) await input.fill(interest);
+                } else if (isTechnical) {
+                    if (!(await input.inputValue())) await input.fill(exitStory);
+                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
+                    if (!(await input.inputValue())) await input.fill(catchAll);
+                } else if (combinedLabel.includes('salary') || combinedLabel.includes('compensation') || combinedLabel.includes('expectations') || combinedLabel.includes('package')) {
                     if (!(await input.inputValue())) await input.fill(minComp.toString());
                 } else if (ariaLabel.includes('notice period') || ariaLabel.includes('available to start')) {
                     if (!(await input.inputValue())) await input.fill("2-4 weeks");
@@ -437,10 +525,32 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!(await input.inputValue())) await input.fill(name);
                 } else if (ariaLabel.includes('title')) {
                     if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.title || 'Engineer');
+                } else {
+                    // Fallback: any unfilled required input gets the catchAll answer
+                    const isReq = await input.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
+                    if (isReq && !(await input.inputValue())) await input.fill("N/A - See Resume");
                 }
             } catch(e) {}
         }
         
+        // Check generic required checkboxes like GDPR or Consent agreements
+        const consentChecks = await page.$$('input[type="checkbox"]');
+        for (const check of consentChecks) {
+            try {
+                const name = (await check.getAttribute('name') || '').toLowerCase();
+                const isReq = await check.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
+                
+                const labelText = await check.evaluate(el => {
+                    const ctx = el.closest('label') || el.parentElement;
+                    return ctx ? ctx.textContent.toLowerCase() : '';
+                }).catch(()=>'');
+
+                if (isReq || name.includes('gdpr') || name.includes('consent') || name.includes('terms') || name.includes('agree') || labelText.includes('agree') || labelText.includes('confirm') || labelText.includes('certify') || labelText.includes('acknowledge') || labelText.includes('understand') || labelText.includes('policy') || labelText.includes('consent')) {
+                    if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
+                }
+            } catch(e) {}
+        }
+
         // Scan custom checkboxes specifically using their 'description' tag (like "Where did you hear about us") 
         const allCheckboxes = await page.$$('input[type="checkbox"]');
         let hearAboutFilled = false;
@@ -666,12 +776,28 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         const lbl1 = await radios.nth(0).evaluate(el => (el.closest('label') || el.parentElement)?.textContent?.toLowerCase() || '');
                         const lbl2 = await radios.nth(1).evaluate(el => (el.closest('label') || el.parentElement)?.textContent?.toLowerCase() || '');
                         if ((lbl1.includes('yes') && lbl2.includes('no')) || (lbl1.includes('no') && lbl2.includes('yes'))) {
-                            if (groupLabelText.includes('authorized') || groupLabelText.includes('legally')) {
+                            if (groupLabelText.includes('authorized to work') && groupLabelText.includes('sponsorship')) {
                                 const authPos = lbl1.includes('yes') ? 0 : 1;
-                                if (profileConfig?.eeo_demographics?.authorized_to_work === "Yes") await radios.nth(authPos).check({force:true}).catch(()=>{});
+                                await radios.nth(authPos).check({force:true}).catch(()=>{});
+                            } else if (groupLabelText.includes('authorized') || groupLabelText.includes('legally') || groupLabelText.includes('relocat') || groupLabelText.includes('hispanic')) {
+                                const authPos = lbl1.includes('yes') ? 0 : 1;
+                                await radios.nth(authPos).check({force:true}).catch(()=>{});
                             } else if (groupLabelText.includes('sponsorship') || groupLabelText.includes('visa')) {
                                 const spPos = lbl1.includes('no') ? 0 : 1;
                                 if (profileConfig?.eeo_demographics?.requires_sponsorship === "No") await radios.nth(spPos).check({force:true}).catch(()=>{});
+                            }
+                        }
+                    }
+                    
+                    if (!mapped && count > 1) {
+                        if (groupLabelText.includes('gender') || groupLabelText.includes('identify') || groupLabelText.includes('sex')) {
+                            // Find radio button explicitly for Male (excluding Female)
+                            for (let i = 0; i < count; i++) {
+                                const l = await radios.nth(i).evaluate(el => (el.closest('label') || el.parentElement)?.textContent?.toLowerCase() || '');
+                                if (l.includes('male') && !l.includes('female')) {
+                                    await radios.nth(i).check({force:true}).catch(()=>{});
+                                    break;
+                                }
                             }
                         }
                     }
@@ -679,6 +805,37 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             }
         } catch(e) {}
     } catch(e) {}
+
+    console.log("Injecting Radio Array Required Fallbacks...");
+    try {
+        const requiredRadios = await page.$$('input[type="radio"]');
+        const handledGroups = new Set();
+        for (const radio of requiredRadios) {
+            const name = await radio.getAttribute('name');
+            if (!name || handledGroups.has(name)) continue;
+            
+            const isReq = await radio.evaluate(el => {
+                if (el.required || el.getAttribute('aria-required') === 'true') return true;
+                let p = el.parentElement;
+                for (let i=0; i<4; i++) {
+                    if(!p) break;
+                    if(p.classList && p.classList.contains('required')) return true;
+                    if(p.textContent && p.textContent.includes('*')) return true;
+                    p = p.parentElement;
+                }
+                return false;
+            });
+
+            if (isReq) {
+                handledGroups.add(name);
+                const group = page.locator(`input[type="radio"][name="${name}"]`);
+                const isChecked = await group.evaluateAll(els => els.some(el => el.checked));
+                if (!isChecked && await group.count() > 0) {
+                    await group.first().check({force: true}).catch(()=>{});
+                }
+            }
+        }
+    } catch (e) {}
 
     // -------------------------------------------------------------------------
     // BATCH EVALUATION TELEMETRY DOM HOOK
@@ -709,6 +866,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
                    isFilled = true;
+                }
+            } else if (el.classList && el.classList.contains('select__input')) {
+                const container = el.closest('div');
+                if (container && (container.querySelector('[class*="single-value"]') || container.parentElement.querySelector('[class*="single-value"]'))) {
+                    isFilled = true;
+                } else if (el.value && el.value.length > 0) {
+                    isFilled = true;
                 }
             } else if (el.value && el.value.length > 0) {
                 isFilled = true;
@@ -794,6 +958,29 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     await page.waitForTimeout(6000); // Implicit assuming XHR passed
                         }
                     }
+                }
+
+                // 2FA Email Verification Hook
+                const verifyInput = page.locator('input[name*="code"], input[name*="verify"], input[type="text"][placeholder*="character"], input[aria-label*="Security code"]');
+                if (await verifyInput.count() > 0 && await verifyInput.first().isVisible().catch(()=>false)) {
+                    console.log("\n⚠️ [2FA Triggered] Intercepting Verification Code from Email...");
+                    const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
+                    try {
+                        const { waitForVerificationCode } = await import('file:///' + path.resolve('email-interceptor.mjs').replace(/\\/g, '/'));
+                        const code = await waitForVerificationCode(emailAddress, 75);
+                        if (code) {
+                            await verifyInput.first().fill(code);
+                            await page.waitForTimeout(500);
+                            const confirmBtn = page.locator('button:has-text("Submit"), button:has-text("Confirm"), button:has-text("Verify")');
+                            if (await confirmBtn.count() > 0) await confirmBtn.first().click().catch(()=>{});
+                            metrics.status = "Success";
+                            console.log("✅ 2FA Verification successfully bypassed and injected!");
+                            await Promise.race([ page.waitForNavigation({ timeout: 10000 }).catch(()=>{}), page.waitForTimeout(4000) ]);
+                        } else {
+                            console.log("❌ Failed to intercept validation code. Pausing for manual entry.");
+                            metrics.status = "Success_Unverified";
+                        }
+                    } catch(err) { console.error("Email Interceptor Crash:", err.message); }
                 }
             } else {
                 metrics.status = "Submit_Button_Missing";

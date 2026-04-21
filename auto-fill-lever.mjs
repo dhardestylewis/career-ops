@@ -205,12 +205,12 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     
     // Autocomplete Location fields (Lever Location Autocomplete API)
     try {
-        const locField = page.locator('#location-input');
-        if (await locField.count() > 0 && await locField.isVisible()) {
+        const locField = page.locator('#location-input, input[name="location"], input[placeholder*="location" i], input[placeholder*="city" i]');
+        if (await locField.count() > 0 && await locField.first().isVisible()) {
             await locField.first().focus();
-            await locField.first().fill(""); // Clear first
+            await locField.first().fill("");
             await locField.first().pressSequentially('New York, New York', { delay: 50 });
-            await page.waitForTimeout(1500); // Wait for API
+            await page.waitForTimeout(1500);
             await page.keyboard.press('ArrowDown');
             await page.waitForTimeout(100);
             await page.keyboard.press('Enter');
@@ -237,12 +237,39 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
 
             const options = await select.$$eval('option', opts => opts.map(o => ({label: o.textContent, value: o.value})));
             
-            // Geographic selects
+            // Geographic selects — country and location dropdowns
             const matchGeo = options.find(o => o.label && (o.label.toLowerCase().includes('united states') || o.label.toLowerCase().includes('new york')));
-            if (matchGeo && lowerLabel.includes('country')) {
+            if (matchGeo && (lowerLabel.includes('country') || lowerLabel.includes('location') || lowerLabel.includes('where are you'))) {
                 await select.selectOption({ label: matchGeo.label }).catch(()=>{});
             }
+            // Also try US for any country/region dropdown
+            const usMatch = options.find(o => o.label && o.label.toLowerCase() === 'united states');
+            if (usMatch && (lowerLabel.includes('country') || lowerLabel.includes('region'))) {
+                await select.selectOption({ label: usMatch.label }).catch(()=>{});
+            }
             
+            // Veteran Status
+            if (lowerLabel.includes('veteran')) {
+                const matchVet = options.find(o => o.label && o.label.toLowerCase().includes('not a protected veteran'));
+                if (matchVet) await select.selectOption({ label: matchVet.label }).catch(()=>{});
+            }
+
+            // Disability Status
+            if (lowerLabel.includes('disability')) {
+                const matchDis = options.find(o => o.label && (o.label.toLowerCase().includes('no') || o.label.toLowerCase().includes('decline') || o.label.toLowerCase().includes('not')));
+                if (matchDis) await select.selectOption({ label: matchDis.label }).catch(()=>{});
+            }
+
+            // University Dropdown (Palantir)
+            if (lowerLabel.includes('university') || lowerLabel.includes('school')) {
+                const matchSchool = options.find(o => o.label && (o.label.toLowerCase().includes('baruch') || o.label.toLowerCase().includes('city university of new york') || o.label.toLowerCase() === 'cuny'));
+                if (matchSchool) await select.selectOption({ label: matchSchool.label }).catch(()=>{});
+                else {
+                    const matchOth = options.find(o => o.label && o.label.toLowerCase().includes('other'));
+                    if (matchOth) await select.selectOption({ label: matchOth.label }).catch(()=>{});
+                }
+            }
+
             // "How did you hear about us / Source" selects
             if (lowerLabel.includes('hear') || lowerLabel.includes('source') || lowerLabel.includes('find out')) {
                 const matchSrc = options.find(o => o.label && (
@@ -283,21 +310,52 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     // Sponsorship questions are often custom radio fields on Lever. We attempt a safe check for common formulations
     // of the work auth and sponsorship questions using generic label clicks if they exist.
     try {
-        const labels = await page.$$('label');
-        for (const label of labels) {
-            const text = await label.textContent();
-            const lowerText = text.toLowerCase();
+        const questionBlocks = await page.$$('.application-question');
+        for (const block of questionBlocks) {
+            const text = (await block.textContent()).toLowerCase();
             
+            const clickRadioLabel = async (labelText) => {
+                const labels = await block.$$('label');
+                for (const l of labels) {
+                    const lt = await l.textContent();
+                    if (lt && lt.trim() === labelText) {
+                        const inp = await l.$('input');
+                        if (inp) await inp.check({force: true}).catch(()=>{});
+                        else await l.click().catch(()=>{});
+                        return true;
+                    }
+                }
+                return false;
+            };
+
             // Work Authorization (Yes)
-            if (lowerText.includes('authorized to work') && !lowerText.includes('sponsorship')) {
-                const yesInput = await label.$('xpath=..//input[@type="radio" and translate(@value,"YES","yes")="yes" or following-sibling::text()[contains(translate(.,"YES","yes"), "yes")]]');
-                if (yesInput) await yesInput.check();
+            if (text.includes('authorized to work') && !text.includes('sponsorship')) {
+                await clickRadioLabel('Yes');
             }
-            
             // Sponsorship (No)
-            if (lowerText.includes('sponsorship') || lowerText.includes('require sponsorship')) {
-                const noInput = await label.$('xpath=..//input[@type="radio" and translate(@value,"NO","no")="no" or following-sibling::text()[contains(translate(.,"NO","no"), "no")]]');
-                if (noInput) await noInput.check();
+            if (text.includes('sponsorship') || text.includes('require sponsorship') || text.includes('visa')) {
+                if (profileConfig?.eeo_demographics?.requires_sponsorship === "No" || !profileConfig?.eeo_demographics) {
+                    await clickRadioLabel('No');
+                }
+            }
+            // US Clearance
+            if (text.includes('currently hold') && text.includes('security clearance')) {
+                await clickRadioLabel('No'); // Or profile config driven
+            }
+            if (text.includes('eligible to obtain') && text.includes('security clearance')) {
+                await clickRadioLabel('Yes');
+            }
+            // Languages (Palantir)
+            if (text.includes('language skill')) {
+                const labels = await block.$$('label');
+                for (const l of labels) {
+                    const lt = await l.textContent();
+                    if (lt && lt.toLowerCase().includes('english')) {
+                        const inp = await l.$('input');
+                        if (inp) await inp.check({force: true}).catch(()=>{});
+                        else await l.click({force: true}).catch(()=>{}); // Click label directly if sibling
+                    }
+                }
             }
         }
     } catch(e) {}
@@ -332,8 +390,12 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 if (txt && !(await txt.inputValue())) await txt.fill(minComp.toString());
             }
 
-            // Heuristic 3: Cover Letter analogues / Why us / Interest / Achievements / Projects
-            if (lowerText.includes('why') || lowerText.includes('interest') || lowerText.includes('reason') || lowerText.includes('cover letter') || lowerText.includes('achievement') || lowerText.includes('project') || lowerText.includes('visa')) {
+            // Heuristic 3: Cover Letter analogues / Why us / Interest / Achievements / Projects / etc.
+            // Exclude structural questions that happen to use words like 'interest' (like clearance, relocation)
+            if (
+                (lowerText.includes('why') || lowerText.includes('interest') || lowerText.includes('reason') || lowerText.includes('cover letter') || lowerText.includes('achievement') || lowerText.includes('project') || lowerText.includes('excite') || lowerText.includes('mission') || lowerText.includes('built')) && 
+                !lowerText.includes('clearance') && !lowerText.includes('relocat') && !lowerText.includes('travel') && !lowerText.includes('timeline') && !lowerText.includes('video') && !lowerText.includes('url')
+            ) {
                 const area = await block.$('textarea');
                 if (area && !(await area.inputValue())) await area.fill(exitStory);
             } else if (lowerText.includes('anything else') || lowerText.includes('additional info') || lowerText.includes('comments')) {
@@ -649,6 +711,29 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                             metrics.status = "Success_Unverified";
                         }
                     }
+                }
+
+                // 2FA Email Verification Hook
+                const verifyInput = page.locator('input[name*="code"], input[name*="verify"], input[type="text"][placeholder*="character"], input[aria-label*="Security code"]');
+                if (await verifyInput.count() > 0 && await verifyInput.first().isVisible().catch(()=>false)) {
+                    console.log("\n⚠️ [2FA Triggered] Intercepting Verification Code from Email...");
+                    const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
+                    try {
+                        const { waitForVerificationCode } = await import('file:///' + path.resolve('email-interceptor.mjs').replace(/\\/g, '/'));
+                        const code = await waitForVerificationCode(emailAddress, 75);
+                        if (code) {
+                            await verifyInput.first().fill(code);
+                            await page.waitForTimeout(500);
+                            const confirmBtn = page.locator('button:has-text("Submit"), button:has-text("Confirm"), button:has-text("Verify")');
+                            if (await confirmBtn.count() > 0) await confirmBtn.first().click().catch(()=>{});
+                            metrics.status = "Success";
+                            console.log("✅ 2FA Verification successfully bypassed and injected!");
+                            await Promise.race([ page.waitForNavigation({ timeout: 10000 }).catch(()=>{}), page.waitForTimeout(4000) ]);
+                        } else {
+                            console.log("❌ Failed to intercept validation code. Pausing for manual entry.");
+                            metrics.status = "Success_Unverified";
+                        }
+                    } catch(err) { console.error("Email Interceptor Crash:", err.message); }
                 }
             } else {
                 metrics.status = "Submit_Button_Missing";

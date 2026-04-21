@@ -1,3 +1,17 @@
-2026/04/20-18:15:16.465 9c68 Reusing MANIFEST C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Local Storage\leveldb/MANIFEST-000001
-2026/04/20-18:15:16.471 9c68 Recovering log #3
-2026/04/20-18:15:16.476 9c68 Reusing old log C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Local Storage\leveldb/000003.log 
+2026/04/20-19:31:48.937 8160 Reusing MANIFEST C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/04/20-19:31:48.943 8160 Recovering log #6
+2026/04/20-19:31:48.946 8160 Reusing old log C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Local Storage\leveldb/000006.log 
+2026/04/20-19:47:49.679 5748 Level-0 table #10: started
+2026/04/20-19:47:49.688 5748 Level-0 table #10: 17187 bytes OK
+2026/04/20-19:47:49.691 5748 Delete type=0 #6
+2026/04/20-20:13:49.676 5748 Level-0 table #12: started
+2026/04/20-20:13:49.696 5748 Level-0 table #12: 16817 bytes OK
+2026/04/20-20:13:49.701 5748 Delete type=0 #9
+2026/04/20-20:13:49.702 5748 Compacting 4@0 + 0@1 files
+2026/04/20-20:13:49.716 5748 Generated table #13@0: 99 keys, 14648 bytes
+2026/04/20-20:13:49.716 5748 Compacted 4@0 + 0@1 files => 14648 bytes
+2026/04/20-20:13:49.718 5748 compacted to: files[ 0 1 0 0 0 0 0 ]
+2026/04/20-20:13:49.720 5748 Delete type=2 #3
+2026/04/20-20:13:49.720 5748 Delete type=2 #7
+2026/04/20-20:13:49.720 5748 Delete type=2 #10
+2026/04/20-20:13:49.720 5748 Delete type=2 #12

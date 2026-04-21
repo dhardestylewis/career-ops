@@ -1,6 +1,14 @@
 [
   {
-    "id": "feaa92b1-1afa-4393-8bdb-608b5483eb5a",
-    "question": "Anything else? (Optional)Is there anything else we should know about your candidacy or interest in Sierra?"
+    "id": "question_60719165",
+    "question": "How did you hear about this job?"
+  },
+  {
+    "id": "question_60719166",
+    "question": "What excites you most about this opportunity?"
+  },
+  {
+    "id": "question_60719167",
+    "question": "Which Intercom value resonates most with you and why? (Our values can be found on our Careers Page)"
   }
 ]
