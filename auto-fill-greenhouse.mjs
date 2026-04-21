@@ -221,10 +221,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     };
 
     // Greenhouse explicitly separates First/Last name but employer templates often alter IDs
-    await safeFill('input[id*="first_name"], input[name*="first_name"], input[autocomplete*="given-name"]', profileConfig?.candidate?.full_name?.split(' ')[0] || 'Daniel');
-    await safeFill('input[id*="last_name"], input[name*="last_name"], input[autocomplete*="family-name"]', profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || 'Hardesty Lewis');
-    await safeFill('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
-    await safeFill('#phone, input[id*="phone"], input[name*="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    await safeFill('input[id*="first_name"], input[name*="first_name"], input[autocomplete*="given-name"], input[aria-label*="first name" i], input[placeholder*="first name" i]', profileConfig?.candidate?.full_name?.split(' ')[0] || 'Daniel');
+    await safeFill('input[id*="last_name"], input[name*="last_name"], input[autocomplete*="family-name"], input[aria-label*="last name" i], input[placeholder*="last name" i]', profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || 'Hardesty Lewis');
+    await safeFill('#email, input[id*="email"], input[name*="email"], input[type="email"], input[aria-label*="email" i], input[placeholder*="email" i]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+    await safeFill('#phone, input[id*="phone"], input[name*="phone"], input[aria-label*="phone" i], input[placeholder*="phone" i]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
     await safeFill('#org', 'Homecastr');
     await safeFill('#job_application_employer', 'Homecastr');
     await safeFill('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
@@ -250,8 +250,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         if (await locField.count() > 0 && await locField.first().isVisible()) {
             await locField.first().focus();
             await locField.first().fill(""); // Clear first
-            await locField.first().pressSequentially('New York, NY', { delay: 50 });
-            await page.waitForTimeout(1500); // Wait for the network call to fetch Google Places
+            await locField.first().pressSequentially(profileConfig?.candidate?.location || 'New York, NY', { delay: 50 });
+            try {
+                await page.waitForSelector('ul.ui-autocomplete li:first-child', { state: 'visible', timeout: 5000 });
+            } catch(e) {
+                await page.waitForTimeout(1500); // Wait for the network call to fetch Google Places if selector is missing
+            }
             await page.keyboard.press('ArrowDown');
             await page.waitForTimeout(100);
             await page.keyboard.press('Enter');
