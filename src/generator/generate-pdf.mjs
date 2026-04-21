@@ -109,7 +109,7 @@ async function generatePDF() {
   let html = await readFile(inputPath, 'utf-8');
 
   // Resolve font paths relative to career-ops/fonts/
-  const fontsDir = resolve(__dirname, 'fonts');
+  const fontsDir = resolve(__dirname, '../../fonts');
   html = html.replace(
     /url\(['"]?\.\/fonts\//g,
     `url('file://${fontsDir}/`

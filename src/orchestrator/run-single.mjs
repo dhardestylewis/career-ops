@@ -7,7 +7,7 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
-import { populateLever } from './auto-fill-lever.mjs';
+import { populateLever } from '../scrapers/auto-fill-lever.mjs';
 
 const profileConfig = yaml.load(fs.readFileSync('config/profile.yml', 'utf8'));
 const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";

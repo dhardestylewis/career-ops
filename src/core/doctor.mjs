@@ -10,7 +10,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const projectRoot = __dirname;
+const projectRoot = join(__dirname, '..', '..');
 
 // ANSI colors (only on TTY)
 const isTTY = process.stdout.isTTY;
@@ -63,14 +63,14 @@ async function checkPlaywright() {
 }
 
 function checkCv() {
-  if (existsSync(join(projectRoot, 'cv.md'))) {
-    return { pass: true, label: 'cv.md found' };
+  if (existsSync(join(projectRoot, 'data', 'cv.md'))) {
+    return { pass: true, label: 'data/cv.md found' };
   }
   return {
     pass: false,
     label: 'cv.md not found',
     fix: [
-      'Create cv.md in the project root with your CV in markdown',
+      'Create data/cv.md in the project root with your CV in markdown',
       'See examples/ for reference CVs',
     ],
   };
