@@ -135,8 +135,9 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
                 missingDOMData[stat.url] = stat.missingDOM;
             }
         }
-        fs.writeFileSync('evaluation_stats_run.md', markdown);
-        fs.writeFileSync('missing_dom.json', JSON.stringify(missingDOMData, null, 2));
+        if (!fs.existsSync('logs')) fs.mkdirSync('logs');
+        fs.writeFileSync('logs/evaluation_stats_run.md', markdown);
+        fs.writeFileSync('logs/missing_dom.json', JSON.stringify(missingDOMData, null, 2));
     }
     
     console.log("\n==================================");
