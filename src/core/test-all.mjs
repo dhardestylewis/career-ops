@@ -17,7 +17,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const ROOT = __dirname;
+const ROOT = join(__dirname, '..', '..');
 const QUICK = process.argv.includes('--quick');
 
 let passed = 0;

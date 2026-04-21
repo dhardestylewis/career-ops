@@ -970,7 +970,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     console.log("\n⚠️ [2FA Triggered] Intercepting Verification Code from Email...");
                     const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
                     try {
-                        const { waitForVerificationCode } = await import('file:///' + path.resolve('email-interceptor.mjs').replace(/\\/g, '/'));
+                        const { waitForVerificationCode } = await import('file:///' + path.resolve('src/scrapers/email-interceptor.mjs').replace(/\\/g, '/'));
                         const code = await waitForVerificationCode(emailAddress, 75);
                         if (code) {
                             await verifyInput.first().fill(code);

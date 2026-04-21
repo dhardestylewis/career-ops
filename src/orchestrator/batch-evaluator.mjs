@@ -3,9 +3,9 @@ import path from 'path';
 import yaml from 'js-yaml';
 import { chromium } from 'playwright';
 
-import { populateLever } from './auto-fill-lever.mjs';
-import { populateGreenhouse } from './auto-fill-greenhouse.mjs';
-import { populateAshby } from './auto-fill-ashby.mjs';
+import { populateLever } from '../scrapers/auto-fill-lever.mjs';
+import { populateGreenhouse } from '../scrapers/auto-fill-greenhouse.mjs';
+import { populateAshby } from '../scrapers/auto-fill-ashby.mjs';
 
 // Dynamically extract Profile configuration
 let profileConfig = {};

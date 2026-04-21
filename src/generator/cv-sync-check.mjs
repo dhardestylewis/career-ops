@@ -15,15 +15,15 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const projectRoot = __dirname;
+const projectRoot = join(__dirname, '..', '..');
 
 const warnings = [];
 const errors = [];
 
 // 1. Check cv.md exists
-const cvPath = join(projectRoot, 'cv.md');
+const cvPath = join(projectRoot, 'data', 'cv.md');
 if (!existsSync(cvPath)) {
-  errors.push('cv.md not found in project root. Create it with your CV in markdown format.');
+  errors.push('data/cv.md not found in project root. Create it with your CV in markdown format.');
 } else {
   const cvContent = readFileSync(cvPath, 'utf-8');
   if (cvContent.trim().length < 100) {
