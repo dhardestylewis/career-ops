@@ -431,6 +431,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                           // Try raw value check if strict label bounding fails
                           await select.selectOption(match, { force: true }).catch(()=>{});
                      });
+                     await select.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
                      await page.waitForTimeout(200); // Breath
                 }
             }
@@ -455,6 +456,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 });
                 if (match) {
                     await el.selectOption({ label: match }, { force: true }).catch(()=>{});
+                    await el.evaluate(node => node.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
                 }
             }
         } catch (e) {}
