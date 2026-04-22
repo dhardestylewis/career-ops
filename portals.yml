@@ -1027,3 +1027,126 @@ tracked_companies:
     scan_query: 'site:stripe.com/jobs "Machine Learning" OR "Data Scientist" OR "AI"'
     notes: "SF / NYC. Payments infra, ML for fraud/risk."
     enabled: true
+
+  # -- New Expansion --
+
+  - name: Scaleai
+    careers_url: https://job-boards.greenhouse.io/scaleai
+    api: https://boards-api.greenhouse.io/v1/boards/scaleai/jobs
+    enabled: true
+
+  - name: Databricks
+    careers_url: https://job-boards.greenhouse.io/databricks
+    api: https://boards-api.greenhouse.io/v1/boards/databricks/jobs
+    enabled: true
+
+  - name: Snowflake
+    careers_url: https://jobs.ashbyhq.com/snowflake
+    enabled: true
+
+  - name: Harvey
+    careers_url: https://jobs.ashbyhq.com/harvey
+    enabled: true
+
+  - name: Nuro
+    careers_url: https://job-boards.greenhouse.io/nuro
+    api: https://boards-api.greenhouse.io/v1/boards/nuro/jobs
+    enabled: true
+
+  - name: Skydio
+    careers_url: https://jobs.ashbyhq.com/skydio
+    enabled: true
+
+  - name: Plaid
+    careers_url: https://jobs.ashbyhq.com/plaid
+    enabled: true
+
+  - name: Notion
+    careers_url: https://jobs.ashbyhq.com/notion
+    enabled: true
+
+  - name: Togetherai
+    careers_url: https://job-boards.greenhouse.io/togetherai
+    api: https://boards-api.greenhouse.io/v1/boards/togetherai/jobs
+    enabled: true
+
+  - name: Modal
+    careers_url: https://jobs.ashbyhq.com/modal
+    enabled: true
+
+  - name: Braintrust
+    careers_url: https://jobs.ashbyhq.com/braintrust
+    enabled: true
+
+  - name: Weaviate
+    careers_url: https://jobs.ashbyhq.com/weaviate
+    enabled: true
+
+  - name: Neon
+    careers_url: https://jobs.ashbyhq.com/neon
+    enabled: true
+
+  - name: Linear
+    careers_url: https://jobs.ashbyhq.com/linear
+    enabled: true
+
+  - name: Figma
+    careers_url: https://job-boards.greenhouse.io/figma
+    api: https://boards-api.greenhouse.io/v1/boards/figma/jobs
+    enabled: true
+
+  - name: Roblox
+    careers_url: https://job-boards.greenhouse.io/roblox
+    api: https://boards-api.greenhouse.io/v1/boards/roblox/jobs
+    enabled: true
+
+  - name: Discord
+    careers_url: https://job-boards.greenhouse.io/discord
+    api: https://boards-api.greenhouse.io/v1/boards/discord/jobs
+    enabled: true
+
+  - name: Coreweave
+    careers_url: https://job-boards.greenhouse.io/coreweave
+    api: https://boards-api.greenhouse.io/v1/boards/coreweave/jobs
+    enabled: true
+
+  - name: Lambda
+    careers_url: https://jobs.ashbyhq.com/lambda
+    enabled: true
+
+  - name: Appliedintuition
+    careers_url: https://job-boards.greenhouse.io/appliedintuition
+    api: https://boards-api.greenhouse.io/v1/boards/appliedintuition/jobs
+    enabled: true
+
+  - name: Waymo
+    careers_url: https://job-boards.greenhouse.io/waymo
+    api: https://boards-api.greenhouse.io/v1/boards/waymo/jobs
+    enabled: true
+
+  - name: Zoox
+    careers_url: https://jobs.lever.co/zoox
+    enabled: true
+
+  - name: Character
+    careers_url: https://jobs.ashbyhq.com/character
+    enabled: true
+
+  - name: Inflectionai
+    careers_url: https://job-boards.greenhouse.io/inflectionai
+    api: https://boards-api.greenhouse.io/v1/boards/inflectionai/jobs
+    enabled: true
+
+  - name: Pika
+    careers_url: https://jobs.ashbyhq.com/pika
+    enabled: true
+
+  - name: Heygen
+    careers_url: https://job-boards.greenhouse.io/heygen
+    api: https://boards-api.greenhouse.io/v1/boards/heygen/jobs
+    enabled: true
+
+  - name: Descript
+    careers_url: https://job-boards.greenhouse.io/descript
+    api: https://boards-api.greenhouse.io/v1/boards/descript/jobs
+    enabled: true

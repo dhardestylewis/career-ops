@@ -25,3 +25,8 @@ bun.lock
 .claude/memory/
 career-dashboard
 package-lock.json
+
+# Bot Data & Temp
+data/chrome-bot-profile/
+scratch/
+logs/

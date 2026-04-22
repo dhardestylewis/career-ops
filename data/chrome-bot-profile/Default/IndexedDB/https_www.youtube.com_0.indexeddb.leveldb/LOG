@@ -1,7 +1,0 @@
-2026/04/20-20:14:46.965 7a0 Reusing MANIFEST C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/04/20-20:14:46.966 7a0 Recovering log #4
-2026/04/20-20:14:46.968 7a0 Reusing old log C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/000004.log 
-2026/04/20-20:14:47.526 6f50 Level-0 table #8: started
-2026/04/20-20:14:47.534 6f50 Level-0 table #8: 110021 bytes OK
-2026/04/20-20:14:47.537 6f50 Delete type=0 #4
-2026/04/20-20:14:47.538 3160 Manual compaction at level-0 from '\x00\x05\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x06\x00\x00\x00' @ 0 : 0; will stop at (end)

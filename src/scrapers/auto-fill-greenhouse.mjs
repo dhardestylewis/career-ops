@@ -18,6 +18,19 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     console.log(`Navigating to ${url}...`);
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
+    console.log("Checking for embedded Greenhouse iframes...");
+    try {
+        await page.waitForTimeout(1500); // Wait for potential dynamic iframe injection
+        const iframe = await page.$('iframe[src*="greenhouse.io"], iframe#grnhse_iframe');
+        if (iframe) {
+            const iframeSrc = await iframe.getAttribute('src');
+            if (iframeSrc) {
+                console.log(`Detected embedded iframe. Redirecting to raw form: ${iframeSrc}`);
+                await page.goto(iframeSrc, { waitUntil: 'domcontentloaded' });
+            }
+        }
+    } catch(e) {}
+
     console.log("Waiting for form elements to load...");
     await page.waitForSelector('#first_name', { timeout: 10000 }).catch(() => {});
 
@@ -118,6 +131,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         
         if (await fileInput.count() > 0) {
             await fileInput.setInputFiles(path.resolve(resumePath));
+            await fileInput.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
             console.log("✅ Resume attached.");
         } else {
             console.log("❌ Could not locate Greenhouse file input structure.");
@@ -137,11 +151,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const clInputs = page.locator('input[type="file"][name*="cover"], input[type="file"][name*="comment"]');
             if (await clInputs.count() > 0) {
                 await clInputs.first().setInputFiles(clPath);
+                await clInputs.first().evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
                 console.log("✅ Cover letter explicit attachment found.");
             } else {
                 const genericFileInputs = page.locator('input[type="file"]');
                 if (await genericFileInputs.count() > 1) {
                     await genericFileInputs.nth(1).setInputFiles(clPath);
+                    await genericFileInputs.nth(1).evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
                     console.log("✅ Cover letter generic attachment filled.");
                 }
             }
@@ -169,6 +185,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 }, fileInput);
                 if (isReq) {
                     await fileInput.setInputFiles(resumePath).catch(()=>{});
+                    await fileInput.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
                     console.log("✅ Arbitrary required file attachment satisfied via Resume fallback.");
                 }
             }
@@ -289,13 +306,19 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 targetValue = 'Yes';
             } else if (lowerText.includes('require sponsorship') || lowerText.includes('need sponsorship')) {
                 targetValue = 'No';
+            } else if (lowerText.includes('alphabet employee') || lowerText.includes('former employee') || lowerText.includes('current employee')) {
+                targetValue = 'No';
             } else if (lowerText.includes('authorized to work')) {
                 targetValue = 'Yes';
             } else if (lowerText.includes('past 6 months') || lowerText.includes('previously applied')) {
                 targetValue = 'No';
-            } else if (lowerText.includes('phone') && (lowerText.includes('country') || lowerText.includes('code'))) {
-                const matchSrc = options.find(o => o && (o.includes('United States') || o.includes('+1')));
-                if (matchSrc) targetValue = matchSrc;
+            } else if (lowerText === 'country' || lowerText.includes('country code') || lowerText.includes('phone')) {
+                const phoneMatch = options.find(o => o && o.includes('+1'));
+                if (phoneMatch) targetValue = phoneMatch;
+                else {
+                    const usMatch = options.find(o => o && o.includes('United States'));
+                    if (usMatch) targetValue = usMatch;
+                }
             } else if (lowerText.includes('hear') || lowerText.includes('source') || lowerText.includes('find out')) {
                 const matchSrc = options.find(o => o && (
                     o.toLowerCase().includes('linkedin') || 
@@ -307,7 +330,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             }
 
             if (targetValue) {
-                const match = options.find(o => o && o.toLowerCase() === targetValue.toLowerCase());
+                const match = options.find(o => o && (o.toLowerCase() === targetValue.toLowerCase() || o.toLowerCase().startsWith(targetValue.toLowerCase())));
                 if (match) {
                      await select.selectOption({ label: match }).catch(async ()=> {
                           // Try raw value check if strict label bounding fails
@@ -452,7 +475,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
     // Modern Greenhouse React-Select Explicit ID Hooks
     await safeReactSelect('gender', 'Male');
-    await safeReactSelect('hispanic_ethnicity', 'No');
+    await safeReactSelect('hispanic_ethnicity', 'Yes');
     await safeReactSelect('veteran_status', 'not a protected veteran');
     await safeReactSelect('disability_status', 'Decline to self-identify');
     await safeReactSelect('country', 'United States');
@@ -470,7 +493,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
                 const parentLabel = await area.$('xpath=ancestor::div[contains(@class,"field")] | ancestor::label | preceding-sibling::label');
                 const text = parentLabel ? await parentLabel.textContent() : '';
-                const lowerText = text ? text.toLowerCase() : '';
+                const cleanText = text.replace(/\s+/g, ' ').trim().substring(0, 300);
+                const lowerText = cleanText ? cleanText.toLowerCase() : '';
                 const combinedLabel = ariaLabel + " " + lowerText;
 
                 const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate');
@@ -500,7 +524,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
                 const parentLabel = await input.$('xpath=ancestor::div[contains(@class,"field")] | ancestor::label | preceding-sibling::label').catch(()=>null);
                 const text = parentLabel ? await parentLabel.textContent().catch(()=>'') : '';
-                const lowerText = text ? text.toLowerCase() : '';
+                const cleanText = text.replace(/\s+/g, ' ').trim().substring(0, 300);
+                const lowerText = cleanText ? cleanText.toLowerCase() : '';
                 const combinedLabel = ariaLabel + " " + lowerText;
                 
                 const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate');
@@ -529,6 +554,20 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!(await input.inputValue())) await input.fill(name);
                 } else if (ariaLabel.includes('title')) {
                     if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.title || 'Engineer');
+                } else if (combinedLabel.includes('first name') || combinedLabel.includes('given name')) {
+                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel");
+                } else if (combinedLabel.includes('last name') || combinedLabel.includes('family name')) {
+                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || "Hardesty Lewis");
+                } else if (combinedLabel.includes('email')) {
+                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.email || "daniel@homecastr.com");
+                } else if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
+                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.phone || "+1 (713) 371-7875");
+                } else if (combinedLabel.includes('legal name') || combinedLabel.includes('full name') || combinedLabel.includes('signature')) {
+                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.full_name || "Daniel Hardesty Lewis");
+                } else if (combinedLabel.includes('ldap') || combinedLabel.includes('employee id')) {
+                    if (!(await input.inputValue())) await input.fill("N/A");
+                } else if (combinedLabel.includes('willing') || combinedLabel.includes('relocate') || combinedLabel.includes('hybrid') || combinedLabel.includes('office')) {
+                    if (!(await input.inputValue())) await input.fill('Yes');
                 } else {
                     // Fallback: any unfilled required input gets the catchAll answer
                     const isReq = await input.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
@@ -546,7 +585,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 
                 const labelText = await check.evaluate(el => {
                     const ctx = el.closest('label') || el.parentElement;
-                    return ctx ? ctx.textContent.toLowerCase() : '';
+                    return ctx ? ctx.textContent.replace(/\s+/g, ' ').trim().substring(0, 300).toLowerCase() : '';
                 }).catch(()=>'');
 
                 if (isReq || name.includes('gdpr') || name.includes('consent') || name.includes('terms') || name.includes('agree') || labelText.includes('agree') || labelText.includes('confirm') || labelText.includes('certify') || labelText.includes('acknowledge') || labelText.includes('understand') || labelText.includes('policy') || labelText.includes('consent')) {
@@ -1003,7 +1042,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         console.log("-------------------------------------------------");
 
         // Pause execution to hand off the live browser to the user
-        await page.pause();
+        if (process.env.MULTI_TAB !== 'true') {
+            await page.pause();
+        } else {
+            console.log("MULTI_TAB mode enabled. Leaving tab open natively.");
+        }
     }
 
 }
@@ -1016,7 +1059,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async () => {
         const isBatch = process.env.BATCH_EVAL_MODE === 'true';
         const targetUrl = process.argv[2];
-        const targetResumeUrl = process.argv[3];
+        const targetResumeUrl = process.argv[3] || 'cv.pdf';
         
         const launchArgs = ['--window-position=-10000,-10000'];
         const context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
