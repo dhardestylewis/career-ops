@@ -622,7 +622,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const combinedLabel = ariaLabel + " " + lowerText;
 
                 const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate') || combinedLabel.includes('hardest') || combinedLabel.includes('impactful') || combinedLabel.includes('problem');
-                const isTechnical = combinedLabel.includes('describe') || combinedLabel.includes('experience') || combinedLabel.includes('background') || combinedLabel.includes('proud') || combinedLabel.includes('impressive') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('built') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your') || combinedLabel.includes('tools') || combinedLabel.includes('ai') || combinedLabel.includes('technologies');
+                const isTechnical = combinedLabel.includes('describe') || combinedLabel.includes('experience') || combinedLabel.includes('background') || combinedLabel.includes('proud') || combinedLabel.includes('impressive') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('built') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your') || combinedLabel.includes('tools') || combinedLabel.includes(' ai ') || combinedLabel.includes('artificial intelligence') || combinedLabel.includes('technologies') || combinedLabel.includes('technical stack') || combinedLabel.includes('tech stack');
 
                 if (combinedLabel.includes('years')) {
                     if (!(await area.inputValue())) { await area.fill("10"); await area.blur().catch(()=>{}); }
@@ -631,6 +631,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!(await area.inputValue())) { await area.fill(interest); await area.blur().catch(()=>{}); }
                 } else if (isTechnical) {
                     if (!(await area.inputValue())) { await area.fill(exitStory); await area.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('country') && combinedLabel.includes('located')) {
+                    if (!(await area.inputValue())) { await area.fill('United States'); await area.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('relocation') || combinedLabel.includes('relocate')) {
+                    if (!(await area.inputValue())) { await area.fill('No'); await area.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
                     if (!(await area.inputValue())) { await area.fill(catchAll); await area.blur().catch(()=>{}); }
                 } else {
