@@ -17,3 +17,8 @@
 | https://careers.withwaymo.com/jobs?gh_jid=747... | 44% | 18 | 8 | Incomplete | 10 |
 | https://databricks.com/company/careers/open-p... | 70% | 23 | 16 | Incomplete | 7 |
 | https://databricks.com/company/careers/open-p... | 75% | 24 | 18 | Incomplete | 6 |
+| https://coreweave.com/careers/job?4647611006&... | 82% | 11 | 9 | Incomplete | 2 |
+| https://databricks.com/company/careers/open-p... | 82% | 22 | 18 | Incomplete | 4 |
+| https://job-boards.greenhouse.io/scaleai/jobs... | 75% | 8 | 6 | Incomplete | 2 |
+| https://careers.withwaymo.com/jobs?gh_jid=745... | 44% | 18 | 8 | Incomplete | 10 |
+| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Error | 0 |

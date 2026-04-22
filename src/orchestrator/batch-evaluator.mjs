@@ -2,10 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import { chromium } from 'playwright';
-
-import { populateLever } from '../scrapers/auto-fill-lever.mjs';
-import { populateGreenhouse } from '../scrapers/auto-fill-greenhouse.mjs';
-import { populateAshby } from '../scrapers/auto-fill-ashby.mjs';
+import { pathToFileURL } from 'url';
 
 // Dynamically extract Profile configuration
 let profileConfig = {};
@@ -101,10 +98,16 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
             try {
                 let metrics;
                 if (type === 'lever') {
+                    const moduleUrl = `${pathToFileURL(path.resolve('src/scrapers/auto-fill-lever.mjs')).href}?cacheBust=${Date.now()}`;
+                    const { populateLever } = await import(moduleUrl);
                     metrics = await populateLever(page, url, resumePath, profileConfig, true);
                 } else if (type === 'greenhouse') {
+                    const moduleUrl = `${pathToFileURL(path.resolve('src/scrapers/auto-fill-greenhouse.mjs')).href}?cacheBust=${Date.now()}`;
+                    const { populateGreenhouse } = await import(moduleUrl);
                     metrics = await populateGreenhouse(page, url, resumePath, profileConfig, true);
                 } else if (type === 'ashby') {
+                    const moduleUrl = `${pathToFileURL(path.resolve('src/scrapers/auto-fill-ashby.mjs')).href}?cacheBust=${Date.now()}`;
+                    const { populateAshby } = await import(moduleUrl);
                     metrics = await populateAshby(page, url, resumePath, profileConfig, true);
                 }
                 
