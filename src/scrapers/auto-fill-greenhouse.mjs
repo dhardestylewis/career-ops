@@ -26,9 +26,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         roblox: {
             gender: "Man",
             race: "Hispanic",
-            veteran: "No",
-            disability: "No",
-            sponsorship: "No",
+            veteran: "No, I am not",
+            disability: "No, I do not",
+            sponsorship: "Yes",
             authorized: "Yes",
             age: "Yes"
         },
@@ -172,10 +172,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     console.log("Attaching Resume natively...");
     try {
         // Try clicking the attach button to reveal hidden file input (Greenhouse v2)
-        const attachBtns = page.locator('button[data-source="attach"], .resume-submit-group button, a[data-source="attach"]');
-        if (await attachBtns.count() > 0) {
-            await attachBtns.first().click({ force: true }).catch(() => {});
-            await page.waitForTimeout(500);
+        // Skip for Roblox as it triggers a broken React upload hook exception
+        if (domain !== 'roblox') {
+            const attachBtns = page.locator('button[data-source="attach"], .resume-submit-group button, a[data-source="attach"]');
+            if (await attachBtns.count() > 0) {
+                await attachBtns.first().click({ force: true }).catch(() => {});
+                await page.waitForTimeout(500);
+            }
         }
         
         await page.waitForSelector('input[type="file"]', { timeout: 8000 }).catch(() => {});
@@ -523,7 +526,21 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await locator.fill("").catch(()=>{});
                         await locator.pressSequentially(fillValue, { delay: 80 }).catch(()=>{});
                         await page.waitForTimeout(800);
-                        await locator.press('Enter').catch(()=>{});
+                        
+                        // Search for the exact dropdown option and click it to prevent partial prefix matching
+                        const options = await page.$$('div[class*="option"]');
+                        let clicked = false;
+                        for (const opt of options) {
+                            const optText = await opt.innerText().catch(()=>'');
+                            if (optText.trim() === fillValue.trim() || optText.trim().startsWith(fillValue.trim())) {
+                                await opt.click().catch(()=>{});
+                                clicked = true;
+                                break;
+                            }
+                        }
+                        if (!clicked) {
+                            await locator.press('Enter').catch(()=>{});
+                        }
                         await page.waitForTimeout(300);
                     }
                 }
@@ -645,33 +662,33 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (combinedLabel.includes('years')) {
                     if (!(await input.inputValue())) { await input.pressSequentially("10", {delay: 50}); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('salary') || combinedLabel.includes('compensation') || combinedLabel.includes('expectations') || combinedLabel.includes('package')) {
-                    if (!(await input.inputValue())) { await input.fill(minComp.toString()); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(minComp.toString(), { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('notice period') || ariaLabel.includes('available to start')) {
-                    if (!(await input.inputValue())) { await input.fill("2-4 weeks"); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially("2-4 weeks", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('linkedin')) {
                     let li = profileConfig?.candidate?.linkedin || '';
                     if (li && !li.startsWith('http')) li = 'https://www.' + li.replace(/^www\./, '');
-                    if (!(await input.inputValue())) { await input.fill(li); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(li, { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('website') || ariaLabel.includes('portfolio') || ariaLabel.includes('github')) {
                     const u = ariaLabel.includes('website') || ariaLabel.includes('portfolio') ? profileConfig?.candidate?.portfolio_url : profileConfig?.candidate?.github;
-                    if (!(await input.inputValue())) { await input.fill(u || ''); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(u || '', { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('preferred') || ariaLabel.includes('pronounce')) {
                     const name = profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel";
-                    if (!(await input.inputValue())) { await input.fill(name); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(name, { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('title')) {
-                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.title || 'Engineer'); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.title || 'Engineer', { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('first name') || combinedLabel.includes('given name')) {
-                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel"); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('last name') || combinedLabel.includes('family name')) {
-                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || "Hardesty Lewis"); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || "Hardesty Lewis", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('email')) {
-                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.email || "daniel@homecastr.com"); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.email || "daniel@homecastr.com", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
                     const sanitizedPhone = (profileConfig?.candidate?.phone || "7133717875").replace(/[\s\+\(\)\-]/g, '');
-                    if (!(await input.inputValue())) { await input.fill(sanitizedPhone); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(sanitizedPhone, { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('location') || combinedLabel.includes('city') || combinedLabel.includes('address')) {
                     if (!(await input.inputValue())) {
-                        await input.fill("New York, NY");
+                        await input.pressSequentially("New York, NY", { delay: 15 });
                         await input.blur().catch(()=>{});
                         await page.waitForTimeout(800);
                         await input.press('ArrowDown').catch(()=>{});
@@ -679,17 +696,17 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await input.press('Enter').catch(()=>{});
                     }
                 } else if (combinedLabel.includes('gpa') || combinedLabel.includes('grade')) {
-                    if (!(await input.inputValue())) { await input.fill("4.0"); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially("4.0", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('company') || combinedLabel.includes('employer')) {
-                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.current_company || "Stealth"); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.current_company || "Stealth", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('legal name') || combinedLabel.includes('full name') || combinedLabel.includes('signature')) {
-                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.full_name || "Daniel Hardesty Lewis"); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.full_name || "Daniel Hardesty Lewis", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('ldap') || combinedLabel.includes('employee id')) {
-                    if (!(await input.inputValue())) { await input.fill("N/A"); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially("N/A", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('willing') || combinedLabel.includes('relocate') || combinedLabel.includes('hybrid') || combinedLabel.includes('office')) {
-                    if (!(await input.inputValue())) { await input.fill('Yes'); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially('Yes', { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('specify') && combinedLabel.includes('if you chose')) {
-                    if (!(await input.inputValue())) { await input.fill('LinkedIn'); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially('LinkedIn', { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('hear') || combinedLabel.includes('source') || combinedLabel.includes('find out')) {
                     if (!(await input.inputValue())) { await input.pressSequentially('LinkedIn', { delay: 20 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('cloud')) {
@@ -697,7 +714,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 } else if (combinedLabel.includes('rate') || combinedLabel.includes('1-10') || combinedLabel.includes('1 to 10')) {
                     if (!(await input.inputValue())) { await input.pressSequentially('10', { delay: 10 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('start') || combinedLabel.includes('soonest') || combinedLabel.includes('available')) {
-                    if (!(await input.inputValue())) { await input.fill('Spring 2026'); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially('Spring 2026', { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('how much experience') || combinedLabel.includes('years of experience')) {
                     if (!(await input.inputValue())) { await input.pressSequentially('10+ years', { delay: 10 }); await input.blur().catch(()=>{}); }
                 } else if (isBehavioral) {
