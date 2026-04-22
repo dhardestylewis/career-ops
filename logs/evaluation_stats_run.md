@@ -32,3 +32,8 @@
 | https://coreweave.com/careers/job?4601657006&... | 50% | 8 | 4 | Incomplete | 4 |
 | https://nuro.ai/careersitem?gh_jid=7472664... | 67% | 6 | 4 | Incomplete | 2 |
 | https://coreweave.com/careers/job?4609928006&... | 40% | 10 | 4 | Incomplete | 6 |
+| https://boards.greenhouse.io/figma/jobs/58403... | 75% | 8 | 6 | Incomplete | 2 |
+| https://databricks.com/company/careers/open-p... | 90% | 21 | 19 | Incomplete | 2 |
+| https://careers.roblox.com/jobs/7347389?gh_ji... | 50% | 8 | 4 | Incomplete | 4 |
+| https://careers.roblox.com/jobs/7682993?gh_ji... | 50% | 8 | 4 | Incomplete | 4 |
+| https://boards.greenhouse.io/figma/jobs/57114... | 60% | 10 | 6 | Incomplete | 4 |
