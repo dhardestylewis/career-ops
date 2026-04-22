@@ -143,7 +143,9 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
             if (stat.snapshot) {
                 const domain = stat.domain || 'unknown';
                 const jobId = (new URL(stat.url).pathname.split('/').pop() || Date.now()) + (new URL(stat.url).searchParams.get('gh_jid') || '');
-                fs.writeFileSync(`logs/snapshots/${domain}_${jobId.replace(/[^a-zA-Z0-9]/g, '')}.json`, JSON.stringify(stat.snapshot, null, 2));
+                const cleanJobId = jobId.replace(/[^a-zA-Z0-9]/g, '');
+                fs.writeFileSync(`logs/snapshots/${domain}_${cleanJobId}.json`, JSON.stringify(stat.snapshot, null, 2));
+                if (stat.rawFormHtml) fs.writeFileSync(`logs/snapshots/${domain}_${cleanJobId}_DOM.html`, stat.rawFormHtml);
             }
         }
         if (!fs.existsSync('logs')) fs.mkdirSync('logs');
