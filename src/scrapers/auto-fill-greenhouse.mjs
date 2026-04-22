@@ -1167,6 +1167,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         });
         metrics.snapshot = applicationSnapshot;
         metrics.domain = domain;
+        
+        // Extract raw HTML context of the form to aid deterministic debugging of unmapped fields
+        metrics.rawFormHtml = await page.locator('form').first().evaluate(el => el.outerHTML).catch(()=>'');
     } catch(e) {
         console.error("Failed to generate application snapshot", e);
     }
