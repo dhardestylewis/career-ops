@@ -1,44 +1,19 @@
 # Concurrent Multi-Tab Telemetry Report
 
-| URL | Fill Rate | Found | Filled | Status |
-|---|---|---|---|---|
-| https://databricks.com/company/careers/open-p... | 83% | 23 | 19 | Incomplete |
-| https://databricks.com/company/careers/open-p... | 83% | 23 | 19 | Incomplete |
-| https://databricks.com/company/careers/open-p... | 82% | 22 | 18 | Incomplete |
-| https://job-boards.greenhouse.io/togetherai/j... | 0% | 0 | 0 | Incomplete |
-| https://job-boards.greenhouse.io/heygen/jobs/... | 0% | 0 | 0 | Incomplete |
-| https://careers.roblox.com/jobs/7682993?gh_ji... | 80% | 10 | 8 | Incomplete |
-| https://careers.withwaymo.com/jobs?gh_jid=744... | 69% | 13 | 9 | Incomplete |
-| https://boards.greenhouse.io/appliedintuition... | 0% | 0 | 0 | Error |
-| https://databricks.com/company/careers/open-p... | 82% | 22 | 18 | Incomplete |
-| https://databricks.com/company/careers/open-p... | 82% | 22 | 18 | Incomplete |
-| https://coreweave.com/careers/job?4601657006&... | 0% | 0 | 0 | Error |
-| https://careers.withwaymo.com/jobs?gh_jid=750... | 61% | 18 | 11 | Incomplete |
-| https://nuro.ai/careersitem?gh_jid=6623715... | 0% | 0 | 0 | Error |
-| https://databricks.com/company/careers/open-p... | 83% | 23 | 19 | Incomplete |
-| https://boards.greenhouse.io/appliedintuition... | 0% | 0 | 0 | Error |
-| https://job-boards.greenhouse.io/togetherai/j... | 0% | 0 | 0 | Error |
-| https://databricks.com/company/careers/open-p... | 84% | 25 | 21 | Incomplete |
-| https://databricks.com/company/careers/open-p... | 82% | 22 | 18 | Incomplete |
-| https://databricks.com/company/careers/open-p... | 0% | 0 | 0 | Error |
-| https://nuro.ai/careersitem?gh_jid=7095296... | 0% | 0 | 0 | Error |
-| https://careers.roblox.com/jobs/7292063?gh_ji... | 80% | 10 | 8 | Incomplete |
-| https://nuro.ai/careersitem?gh_jid=7389868... | 0% | 0 | 0 | Error |
-| https://databricks.com/company/careers/open-p... | 80% | 20 | 16 | Incomplete |
-| https://careers.withwaymo.com/jobs?gh_jid=743... | 65% | 17 | 11 | Incomplete |
-| https://nuro.ai/careersitem?gh_jid=6376021... | 0% | 0 | 0 | Error |
-| https://databricks.com/company/careers/open-p... | 82% | 22 | 18 | Incomplete |
-| https://databricks.com/company/careers/open-p... | 83% | 23 | 19 | Incomplete |
-| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Incomplete |
-| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Error |
-| https://databricks.com/company/careers/open-p... | 83% | 23 | 19 | Incomplete |
-| https://boards.greenhouse.io/appliedintuition... | 90% | 10 | 9 | Incomplete |
-| https://careers.withwaymo.com/jobs?gh_jid=650... | 59% | 17 | 10 | Incomplete |
-| https://nuro.ai/careersitem?gh_jid=7747596... | 0% | 0 | 0 | Error |
-| https://careers.roblox.com/jobs/7701054?gh_ji... | 80% | 10 | 8 | Incomplete |
-| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Incomplete |
-| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Incomplete |
-| https://databricks.com/company/careers/open-p... | 0% | 0 | 0 | Error |
-| https://coreweave.com/careers/job?4568555006&... | 0% | 0 | 0 | Error |
-| https://careers.roblox.com/jobs/7630245?gh_ji... | 80% | 10 | 8 | Incomplete |
-| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Incomplete |
+| URL | Fill Rate | Found | Filled | Status | Unmapped DOM (Misses) |
+|---|---|---|---|---|---|
+| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Error | 0 |
+| https://careers.roblox.com/jobs/7473599?gh_ji... | 75% | 12 | 9 | Incomplete | 3 |
+| https://databricks.com/company/careers/open-p... | 74% | 27 | 20 | Incomplete | 7 |
+| https://careers.withwaymo.com/jobs?gh_jid=754... | 44% | 18 | 8 | Incomplete | 10 |
+| https://nuro.ai/careersitem?gh_jid=7463764... | 75% | 8 | 6 | Incomplete | 2 |
+| https://careers.roblox.com/jobs/7681009?gh_ji... | 73% | 11 | 8 | Incomplete | 3 |
+| https://databricks.com/company/careers/open-p... | 96% | 23 | 22 | Incomplete | 1 |
+| https://job-boards.greenhouse.io/scaleai/jobs... | 86% | 7 | 6 | Incomplete | 1 |
+| https://databricks.com/company/careers/open-p... | 78% | 23 | 18 | Incomplete | 5 |
+| https://databricks.com/company/careers/open-p... | 78% | 23 | 18 | Incomplete | 5 |
+| https://databricks.com/company/careers/open-p... | 78% | 23 | 18 | Incomplete | 5 |
+| https://careers.withwaymo.com/jobs?gh_jid=740... | 44% | 18 | 8 | Incomplete | 10 |
+| https://careers.withwaymo.com/jobs?gh_jid=747... | 44% | 18 | 8 | Incomplete | 10 |
+| https://databricks.com/company/careers/open-p... | 70% | 23 | 16 | Incomplete | 7 |
+| https://databricks.com/company/careers/open-p... | 75% | 24 | 18 | Incomplete | 6 |
