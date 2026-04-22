@@ -17,3 +17,13 @@
 | https://job-boards.greenhouse.io/scaleai/jobs... | 80% | 5 | 4 | Incomplete | 1 |
 | https://careers.withwaymo.com/jobs?gh_jid=656... | 29% | 17 | 5 | Incomplete | 12 |
 | https://job-boards.greenhouse.io/scaleai/jobs... | 80% | 5 | 4 | Incomplete | 1 |
+| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Error | 0 |
+| https://careers.withwaymo.com/jobs?gh_jid=771... | 28% | 18 | 5 | Incomplete | 13 |
+| https://databricks.com/company/careers/open-p... | 85% | 20 | 17 | Incomplete | 3 |
+| https://careers.withwaymo.com/jobs?gh_jid=746... | 28% | 18 | 5 | Incomplete | 13 |
+| https://careers.withwaymo.com/jobs?gh_jid=764... | 28% | 18 | 5 | Incomplete | 13 |
+| https://nuro.ai/careersitem?gh_jid=6283499... | 67% | 6 | 4 | Incomplete | 2 |
+| https://coreweave.com/careers/job?4648208006&... | 44% | 9 | 4 | Incomplete | 5 |
+| https://coreweave.com/careers/job?4647595006&... | 40% | 10 | 4 | Incomplete | 6 |
+| https://databricks.com/company/careers/open-p... | 85% | 20 | 17 | Incomplete | 3 |
+| https://coreweave.com/careers/job?4647611006&... | 50% | 8 | 4 | Incomplete | 4 |
