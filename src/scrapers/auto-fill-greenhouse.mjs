@@ -427,9 +427,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             if (targetValue) {
                 const match = options.find(o => o && (o.toLowerCase() === targetValue.toLowerCase() || o.toLowerCase().startsWith(targetValue.toLowerCase())));
                 if (match) {
-                     await select.selectOption({ label: match }).catch(async ()=> {
+                     await select.selectOption({ label: match }, { force: true }).catch(async ()=> {
                           // Try raw value check if strict label bounding fails
-                          await select.selectOption(match).catch(()=>{});
+                          await select.selectOption(match, { force: true }).catch(()=>{});
                      });
                      await page.waitForTimeout(200); // Breath
                 }
@@ -444,7 +444,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     const safeSelect = async (id, value) => {
         try {
             const el = page.locator(`select[id="${id}"]`);
-            if (await el.count() > 0 && await el.first().isVisible()) {
+            if (await el.count() > 0) {
                 const selectElement = await el.first().elementHandle();
                 const options = await selectElement.$$eval('option', opts => opts.map(o => o.textContent));
                 // Add strict heuristic for gender to prevent matching 'Female' just because it has 'Male' inside the string
@@ -454,7 +454,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     return o.includes(value.toLowerCase());
                 });
                 if (match) {
-                    await el.selectOption({ label: match });
+                    await el.selectOption({ label: match }, { force: true }).catch(()=>{});
                 }
             }
         } catch (e) {}
@@ -751,10 +751,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const isExportControl = labelText.includes('cuba') || labelText.includes('iran') || labelText.includes('syria') || labelText.includes('korea') || labelText.includes('russia') || labelText.includes('belarus') || labelText.includes('export') || labelText.includes('sanctions') || labelText.includes('prior question');
                 
                 if (isExportControl) {
-                    if (labelText.includes('none of the above') || labelText.includes('not applicable') || labelText.includes('none of these apply')) {
+                    if (labelText.includes('none of the above') || labelText.includes('not applicable') || labelText.includes('none of these apply') || labelText.includes('u.s. citizen')) {
                         if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
                     }
-                } else if (isReq || name.includes('gdpr') || name.includes('consent') || name.includes('terms') || name.includes('agree') || labelText.includes('agree') || labelText.includes('confirm') || labelText.includes('certify') || labelText.includes('acknowledge') || labelText.includes('understand') || labelText.includes('policy') || labelText.includes('consent')) {
+                } else if (name.includes('gdpr') || name.includes('consent') || name.includes('terms') || name.includes('agree') || labelText.includes('agree') || labelText.includes('confirm') || labelText.includes('certify') || labelText.includes('acknowledge') || labelText.includes('understand') || labelText.includes('policy') || labelText.includes('consent')) {
                     if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
                 }
             } catch(e) {}
@@ -1040,7 +1040,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const group = page.locator(`input[type="radio"][name="${name}"]`);
                 const isChecked = await group.evaluateAll(els => els.some(el => el.checked));
                 if (!isChecked && await group.count() > 0) {
-                    await group.first().check({force: true}).catch(()=>{});
+                    await logUnmappedDom(group.first(), "Radio Required Catch-All");
+                    const count = await group.count();
+                    let clickIndex = 0;
+                    for (let i = 0; i < count; i++) {
+                        const lbl = await group.nth(i).evaluate(el => (el.closest('label') || el.parentElement)?.textContent?.toLowerCase() || '');
+                        if (lbl.includes('no ') || lbl === 'no' || lbl.includes("don't") || lbl.includes("not")) clickIndex = i;
+                    }
+                    await group.nth(clickIndex).check({force: true}).catch(()=>{});
                 }
             }
         }
