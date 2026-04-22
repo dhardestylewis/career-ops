@@ -277,6 +277,13 @@ async function main() {
   // 3. Load dedup sets
   const seenUrls = loadSeenUrls();
   const seenCompanyRoles = loadSeenCompanyRoles();
+  let excludedCompanies = new Set();
+  if (existsSync('data/excluded_companies.json')) {
+    try {
+      const excludedArray = JSON.parse(readFileSync('data/excluded_companies.json', 'utf-8'));
+      excludedCompanies = new Set(excludedArray.map(c => c.toLowerCase()));
+    } catch(e) {}
+  }
 
   // 4. Fetch all APIs
   const date = new Date().toISOString().slice(0, 10);
@@ -295,6 +302,10 @@ async function main() {
 
       for (const job of jobs) {
         if (!titleFilter(job.title)) {
+          totalFiltered++;
+          continue;
+        }
+        if (excludedCompanies.has(job.company.toLowerCase())) {
           totalFiltered++;
           continue;
         }

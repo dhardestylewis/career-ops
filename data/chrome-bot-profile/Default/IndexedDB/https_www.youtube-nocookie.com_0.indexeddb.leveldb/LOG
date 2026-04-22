@@ -1,7 +1,0 @@
-2026/04/20-19:55:24.059 3160 Reusing MANIFEST C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/MANIFEST-000001
-2026/04/20-19:55:24.060 3160 Recovering log #3
-2026/04/20-19:55:24.060 3160 Reusing old log C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\IndexedDB\https_www.youtube-nocookie.com_0.indexeddb.leveldb/000003.log 
-2026/04/20-20:00:34.613 6f50 Level-0 table #5: started
-2026/04/20-20:00:34.624 6f50 Level-0 table #5: 1200 bytes OK
-2026/04/20-20:00:34.626 6f50 Delete type=0 #3
-2026/04/20-20:00:34.627 3160 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
