@@ -127,12 +127,20 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
         statsStore.push(...completedChunk);
 
         // Dynamically flush metrics to disk after every chunk completes!
-        let markdown = "# Concurrent Multi-Tab Telemetry Report\n\n| URL | Fill Rate | Found | Filled | Status |\n|---|---|---|---|---|\n";
+        let markdown = "# Concurrent Multi-Tab Telemetry Report\n\n| URL | Fill Rate | Found | Filled | Status | Unmapped DOM (Misses) |\n|---|---|---|---|---|---|\n";
         const missingDOMData = {};
+        if (!fs.existsSync('logs/snapshots')) fs.mkdirSync('logs/snapshots', { recursive: true });
+
         for (const stat of statsStore) {
-            markdown += `| ${stat.url.substring(0, 45)}... | ${stat.fillPercentage || 0}% | ${stat.total || 0} | ${stat.filled || 0} | ${stat.status} |\n`;
+            const unmappedCount = stat.missingDOM ? stat.missingDOM.length : 0;
+            markdown += `| ${stat.url.substring(0, 45)}... | ${stat.fillPercentage || 0}% | ${stat.total || 0} | ${stat.filled || 0} | ${stat.status} | ${unmappedCount} |\n`;
             if (stat.missingDOM && stat.missingDOM.length > 0) {
                 missingDOMData[stat.url] = stat.missingDOM;
+            }
+            if (stat.snapshot) {
+                const domain = stat.domain || 'unknown';
+                const jobId = (new URL(stat.url).pathname.split('/').pop() || Date.now()) + (new URL(stat.url).searchParams.get('gh_jid') || '');
+                fs.writeFileSync(`logs/snapshots/${domain}_${jobId.replace(/[^a-zA-Z0-9]/g, '')}.json`, JSON.stringify(stat.snapshot, null, 2));
             }
         }
         if (!fs.existsSync('logs')) fs.mkdirSync('logs');

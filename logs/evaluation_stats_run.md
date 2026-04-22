@@ -37,3 +37,8 @@
 | https://nuro.ai/careersitem?gh_jid=7747596... | 0% | 0 | 0 | Error |
 | https://careers.roblox.com/jobs/7701054?gh_ji... | 80% | 10 | 8 | Incomplete |
 | https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Incomplete |
+| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Incomplete |
+| https://databricks.com/company/careers/open-p... | 0% | 0 | 0 | Error |
+| https://coreweave.com/careers/job?4568555006&... | 0% | 0 | 0 | Error |
+| https://careers.roblox.com/jobs/7630245?gh_ji... | 80% | 10 | 8 | Incomplete |
+| https://job-boards.greenhouse.io/scaleai/jobs... | 0% | 0 | 0 | Incomplete |

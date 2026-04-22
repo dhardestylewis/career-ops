@@ -36,6 +36,18 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             previously_worked: "No",
             sponsorship: "No",
             authorized: "Yes"
+        },
+        appliedintuition: {
+            country: "United States",
+            school: "Texas",
+            degree: "Bachelor",
+            discipline: "Computer"
+        },
+        coreweave: {
+            country: "United States"
+        },
+        nuro: {
+            country: "United States"
         }
     };
     const domainOverrides = DOMAIN_OVERRIDES[domain] || {};
@@ -474,7 +486,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 });
 
                 let fillValue = null;
-                if ((lowerText.includes('phone') || lowerText.includes('dialing')) && (lowerText.includes('country') || lowerText.includes('code'))) fillValue = 'United States';
+                if (lowerText.includes('country')) fillValue = domainOverrides.country || 'United States';
+                else if ((lowerText.includes('phone') || lowerText.includes('dialing')) && (lowerText.includes('country') || lowerText.includes('code'))) fillValue = 'United States';
                 else if (lowerText.includes('gender') || lowerText.includes('identify') || lowerText.includes('sex')) fillValue = domainOverrides.gender || 'Male';
                 else if (lowerText.includes('hispanic') || lowerText.includes('latino') || lowerText.includes('race') || lowerText.includes('ethnic')) fillValue = domainOverrides.race || 'Hispanic';
                 else if (lowerText.includes('veteran')) fillValue = domainOverrides.veteran || 'not a protected veteran';
@@ -683,6 +696,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!(await input.inputValue())) { await input.pressSequentially('AWS, GCP, Azure', { delay: 10 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('rate') || combinedLabel.includes('1-10') || combinedLabel.includes('1 to 10')) {
                     if (!(await input.inputValue())) { await input.pressSequentially('10', { delay: 10 }); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('start') || combinedLabel.includes('soonest') || combinedLabel.includes('available')) {
+                    if (!(await input.inputValue())) { await input.fill('Spring 2026'); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('how much experience') || combinedLabel.includes('years of experience')) {
                     if (!(await input.inputValue())) { await input.pressSequentially('10+ years', { delay: 10 }); await input.blur().catch(()=>{}); }
                 } else if (isBehavioral) {
@@ -1081,6 +1096,52 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         
         return { total, filled, fillPercentage: total > 0 ? Math.round((filled / total) * 100) : 0, missingDOM };
     });
+
+    console.log("Generating Submission State Snapshot...");
+    try {
+        const applicationSnapshot = await page.evaluate(() => {
+            const data = {};
+            // Extract standard inputs
+            document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
+                const label = document.querySelector(`label[for="${input.id}"]`)?.innerText || input.name || input.id;
+                data[label.trim()] = input.value;
+            });
+
+            // Extract React Selects (Comboboxes)
+            document.querySelectorAll('input[role="combobox"]').forEach(box => {
+                let label = document.querySelector(`label[for="${box.id}"]`)?.innerText;
+                if (!label) {
+                    const ctx = box.closest('div.field, .application-question');
+                    if (ctx) label = ctx.innerText.split('\n')[0];
+                }
+                label = label || box.id;
+                const container = box.closest('div[class*="container"]');
+                const selectedValue = container?.querySelector('[class*="single-value"]')?.innerText || box.value;
+                data[label.trim()] = selectedValue || "Unanswered";
+            });
+
+            // Extract Native Selects
+            document.querySelectorAll('select').forEach(select => {
+                const label = document.querySelector(`label[for="${select.id}"]`)?.innerText || select.name || select.id;
+                const selectedText = select.options[select.selectedIndex]?.text || "Unanswered";
+                data[label.trim()] = selectedText;
+            });
+
+            // Extract Checkboxes and Radio Buttons
+            document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(box => {
+                if (box.checked) {
+                    const label = document.querySelector(`label[for="${box.id}"]`)?.innerText || box.parentElement?.innerText || box.id;
+                    data[label.trim()] = "Checked";
+                }
+            });
+
+            return data;
+        });
+        metrics.snapshot = applicationSnapshot;
+        metrics.domain = domain;
+    } catch(e) {
+        console.error("Failed to generate application snapshot", e);
+    }
 
     if (isBatch) {
         if (metrics.fillPercentage < 100) {
