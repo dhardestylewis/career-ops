@@ -14,17 +14,42 @@ try {
 
 export async function populateGreenhouse(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     const url = targetUrl;
+    
+    let domain = 'default';
+    if (url.includes('roblox.com') || url.includes('for=roblox')) domain = 'roblox';
+    else if (url.includes('databricks.com') || url.includes('for=databricks')) domain = 'databricks';
+    else if (url.includes('coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
+    else if (url.includes('appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
+    else if (url.includes('nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
 
-    console.log(`Navigating to ${url}...`);
+    const DOMAIN_OVERRIDES = {
+        roblox: {
+            gender: "Man",
+            race: "Hispanic",
+            veteran: "No",
+            disability: "No",
+            sponsorship: "No",
+            authorized: "Yes",
+            age: "Yes"
+        },
+        databricks: {
+            previously_worked: "No",
+            sponsorship: "No",
+            authorized: "Yes"
+        }
+    };
+    const domainOverrides = DOMAIN_OVERRIDES[domain] || {};
+
+    console.log(`Navigating to ${url}... [Domain Context: ${domain}]`);
     await page.goto(url, { waitUntil: 'domcontentloaded' });
 
     console.log("Checking for embedded Greenhouse iframes...");
     try {
         await page.waitForTimeout(1500); // Wait for potential dynamic iframe injection
-        const iframe = await page.$('iframe[src*="greenhouse.io"], iframe#grnhse_iframe');
+        const iframe = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
         if (iframe) {
             const iframeSrc = await iframe.getAttribute('src');
-            if (iframeSrc) {
+            if (iframeSrc && !iframeSrc.includes('googleapis.com')) {
                 console.log(`Detected embedded iframe. Redirecting to raw form: ${iframeSrc}`);
                 await page.goto(iframeSrc, { waitUntil: 'domcontentloaded' });
             }
@@ -41,12 +66,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             await page.waitForTimeout(2000);
             
             // Check for iframes AGAIN in case clicking Apply popped open an iframe
-            const iframe2 = await page.$('iframe[src*="greenhouse.io"], iframe#grnhse_iframe');
+            const iframe2 = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
             if (iframe2) {
-                const iframeSrc = await iframe2.getAttribute('src');
-                if (iframeSrc) {
-                    console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc}`);
-                    await page.goto(iframeSrc, { waitUntil: 'domcontentloaded' });
+                const iframeSrc2 = await iframe2.getAttribute('src');
+                if (iframeSrc2 && !iframeSrc2.includes('googleapis.com')) {
+                    console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc2}`);
+                    await page.goto(iframeSrc2, { waitUntil: 'domcontentloaded' });
                 }
             } else {
                 await page.waitForSelector('#first_name', { timeout: 6000 }).catch(() => {});
@@ -258,17 +283,29 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
     const logUnmappedDom = async (locator, reason) => {
         try {
-            const html = await locator.evaluate(el => {
-                const wrapper = el.closest('.field, .application-question') || el.parentElement;
-                return wrapper ? wrapper.outerHTML : el.outerHTML;
-            }).catch(()=>'');
+            const data = await locator.evaluate(el => {
+                const wrapper = el.closest('.field, .application-question, div[class*="question"]');
+                const fullHtml = wrapper ? wrapper.outerHTML : (el.parentElement ? el.parentElement.outerHTML : el.outerHTML);
+                
+                let labelText = 'Unknown Label';
+                try {
+                    const id = el.id || el.getAttribute('aria-labelledby')?.replace('-label', '');
+                    if (id) {
+                        const labelEl = document.querySelector(`label[for="${id}"], label[id="${id}-label"]`) || el.closest('div').parentElement.querySelector('label');
+                        if (labelEl) labelText = labelEl.innerText.trim();
+                    }
+                } catch(e) {}
+                
+                return { html: fullHtml, label: labelText };
+            }).catch(()=>({ html: '', label: 'Error extracting label' }));
             
-            if (html) {
+            if (data.html) {
                 const logEntry = {
                     timestamp: new Date().toISOString(),
                     url: page.url(),
                     reason: reason,
-                    html: html
+                    label: data.label,
+                    html: data.html
                 };
                 const logPath = path.resolve('logs/unmapped_dom.jsonl');
                 if (!fs.existsSync(path.dirname(logPath))) fs.mkdirSync(path.dirname(logPath), { recursive: true });
@@ -409,10 +446,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     };
 
     // Greenhouse uses specific IDs rather than eeoc[] name arrays
-    await safeSelect('job_application_gender', 'Male');
-    await safeSelect('job_application_race', 'Hispanic or Latino');
-    await safeSelect('job_application_veteran_status', 'not a protected veteran');
-    await safeSelect('job_application_disability_status', 'Decline to self-identify');
+    await safeSelect('job_application_gender', domainOverrides.gender || 'Male');
+    await safeSelect('job_application_race', domainOverrides.race || 'Hispanic or Latino');
+    await safeSelect('job_application_veteran_status', domainOverrides.veteran || 'not a protected veteran');
+    await safeSelect('job_application_disability_status', domainOverrides.disability || 'Decline to self-identify');
 
     console.log("Checking for modern React-Select Demographics & Location implementations...");
     
@@ -438,14 +475,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
                 let fillValue = null;
                 if ((lowerText.includes('phone') || lowerText.includes('dialing')) && (lowerText.includes('country') || lowerText.includes('code'))) fillValue = 'United States';
-                else if (lowerText.includes('gender') || lowerText.includes('identify') || lowerText.includes('sex')) fillValue = 'Male';
-                else if (lowerText.includes('hispanic') || lowerText.includes('latino') || lowerText.includes('race') || lowerText.includes('ethnic')) fillValue = 'Hispanic';
-                else if (lowerText.includes('veteran')) fillValue = 'not a protected veteran';
-                else if (lowerText.includes('disability')) fillValue = "I don't wish to answer";
-                else if (lowerText.includes('authorized') || lowerText.includes('legally') || lowerText.includes('u.s. person') || lowerText.includes('us person')) fillValue = 'Yes';
-                else if (lowerText.includes('relocat') || lowerText.includes('onsite') || lowerText.includes('hybrid') || lowerText.includes('office') || lowerText.includes('clearance') || lowerText.includes('salary') || lowerText.includes('comfortable')) fillValue = 'Yes';
+                else if (lowerText.includes('gender') || lowerText.includes('identify') || lowerText.includes('sex')) fillValue = domainOverrides.gender || 'Male';
+                else if (lowerText.includes('hispanic') || lowerText.includes('latino') || lowerText.includes('race') || lowerText.includes('ethnic')) fillValue = domainOverrides.race || 'Hispanic';
+                else if (lowerText.includes('veteran')) fillValue = domainOverrides.veteran || 'not a protected veteran';
+                else if (lowerText.includes('disability')) fillValue = domainOverrides.disability || "I don't wish to answer";
+                else if (lowerText.includes('authorized') || lowerText.includes('legally') || lowerText.includes('u.s. person') || lowerText.includes('us person')) fillValue = domainOverrides.authorized || 'Yes';
+                else if (lowerText.includes('relocat') || lowerText.includes('onsite') || lowerText.includes('hybrid') || lowerText.includes('office') || lowerText.includes('clearance') || lowerText.includes('salary') || lowerText.includes('comfortable') || lowerText.includes('18+') || lowerText.includes('age')) fillValue = domainOverrides.age || 'Yes';
                 else if (lowerText.includes('experience') || lowerText.includes('familiar') || lowerText.includes('hands-on')) fillValue = 'Yes';
-                else if (lowerText.includes('sponsorship') || lowerText.includes('visa') || lowerText.includes('previously worked')) fillValue = 'No';
+                else if (lowerText.includes('sponsorship') || lowerText.includes('visa') || lowerText.includes('previously worked')) fillValue = domainOverrides.sponsorship || domainOverrides.previously_worked || 'No';
                 else if (lowerText.includes('hear') || lowerText.includes('source')) fillValue = 'LinkedIn';
                 else if (lowerText.includes('school') || lowerText.includes('university') || lowerText.includes('college')) fillValue = 'Texas';
                 else if (lowerText.includes('degree')) fillValue = 'Bachelor';
@@ -482,7 +519,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const isReq = await box.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                 if (isReq) {
                     try {
-                        const isFilled = await box.evaluate(el => !!el.closest('div').querySelector('[class*="single-value"]'));
+                        const isFilled = await box.evaluate(el => {
+                            const container = el.closest('div[class*="container"]') || el.closest('div');
+                            if (container.querySelector('[class*="single-value"]')) return true;
+                            const hidden = container.querySelector('input[type="hidden"]');
+                            if (hidden && hidden.value) return true;
+                            if (el.value && el.value.length > 0) return true;
+                            return false;
+                        });
                         if (!isFilled) {
                             await logUnmappedDom(box, "React Select Fallback");
                             const id = await box.evaluate(el => el.getAttribute('id'));
@@ -491,9 +535,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                             await locator.fill("").catch(()=>{}); // Clear bad typings
                             await locator.press('ArrowDown').catch(()=>{}); // Expand menu
                             await page.waitForTimeout(300);
-                            await locator.press('ArrowDown').catch(()=>{}); // Move to option 1
-                            await page.waitForTimeout(100);
-                            await locator.press('ArrowDown').catch(()=>{}); // Move to option 2 (skip 'Select...' placeholder)
+                            await locator.press('ArrowDown').catch(()=>{}); // Move to Option 1
                             await page.waitForTimeout(100);
                             await locator.press('Enter').catch(()=>{});
                             await page.waitForTimeout(300);
@@ -635,6 +677,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!(await input.inputValue())) { await input.fill('Yes'); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('specify') && combinedLabel.includes('if you chose')) {
                     if (!(await input.inputValue())) { await input.fill('LinkedIn'); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('hear') || combinedLabel.includes('source') || combinedLabel.includes('find out')) {
+                    if (!(await input.inputValue())) { await input.pressSequentially('LinkedIn', { delay: 20 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('cloud')) {
                     if (!(await input.inputValue())) { await input.pressSequentially('AWS, GCP, Azure', { delay: 10 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('rate') || combinedLabel.includes('1-10') || combinedLabel.includes('1 to 10')) {
