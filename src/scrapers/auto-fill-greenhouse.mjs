@@ -32,7 +32,27 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     } catch(e) {}
 
     console.log("Waiting for form elements to load...");
-    await page.waitForSelector('#first_name', { timeout: 10000 }).catch(() => {});
+    await page.waitForSelector('#first_name', { timeout: 4000 }).catch(async () => {
+        // If form doesn't load immediately, we might be on a JD landing page that requires clicking "Apply"
+        const applyBtn = page.locator('button:has-text("Apply"), a:has-text("Apply")').first();
+        if (await applyBtn.count() > 0) {
+            console.log("Form not found. Clicking 'Apply' button to reveal form...");
+            await applyBtn.click().catch(() => {});
+            await page.waitForTimeout(2000);
+            
+            // Check for iframes AGAIN in case clicking Apply popped open an iframe
+            const iframe2 = await page.$('iframe[src*="greenhouse.io"], iframe#grnhse_iframe');
+            if (iframe2) {
+                const iframeSrc = await iframe2.getAttribute('src');
+                if (iframeSrc) {
+                    console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc}`);
+                    await page.goto(iframeSrc, { waitUntil: 'domcontentloaded' });
+                }
+            } else {
+                await page.waitForSelector('#first_name', { timeout: 6000 }).catch(() => {});
+            }
+        }
+    });
 
     console.log("Extracting Job Description context for Synthesizer...");
     try {
@@ -131,7 +151,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         
         if (await fileInput.count() > 0) {
             await fileInput.setInputFiles(path.resolve(resumePath));
-            await fileInput.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
             console.log("✅ Resume attached.");
         } else {
             console.log("❌ Could not locate Greenhouse file input structure.");
@@ -237,11 +256,33 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         } catch (e) {}
     };
 
+    const logUnmappedDom = async (locator, reason) => {
+        try {
+            const html = await locator.evaluate(el => {
+                const wrapper = el.closest('.field, .application-question') || el.parentElement;
+                return wrapper ? wrapper.outerHTML : el.outerHTML;
+            }).catch(()=>'');
+            
+            if (html) {
+                const logEntry = {
+                    timestamp: new Date().toISOString(),
+                    url: page.url(),
+                    reason: reason,
+                    html: html
+                };
+                const logPath = path.resolve('logs/unmapped_dom.jsonl');
+                if (!fs.existsSync(path.dirname(logPath))) fs.mkdirSync(path.dirname(logPath), { recursive: true });
+                fs.appendFileSync(logPath, JSON.stringify(logEntry) + '\n');
+            }
+        } catch(e) {}
+    };
+
     // Greenhouse explicitly separates First/Last name but employer templates often alter IDs
-    await safeFill('input[id*="first_name"], input[name*="first_name"], input[autocomplete*="given-name"], input[aria-label*="first name" i], input[placeholder*="first name" i]', profileConfig?.candidate?.full_name?.split(' ')[0] || 'Daniel');
-    await safeFill('input[id*="last_name"], input[name*="last_name"], input[autocomplete*="family-name"], input[aria-label*="last name" i], input[placeholder*="last name" i]', profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || 'Hardesty Lewis');
-    await safeFill('#email, input[id*="email"], input[name*="email"], input[type="email"], input[aria-label*="email" i], input[placeholder*="email" i]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
-    await safeFill('#phone, input[id*="phone"], input[name*="phone"], input[aria-label*="phone" i], input[placeholder*="phone" i]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    await safeFill('#first_name', profileConfig?.candidate?.first_name || 'Daniel');
+    await safeFill('#last_name', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
+    await safeFill('#email', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+    const safePhone = (profileConfig?.candidate?.phone || '7133717875').replace(/[\s\+\(\)\-]/g, '');
+    await safeFill('#phone', safePhone);
     await safeFill('#org', 'Homecastr');
     await safeFill('#job_application_employer', 'Homecastr');
     await safeFill('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
@@ -259,7 +300,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     await safeFill('input[placeholder*="LinkedIn"], input[placeholder*="linkedin"]', 'https://linkedin.com/in/dhardestylewis');
     await safeFill('input[placeholder*="GitHub"], input[placeholder*="github"]', 'https://github.com/dhardestylewis');
     // Phone - Greenhouse uses type=tel in some forms
-    await safeFill('input[type="tel"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    await safeFill('input[type="tel"]', safePhone);
 
     // Autocomplete Location fields (Greenhouse requires actual UI interaction for the auto-select dropdown)
     try {
@@ -310,7 +351,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 targetValue = 'No';
             } else if (lowerText.includes('authorized to work')) {
                 targetValue = 'Yes';
-            } else if (lowerText.includes('past 6 months') || lowerText.includes('previously applied')) {
+            } else if (lowerText.includes('relocat') || lowerText.includes('onsite') || lowerText.includes('hybrid') || lowerText.includes('office')) {
+                targetValue = 'Yes';
+            } else if (lowerText.includes('past 6 months') || lowerText.includes('previously applied') || lowerText.includes('previously worked')) {
                 targetValue = 'No';
             } else if (lowerText === 'country' || lowerText.includes('country code') || lowerText.includes('phone')) {
                 const phoneMatch = options.find(o => o && o.includes('+1'));
@@ -396,14 +439,22 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 let fillValue = null;
                 if ((lowerText.includes('phone') || lowerText.includes('dialing')) && (lowerText.includes('country') || lowerText.includes('code'))) fillValue = 'United States';
                 else if (lowerText.includes('gender') || lowerText.includes('identify') || lowerText.includes('sex')) fillValue = 'Male';
-                else if (lowerText.includes('hispanic') || lowerText.includes('latino')) fillValue = 'Yes';
-                else if (lowerText.includes('race')) fillValue = 'Hispanic or Latino';
+                else if (lowerText.includes('hispanic') || lowerText.includes('latino') || lowerText.includes('race') || lowerText.includes('ethnic')) fillValue = 'Hispanic';
                 else if (lowerText.includes('veteran')) fillValue = 'not a protected veteran';
-                else if (lowerText.includes('disability')) fillValue = 'Decline';
-                else if (lowerText.includes('authorized') || lowerText.includes('legally')) fillValue = 'Yes';
-                else if (lowerText.includes('relocat')) fillValue = 'Yes';
-                else if (lowerText.includes('sponsorship') || lowerText.includes('visa')) fillValue = 'No';
+                else if (lowerText.includes('disability')) fillValue = "I don't wish to answer";
+                else if (lowerText.includes('authorized') || lowerText.includes('legally') || lowerText.includes('u.s. person') || lowerText.includes('us person')) fillValue = 'Yes';
+                else if (lowerText.includes('relocat') || lowerText.includes('onsite') || lowerText.includes('hybrid') || lowerText.includes('office') || lowerText.includes('clearance') || lowerText.includes('salary') || lowerText.includes('comfortable')) fillValue = 'Yes';
+                else if (lowerText.includes('experience') || lowerText.includes('familiar') || lowerText.includes('hands-on')) fillValue = 'Yes';
+                else if (lowerText.includes('sponsorship') || lowerText.includes('visa') || lowerText.includes('previously worked')) fillValue = 'No';
                 else if (lowerText.includes('hear') || lowerText.includes('source')) fillValue = 'LinkedIn';
+                else if (lowerText.includes('school') || lowerText.includes('university') || lowerText.includes('college')) fillValue = 'Texas';
+                else if (lowerText.includes('degree')) fillValue = 'Bachelor';
+                else if (lowerText.includes('discipline') || lowerText.includes('major')) fillValue = 'Computer';
+                else if (lowerText.includes('language') || lowerText.includes('programming')) fillValue = 'Python';
+                else if (lowerText.includes('available to work') || lowerText.includes('start date')) fillValue = 'Immediately';
+                else if (lowerText.includes('metropolitan') || lowerText.includes('residence')) fillValue = 'New York';
+                else if (lowerText.includes('export') || lowerText.includes('sanctions') || lowerText.includes('confirm whether any of the below applies')) fillValue = 'None of the above';
+                else if (lowerText.includes('prior question') || lowerText.includes('none of the above')) fillValue = 'Not applicable';
                 
                 // Execute heuristic targeting if keyword mapped
                 if (fillValue) {
@@ -420,8 +471,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     const isAlreadyFilled = await box.evaluate(el => !!el.closest('div').querySelector('[class*="single-value"]'));
                     if (!isAlreadyFilled) {
                         await locator.fill("").catch(()=>{});
-                        await locator.pressSequentially(fillValue, { delay: 50 }).catch(()=>{});
-                        await page.waitForTimeout(600);
+                        await locator.pressSequentially(fillValue, { delay: 80 }).catch(()=>{});
+                        await page.waitForTimeout(800);
                         await locator.press('Enter').catch(()=>{});
                         await page.waitForTimeout(300);
                     }
@@ -433,6 +484,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     try {
                         const isFilled = await box.evaluate(el => !!el.closest('div').querySelector('[class*="single-value"]'));
                         if (!isFilled) {
+                            await logUnmappedDom(box, "React Select Fallback");
                             const id = await box.evaluate(el => el.getAttribute('id'));
                             const locator = id ? page.locator(`input.select__input[role="combobox"][id="${id}"]`).first() : box;
                             await locator.focus({ force: true }).catch(()=>{});
@@ -497,28 +549,32 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const lowerText = cleanText ? cleanText.toLowerCase() : '';
                 const combinedLabel = ariaLabel + " " + lowerText;
 
-                const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate');
+                const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate') || combinedLabel.includes('hardest') || combinedLabel.includes('impactful') || combinedLabel.includes('problem');
                 const isTechnical = combinedLabel.includes('describe') || combinedLabel.includes('experience') || combinedLabel.includes('background') || combinedLabel.includes('proud') || combinedLabel.includes('impressive') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('built') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your') || combinedLabel.includes('tools') || combinedLabel.includes('ai') || combinedLabel.includes('technologies');
 
                 if (combinedLabel.includes('years')) {
-                    if (!(await area.inputValue())) await area.fill("10");
+                    if (!(await area.inputValue())) { await area.fill("10"); await area.blur().catch(()=>{}); }
                 } else if (isBehavioral) {
                     const interest = profileConfig?.narrative?.interest_statement || exitStory;
-                    if (!(await area.inputValue())) await area.fill(interest);
+                    if (!(await area.inputValue())) { await area.fill(interest); await area.blur().catch(()=>{}); }
                 } else if (isTechnical) {
-                    if (!(await area.inputValue())) await area.fill(exitStory);
+                    if (!(await area.inputValue())) { await area.fill(exitStory); await area.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
-                    if (!(await area.inputValue())) await area.fill(catchAll);
+                    if (!(await area.inputValue())) { await area.fill(catchAll); await area.blur().catch(()=>{}); }
                 } else {
                     // Fallback: any required unfilled textarea gets catchAll
                     const isReq = await area.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
-                    if (isReq && !(await area.inputValue())) await area.fill(catchAll);
+                    if (isReq && !(await area.inputValue())) { 
+                        await logUnmappedDom(area, "Textarea Fallback");
+                        await area.fill(catchAll); 
+                        await area.blur().catch(()=>{}); 
+                    }
                 }
             } catch(e) {}
         }
         
         // Scan custom inputs directly reading Aria labels to bypass broken parent DOM hierarchies
-        const allInputs = await page.$$('input[type="text"]');
+        const allInputs = await page.$$('input[type="text"]:not([role="combobox"]):not(.select__input):not([id*="react-select"])');
         for (const input of allInputs) {
             try {
                 const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
@@ -532,46 +588,74 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const isTechnical = combinedLabel.includes('describe') || combinedLabel.includes('experience') || combinedLabel.includes('background') || combinedLabel.includes('proud') || combinedLabel.includes('impressive') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('built') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your') || combinedLabel.includes('tools') || combinedLabel.includes('ai') || combinedLabel.includes('technologies');
                 
                 if (combinedLabel.includes('years')) {
-                    if (!(await input.inputValue())) await input.fill("10");
-                } else if (isBehavioral) {
-                    const interest = profileConfig?.narrative?.interest_statement || exitStory;
-                    if (!(await input.inputValue())) await input.fill(interest);
-                } else if (isTechnical) {
-                    if (!(await input.inputValue())) await input.fill(exitStory);
-                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
-                    if (!(await input.inputValue())) await input.fill(catchAll);
+                    if (!(await input.inputValue())) { await input.pressSequentially("10", {delay: 50}); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('salary') || combinedLabel.includes('compensation') || combinedLabel.includes('expectations') || combinedLabel.includes('package')) {
-                    if (!(await input.inputValue())) await input.fill(minComp.toString());
+                    if (!(await input.inputValue())) { await input.fill(minComp.toString()); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('notice period') || ariaLabel.includes('available to start')) {
-                    if (!(await input.inputValue())) await input.fill("2-4 weeks");
+                    if (!(await input.inputValue())) { await input.fill("2-4 weeks"); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('linkedin')) {
-                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.linkedin || '');
+                    let li = profileConfig?.candidate?.linkedin || '';
+                    if (li && !li.startsWith('http')) li = 'https://www.' + li.replace(/^www\./, '');
+                    if (!(await input.inputValue())) { await input.fill(li); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('website') || ariaLabel.includes('portfolio') || ariaLabel.includes('github')) {
                     const u = ariaLabel.includes('website') || ariaLabel.includes('portfolio') ? profileConfig?.candidate?.portfolio_url : profileConfig?.candidate?.github;
-                    if (!(await input.inputValue())) await input.fill(u || '');
+                    if (!(await input.inputValue())) { await input.fill(u || ''); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('preferred') || ariaLabel.includes('pronounce')) {
                     const name = profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel";
-                    if (!(await input.inputValue())) await input.fill(name);
+                    if (!(await input.inputValue())) { await input.fill(name); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('title')) {
-                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.title || 'Engineer');
+                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.title || 'Engineer'); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('first name') || combinedLabel.includes('given name')) {
-                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel");
+                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.full_name?.split(' ')[0] || "Daniel"); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('last name') || combinedLabel.includes('family name')) {
-                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || "Hardesty Lewis");
+                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.full_name?.split(' ').slice(1).join(' ') || "Hardesty Lewis"); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('email')) {
-                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.email || "daniel@homecastr.com");
+                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.email || "daniel@homecastr.com"); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
-                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.phone || "+1 (713) 371-7875");
+                    const sanitizedPhone = (profileConfig?.candidate?.phone || "7133717875").replace(/[\s\+\(\)\-]/g, '');
+                    if (!(await input.inputValue())) { await input.fill(sanitizedPhone); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('location') || combinedLabel.includes('city') || combinedLabel.includes('address')) {
+                    if (!(await input.inputValue())) {
+                        await input.fill("New York, NY");
+                        await input.blur().catch(()=>{});
+                        await page.waitForTimeout(800);
+                        await input.press('ArrowDown').catch(()=>{});
+                        await page.waitForTimeout(200);
+                        await input.press('Enter').catch(()=>{});
+                    }
+                } else if (combinedLabel.includes('gpa') || combinedLabel.includes('grade')) {
+                    if (!(await input.inputValue())) { await input.fill("4.0"); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('company') || combinedLabel.includes('employer')) {
+                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.current_company || "Stealth"); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('legal name') || combinedLabel.includes('full name') || combinedLabel.includes('signature')) {
-                    if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.full_name || "Daniel Hardesty Lewis");
+                    if (!(await input.inputValue())) { await input.fill(profileConfig?.candidate?.full_name || "Daniel Hardesty Lewis"); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('ldap') || combinedLabel.includes('employee id')) {
-                    if (!(await input.inputValue())) await input.fill("N/A");
+                    if (!(await input.inputValue())) { await input.fill("N/A"); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('willing') || combinedLabel.includes('relocate') || combinedLabel.includes('hybrid') || combinedLabel.includes('office')) {
-                    if (!(await input.inputValue())) await input.fill('Yes');
+                    if (!(await input.inputValue())) { await input.fill('Yes'); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('specify') && combinedLabel.includes('if you chose')) {
+                    if (!(await input.inputValue())) { await input.fill('LinkedIn'); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('cloud')) {
+                    if (!(await input.inputValue())) { await input.pressSequentially('AWS, GCP, Azure', { delay: 10 }); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('rate') || combinedLabel.includes('1-10') || combinedLabel.includes('1 to 10')) {
+                    if (!(await input.inputValue())) { await input.pressSequentially('10', { delay: 10 }); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('how much experience') || combinedLabel.includes('years of experience')) {
+                    if (!(await input.inputValue())) { await input.pressSequentially('10+ years', { delay: 10 }); await input.blur().catch(()=>{}); }
+                } else if (isBehavioral) {
+                    const interest = profileConfig?.narrative?.interest_statement || exitStory;
+                    if (!(await input.inputValue())) { await input.fill(interest); await input.blur().catch(()=>{}); }
+                } else if (isTechnical) {
+                    if (!(await input.inputValue())) { await input.fill(exitStory); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
+                    if (!(await input.inputValue())) { await input.fill(catchAll); await input.blur().catch(()=>{}); }
                 } else {
                     // Fallback: any unfilled required input gets the catchAll answer
                     const isReq = await input.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
-                    if (isReq && !(await input.inputValue())) await input.fill("N/A - See Resume");
+                    if (isReq && !(await input.inputValue())) { 
+                        await logUnmappedDom(input, "Text Input Fallback");
+                        await input.fill("N/A - See Resume"); 
+                        await input.blur().catch(()=>{}); 
+                    }
                 }
             } catch(e) {}
         }
@@ -588,7 +672,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     return ctx ? ctx.textContent.replace(/\s+/g, ' ').trim().substring(0, 300).toLowerCase() : '';
                 }).catch(()=>'');
 
-                if (isReq || name.includes('gdpr') || name.includes('consent') || name.includes('terms') || name.includes('agree') || labelText.includes('agree') || labelText.includes('confirm') || labelText.includes('certify') || labelText.includes('acknowledge') || labelText.includes('understand') || labelText.includes('policy') || labelText.includes('consent')) {
+                const isExportControl = labelText.includes('cuba') || labelText.includes('iran') || labelText.includes('syria') || labelText.includes('korea') || labelText.includes('russia') || labelText.includes('belarus') || labelText.includes('export') || labelText.includes('sanctions') || labelText.includes('prior question');
+                
+                if (isExportControl) {
+                    if (labelText.includes('none of the above') || labelText.includes('not applicable') || labelText.includes('none of these apply')) {
+                        if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
+                    }
+                } else if (isReq || name.includes('gdpr') || name.includes('consent') || name.includes('terms') || name.includes('agree') || labelText.includes('agree') || labelText.includes('confirm') || labelText.includes('certify') || labelText.includes('acknowledge') || labelText.includes('understand') || labelText.includes('policy') || labelText.includes('consent')) {
                     if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
                 }
             } catch(e) {}
