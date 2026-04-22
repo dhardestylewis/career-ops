@@ -338,3 +338,13 @@ Write one TSV file per evaluation to `batch/tracker-additions/{num}-{company-slu
 - No markdown bold (`**`) in status field
 - No dates in status field (use the date column)
 - No extra text (use the notes column)
+
+### ATS Automation Debugging Protocol
+
+1. **NEVER GUESS FROM CODE ALONE**: When fixing an ATS (Greenhouse/Lever/Ashby) failure, DO NOT attempt to write patches based solely on the DOM structure implied by `auto-fill-greenhouse.mjs`. 
+2. **READ THE JSON SNAPSHOTS**: You MUST always read the exact JSON form-state receipt located in `logs/snapshots/` to trace back the exact failure point. The snapshot reveals exactly what fields were left "Unanswered" or incorrectly mapped.
+3. **REACT VIRTUAL DOM TRAPS**: 
+   - Playwright's `.fill()` command fails to trigger React `onChange` listeners. Always use `.pressSequentially()` for text inputs.
+   - React Selects filter via substring matching. You must explicitly search for and click the perfectly matched dropdown option (`div[class*="option"]`) instead of blindly pressing `Enter`.
+   - Greenhouse dynamically hides native `<select>` tags (`display: none`). You MUST pass `{ force: true }` to Playwright's `selectOption` to bypass visibility checks.
+4. **CATCH-ALL DEFAULTS**: For unmapped boolean/binary questions, the safest global default is always `No`. Blindly defaulting to `Yes` for compliance questions (e.g. Non-Competes, Visa Sponsorship) is destructive.

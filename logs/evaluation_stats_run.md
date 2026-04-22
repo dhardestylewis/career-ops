@@ -12,3 +12,8 @@
 | https://databricks.com/company/careers/open-p... | 75% | 20 | 15 | Incomplete | 5 |
 | https://job-boards.greenhouse.io/scaleai/jobs... | 80% | 5 | 4 | Incomplete | 1 |
 | https://databricks.com/company/careers/open-p... | 76% | 21 | 16 | Incomplete | 5 |
+| https://boards.greenhouse.io/figma/jobs/58029... | 63% | 8 | 5 | Incomplete | 3 |
+| https://coreweave.com/careers/job?4607559006&... | 40% | 10 | 4 | Incomplete | 6 |
+| https://job-boards.greenhouse.io/scaleai/jobs... | 80% | 5 | 4 | Incomplete | 1 |
+| https://careers.withwaymo.com/jobs?gh_jid=656... | 29% | 17 | 5 | Incomplete | 12 |
+| https://job-boards.greenhouse.io/scaleai/jobs... | 80% | 5 | 4 | Incomplete | 1 |
