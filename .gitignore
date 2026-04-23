@@ -30,3 +30,6 @@ package-lock.json
 data/chrome-bot-profile/
 scratch/
 logs/
+
+credentials.json
+token.json

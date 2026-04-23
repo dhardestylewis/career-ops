@@ -45,7 +45,11 @@ const targets = [
 
 const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";
 
-console.log(`Starting headless multi-tab validation over ${targets.length} queued endpoints...`);
+// Limit the run to 50 randomly selected endpoints to prevent memory exhaustion
+const RUN_LIMIT = targets.length;
+const selectedTargets = targets.slice(0, RUN_LIMIT);
+
+console.log(`Starting headless multi-tab validation over ${selectedTargets.length} queued endpoints (from total ${targets.length})...`);
 
 (async () => {
     const statsStore = [];
@@ -88,8 +92,8 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
         window.navigator.chrome = { runtime: {} };
     });
 
-    for (let i = 0; i < targets.length; i += chunkSize) {
-        const chunk = targets.slice(i, i + chunkSize);
+    for (let i = 0; i < selectedTargets.length; i += chunkSize) {
+        const chunk = selectedTargets.slice(i, i + chunkSize);
         console.log(`\nDispatching multi-tab concurrent rendering chunk [${i + 1} to ${i + chunk.length} of ${targets.length}]...`);
         
         const chunkPromises = chunk.map(async (target) => {
@@ -112,15 +116,11 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
                 }
                 
                 console.log(`[${type}] ✅ Fill Rate: ${metrics.fillPercentage}% (${metrics.filled}/${metrics.total} fields) on ${url} -> ${metrics.status}`);
-                if (metrics.status !== 'Success_Unverified' && metrics.status !== 'Success') {
-                    // await page.close(); // Temporarily disabled: keep all executed tabs alive
-                } else {
-                    console.log(`⚠️ Keeping ${url} tab alive for potential CAPTCHA verification.`);
-                }
+                await page.close();
                 return { url, status: metrics.status || 'Success', ...metrics };
             } catch (error) {
                 console.log(`[${type}] ❌ Script Error/Crash on ${url}`);
-                // await page.close(); // Temporarily disabled to prevent losing CAPTCHA tabs that errantly throw
+                await page.close();
                 return { url, status: 'Error', fillPercentage: 0 };
             }
         });
@@ -149,8 +149,34 @@ console.log(`Starting headless multi-tab validation over ${targets.length} queue
             }
         }
         if (!fs.existsSync('logs')) fs.mkdirSync('logs');
-        fs.writeFileSync('logs/evaluation_stats_run.md', markdown);
+        if (!fs.existsSync('logs/runs')) fs.mkdirSync('logs/runs');
+        
+        // Save the permanent timestamped markdown log
+        const runTimestamp = new Date().toISOString().replace(/[:.]/g, '-');
+        fs.writeFileSync(`logs/runs/evaluation_stats_run_${runTimestamp}.md`, markdown);
+        
+        // Also update the convenience pointer
+        fs.writeFileSync('logs/evaluation_stats_run_latest.md', markdown);
+        
         fs.writeFileSync('logs/missing_dom.json', JSON.stringify(missingDOMData, null, 2));
+
+        // Append to persistent time-series tracker
+        const trackerFile = 'logs/fill_rate_tracker.tsv';
+        if (!fs.existsSync(trackerFile)) {
+            fs.writeFileSync(trackerFile, 'Timestamp\tGitHash\tDomain\tURL\tFillPercentage\tFilled\tTotal\tUnmapped\n');
+        }
+        const timestamp = new Date().toISOString();
+        let gitHash = 'unknown';
+        try {
+            gitHash = require('child_process').execSync('git rev-parse HEAD', { encoding: 'utf8' }).trim();
+        } catch(e) {}
+        let trackerData = '';
+        for (const stat of statsStore) {
+            const domain = stat.domain || (stat.url.includes('greenhouse.io') || stat.url.includes('gh_jid') ? 'greenhouse' : 'unknown');
+            const unmappedCount = stat.missingDOM ? stat.missingDOM.length : 0;
+            trackerData += `${timestamp}\t${gitHash}\t${domain}\t${stat.url}\t${stat.fillPercentage || 0}\t${stat.filled || 0}\t${stat.total || 0}\t${unmappedCount}\n`;
+        }
+        fs.appendFileSync(trackerFile, trackerData);
     }
     
     console.log("\n==================================");

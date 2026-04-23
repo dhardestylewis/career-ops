@@ -148,7 +148,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const jdText = await jdContainer.allInnerTexts();
                 fs.writeFileSync(path.resolve('data/job_description.txt'), jdText.join('\n\n'));
                 import('child_process').then(({ spawnSync }) => {
-                    spawnSync('node', [path.resolve('generate-cover-letter.mjs')], { stdio: 'inherit' });
+                    spawnSync('node', [path.resolve('src/generator/generate-cover-letter.mjs')], { stdio: 'inherit' });
                 });
             } else {
                 console.log("Cover Letter is optional and no dynamic QA needed. Bypassing synthesis.");
@@ -199,6 +199,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             
             if (await fileInput.count() > 0) {
                 await fileInput.setInputFiles(path.resolve(resumePath));
+                await fileInput.evaluate(node => {
+                    const tracker = node._valueTracker;
+                    if (tracker) tracker.setValue(node.value);
+                    node.dispatchEvent(new Event('change', { bubbles: true }));
+                }).catch(()=>{});
                 console.log("✅ Resume attached natively via input override.");
             } else {
                 console.log("❌ Could not locate Greenhouse file input structure.");
@@ -219,13 +224,21 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const clInputs = page.locator('input[type="file"][name*="cover"], input[type="file"][name*="comment"]');
             if (await clInputs.count() > 0) {
                 await clInputs.first().setInputFiles(clPath);
-                await clInputs.first().evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                await clInputs.first().evaluate(node => {
+                    const tracker = node._valueTracker;
+                    if (tracker) tracker.setValue(node.value);
+                    node.dispatchEvent(new Event('change', { bubbles: true }));
+                }).catch(()=>{});
                 console.log("✅ Cover letter explicit attachment found.");
             } else {
                 const genericFileInputs = page.locator('input[type="file"]');
                 if (await genericFileInputs.count() > 1) {
                     await genericFileInputs.nth(1).setInputFiles(clPath);
-                    await genericFileInputs.nth(1).evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                    await genericFileInputs.nth(1).evaluate(node => {
+                        const tracker = node._valueTracker;
+                        if (tracker) tracker.setValue(node.value);
+                        node.dispatchEvent(new Event('change', { bubbles: true }));
+                    }).catch(()=>{});
                     console.log("✅ Cover letter generic attachment filled.");
                 }
             }
@@ -391,6 +404,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const isMatchOption = (optText, targetValue) => {
                 const lowerOpt = optText.toLowerCase().trim();
                 const lowerTarget = targetValue.toLowerCase().trim();
+                
+                // Protect against "female" matching "male"
+                if (lowerTarget === 'male' && lowerOpt.includes('female')) return false;
+                if (lowerTarget === 'man' && lowerOpt.includes('woman')) return false;
+                
                 let isMatch = lowerOpt === lowerTarget || lowerOpt.startsWith(lowerTarget) || lowerOpt.includes(lowerTarget);
                 if (!isMatch && lowerTarget.includes('texas at austin')) {
                     isMatch = lowerOpt.includes('texas at austin') || lowerOpt.includes('texas - austin') || lowerOpt.includes('texas, austin');
@@ -490,7 +508,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 });
                 await input.focus({ force: true }).catch(()=>{});
                 await input.fill("").catch(()=>{});
-                await input.pressSequentially(targetValue, { delay: 50 }).catch(()=>{});
+                
+                // If target is Decline or Acknowledge, don't filter aggressively because the literal text varies
+                const searchStr = ['decline', 'acknowledge', 'expert', 'proficient'].includes(targetValue.toLowerCase()) ? ' ' : targetValue;
+                
+                await input.pressSequentially(searchStr, { delay: 50 }).catch(()=>{});
                 await page.waitForTimeout(2000); // Wait for options to render from API
                 
                 // Try to click the exact option
@@ -611,12 +633,21 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (match) {
                     console.log(`[Mapper] Native Select: Selected "${match}" for ID: ${targetId}`);
                     await input.selectOption({ label: match }, { force: true }).catch(()=>{});
-                    await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                    await input.evaluate(node => {
+                        const tracker = node._valueTracker;
+                        if (tracker) tracker.setValue(node.value);
+                        node.dispatchEvent(new Event('change', { bubbles: true }));
+                    }).catch(()=>{});
                     await page.waitForTimeout(200);
                     return true;
                 }
             } else if ((tagName === 'input' && ['text', 'tel', 'email', 'url', 'number', 'password'].includes(type.toLowerCase())) || tagName === 'textarea') {
                 // Strategy: Text Input
+                // Protect against mapping "Yes"/"No" to textareas
+                if (tagName === 'textarea' && (targetValue === 'Yes' || targetValue === 'No' || targetValue === 'check' || targetValue === 'uncheck')) {
+                    return false;
+                }
+                
                 if (!(await input.inputValue())) {
                     await input.focus().catch(()=>{});
                     await input.pressSequentially(targetValue, { delay: 15 }).catch(()=>{});
@@ -644,6 +675,26 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
                         return true;
                     }
+                } else {
+                    // The targetValue is a string (like 'Decline', 'Male', etc.), and this is a radio array.
+                    // We need to find the correct radio button in this field container.
+                    const fieldContainer = await input.evaluateHandle(el => el.closest('.application-field, .application-question')).catch(()=>null);
+                    if (fieldContainer) {
+                        const labels = await fieldContainer.$$('label');
+                        for (const lbl of labels) {
+                            const text = await lbl.innerText().catch(()=>'');
+                            if (isMatchOption(text, targetValue)) {
+                                const radio = await lbl.$('input[type="radio"], input[type="checkbox"]');
+                                if (radio) {
+                                    if (!(await radio.isChecked().catch(()=>false))) {
+                                        await radio.check({ force: true }).catch(()=>{});
+                                        await radio.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                                    }
+                                    return true;
+                                }
+                            }
+                        }
+                    }
                 }
             }
         } catch(e) {}
@@ -664,17 +715,42 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         { question: /veteran/i, value: 'No' },
         { question: /disability/i, value: 'No' },
         { question: /^country\b/i, value: domainOverrides.country || 'United States' },
+        { question: /address|mailing address/i, value: '155 Claremont Ave, New York, NY 10027' },
         { question: /how did you.*hear|find out/i, value: 'LinkedIn' },
+        { question: /pronoun/i, value: 'He/him' },
+        { question: /salary.*expect|compensation/i, value: '$200,000+' },
+        { question: /^degree\b|highest level of education/i, value: 'Bachelor' },
+        { question: /^discipline\b|highest level degree in/i, value: 'Computer Science' },
+        { question: /^school\b/i, value: 'Concordia University Texas' },
+        { question: /start date year|start year/i, value: '2012' },
+        { question: /end date year|end year|graduation year/i, value: '2018' },
+        { question: /^(?!.*(?:russia|belarus)).*(?:comfortable with this requirement|hybrid|onsite|relocat)/i, value: 'Yes' },
+        { question: /do you have.*experience|years.*experience|experience with|familiar with|experience using|experience working/i, value: 'Yes' },
+        { question: /quebec/i, value: 'No' },
+        { question: /data privacy notice/i, value: 'Acknowledge' },
+        { question: /recording.*interview|record.*formats/i, value: 'Acknowledge' },
         { question: /please specify here/i, value: 'N/A' },
         { question: /^are you a current.*employee/i, value: 'No' },
-        { question: /current company/i, value: profileConfig?.candidate?.company || 'Homecastr' },
+        { question: /current.*company|current firm|most recent company/i, value: profileConfig?.candidate?.company || 'Homecastr' },
         { question: /preferred programming language/i, value: 'Python' },
         { question: /past 6 months|previously applied|previously worked|worked for.*before|former.*employee/i, value: 'No' },
         { question: /18\+ years of age|18 or older/i, value: 'Yes' },
-        { question: /available to work as a full|soonest you can start/i, value: 'Now' },
+        { question: /available to work as a full|soonest you can start|earliest.*start/i, value: 'Now' },
+        { question: /technical skills/i, value: 'Expert' },
+        { question: /gpa.*undergraduate|undergraduate gpa/i, value: '3.4' },
+        { question: /gpa.*graduate|graduate gpa/i, value: 'Not applicable' },
+        { question: /gpa.*doctorate|doctorate gpa/i, value: 'Not applicable' },
+        { question: /sat score/i, value: 'Not applicable' },
+        { question: /act score/i, value: 'Not applicable' },
+        { question: /gre score/i, value: 'Not applicable' },
+        { question: /security clearance/i, value: 'None' },
+        { question: /spacex employment/i, value: 'No' },
+        { question: /accommodations/i, value: 'Yes' },
+        { question: /citizenship status/i, value: 'U.S. Citizen' },
         { question: /type of visa sponsorship/i, value: 'None' },
         { question: /phd/i, value: 'No' },
-        { question: /relocate|on-site|onsite|hybrid|in person in our|in our.*office|in-office/i, value: 'Yes' },
+        { question: /indian national/i, value: 'No' },
+        { question: /working status in india/i, value: 'Not applicable' },
         { question: /restrict your ability to work|non-compete/i, value: 'No' },
         { question: /preferred first name/i, value: profileConfig?.candidate?.first_name || 'Daniel' },
         { question: /legal name/i, value: (profileConfig?.candidate?.first_name || 'Daniel') + ' ' + (profileConfig?.candidate?.last_name || 'Hardesty Lewis') },
@@ -694,7 +770,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         { question: /NeurIPS|ICML|CVPR/i, value: 'check' },
         { question: /^Generative AI|^Natural Language Processing|Recommendation Systems/i, value: 'check' },
         { question: /google scholar/i, value: profileConfig?.candidate?.scholar || 'https://scholar.google.com/citations?user=Gk740W4AAAAJ' },
-        { question: /why applied intuition/i, value: 'I am highly motivated by frontier research and building applied AI systems that solve tangible, high-impact problems. Having built models at national scales and successfully founded multiple companies, my objective now is to join an intensely focused technical team pushing the boundaries of what is possible in the ML space.' },
+        { question: /why applied intuition/i, value: 'I am highly motivated by frontier research and building applied AI systems that solve tangible, high-impact problems.' },
         { question: /hardest thing you’ve done/i, value: 'Architecting and scaling the data aggregation and real-time inference pipeline for a national real estate prediction model completely solo. Ensuring fault-tolerance and sub-second latency across millions of rows of data required mastering completely new distributed systems paradigms on the fly.' },
         { question: /highest quality work of your life/i, value: 'Building the state-of-the-art property valuation model at Homecastr. It represents the culmination of my experience in ML, systems engineering, and geospatial data, beating commercial benchmarks while operating efficiently at scale.' },
         { question: /steps did you take to become the best/i, value: 'Relentless curiosity, diving into research papers to understand the mathematical foundations of models rather than treating them as black boxes, and consistently building end-to-end systems from infrastructure to inference to understand the holistic lifecycle of a product.' },

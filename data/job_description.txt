@@ -1,1 +1,118 @@
-Benefits 
+We look forward to getting to know you!
+Working Student AI Engineering (m/w/d)
+Hours: Intern/working student
+Location: Bad Neuenahr-Ahrweiler, Berlin, Cologne
+
+Team: Engineering
+
+Apply now
+
+Why Scout24?
+Sprengnetter, part of the Scout24 Group since 2023, has been simplifying real estate valuation since 1978, making the process more secure and efficient. The company supports partners in the lending and real estate industries with innovative software solutions, up-to-date market data, professional services, industry literature, and a wide range of training opportunities. Through subsidiaries in Austria and Italy, Sprengnetter is also driving the internationalization of its business. With over 200 employees, the company sets standards in the industry. If this sounds interesting to you, we look forward to welcoming you to our team! Even if you may not meet all the job requirements, we are eager to see the value you can bring to our team. Grow with us! Welcome home!
+
+
+In addition to our team and our company culture, we offer great benefits that make Scout24 a fantastic place to work! 
+
+Flexibility: Decide for yourself where you work most effectively. We offer a hybrid work model with two days a week in the office, and you’re free to organize the rest of your time as you see fit. We offer 20 days of vacation per year.
+Use our products: As an employee, you can use our Plus membership for renters on ImmoScout24 to find a new apartment.
+Professional development: Comprehensive, certified, and internationally recognized professional development programs from the Sprengnetter Academy
+We are a tech company: We work with the latest technical tools and state-of-the-art hardware.
+
+ 
+Hours: 20 hours/week 
+Desired start date: immediately 
+Duration: at least 1 year (You must be enrolled at an accredited institution of higher education for at least one more year, and we ask that you specify this when applying) 
+ 
+We are transforming the technology foundation of Germany's leading real estate valuation platform. As we explore the role of AI and intelligent automation of our product landscape, we are looking for a curious, technically sharp working student to help us turn our hypotheses into evidence and to test our early prototypes and help us scale.
+
+
+What are we looking for in you?
+
+You will build and test proof of concepts that help us answer specific architectural and product questions - things like :
+
+can this use case be supported by AI?
+What LLMs work better for our solution?
+What happens when the solution encounters something it did not expect?
+How can I validate and set gold standards for model rating?
+
+
+What skills do you already bring to the table?
+
+Familiarity with LLM APIs
+Basic understanding how to turn prompts to code
+Basic understanding of REST APIs and System Integration
+Basic understanding of model validation and confusion matrices
+Lot of curiosity
+Bonus : Interest in regulated domains
+Experience in the effective use of AI tools to boost productivity and solve problems
+
+We want to further expand the diversity of our company and provide appropriate career support for people with disabilities. We have a representative for employees with severe disabilities who will support you throughout the application process. If you need this support, please let us know in advance.
+
+Apply for this position
+
+Send us your documents and tell us why you want to join us.
+
+Vorname *
+Nachname *
+E-Mail *
+Telefon *
+Lebenslauf (pdf, doc, docx, txt, rtf) *
+Choose file
+Anschreiben (pdf, doc, docx, txt, rtf)
+Choose file
+LinkedIn Profile
+Website
+How did you hear about this job?
+Aktuelle Immatrikulationsbescheinigung/ Current enrollment certificate (pdf, doc, docx, txt, rtf) *
+Choose file
+
+Do you have a severe disability or equal status and wish to involve the representative body for disabled employees in your application process? (voluntary disclosure)
+
+ Yes
+ No
+ I prefer not to answer
+
+Wenn du auch für weitere Positionen in der Scout24-Gruppe berücksichtigt werden möchtest, brauchen wir dein Einverständnis.
+Ich erteile meine Einwilligung in die Speicherung, Verarbeitung, und Weitergabe meiner personenbezogenen Daten gemäß den hier abrufbaren, näheren Informationen zur Einwilligungserklärung. Ich kann meine Einwilligung jederzeit mit Wirkung für die Zukunft widerrufen.
+
+If you want to be considered for any other job positions within the Scout24 Group, we need your agreement. 
+I agree to the collection, processing and use of my application and personal data in accordance with the linked terms of use regarding the processing of my application and personal data. I may revoke my consent at any time with regard to the future processing of my personal data.
+
+Datenschutzrechtliche Einwilligungserklärung / Data protection consent *
+
+ Ich willige ein/ I agree
+What is your desired salary (EUR/hour)? *
+
+Demographic questions
+
+Dear potential Scout, we genuinely care about diversity and inclusion therefore we hope you can answer our question which will be processed as anonymized data for statistical reasons to foster inclusivity and diversity. This data is separated from the recruitment process. Should you choose to not participate, simply click "I don't wish to answer". Not participating will not have any negative impact on your application, and your answer will not be identified with you individually. Thank you in advance!    Liebe/r potenzielle/r Scout, Diversität und Inklusion liegen uns am Herzen. Daher hoffen wir, dass du unsere Frage beantworten kannst. Diese wird aus statistischen Gründen anonymisiert verarbeitet, um Inklusion und Diversität zu fördern. Diese Daten beeinflussen nicht den Rekrutierungsprozess. Solltest du dich gegen eine Teilnahme entscheiden, klicke einfach auf „I don't wish to answer“. Eine Nichtteilnahme hat keine negativen Auswirkungen auf deine Bewerbung und deine Antwort wird nicht direkt deiner Person zugeordnet. Vielen Dank im Voraus!
+
+What gender do you identify as? / Mit welchem Geschlecht identifizierst du dich? *
+
+ Male / männlich
+ Female / weiblich
+ Non-binary / nicht-binär
+ Other Self-Identification / Andere Selbstidentifikation
+ I don't wish to answer
+
+ 
+
+Bewerbung abschicken
+Your contact person
+Alice Wrede
+Head of Talent Acquisition
+Fulya Sugecmez
+Senior Talent Acquisition Manager
+Akash Praharaj
+Senior Talent Acquisition Manager
+Cassy Elsner
+Senior Talent Acquisition Manager
+Send E-mail
+Diversity, Equity and Inclusion
+
+At Scout24, we value and promote the diversity that our employees bring to the company in terms of individual characteristics, talents and perspectives. Because we are convinced that it is precisely this diversity that forms the basis of our success. People can only give their best when they feel safe, valued and respected as individuals. Everyone is welcome here - regardless of gender, gender identity, sexual identity, skin color, citizenship, history of migration, religion or ideology, disability, age or marital status. Scout24 aims to support and promote all employees in the best possible way. With our 58 nationalities, we live diversity and want to further strengthen diversity in our company. The more diverse our teams are, the more experience and ideas flow into our products. This allows us to tailor them even better to the needs of our customers. An inclusive working environment also increases employee loyalty and motivation.
+
+More about Diversity, Equity and Inclusion
+Office and team impressions
+Got to previous slide
+Got to previous slide
