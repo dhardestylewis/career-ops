@@ -705,3 +705,418 @@
 - [ ] https://jobs.lever.co/zoox/6fd52e5d-88ca-48df-a1af-463b9db66b74 | Zoox | Supply Chain Program Manager
 - [ ] https://jobs.lever.co/zoox/30aabe35-28ba-41a6-a8b9-5352050b8c18 | Zoox | Technical Program Manager, Logistics
 - [ ] https://jobs.lever.co/zoox/7bf2a9b3-8aa5-4950-b8b8-14306ef1069f | Zoox | Technical Program Manager, PMO AI & Product Software (Contract)
+
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5055488008 | anthropic | Applied AI Engineer
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5198108008 | anthropic | Research Engineer, Machine Learning (RL Velocity)
+- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5198074008 | anthropic | Research Engineer, Machine Learning (RL Velocity)
+- [ ] https://stripe.com/jobs/search?gh_jid=7286376 | stripe | AI/ML Engineering Manager, Payment Intelligence
+- [ ] https://stripe.com/jobs/search?gh_jid=7809414 | stripe | Data Scientist
+- [ ] https://stripe.com/jobs/search?gh_jid=5895430 | stripe | Data Scientist
+- [ ] https://stripe.com/jobs/search?gh_jid=7712852 | stripe | Engineering Manager, Machine Learning Platform
+- [ ] https://stripe.com/jobs/search?gh_jid=7079044 | stripe | Machine Learning Engineer, Payments ML Accelerator
+- [ ] https://stripe.com/jobs/search?gh_jid=7629052 | stripe | Machine Learning Engineer, Stripe Assistant 
+- [ ] https://stripe.com/jobs/search?gh_jid=7384709 | stripe | Machine Learning Engineer, Supportability
+- [ ] https://stripe.com/jobs/search?gh_jid=7813942 | stripe | Machine Learning Engineer, Support Experience
+- [ ] https://stripe.com/jobs/search?gh_jid=7285974 | stripe | PhD Data Scientist, Intern
+- [ ] https://stripe.com/jobs/search?gh_jid=7216664 | stripe | PhD Machine Learning Engineer, Intern
+- [ ] https://stripe.com/jobs/search?gh_jid=7216668 | stripe | PhD Machine Learning Engineer, New Grad
+- [ ] https://stripe.com/jobs/search?gh_jid=7376835 | stripe | Software Engineer, Machine Learning Infrastructure
+- [ ] https://stripe.com/jobs/search?gh_jid=7568328 | stripe | Staff Data Scientist
+- [ ] https://careers.airbnb.com/positions/7716341?gh_jid=7716341 | airbnb | Machine Learning Engineer, Community Support Engineering
+- [ ] https://careers.airbnb.com/positions/7826337?gh_jid=7826337 | airbnb | Machine Learning Engineer, Customer Support Engineering
+- [ ] https://careers.airbnb.com/positions/7669906?gh_jid=7669906 | airbnb | Machine Learning Engineering Intern (PhD)
+- [ ] https://careers.airbnb.com/positions/7662244?gh_jid=7662244 | airbnb | Senior Data Scientist, Causal Inference
+- [ ] https://careers.airbnb.com/positions/7446449?gh_jid=7446449 | airbnb | Senior Data Scientist - Inference, Global Markets
+- [ ] https://careers.airbnb.com/positions/7594971?gh_jid=7594971 | airbnb | Senior Data Scientist, Platform (Algorithms/Trust)
+- [ ] https://careers.airbnb.com/positions/7526372?gh_jid=7526372 | airbnb | Senior Data Scientist, Platform - Identity/Algorithms
+- [ ] https://careers.airbnb.com/positions/7755758?gh_jid=7755758 | airbnb |  Senior Machine Learning Engineer, Payments
+- [ ] https://careers.airbnb.com/positions/7672101?gh_jid=7672101 | airbnb | Senior/ Manager, Machine Learning, Community Support Products
+- [ ] https://careers.airbnb.com/positions/7107054?gh_jid=7107054 | airbnb | Senior Staff Data Scientist, Guest & Host Marketplace AI
+- [ ] https://careers.airbnb.com/positions/7005605?gh_jid=7005605 | airbnb | Senior Staff Machine Learning Engineer, Communication & Connectivity
+- [ ] https://careers.airbnb.com/positions/7693033?gh_jid=7693033 | airbnb | Senior/Staff Machine Learning Engineer, Community Support Engineering
+- [ ] https://careers.airbnb.com/positions/6757302?gh_jid=6757302 | airbnb | Senior Staff Machine Learning Engineer, Data & Eval
+- [ ] https://careers.airbnb.com/positions/7747259?gh_jid=7747259 | airbnb | Senior Staff Machine Learning Engineer, Growth Platform Engineering
+- [ ] https://careers.airbnb.com/positions/7592146?gh_jid=7592146 | airbnb | Senior Staff Machine Learning Engineer, Trust
+- [ ] https://careers.airbnb.com/positions/7705262?gh_jid=7705262 | airbnb | Staff Data Scientist, Causal Inference
+- [ ] https://careers.airbnb.com/positions/7116975?gh_jid=7116975 | airbnb | Staff Machine Learning Engineer - Community Support Engineering
+- [ ] https://careers.airbnb.com/positions/7454348?gh_jid=7454348 | airbnb | Staff Machine Learning Engineer, Listings and Host Tools Data and AI
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7586364 | pinterest | Director, Machine Learning Engineering – Growth 
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494658 | pinterest | Engineering Manager II, Machine Learning – User Understanding
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6121450 | pinterest | Machine Learning Engineer, Core Engineering
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7681666 | pinterest | Machine Learning Engineer II
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7473497 | pinterest | Machine Learning Engineer II, Core Engineering 
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6121543 | pinterest | Machine Learning Engineer, Monetization Engineering
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7268778 | pinterest | Machine Learning Intern Fall 2026 (Toronto)
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7528427 | pinterest | Manager II, Machine Learning-Content Success
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7752846 | pinterest | Manager II, Machine Learning Engineering
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7075176 | pinterest | Manager II, Machine Learning Engineering, Core Engineering 
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7239260 | pinterest | Manager II, Machine Learning-Search
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7253017 | pinterest | Master's Fall Machine Learning Internship (ATG - Visual Search)
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7255640 | pinterest | PhD Fall Machine Learning Intern (ATG — Visual, Multimodal, and Recommender Systems)
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6963868 | pinterest | Principal Machine Learning Engineer, Ads Delivery
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6659114 | pinterest | Sr. Data Scientist
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6087213 | pinterest | Sr. Data Scientist, Core
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7527221 | pinterest | Sr. Data Scientist, Gen AI Automation
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=5740948 | pinterest | Sr. Data Scientist, Monetization
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494923 | pinterest | Sr. Data Scientist, Responsible AI
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7642251 | pinterest | Sr. Data Scientist, tvScientific
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6121464 | pinterest | Sr. Machine Learning Engineer, Core Engineering 
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6121551 | pinterest | Sr. Machine Learning Engineer, Monetization Engineering
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494938 | pinterest | Sr. Machine Learning Engineer, Responsible AI– Applied Research Science
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7642268 | pinterest | Sr. Machine Learning Engineer, tvScientific
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6482819 | pinterest | Staff Data Scientist, Ad Measurement Products
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6819404 | pinterest | Staff Data Scientist, Engagement Ecosystem 
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7435596 | pinterest | Staff Data Scientist, Monetization
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7531060 | pinterest | Staff Machine Learning Engineer, Content Quality Signals
+- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494896 | pinterest | Staff Machine Learning Engineer, Conversion Visibility
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7792848 | reddit | Ads Conversion Modeling, Machine Learning Engineering Manager
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/6580815 | reddit | Data Scientist, Ads
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7607124 | reddit | Data Scientist, Ads
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7430544 | reddit | Director of Machine Learning, Safety & Mods
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7131934 | reddit | Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7131932 | reddit | Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7802495 | reddit | Machine Learning Manager, Feed Relevance
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7846885 | reddit | Machine Learning Manager, Notifications Relevance
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7330347 | reddit | Principal Data Scientist, Ads
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/6042236 | reddit | Senior Data Scientist, Ads
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7607121 | reddit | Senior Data Scientist, Ads
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7275414 | reddit | Senior Data Scientist, Consumer
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/6960831 | reddit | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/6960833 | reddit | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7391392 | reddit | Senior Machine Learning Engineer, Core Experience and Growth
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7074776 | reddit | Senior  Machine Learning Engineer, ML Training Platform 
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7731772 | reddit | Senior Machine Learning Systems Engineer
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7791994 | reddit | Senior Staff Machine Learning Engineer, Feed Relevance
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7772274 | reddit | Senior Staff Machine Learning Engineer, GenAI Platform
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7847148 | reddit | Senior Staff Machine Learning Engineer, ML Understanding
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7833622 | reddit | Senior Staff ML Engineer, Search & Recommendation
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7721787 | reddit | Staff Data Scientist, Ads
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7721851 | reddit | Staff Data Scientist, Ads
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/6745284 | reddit | Staff Data Scientist, Consumer
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7181821 | reddit | Staff Machine Learning Engineer, Ads Auction (Ads Marketplace Quality)
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7747244 | reddit | Staff Machine Learning Engineer, Consumer 
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7377109 | reddit | Staff Machine Learning Engineer, Dev Platform Data and Discovery
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7772523 | reddit | Staff Machine Learning Engineer, GenAI Platform
+- [ ] https://job-boards.greenhouse.io/reddit/jobs/7731788 | reddit | Staff Machine Learning Systems Engineer
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7324983?t=gh_src=&gh_jid=7324983 | robinhood | Data Scientist, Product
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7412037?t=gh_src=&gh_jid=7412037 | robinhood | Senior Data Scientist, Fraud 
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7482186?t=gh_src=&gh_jid=7482186 | robinhood | Senior Data Scientist, ML (Brokerage)
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7596426?t=gh_src=&gh_jid=7596426 | robinhood | Senior Data Scientist, ML (Incentives)
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7324981?t=gh_src=&gh_jid=7324981 | robinhood | Senior Data Scientist, Product
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7121213?t=gh_src=&gh_jid=7121213 | robinhood | Senior Machine Learning Engineer, Agentic
+- [ ] https://boards.greenhouse.io/robinhood/jobs/7676714?t=gh_src=&gh_jid=7676714 | robinhood | Staff Machine Learning Engineer, Agentic
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7702644 | twilio | Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7155492 | twilio | Principal Machine Learning & Data Engineer 
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7619420 | twilio | Principal, Product Manager - AI / LLM
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7066029 | twilio | Senior Manager, Machine Learning
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7061880 | twilio | Staff Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7716287 | twilio | Staff Machine Learning Engineer (L4)
+- [ ] https://job-boards.greenhouse.io/twilio/jobs/7520997 | twilio | Staff Machine Learning Engineer (L4)
+
+- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/4828370007 | thetradedesk |  Senior Data Scientist-Measurement 
+- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/4828316007 | thetradedesk | Senior Data Scientist-Measurement 
+- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/4779743007 | thetradedesk | Sr AI Engineer
+- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/5016314007 | thetradedesk | Sr AI Engineer
+- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/5016313007 | thetradedesk | Sr AI Engineer
+- [ ] https://job-boards.greenhouse.io/affirm/jobs/7695818003 | affirm | Machine Learning Engineer II (Fraud) 
+- [ ] https://job-boards.greenhouse.io/affirm/jobs/7696276003 | affirm | Senior Machine Learning Engineer (Fraud ML)
+- [ ] https://job-boards.greenhouse.io/affirm/jobs/7550522003 | affirm | Senior Staff Machine Learning Engineer, (ML Underwriting)
+- [ ] https://job-boards.greenhouse.io/affirm/jobs/7550524003 | affirm | Senior Staff Machine Learning Engineer, (ML Underwriting)
+- [ ] https://job-boards.greenhouse.io/scoutai/jobs/4643324008 | scoutai | AI Engineer - Fury Team 
+- [ ] https://job-boards.greenhouse.io/attentive/jobs/4121283009 | attentive | Senior Data Scientist
+- [ ] https://job-boards.greenhouse.io/attentive/jobs/4120595009 | attentive | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/attentive/jobs/4129704009 | attentive | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/twitch/jobs/8401220002 | twitch | Data Scientist
+- [ ] https://job-boards.greenhouse.io/freedomconsulting/jobs/4510005007 | freedomconsulting | Data Scientist
+- [ ] https://job-boards.greenhouse.io/freedomconsulting/jobs/5089277007 | freedomconsulting | Journeyman Data Scientist 
+- [ ] https://job-boards.greenhouse.io/freedomconsulting/jobs/5081498007 | freedomconsulting | Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/freedomconsulting/jobs/5089284007 | freedomconsulting | Senior Data Scientist 
+- [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7167997 | smartsheet | Data Scientist II (Hybrid in Bangalore)
+- [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7798778 | smartsheet | Senior Forward Deployed AI Engineer (Remote Eligible)
+- [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7171724 | smartsheet | Sr. Data Scientist (Hybrid in Bangalore)
+- [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7577295 | smartsheet | Sr. Machine Learning Operations Engineer
+- [ ] https://job-boards.greenhouse.io/mthreerecruitingportal/jobs/4313148006 | mthreerecruitingportal | Junior Data Scientist
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7577003003 | axon | Principal Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7563078003 | axon | Senior Computer Vision and Machine Learning Research Scientist
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7589179003 | axon | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7537801003 | axon | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7583232003 | axon | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7615561003 | axon | Senior Machine Learning Engineer II
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7624679003 | axon | Senior Machine Learning Scientist 
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7624698003 | axon | Senior Machine Learning Scientist 
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7624686003 | axon | Senior Machine Learning Scientist 
+- [ ] https://job-boards.greenhouse.io/axon/jobs/7677568003 | axon | Sr Machine Learning Engineer I
+- [ ] https://job-boards.greenhouse.io/klaviyocampus/jobs/7621072003 | klaviyocampus | AI Engineer I
+- [ ] https://job-boards.greenhouse.io/klaviyocampus/jobs/7484845003 | klaviyocampus | Machine Learning Engineer I
+- [ ] https://job-boards.greenhouse.io/loop/jobs/5391540004 | loop | AI Engineer
+- [ ] https://job-boards.greenhouse.io/perpay/jobs/4946441007 | perpay | Senior Data Scientist
+- [ ] https://job-boards.greenhouse.io/ophelia/jobs/4826417008 | ophelia | Enrollment Coordinator
+- [ ] https://job-boards.greenhouse.io/uareai/jobs/4030439009 | uareai | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/dv01/jobs/8416034002 | dv01 | MLOps Platform Engineer
+- [ ] https://job-boards.greenhouse.io/verkada/jobs/5040765007 | verkada | Computer Vision Software Engineer - University Graduate 2026
+- [ ] https://job-boards.greenhouse.io/verkada/jobs/5004415007 | verkada | Director of Product, Computer Vision and Artificial Intelligence
+- [ ] https://job-boards.greenhouse.io/verkada/jobs/4626011007 | verkada | Fulfillment Specialist
+- [ ] https://job-boards.greenhouse.io/verkada/jobs/5088291007 | verkada | Fulfillment Specialist (Remote) 
+- [ ] https://job-boards.greenhouse.io/verkada/jobs/5095211007 | verkada | Fulfillment Specialist (Remote) 
+- [ ] https://job-boards.greenhouse.io/verkada/jobs/5097450007 | verkada | Fulfillment Specialist (Remote) 
+- [ ] https://job-boards.greenhouse.io/verkada/jobs/4128624007 | verkada | Software Engineer - Computer Vision
+- [ ] https://job-boards.greenhouse.io/artefactus/jobs/8397937002 | artefactus | Jr. Data Scientist - (Canada-based)
+- [ ] https://job-boards.greenhouse.io/artefactus/jobs/8334907002 | artefactus | Senior Data Scientist - (Canada-based)
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8445206002 | torcrobotics | Data Scientist, I - Decision Science
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8492425002 | torcrobotics | ML Engineer, I - Acceleration Team
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8492427002 | torcrobotics | ML Engineer, II - App Engine
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8516551002 | torcrobotics | ML Engineer, II - App Engine FRENCH
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449468002 | torcrobotics | ML Engineer, II - Birds Eye View (BEV)
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449457002 | torcrobotics | ML Engineer, II - Camera Models
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449459002 | torcrobotics | ML Engineer, II - End to End (E2E)
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449472002 | torcrobotics | ML Engineer, II - Learned Behaviors
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449463002 | torcrobotics | ML Engineer, II - Road & Lane
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8490701002 | torcrobotics | Senior Machine Learning Engineer - Camera Model
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8518797002 | torcrobotics | Senior, Machine Learning Engineer - End-to-End
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8481096002 | torcrobotics | Senior Machine Learning Engineer - Learned Planning/Reinforcement Learning
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8304653002 | torcrobotics | Senior, ML Engineer - ML Ops Framework
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8308069002 | torcrobotics | Senior, ML Engineer - ML Ops Framework 
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8429809002 | torcrobotics | Senior, ML Engineer - Neural Rendering
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8375567002 | torcrobotics | Senior, ML Engineer - Neural Rendering
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8304659002 | torcrobotics | Senior, ML Engineer - Offline Perception
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8308049002 | torcrobotics | Senior, ML Engineer - Offline Perception
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8324822002 | torcrobotics | Senior, ML Engineer - Road & Lane Detection
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8414773002 | torcrobotics | Senior, ML Engineer - Unstructured Environments
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8304688002 | torcrobotics | Staff, ML Engineer - BEV
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8308045002 | torcrobotics | Staff, ML Engineer - BEV
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8308328002 | torcrobotics | Staff, ML Engineer - Road & Lane Detection
+- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8304684002 | torcrobotics | Staff, ML Engineer - Road & Lane Detection
+- [ ] https://boards.greenhouse.io/spacex/jobs/8494810002?gh_jid=8494810002 | spacex | Data Scientist (Starlink)
+- [ ] https://boards.greenhouse.io/spacex/jobs/8104639002?gh_jid=8104639002 | spacex | Fulfillment Buyer (Starship)
+- [ ] https://boards.greenhouse.io/spacex/jobs/8517346002?gh_jid=8517346002 | spacex | Sr. Software Engineer, Computer Vision
+- [ ] https://job-boards.greenhouse.io/newtonresearch/jobs/5020783008 | newtonresearch | Data Scientist
+- [ ] https://job-boards.greenhouse.io/northspyre/jobs/7704668003 | northspyre | AI Engineer Intern (Summer 2026)
+- [ ] https://job-boards.greenhouse.io/appian/jobs/7768920 | appian | Applied AI Engineer - GCP Vertex AI or AWS Bedrock
+- [ ] https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/4968215007 | tenstorrentuniversity | Machine Learning for Physical Design Intern - CPU/AI Hardware   
+- [ ] https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/4501164007 | tenstorrentuniversity | Machine Learning for Physical Design Intern - CPU/AI Hardware   
+- [ ] https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/5076959007 | tenstorrentuniversity | Machine Learning Intern, AI Compiler - Model Training (Serbia)
+- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4626195005 | thenewyorktimes | Machine Learning Scientist
+- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4655096005 | thenewyorktimes | ML Ops Engineer, Machine Learning & AI
+- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4660261005 | thenewyorktimes | R&D Senior LLM Engineer (Temp) 
+- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4653126005 | thenewyorktimes | Senior Software Engineer, Machine Learning Platform
+- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4653129005 | thenewyorktimes | Software Engineer, Machine Learning Platform
+- [ ] https://job-boards.greenhouse.io/fspco-op012325/jobs/8419046002 | fspco-op012325 | Computational Biology/Machine Learning Co-Op
+- [ ] https://job-boards.greenhouse.io/fspco-op012325/jobs/8427928002 | fspco-op012325 | Machine Learning Co-Op
+- [ ] https://boards.greenhouse.io/point72/jobs/8500448002?gh_jid=8500448002 | point72 | 2026 AI Engineer Intern, Long/Short Equities
+- [ ] https://boards.greenhouse.io/point72/jobs/8041302002?gh_jid=8041302002 | point72 | AI Engineer, IS
+- [ ] https://boards.greenhouse.io/point72/jobs/7001158002?gh_jid=7001158002 | point72 | Cubist Data Scientist
+- [ ] https://boards.greenhouse.io/point72/jobs/7045938002?gh_jid=7045938002 | point72 | Cubist Data Scientist
+- [ ] https://boards.greenhouse.io/point72/jobs/7045995002?gh_jid=7045995002 | point72 | Cubist Senior Data Scientist
+- [ ] https://boards.greenhouse.io/point72/jobs/7045979002?gh_jid=7045979002 | point72 | Cubist Senior Data Scientist
+- [ ] https://boards.greenhouse.io/point72/jobs/8372529002?gh_jid=8372529002 | point72 | Data Scientist
+- [ ] https://boards.greenhouse.io/point72/jobs/8372544002?gh_jid=8372544002 | point72 | Data Scientist
+- [ ] https://boards.greenhouse.io/point72/jobs/8199794002?gh_jid=8199794002 | point72 | Data Scientist, Mi-Analytics
+- [ ] https://boards.greenhouse.io/point72/jobs/7695570002?gh_jid=7695570002 | point72 | Data Scientist, Proprietary Research
+- [ ] https://boards.greenhouse.io/point72/jobs/8170176002?gh_jid=8170176002 | point72 | Machine Learning Engineer
+- [ ] https://boards.greenhouse.io/point72/jobs/8392983002?gh_jid=8392983002 | point72 | Machine Learning Engineer, Genai Technology
+- [ ] https://boards.greenhouse.io/point72/jobs/8342478002?gh_jid=8342478002 | point72 | Machine Learning Engineer, GenAI Technology
+- [ ] https://boards.greenhouse.io/point72/jobs/8472280002?gh_jid=8472280002 | point72 | Machine Learning Infrastructure Engineer, GenAI Technology  
+- [ ] https://boards.greenhouse.io/point72/jobs/7302611002?gh_jid=7302611002 | point72 | Machine Learning Researcher - Intern
+- [ ] https://boards.greenhouse.io/point72/jobs/7661997002?gh_jid=7661997002 | point72 | NLP / AI Engineer
+- [ ] https://boards.greenhouse.io/point72/jobs/7825077002?gh_jid=7825077002 | point72 | NLP Engineer
+- [ ] https://boards.greenhouse.io/point72/jobs/8018850002?gh_jid=8018850002 | point72 | NLP Engineer
+- [ ] https://boards.greenhouse.io/point72/jobs/8023550002?gh_jid=8023550002 | point72 | Quantitative Researcher - Machine Learning
+- [ ] https://boards.greenhouse.io/point72/jobs/7297513002?gh_jid=7297513002 | point72 | Quantitative Researcher - Machine Learning 
+- [ ] https://boards.greenhouse.io/point72/jobs/8018862002?gh_jid=8018862002 | point72 | Quantitative Research Intern (NLP)
+- [ ] https://boards.greenhouse.io/point72/jobs/8466849002?gh_jid=8466849002 | point72 | Senior Software Engineer, Machine Learning
+- [ ] https://boards.greenhouse.io/cloudflare/jobs/7581107?gh_jid=7581107 | cloudflare | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/earnin/jobs/7106869 | earnin | Head of Machine Learning
+- [ ] https://job-boards.greenhouse.io/earnin/jobs/7550049 | earnin | Head of Machine Learning, India
+- [ ] https://job-boards.greenhouse.io/earnin/jobs/7639504 | earnin | Machine Learning Analyst (Gen AI)
+- [ ] https://job-boards.greenhouse.io/earnin/jobs/7770051 | earnin | Machine Learning Intern
+- [ ] https://job-boards.greenhouse.io/earnin/jobs/7017818 | earnin | Senior Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/rackner/jobs/4676566005 | rackner | MLOps Engineer — AI/ML Systems & Deployment (TS/SCI Preferred)
+- [ ] https://job-boards.greenhouse.io/billiontoone/jobs/4680728005 | billiontoone | AI Engineering Intern
+- [ ] https://job-boards.greenhouse.io/billiontoone/jobs/4570095005 | billiontoone | Senior AI Engineer I
+- [ ] https://job-boards.greenhouse.io/dvtrading/jobs/4677605005 | dvtrading | 2026 Summer Internship - AI Engineer
+- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/7681871002 | doubleverify | Data Scientist II
+- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/8087158002 | doubleverify | Senior AI Engineer
+- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/8067284002 | doubleverify | Senior AI Engineer
+- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/7892893002 | doubleverify | Senior Data Scientist
+- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/8060829002 | doubleverify | Sr. Data Scientist I - Rockerbox
+- [ ] https://job-boards.greenhouse.io/impiricus/jobs/5195577008 | impiricus | AI Engineer
+- [ ] https://job-boards.greenhouse.io/impiricus/jobs/5160112008 | impiricus | VP, AI Engineering
+- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7782580 | planetlabs | AI Engineer, Marketing
+- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5153808008 | capitalrx | AI / Machine Learning Summer Intern (Graduate level)
+- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5142980008 | capitalrx | Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5148286008 | capitalrx | Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/4759211008 | capitalrx | Senior Machine Learning Engineer I
+- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/4749307008 | capitalrx | Senior Machine Learning Engineer II
+- [ ] https://job-boards.greenhouse.io/darkwolfsolutions/jobs/7589115003 | darkwolfsolutions | Machine Learning Engineer
+- [ ] https://boards.greenhouse.io/neuralink/jobs/5663271003?gh_jid=5663271003 | neuralink | Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/diligentcorporation/jobs/5844243004 | diligentcorporation | Senior AI Engineer
+- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8234675002 | graphcore | 2026 Graduate Machine Learning Engineer - Applied AI
+- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8420380002 | graphcore | Infrastructure and MLOps Engineer 
+- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8491680002 | graphcore | Senior Machine Learning Engineer (Large Systems)
+- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8392730002 | graphcore | Senior Machine Learning Engineer (Large Systems)
+- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8392724002 | graphcore | Senior Machine Learning Engineer (Large Systems)
+- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8408498002 | graphcore | Senior ML Engineer 
+- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8392727002 | graphcore | Staff Machine Learning Engineer (Large Systems)
+- [ ] https://job-boards.greenhouse.io/podium81/jobs/7243261 | podium81 | Senior AI Engineer - Agentic
+- [ ] https://job-boards.greenhouse.io/podium81/jobs/7774372 | podium81 | Senior Applied AI Engineer
+- [ ] https://job-boards.greenhouse.io/podium81/jobs/7367363 | podium81 | Staff AI Engineer - USA
+- [ ] https://job-boards.greenhouse.io/podium81/jobs/7490572 | podium81 | Staff AI Engineer - Utah
+- [ ] https://job-boards.greenhouse.io/instawork/jobs/4620743006 | instawork | Founding Machine Learning Lead - Instawork Robotics
+- [ ] https://job-boards.greenhouse.io/avride/jobs/4012771009 | avride | Autonomous Vehicle Metrics and Evaluation Data Scientist - Analytics
+- [ ] https://job-boards.greenhouse.io/avride/jobs/4013230009 | avride | Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/avride/jobs/4230374009 | avride | Machine Learning Engineer Internship
+- [ ] https://job-boards.greenhouse.io/avride/jobs/4013016009 | avride | Machine Learning Engineer, Motion Planning & Prediction
+- [ ] https://job-boards.greenhouse.io/jumio/jobs/4627200005 | jumio | Machine Learning Engineer - III (Extraction)
+- [ ] https://job-boards.greenhouse.io/jumio/jobs/4664041005 | jumio | Machine Learning Engineer - IV (Biometrics)
+- [ ] https://job-boards.greenhouse.io/jumio/jobs/4685786005 | jumio | Machine Learning Engineer - IV (Biometrics)
+- [ ] https://job-boards.greenhouse.io/jumio/jobs/4644035005 | jumio | Machine Learning Engineer - IV (Fraud)
+- [ ] https://job-boards.greenhouse.io/rhombuspower/jobs/7601341003 | rhombuspower | Data Scientist, Air Education & Training Command (Active Secret Clearance)
+- [ ] https://job-boards.greenhouse.io/nimblegravity/jobs/4671634005 | nimblegravity | AI Engineer
+- [ ] https://job-boards.greenhouse.io/armada/jobs/4575995008 | armada | AI Engineer
+- [ ] https://job-boards.greenhouse.io/bandwidth/jobs/7362388 | bandwidth | AI Engineer (Research & Development)
+- [ ] https://job-boards.greenhouse.io/bandwidth/jobs/7751575 | bandwidth | Sr. Data Scientist 
+- [ ] https://boards.greenhouse.io/faire/jobs/8510205002?gh_jid=8510205002 | faire | Account Manager, Fulfillment
+- [ ] https://boards.greenhouse.io/faire/jobs/8456064002?gh_jid=8456064002 | faire | Principal Applied AI / ML Engineer
+- [ ] https://boards.greenhouse.io/faire/jobs/8227562002?gh_jid=8227562002 | faire | Senior Data Scientist / Machine Learning Engineer - Listing Quality
+- [ ] https://boards.greenhouse.io/faire/jobs/8227567002?gh_jid=8227567002 | faire | Senior Data Scientist / Machine Learning Engineer - Listing Quality
+- [ ] https://boards.greenhouse.io/faire/jobs/7953219002?gh_jid=7953219002 | faire | Senior Data Scientist - Retailer
+- [ ] https://boards.greenhouse.io/faire/jobs/7953217002?gh_jid=7953217002 | faire | Senior Data Scientist - Retailer
+- [ ] https://boards.greenhouse.io/faire/jobs/8426105002?gh_jid=8426105002 | faire | Senior Staff Machine Learning Platform Engineer
+- [ ] https://boards.greenhouse.io/faire/jobs/8449617002?gh_jid=8449617002 | faire | Senior Staff Machine Learning Platform Engineer
+- [ ] https://boards.greenhouse.io/faire/jobs/8426107002?gh_jid=8426107002 | faire | Staff Machine Learning Platform Engineer
+- [ ] https://job-boards.greenhouse.io/queracomputinginc/jobs/5135036008 | queracomputinginc | Postdoctoral Fellow - Applied Machine Learning in Quantum Systems
+- [ ] https://job-boards.greenhouse.io/queracomputinginc/jobs/5075843008 | queracomputinginc | Quantum Scientist - Machine Learning and Quantum Error Correction
+- [ ] https://boards.greenhouse.io/blacksky/jobs/8499022002?gh_jid=8499022002 | blacksky | Machine Learning Engineer (MLE) Intern
+- [ ] https://job-boards.greenhouse.io/lucidmotors/jobs/5104100007 | lucidmotors | Data Scientist, Sales Planning and Forecasting
+- [ ] https://job-boards.greenhouse.io/lucidmotors/jobs/4759229007 | lucidmotors | Senior Machine Learning Engineer - Model Optimization & Deployment (ADAS/Autonomous Driving) 
+- [ ] https://job-boards.greenhouse.io/lucidmotors/jobs/4620390007 | lucidmotors | Staff Machine Learning Engineer – (ADAS/Autonomous Driving)
+- [ ] https://job-boards.greenhouse.io/locusrobotics/jobs/5099333007 | locusrobotics | PhD Research Intern – AI & Computer Vision
+- [ ] https://job-boards.greenhouse.io/relaypro/jobs/7675201 | relaypro | Associate Software Engineer (AI/Machine Learning)
+- [ ] https://job-boards.greenhouse.io/avepoint/jobs/7809901 | avepoint | Data Scientist (EDB) 
+- [ ] https://job-boards.greenhouse.io/avepoint/jobs/6328839 | avepoint | JUNIOR AI ENGINEER
+- [ ] https://job-boards.greenhouse.io/avepoint/jobs/7407016 | avepoint | Senior Product Data Scientist
+- [ ] https://job-boards.greenhouse.io/sharkninjaoperatingllc/jobs/4600175006 | sharkninjaoperatingllc | Machine Learning and AI Opportunities
+- [ ] https://job-boards.greenhouse.io/honehealth/jobs/5063028008 | honehealth | Senior Data Scientist, Healthcare Operations
+- [ ] https://job-boards.greenhouse.io/honehealth/jobs/5063012008 | honehealth | Senior Data Scientist, Marketing
+- [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684004003 | sigmacomputing | Senior AI/ML Engineer
+- [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684008003 | sigmacomputing | Senior AI/ML Engineer
+- [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684012003 | sigmacomputing | Staff AI/ML Engineer
+- [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684011003 | sigmacomputing | Staff AI/ML Engineer
+- [ ] https://job-boards.greenhouse.io/profluent/jobs/4563429008 | profluent | Machine Learning Research Intern
+- [ ] https://job-boards.greenhouse.io/profluent/jobs/4061679008 | profluent | Machine Learning Scientist 
+- [ ] https://job-boards.greenhouse.io/profluent/jobs/5154049008 | profluent | ML Platform / MLOps Engineer
+- [ ] https://job-boards.greenhouse.io/wasabi/jobs/5135801008 | wasabi | Co-op – AI / Machine Learning Engineering
+- [ ] https://job-boards.greenhouse.io/wasabi/jobs/5101129008 | wasabi | Senior Enterprise AI Engineer 
+- [ ] https://job-boards.greenhouse.io/wasabi/jobs/5135717008 | wasabi | Sr. Industry Marketing Manager, Artificial Intelligence & Machine Learning
+- [ ] https://job-boards.greenhouse.io/axq/jobs/5819471004 | axq | AI Engineer
+- [ ] https://job-boards.greenhouse.io/axq/jobs/5636445004 | axq | Machine Learning Researcher
+- [ ] https://job-boards.greenhouse.io/didi/jobs/7802877 | didi | Machine Learning Engineer, Foundation Model
+- [ ] https://boards.greenhouse.io/lightmatter/jobs/5148543008?gh_jid=5148543008 | lightmatter | Principal Machine Learning Infrastructure Researcher
+- [ ] https://boards.greenhouse.io/lightmatter/jobs/4893269008?gh_jid=4893269008 | lightmatter | Principal Machine Learning Infrastructure Researcher
+- [ ] https://job-boards.greenhouse.io/workstream/jobs/5156961004 | workstream | AI Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5102920007?gh_jid=5102920007 | andurilindustries | Computer Vision Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016001007?gh_jid=5016001007 | andurilindustries | Computer Vision Engineer, Space
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016334007?gh_jid=5016334007 | andurilindustries | Computer Vision Engineer, Space
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4734570007?gh_jid=4734570007 | andurilindustries | Mission Software Engineer, Vehicle Software, Computer Vision
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4999658007?gh_jid=4999658007 | andurilindustries | Research Engineer, Machine Learning
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4999656007?gh_jid=4999656007 | andurilindustries | Research Engineer, Machine Learning
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4999662007?gh_jid=4999662007 | andurilindustries | Research Engineer, Machine Learning
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5083219007?gh_jid=5083219007 | andurilindustries | Senior AI Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5090921007?gh_jid=5090921007 | andurilindustries | Senior AI Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5114446007?gh_jid=5114446007 | andurilindustries | Senior Computer Vision Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016343007?gh_jid=5016343007 | andurilindustries | Senior Computer Vision Engineer, Space
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016340007?gh_jid=5016340007 | andurilindustries | Senior Computer Vision Engineer, Space
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5083846007?gh_jid=5083846007 | andurilindustries | Senior LLM Software Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5090922007?gh_jid=5090922007 | andurilindustries | Senior LLM Software Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016403007?gh_jid=5016403007 | andurilindustries | Senior Machine Learning Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5097444007?gh_jid=5097444007 | andurilindustries | Senior Machine Learning Engineer, Perception
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4927589007?gh_jid=4927589007 | andurilindustries | Senior Machine Learning Engineer, Sentry Tower
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4995797007?gh_jid=4995797007 | andurilindustries | Senior Machine Learning/MLOps Engineer
+- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5077336007?gh_jid=5077336007 | andurilindustries | Senior Software Engineer, Machine Learning
+- [ ] https://boards.greenhouse.io/parallel/jobs/5080721007?gh_jid=5080721007 | parallel | Machine Learning/Computer Vision Engineer
+- [ ] https://boards.greenhouse.io/parallel/jobs/4933273007?gh_jid=4933273007 | parallel | Senior Machine Learning/Computer Vision Engineer
+- [ ] https://boards.greenhouse.io/parallel/jobs/5021874007?gh_jid=5021874007 | parallel | Senior ML Ops Engineer (Machine Learning Infrastructure)
+
+- [ ] https://www.scout24.com/en/career/jobs/7795627?gh_jid=7795627 | scout24 | Working Student AI Engineering (m/w/d) 
+- [ ] https://job-boards.greenhouse.io/adyen/jobs/7434460 | adyen | Machine Learning Scientist
+- [ ] https://job-boards.greenhouse.io/adyen/jobs/7300108 | adyen | Senior Data Scientist - Experimentation Platform
+- [ ] https://job-boards.greenhouse.io/autoscout24/jobs/7681898003 | autoscout24 | Principal Data Scientist (m/f/d)
+- [ ] https://job-boards.greenhouse.io/autoscout24/jobs/7594404003 | autoscout24 | Senior GenAI Data Scientist (m/f/d)
+- [ ] https://job-boards.greenhouse.io/autoscout24/jobs/7671592003 | autoscout24 | Senior GenAI Data Scientist (m/f/d)
+- [ ] https://job-boards.greenhouse.io/checkr/jobs/7779296 | checkr | Staff Applied AI Engineer
+- [ ] https://job-boards.greenhouse.io/cabify/jobs/8462001002 | cabify | Data Scientist
+- [ ] https://job-boards.greenhouse.io/cabify/jobs/8462004002 | cabify | Data Scientist, Advanced Analytics
+- [ ] https://job-boards.greenhouse.io/cabify/jobs/8516376002 | cabify | Senior Data Scientist
+- [ ] https://job-boards.greenhouse.io/cabify/jobs/8462006002 | cabify | Senior Data Scientist, Advanced Analytics
+- [ ] https://job-boards.greenhouse.io/cabify/jobs/8462000002 | cabify | Senior Data Scientist, Marketing Analyst
+- [ ] https://job-boards.greenhouse.io/contentful/jobs/7557680 | contentful | Senior Machine Learning Engineer (f/m/d)
+- [ ] https://job-boards.greenhouse.io/doctolib/jobs/6681347003 | doctolib | Machine Learning Engineer - AI Teams (x/f/m)
+- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7642865003 | doctolib | NLP / AI Research Intern (x/f/m)
+- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7647049003 | doctolib | Senior AI Engineer (x/f/m)
+- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7629374003 | doctolib | Senior AI Engineer (x/f/m) - Phone Assistant
+- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7692278003 | doctolib | Senior MLOps Engineer - Data Ingestion - Paris
+- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7510762003 | doctolib | Senior Staff Machine Learning Engineer - Clinical - AI Teams (x/f/m)
+- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7527262003 | doctolib | Senior/Staff Machine Learning Engineer - Health Evaluation - AI Teams (x/f/m)
+- [ ] https://job-boards.greenhouse.io/gitlab/jobs/8484753002 | gitlab | Engineering Manager, AI Engineering:Workflow Catalog
+- [ ] https://job-boards.greenhouse.io/gitlab/jobs/8464072002 | gitlab | Senior AI Engineer
+- [ ] https://job-boards.greenhouse.io/gitlab/jobs/8452278002 | gitlab | Senior Fullstack Engineer (TypeScript), AI Engineering: Editor Extensions
+- [ ] https://job-boards.greenhouse.io/gitlab/jobs/8450446002 | gitlab | Staff Backend (Python) Engineer, AI Engineering:Duo Chat
+- [ ] https://job-boards.greenhouse.io/extend/jobs/5841127004 | extend | Senior Data Scientist, Finance Analytics
+- [ ] https://job-boards.greenhouse.io/extend/jobs/5880624004 | extend | Senior Data Scientist, Revenue Analytics
+- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7544236 | gocardless | Senior Data Scientist, Fraud Prevention
+- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7661486 | gocardless | Senior Data Scientist, Fraud Prevention
+- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7661485 | gocardless | Senior Data Scientist, Fraud Prevention
+- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7526075 | gocardless | Senior Data Scientist, Payment Intelligence
+- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7526068 | gocardless | Senior Data Scientist, Payment Intelligence
+- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7526078 | gocardless | Senior Data Scientist, Payment Intelligence
+- [ ] https://careers.hellofresh.com/global/en/job/7699418?gh_jid=7699418 | hellofresh | [US-DC] Director, Fulfillment
+- [ ] https://job-boards.greenhouse.io/launchdarkly/jobs/7617683003 | launchdarkly | Data Scientist, Data Science
+- [ ] https://job-boards.greenhouse.io/mozilla/jobs/7811887 | mozilla | Senior Data Scientist, Product
+- [ ] https://job-boards.greenhouse.io/mozilla/jobs/7812350 | mozilla | Senior Data Scientist, Product
+- [ ] https://job-boards.greenhouse.io/monzo/jobs/6369658 | monzo | Lead Data Scientist
+- [ ] https://job-boards.greenhouse.io/monzo/jobs/7457551 | monzo | Lead Data Scientist
+- [ ] https://job-boards.greenhouse.io/monzo/jobs/7766052 | monzo | Machine Learning Manager, Borrowing
+- [ ] https://job-boards.greenhouse.io/monzo/jobs/7118972 | monzo | Platform Engineer, Machine Learning
+- [ ] https://job-boards.greenhouse.io/monzo/jobs/6180814 | monzo | Senior Data Scientist
+- [ ] https://job-boards.greenhouse.io/monzo/jobs/6930501 | monzo | Senior Data Scientist - Marketing and Growth
+- [ ] https://job-boards.greenhouse.io/monzo/jobs/7686352 | monzo | Senior Machine Learning Scientist, Borrowing
+- [ ] https://job-boards.greenhouse.io/newrelic/jobs/4992316008 | newrelic | Lead Data Scientist
+- [ ] https://job-boards.greenhouse.io/newrelic/jobs/5007069008 | newrelic | Senior Manager, Machine Learning Engineering
+- [ ] https://job-boards.greenhouse.io/nubank/jobs/7242278 | nubank | Data Scientist
+- [ ] https://job-boards.greenhouse.io/nubank/jobs/7615916 | nubank | Data Scientist [All Levels]
+- [ ] https://job-boards.greenhouse.io/nubank/jobs/7587179 | nubank | Lead Machine Learning Engineer / Applied AI Scientist
+- [ ] https://job-boards.greenhouse.io/nubank/jobs/7615798 | nubank | Machine Learning Engineer [All Levels]
+- [ ] https://job-boards.greenhouse.io/nubank/jobs/7732512 | nubank | Staff Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/philo/jobs/7259010 | philo | Sr. Machine Learning Engineer (Recommendation Systems)
+- [ ] https://job-boards.greenhouse.io/sertis/jobs/7847750002 | sertis | AI/Machine Learning Engineer Intern
+- [ ] https://job-boards.greenhouse.io/sertis/jobs/7974356002 | sertis | Machine Learning Engineer (Mid-Senior level)
+- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5790147004 | smartlyio | Senior Data Scientist
+- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5796036004 | smartlyio | Senior Data Scientist
+- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5687120004 | smartlyio | Senior Machine Learning Engineer (AI Platform)
+- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5688559004 | smartlyio | Senior Machine Learning Engineer (AI Platform)
+- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5478498004 | smartlyio | Staff Machine Learning Engineer (AI Platform)
+- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5471822004 | smartlyio | Staff Machine Learning Engineer (AI Platform)
+- [ ] https://sumup.com/careers/positions/8458929002?gh_jid=8458929002 | sumup | Data Scientist
+- [ ] https://sumup.com/careers/positions/8364207002?gh_jid=8364207002 | sumup | Senior Data Engineer – AI AML Engineering
+- [ ] https://sumup.com/careers/positions/8459126002?gh_jid=8459126002 | sumup | Senior Data Scientist
+- [ ] https://sumup.com/careers/positions/8458919002?gh_jid=8458919002 | sumup | Senior Machine Learning Engineer
+- [ ] https://sumup.com/careers/positions/8503516002?gh_jid=8503516002 | sumup | Senior Machine Learning Engineer 
+- [ ] https://www.thoughtworks.com/careers/jobs/7747358?gh_jid=7747358 | thoughtworks | Lead Data Scientist
+- [ ] https://www.thoughtworks.com/careers/jobs/7395726?gh_jid=7395726 | thoughtworks | Lead Data Scientist
+- [ ] https://www.thoughtworks.com/careers/jobs/7378858?gh_jid=7378858 | thoughtworks | Senior Data Scientist
+- [ ] https://www.thoughtworks.com/careers/jobs/7264551?gh_jid=7264551 | thoughtworks | Senior Data Scientist
+- [ ] https://www.thoughtworks.com/careers/jobs/7228447?gh_jid=7228447 | thoughtworks | Senior Machine Learning Engineer
+- [ ] https://www.thoughtworks.com/careers/jobs/7228589?gh_jid=7228589 | thoughtworks | Senior Machine Learning Engineer
+- [ ] https://careers.trivago.com/job/r8464320002?gh_jid=8464320002 | trivago | Data Scientist - AI Search & Ranking
+- [ ] https://careers.trivago.com/job/r8401443002?gh_jid=8401443002 | trivago | Data Scientist - Price
+- [ ] https://job-boards.eu.greenhouse.io/wallapop/jobs/4701711101 | wallapop | Data Scientist -Search
+- [ ] https://job-boards.eu.greenhouse.io/wallapop/jobs/4741205101 | wallapop | MLOps Engineer
+- [ ] https://job-boards.greenhouse.io/vtex/jobs/5591730004 | vtex | Data Scientist - LLMs
+- [ ] https://boards.greenhouse.io/wheely/jobs/7655292003?gh_jid=7655292003 | wheely | Associate Data Scientist - Operations Research
+- [ ] https://boards.greenhouse.io/wheely/jobs/7655287003?gh_jid=7655287003 | wheely | Associate Data Scientist - Operations Research
+- [ ] https://boards.greenhouse.io/wheely/jobs/7588263003?gh_jid=7588263003 | wheely | Data Scientist
+- [ ] https://boards.greenhouse.io/wheely/jobs/7588277003?gh_jid=7588277003 | wheely | Data Scientist
+- [ ] https://job-boards.eu.greenhouse.io/yld/jobs/4653093101 | yld | AI Engineer 
+- [ ] https://job-boards.eu.greenhouse.io/yld/jobs/4829316101 | yld | Contract Senior Data Scientist
+- [ ] https://job-boards.greenhouse.io/webflow/jobs/7689676 | webflow | Lead AI Engineer, Enterprise AI Operations
+- [ ] https://job-boards.greenhouse.io/webflow/jobs/7813157 | webflow | Senior Staff Machine Learning Scientist, Assets

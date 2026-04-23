@@ -2,6 +2,9 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 import { execSync } from 'child_process';
+import * as dotenv from 'dotenv';
+
+dotenv.config({ path: path.resolve('.env') });
 
 (async () => {
     try {
