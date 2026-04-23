@@ -171,29 +171,38 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
     console.log("Attaching Resume natively...");
     try {
-        // Try clicking the attach button to reveal hidden file input (Greenhouse v2)
-        // Skip for Roblox as it triggers a broken React upload hook exception
-        if (domain !== 'roblox') {
-            const attachBtns = page.locator('button[data-source="attach"], .resume-submit-group button, a[data-source="attach"]');
-            if (await attachBtns.count() > 0) {
-                await attachBtns.first().click({ force: true }).catch(() => {});
-                await page.waitForTimeout(500);
+        // Universal FileChooser Approach for modern React Greenhouse apps
+        const attachBtn = page.locator('button:has-text("Attach"), button:has-text("Upload"), .button-upload, button[data-source="attach"], a[data-source="attach"]').first();
+        
+        let fileChooserTriggered = false;
+        if (await attachBtn.count() > 0) {
+            const [fileChooser] = await Promise.all([
+                page.waitForEvent('filechooser', { timeout: 4000 }).catch(() => null),
+                attachBtn.click({ force: true }).catch(() => {})
+            ]);
+            
+            if (fileChooser) {
+                await fileChooser.setFiles(path.resolve(resumePath));
+                console.log("✅ Resume attached via native FileChooser popup.");
+                fileChooserTriggered = true;
             }
         }
         
-        await page.waitForSelector('input[type="file"]', { timeout: 8000 }).catch(() => {});
-        
-        // Try all known Greenhouse file input selectors in priority order
-        let fileInput = page.locator('#resume_upload');
-        if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"][id="resume"]');
-        if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"][name="resume"]');
-        if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"]').first();
-        
-        if (await fileInput.count() > 0) {
-            await fileInput.setInputFiles(path.resolve(resumePath));
-            console.log("✅ Resume attached.");
-        } else {
-            console.log("❌ Could not locate Greenhouse file input structure.");
+        if (!fileChooserTriggered) {
+            await page.waitForSelector('input[type="file"]', { timeout: 8000 }).catch(() => {});
+            
+            // Try all known Greenhouse file input selectors in priority order
+            let fileInput = page.locator('#resume_upload');
+            if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"][id="resume"]');
+            if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"][name="resume"]');
+            if (await fileInput.count() === 0) fileInput = page.locator('input[type="file"]').first();
+            
+            if (await fileInput.count() > 0) {
+                await fileInput.setInputFiles(path.resolve(resumePath));
+                console.log("✅ Resume attached natively via input override.");
+            } else {
+                console.log("❌ Could not locate Greenhouse file input structure.");
+            }
         }
     } catch (e) {
         console.error("❌ Failed to attach resume automatically.", e.message);
@@ -330,9 +339,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     };
 
     // Greenhouse explicitly separates First/Last name but employer templates often alter IDs
-    await safeFill('#first_name', profileConfig?.candidate?.first_name || 'Daniel');
-    await safeFill('#last_name', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
-    await safeFill('#email', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+    await safeFill('#first_name, input[id*="first_name"], input[name*="first_name"]', profileConfig?.candidate?.first_name || 'Daniel');
+    await safeFill('#last_name, input[id*="last_name"], input[name*="last_name"]', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
+    await safeFill('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
     const safePhone = (profileConfig?.candidate?.phone || '7133717875').replace(/[\s\+\(\)\-]/g, '');
     await safeFill('#phone', safePhone);
     await safeFill('#org', 'Homecastr');
@@ -372,239 +381,331 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         }
     } catch(e) { console.error("Location Field Autocomplete bypassed with fallback."); }
 
-    console.log("Detecting and setting Global Select Dropdowns (Demographics, Visa, Location)...");
-    const allSelects = await page.$$('select');
-    for (const select of allSelects) {
+    // -------------------------------------------------------------------------
+    // MASTER STRATEGY MAPPER 
+    // -------------------------------------------------------------------------
+    console.log("Executing Deterministic Strategy Mapper...");
+
+    const fillDeterministicField = async (page, questionRegex, targetValue) => {
         try {
-            // Read question text robustly using native browser DOM traversal
-            const lowerText = await select.evaluate((node) => {
-                const container = node.closest('div.field, div.custom-question, label, div');
-                let text = container ? container.textContent.toLowerCase() : '';
-                
-                const labelledBy = node.getAttribute('aria-labelledby');
-                if (labelledBy) {
-                    const ids = labelledBy.split(' ');
-                    for (const lblId of ids) {
-                        const lbl = document.getElementById(lblId);
-                        if (lbl) text += ' ' + lbl.textContent.toLowerCase();
-                    }
+            const isMatchOption = (optText, targetValue) => {
+                const lowerOpt = optText.toLowerCase().trim();
+                const lowerTarget = targetValue.toLowerCase().trim();
+                let isMatch = lowerOpt === lowerTarget || lowerOpt.startsWith(lowerTarget) || lowerOpt.includes(lowerTarget);
+                if (!isMatch && lowerTarget.includes('texas at austin')) {
+                    isMatch = lowerOpt.includes('texas at austin') || lowerOpt.includes('texas - austin') || lowerOpt.includes('texas, austin');
                 }
-                return text;
-            });
-
-            const options = await select.$$eval('option', opts => opts.map(o => o.textContent.trim()));
-
-            let targetValue = null;
-            if (lowerText.includes('authorized to work') && lowerText.includes('without sponsorship')) {
-                targetValue = 'Yes';
-            } else if (lowerText.includes('require sponsorship') || lowerText.includes('need sponsorship')) {
-                targetValue = 'No';
-            } else if (lowerText.includes('alphabet employee') || lowerText.includes('former employee') || lowerText.includes('current employee')) {
-                targetValue = 'No';
-            } else if (lowerText.includes('authorized to work')) {
-                targetValue = 'Yes';
-            } else if (lowerText.includes('relocat') || lowerText.includes('onsite') || lowerText.includes('hybrid') || lowerText.includes('office')) {
-                targetValue = 'Yes';
-            } else if (lowerText.includes('past 6 months') || lowerText.includes('previously applied') || lowerText.includes('previously worked')) {
-                targetValue = 'No';
-            } else if (lowerText === 'country' || lowerText.includes('country code') || lowerText.includes('phone')) {
-                const phoneMatch = options.find(o => o && o.includes('+1'));
-                if (phoneMatch) targetValue = phoneMatch;
-                else {
-                    const usMatch = options.find(o => o && o.includes('United States'));
-                    if (usMatch) targetValue = usMatch;
+                if (!isMatch && lowerTarget === 'decline') {
+                    isMatch = lowerOpt.includes('prefer not') || lowerOpt.includes('decline') || lowerOpt.includes('do not wish');
                 }
-            } else if (lowerText.includes('hear') || lowerText.includes('source') || lowerText.includes('find out')) {
-                const matchSrc = options.find(o => o && (
-                    o.toLowerCase().includes('linkedin') || 
-                    o.toLowerCase().includes('company website') || 
-                    o.toLowerCase().includes('direct') ||
-                    o.toLowerCase().includes('job board')
-                ));
-                if (matchSrc) targetValue = matchSrc;
-            }
-
-            if (targetValue) {
-                const match = options.find(o => o && (o.toLowerCase() === targetValue.toLowerCase() || o.toLowerCase().startsWith(targetValue.toLowerCase())));
-                if (match) {
-                     await select.selectOption({ label: match }, { force: true }).catch(async ()=> {
-                          // Try raw value check if strict label bounding fails
-                          await select.selectOption(match, { force: true }).catch(()=>{});
-                     });
-                     await select.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
-                     await page.waitForTimeout(200); // Breath
+                if (!isMatch && lowerTarget === 'none') {
+                    isMatch = lowerOpt.includes('not applicable');
                 }
-            }
-        } catch(e) {}
-    }
-
-    console.log("Waiting for asynchronous form elements to inject...");
-    await page.waitForTimeout(2000); // Give JS time to mount dynamic Demographic Questions
-
-    console.log("Filling demographic EEO fields...");
-    const safeSelect = async (id, value) => {
-        try {
-            const el = page.locator(`select[id="${id}"]`);
-            if (await el.count() > 0) {
-                const selectElement = await el.first().elementHandle();
-                const options = await selectElement.$$eval('option', opts => opts.map(o => o.textContent));
-                // Add strict heuristic for gender to prevent matching 'Female' just because it has 'Male' inside the string
-                const match = options.find(o => {
-                    o = o ? o.toLowerCase() : '';
-                    if (value.toLowerCase() === 'male' && o.includes('female')) return false;
-                    return o.includes(value.toLowerCase());
-                });
-                if (match) {
-                    await el.selectOption({ label: match }, { force: true }).catch(()=>{});
-                    await el.evaluate(node => node.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                if (!isMatch && lowerTarget === 'now') {
+                    isMatch = lowerOpt.includes('immediately');
                 }
-            }
-        } catch (e) {}
-    };
+                if (!isMatch && lowerTarget === 'yes' && lowerOpt.includes('acknowledge')) isMatch = true;
+                return isMatch;
+            };
 
-    // Greenhouse uses specific IDs rather than eeoc[] name arrays
-    await safeSelect('job_application_gender', domainOverrides.gender || 'Male');
-    await safeSelect('job_application_race', domainOverrides.race || 'Hispanic or Latino');
-    await safeSelect('job_application_veteran_status', domainOverrides.veteran || 'not a protected veteran');
-    await safeSelect('job_application_disability_status', domainOverrides.disability || 'Decline to self-identify');
+            // Find all labels, filter by text
+            const labels = await page.$$('label');
+            let targetLabel = null;
+            let targetId = null;
 
-    console.log("Checking for modern React-Select Demographics & Location implementations...");
-    
-    // Dynamic React-Select traversal for obfuscated IDs (Anthropic/Glean)
-    try {
-        const comboboxes = await page.$$('input.select__input[role="combobox"]');
-        for (const box of comboboxes) {
-            try {
-                const lowerText = await box.evaluate((el) => {
-                    const ctx = el.closest('div.field, .application-question, label') || el.closest('div');
-                    let text = ctx ? ctx.textContent.toLowerCase() : '';
-                    
-                    const labelledBy = el.getAttribute('aria-labelledby');
-                    if (labelledBy) {
-                        const ids = labelledBy.split(' ');
-                        for (const lblId of ids) {
-                            const lbl = document.getElementById(lblId);
-                            if (lbl) text += ' ' + lbl.textContent.toLowerCase();
+            for (const lbl of labels) {
+                const text = (await lbl.textContent() || '').trim();
+                if (questionRegex.test(text)) {
+                    let tempId = await lbl.getAttribute('for');
+                    if (!tempId) {
+                        const idAttr = await lbl.getAttribute('id');
+                        if (idAttr && idAttr.endsWith('-label')) {
+                            tempId = idAttr.replace('-label', '');
                         }
                     }
-                    return text;
-                });
-
-                let fillValue = null;
-                if (lowerText.includes('country')) fillValue = domainOverrides.country || 'United States';
-                else if ((lowerText.includes('phone') || lowerText.includes('dialing')) && (lowerText.includes('country') || lowerText.includes('code'))) fillValue = 'United States';
-                else if (lowerText.includes('gender') || lowerText.includes('identify') || lowerText.includes('sex')) fillValue = domainOverrides.gender || 'Male';
-                else if (lowerText.includes('hispanic') || lowerText.includes('latino') || lowerText.includes('race') || lowerText.includes('ethnic')) fillValue = domainOverrides.race || 'Hispanic';
-                else if (lowerText.includes('veteran')) fillValue = domainOverrides.veteran || 'not a protected veteran';
-                else if (lowerText.includes('disability')) fillValue = domainOverrides.disability || "I don't wish to answer";
-                else if (lowerText.includes('authorized') || lowerText.includes('legally') || lowerText.includes('u.s. person') || lowerText.includes('us person')) fillValue = domainOverrides.authorized || 'Yes';
-                else if (lowerText.includes('relocat') || lowerText.includes('onsite') || lowerText.includes('hybrid') || lowerText.includes('office') || lowerText.includes('clearance') || lowerText.includes('salary') || lowerText.includes('comfortable') || lowerText.includes('18+') || lowerText.includes('age')) fillValue = domainOverrides.age || 'Yes';
-                else if (lowerText.includes('experience') || lowerText.includes('familiar') || lowerText.includes('hands-on')) fillValue = 'Yes';
-                else if (lowerText.includes('sponsorship') || lowerText.includes('visa') || lowerText.includes('previously worked')) fillValue = domainOverrides.sponsorship || domainOverrides.previously_worked || 'No';
-                else if (lowerText.includes('hear') || lowerText.includes('source')) fillValue = 'LinkedIn';
-                else if (lowerText.includes('school') || lowerText.includes('university') || lowerText.includes('college')) fillValue = 'Texas';
-                else if (lowerText.includes('degree')) fillValue = 'Bachelor';
-                else if (lowerText.includes('discipline') || lowerText.includes('major')) fillValue = 'Computer';
-                else if (lowerText.includes('language') || lowerText.includes('programming')) fillValue = 'Python';
-                else if (lowerText.includes('available to work') || lowerText.includes('start date')) fillValue = 'Immediately';
-                else if (lowerText.includes('metropolitan') || lowerText.includes('residence')) fillValue = 'New York';
-                else if (lowerText.includes('export') || lowerText.includes('sanctions') || lowerText.includes('confirm whether any of the below applies')) fillValue = 'None of the above';
-                else if (lowerText.includes('prior question') || lowerText.includes('none of the above')) fillValue = 'Not applicable';
-                
-                // Execute heuristic targeting if keyword mapped
-                if (fillValue) {
-                    await box.evaluate((el) => { 
-                         el.style.opacity = "1"; 
-                         el.style.position = "static";
-                         el.style.display = "block";
-                         el.style.width = "auto";
-                    });
-                    const id = await box.evaluate(el => el.getAttribute('id'));
-                    const locator = id ? page.locator(`input.select__input[role="combobox"][id="${id}"]`).first() : box;
+                    if (!tempId) {
+                        const nestedInput = await lbl.$('input, select, textarea');
+                        if (nestedInput) tempId = await nestedInput.getAttribute('id');
+                    }
+                    if (!tempId) continue;
                     
-                    await locator.focus({ force: true }).catch(()=>{});
-                    const isAlreadyFilled = await box.evaluate(el => !!el.closest('div').querySelector('[class*="single-value"]'));
-                    if (!isAlreadyFilled) {
-                        await locator.fill("").catch(()=>{});
-                        await locator.pressSequentially(fillValue, { delay: 80 }).catch(()=>{});
-                        await page.waitForTimeout(800);
+                    const safeId = tempId.replace(/([":\[\]\.\,])/g, '\\$1');
+                    const inputCheck = page.locator(`[id="${safeId}"]`).first();
+                    const isVis = await inputCheck.isVisible().catch(()=>false);
+                    const typeAttr = await inputCheck.getAttribute('type').catch(()=>null);
+                    
+                    const hasAdjacentSelect = await lbl.evaluate(el => {
+                        const parent = el.parentElement;
+                        return parent && parent.querySelector('.select__control, .select2-container, div[class*="select"]') !== null;
+                    }).catch(()=>false);
+                    
+                    if (isVis || typeAttr === 'hidden' || hasAdjacentSelect) {
+                        targetLabel = lbl;
+                        targetId = tempId;
+                        console.log(`[Mapper] Matched Regex ${questionRegex} against Label: "${text.substring(0, 30)}..." -> TargetID: ${targetId}`);
+                        break;
+                    }
+                }
+            }
+
+            if (!targetId) return false;
+
+            // Use locator with ID because IDs might have weird characters in modern react
+            const safeId = targetId.replace(/([":\[\]\.\,])/g, '\\$1');
+            let input = page.locator(`[id="${safeId}"]`).first();
+            
+            // Check if it's a hidden React-Select input or base ID doesn't exist
+            if (await input.count() === 0 || await input.getAttribute('type') === 'hidden') {
+                // Try dynamically generated react-select IDs first
+                const reactSelectInput = page.locator(`#react-select-${safeId}-input`).first();
+                if (await reactSelectInput.count() > 0) {
+                    input = reactSelectInput;
+                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${safeId}-input)`);
+                } else {
+                    // Fallback to finding the input visually adjacent to the label
+                    const siblingInput = page.locator(`label[for="${safeId}"] ~ div input, label[for="${safeId}"] + div input`).first();
+                    if (await siblingInput.count() > 0) {
+                        input = siblingInput;
+                        console.log(`[Mapper] Redirected ID ${targetId} to adjacent div input`);
+                    } else if (await input.count() === 0) {
+                        console.log(`[Mapper] Failed to find input with ID: ${targetId}`);
+                        return false;
+                    }
+                }
+            }
+
+            const tagName = await input.evaluate(el => el.tagName.toLowerCase());
+            const role = await input.getAttribute('role');
+            const type = (await input.getAttribute('type')) || 'text';
+            
+            console.log(`[Mapper] Processing ID: ${targetId} | Tag: ${tagName} | Role: ${role} | Type: ${type}`);
+
+            if (tagName === 'input' && role === 'combobox') {
+                // Strategy: React-Select
+                await input.evaluate(el => {
+                    el.style.opacity = "1";
+                    el.style.position = "static";
+                    el.style.display = "block";
+                    el.style.width = "auto";
+                });
+                await input.focus({ force: true }).catch(()=>{});
+                await input.fill("").catch(()=>{});
+                await input.pressSequentially(targetValue, { delay: 50 }).catch(()=>{});
+                await page.waitForTimeout(2000); // Wait for options to render from API
+                
+                // Try to click the exact option
+                let options = await page.$$('div[class*="option"]');
+                
+                // Fallback: If no options, clear and open dropdown manually
+                if (options.length === 0) {
+                    await input.fill("").catch(()=>{});
+                    await input.press('ArrowDown').catch(()=>{});
+                    await page.waitForTimeout(1000);
+                    options = await page.$$('div[class*="option"]');
+                }
+                
+                let clicked = false;
+                const returnedOptions = [];
+                for (const opt of options) {
+                    const optText = await opt.innerText().catch(()=>'');
+                    if (optText.trim()) returnedOptions.push(optText.trim());
+                    
+                    if (isMatchOption(optText, targetValue)) {
+                        console.log(`[Mapper] React-Select: Searched "${targetValue}", Selected: "${optText.trim()}"`);
+                        await opt.click({ delay: 50, force: true }).catch(()=>{});
+                        clicked = true;
+                        break;
+                    }
+                }
+                if (!clicked) {
+                    const previewOptions = returnedOptions.slice(0, 5).join(', ') + (returnedOptions.length > 5 ? '...' : '');
+                    console.log(`[Mapper] React-Select: Searched "${targetValue}", No exact match found. Returned options: [${previewOptions}]. Pressing Enter as fallback.`);
+                    await input.press('Enter').catch(()=>{});
+                }
+                await page.waitForTimeout(300);
+                await input.press('Tab').catch(()=>{}); // Blur the input so React state flushes
+                return true;
+
+            } else if (tagName === 'select') {
+                // Strategy: Native Select or Select2
+                const isSelect2 = await input.evaluate(el => el.classList.contains('select2-hidden-accessible') || (el.nextElementSibling && el.nextElementSibling.classList.contains('select2')));
+                
+                if (isSelect2) {
+                    console.log(`[Mapper] Detected Select2 for ID: ${targetId}`);
+                    // Click the select2 container to open the dropdown
+                    await input.evaluate(el => {
+                        const container = el.nextElementSibling;
+                        if (container) {
+                            const selection = container.querySelector('.select2-selection');
+                            if (selection) selection.click();
+                        }
+                    }).catch(()=>{});
+                    
+                    await page.waitForTimeout(500);
+                    
+                    // Type into the active search field (Select2 appends this to the body usually)
+                    const searchField = page.locator('input.select2-search__field').last();
+                    if (await searchField.isVisible().catch(()=>false)) {
+                        await searchField.fill("");
+                        await searchField.pressSequentially(targetValue, { delay: 50 });
+                        await page.waitForTimeout(2000); // Wait for AJAX API to fetch options
                         
-                        // Search for the exact dropdown option and click it to prevent partial prefix matching
-                        const options = await page.$$('div[class*="option"]');
+                        // Explicitly find the best matching option and click it
+                        const options = await page.$$('li.select2-results__option');
                         let clicked = false;
+                        const returnedOptions = [];
+                        
                         for (const opt of options) {
-                            const optText = await opt.innerText().catch(()=>'');
-                            if (optText.trim() === fillValue.trim() || optText.trim().startsWith(fillValue.trim())) {
+                            const text = await opt.innerText().catch(()=>'');
+                            if (text.trim()) returnedOptions.push(text.trim());
+                        }
+
+                        for (const opt of options) {
+                            const text = await opt.innerText().catch(()=>'');
+                            if (isMatchOption(text, targetValue)) {
+                                console.log(`[Mapper] Select2: Searched "${targetValue}", Selected exact/partial match: "${text.trim()}"`);
                                 await opt.click().catch(()=>{});
                                 clicked = true;
                                 break;
                             }
                         }
-                        if (!clicked) {
-                            await locator.press('Enter').catch(()=>{});
+                        
+                        if (!clicked && options.length > 0) {
+                            // If no text match but options exist, select the first one
+                            const previewOptions = returnedOptions.slice(0, 5).join(', ') + (returnedOptions.length > 5 ? '...' : '');
+                            console.log(`[Mapper] Select2: Searched "${targetValue}", No match found. Returned options: [${previewOptions}]. Selecting first: "${returnedOptions[0]}"`);
+                            await options[0].click().catch(()=>{});
+                        } else if (!clicked) {
+                            console.log(`[Mapper] Select2: Searched "${targetValue}", No options returned. Pressing Enter as fallback.`);
+                            await searchField.press('Enter').catch(()=>{});
                         }
+                        
                         await page.waitForTimeout(300);
+                        await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                        return true;
+                    } else {
+                        // If no search field, try to click a matching option directly
+                        const options = await page.$$('li.select2-results__option');
+                        for (const opt of options) {
+                            const text = await opt.innerText().catch(()=>'');
+                            if (isMatchOption(text, targetValue)) {
+                                console.log(`[Mapper] Select2 (No Search Field): Selected "${text.trim()}"`);
+                                await opt.click().catch(()=>{});
+                                await page.waitForTimeout(300);
+                                await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                                return true;
+                            }
+                        }
                     }
                 }
-                
-                // Fallback for explicitly required esoteric Dropdowns (or if above fillValue failed to lock)
-                const isReq = await box.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
-                if (isReq) {
-                    try {
-                        const isFilled = await box.evaluate(el => {
-                            const container = el.closest('div[class*="container"]') || el.closest('div');
-                            if (container.querySelector('[class*="single-value"]')) return true;
-                            const hidden = container.querySelector('input[type="hidden"]');
-                            if (hidden && hidden.value) return true;
-                            if (el.value && el.value.length > 0) return true;
-                            return false;
-                        });
-                        if (!isFilled) {
-                            await logUnmappedDom(box, "React Select Fallback");
-                            const id = await box.evaluate(el => el.getAttribute('id'));
-                            const locator = id ? page.locator(`input.select__input[role="combobox"][id="${id}"]`).first() : box;
-                            await locator.focus({ force: true }).catch(()=>{});
-                            await locator.fill("").catch(()=>{}); // Clear bad typings
-                            await locator.press('ArrowDown').catch(()=>{}); // Expand menu
-                            await page.waitForTimeout(300);
-                            await locator.press('ArrowDown').catch(()=>{}); // Move to Option 1
-                            await page.waitForTimeout(100);
-                            await locator.press('Enter').catch(()=>{});
-                            await page.waitForTimeout(300);
-                        }
-                    } catch(e) {}
-                }
-            } catch(e) {}
-        }
-    } catch(e) {}
 
-    const safeReactSelect = async (id, value) => {
-        try {
-            // Find input matching either explicit ID or aria-autocomplete combobox role
-            const locator = page.locator(`input.select__input[id="${id}"]`);
-            if (await locator.count() > 0) {
-                await locator.evaluate((el) => { 
-                     el.style.opacity = "1"; 
-                     el.style.position = "static";
-                     el.style.display = "block";
-                     el.style.width = "auto";
-                });
-                await locator.focus({ force: true });
-                await locator.fill("");
-                await locator.pressSequentially(value, { delay: 30 });
-                await page.waitForTimeout(500); // Wait for React-Select API to asynchronously filter matching options
-                await locator.press('Enter');
-                await page.waitForTimeout(200);
+                // Normal Native Select fallback
+                const options = await input.evaluate(el => Array.from(el.options).map(o => o.textContent.trim()));
+                let match = options.find(o => o && o.toLowerCase().includes(targetValue.toLowerCase()));
+                if (!match && targetValue === 'I am authorized') {
+                     match = options.find(o => o && o.toLowerCase().includes('yes'));
+                }
+                if (!match && targetValue === 'Yes') match = options.find(o => o && o.toLowerCase().includes('acknowledge'));
+                if (!match && targetValue === 'Yes') match = options.find(o => o && o.toLowerCase().includes('authorized'));
+                
+                if (match) {
+                    console.log(`[Mapper] Native Select: Selected "${match}" for ID: ${targetId}`);
+                    await input.selectOption({ label: match }, { force: true }).catch(()=>{});
+                    await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                    await page.waitForTimeout(200);
+                    return true;
+                }
+            } else if ((tagName === 'input' && ['text', 'tel', 'email', 'url', 'number', 'password'].includes(type.toLowerCase())) || tagName === 'textarea') {
+                // Strategy: Text Input
+                if (!(await input.inputValue())) {
+                    await input.focus().catch(()=>{});
+                    await input.pressSequentially(targetValue, { delay: 15 }).catch(()=>{});
+                    await page.waitForTimeout(500);
+                    // Google Maps Autocomplete Check
+                    const autocomplete = page.locator('.pac-container .pac-item, ul.ui-autocomplete li.ui-menu-item').first();
+                    if (await autocomplete.isVisible().catch(()=>false)) {
+                        await autocomplete.click().catch(()=>{});
+                        await page.waitForTimeout(300);
+                    }
+                    await input.blur().catch(()=>{});
+                    return true;
+                }
+            } else if (tagName === 'input' && (type === 'radio' || type === 'checkbox')) {
+                const targetLower = targetValue.toString().toLowerCase();
+                if (targetLower === 'check' || targetLower === 'yes' || targetLower === 'true' || targetLower === 'acknowledge') {
+                    if (!(await input.isChecked().catch(()=>false))) {
+                        await input.check({ force: true }).catch(()=>{});
+                        await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                        return true;
+                    }
+                } else if (targetLower === 'uncheck' || targetLower === 'no' || targetLower === 'false') {
+                    if (await input.isChecked().catch(()=>false)) {
+                        await input.uncheck({ force: true }).catch(()=>{});
+                        await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                        return true;
+                    }
+                }
             }
         } catch(e) {}
+        return false;
     };
 
-    // Modern Greenhouse React-Select Explicit ID Hooks
-    await safeReactSelect('gender', 'Male');
-    await safeReactSelect('hispanic_ethnicity', 'Yes');
-    await safeReactSelect('veteran_status', 'not a protected veteran');
-    await safeReactSelect('disability_status', 'Decline to self-identify');
-    await safeReactSelect('country', 'United States');
+    const DETERMINISTIC_MAPPINGS = [
+        { question: /linkedin profile/i, value: profileConfig?.candidate?.linkedin || 'https://linkedin.com/in/dhardestylewis' },
+        { question: /github/i, value: profileConfig?.candidate?.github || 'https://github.com/dhardestylewis' },
+        { question: /website|portfolio/i, value: profileConfig?.candidate?.portfolio || 'https://dlewis.ai' },
+        { question: /work authorization|authorized to work|right to work|eligibility/i, value: 'Yes' },
+        { question: /require.*sponsorship|need sponsorship|require visa/i, value: 'No' },
+        { question: /gender/i, value: domainOverrides.gender || 'Male' },
+        { question: /hispanic|latino/i, value: 'Decline' },
+        { question: /racial|ethnic/i, value: 'Decline' },
+        { question: /sexual orientation/i, value: 'Decline' },
+        { question: /transgender/i, value: 'Decline' },
+        { question: /veteran/i, value: 'No' },
+        { question: /disability/i, value: 'No' },
+        { question: /^country\b/i, value: domainOverrides.country || 'United States' },
+        { question: /how did you.*hear|find out/i, value: 'LinkedIn' },
+        { question: /please specify here/i, value: 'N/A' },
+        { question: /^are you a current.*employee/i, value: 'No' },
+        { question: /current company/i, value: profileConfig?.candidate?.company || 'Homecastr' },
+        { question: /preferred programming language/i, value: 'Python' },
+        { question: /past 6 months|previously applied|previously worked|worked for.*before|former.*employee/i, value: 'No' },
+        { question: /18\+ years of age|18 or older/i, value: 'Yes' },
+        { question: /available to work as a full|soonest you can start/i, value: 'Now' },
+        { question: /type of visa sponsorship/i, value: 'None' },
+        { question: /phd/i, value: 'No' },
+        { question: /relocate|on-site|onsite|hybrid|in person in our|in our.*office|in-office/i, value: 'Yes' },
+        { question: /restrict your ability to work|non-compete/i, value: 'No' },
+        { question: /preferred first name/i, value: profileConfig?.candidate?.first_name || 'Daniel' },
+        { question: /legal name/i, value: (profileConfig?.candidate?.first_name || 'Daniel') + ' ' + (profileConfig?.candidate?.last_name || 'Hardesty Lewis') },
+        { question: /^first name/i, value: profileConfig?.candidate?.first_name || 'Daniel' },
+        { question: /^last name/i, value: profileConfig?.candidate?.last_name || 'Hardesty Lewis' },
+        { question: /^email/i, value: profileConfig?.candidate?.email || 'daniel.hardestylewis@gmail.com' },
+        { question: /school|university/i, value: domainOverrides.school || profileConfig?.candidate?.university || 'University of Texas at Austin' },
+        { question: /^degree/i, value: domainOverrides.degree || profileConfig?.candidate?.degree || 'Bachelor' },
+        { question: /discipline|what is your major/i, value: domainOverrides.discipline || profileConfig?.candidate?.major || 'Mathematics' },
+        { question: /gpa|grade/i, value: profileConfig?.candidate?.gpa || '3.49' },
+        { question: /pronouns/i, value: profileConfig?.candidate?.pronouns || 'He/him' },
+        { question: /^location \(city\)|^city/i, value: profileConfig?.candidate?.location || 'New York, NY' },
+        { question: /privacy policy|acknowledge|outside assistance|artificial intelligence/i, value: 'acknowledge' },
+        { question: /where do you intend to work/i, value: profileConfig?.candidate?.location || 'New York, NY' },
+        { question: /currently based in|live in/i, value: 'Yes' },
+        { question: /clearance/i, value: 'No' },
+        { question: /NeurIPS|ICML|CVPR/i, value: 'check' },
+        { question: /^Generative AI|^Natural Language Processing|Recommendation Systems/i, value: 'check' },
+        { question: /google scholar/i, value: profileConfig?.candidate?.scholar || 'https://scholar.google.com/citations?user=Gk740W4AAAAJ' },
+        { question: /why applied intuition/i, value: 'I am highly motivated by frontier research and building applied AI systems that solve tangible, high-impact problems. Having built models at national scales and successfully founded multiple companies, my objective now is to join an intensely focused technical team pushing the boundaries of what is possible in the ML space.' },
+        { question: /hardest thing you’ve done/i, value: 'Architecting and scaling the data aggregation and real-time inference pipeline for a national real estate prediction model completely solo. Ensuring fault-tolerance and sub-second latency across millions of rows of data required mastering completely new distributed systems paradigms on the fly.' },
+        { question: /highest quality work of your life/i, value: 'Building the state-of-the-art property valuation model at Homecastr. It represents the culmination of my experience in ML, systems engineering, and geospatial data, beating commercial benchmarks while operating efficiently at scale.' },
+        { question: /steps did you take to become the best/i, value: 'Relentless curiosity, diving into research papers to understand the mathematical foundations of models rather than treating them as black boxes, and consistently building end-to-end systems from infrastructure to inference to understand the holistic lifecycle of a product.' },
+        { question: /^none of the above$/i, value: 'check' },
+        { question: /not applicable.*selected.*none of the above/i, value: 'check' },
+        { question: /notice period/i, value: 'Available immediately' }
+    ];
+
+    for (const map of DETERMINISTIC_MAPPINGS) {
+        await fillDeterministicField(page, map.question, map.value);
+    }
 
     console.log("Scanning for Custom ATS questions via Heuristic Engine...");
     try {
@@ -617,17 +718,37 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         for (const area of allTextAreas) {
             try {
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
-                const parentLabel = await area.$('xpath=ancestor::div[contains(@class,"field")] | ancestor::label | preceding-sibling::label');
-                const text = parentLabel ? await parentLabel.textContent() : '';
+                const parentLabel = await area.evaluateHandle(el => {
+                    const id = el.id;
+                    if (id) {
+                        const lbl = document.querySelector(`label[for="${id}"]`) || document.querySelector(`label[for="${id.replace('form_', '')}"]`);
+                        if (lbl) return lbl;
+                    }
+                    const aria = el.getAttribute('aria-labelledby');
+                    if (aria) {
+                        const lbl = document.getElementById(aria);
+                        if (lbl) return lbl;
+                    }
+                    const wrap = el.closest('div[class*="question"]');
+                    if (wrap) return wrap;
+                    const field = el.closest('.field');
+                    if (field && field.querySelectorAll('input, textarea, select').length <= 3) return field;
+                    return el.parentElement;
+                }).catch(()=>null);
+                
+                const text = parentLabel ? await parentLabel.textContent().catch(()=>'') : '';
                 const cleanText = text.replace(/\s+/g, ' ').trim().substring(0, 300);
                 const lowerText = cleanText ? cleanText.toLowerCase() : '';
-                const combinedLabel = ariaLabel + " " + lowerText;
+                const placeholder = (await area.getAttribute('placeholder') || '').toLowerCase();
+                const combinedLabel = ariaLabel + " " + placeholder + " " + lowerText;
 
-                const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate') || combinedLabel.includes('hardest') || combinedLabel.includes('impactful') || combinedLabel.includes('problem');
-                const isTechnical = combinedLabel.includes('describe') || combinedLabel.includes('experience') || combinedLabel.includes('background') || combinedLabel.includes('proud') || combinedLabel.includes('impressive') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('built') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your') || combinedLabel.includes('tools') || combinedLabel.includes(' ai ') || combinedLabel.includes('artificial intelligence') || combinedLabel.includes('technologies') || combinedLabel.includes('technical stack') || combinedLabel.includes('tech stack');
+                const isBehavioral = /\b(why|interest\w*|reason\w*|cover letter|excit\w*|mission|fit|value\w*|resonate\w*)\b/i.test(combinedLabel);
+                const isTechnical = /\b(describe|experience|background|proud|impressive|achievement|project|built|workflow|feature|sql|python|skills|rate your|tools|ai|artificial intelligence|technologies)\b/i.test(combinedLabel);
 
                 if (combinedLabel.includes('years')) {
                     if (!(await area.inputValue())) { await area.fill("10"); await area.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
+                    if (!(await area.inputValue())) { await area.fill(catchAll); await area.blur().catch(()=>{}); }
                 } else if (isBehavioral) {
                     const interest = profileConfig?.narrative?.interest_statement || exitStory;
                     if (!(await area.inputValue())) { await area.fill(interest); await area.blur().catch(()=>{}); }
@@ -637,8 +758,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!(await area.inputValue())) { await area.fill('United States'); await area.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('relocation') || combinedLabel.includes('relocate')) {
                     if (!(await area.inputValue())) { await area.fill('No'); await area.blur().catch(()=>{}); }
-                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
-                    if (!(await area.inputValue())) { await area.fill(catchAll); await area.blur().catch(()=>{}); }
                 } else {
                     // Fallback: any required unfilled textarea gets catchAll
                     const isReq = await area.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
@@ -652,21 +771,41 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         }
         
         // Scan custom inputs directly reading Aria labels to bypass broken parent DOM hierarchies
-        const allInputs = await page.$$('input[type="text"]:not([role="combobox"]):not(.select__input):not([id*="react-select"])');
+        const allInputs = await page.$$('input:not([type="hidden"]):not([type="radio"]):not([type="checkbox"]):not([type="file"]):not([type="submit"]):not([type="button"]):not([role="combobox"]):not(.select__input):not([id*="react-select"])');
         for (const input of allInputs) {
             try {
                 const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
-                const parentLabel = await input.$('xpath=ancestor::div[contains(@class,"field")] | ancestor::label | preceding-sibling::label').catch(()=>null);
+                const placeholder = (await input.getAttribute('placeholder') || '').toLowerCase();
+                const parentLabel = await input.evaluateHandle(el => {
+                    const id = el.id;
+                    if (id) {
+                        const lbl = document.querySelector(`label[for="${id}"]`) || document.querySelector(`label[for="${id.replace('form_', '')}"]`);
+                        if (lbl) return lbl;
+                    }
+                    const aria = el.getAttribute('aria-labelledby');
+                    if (aria) {
+                        const lbl = document.getElementById(aria);
+                        if (lbl) return lbl;
+                    }
+                    const wrap = el.closest('div[class*="question"]');
+                    if (wrap) return wrap;
+                    const field = el.closest('.field');
+                    if (field && field.querySelectorAll('input, textarea, select').length <= 3) return field;
+                    return el.parentElement;
+                }).catch(()=>null);
+                
                 const text = parentLabel ? await parentLabel.textContent().catch(()=>'') : '';
                 const cleanText = text.replace(/\s+/g, ' ').trim().substring(0, 300);
                 const lowerText = cleanText ? cleanText.toLowerCase() : '';
-                const combinedLabel = ariaLabel + " " + lowerText;
+                const combinedLabel = ariaLabel + " " + placeholder + " " + lowerText;
                 
-                const isBehavioral = combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('fit') || combinedLabel.includes('value') || combinedLabel.includes('resonate');
-                const isTechnical = combinedLabel.includes('describe') || combinedLabel.includes('experience') || combinedLabel.includes('background') || combinedLabel.includes('proud') || combinedLabel.includes('impressive') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('built') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('sql') || combinedLabel.includes('python') || combinedLabel.includes('skills') || combinedLabel.includes('rate your') || combinedLabel.includes('tools') || combinedLabel.includes('ai') || combinedLabel.includes('technologies');
+                const isBehavioral = /\b(why|interest\w*|reason\w*|cover letter|excit\w*|mission|fit|value\w*|resonate\w*)\b/i.test(combinedLabel);
+                const isTechnical = /\b(describe|experience|background|proud|impressive|achievement|project|built|workflow|feature|sql|python|skills|rate your|tools|ai|artificial intelligence|technologies)\b/i.test(combinedLabel);
                 
                 if (combinedLabel.includes('years')) {
                     if (!(await input.inputValue())) { await input.pressSequentially("10", {delay: 50}); await input.blur().catch(()=>{}); }
+                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
+                    if (!(await input.inputValue())) { await input.fill(catchAll); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('salary') || combinedLabel.includes('compensation') || combinedLabel.includes('expectations') || combinedLabel.includes('package')) {
                     if (!(await input.inputValue())) { await input.pressSequentially(minComp.toString(), { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('notice period') || ariaLabel.includes('available to start')) {
@@ -728,8 +867,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!(await input.inputValue())) { await input.fill(interest); await input.blur().catch(()=>{}); }
                 } else if (isTechnical) {
                     if (!(await input.inputValue())) { await input.fill(exitStory); await input.blur().catch(()=>{}); }
-                } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
-                    if (!(await input.inputValue())) { await input.fill(catchAll); await input.blur().catch(()=>{}); }
                 } else {
                     // Fallback: any unfilled required input gets the catchAll answer
                     const isReq = await input.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
@@ -750,14 +887,30 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const isReq = await check.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                 
                 const labelText = await check.evaluate(el => {
+                    const id = el.id;
+                    if (id) {
+                        const safeId = id.replace(/([":\[\]\.\,])/g, '\\$1');
+                        const lbl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[for="${safeId.replace('form_', '')}"]`);
+                        if (lbl) return lbl.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
+                    }
                     const ctx = el.closest('label') || el.parentElement;
                     return ctx ? ctx.textContent.replace(/\s+/g, ' ').trim().substring(0, 300).toLowerCase() : '';
                 }).catch(()=>'');
+                
+                const questionText = await check.evaluate(el => {
+                    const desc = el.getAttribute('description');
+                    if (desc) return desc.toLowerCase();
+                    const block = el.closest('.field, .application-question, div[class*="question"]');
+                    return block ? block.textContent.replace(/\s+/g, ' ').trim().toLowerCase() : '';
+                }).catch(()=>'');
 
-                const isExportControl = labelText.includes('cuba') || labelText.includes('iran') || labelText.includes('syria') || labelText.includes('korea') || labelText.includes('russia') || labelText.includes('belarus') || labelText.includes('export') || labelText.includes('sanctions') || labelText.includes('prior question');
+                const isExportControl = questionText.includes('cuba') || questionText.includes('iran') || questionText.includes('syria') || questionText.includes('korea') || questionText.includes('russia') || questionText.includes('belarus') || questionText.includes('export controls') || questionText.includes('sanctions') || questionText.includes('prior question');
                 
                 if (isExportControl) {
-                    if (labelText.includes('none of the above') || labelText.includes('not applicable') || labelText.includes('none of these apply') || labelText.includes('u.s. citizen')) {
+                    if (labelText.includes('none of the above') || labelText.includes('not applicable') || labelText.includes('none of these apply')) {
+                        if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
+                    } else if (labelText.includes('u.s. citizen') && !questionText.includes('prior question')) {
+                        // Only check U.S. citizen if 'not applicable' isn't available
                         if (!(await check.isChecked())) await check.check({force: true}).catch(()=>{});
                     }
                 } else if (name.includes('gdpr') || name.includes('consent') || name.includes('terms') || name.includes('agree') || labelText.includes('agree') || labelText.includes('confirm') || labelText.includes('certify') || labelText.includes('acknowledge') || labelText.includes('understand') || labelText.includes('policy') || labelText.includes('consent')) {
@@ -1120,7 +1273,22 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 }
 
                 const container = el.closest('div.field, label') || el.closest('div') || el;
-                missingDOM.push(container.outerHTML.substring(0, 1500));
+                let labelText = '';
+                const idAttr = el.id;
+                if (idAttr) {
+                    try {
+                        const safeId = idAttr.replace(/([\[\]\.\,])/g, '\\$1');
+                        const labelEl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[id="${safeId}-label"]`);
+                        if (labelEl) labelText = labelEl.textContent.trim();
+                    } catch (e) {}
+                }
+                if (!labelText) {
+                    const parentLabel = el.closest('label');
+                    if (parentLabel) labelText = parentLabel.textContent.trim();
+                }
+                
+                const prefix = labelText ? `[Label: ${labelText}] ` : '';
+                missingDOM.push(prefix + container.outerHTML.substring(0, 1500));
             }
         }
         
@@ -1171,7 +1339,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         metrics.domain = domain;
         
         // Extract raw HTML context of the form to aid deterministic debugging of unmapped fields
-        metrics.rawFormHtml = await targetPage.locator('form').first().evaluate(el => el.outerHTML).catch(()=>'');
+        metrics.rawFormHtml = await page.locator('form').first().evaluate(el => el.outerHTML).catch(()=>'');
     } catch(e) {
         console.error("Failed to generate application snapshot", e);
     }
