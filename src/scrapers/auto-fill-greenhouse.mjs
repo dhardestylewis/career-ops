@@ -164,7 +164,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
                 const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
-                if (await el.count() > 0) await el.first().fill(val);
+                if (await el.count() > 0) await el.first().pressSequentially(val, { delay: Math.floor(Math.random() * 40) + 20 });
             }
         }
     } catch(e) {}
@@ -822,24 +822,24 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const isTechnical = /\b(describe|experience|background|proud|impressive|achievement|project|built|workflow|feature|sql|python|skills|rate your|tools|ai|artificial intelligence|technologies)\b/i.test(combinedLabel);
 
                 if (combinedLabel.includes('years')) {
-                    if (!(await area.inputValue())) { await area.fill("10"); await area.blur().catch(()=>{}); }
+                    if (!(await area.inputValue())) { await area.pressSequentially("10", { delay: Math.floor(Math.random() * 40) + 20 }); await area.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
-                    if (!(await area.inputValue())) { await area.fill(catchAll); await area.blur().catch(()=>{}); }
+                    if (!(await area.inputValue())) { await area.pressSequentially(catchAll, { delay: Math.floor(Math.random() * 40) + 20 }); await area.blur().catch(()=>{}); }
                 } else if (isBehavioral) {
                     const interest = profileConfig?.narrative?.interest_statement || exitStory;
-                    if (!(await area.inputValue())) { await area.fill(interest); await area.blur().catch(()=>{}); }
+                    if (!(await area.inputValue())) { await area.pressSequentially(interest, { delay: Math.floor(Math.random() * 40) + 20 }); await area.blur().catch(()=>{}); }
                 } else if (isTechnical) {
-                    if (!(await area.inputValue())) { await area.fill(exitStory); await area.blur().catch(()=>{}); }
+                    if (!(await area.inputValue())) { await area.pressSequentially(exitStory, { delay: Math.floor(Math.random() * 40) + 20 }); await area.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('country') && combinedLabel.includes('located')) {
-                    if (!(await area.inputValue())) { await area.fill('United States'); await area.blur().catch(()=>{}); }
+                    if (!(await area.inputValue())) { await area.pressSequentially('United States', { delay: Math.floor(Math.random() * 40) + 20 }); await area.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('relocation') || combinedLabel.includes('relocate')) {
-                    if (!(await area.inputValue())) { await area.fill('No'); await area.blur().catch(()=>{}); }
+                    if (!(await area.inputValue())) { await area.pressSequentially('No', { delay: Math.floor(Math.random() * 40) + 20 }); await area.blur().catch(()=>{}); }
                 } else {
                     // Fallback: any required unfilled textarea gets catchAll
                     const isReq = await area.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                     if (isReq && !(await area.inputValue())) { 
                         await logUnmappedDom(area, "Textarea Fallback");
-                        await area.fill(catchAll); 
+                        await area.pressSequentially(catchAll, { delay: Math.floor(Math.random() * 40) + 20 }); 
                         await area.blur().catch(()=>{}); 
                     }
                 }
@@ -881,7 +881,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (combinedLabel.includes('years')) {
                     if (!(await input.inputValue())) { await input.pressSequentially("10", {delay: 50}); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('anything else') || combinedLabel.includes('additional info') || combinedLabel.includes('comments')) {
-                    if (!(await input.inputValue())) { await input.fill(catchAll); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(catchAll, { delay: Math.floor(Math.random() * 40) + 20 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('salary') || combinedLabel.includes('compensation') || combinedLabel.includes('expectations') || combinedLabel.includes('package')) {
                     if (!(await input.inputValue())) { await input.pressSequentially(minComp.toString(), { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (ariaLabel.includes('notice period') || ariaLabel.includes('available to start')) {
@@ -940,15 +940,15 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!(await input.inputValue())) { await input.pressSequentially('10+ years', { delay: 10 }); await input.blur().catch(()=>{}); }
                 } else if (isBehavioral) {
                     const interest = profileConfig?.narrative?.interest_statement || exitStory;
-                    if (!(await input.inputValue())) { await input.fill(interest); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(interest, { delay: Math.floor(Math.random() * 40) + 20 }); await input.blur().catch(()=>{}); }
                 } else if (isTechnical) {
-                    if (!(await input.inputValue())) { await input.fill(exitStory); await input.blur().catch(()=>{}); }
+                    if (!(await input.inputValue())) { await input.pressSequentially(exitStory, { delay: Math.floor(Math.random() * 40) + 20 }); await input.blur().catch(()=>{}); }
                 } else {
                     // Fallback: any unfilled required input gets the catchAll answer
                     const isReq = await input.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                     if (isReq && !(await input.inputValue())) { 
                         await logUnmappedDom(input, "Text Input Fallback");
-                        await input.fill("N/A - See Resume"); 
+                        await input.pressSequentially("N/A - See Resume", { delay: Math.floor(Math.random() * 40) + 20 }); 
                         await input.blur().catch(()=>{}); 
                     }
                 }
@@ -1056,19 +1056,19 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Heuristic 2: Compensation / Salary Target
             if (lowerText.includes('salary') || lowerText.includes('compensation') || lowerText.includes('expectations')) {
                 const txt = await block.$('input[type="text"], textarea');
-                if (txt && !(await txt.inputValue())) await txt.fill(minComp.toString());
+                if (txt && !(await txt.inputValue())) await txt.pressSequentially(minComp.toString(), { delay: Math.floor(Math.random() * 40) + 20 });
             }
 
             // Heuristic 3: Cover Letter analogues / Why us / Interest / Achievements / Projects
             if (lowerText.includes('why') || lowerText.includes('interest') || lowerText.includes('reason') || lowerText.includes('cover letter') || lowerText.includes('achievement') || lowerText.includes('project') || lowerText.includes('visa')) {
                 const area = await block.$('textarea');
-                if (area && !(await area.inputValue())) await area.fill(exitStory);
+                if (area && !(await area.inputValue())) await area.pressSequentially(exitStory, { delay: Math.floor(Math.random() * 40) + 20 });
             }
 
             // Heuristic 4: Clearance 
             if (lowerText.includes('clearance')) {
                 const t = await block.$('input[type="text"]');
-                if (t && !(await t.inputValue())) await t.fill("None");
+                if (t && !(await t.inputValue())) await t.pressSequentially("None", { delay: Math.floor(Math.random() * 40) + 20 });
             }
         }
         
@@ -1173,7 +1173,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                                 yoe = val; break;
                             }
                         }
-                        await inp.fill(yoe.toString()).catch(()=>{});
+                        await inp.pressSequentially(yoe.toString(), { delay: Math.floor(Math.random() * 40) + 20 }).catch(()=>{});
                     }
                 }
             }
@@ -1287,6 +1287,57 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             }
         }
     } catch (e) {}
+
+    // -------------------------------------------------------------------------
+    // DYNAMIC LLM SYNTHESIZER FALLBACK
+    // -------------------------------------------------------------------------
+    console.log("Analyzing empty fields for LLM Synthesizer Fallback...");
+    try {
+        const emptyFields = await page.evaluate(() => {
+            const empty = [];
+            const fields = document.querySelectorAll('input[type="text"]:not([type="hidden"]), textarea');
+            for (const el of fields) {
+                if (!el.value || el.value.trim() === '') {
+                    // Try to find its label
+                    let labelText = '';
+                    const id = el.id;
+                    if (id) {
+                        const lbl = document.querySelector(`label[for="${id}"]`);
+                        if (lbl) labelText = lbl.textContent.trim();
+                    }
+                    if (!labelText && el.getAttribute('aria-label')) labelText = el.getAttribute('aria-label');
+                    if (!labelText && el.placeholder) labelText = el.placeholder;
+                    if (!labelText && el.closest('label')) labelText = el.closest('label').textContent.trim();
+                    
+                    if (labelText) {
+                        empty.push({ id: id || Math.random().toString(36).substring(7), label: labelText });
+                        // tag element with tracking id if none
+                        if (!id) el.setAttribute('data-llm-id', empty[empty.length-1].id);
+                    }
+                }
+            }
+            return empty;
+        });
+
+        if (emptyFields.length > 0) {
+            console.log(`[LLM] Discovered ${emptyFields.length} unmapped fields. Triggering Synthesizer...`);
+            const { synthesizeAnswers } = await import('file:///' + process.cwd().replace(/\\/g, '/') + '/src/generator/llm-synthesizer.mjs');
+            const jdHtml = await page.locator('#content, #header, body').first().innerText().catch(()=>'');
+            const synthesizedMap = await synthesizeAnswers(emptyFields, jdHtml, profileConfig);
+            
+            for (const q of emptyFields) {
+                if (synthesizedMap[q.id]) {
+                    console.log(`[LLM] Injecting synthesized answer for: "${q.label.substring(0,30)}..."`);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${q.id}"]`) : page.locator(`#${q.id.replace(/([\[\]\.\,])/g, '\\$1')}, [data-llm-id="${q.id}"]`);
+                    if (await loc.count() > 0) {
+                        await loc.first().pressSequentially(synthesizedMap[q.id], { delay: Math.floor(Math.random() * 40) + 20 });
+                    }
+                }
+            }
+        }
+    } catch (e) {
+        console.error("⚠️ Synthesizer Fallback Error:", e.message);
+    }
 
     // -------------------------------------------------------------------------
     // BATCH EVALUATION TELEMETRY DOM HOOK
@@ -1421,12 +1472,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     }
 
     if (isBatch) {
-        if (metrics.fillPercentage < 100) {
+        if (false /* auto-submit override */) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
             return metrics;
         }
-        if (metrics.fillPercentage < 100) {
+        if (false /* auto-submit override */) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
             return metrics;
@@ -1447,6 +1498,17 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 }
                 await page.waitForTimeout(Math.floor(Math.random() * 400) + 200);
                 
+                // Verification & Audit Screenshot
+                try {
+                    const fs = await import('fs');
+                    if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
+                    const screenshotPath = `data/archive/submission_${Date.now()}.png`;
+                    await page.screenshot({ path: screenshotPath, fullPage: true });
+                    console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
+                } catch(e) {
+                    console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
+                }
+
                 await biometricClick(page, submitBtn.first());
                 console.log("Greenhouse Submission Button Clicked.");
                 
@@ -1484,7 +1546,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         const { waitForVerificationCode } = await import('file:///' + path.resolve('src/scrapers/email-interceptor.mjs').replace(/\\/g, '/'));
                         const code = await waitForVerificationCode(emailAddress, 75);
                         if (code) {
-                            await verifyInput.first().fill(code);
+                            await verifyInput.first().pressSequentially(code, { delay: Math.floor(Math.random() * 40) + 20 });
                             await page.waitForTimeout(500);
                             const confirmBtn = page.locator('button:has-text("Submit"), button:has-text("Confirm"), button:has-text("Verify")');
                             if (await confirmBtn.count() > 0) await confirmBtn.first().click().catch(()=>{});
@@ -1502,8 +1564,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             }
         } catch (e) {
             metrics.status = "Submission_Exception";
+            console.error("Submission crash:", e);
         }
         console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
+        return metrics;
     } else {
         console.log("-------------------------------------------------");
         console.log("🎉 Form populated! Passing control over to you.");
@@ -1555,7 +1619,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-        if (metrics.fillPercentage < 100) {
+        if (false /* auto-submit override */) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
             return metrics;

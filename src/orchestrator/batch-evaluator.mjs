@@ -90,6 +90,13 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
     await context.addInitScript(() => {
         Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
         window.navigator.chrome = { runtime: {} };
+        
+        // --- WAF VISIBILITY SPOOFING ---
+        // Prevent WAFs from detecting concurrent background tab execution.
+        // If a WAF sees 80 WPM typing on a tab with visibilityState === 'hidden', it flags it as a bot instantly.
+        Object.defineProperty(document, 'visibilityState', { get: () => 'visible' });
+        Object.defineProperty(document, 'hidden', { get: () => false });
+        Object.defineProperty(document, 'hasFocus', { value: () => true });
     });
 
     for (let i = 0; i < selectedTargets.length; i += chunkSize) {
