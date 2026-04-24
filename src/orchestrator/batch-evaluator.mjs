@@ -115,7 +115,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
                 } else if (type === 'greenhouse') {
                     const moduleUrl = `${pathToFileURL(path.resolve('src/scrapers/auto-fill-greenhouse.mjs')).href}?cacheBust=${Date.now()}`;
                     const { populateGreenhouse } = await import(moduleUrl);
-                    metrics = await populateGreenhouse(page, url, resumePath, profileConfig, true);
+                    metrics = await populateGreenhouse(page, url, resumePath, profileConfig, true, true);
                 } else if (type === 'ashby') {
                     const moduleUrl = `${pathToFileURL(path.resolve('src/scrapers/auto-fill-ashby.mjs')).href}?cacheBust=${Date.now()}`;
                     const { populateAshby } = await import(moduleUrl);

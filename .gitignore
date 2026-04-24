@@ -33,3 +33,7 @@ logs/
 
 credentials.json
 token.json
+
+.env
+data/chrome-bot-profile*/
+artifacts/
