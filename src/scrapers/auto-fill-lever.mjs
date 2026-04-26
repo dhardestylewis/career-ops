@@ -4,13 +4,30 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 
 
-// Dynamically extract Profile configuration for the Heuristics Engine
+// Dynamically extract Profile configuration
 let profileConfig = {};
 try {
     const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
     profileConfig = yaml.load(fileContents);
+    
+    // ==========================================
+    // SMARTER DEBUGGING: PII RANDOMIZATION
+    // ==========================================
+    if (process.env.DEBUG_MODE === 'true' && profileConfig.candidate) {
+        // Randomize email alias to prevent ATS spam rate-limits
+        const emailParts = profileConfig.candidate.email.split('@');
+        if (emailParts.length === 2) {
+            profileConfig.candidate.email = `${emailParts[0]}+debug${Math.floor(Math.random()*90000)+10000}@${emailParts[1]}`;
+        }
+        // Randomize last two digits of phone number
+        if (profileConfig.candidate.phone) {
+            const p = profileConfig.candidate.phone;
+            profileConfig.candidate.phone = p.substring(0, p.length - 2) + Math.floor(Math.random()*90 + 10).toString();
+        }
+        console.log(`[DEBUG MODE ACTIVE] ATS Velocity Bypass Engaged:\n Email: ${profileConfig.candidate.email}\n Phone: ${profileConfig.candidate.phone}`);
+    }
 } catch (e) {
-    console.log("⚠️ Could not load profile.yml for advanced heuristics.");
+    console.log("⚠️ Could not load profile.yml");
 }
 
 export async function populateLever(page, targetUrl, resumePath, profileConfig, isBatch = false) {
@@ -114,6 +131,12 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         if (await fileInput.count() > 0) {
             await fileInput.first().setInputFiles(path.resolve(resumePath));
             console.log("✅ Resume attached.");
+        console.log("⏳ Waiting for Lever's asynchronous resume parser to finish (Syncing React State)...");
+        try {
+            // Wait for Lever's 'Success!' or 'Autofill completed!' span
+            await page.waitForSelector('text="Success!"', { timeout: 8000 }).catch(()=>{});
+        } catch(e){}
+        await page.waitForTimeout(3000); // Hard buffer to allow React state reconciliation to flush to DOM inputs
         } else {
             console.log("⚠️ Could not locate standard resume file input. Looking for generic file inputs...");
             const genericFileInput = page.locator('input[type="file"]');
@@ -150,29 +173,34 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         }
     } catch (e) {}
 
+    console.log("Simulating JD reading behavior (ML Evasion)...");
+    const simulateReading = async () => {
+        for(let i=0; i<3; i++) {
+            await page.mouse.wheel(0, Math.floor(Math.random() * 600) + 300);
+            await page.waitForTimeout(Math.floor(Math.random() * 2500) + 1500);
+        }
+        await page.evaluate(() => window.scrollTo(0, 0));
+        await page.waitForTimeout(Math.floor(Math.random() * 1000) + 1000);
+    };
+    await simulateReading();
     console.log("Filling standard details...");
     
         let lastMousePosition = { x: 0, y: 0 };
     const biometricClick = async (page, locator) => {
         try {
             if (await locator.count() === 0) return;
+            // Native force focus
+            await locator.first().evaluate(el => el.focus()).catch(()=>{});
+            
             const box = await locator.first().boundingBox();
             if (!box) { await locator.first().click({ force: true }); return; }
-            const targetX = box.x + (box.width * (0.3 + Math.random() * 0.4));
-            const targetY = box.y + (box.height * (0.3 + Math.random() * 0.4));
-            try {
-                const { path } = await import('ghost-cursor');
-                const route = path(lastMousePosition, { x: targetX, y: targetY });
-                for (const pt of route) {
-                    await page.mouse.move(pt.x, pt.y);
-                    await page.waitForTimeout(Math.random() * 3 + 1);
-                }
-            } catch(e) {
-                await page.mouse.move(targetX, targetY, { steps: 10 });
-            }
-            lastMousePosition = { x: targetX, y: targetY };
-            await page.waitForTimeout(Math.random() * 50 + 20);
-            await locator.first().click();
+            
+            const targetX = box.x + (box.width / 2);
+            const targetY = box.y + (box.height / 2);
+            
+            await page.mouse.move(targetX, targetY, { steps: Math.floor(Math.random() * 15) + 10 });
+            await page.waitForTimeout(Math.floor(Math.random() * 300) + 100); // Micro-hesitation
+            await locator.first().click({ force: true, delay: Math.floor(Math.random() * 80) + 30 });
         } catch (e) {
             await locator.first().click({ force: true });
         }
@@ -181,10 +209,33 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     const safeFill = async (selector, value) => {
         try {
             const el = page.locator(selector);
-            if (await el.count() > 0 && await el.isVisible()) {
-                await el.focus();
-                await el.pressSequentially(value, { delay: Math.floor(Math.random() * 30) + 15 });
-                await page.waitForTimeout(Math.floor(Math.random() * 300) + 100);
+            if (await el.count() > 0) {
+                // Check if the resume parser already populated this field
+                const currentVal = await el.first().evaluate(el => el.value);
+                if (currentVal && currentVal.trim().length > 0) {
+                    // console.log(`[Lever] Field ${selector} already populated by parser. Skipping.`);
+                    return; // Skip typing to avoid double-filling and save time
+                }
+
+                // Force focus natively to bypass Playwright's strict visibility checks
+                await el.first().evaluate(el => {
+                    el.focus();
+                    el.value = ''; 
+                });
+                
+                await page.keyboard.press('Control+A'); // Additional failsafe
+                await page.keyboard.press('Backspace');
+                
+                await page.waitForTimeout(Math.floor(Math.random() * 100) + 50);
+                
+                for (const char of value) {
+                    await page.keyboard.press(char);
+                    let delay = Math.floor(Math.random() * 30) + 15;
+                    if (char === '@' || char === '.') delay += Math.floor(Math.random() * 200) + 100;
+                    if (char === ' ') delay += Math.floor(Math.random() * 100) + 50;
+                    await page.waitForTimeout(delay);
+                }
+                await page.waitForTimeout(Math.floor(Math.random() * 500) + 200);
             }
         } catch (e) {}
     };
@@ -280,6 +331,30 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 ));
                 if (matchSrc) await select.selectOption({ label: matchSrc.label }).catch(()=>{});
             }
+
+            // Houzz Custom: Age 18
+            if (lowerLabel.includes('18 years of age') || lowerLabel.includes('18 years or older')) {
+                const matchAge = options.find(o => o.label && o.label.toLowerCase().includes('yes'));
+                if (matchAge) await select.selectOption({ label: matchAge.label }).catch(()=>{});
+            }
+
+            // Houzz Custom: Eligible to work
+            if (lowerLabel.includes('legally eligible to work')) {
+                const matchElig = options.find(o => o.label && o.label.toLowerCase().includes('yes'));
+                if (matchElig) await select.selectOption({ label: matchElig.label }).catch(()=>{});
+            }
+
+            // Houzz Custom: Previously employed
+            if (lowerLabel.includes('employed by houzz') || lowerLabel.includes('previously employed')) {
+                const matchEmp = options.find(o => o.label && o.label.toLowerCase().includes('no'));
+                if (matchEmp) await select.selectOption({ label: matchEmp.label }).catch(()=>{});
+            }
+
+            // Houzz Custom: Hybrid / Relocation
+            if (lowerLabel.includes('able to work in one of our offices') || lowerLabel.includes('hybrid')) {
+                const matchReloc = options.find(o => o.label && (o.label.toLowerCase().includes('relocate') || o.label.toLowerCase() === 'yes'));
+                if (matchReloc) await select.selectOption({ label: matchReloc.label }).catch(()=>{});
+            }
         } catch(e) {}
     }
 
@@ -357,6 +432,28 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                     }
                 }
             }
+
+            // Houzz Custom: Hybrid / Relocation (Radio Fallback)
+            if (text.includes('able to work in one of our offices') || text.includes('hybrid work commitment')) {
+                const success = await clickRadioLabel('Yes, but I would first need to relocate');
+                if (!success) await clickRadioLabel('Yes');
+            }
+
+            // Houzz Custom: 18 years of age (Radio Fallback)
+            if (text.includes('18 years of age') || text.includes('18 years or older')) {
+                await clickRadioLabel('Yes');
+            }
+
+            // Houzz Custom: Legally eligible (Radio Fallback)
+            if (text.includes('legally eligible to work') || (text.includes('eligible to work') && text.includes('country where this job is located'))) {
+                await clickRadioLabel('Yes');
+            }
+
+            // Houzz Custom: Previously employed (Radio Fallback)
+            if (text.includes('employed by houzz') || text.includes('previously employed')) {
+                await clickRadioLabel('No');
+            }
+            
         }
     } catch(e) {}
 
@@ -594,6 +691,12 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     // -------------------------------------------------------------------------
     // Validate DOM Telemetry immediately before taking any further action so it doesn't get cleared
     console.log("Analyzing form fill completion metrics...");
+    try {
+        const cleanUrl = url.replace(/[^a-zA-Z0-9]/g, '_');
+        const dumpPath = path.resolve(`data/logs/dom_dump_lever_${cleanUrl}.html`);
+        const html = await page.content();
+        fs.writeFileSync(dumpPath, html);
+    } catch(e) {}
     await page.waitForTimeout(5000); 
 
     const metrics = await page.evaluate(() => {
@@ -676,10 +779,10 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 if (box) {
                     // Physics Arc Simulation to button center
                     await page.mouse.move(box.x + (box.width / 2), box.y + (box.height / 2), { steps: Math.floor(Math.random() * 15) + 10 });
+                    console.log("Simulating pre-submit hesitation...");
+                    await page.waitForTimeout(Math.floor(Math.random() * 2000) + 1500); // Extreme humanization
                 }
-                await page.waitForTimeout(Math.floor(Math.random() * 400) + 200);
-                
-                await biometricClick(page, submitBtn.first());
+                await submitBtn.first().click({ force: true, delay: Math.floor(Math.random() * 80) + 40 });
                 console.log("Lever Submission Button Clicked.");
                 
                 // Monitor for proper CAPTCHA intercept or true URL resolution

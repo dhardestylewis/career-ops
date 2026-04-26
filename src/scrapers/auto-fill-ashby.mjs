@@ -101,6 +101,15 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
         if (await genericFileInput.count() > 0) {
             await genericFileInput.first().setInputFiles(path.resolve(resumePath));
             console.log("✅ Resume attached.");
+    console.log("Waiting for Ashby to finish parsing resume and stabilize DOM...");
+    try {
+        console.log("Waiting up to 20 seconds for Ashby parsing engine to complete...");
+        await page.waitForSelector('text="Autofill completed!"', { timeout: 20000 });
+        console.log("✅ Resume parse completed by Ashby backend.");
+        await page.waitForTimeout(1000); // Give React an extra second to reconcile the DOM
+    } catch(e) {
+        console.log("Parser wait timed out or skipped, proceeding with DOM interaction...");
+    }
         } else {
             console.log("❌ No file inputs found on the page.");
         }
@@ -132,13 +141,33 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
 
     console.log("Filling standard details...");
     
+    const humanTyping = async (locator, text) => {
+        try { await locator.evaluate(el => el.focus()); } catch(e) {}
+        for (const char of text) {
+            await page.keyboard.press(char, { delay: Math.floor(Math.random() * 40) + 10 }).catch(()=>{});
+            await page.waitForTimeout(Math.floor(Math.random() * 60) + 20);
+            if (char === ' ' || char === '@' || char === '.') {
+                await page.waitForTimeout(Math.floor(Math.random() * 200) + 100);
+            }
+        }
+    };
+
+    const safeType = async (inputHandle, value) => {
+        try {
+            const currentVal = await inputHandle.evaluate(el => el.value).catch(() => '');
+            if (!currentVal) {
+                await inputHandle.scrollIntoViewIfNeeded().catch(()=>{});
+                await humanTyping(inputHandle, value);
+            }
+        } catch (e) {}
+    };
+
     const safeFill = async (selector, value) => {
         try {
             const el = page.locator(selector).first();
-            if (await el.count() > 0 && await el.isVisible()) {
-                await el.focus();
-                await el.pressSequentially(value, { delay: Math.floor(Math.random() * 30) + 15 });
-                await page.waitForTimeout(Math.floor(Math.random() * 300) + 100);
+            if (await el.count() > 0) {
+                await el.scrollIntoViewIfNeeded().catch(()=>{});
+                await humanTyping(el, value);
             }
         } catch (e) {}
     };
