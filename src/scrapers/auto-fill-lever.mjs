@@ -184,87 +184,196 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     };
     await simulateReading();
     console.log("Filling standard details...");
-    
-        let lastMousePosition = { x: 0, y: 0 };
+
+    // =========================================================================
+    // HUMANIZATION ENGINE
+    // Principles:
+    //   • Every element is scrolled into view before interaction
+    //   • "Typed" fields (name, short answers) use variable WPM with burst pauses
+    //   • "Pasted" fields (URLs, pre-written long text) use clipboard paste
+    //   • Inter-field navigation alternates Tab and mouse arc randomly
+    //   • All delays are non-uniform to defeat timing fingerprinting
+    // =========================================================================
+
+    // Scroll element smoothly into the visible viewport center before interacting
+    const scrollIntoView = async (locator) => {
+        try {
+            await locator.first().evaluate(el => {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            });
+            await page.waitForTimeout(Math.floor(Math.random() * 300) + 150);
+        } catch(e) {}
+    };
+
+    // Move mouse to element with a curved arc from last known position
+    let _lastMouseX = Math.floor(Math.random() * 400) + 200;
+    let _lastMouseY = Math.floor(Math.random() * 300) + 100;
+    const arcMouseTo = async (targetX, targetY) => {
+        const steps = Math.floor(Math.random() * 18) + 8;
+        await page.mouse.move(targetX, targetY, { steps });
+        _lastMouseX = targetX;
+        _lastMouseY = targetY;
+    };
+
+    // Biometric click: scroll → arc mouse → hesitate → click
     const biometricClick = async (page, locator) => {
         try {
             if (await locator.count() === 0) return;
-            // Native force focus
-            await locator.first().evaluate(el => el.focus()).catch(()=>{});
-            
+            await scrollIntoView(locator);
             const box = await locator.first().boundingBox();
             if (!box) { await locator.first().click({ force: true }); return; }
-            
-            const targetX = box.x + (box.width / 2);
-            const targetY = box.y + (box.height / 2);
-            
-            await page.mouse.move(targetX, targetY, { steps: Math.floor(Math.random() * 15) + 10 });
-            await page.waitForTimeout(Math.floor(Math.random() * 300) + 100); // Micro-hesitation
-            await locator.first().click({ force: true, delay: Math.floor(Math.random() * 80) + 30 });
+            const targetX = box.x + box.width * (0.3 + Math.random() * 0.4);
+            const targetY = box.y + box.height * (0.3 + Math.random() * 0.4);
+            await arcMouseTo(targetX, targetY);
+            await page.waitForTimeout(Math.floor(Math.random() * 250) + 80);
+            await locator.first().click({ force: true, delay: Math.floor(Math.random() * 70) + 20 });
         } catch (e) {
-            await locator.first().click({ force: true });
+            try { await locator.first().click({ force: true }); } catch(_) {}
         }
     };
 
-    const safeFill = async (selector, value) => {
-        try {
-            const el = page.locator(selector);
-            if (await el.count() > 0) {
-                // Check if the resume parser already populated this field
-                const currentVal = await el.first().evaluate(el => el.value);
-                if (currentVal && currentVal.trim().length > 0) {
-                    // console.log(`[Lever] Field ${selector} already populated by parser. Skipping.`);
-                    return; // Skip typing to avoid double-filling and save time
+    // Inter-field transition: randomly Tab or arc mouse to next element
+    const interFieldTransition = async (nextLocator) => {
+        const useTab = Math.random() < 0.55; // ~55% Tab, 45% mouse
+        if (useTab) {
+            await page.keyboard.press('Tab');
+            await page.waitForTimeout(Math.floor(Math.random() * 200) + 80);
+        } else if (nextLocator) {
+            try {
+                const box = await nextLocator.first().boundingBox().catch(() => null);
+                if (box) {
+                    const tx = box.x + box.width * (0.3 + Math.random() * 0.4);
+                    const ty = box.y + box.height * (0.3 + Math.random() * 0.4);
+                    await arcMouseTo(tx, ty);
+                    await page.waitForTimeout(Math.floor(Math.random() * 150) + 50);
                 }
-
-                // Force focus natively to bypass Playwright's strict visibility checks
-                await el.first().evaluate(el => {
-                    el.focus();
-                    el.value = ''; 
-                });
-                
-                await page.keyboard.press('Control+A'); // Additional failsafe
-                await page.keyboard.press('Backspace');
-                
-                await page.waitForTimeout(Math.floor(Math.random() * 100) + 50);
-                
-                for (const char of value) {
-                    await page.keyboard.press(char);
-                    let delay = Math.floor(Math.random() * 30) + 15;
-                    if (char === '@' || char === '.') delay += Math.floor(Math.random() * 200) + 100;
-                    if (char === ' ') delay += Math.floor(Math.random() * 100) + 50;
-                    await page.waitForTimeout(delay);
-                }
-                await page.waitForTimeout(Math.floor(Math.random() * 500) + 200);
-            }
-        } catch (e) {}
+            } catch(_) {}
+        }
     };
 
-    await safeFill('input[name="name"]', 'Daniel Hardesty Lewis');
-    await safeFill('input[name="email"]', 'daniel@homecastr.com');
-    await safeFill('input[name="phone"]', '+1 (713) 371-7875');
-    await safeFill('input[name="org"]', 'Homecastr');
+    // Realistic typing: variable WPM (50-120), burst clusters, occasional micro-pauses
+    const humanType = async (value) => {
+        let i = 0;
+        while (i < value.length) {
+            // Random burst length (3-8 chars), then a brief inter-burst pause
+            const burstLen = Math.floor(Math.random() * 6) + 3;
+            const burst = value.slice(i, i + burstLen);
+            for (const char of burst) {
+                // Use pressSequentially-compatible key
+                await page.keyboard.type(char);
+                let delay = Math.floor(Math.random() * 80) + 40; // 40-120ms base (50-120 WPM)
+                if (char === '@') delay += Math.floor(Math.random() * 180) + 120; // email @ pause
+                if (char === '.') delay += Math.floor(Math.random() * 120) + 60;
+                if (char === ' ') delay += Math.floor(Math.random() * 60) + 20;
+                if (char === '-' || char === '(' || char === ')') delay += Math.floor(Math.random() * 40) + 20;
+                await page.waitForTimeout(delay);
+            }
+            i += burstLen;
+            // Inter-burst pause: short most of the time, occasionally a long think pause
+            const pauseRoll = Math.random();
+            if (pauseRoll < 0.08) {
+                await page.waitForTimeout(Math.floor(Math.random() * 800) + 400); // rare long pause
+            } else if (pauseRoll < 0.25) {
+                await page.waitForTimeout(Math.floor(Math.random() * 200) + 80);  // medium pause
+            } else {
+                await page.waitForTimeout(Math.floor(Math.random() * 60) + 20);   // short burst gap
+            }
+        }
+    };
 
-    // Standard Lever URL fields
-    await safeFill('input[name="urls[LinkedIn]"]', 'https://linkedin.com/in/dhardestylewis');
-    await safeFill('input[name="urls[GitHub]"]', 'https://github.com/dhardestylewis');
-    await safeFill('input[name="urls[Portfolio]"]', 'https://dlewis.ai');
-    await safeFill('input[name="urls[Other]"]', 'https://homecastr.com');
-    await safeFill('input[name="urls[Other website]"]', 'https://homecastr.com');
+    // Clipboard paste: instant fill (used for URLs, long pre-written text)
+    const humanPaste = async (locator, value) => {
+        try {
+            await locator.first().evaluate((el, v) => {
+                el.focus();
+                el.value = '';
+                // Dispatch native input event so React state updates
+                const nativeInputValueSetter = Object.getOwnPropertyDescriptor(window.HTMLInputElement.prototype, 'value')?.set
+                    || Object.getOwnPropertyDescriptor(window.HTMLTextAreaElement.prototype, 'value')?.set;
+                if (nativeInputValueSetter) nativeInputValueSetter.call(el, v);
+                el.dispatchEvent(new Event('input', { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+            }, value);
+            // Brief post-paste settle
+            await page.waitForTimeout(Math.floor(Math.random() * 200) + 100);
+        } catch(e) {
+            // Fallback to Playwright fill
+            await locator.first().fill(value).catch(() => {});
+        }
+    };
+
+    // safeType: scroll into view → focus → clear → type character by character
+    // Used for: name, email, phone, company, short custom answers
+    const safeType = async (selector, value) => {
+        try {
+            const el = page.locator(selector);
+            if (await el.count() === 0) return;
+            const currentVal = await el.first().evaluate(el => el.value).catch(() => '');
+            if (currentVal && currentVal.trim().length > 0) return; // already filled by resume parser
+            await scrollIntoView(el);
+            await arcMouseTo(
+                ...(await el.first().boundingBox().then(b => b ? [b.x + b.width*0.5, b.y + b.height*0.5] : [_lastMouseX, _lastMouseY]).catch(() => [_lastMouseX, _lastMouseY]))
+            );
+            await page.waitForTimeout(Math.floor(Math.random() * 150) + 50);
+            await el.first().click({ force: true });
+            await page.waitForTimeout(Math.floor(Math.random() * 80) + 30);
+            await page.keyboard.press('Control+A');
+            await page.keyboard.press('Backspace');
+            await page.waitForTimeout(Math.floor(Math.random() * 80) + 30);
+            await humanType(value);
+            await page.waitForTimeout(Math.floor(Math.random() * 300) + 150);
+        } catch(e) {}
+    };
+
+    // safePaste: scroll into view → focus → paste instantly (URLs, long text)
+    const safePaste = async (selector, value) => {
+        try {
+            const el = page.locator(selector);
+            if (await el.count() === 0) return;
+            const currentVal = await el.first().evaluate(el => el.value).catch(() => '');
+            if (currentVal && currentVal.trim().length > 0) return;
+            await scrollIntoView(el);
+            await humanPaste(el, value);
+        } catch(e) {}
+    };
+
+    // Legacy safeFill kept for backward compat with downstream code — routes to safeType
+    const safeFill = async (selector, value) => safeType(selector, value);
+
+    // --- Standard fields: TYPED (humans type their name, email, phone) ---
+    await safeType('input[name="name"]', profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis');
+    await interFieldTransition(page.locator('input[name="email"]'));
+    await safeType('input[name="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+    await interFieldTransition(page.locator('input[name="phone"]'));
+    await safeType('input[name="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    await interFieldTransition(page.locator('input[name="org"]'));
+    await safeType('input[name="org"]', profileConfig?.candidate?.current_company || 'Homecastr');
+
+    // --- URL fields: PASTED (humans paste URLs from clipboard/browser) ---
+    await interFieldTransition(page.locator('input[name="urls[LinkedIn]"]'));
+    await safePaste('input[name="urls[LinkedIn]"]', 'https://linkedin.com/in/dhardestylewis');
+    await interFieldTransition(page.locator('input[name="urls[GitHub]"]'));
+    await safePaste('input[name="urls[GitHub]"]', 'https://github.com/dhardestylewis');
+    await safePaste('input[name="urls[Portfolio]"]', 'https://dlewis.ai');
+    await safePaste('input[name="urls[Other]"]', 'https://homecastr.com');
+    await safePaste('input[name="urls[Other website]"]', 'https://homecastr.com');
 
     console.log("Detecting and setting Location dropdown (to trigger dynamic EEO questions)...");
     
     // Autocomplete Location fields (Lever Location Autocomplete API)
     // We type the candidate's city, wait for the dropdown to populate,
     // then click the first result so the hidden `selectedLocation` JSON field is committed.
+    // If no geocoder dropdown exists (plain text variant), fill directly.
     try {
-        const locField = page.locator('#location-input, input[name="location"], input[placeholder*="location" i], input[placeholder*="city" i]');
+        const locField = page.locator('#location-input, input[name="location"], input[placeholder*="location" i], input[placeholder*="city" i], input[placeholder*="current location" i]');
         if (await locField.count() > 0 && await locField.first().isVisible()) {
             await locField.first().focus();
             await locField.first().fill("");
 
-            // Use the candidate's city from profile, fallback to New York
+            // Use the candidate's location from profile
             const candidateCity = profileConfig?.location?.city || profileConfig?.candidate?.city || 'New York';
+            const candidateState = 'NY';
+            const fullLocation = candidateCity + ', ' + candidateState;
             await locField.first().pressSequentially(candidateCity, { delay: 80 });
 
             // Wait for the dropdown results list to appear
@@ -285,10 +394,9 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                     await page.keyboard.press('Enter');
                 }
             } else {
-                // No visible dropdown — use keyboard fallback
-                await page.keyboard.press('ArrowDown');
-                await page.waitForTimeout(200);
-                await page.keyboard.press('Enter');
+                // No geocoder dropdown — plain text field, fill directly with full location
+                await locField.first().fill("");
+                await locField.first().pressSequentially(fullLocation, { delay: 60 });
             }
             await page.waitForTimeout(400);
         }
@@ -425,6 +533,33 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     await safeSelect('eeoc[race]', 'Hispanic or Latino');
     await safeSelect('eeoc[veteran]', 'not a protected veteran');
     await safeSelect('eeoc[disability]', 'Decline to self-identify');
+
+    // Zoox-style EEO selects: use label text matching instead of eeoc[name] selectors
+    try {
+        const eeoBlocks = await page.$$('.application-question, div, label');
+        for (const block of eeoBlocks) {
+            const txt = ((await block.textContent()) || '').toLowerCase();
+            const sel = await block.$('select');
+            if (!sel) continue;
+            const opts = await sel.$$eval('option', os => os.map(o => o.textContent?.trim()));
+            if (txt.includes('gender') && !txt.includes('identity')) {
+                const m = opts.find(o => o && (o.toLowerCase().includes('man') || o.toLowerCase() === 'male'));
+                if (m) await sel.selectOption({ label: m }).catch(() => {});
+            }
+            if (txt.includes('race') || txt.includes('ethnicity')) {
+                const m = opts.find(o => o && o.toLowerCase().includes('hispanic'));
+                if (m) await sel.selectOption({ label: m }).catch(() => {});
+            }
+            if (txt.includes('veteran')) {
+                const m = opts.find(o => o && (o.toLowerCase().includes('not a protected') || o.toLowerCase().includes('i am not')));
+                if (m) await sel.selectOption({ label: m }).catch(() => {});
+            }
+            if (txt.includes('disability')) {
+                const m = opts.find(o => o && (o.toLowerCase().includes('decline') || o.toLowerCase().includes('do not wish') || o.toLowerCase().includes('i do not want')));
+                if (m) await sel.selectOption({ label: m }).catch(() => {});
+            }
+        }
+    } catch(e) {}
 
     // Sponsorship questions are often custom radio fields on Lever. We attempt a safe check for common formulations
     // of the work auth and sponsorship questions using generic label clicks if they exist.
@@ -563,73 +698,141 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 (lowerText.includes('why') || lowerText.includes('interest') || lowerText.includes('reason') || lowerText.includes('cover letter') || lowerText.includes('achievement') || lowerText.includes('project') || lowerText.includes('excite') || lowerText.includes('mission') || lowerText.includes('built')) && 
                 !lowerText.includes('clearance') && !lowerText.includes('relocat') && !lowerText.includes('travel') && !lowerText.includes('timeline') && !lowerText.includes('video') && !lowerText.includes('url')
             ) {
+                // Long pre-written text → paste (humans paste cover letter text)
                 const area = await block.$('textarea');
-                if (area && !(await area.inputValue())) await area.fill(exitStory);
+                if (area && !(await area.inputValue())) {
+                    await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 300) + 150);
+                    await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${await area.getAttribute('name')}"]`) }).or(page.locator(`textarea[name="${await area.getAttribute('name')}"]`)), exitStory).catch(async () => { await area.fill(exitStory).catch(() => {}); });
+                }
             } else if (lowerText.includes('anything else') || lowerText.includes('additional info') || lowerText.includes('comments')) {
                 const area = await block.$('textarea');
-                if (area && !(await area.inputValue())) await area.fill(catchAll);
+                if (area && !(await area.inputValue())) {
+                    await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 200) + 100);
+                    await area.fill(catchAll).catch(() => {});
+                }
             }
 
-            // ShieldAI Custom: Legal Name
+            // ShieldAI Custom: Legal Name — typed (short, personal)
             if (lowerText.includes('full legal name') || lowerText.includes('disabilitysignature') || lowerText.includes('signature')) {
                 const t = await block.$('input[type="text"]');
-                if (t && !(await t.inputValue())) await t.fill(profileConfig?.candidate?.name || profileConfig?.candidate?.full_name || "Daniel Hardesty Lewis");
+                if (t && !(await t.inputValue())) {
+                    await t.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 200) + 100);
+                    await t.click({ force: true });
+                    await humanType(profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis');
+                }
             }
 
-            // ShieldAI Custom: Job applying for
+            // ShieldAI Custom: Job applying for — typed (short)
             if (lowerText.includes('full time job(s) are you applying for')) {
                 const area = await block.$('textarea');
-                if (area && !(await area.inputValue())) await area.fill("Software Engineer");
+                if (area && !(await area.inputValue())) {
+                    await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 200) + 100);
+                    await area.click({ force: true });
+                    await humanType('Software Engineer');
+                }
             }
 
-            // ShieldAI Custom: Date
+            // Preferred name — typed (short, personal)
+            if (lowerText.includes('preferred first and last name') || lowerText.includes('preferred name')) {
+                const area = await block.$('textarea, input[type="text"]');
+                const prefName = profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis';
+                if (area && !(await area.inputValue())) {
+                    await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 200) + 80);
+                    await area.click({ force: true });
+                    await humanType(prefName);
+                }
+            }
+
+            // Event attendance — paste N/A (not personal, just a placeholder)
+            if (lowerText.includes('attended an on-campus') || lowerText.includes('virtual event') || lowerText.includes('which did you attend')) {
+                const t = await block.$('input[type="text"], textarea');
+                if (t && !(await t.inputValue())) {
+                    await t.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(100);
+                    await t.fill('N/A').catch(() => {});
+                }
+            }
+
+            // ShieldAI Custom: Date — typed (short, formatted)
             if (lowerText.includes('date') && lowerText.length < 50) {
                 const t = await block.$('input[type="text"]');
                 const d = new Date();
                 const ds = `${(d.getMonth()+1).toString().padStart(2, '0')}/${d.getDate().toString().padStart(2, '0')}/${d.getFullYear()}`;
-                if (t && !(await t.inputValue())) await t.fill(ds);
+                if (t && !(await t.inputValue())) {
+                    await t.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 150) + 80);
+                    await t.click({ force: true });
+                    await humanType(ds);
+                }
             }
 
-            // Wealthfront Custom: Field of Study
+            // Wealthfront Custom: Field of Study — typed (short)
             if (lowerText.includes('major field of study')) {
                 const t = await block.$('input[type="text"]');
-                if (t && !(await t.inputValue())) await t.fill(profileConfig?.education?.degree || "Computer Science");
+                const fieldOfStudy = profileConfig?.education?.degree || 'Computer Science';
+                if (t && !(await t.inputValue())) {
+                    await t.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 150) + 80);
+                    await t.click({ force: true });
+                    await humanType(fieldOfStudy);
+                }
             }
 
-            // Zoox Custom: Export Control
+            // Zoox Custom: Export Control — paste (pre-written legal statement)
             if (lowerText.includes('determining export licensing requirements') || lowerText.includes('export control')) {
                 const area = await block.$('textarea');
-                if (area && !(await area.inputValue())) await area.fill("United States Citizen, since birth.");
+                if (area && !(await area.inputValue())) {
+                    await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 200) + 100);
+                    await area.fill('United States Citizen, since birth.').catch(() => {});
+                }
             }
 
-            // Articulate Custom: Top 3 Technologies
+            // Articulate Custom: Top 3 Technologies — typed (short list)
             if (lowerText.includes('3 technologies') || lowerText.includes('top technologies') || lowerText.includes('most proficient in')) {
                 const area = await block.$('textarea');
                 const techList = (profileConfig?.narrative?.skills || ['Python', 'PyTorch', 'Kubernetes']).slice(0, 3).join(', ');
-                if (area && !(await area.inputValue())) await area.fill(techList);
+                if (area && !(await area.inputValue())) {
+                    await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                    await page.waitForTimeout(Math.floor(Math.random() * 200) + 100);
+                    await area.click({ force: true });
+                    await humanType(techList);
+                }
             }
 
-            // Generic fallback: any required textarea still empty → fill with catch-all
+            // Generic fallback: required textarea still empty → paste catch-all
             const allRequiredAreas = await block.$$('textarea[required], textarea.required-field');
             for (const reqArea of allRequiredAreas) {
                 if (!(await reqArea.inputValue())) {
                     const areaCtx = (await reqArea.evaluate(el => el.closest('.application-question')?.textContent || '')).toLowerCase();
-                    // Don't override questions that already have dedicated handlers above
                     if (!areaCtx.includes('export control') && !areaCtx.includes('technologies') && !areaCtx.includes('why') && !areaCtx.includes('cover letter') && !areaCtx.includes('achievement')) {
+                        await reqArea.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                        await page.waitForTimeout(100);
                         await reqArea.fill(catchAll).catch(() => {});
                     }
                 }
             }
 
-            // Zoox Custom: Checkbox variant for "How did you hear about us"
-            if (lowerText.includes('linkedin') && lowerText.includes('zoox ads') && block.$$('input[type="checkbox"]')) {
+            // Zoox / generic: Checkbox variant for "How did you hear about us"
+            if (lowerText.includes('how did you hear') || (lowerText.includes('linkedin') && lowerText.includes('zoox ads'))) {
                 const labels = await block.$$('label');
+                let checked = false;
                 for (const l of labels) {
-                    const lt = await l.textContent();
-                    if (lt && lt.toLowerCase().includes('linkedin')) {
-                        const cb = await l.$('input[type="checkbox"]');
-                        if (cb) await cb.check({ force: true }).catch(()=>{});
+                    const lt = (await l.textContent() || '').toLowerCase();
+                    if (lt.includes('linkedin')) {
+                        const cb = await l.$('input[type="checkbox"], input[type="radio"]');
+                        if (cb) { await cb.check({ force: true }).catch(()=>{}); checked = true; }
                     }
+                }
+                // Fallback: if no LinkedIn option, pick first checkbox
+                if (!checked) {
+                    const firstCb = await block.$('input[type="checkbox"], input[type="radio"]');
+                    if (firstCb) await firstCb.check({ force: true }).catch(()=>{});
                 }
             }
 
