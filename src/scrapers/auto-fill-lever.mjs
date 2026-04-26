@@ -260,10 +260,10 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         if (await locField.count() > 0 && await locField.first().isVisible()) {
             await locField.first().focus();
             await locField.first().fill("");
-            await locField.first().pressSequentially('New York, New York', { delay: 50 });
+            await locField.first().pressSequentially('United States', { delay: 100 });
             await page.waitForTimeout(1500);
             await page.keyboard.press('ArrowDown');
-            await page.waitForTimeout(100);
+            await page.waitForTimeout(200);
             await page.keyboard.press('Enter');
         }
     } catch(e) {}
@@ -330,6 +330,24 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                     o.label.toLowerCase().includes('job board')
                 ));
                 if (matchSrc) await select.selectOption({ label: matchSrc.label }).catch(()=>{});
+            }
+
+            // Wealthfront Custom: Client
+            if (lowerLabel.includes('wealthfront client')) {
+                const matchWf = options.find(o => o.label && o.label.toLowerCase().includes('no, i have not'));
+                if (matchWf) await select.selectOption({ label: matchWf.label }).catch(()=>{});
+            }
+
+            // ShieldAI Custom: Relocation
+            if (lowerLabel.includes('willing to relocate')) {
+                const matchRel = options.find(o => o.label && o.label.toLowerCase() === 'yes');
+                if (matchRel) await select.selectOption({ label: matchRel.label }).catch(()=>{});
+            }
+
+            // Zoox Custom: Sponsorship custom dropdown
+            if (lowerLabel.includes('sponsorship: do you require sponsorship')) {
+                const matchSpon = options.find(o => o.label && o.label.toLowerCase() === 'no');
+                if (matchSpon) await select.selectOption({ label: matchSpon.label }).catch(()=>{});
             }
 
             // Houzz Custom: Age 18
@@ -453,6 +471,25 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             if (text.includes('employed by houzz') || text.includes('previously employed')) {
                 await clickRadioLabel('No');
             }
+
+            // AngelList Custom: Visa
+            if (text.includes('united states citizen or permanent resident')) {
+                await clickRadioLabel('United States Citizen or Permanent Resident');
+            }
+
+            // Neon Custom: Portuguese Deep Tech
+            if (text.includes('lidero diretamente times')) {
+                await clickRadioLabel("Atuo como líder técnico individual (Staff/Principal Engineer), sem responsabilidade direta por gestão de pessoas.");
+            }
+            if (text.includes('escalar arquiteturas de microsserviços')) {
+                await clickRadioLabel("Sim: Tenho experiência prática em escalar arquiteturas de microsserviços e sistemas orientados a eventos em escala massiva.");
+            }
+            if (text.includes('sistemas críticos onde consistência')) {
+                await clickRadioLabel("Sim: Já atuei diretamente com sistemas críticos onde consistência e regulação eram pilares fundamentais.");
+            }
+            if (text.includes('integra métricas de saúde técnica')) {
+                await clickRadioLabel("Estabeleço uma governança que integra métricas de saúde técnica (como disponibilidade e performance) ao roadmap de produto, garantindo que a escala não comprometa a estabilidade.");
+            }
             
         }
     } catch(e) {}
@@ -498,6 +535,50 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             } else if (lowerText.includes('anything else') || lowerText.includes('additional info') || lowerText.includes('comments')) {
                 const area = await block.$('textarea');
                 if (area && !(await area.inputValue())) await area.fill(catchAll);
+            }
+
+            // ShieldAI Custom: Legal Name
+            if (lowerText.includes('full legal name') || lowerText.includes('disabilitysignature') || lowerText.includes('signature')) {
+                const t = await block.$('input[type="text"]');
+                if (t && !(await t.inputValue())) await t.fill(profileConfig?.candidate?.name || profileConfig?.candidate?.full_name || "Daniel Hardesty Lewis");
+            }
+
+            // ShieldAI Custom: Job applying for
+            if (lowerText.includes('full time job(s) are you applying for')) {
+                const area = await block.$('textarea');
+                if (area && !(await area.inputValue())) await area.fill("Software Engineer");
+            }
+
+            // ShieldAI Custom: Date
+            if (lowerText.includes('date') && lowerText.length < 50) {
+                const t = await block.$('input[type="text"]');
+                const d = new Date();
+                const ds = `${(d.getMonth()+1).toString().padStart(2, '0')}/${d.getDate().toString().padStart(2, '0')}/${d.getFullYear()}`;
+                if (t && !(await t.inputValue())) await t.fill(ds);
+            }
+
+            // Wealthfront Custom: Field of Study
+            if (lowerText.includes('major field of study')) {
+                const t = await block.$('input[type="text"]');
+                if (t && !(await t.inputValue())) await t.fill(profileConfig?.education?.degree || "Computer Science");
+            }
+
+            // Zoox Custom: Export Control
+            if (lowerText.includes('determining export licensing requirements') || lowerText.includes('export control')) {
+                const area = await block.$('textarea');
+                if (area && !(await area.inputValue())) await area.fill("United States Citizen, since birth.");
+            }
+
+            // Zoox Custom: Checkbox variant for "How did you hear about us"
+            if (lowerText.includes('linkedin') && lowerText.includes('zoox ads') && block.$$('input[type="checkbox"]')) {
+                const labels = await block.$$('label');
+                for (const l of labels) {
+                    const lt = await l.textContent();
+                    if (lt && lt.toLowerCase().includes('linkedin')) {
+                        const cb = await l.$('input[type="checkbox"]');
+                        if (cb) await cb.check({ force: true }).catch(()=>{});
+                    }
+                }
             }
 
             // Heuristic 4: Clearance 
@@ -753,15 +834,17 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         return { total, filled, fillPercentage: total > 0 ? Math.round((filled / total) * 100) : 0, missingDOM };
     });
 
+    // Take a full-page snapshot for asynchronous review
+    if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
+    const screenshotPath = `data/archive/debug_${Date.now()}.png`;
+    await page.screenshot({ path: screenshotPath, fullPage: true }).catch(()=>{});
+    console.log(`📸 Captured full-page DOM state to ${screenshotPath}`);
+
     if (isBatch) {
         if (metrics.fillPercentage < 100) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
-            return metrics;
-        }
-        if (metrics.fillPercentage < 100) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
-            metrics.status = 'Incomplete';
+            metrics.snapshot = screenshotPath;
             return metrics;
         }
         // Live Submission Phase
@@ -857,7 +940,7 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         // Pause execution to hand off the live browser to the user
         await page.pause();
     }
-
+    return metrics;
 }
 
 

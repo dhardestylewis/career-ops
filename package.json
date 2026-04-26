@@ -44,6 +44,7 @@
     "mailparser": "^3.9.8",
     "playwright": "^1.58.1",
     "playwright-extra": "^4.3.6",
-    "puppeteer-extra-plugin-stealth": "^2.11.2"
+    "puppeteer-extra-plugin-stealth": "^2.11.2",
+    "tesseract.js": "^7.0.0"
   }
 }
