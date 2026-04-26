@@ -1,0 +1,15 @@
+2026/04/23-18:25:45.866 5d28 Reusing MANIFEST C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Local Storage\leveldb/MANIFEST-000001
+2026/04/23-18:25:45.883 5d28 Recovering log #80
+2026/04/23-18:25:45.886 5d28 Reusing old log C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\Local Storage\leveldb/000080.log 
+2026/04/23-18:29:37.932 a218 Level-0 table #84: started
+2026/04/23-18:29:37.947 a218 Level-0 table #84: 29154 bytes OK
+2026/04/23-18:29:37.951 a218 Delete type=0 #80
+2026/04/23-18:29:37.954 a218 Compacting 4@0 + 1@1 files
+2026/04/23-18:29:37.969 a218 Generated table #85@0: 1342 keys, 39616 bytes
+2026/04/23-18:29:37.969 a218 Compacted 4@0 + 1@1 files => 39616 bytes
+2026/04/23-18:29:37.970 a218 compacted to: files[ 0 1 1 0 0 0 0 ]
+2026/04/23-18:29:37.972 a218 Delete type=2 #74
+2026/04/23-18:29:37.972 a218 Delete type=2 #76
+2026/04/23-18:29:37.972 a218 Delete type=2 #78
+2026/04/23-18:29:37.972 a218 Delete type=2 #81
+2026/04/23-18:29:37.972 a218 Delete type=2 #84

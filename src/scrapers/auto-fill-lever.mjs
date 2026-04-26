@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
+import { matchHeuristic } from './heuristics.mjs';
 
 
 // Dynamically extract Profile configuration
@@ -96,12 +97,12 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                         unresolved.push({ id, question: labelText.replace(/\n/g, ' ').trim() });
                     }
                 }
-                fs.writeFileSync(path.resolve('data/unresolved_questions.json'), JSON.stringify(unresolved, null, 2));
+                fs.writeFileSync(path.resolve('logs/telemetry/unresolved_questions.json'), JSON.stringify(unresolved, null, 2));
             } catch(e) {}
 
-            if (shouldGenerate || fs.existsSync(path.resolve('data/unresolved_questions.json'))) {
+            if (shouldGenerate || fs.existsSync(path.resolve('logs/telemetry/unresolved_questions.json'))) {
                 const jdText = await jdContainer.first().innerText();
-                fs.writeFileSync(path.resolve('data/job_description.txt'), jdText);
+                fs.writeFileSync(path.resolve('logs/telemetry/job_description.txt'), jdText);
                 import('child_process').then(({ spawnSync }) => {
                     spawnSync('node', [path.resolve('generate-cover-letter.mjs')], { stdio: 'inherit' });
                 });
@@ -368,38 +369,62 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     try {
         const locField = page.locator('#location-input, input[name="location"], input[placeholder*="location" i], input[placeholder*="city" i], input[placeholder*="current location" i]');
         if (await locField.count() > 0 && await locField.first().isVisible()) {
+            await scrollIntoView(locField);
             await locField.first().focus();
             await locField.first().fill("");
 
-            // Use the candidate's location from profile
             const candidateCity = profileConfig?.location?.city || profileConfig?.candidate?.city || 'New York';
-            const candidateState = 'NY';
-            const fullLocation = candidateCity + ', ' + candidateState;
-            await locField.first().pressSequentially(candidateCity, { delay: 80 });
+            const candidateState = profileConfig?.location?.state || 'NY';
+            const fullLocation = `${candidateCity}, ${candidateState}`;
 
-            // Wait for the dropdown results list to appear
+            // Type city to trigger geocoder autocomplete
+            await locField.first().pressSequentially(candidateCity, { delay: 80 });
             const dropdownResult = page.locator('.dropdown-location, #location-0, [class*="dropdown-location"]');
-            await page.waitForTimeout(1800);  // allow geocoder API debounce
+            await page.waitForTimeout(1800);
 
             if (await dropdownResult.count() > 0) {
-                // Click the very first result — #location-0 is always the best match
                 await dropdownResult.first().click({ force: true });
                 await page.waitForTimeout(500);
-                // Verify hidden selectedLocation was committed
+                // Verify hidden field committed; ArrowDown+Enter fallback
                 const hiddenVal = await page.locator('#selected-location').first().getAttribute('value').catch(() => '');
                 if (!hiddenVal || hiddenVal === '') {
-                    // Fallback: ArrowDown + Enter if click failed to commit
                     await locField.first().focus();
                     await page.keyboard.press('ArrowDown');
                     await page.waitForTimeout(200);
                     await page.keyboard.press('Enter');
                 }
+                // Final check — if still empty after geocoder, inject plain text
+                const afterVal = await locField.first().inputValue().catch(() => '');
+                if (!afterVal || afterVal.trim() === '') {
+                    await locField.first().fill(fullLocation);
+                }
             } else {
-                // No geocoder dropdown — plain text field, fill directly with full location
+                // No geocoder dropdown — plain text input, use humanType so field is visibly filled
                 await locField.first().fill("");
-                await locField.first().pressSequentially(fullLocation, { delay: 60 });
+                await locField.first().click({ force: true });
+                await humanType(fullLocation);
             }
             await page.waitForTimeout(400);
+        }
+    } catch(e) {}
+
+    // Multi-location role: "Which location are you applying for?" (Zoox, etc.)
+    try {
+        const allSelects = await page.$$('select');
+        for (const sel of allSelects) {
+            const parent = await page.evaluateHandle(el => el.closest('.application-question') || el.parentElement, sel);
+            const parentText = parent ? ((await parent.textContent()) || '').toLowerCase() : '';
+            if (parentText.includes('which location') || parentText.includes('preferred location') || parentText.includes('location are you applying')) {
+                const opts = await sel.$$eval('option', os => os.map(o => o.textContent?.trim()));
+                // Priority: Foster City > San Francisco > New York > first non-empty option
+                const preferred = opts.find(o => o && (
+                    o.toLowerCase().includes('foster city') ||
+                    o.toLowerCase().includes('san francisco') ||
+                    o.toLowerCase().includes('new york') ||
+                    o.toLowerCase().includes('ny')
+                )) || opts.find(o => o && o.trim() !== '' && o.trim() !== 'Select...' && o.trim() !== '--');
+                if (preferred) await sel.selectOption({ label: preferred }).catch(() => {});
+            }
         }
     } catch(e) {}
     
@@ -587,10 +612,21 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             if (text.includes('authorized to work') && !text.includes('sponsorship')) {
                 await clickRadioLabel('Yes');
             }
-            // Sponsorship (No)
+            // Sponsorship (No) — fuzzy match covers 'No', 'No, I do not', etc.
             if (text.includes('sponsorship') || text.includes('require sponsorship') || text.includes('visa')) {
-                if (profileConfig?.eeo_demographics?.requires_sponsorship === "No" || !profileConfig?.eeo_demographics) {
-                    await clickRadioLabel('No');
+                if (profileConfig?.eeo_demographics?.requires_sponsorship === "No" || !profileConfig?.eeo_demographics?.requires_sponsorship) {
+                    // Try exact 'No' first, then fuzzy match any option containing 'no'
+                    const clicked = await clickRadioLabel('No');
+                    if (!clicked) {
+                        const labels = await block.$$('label');
+                        for (const l of labels) {
+                            const lt = ((await l.textContent()) || '').toLowerCase();
+                            if (lt.includes('no') && !lt.includes('yes')) {
+                                const inp = await l.$('input');
+                                if (inp) { await inp.check({ force: true }).catch(() => {}); break; }
+                            }
+                        }
+                    }
                 }
             }
             // US Clearance
@@ -681,6 +717,50 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 continue;
             }
 
+            // Shared Deterministic Heuristics
+            const matchedValue = matchHeuristic(lowerText, profileConfig, {});
+            if (matchedValue) {
+                const isCheck = matchedValue === 'check' || matchedValue.toLowerCase() === 'acknowledge';
+                if (isCheck) {
+                    const check = await block.$('input[type="checkbox"], input[type="radio"]');
+                    if (check && !(await check.isChecked())) {
+                        await scrollIntoView(page.locator('label').filter({ hasText: await block.textContent() }).first().or(page.locator(`input[type="checkbox"]`)));
+                        await check.check({ force: true }).catch(()=>{});
+                    }
+                } else if (matchedValue === 'Yes' || matchedValue === 'No') {
+                    // Try to click radio label
+                    const labels = await block.$$('label');
+                    let clicked = false;
+                    for (const l of labels) {
+                        const lt = ((await l.textContent()) || '').toLowerCase();
+                        if (lt.includes(matchedValue.toLowerCase())) {
+                            const inp = await l.$('input');
+                            if (inp) { await inp.check({ force: true }).catch(() => {}); clicked = true; break; }
+                        }
+                    }
+                    if (!clicked) {
+                        const txt = await block.$('input[type="text"], textarea');
+                        if (txt && !(await txt.inputValue())) {
+                            await txt.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                            await page.waitForTimeout(100);
+                            await humanType(matchedValue);
+                        }
+                    }
+                } else {
+                    const txt = await block.$('input[type="text"], textarea');
+                    if (txt && !(await txt.inputValue())) {
+                        await txt.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                        await page.waitForTimeout(100);
+                        if (matchedValue.length > 50) {
+                            await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${await txt.getAttribute('name')}"]`) }).or(page.locator(`textarea[name="${await txt.getAttribute('name')}"]`)), matchedValue).catch(async () => { await txt.fill(matchedValue).catch(() => {}); });
+                        } else {
+                            await humanType(matchedValue);
+                        }
+                    }
+                }
+                continue;
+            }
+
             // Heuristic 1: Privacy / Consent / Notice / Future Opportunities Checkboxes
             if (lowerText.includes('privacy') || lowerText.includes('consent') || lowerText.includes('future') || lowerText.includes('acknowledge') || lowerText.includes('agree') || lowerText.includes('terms')) {
                 const check = await block.$('input[type="checkbox"]');
@@ -738,14 +818,18 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             }
 
             // Preferred name — typed (short, personal)
-            if (lowerText.includes('preferred first and last name') || lowerText.includes('preferred name')) {
-                const area = await block.$('textarea, input[type="text"]');
-                const prefName = profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis';
-                if (area && !(await area.inputValue())) {
-                    await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
-                    await page.waitForTimeout(Math.floor(Math.random() * 200) + 80);
-                    await area.click({ force: true });
-                    await humanType(prefName);
+            // Matches: "preferred name", "preferred first and last name", "What is your preferred first name..."
+            if (lowerText.includes('preferred') && (lowerText.includes('name') || lowerText.includes('first'))) {
+                // Skip if this is actually the full-name standard field
+                if (!lowerText.includes('full name *') && !lowerText.includes('full name\n')) {
+                    const area = await block.$('textarea, input[type="text"]');
+                    const prefName = profileConfig?.candidate?.preferred_name || profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis';
+                    if (area && !(await area.inputValue())) {
+                        await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
+                        await page.waitForTimeout(Math.floor(Math.random() * 200) + 80);
+                        await area.click({ force: true });
+                        await humanType(prefName);
+                    }
                 }
             }
 
@@ -819,21 +903,31 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 }
             }
 
-            // Zoox / generic: Checkbox variant for "How did you hear about us"
-            if (lowerText.includes('how did you hear') || (lowerText.includes('linkedin') && lowerText.includes('zoox ads'))) {
+            // "How did you hear about us?" — priority-ranked label matching
+            if (lowerText.includes('how did you hear') || lowerText.includes('how did you find') || (lowerText.includes('zoox ads') && lowerText.includes('recruiter'))) {
                 const labels = await block.$$('label');
+                // Priority order: LinkedIn > Recruiter Outreach > Job Board > Social Media > Zoox Ads > first option
+                const priority = ['linkedin', 'recruiter outreach', 'recruiter', 'job board', 'social media', 'zoox ads'];
                 let checked = false;
-                for (const l of labels) {
-                    const lt = (await l.textContent() || '').toLowerCase();
-                    if (lt.includes('linkedin')) {
-                        const cb = await l.$('input[type="checkbox"], input[type="radio"]');
-                        if (cb) { await cb.check({ force: true }).catch(()=>{}); checked = true; }
+                for (const keyword of priority) {
+                    if (checked) break;
+                    for (const l of labels) {
+                        const lt = (await l.textContent() || '').toLowerCase();
+                        if (lt.includes(keyword)) {
+                            const cb = await l.$('input[type="checkbox"], input[type="radio"]');
+                            if (cb) {
+                                await scrollIntoView(page.locator('label').filter({ hasText: await l.textContent() }));
+                                await cb.check({ force: true }).catch(() => {});
+                                checked = true;
+                                break;
+                            }
+                        }
                     }
                 }
-                // Fallback: if no LinkedIn option, pick first checkbox
+                // Last resort: first available option
                 if (!checked) {
                     const firstCb = await block.$('input[type="checkbox"], input[type="radio"]');
-                    if (firstCb) await firstCb.check({ force: true }).catch(()=>{});
+                    if (firstCb) await firstCb.check({ force: true }).catch(() => {});
                 }
             }
 
