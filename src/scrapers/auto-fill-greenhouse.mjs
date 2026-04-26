@@ -2,6 +2,7 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import { buildHumanizer } from './humanize.mjs';
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -273,57 +274,18 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         }
     } catch(e) {}
 
-    console.log("Filling standard details...");
-    
-        let lastMousePosition = { x: 0, y: 0 };
-    const biometricClick = async (page, locator) => {
-        try {
-            if (await locator.count() === 0) return;
-            const box = await locator.first().boundingBox();
-            if (!box) { await locator.first().click({ force: true }); return; }
-            const targetX = box.x + (box.width * (0.3 + Math.random() * 0.4));
-            const targetY = box.y + (box.height * (0.3 + Math.random() * 0.4));
-            try {
-                const { path } = await import('ghost-cursor');
-                const route = path(lastMousePosition, { x: targetX, y: targetY });
-                for (const pt of route) {
-                    await page.mouse.move(pt.x, pt.y);
-                    await page.waitForTimeout(Math.random() * 3 + 1);
-                }
-            } catch(e) {
-                await page.mouse.move(targetX, targetY, { steps: 10 });
-            }
-            lastMousePosition = { x: targetX, y: targetY };
-            await page.waitForTimeout(Math.random() * 50 + 20);
-            await locator.first().click();
-        } catch (e) {
-            await locator.first().click({ force: true });
-        }
-    };
-
-    const safeFill = async (selector, value) => {
-        try {
-            const els = page.locator(selector);
-            const count = await els.count();
-            for (let i = 0; i < count; i++) {
-                const el = els.nth(i);
-                if (await el.isVisible()) {
-                    await el.focus();
-                    await el.fill("");
-                    await el.pressSequentially(value, { delay: Math.floor(Math.random() * 30) + 15 });
-                    await page.waitForTimeout(Math.floor(Math.random() * 300) + 100); 
-                    break; // Successfully filled a visible node, stop searching
-                }
-            }
-        } catch (e) {}
-    };
+    // ── Shared humanization engine (burst typing, paste-vs-type, scroll+arc) ──
+    const H = buildHumanizer(page);
+    const { scrollIntoView, biometricClick, interFieldTransition,
+             humanType, humanPaste, safeType, safePaste, smartFill } = H;
+    // Legacy alias: Greenhouse heuristic code uses safeFill extensively
+    const safeFill = (selector, value) => smartFill(selector, value);
 
     const logUnmappedDom = async (locator, reason) => {
         try {
             const data = await locator.evaluate(el => {
                 const wrapper = el.closest('.field, .application-question, div[class*="question"]');
                 const fullHtml = wrapper ? wrapper.outerHTML : (el.parentElement ? el.parentElement.outerHTML : el.outerHTML);
-                
                 let labelText = 'Unknown Label';
                 try {
                     const id = el.id || el.getAttribute('aria-labelledby')?.replace('-label', '');
@@ -332,18 +294,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         if (labelEl) labelText = labelEl.innerText.trim();
                     }
                 } catch(e) {}
-                
                 return { html: fullHtml, label: labelText };
-            }).catch(()=>({ html: '', label: 'Error extracting label' }));
-            
+            }).catch(() => ({ html: '', label: 'Error extracting label' }));
             if (data.html) {
-                const logEntry = {
-                    timestamp: new Date().toISOString(),
-                    url: page.url(),
-                    reason: reason,
-                    label: data.label,
-                    html: data.html
-                };
+                const logEntry = { timestamp: new Date().toISOString(), url: page.url(), reason, label: data.label, html: data.html };
                 const logPath = path.resolve('logs/unmapped_dom.jsonl');
                 if (!fs.existsSync(path.dirname(logPath))) fs.mkdirSync(path.dirname(logPath), { recursive: true });
                 fs.appendFileSync(logPath, JSON.stringify(logEntry) + '\n');
@@ -351,30 +305,27 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         } catch(e) {}
     };
 
-    // Greenhouse explicitly separates First/Last name but employer templates often alter IDs
-    await safeFill('#first_name, input[id*="first_name"], input[name*="first_name"]', profileConfig?.candidate?.first_name || 'Daniel');
-    await safeFill('#last_name, input[id*="last_name"], input[name*="last_name"]', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
-    await safeFill('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+    // Greenhouse splits first/last name
+    await safeType('#first_name, input[id*="first_name"], input[name*="first_name"]', profileConfig?.candidate?.first_name || 'Daniel');
+    await safeType('#last_name, input[id*="last_name"], input[name*="last_name"]', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
+    await safeType('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
     const safePhone = (profileConfig?.candidate?.phone || '7133717875').replace(/[\s\+\(\)\-]/g, '');
-    await safeFill('#phone', safePhone);
-    await safeFill('#org', 'Homecastr');
-    await safeFill('#job_application_employer', 'Homecastr');
-    await safeFill('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
+    await safeType('#phone', safePhone);
+    await safeType('#org', 'Homecastr');
+    await safeType('#job_application_employer', 'Homecastr');
+    await safeType('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
 
-    // Standard Greenhouse URL and generic field mappings
-    await safeFill('input[autocomplete="custom-network-linkedin"]', 'https://linkedin.com/in/dhardestylewis');
-    await safeFill('input[autocomplete="custom-network-github"]', 'https://github.com/dhardestylewis');
-    await safeFill('input[autocomplete="custom-network-portfolio"]', 'https://dlewis.ai');
-    // ID/placeholder-based fallbacks
-    await safeFill('input[id*="linkedin"], input[name*="linkedin"]', 'https://linkedin.com/in/dhardestylewis');
-    await safeFill('input[id*="github"], input[name*="github"]', 'https://github.com/dhardestylewis');
-    await safeFill('input[id*="website"], input[id*="portfolio"]', 'https://dlewis.ai');
+    // URL fields — paste
+    await safePaste('input[autocomplete="custom-network-linkedin"]', 'https://linkedin.com/in/dhardestylewis');
+    await safePaste('input[autocomplete="custom-network-github"]', 'https://github.com/dhardestylewis');
+    await safePaste('input[autocomplete="custom-network-portfolio"]', 'https://dlewis.ai');
+    await safePaste('input[id*="linkedin"], input[name*="linkedin"]', 'https://linkedin.com/in/dhardestylewis');
+    await safePaste('input[id*="github"], input[name*="github"]', 'https://github.com/dhardestylewis');
+    await safePaste('input[id*="website"], input[id*="portfolio"]', 'https://dlewis.ai');
+    await safePaste('input[placeholder*="LinkedIn"], input[placeholder*="linkedin"]', 'https://linkedin.com/in/dhardestylewis');
+    await safePaste('input[placeholder*="GitHub"], input[placeholder*="github"]', 'https://github.com/dhardestylewis');
     await safeFill('input[id*="twitter"]', '');
-    // Placeholder-based fallbacks
-    await safeFill('input[placeholder*="LinkedIn"], input[placeholder*="linkedin"]', 'https://linkedin.com/in/dhardestylewis');
-    await safeFill('input[placeholder*="GitHub"], input[placeholder*="github"]', 'https://github.com/dhardestylewis');
-    // Phone - Greenhouse uses type=tel in some forms
-    await safeFill('input[type="tel"]', safePhone);
+    await safeType('input[type="tel"]', safePhone);
 
     // Autocomplete Location fields (Greenhouse requires actual UI interaction for the auto-select dropdown)
     try {

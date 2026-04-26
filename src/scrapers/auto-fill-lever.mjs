@@ -2,6 +2,7 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import { buildHumanizer } from './humanize.mjs';
 
 
 // Dynamically extract Profile configuration
