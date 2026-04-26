@@ -1151,4 +1151,191 @@ tracked_companies:
     api: https://boards-api.greenhouse.io/v1/boards/descript/jobs
     enabled: true
 
+  # -- AI Compute & Inference --
+  - name: Groq
+    careers_url: https://jobs.ashbyhq.com/groq
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/groq'
+    enabled: true
 
+  - name: Baseten
+    careers_url: https://jobs.ashbyhq.com/baseten
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/baseten'
+    enabled: true
+
+  - name: Fireworks AI
+    careers_url: https://job-boards.greenhouse.io/fireworksai
+    api: https://boards-api.greenhouse.io/v1/boards/fireworksai/jobs
+    enabled: true
+
+  - name: Anyscale
+    careers_url: https://jobs.lever.co/anyscale
+    scan_method: websearch
+    scan_query: 'site:jobs.lever.co/anyscale'
+    enabled: true
+
+  - name: Replicate
+    careers_url: https://replicate.com/about
+    scan_method: websearch
+    scan_query: 'site:replicate.com/about OR site:replicate.com/careers'
+    enabled: true
+
+  - name: Cerebras
+    careers_url: https://cerebras.net/careers
+    scan_method: websearch
+    scan_query: 'site:cerebras.net/careers'
+    enabled: true
+
+  - name: SambaNova
+    careers_url: https://sambanova.ai/careers
+    scan_method: websearch
+    scan_query: 'site:sambanova.ai/careers'
+    enabled: true
+
+  - name: Lambda Labs
+    careers_url: https://lambdalabs.com/careers
+    scan_method: websearch
+    scan_query: 'site:lambdalabs.com/careers'
+    enabled: true
+
+  - name: CentML
+    careers_url: https://centml.ai/careers
+    scan_method: websearch
+    scan_query: 'site:centml.ai/careers'
+    enabled: true
+
+  - name: fal.ai
+    careers_url: https://fal.ai/careers
+    scan_method: websearch
+    scan_query: 'site:fal.ai/careers'
+    enabled: true
+
+  # -- Vector DBs & RAG Infra --
+  - name: Chroma
+    careers_url: https://jobs.ashbyhq.com/chroma
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/chroma'
+    enabled: true
+
+  - name: Qdrant
+    careers_url: https://jobs.ashbyhq.com/qdrant
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/qdrant'
+    enabled: true
+
+  - name: Unstructured
+    careers_url: https://jobs.ashbyhq.com/unstructured
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/unstructured'
+    enabled: true
+
+  - name: LlamaIndex
+    careers_url: https://jobs.ashbyhq.com/llamaindex
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/llamaindex'
+    enabled: true
+
+  - name: Weaviate
+    careers_url: https://weaviate.io/company/careers
+    scan_method: websearch
+    scan_query: 'site:weaviate.io/company/careers'
+    enabled: true
+
+  - name: Zilliz
+    careers_url: https://zilliz.com/careers
+    scan_method: websearch
+    scan_query: 'site:zilliz.com/careers'
+    enabled: true
+
+  - name: Vespa
+    careers_url: https://vespa.ai/careers
+    scan_method: websearch
+    scan_query: 'site:vespa.ai/careers'
+    enabled: true
+
+  - name: DataStax
+    careers_url: https://datastax.com/company/careers
+    scan_method: websearch
+    scan_query: 'site:datastax.com/company/careers'
+    enabled: true
+
+  # -- MLOps, Fine-Tuning, & Eval --
+  - name: Snorkel AI
+    careers_url: https://snorkel.ai/careers
+    scan_method: websearch
+    scan_query: 'site:snorkel.ai/careers'
+    enabled: true
+
+  - name: Predibase
+    careers_url: https://predibase.com/careers
+    scan_method: websearch
+    scan_query: 'site:predibase.com/careers'
+    enabled: true
+
+  - name: Galileo
+    careers_url: https://rungalileo.io/careers
+    scan_method: websearch
+    scan_query: 'site:rungalileo.io/careers'
+    enabled: true
+
+  - name: Labelbox
+    careers_url: https://labelbox.com/careers
+    scan_method: websearch
+    scan_query: 'site:labelbox.com/careers'
+    enabled: true
+
+  - name: Arthur
+    careers_url: https://arthur.ai/careers
+    scan_method: websearch
+    scan_query: 'site:arthur.ai/careers'
+    enabled: true
+
+  - name: TruEra
+    careers_url: https://truera.com/careers
+    scan_method: websearch
+    scan_query: 'site:truera.com/careers'
+    enabled: true
+
+  - name: Hex
+    careers_url: https://hex.tech/careers
+    scan_method: websearch
+    scan_query: 'site:hex.tech/careers'
+    enabled: true
+
+  - name: Run:ai
+    careers_url: https://run.ai/careers
+    scan_method: websearch
+    scan_query: 'site:run.ai/careers'
+    enabled: true
+
+  # -- Enterprise AI & Agents --
+  - name: Writer
+    careers_url: https://writer.com/careers
+    scan_method: websearch
+    scan_query: 'site:writer.com/careers'
+    enabled: true
+
+  - name: Moveworks
+    careers_url: https://moveworks.com/careers
+    scan_method: websearch
+    scan_query: 'site:moveworks.com/careers'
+    enabled: true
+
+  - name: Cresta
+    careers_url: https://cresta.com/careers
+    scan_method: websearch
+    scan_query: 'site:cresta.com/careers'
+    enabled: true
+
+  - name: Copy.ai
+    careers_url: https://copy.ai/careers
+    scan_method: websearch
+    scan_query: 'site:copy.ai/careers'
+    enabled: true
+
+  - name: Jasper
+    careers_url: https://jasper.ai/careers
+    scan_method: websearch
+    scan_query: 'site:jasper.ai/careers'
+    enabled: true

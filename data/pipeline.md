@@ -977,3 +977,47 @@
 - [ ] https://careers.airbnb.com/positions/7463421?gh_jid=7463421 | Airbnb | Staff GenAI Backend Engineer, Automation Foundation
 - [ ] https://careers.airbnb.com/positions/7712102?gh_jid=7712102 | Airbnb | Staff Software Engineer, Airfam Products
 - [ ] https://careers.airbnb.com/positions/7528577?gh_jid=7528577 | Airbnb | Staff Software Engineer, Listings & Host Tools and AI
+
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8024004002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8368003002 | Databricks | Delivery Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8461168002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8456965002 | Databricks | Resident Solutions Architect - Financial Services
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8371312002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494156002 | Databricks | Resident Solutions Architect - Manufacturing
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8423296002 | Databricks | Resident Solutions Architect - Public Sector
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437302002 | Databricks | Senior Solutions Architect - AI/BI
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8243219002 | Databricks | Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8476064002 | Databricks | Sr. Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8455750002 | Databricks | Sr. Solutions Engineer
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367023002 | Databricks | Staff Backend Software Engineer- (AI Platform)
+- [ ] https://jobs.ashbyhq.com/harvey/0c65292f-a304-46fb-8dee-aaf82a882d9e | Harvey | Staff Software Engineer, AI Platform
+- [ ] https://jobs.ashbyhq.com/baseten/df2f0ebb-a84a-45c2-bc74-dc9589fcc1ae | Baseten | Account Executive - AI Native: Startups
+- [ ] https://jobs.ashbyhq.com/baseten/84c1801c-1a65-49fb-aaaa-beeafd530e7e | Baseten | Forward Deployed Engineer
+- [ ] https://jobs.ashbyhq.com/baseten/916e9d62-492a-4562-971f-3e97e3868392 | Baseten | Cloud Platform Engineer
+- [ ] https://jobs.ashbyhq.com/baseten/0d1f68d4-ee6c-4b5f-9ef9-21a2dabbc152 | Baseten | Account Executive - AI Native: Strategic
+- [ ] https://jobs.ashbyhq.com/baseten/6f947409-2bc0-491a-81b3-507cdc95df85 | Baseten | Software Engineer - Training Infrastructure
+- [ ] https://jobs.ashbyhq.com/baseten/508b792d-57a0-467e-9a89-76fe72e84433 | Baseten | AI Solutions Engineer
+- [ ] https://jobs.ashbyhq.com/baseten/90e9ff4e-1225-4b1b-b0b4-2362e36d9cfa | Baseten | Applied AI Inference Engineer
+- [ ] https://jobs.ashbyhq.com/baseten/126d54b4-a7bc-4456-bf4d-5d224e4f5d63 | Baseten | Software Engineer - Training Product
+- [ ] https://jobs.ashbyhq.com/baseten/b88a68b7-d2bc-4a30-a79a-3ef292ad7c26 | Baseten | Software Engineer - AI Enablement
+- [ ] https://jobs.ashbyhq.com/baseten/1f7d7fda-5540-4205-890b-cdbf774f0814 | Baseten | Software Engineer — GPU Networking & Distributed Systems
+- [ ] https://jobs.ashbyhq.com/baseten/7c9d2bb0-ac03-4a3c-86c3-cf720cd314e8 | Baseten | Post-Training Research Scientist
+- [ ] https://jobs.ashbyhq.com/baseten/2d18b2aa-b6fc-4f1c-8936-33b03255a090 | Baseten | Post-Training Applied Researcher
+- [ ] https://jobs.ashbyhq.com/baseten/68328a94-f785-463b-a3d7-b0dfc11839b5 | Baseten | Post-Training Research Engineer
+- [ ] https://jobs.ashbyhq.com/baseten/6e396eb7-acb3-436a-89ec-05e755c477f2 | Baseten | Software Engineer - Voice AI (Inference Runtime)
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4001304009 | Fireworks AI | Applied Machine Learning Engineer
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4194142009 | Fireworks AI | Fireworks AI Microsoft Alliance Director
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4008626009 | Fireworks AI | Forward Deployed Product Manager
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4013136009 | Fireworks AI | GenAI GTM Representative – GenAI Startups
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4000408009 | Fireworks AI | Member of Technical Staff, AI Training Infrastructure
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4177932009 | Fireworks AI | Member of Technical Staff, Backend/Platform Engineer
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4210320009 | Fireworks AI | Member of Technical Staff, Data Platform Engineer
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4053672009 | Fireworks AI | Member of Technical Staff, Evals & Post-Training Product
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4056271009 | Fireworks AI |  Software Engineer, AI Infrastructure
+- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4059100009 | Fireworks AI | Solutions Architect
+- [ ] https://jobs.ashbyhq.com/unstructured/d0c516ec-cbb2-4560-99d9-abdc535ed645 | Unstructured | Forward Deployed Engineer
+- [ ] https://jobs.ashbyhq.com/unstructured/9df95483-7177-4f98-850e-4abbdf530434 | Unstructured | AI Engineer - Public Sector
+- [ ] https://jobs.ashbyhq.com/llamaindex/fd7a074f-7d80-44b7-8520-8ac787387e92 | LlamaIndex | Multimodal AI Engineer, Document Understanding
+- [ ] https://jobs.ashbyhq.com/llamaindex/36a0249e-a672-44df-a08e-b5a5523dec26 | LlamaIndex | AI Content Engineer
+- [ ] https://jobs.ashbyhq.com/llamaindex/84bcd1df-a4da-421d-b325-45684d8b7e4d | LlamaIndex | Applied AI Solutions Architect (SF)
+- [ ] https://jobs.ashbyhq.com/llamaindex/a0e44fff-ae8b-4ecc-9600-9c789d85aa81 | LlamaIndex | Applied AI Solutions Architect (East Coast)
