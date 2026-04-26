@@ -6,26 +6,14 @@
 ## Pendientes
 
 
-- [ ] https://jobs.ashbyhq.com/Perk/4ed157f3-ae68-4351-96a8-8ef5bedc22df | Perk (formerly TravelPerk) | Privacy & AI Analyst
-- [ ] https://jobs.ashbyhq.com/Perk/398fde44-d0ff-4612-a6b8-5da93493b7ba | Perk (formerly TravelPerk) | Enterprise Sales Executive - Spain
-- [ ] https://jobs.ashbyhq.com/Perk/e74514af-6c5b-49fd-aac7-fa752ae4d6ec | Perk (formerly TravelPerk) | Staff Product Designer - Core AI
-- [ ] https://jobs.ashbyhq.com/Perk/ea531bf7-9730-498f-bf67-363da266b707 | Perk (formerly TravelPerk) | Senior Brand and Integrated Campaigns Manager
-- [-] https://job-boards.greenhouse.io/scaleai/jobs/4654510005 | Scaleai | AI Applications Ops Lead, GPS
-- [-] https://job-boards.greenhouse.io/scaleai/jobs/4609736005 | Scaleai | AI Product Manager
-- [-] https://job-boards.greenhouse.io/scaleai/jobs/4651491005 | Scaleai | AI Product Manager, Insights
-- [-] https://job-boards.greenhouse.io/scaleai/jobs/4472223005 | Scaleai | AI Strategy Consultant, Frontier Tech
-- [-] https://job-boards.greenhouse.io/scaleai/jobs/4631695005 | Scaleai | Analytics Lead, GenAI Marketplace
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4536659005 | Scaleai | Applied AI Engineer, Enterprise
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4514173005 | Scaleai | Applied AI Engineer, Enterprise GenAI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4413992005 | Scaleai | Applied AI Engineer, Global Public Sector
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4678119005 | Scaleai | Deployment Strategist 
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4679727005 | Scaleai | Director, Enterprise Machine Learning & Research
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4687384005 | Scaleai | Engagement Manager (Hawaii), Public Sector
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4629589005 | Scaleai | Evals Engineer, Applied AI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4602177005 | Scaleai | Forward Deployed AI Engineering Manager, Enterprise 
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4589592005 | Scaleai | Forward Deployed AI Engineering Manager, GenAI Applications
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4593571005 | Scaleai | Forward Deployed Engineer, GenAI 
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4673051005 | Scaleai | Forward Deployed Product Manager, Enterprise
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676602005 | Scaleai | Full-Stack Software Engineer, (Forward Deployed), GPS
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4648363005 | Scaleai | GenAI Strategic Projects Lead, Public Sector
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4665557005 | Scaleai | Infrastructure Software Engineer, Enterprise GenAI
@@ -44,9 +32,6 @@
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4534631005 | Scaleai | ML Research Engineer, ML Systems
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4663053005 | Scaleai | ML Systems Engineer, Robotics
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4671740005 | Scaleai | Principal AI Ops Architect, GPS
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4675842005 | Scaleai | Product Manager, Gen AI Platform
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4589749005 | Scaleai | Product Manager of AI Applications, Global Public Sector
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4675758005 | Scaleai | Product Marketing Lead, GenAI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4675694005 | Scaleai | Research Scientist, AI Controls and Monitoring
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4520320005 | Scaleai | Senior AI Infrastructure Engineer, Model Serving Platform
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4597399005 | Scaleai | Senior Forward Deployed AI Engineer, Enterprise 
@@ -60,9 +45,6 @@
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4513943005 | Scaleai | Software Engineer, Enterprise AI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4363623005 | Scaleai | Software Engineer, Frontier AI Infrastructure
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4591300005 | Scaleai | Software Engineer, Gen AI
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4663481005 | Scaleai | Solutions Engineer (Clearance Required)
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4642876005 | Scaleai | Solutions Engineer, Enterprise
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4640096005 | Scaleai | Solutions Engineer, Robotics
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4683689005 | Scaleai | Staff Applied AI Engineer, Enterprise GenAI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676610005 | Scaleai | Staff Full-Stack Software Engineer, (Forward Deployed), GPS
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4673314005 | Scaleai | Staff FullStack Software Engineer, (Forward Deployed), GPS
@@ -75,60 +57,23 @@
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4529529005 | Scaleai | Staff Software Engineer, Full-Stack - Enterprise Gen AI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4623533005 | Scaleai | Strategic Finance Manager, Gen AI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4282118005 | Scaleai | Strategic Projects Lead, Generative AI
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4650507005 | Scaleai | Strategist, Saudi Arabia
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4304790005 | Scaleai | Tech Lead/Manager, Machine Learning Research Scientist- LLM Evals
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4618046005 | Scaleai | Tech Lead Manager- MLRE, ML Systems
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8099751002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8415203002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) - U.S. Federal Sector
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8397501002 | Databricks | AI Operations Specialist
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8482697002 | Databricks | Big Data Solutions Architect (Professional Services)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8462016002 | Databricks | Data & AI Platform Architect (Professional Services)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8425303002 | Databricks | Data and AI Solution Architect (Professional Services)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8486738002 | Databricks | Data Platform Solutions Architect (Professional Services)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8396801002 | Databricks | Data Platform Solutions Architect (Professional Services) 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8439047002 | Databricks | Data Platform Solutions Architect (Professional Services) - Emerging Enterprise & DNB
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8441894002 | Databricks | Delivery Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8457249002 | Databricks | Delivery Solutions Architect - Communications, Media, Entertainment and Games
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8385234002 | Databricks | Delivery Solutions Architect - Digital Native Business
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8442976002 | Databricks | Delivery Solutions Architect - Financial Services
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8476399002 | Databricks | Delivery Solutions Architect - Healthcare & Life Sciences
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8289850002 | Databricks | Delivery Solutions Architect - Public Sector 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8450578002 | Databricks | Deployment Strategist
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8295622002 | Databricks | Director, Engineering Governance- Mountain View, CA
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8287373002 | Databricks | Director, Enterprise - Retail & CPG
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8285493002 | Databricks | Director, Enterprise - Retail & CPG, m/f/d
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8403550002 | Databricks | Director, Strategic Accounts - Logistics & Tech, m/f/d
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8409447002 | Databricks | Director,Technical Solutions (Big Data/ AI)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8438930002 | Databricks | Emerging Enterprise Hunter Account Executive (Mumbai)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8294402002 | Databricks | Enterprise Account Executive - Kansai Region
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8480642002 | Databricks | Industry Lead Solutions Architect - Financial Services
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8480815002 | Databricks | Lead Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7803166002 | Databricks | Lead Solutions Architect  (CTO level-CPG/Retail, DS/DE background)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8403943002 | Databricks | Lead Solutions Architect (Digital Natives Business)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437076002 | Databricks | Lead Solutions Architect (Pre-sales) – Public Sector
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8176503002 | Databricks | Manager, Engineering - AI/BI
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8349447002 | Databricks | Manager, Enterprise Presales - Kansai Region
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8407895002 | Databricks | Manager - Tech Solutions (Big Data / AI)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8457320002 | Databricks | Named Core Account Executive - Retail 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8505897002 | Databricks | Named Enterprise Account Executive  - Retail/CPG
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8405831002 | Databricks | Named Hunter Account Executive, Retail
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8347880002 | Databricks |  Partner Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8449860002 | Databricks | Partner Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8407925002 | Databricks | Partner Solutions Architect, CEMEA
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8456277002 | Databricks | Principal Data Scientist
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8487145002 | Databricks | Product Marketing Director, AI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8081658002 | Databricks | Resident Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8461163002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8488399002 | Databricks | Resident Solutions Architect - Digital Native Business 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8461330002 | Databricks | Resident Solutions Architect - Financial Services
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494145002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8341313002 | Databricks | Resident Solutions Architect - Manufacturing
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8107166002 | Databricks | Resident Solutions Architect - Mumbai
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367942002 | Databricks | Resident Solutions Architect (Professional Services)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494149002 | Databricks | Resident Solutions Architect - Public Sector
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8495067002 | Databricks | Retail & Consumer Goods APAC Leader 
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8374717002 | Databricks | Retail & Consumer Goods EMEA Leader
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8391865002 | Databricks | Scale Solutions Engineer
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8091041002 | Databricks | Senior Applied AI Engineer
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7859597002 | Databricks | Senior Applied AI Engineer – ML for Systems & Infrastructure
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8490282002 | Databricks | Senior Engineering Manager, AI Runtime
@@ -138,64 +83,8 @@
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509096002 | Databricks | Senior Software Engineer - AI Product (NYC)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8233899002 | Databricks | Senior Software Engineer (Backend) - AI/ML Environments
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7897431002 | Databricks | Senior Software Engineer - Data + AI Observability
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509683002 | Databricks | Senior Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8407183002 | Databricks | Senior Solutions Architect - AI/BI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8340837002 | Databricks | Senior Solutions Architect (DS/ML/GenAI/LLM)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8453652002 | Databricks |  Senior Solutions Architect - Lakebase
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8407181002 | Databricks | Senior Solutions Architect - Lakebase
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8493140002 | Databricks | Senior Solutions Architect - Lakewatch
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8401771002 | Databricks | Senior Solutions Architect (Strategic Account - Energy)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8480817002 | Databricks | Senior Solutions Architect (Utilities/Energy)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8239195002 | Databricks | Senior Solutions Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8346832002 | Databricks | Senior Solutions Engineer (Pre-Sales)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8506063002 | Databricks | Senior Specialist Solutions Architect - AI & ML Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7902994002 | Databricks |  Senior Technical Solutions Engineer, Platform
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7874145002 | Databricks | Senior Technical Solutions Engineer - Platform
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8488552002 | Databricks | Senior Technical Solutions Engineer (Platform)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7902935002 | Databricks | Senior Technical Solutions Engineer, Platform
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8407891002 | Databricks | Senior Technical Solutions Engineer - Platform (Greater China Region)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002 | Databricks | Software Engineer - GenAI inference 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437032002 | Databricks | Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6356702002 | Databricks | Solutions Architect 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8392406002 | Databricks | Solutions Architect Consumer France
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8346277002 | Databricks | Solutions Architect : Data & AI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8353757002 | Databricks | Solutions Architect: Data & AI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6117719002 | Databricks | Solutions Architect - Digital Native Business
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8434467002 | Databricks | Solutions Architect - Digital Native Business, Strategic
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6328361002 | Databricks | Solutions Architect - Emerging Enterprise
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6328388002 | Databricks | Solutions Architect - Emerging Enterprise (Startups) 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8502987002 | Databricks | Solutions Architect - Financial Services (Insurance)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8481717002 | Databricks | Solutions Architect - FSI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8499584002 | Databricks | Solutions Architect (Greater China Region) 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8231231002 | Databricks | Solutions Architect - Healthcare/Life Sciences Team (HLS)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437010002 | Databricks | Solutions Architect (Hong-Kong)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8438763002 | Databricks | Solutions Architect (Indonesia)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6545547002 | Databricks | Solutions Architect - Manufacturing
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6679262002 | Databricks | Solutions Architect - Montreal
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8449358002 | Databricks | Solutions Architect (Pre-sales)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437026002 | Databricks | Solutions Architect (Pre-sales) - Digital Native
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437016002 | Databricks | Solutions Architect (Pre-sales) - Financial Services
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437028002 | Databricks | Solutions Architect (Pre-sales) - Kansai Region
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437024002 | Databricks | Solutions Architect (Pre-sales) - Retail/CPG
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8320126002 | Databricks | Solutions Architect - Public Sector (LEAPS) 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6049142002 | Databricks | Solutions Architect, Retail 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8452396002 | Databricks | Solutions Architect (Retail/CPG)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6649865002 | Databricks | Solutions Architect, Retail - CPG
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8499585002 | Databricks | Solutions Architect (Taiwan)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8472733002 | Databricks | Solutions Architect (Thailand)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8287419002 | Databricks | Solutions Architect - UAE
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8472732002 | Databricks | Solutions Architect (Vietnam)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8382743002 | Databricks | Specialist Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8480547002 | Databricks | Specialist Solutions Architect - AI & ML (Communications, Media, Entertainment & Games)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8434243002 | Databricks | Specialist Solutions Architect - AI & ML (Financial Services)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8409019002 | Databricks | Specialist Solutions Architect - AI Tooling & Platform Management
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8337429002 | Databricks | Specialist Solutions Architect - Data Warehousing (Healthcare & Life Sciences)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8321575002 | Databricks | Specialist Solutions Architect - DE/DWH
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7330831002 | Databricks | Sr Data & AI Technical Solutions Engineer 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8342273002 | Databricks | Sr. Delivery Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8485307002 | Databricks | Sr. Delivery Solutions Engineer
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7930603002 | Databricks | Sr. Developer Advocate, Databricks AI Agentic Systems
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8407921002 | Databricks | Sr. Events Marketing Manager, Data + AI World Tour
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8450580002 | Databricks | Sr. Forward Deployed Engineer
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7276195002 | Databricks | Sr. Machine Learning Engineer 
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8503070002 | Databricks | Sr. Manager, AI FDE
@@ -203,71 +92,24 @@
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8491947002 | Databricks | Sr. Manager, Engineering - AI Gateway (LLM Inference)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8431931002 | Databricks | Sr. Manager, Field Engineering - Public Sector (Intel, Navy, Air Force)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8342738002 | Databricks | Sr. Manager, Observability Platform Engineering
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8073294002 | Databricks | Sr. Manager, Partner Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8428820002 | Databricks | Sr. Product Designer, AI/BI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8136071002 | Databricks | Sr. Product Manager, Databricks AI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8493724002 | Databricks | Sr. Product Marketing Manager, AI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8493729002 | Databricks | Sr. Regional Marketing Manager - Italy, Spain & Israel
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8210937002 | Databricks | Sr. Resident Solutions Architect
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7958676002 | Databricks | Sr Software Engineer, Search Relevance (Applied AI)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8349417002 | Databricks | Sr. Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8476403002 | Databricks | Sr. Solutions Architect - Communications 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8136954002 | Databricks | Sr. Solutions Architect - Emerging
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8397280002 | Databricks | Sr. Solutions Architect - Financial Services (Strategic Banking and Payments)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8480646002 | Databricks | Sr. Solutions Architect - Financial Services (Wealth and Asset Management)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8174261002 | Databricks | Sr. Solutions Architect - Financial Services (Wealth & Asset Management)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8383200002 | Databricks | Sr. Solutions Architect FSI France
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8353049002 | Databricks | Sr. Solutions Architect - Games
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8449356002 | Databricks | Sr. Solutions Architect - Greenfield (New Logo) France
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8200376002 | Databricks | Sr. Solutions Architect - GSI's and FinTech Data 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8407197002 | Databricks | Sr. Solutions Architect - Lakebase
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8198484002 | Databricks | Sr. Solutions Architect - Public Sector (Federal Civilian)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8417705002 | Databricks | Sr. Solutions Architect - Public Sector (Hunter) 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8401173002 | Databricks | Sr. Solutions Architect - Public Sector (SLED)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8397493002 | Databricks | Sr. Solutions Architect - Public Sector (SLED) 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6456675002 | Databricks | Sr. Solutions Architect, Retail
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8221491002 | Databricks | Sr. Solutions Architect, Retail 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437006002 | Databricks | Sr. Solutions Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8452392002 | Databricks | Sr. Solutions Engineer France
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8472164002 | Databricks | Sr. Solutions Engineer - GSI's and FinTech Data
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8417647002 | Databricks | Sr. Solutions Engineer - Hunter Team
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8449354002 | Databricks | Sr. Solutions Engineer Israel
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8389657002 | Databricks | Sr. Solutions Engineer Italy
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8395963002 | Databricks | Sr. Solutions Engineer - Madrid
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8415021002 | Databricks | Sr. Solutions Engineer - Public Sector (DoW - 4th Estate)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8415023002 | Databricks | Sr. Solutions Engineer - Public Sector (SLED)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7507778002 | Databricks | Sr. Solutions Engineer, Retail - CPG
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8493787002 | Databricks | Sr. Specialist Solutions Architect - Builder Team
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8183320002 | Databricks | Sr. Specialist Solutions Architect - Data Warehousing (Financial Services)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8434245002 | Databricks | Sr. Specialist Solutions Engineer - Data Warehousing (Financial Services)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8329539002 | Databricks | Sr. Technical Solutions Engineer, Databases
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8421122002 | Databricks | Sr Technical Solutions Engineer, Platform
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002 | Databricks | Staff Backend Software Engineer- (AI Platform)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002 | Databricks | Staff Backline Engineer - Data & AI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7932024002 | Databricks | Staff Data & AI Technical Solutions Engineer
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=5507088002 | Databricks | Staff Data Scientist 
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7069793002 | Databricks | Staff Data Scientist - Infrastructure
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8178287002 | Databricks |  Staff Data Scientist - Trust and Safety
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002 | Databricks | Staff Machine Learning Engineer 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8420609002 | Databricks | Staff Product Manager, AI Platform
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509536002 | Databricks | Staff Software Engineer - AI Platform (NYC)   
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002 | Databricks | Staff Software Engineer - AI Product (NYC)   
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8202698002 | Databricks | Staff Software Engineer - GenAI inference
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8202700002 | Databricks | Staff Software Engineer - GenAI Performance and Kernel
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7958982002 | Databricks | Staff Software Engineer - Machine Learning (Search)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7845334002 | Databricks | Staff Technical Solutions Engineer (Platform)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8007203002 | Databricks | Staff Technical Solutions Engineer, Platform
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8441888002 | Databricks | Strategic AI/BI Account Executive
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8485406002 | Databricks | Strategic Core Account Executive, Logistics
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8458710002 | Databricks | Strategic Core Account Executive - Retail 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8168293002 | Databricks | Strategic Hunter Account Executive - Retail 
 - [ ] https://nuro.ai/careersitem?gh_jid=6283499 | Nuro | Lead ML Research Scientist
 - [ ] https://nuro.ai/careersitem?gh_jid=5434059 | Nuro | Machine Learning Research Scientist, Behavior Planning and Prediction 
 - [ ] https://nuro.ai/careersitem?gh_jid=5416913 | Nuro | Machine Learning Research Scientist: Generative Modeling for Planning
 - [ ] https://nuro.ai/careersitem?gh_jid=7439020 | Nuro | ML Research Scientist, Prediction & Smart Agents
 - [ ] https://nuro.ai/careersitem?gh_jid=7095296 | Nuro | Senior ML Research Scientist, End-to-End Autonomous Driving
 - [ ] https://nuro.ai/careersitem?gh_jid=7747596 | Nuro | Senior ML Research Scientist, VLM/VLA
-- [ ] https://nuro.ai/careersitem?gh_jid=7808521 | Nuro | Senior Project Manager, Machine Learning Operations
 - [ ] https://nuro.ai/careersitem?gh_jid=7472664 | Nuro | Senior Software Engineer, Cloud Infrastructure 
 - [ ] https://nuro.ai/careersitem?gh_jid=7782682 | Nuro | Senior Software Engineer – GenAI Infrastructure & Agent Systems for Engineering Efficiency
 - [ ] https://nuro.ai/careersitem?gh_jid=6824589 | Nuro | Senior Software Engineer, Machine Learning, 3D Reconstruction
@@ -290,23 +132,17 @@
 - [ ] https://jobs.ashbyhq.com/skydio/a6421d3e-fdd0-48d6-8d8f-3fd605cdf09f | Skydio | Senior Autonomy Engineer - Deep Learning
 - [ ] https://jobs.ashbyhq.com/skydio/c051266c-3e00-4906-abd0-21f18db56b3f | Skydio | Autonomy Engineer - Deep Learning Infrastructure
 - [ ] https://jobs.ashbyhq.com/skydio/5892ea83-ad5a-480a-bd9f-2409bb0b644e | Skydio | Autonomy Engineer - Deep Learning Model Acceleration
-- [ ] https://jobs.ashbyhq.com/skydio/b857794c-4418-4042-90c2-90c72b4b48c6 | Skydio | Solutions Engineer - Public Safety - East North Central US
 - [ ] https://jobs.ashbyhq.com/skydio/4c4874bf-02da-4ccc-8918-2cca08feaf21 | Skydio | Supplier Quality Engineer, Sustaining
-- [ ] https://jobs.ashbyhq.com/skydio/78347b7f-9df8-4e4f-b646-b0b33bb49dde | Skydio | Solutions Engineer – Government & National Security - Switzerland
-- [ ] https://jobs.ashbyhq.com/skydio/a3aa5cab-9fa8-4e49-8b57-6af6ab62ab86 | Skydio | Solutions Engineer – Government & National Security - Germany
-- [ ] https://jobs.ashbyhq.com/skydio/ddf28eb4-0dcf-4bca-95e0-f6895149d20d | Skydio | Solutions Engineer – Government & National Security - Finland
 - [ ] https://jobs.ashbyhq.com/skydio/cedc0320-0238-4fc0-89b9-8d580ada556d | Skydio | Program Leader, Law Enforcement & Public Safety Training
 - [ ] https://jobs.ashbyhq.com/skydio/dab69dc5-1547-40f3-9e45-09d713403349 | Skydio | RMA & Repair Program Manager
 - [ ] https://jobs.ashbyhq.com/skydio/8e50c7da-2868-4383-af1f-920584d537fc | Skydio |  Electrical Engineer (Sustaining/Validation)
 - [ ] https://jobs.ashbyhq.com/skydio/b194dcda-7ff0-4d44-9785-16895a44727f | Skydio | Program Manager, Major Deployments (Hawaii)
 - [ ] https://jobs.ashbyhq.com/plaid/606b56f1-f703-4060-b798-643900d85a2a | Plaid | Data Scientist - Network Value
 - [ ] https://jobs.ashbyhq.com/plaid/d68009c8-377e-4599-8f1e-2851cec6292a | Plaid | Senior Machine Learning Engineer - Payments
-- [ ] https://jobs.ashbyhq.com/plaid/8b81429d-f0e8-4b84-9f71-d25405e63d71 | Plaid | Staff Product Manager - AI Foundations
 - [ ] https://jobs.ashbyhq.com/plaid/edfe42df-7cb6-445f-90e0-66e7d3682724 | Plaid | Senior Software Engineer - Network Enablement (Applied ML)
 - [ ] https://jobs.ashbyhq.com/plaid/0d80a5be-8860-46ea-9e67-c4a2bb53b1bf | Plaid | Staff Software Engineer - AI Applications
 - [ ] https://jobs.ashbyhq.com/plaid/cad05a97-0e84-49f9-ab14-bc55d9e972ae | Plaid | Senior Data Scientist - Data Foundations & AI
 - [ ] https://jobs.ashbyhq.com/plaid/e9dc03e1-88bf-4ceb-8a76-a75364b6cac7 | Plaid | Senior Software Engineer - AI Applications
-- [ ] https://jobs.ashbyhq.com/plaid/f93123bc-7e58-45ca-8ef9-5d749b232e49 | Plaid | Staff Product Manager, Applied AI
 - [ ] https://jobs.ashbyhq.com/plaid/9f61aac2-5d20-4077-984c-e1851cfa28d0 | Plaid | AI GTM
 - [ ] https://jobs.ashbyhq.com/plaid/98ce8ccb-b894-4a27-8bd5-194dbc64f429 | Plaid | Senior Machine Learning Engineer (Research Scientist) - Data Foundation & AI
 - [ ] https://jobs.ashbyhq.com/plaid/d606814e-0897-4068-8249-7703348abde6 | Plaid | Senior Software Engineer - ML Infrastructure
@@ -322,59 +158,33 @@
 - [ ] https://job-boards.greenhouse.io/togetherai/jobs/5088817007 | Togetherai | Senior Machine Learning Engineer, Voice AI 
 - [ ] https://job-boards.greenhouse.io/togetherai/jobs/5093344007 | Togetherai | Senior Platform Engineer, Voice AI
 - [ ] https://job-boards.greenhouse.io/togetherai/jobs/4749787007 | Togetherai | Senior Software Engineer - Together Cloud Infrastructure
-- [ ] https://job-boards.greenhouse.io/togetherai/jobs/4627491007 | Togetherai | Solutions Architect 
 - [ ] https://job-boards.greenhouse.io/togetherai/jobs/5028749007 | Togetherai | Staff Engineer, Distributed Storage,HPC & AI Infrastructure
 - [ ] https://job-boards.greenhouse.io/togetherai/jobs/4188119007 | Togetherai | Systems Research Engineer, GPU Programming
-- [ ] https://jobs.ashbyhq.com/harvey/d03dcaae-05de-4344-aebc-803993827922 | Harvey | Staff Data Scientist, Marketing
 - [ ] https://jobs.ashbyhq.com/harvey/ca540d46-f031-4708-bec9-6f84d0245f8e | Harvey | Staff Data Scientist, GTM
 - [ ] https://jobs.ashbyhq.com/harvey/5651ede7-9364-46e6-9edd-e401a422aa8f | Harvey | Privacy and AI Counsel
 - [ ] https://jobs.ashbyhq.com/harvey/789157de-2b76-49ad-8f09-57225f87322e | Harvey | Software Engineer, AI Platform
-- [ ] https://jobs.ashbyhq.com/harvey/27909c76-f5e9-466b-9938-d0cb2fa0007f | Harvey | Senior Solutions Architect
-- [ ] https://jobs.ashbyhq.com/harvey/5dced8b9-8d6a-427c-9b09-a92eb07de87f | Harvey | Business Development Lead, Cloud & AI
-- [ ] https://jobs.ashbyhq.com/harvey/67ee94ac-a1ad-4114-b358-2bcb610a126b | Harvey | Senior Solutions Architect, EMEA
 - [ ] https://jobs.ashbyhq.com/modal/9fadb51f-ce11-41b1-84d5-470e66cc8ee9 | Modal | Forward Deployed Engineer - ML
 - [ ] https://jobs.ashbyhq.com/modal/af17da5e-23ca-4802-854d-5f0546e1ed32 | Modal | Member of Technical Staff - ML Performance
 - [ ] https://jobs.ashbyhq.com/modal/cbbbee50-3d3b-4873-8ae8-ff4b885b8e54 | Modal | Forward Deployed Engineer - Systems
 - [ ] https://jobs.ashbyhq.com/modal/89bfd784-071a-4dcc-a5ab-6ba9d5e53dad | Modal | Member of Technical Staff - ML Training Systems
-- [ ] https://jobs.ashbyhq.com/modal/2f5d046a-bd5f-44bb-a606-98bf13577c69 | Modal | Solutions Architect
 - [ ] https://jobs.ashbyhq.com/braintrust/bade7f86-8304-4515-bb39-5671bed35010 | Braintrust | Cloud Infrastructure Engineer
-- [ ] https://jobs.ashbyhq.com/braintrust/b2131234-080c-4c5b-85e1-56e3edafa4e3 | Braintrust | Customer Solutions Architect
-- [ ] https://jobs.ashbyhq.com/braintrust/8f7560d2-cfb1-4e3a-92d1-8e24b532d10c | Braintrust | Solutions Engineer (West Region)
-- [ ] https://jobs.ashbyhq.com/braintrust/0a099dbd-0972-426c-ba10-fc280135de43 | Braintrust | Solutions Engineer (Central Region)
-- [ ] https://jobs.ashbyhq.com/braintrust/e1bc9095-2460-4cf4-957f-ba076b6cb5ba | Braintrust | Solutions Engineer (East Region)
-- [ ] https://jobs.ashbyhq.com/notion/6ad34426-b980-436b-80c4-3634c00094ad | Notion | Solutions Engineer, EMEA
 - [ ] https://jobs.ashbyhq.com/notion/e3944777-d4a8-41d2-88ab-32daef949d4e | Notion | Application Security Engineer, AI Security
 - [ ] https://jobs.ashbyhq.com/notion/e050309a-6b81-4341-b1ca-9bdd17e62e13 | Notion | Software Engineer, Cloud Infrastructure
-- [ ] https://jobs.ashbyhq.com/notion/e5d316fa-0857-4e4b-96ca-1f2710a96c95 | Notion | Solutions Engineer, Tokyo
 - [ ] https://jobs.ashbyhq.com/notion/10437426-14c8-4c45-8075-67959ce80393 | Notion | Forward Deployed Engineer, GTM
-- [ ] https://jobs.ashbyhq.com/notion/b0c0afb3-f075-47c7-9a8e-428032b3bb20 | Notion | Solutions Engineer - Enterprise - AMER
 - [ ] https://jobs.ashbyhq.com/notion/bc9a9573-e963-48a7-b7b9-a32017f28916 | Notion | AI Applications Engineer
-- [ ] https://jobs.ashbyhq.com/notion/3c0141de-06fb-4186-9cd4-75395f0b5488 | Notion | Manager, Solutions Engineering, Mid-Market
 - [ ] https://jobs.ashbyhq.com/notion/25aa4f5c-a0df-4dd7-82b6-ea97c8cad12e | Notion | Staff Software Engineer, AI Agentic Search
-- [ ] https://jobs.ashbyhq.com/notion/2f91a6fc-6985-4f08-b4c6-2a5ef1563418 | Notion | Solutions Engineer, Enterprise, France
-- [ ] https://jobs.ashbyhq.com/notion/acadea40-df26-49fe-8c6e-a0b044edacf1 | Notion | Solutions Engineer, Korea
-- [ ] https://jobs.ashbyhq.com/notion/8bd87691-e256-43ac-b034-932b14c1254c | Notion | Manager, Solutions Engineering - Enterprise
 - [ ] https://jobs.ashbyhq.com/notion/b50c884e-1170-46d2-ae4c-3f559d2c98c4 | Notion | Forward Deployed Engineer, GTM, DACH
 - [ ] https://jobs.ashbyhq.com/notion/2ca618b4-2223-47ca-b1f0-84ac101fcd90 | Notion | Forward Deployed Engineer, GTM, France
-- [ ] https://jobs.ashbyhq.com/notion/99dc5af9-281a-4c8e-8084-424927008b3b | Notion | Legal Ops Program & AI Enablement
-- [ ] https://jobs.ashbyhq.com/notion/fede5201-c97f-4492-bfa6-66da7afbb068 | Notion | Solutions Engineer, Commercial
-- [ ] https://jobs.ashbyhq.com/notion/a6a91521-87cd-41aa-b800-24dc8808d375 | Notion | Partner Solutions Engineer
 - [ ] https://jobs.ashbyhq.com/notion/1cd3f44f-aa30-44a6-a64b-c7bfc813eeb9 | Notion | Forward Deployed Engineer, GTM - Korea
-- [ ] https://jobs.ashbyhq.com/notion/753883ee-23a9-4150-804f-342d32743d56 | Notion | AI Conversation Designer, Customer Support
 - [ ] https://jobs.ashbyhq.com/notion/3336e944-0970-48ef-9a97-4ebd6656d0c2 | Notion | GTM AI + Innovation Manager
 - [ ] https://jobs.ashbyhq.com/notion/17330e14-83db-49a4-ae31-411690d97dba | Notion | Software Engineer, AI Workflows
-- [ ] https://jobs.ashbyhq.com/notion/85e7823f-073c-4fef-9b51-7fc7b725686d | Notion | Campaign Manager
 - [ ] https://jobs.ashbyhq.com/notion/b31ce253-4238-4ed6-a5a2-73b63cbf1709 | Notion | Software Engineer, AI Capture
 - [ ] https://boards.greenhouse.io/figma/jobs/5707966004?gh_jid=5707966004 | Figma | AI Applied Scientist
 - [ ] https://boards.greenhouse.io/figma/jobs/5802956004?gh_jid=5802956004 | Figma | Automations & AI Specialist, Product Support 
 - [ ] https://boards.greenhouse.io/figma/jobs/5840332004?gh_jid=5840332004 | Figma | Data Platform Engineer
 - [ ] https://boards.greenhouse.io/figma/jobs/5552580004?gh_jid=5552580004 | Figma | Data Scientist  
-- [ ] https://boards.greenhouse.io/figma/jobs/5781862004?gh_jid=5781862004 | Figma | Email Marketing Operations
 - [ ] https://boards.greenhouse.io/figma/jobs/5838098004?gh_jid=5838098004 | Figma | Manager, Software Engineering - AI Product 
 - [ ] https://boards.greenhouse.io/figma/jobs/5678196004?gh_jid=5678196004 | Figma | Manager, Software Engineering - Expressive AI
-- [ ] https://boards.greenhouse.io/figma/jobs/5711913004?gh_jid=5711913004 | Figma | Product Designer, AI Models
-- [ ] https://boards.greenhouse.io/figma/jobs/5711468004?gh_jid=5711468004 | Figma | Product Designer - Design, Dev, & AI Tools
-- [ ] https://boards.greenhouse.io/figma/jobs/5830640004?gh_jid=5830640004 | Figma | Product Manager, AI Platform
 - [ ] https://boards.greenhouse.io/figma/jobs/5691886004?gh_jid=5691886004 | Figma | Software Engineer, AI Platforms
 - [ ] https://boards.greenhouse.io/figma/jobs/5551730004?gh_jid=5551730004 | Figma | Software Engineer, AI Product
 - [ ] https://boards.greenhouse.io/figma/jobs/5551697004?gh_jid=5551697004 | Figma | Software Engineer, AI Product (London, United Kingdom)
@@ -383,61 +193,38 @@
 - [ ] https://boards.greenhouse.io/figma/jobs/5837760004?gh_jid=5837760004 | Figma | Technical Program Manager, AI Performance
 - [ ] https://boards.greenhouse.io/figma/jobs/5839202004?gh_jid=5839202004 | Figma | UX Writer, AI 
 - [ ] https://jobs.ashbyhq.com/linear/b4a7764e-c680-4bdf-9956-dc78f2ca94d5 | Linear | Senior / Staff Product Engineer, AI
-- [ ] https://jobs.ashbyhq.com/linear/d37b3d76-3080-47f9-8a19-60505573112c | Linear | Solutions Engineer, Europe
-- [ ] https://job-boards.greenhouse.io/discord/jobs/8447216002 | Discord | Data Scientist, Analytics
-- [ ] https://job-boards.greenhouse.io/discord/jobs/8468440002 | Discord | Senior Data Scientist, Analytics
-- [ ] https://job-boards.greenhouse.io/discord/jobs/8391234002 | Discord | Senior Manager, Solutions Architect, Games
 - [ ] https://job-boards.greenhouse.io/discord/jobs/8438033002 | Discord | Senior Software Engineer, Machine Learning (Commerce)
 - [ ] https://jobs.ashbyhq.com/snowflake/02b4dbeb-2fef-4838-9d79-922330f08d58 | Snowflake | Senior Data Scientist
 - [ ] https://jobs.ashbyhq.com/snowflake/5ee8f744-ff46-45c8-8d1c-b83514b24f61 | Snowflake | Staff AI Engineer - Snowflake Intelligence
 - [ ] https://jobs.ashbyhq.com/snowflake/97813cac-e55c-4631-94fe-5eda15c7eaed | Snowflake | Senior Forward Deployed Engineer -Spark
 - [ ] https://jobs.ashbyhq.com/snowflake/b9b85c1d-0760-4e28-9dfe-41724c8335a1 | Snowflake | Senior Data Scientist - Product
-- [ ] https://jobs.ashbyhq.com/snowflake/2189417c-3481-41a4-b33c-4c361ce8df60 | Snowflake | Solutions Architect - Migrations
-- [ ] https://jobs.ashbyhq.com/snowflake/440ec976-a307-4575-abab-554aef8151a4 | Snowflake | Solutions Architect
 - [ ] https://jobs.ashbyhq.com/snowflake/44ff3eec-3736-4606-8618-7f414b23baff | Snowflake | Staff Software Engineer - Container Platform 
-- [ ] https://jobs.ashbyhq.com/snowflake/da8298e6-c9e1-4d12-8af2-2405ba766602 | Snowflake | Solutions Engineer
 - [ ] https://jobs.ashbyhq.com/snowflake/34584833-b410-4c03-bf0c-0208bcf962c6 | Snowflake | Senior/Staff Software Engineer - Machine Learning Platform (Inference)
 - [ ] https://jobs.ashbyhq.com/snowflake/7c9802a9-024f-4e76-832a-64c9fa8392af | Snowflake | Senior AI/ML Architect, Applied Field Engineering/Field CTO
 - [ ] https://jobs.ashbyhq.com/snowflake/734ff4ee-f15c-4408-a421-aa5144b2ba33 | Snowflake | Industry Lead, Retail & Consumer Goods, Americas
 - [ ] https://jobs.ashbyhq.com/snowflake/cac27b18-bd24-4722-8bb7-0b5ce7b18eaf | Snowflake | Principal Software Engineer - AI Poland
-- [ ] https://jobs.ashbyhq.com/snowflake/57096e3b-d046-455c-b289-438f77e82dbe | Snowflake | Marketing Operations Manager – Campaign Automation
-- [ ] https://jobs.ashbyhq.com/snowflake/96f0e865-419d-42b9-b64c-27e22a3d9424 | Snowflake | AI Product Sales Specialist
 - [ ] https://jobs.ashbyhq.com/snowflake/a6a3e9d2-b045-466a-8074-1613c07891fe | Snowflake | Applied AI Engineer
 - [ ] https://jobs.ashbyhq.com/snowflake/2a928b93-a5d4-4285-a92c-032fb389faa2 | Snowflake | Software Engineer - SnowConvert AI
-- [ ] https://jobs.ashbyhq.com/snowflake/b0241bdb-71a3-44ae-b236-9286a8e34409 | Snowflake | Manager, Campaign Program Management
 - [ ] https://jobs.ashbyhq.com/snowflake/69d17996-c9a1-4309-a379-398013a7e410 | Snowflake | Principal Machine Learning Engineer- Search Quality
-- [ ] https://jobs.ashbyhq.com/snowflake/b15b231c-93f2-41e5-a078-aa7331cc1e4f | Snowflake | AI Product Sales Specialist - North EMEA
 - [ ] https://jobs.ashbyhq.com/snowflake/f6d40ad9-da07-477e-8f4f-e29e67e65f6b | Snowflake | Senior Engineering Manager - SnowConvert AI 
 - [ ] https://jobs.ashbyhq.com/snowflake/a1bfc0a2-3c97-4395-902b-bfc6e4869bf9 | Snowflake | Principal AL/ML Solution Engineer
 - [ ] https://jobs.ashbyhq.com/snowflake/baf1cd01-ba69-4ae5-8465-a4e2f7034803 | Snowflake | Industry Lead, Retail Technology Services, and Data
-- [ ] https://jobs.ashbyhq.com/snowflake/1a256781-b5b6-44e7-b138-253d16031605 | Snowflake | Senior Product Manager - Applied AI
-- [ ] https://jobs.ashbyhq.com/snowflake/7d2dbbc7-488c-496c-a472-cd34122fab2a | Snowflake | Sr. Product Marketing Manager - AI & Data Sharing
 - [ ] https://jobs.ashbyhq.com/snowflake/b15c3300-e0f2-4af8-8536-8a3f66e97878 | Snowflake | Technical Instructor - Shanghai
 - [ ] https://jobs.ashbyhq.com/snowflake/f4a4fc50-0bda-418e-a8ca-203dea81e801 | Snowflake | Senior Software Engineer - Data Clean Room/ AI Data Hub 
-- [ ] https://jobs.ashbyhq.com/snowflake/cf8f9538-e0fa-4c0e-be19-d2e7b218f6a0 | Snowflake | Campaign Program Specialist
 - [ ] https://jobs.ashbyhq.com/snowflake/dcbd8798-31d0-4551-acf4-0d7a8f8d7757 | Snowflake | Senior Software Engineer - Snowpark Container Service
 - [ ] https://jobs.ashbyhq.com/snowflake/6de9c390-d879-444d-b90b-9c6a33a1fb96 | Snowflake | Senior AI/ML Architect, Applied Field Engineering
-- [ ] https://jobs.ashbyhq.com/snowflake/30604dd0-8980-4e18-bc15-53e9ef14e50f | Snowflake | Senior Product Manager - Streamlit
 - [ ] https://jobs.ashbyhq.com/snowflake/c28d684b-c8e8-4a4c-b3e6-76c931728e21 | Snowflake | AI Solution Specialist
-- [ ] https://jobs.ashbyhq.com/snowflake/0ce406b4-f618-43c3-8806-0c14a354eff0 | Snowflake | Product Sales Specialist (Streamlit)
-- [ ] https://jobs.ashbyhq.com/snowflake/2c4b3726-7738-4f94-b81f-9a1dfb24143e | Snowflake | Principal Product Manager, Enterprise Data & AI
 - [ ] https://jobs.ashbyhq.com/snowflake/a4dea157-34aa-4830-8894-4696f1dd843f | Snowflake | Sr. Manager, Global Fulfillment Solutions
 - [ ] https://jobs.ashbyhq.com/snowflake/6721e39d-42d7-4835-8066-2cd03870b88e | Snowflake | AI Deployment Specialist
 - [ ] https://jobs.ashbyhq.com/snowflake/ca34e573-b1c5-4de2-ab6d-8d2f37a6eef4 | Snowflake | Senior Solution Engineer, Retail
 - [ ] https://jobs.ashbyhq.com/snowflake/a6292a81-7cf7-4e29-bb77-f7d0935e7bdb | Snowflake | Staff Software Engineer -  AI Developer Tooling 
 - [ ] https://jobs.ashbyhq.com/snowflake/217b1d27-815a-4ad1-b8b7-8fe52e57cd26 | Snowflake | AI Engineer - Cortex Code Quality
 - [ ] https://jobs.ashbyhq.com/snowflake/ae43323e-8b10-4c01-b1af-987145191d01 | Snowflake | Staff Machine Learning Engineer - Cortex Code Quality
-- [ ] https://jobs.ashbyhq.com/snowflake/f1eb6ba0-d4e0-4062-a2b7-be0ffcf4fd46 | Snowflake | Solutions Architect (EMEA North)
 - [ ] https://jobs.ashbyhq.com/snowflake/deaebf03-4681-417b-a870-648d0d6a2a94 | Snowflake | Staff Research Scientist, AI Agents & LLMs
 - [ ] https://jobs.ashbyhq.com/snowflake/4674b19c-2a2f-4315-8229-b23a2c1336b4 | Snowflake | Technical Director for AI Functions
 - [ ] https://jobs.ashbyhq.com/snowflake/83fde983-9ddd-4bdf-9778-4e0d12a258bf | Snowflake | Senior Manager, Applied Field Engineering - AI/ML Product Specialist
-- [ ] https://jobs.ashbyhq.com/snowflake/aca4a63f-64aa-446e-b203-1cee63a6f91c | Snowflake | Senior Solutions Engineer, Media & Entertainment
 - [ ] https://jobs.ashbyhq.com/snowflake/188fd235-a9a5-4590-b759-ebcb446aebcb | Snowflake | Principal Software Engineer- ML Search Infrastructure
 - [ ] https://jobs.ashbyhq.com/snowflake/65758ff6-d500-4638-b1ec-95800978a16c | Snowflake | Applied Scientist, Customer FinOps Intelligence
-- [ ] https://jobs.ashbyhq.com/snowflake/ff7fbdd3-98a7-4552-959f-bb4812b2dc8d | Snowflake | Director, Data Science – GTM (Data, Analytics & AI)
-- [ ] https://jobs.ashbyhq.com/snowflake/7aeb58ca-b683-453a-916b-520a9d549d8e | Snowflake | Partner Marketing Lead, AI
-- [ ] https://jobs.ashbyhq.com/snowflake/896f250b-b553-458d-b0d4-80ea9ceee826 | Snowflake | Senior PS Sales Solutions Architect
-- [ ] https://jobs.ashbyhq.com/snowflake/b241904d-7d42-41f0-9674-82e53d964846 | Snowflake | Analyst, Finance Analytics & AI
 - [ ] https://jobs.ashbyhq.com/snowflake/bd6e11e3-ee22-49ca-b92b-394cbcaa32d3 | Snowflake | Senior Forward Deployed Engineer - SnowConvert AI
 - [ ] https://boards.greenhouse.io/appliedintuition/jobs/4659522005?gh_jid=4659522005 | Appliedintuition | Data & ML Pipeline Software Engineer
 - [ ] https://boards.greenhouse.io/appliedintuition/jobs/4663863005?gh_jid=4663863005 | Appliedintuition | Engineering Manager - ML Platform and Infrastructure
@@ -457,20 +244,11 @@
 - [ ] https://boards.greenhouse.io/appliedintuition/jobs/4577865005?gh_jid=4577865005 | Appliedintuition | Software Engineer - Over-the-Air Updates
 - [ ] https://boards.greenhouse.io/appliedintuition/jobs/4346998005?gh_jid=4346998005 | Appliedintuition | Software Engineer - Prediction and Behavior ML
 - [ ] https://boards.greenhouse.io/appliedintuition/jobs/4670757005?gh_jid=4670757005 | Appliedintuition | Software Engineer - Systems Engineering AI Tooling
-- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4581962005?gh_jid=4581962005 | Appliedintuition | Solutions Architect
-- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4686284005?gh_jid=4686284005 | Appliedintuition | Solutions Architect - Maritime Defense
-- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4686286005?gh_jid=4686286005 | Appliedintuition | Solutions Architect - Modeling & Simulation (Defense)
 - [ ] https://boards.greenhouse.io/appliedintuition/jobs/4659066005?gh_jid=4659066005 | Appliedintuition | Workshop & Repair Manager
 - [ ] https://coreweave.com/careers/job?4602115006&board=coreweave&gh_jid=4602115006 | Coreweave | AI Engineer- Gen AI/SWE- Weights & Biases
-- [ ] https://coreweave.com/careers/job?4647796006&board=coreweave&gh_jid=4647796006 | Coreweave | AI Native Account Executive
-- [ ] https://coreweave.com/careers/job?4651439006&board=coreweave&gh_jid=4651439006 | Coreweave | AI Solutions Engineer, Post Sales Scale - W&B
-- [ ] https://coreweave.com/careers/job?4651106006&board=coreweave&gh_jid=4651106006 | Coreweave | AI Solutions Engineer, Post Sales- W&B
-- [ ] https://coreweave.com/careers/job?4648208006&board=coreweave&gh_jid=4648208006 | Coreweave | AI Solutions Engineer, Pre-Sales- W&B
 - [ ] https://coreweave.com/careers/job?4666156006&board=coreweave&gh_jid=4666156006 | Coreweave | Director of Engineering, Media & Entertainment (M&E)
-- [ ] https://coreweave.com/careers/job?4652765006&board=coreweave&gh_jid=4652765006 | Coreweave | Energy & Climate Policy Engagement Lead
 - [ ] https://coreweave.com/careers/job?4645664006&board=coreweave&gh_jid=4645664006 | Coreweave | HPC Engineer
 - [ ] https://coreweave.com/careers/job?4601657006&board=coreweave&gh_jid=4601657006 | Coreweave | HPC Performance Engineer
-- [ ] https://coreweave.com/careers/job?4673462006&board=coreweave&gh_jid=4673462006 | Coreweave | Operations Engineer, HPC Networking
 - [ ] https://coreweave.com/careers/job?4582453006&board=coreweave&gh_jid=4582453006 | Coreweave | Senior Business Systems Engineer – Supply Chain Systems
 - [ ] https://coreweave.com/careers/job?4652717006&board=coreweave&gh_jid=4652717006 | Coreweave | Senior Manager, Data Center Logistics & Inventory
 - [ ] https://coreweave.com/careers/job?4607559006&board=coreweave&gh_jid=4607559006 | Coreweave | Senior Platform Engineer II, Compute Services
@@ -478,17 +256,9 @@
 - [ ] https://coreweave.com/careers/job?4622652006&board=coreweave&gh_jid=4622652006 | Coreweave | Senior Software Engineer (Full-Stack + Agentic AI)
 - [ ] https://coreweave.com/careers/job?4647595006&board=coreweave&gh_jid=4647595006 | Coreweave | Senior Software Engineer II, AI Workload Orchestration
 - [ ] https://coreweave.com/careers/job?4647611006&board=coreweave&gh_jid=4647611006 | Coreweave | Senior Software Engineer II, Applied Training
-- [ ] https://coreweave.com/careers/job?4622845006&board=coreweave&gh_jid=4622845006 | Coreweave | Senior Solutions Architect - Weights & Biases
-- [ ] https://coreweave.com/careers/job?4627964006&board=coreweave&gh_jid=4627964006 | Coreweave | Senior Supply Chain Compliance Analyst (SOX)
 - [ ] https://coreweave.com/careers/job?4609928006&board=coreweave&gh_jid=4609928006 | Coreweave | Software Engineer, Inference AI/ML
-- [ ] https://coreweave.com/careers/job?4649044006&board=coreweave&gh_jid=4649044006 | Coreweave | Solutions Architect - HPC/AI/ML
-- [ ] https://coreweave.com/careers/job?4649036006&board=coreweave&gh_jid=4649036006 | Coreweave | Solutions Architect - Kubernetes
-- [ ] https://coreweave.com/careers/job?4568528006&board=coreweave&gh_jid=4568528006 | Coreweave | Solutions Architect- Networking
-- [ ] https://coreweave.com/careers/job?4568555006&board=coreweave&gh_jid=4568555006 | Coreweave | Solutions Architect - Security
-- [ ] https://coreweave.com/careers/job?4568531006&board=coreweave&gh_jid=4568531006 | Coreweave | Solutions Architect - Storage
 - [ ] https://coreweave.com/careers/job?4663051006&board=coreweave&gh_jid=4663051006 | Coreweave | Sr. Data Scientist - Capacity Data
 - [ ] https://coreweave.com/careers/job?4665964006&board=coreweave&gh_jid=4665964006 | Coreweave | Sr. Director of Product, Research and Training Infrastructure
-- [ ] https://coreweave.com/careers/job?4664241006&board=coreweave&gh_jid=4664241006 | Coreweave | Sr. Manager, Supply Chain Risk, Resilience & Compliance
 - [ ] https://coreweave.com/careers/job?4647586006&board=coreweave&gh_jid=4647586006 | Coreweave | Staff Software Engineer- AI Workload Orchestration
 - [ ] https://coreweave.com/careers/job?4647607006&board=coreweave&gh_jid=4647607006 | Coreweave | Staff Software Engineer, Applied Training
 - [ ] https://coreweave.com/careers/job?4661968006&board=coreweave&gh_jid=4661968006 | Coreweave | Sustainable Data Center Design Manager
@@ -524,11 +294,9 @@
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=6688617 | Waymo | Machine Learning Engineer, Simulation Realism 
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7509005 | Waymo | ML Accelerator Architect
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7616808 | Waymo | ML Microarchitect
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7679520 | Waymo | People Business Partner - Operations/Supply Chain
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7545007 | Waymo | Principal Software Engineer, ML Flywheel Technical Lead
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7773177 | Waymo | Principal Software Engineer, ML System Architect
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=6989523 | Waymo | Principal Software Engineer, Perception Pretraining
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7403358 | Waymo | Product Manager, Perception ML Foundations
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7656333 | Waymo | Program Manager, ML Data
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7516673 | Waymo | Program Manager, Scenario Quality and Maintenance Systems 
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7435071 | Waymo | Public Affairs Manager, London
@@ -546,8 +314,6 @@
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7774345 | Waymo | Senior ML Compiler Engineer, Compute
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7697543 | Waymo | Senior Product Data Scientist, In Car Experience
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7416740 | Waymo | Senior Product Data Scientist, Marketplace Algorithms ML
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7676116 | Waymo | Senior Product Manager, AI Data Mining
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7762871 | Waymo | Senior Product Manager, DevAI & Agentic Workflows
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7572081 | Waymo | Senior Research Scientist, Foundation Model (LLM/VLM)
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7703602 | Waymo | Senior Software Engineer, Machine Learning Performance
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7028592 | Waymo | Senior Software Engineer (ML) - Car Experience
@@ -567,7 +333,6 @@
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7728681 | Waymo | Software Engineer, ML Accelerator Modeling (TW)
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7426718 | Waymo | Software Engineer, ML Tools
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7466534 | Waymo | Software Engineer, Quantitative Evaluations
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7421839 | Waymo | Software Quality Operations Specialist, Domain Expansion
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7458013 | Waymo | Staff Data Scientist, Launch Evaluation Quality
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7239320 | Waymo | Staff Data Scientist, TLM, Driving Quality
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7493959 | Waymo | Staff Machine Learning Engineer
@@ -579,7 +344,6 @@
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7719332 | Waymo | Staff Machine Learning Engineer, Tech Lead Active Learning
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7595124 | Waymo | Staff Machine Learning Engineer – VLM/LLM Evaluation
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7597108 | Waymo | Staff Product Data Scientist, Operation Center
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7028616 | Waymo | Staff Software Engineer (BE/ML) - Compliance & Readiness
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7488246 | Waymo | Staff Software Engineer/Data Scientist, Large Model Evaluation
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7170802 | Waymo | Staff Software Engineer, Machine Learning, Planner Selection
 - [ ] https://careers.withwaymo.com/jobs?gh_jid=7224992 | Waymo | Staff Software Engineer, Machine Learning- Route and Pin Quality
@@ -593,13 +357,9 @@
 - [ ] https://boards.greenhouse.io/inflectionai/jobs/4578240006?gh_jid=4578240006 | Inflectionai | Member of Technical Staff – Model Training
 - [ ] https://job-boards.greenhouse.io/heygen/jobs/4987495007 | Heygen | Data Scientist
 - [ ] https://job-boards.greenhouse.io/heygen/jobs/5113581007 | Heygen | Forward Deployed Engineer, Strategic Accounts
-- [ ] https://job-boards.greenhouse.io/heygen/jobs/5113387007 | Heygen | Head of Developer and AI Platform Marketing
 - [ ] https://job-boards.greenhouse.io/heygen/jobs/4188314007 | Heygen | Research Engineer
 - [ ] https://job-boards.greenhouse.io/heygen/jobs/4996032007 | Heygen | Software Engineer, AI Compute Infrastructure
 - [ ] https://job-boards.greenhouse.io/heygen/jobs/4944653007 | Heygen | Tech Lead, AI Compute Infrastructure
-- [ ] https://boards.greenhouse.io/descript/jobs/7676250003?gh_jid=7676250003 | Descript | AI Growth Specialist (BDR)
-- [ ] https://boards.greenhouse.io/descript/jobs/6576153003?gh_jid=6576153003 | Descript | Product Manager, AI Models
-- [ ] https://boards.greenhouse.io/descript/jobs/7656441003?gh_jid=7656441003 | Descript | Senior Data Scientist, Marketing
 - [ ] https://boards.greenhouse.io/descript/jobs/7580335003?gh_jid=7580335003 | Descript | Senior Software Engineer, AI Platform and Enablement
 - [ ] https://careers.roblox.com/jobs/7473686?gh_jid=7473686 | Roblox | [2026] Senior Machine Learning Engineer, Account Identity - PhD Early Career
 - [ ] https://careers.roblox.com/jobs/7403998?gh_jid=7403998 | Roblox | [2026] Senior Machine Learning Engineer, AI Platform - PhD Early Career
@@ -608,7 +368,6 @@
 - [ ] https://careers.roblox.com/jobs/7323437?gh_jid=7323437 | Roblox | [2026] Senior Machine Learning Engineer, Multimodal AI, Computer Vision and Graphics - PhD Early Career 
 - [ ] https://careers.roblox.com/jobs/7324377?gh_jid=7324377 | Roblox | [2026] Senior Machine Learning Engineer, Natural Language Processing - PhD Early Career
 - [ ] https://careers.roblox.com/jobs/7350081?gh_jid=7350081 | Roblox | [2026] Senior Machine Learning Engineer, Recommendation Systems - PhD Early Career
-- [ ] https://careers.roblox.com/jobs/7125944?gh_jid=7125944 | Roblox | Data Scientist, People Analytics
 - [ ] https://careers.roblox.com/jobs/7595328?gh_jid=7595328 | Roblox | Director of Engineering - AI for Roblox Studio
 - [ ] https://careers.roblox.com/jobs/7332473?gh_jid=7332473 | Roblox | Distinguished Engineer, Machine Learning Systems – Economy
 - [ ] https://careers.roblox.com/jobs/6606035?gh_jid=6606035 | Roblox | Distinguished Machine Learning Engineer - Safety
@@ -645,18 +404,14 @@
 - [ ] https://careers.roblox.com/jobs/7351059?gh_jid=7351059 | Roblox | Senior Machine Learning Infrastructure Engineer, Ads
 - [ ] https://careers.roblox.com/jobs/7528070?gh_jid=7528070 | Roblox | Senior Mobile and Platform Engineer, Audio Team
 - [ ] https://careers.roblox.com/jobs/6470334?gh_jid=6470334 | Roblox | Senior/Principal AI Data and Feature Platform Engineer 
-- [ ] https://careers.roblox.com/jobs/7748281?gh_jid=7748281 | Roblox | Senior Product Manager, AI Content & Communications Safety
-- [ ] https://careers.roblox.com/jobs/7776169?gh_jid=7776169 | Roblox | Senior Recruiter, Early Career - AI/ML PhD
 - [ ] https://careers.roblox.com/jobs/7767241?gh_jid=7767241 | Roblox | Senior Software Engineer, ML Infra
 - [ ] https://careers.roblox.com/jobs/7376093?gh_jid=7376093 | Roblox | Senior Software Engineer, Safety Data / ML Infra
 - [ ] https://careers.roblox.com/jobs/7292063?gh_jid=7292063 | Roblox | Sr Machine Learning Engineer - Safety Experience
 - [ ] https://careers.roblox.com/jobs/7527229?gh_jid=7527229 | Roblox | Strategic Supply Chain Manager -  Network Hardware
-- [ ] https://careers.roblox.com/jobs/7641394?gh_jid=7641394 | Roblox | Technical Sourcer, AI/ML, Short Term
 - [ ] https://jobs.lever.co/zoox/fe3ec246-6f0a-4405-9ae8-10e322ac6799 | Zoox | AI Developer Productivity Engineer
 - [ ] https://jobs.lever.co/zoox/a8097f44-025a-47f5-a2c9-183fb50782ab | Zoox | AI Enterprise Architect Lead
 - [ ] https://jobs.lever.co/zoox/9ab192af-3480-40a7-9ff3-f81061ac6301 | Zoox | Data Scientist - Perception Verification and Validation
 - [ ] https://jobs.lever.co/zoox/08339c96-bc49-422a-9178-33fa8f1ebefb | Zoox | Logistics and Inventory Planner
-- [ ] https://jobs.lever.co/zoox/6dd6ee62-8023-4984-96db-6929b4d811c2 | Zoox | Logistics Operations Asset Manager
 - [ ] https://jobs.lever.co/zoox/55e51bf3-68ee-40d4-a1c5-5196e0e2d100 | Zoox | Machine Learning Engineer - 3D Sensor Simulation
 - [ ] https://jobs.lever.co/zoox/effea729-8202-4fa0-aa0f-b786671502e8 | Zoox | Machine Learning Engineer - 3D Vision Perception
 - [ ] https://jobs.lever.co/zoox/03b2ccc5-85ac-4f55-9633-9215451246b2 | Zoox | Machine Learning Engineer - MLA Perception Offline Driving Intelligence
@@ -765,7 +520,6 @@
 - [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494938 | pinterest | Sr. Machine Learning Engineer, Responsible AI– Applied Research Science
 - [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7642268 | pinterest | Sr. Machine Learning Engineer, tvScientific
 - [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6482819 | pinterest | Staff Data Scientist, Ad Measurement Products
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6819404 | pinterest | Staff Data Scientist, Engagement Ecosystem 
 - [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7435596 | pinterest | Staff Data Scientist, Monetization
 - [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7531060 | pinterest | Staff Machine Learning Engineer, Content Quality Signals
 - [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494896 | pinterest | Staff Machine Learning Engineer, Conversion Visibility
@@ -807,7 +561,6 @@
 - [ ] https://boards.greenhouse.io/robinhood/jobs/7676714?t=gh_src=&gh_jid=7676714 | robinhood | Staff Machine Learning Engineer, Agentic
 - [ ] https://job-boards.greenhouse.io/twilio/jobs/7702644 | twilio | Machine Learning Engineer
 - [ ] https://job-boards.greenhouse.io/twilio/jobs/7155492 | twilio | Principal Machine Learning & Data Engineer 
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7619420 | twilio | Principal, Product Manager - AI / LLM
 - [ ] https://job-boards.greenhouse.io/twilio/jobs/7066029 | twilio | Senior Manager, Machine Learning
 - [ ] https://job-boards.greenhouse.io/twilio/jobs/7061880 | twilio | Staff Machine Learning Engineer
 - [ ] https://job-boards.greenhouse.io/twilio/jobs/7716287 | twilio | Staff Machine Learning Engineer (L4)
@@ -834,7 +587,6 @@
 - [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7167997 | smartsheet | Data Scientist II (Hybrid in Bangalore)
 - [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7798778 | smartsheet | Senior Forward Deployed AI Engineer (Remote Eligible)
 - [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7171724 | smartsheet | Sr. Data Scientist (Hybrid in Bangalore)
-- [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7577295 | smartsheet | Sr. Machine Learning Operations Engineer
 - [ ] https://job-boards.greenhouse.io/mthreerecruitingportal/jobs/4313148006 | mthreerecruitingportal | Junior Data Scientist
 - [ ] https://job-boards.greenhouse.io/axon/jobs/7577003003 | axon | Principal Machine Learning Engineer
 - [ ] https://job-boards.greenhouse.io/axon/jobs/7563078003 | axon | Senior Computer Vision and Machine Learning Research Scientist
@@ -910,7 +662,6 @@
 - [ ] https://boards.greenhouse.io/point72/jobs/7045979002?gh_jid=7045979002 | point72 | Cubist Senior Data Scientist
 - [ ] https://boards.greenhouse.io/point72/jobs/8372529002?gh_jid=8372529002 | point72 | Data Scientist
 - [ ] https://boards.greenhouse.io/point72/jobs/8372544002?gh_jid=8372544002 | point72 | Data Scientist
-- [ ] https://boards.greenhouse.io/point72/jobs/8199794002?gh_jid=8199794002 | point72 | Data Scientist, Mi-Analytics
 - [ ] https://boards.greenhouse.io/point72/jobs/7695570002?gh_jid=7695570002 | point72 | Data Scientist, Proprietary Research
 - [ ] https://boards.greenhouse.io/point72/jobs/8170176002?gh_jid=8170176002 | point72 | Machine Learning Engineer
 - [ ] https://boards.greenhouse.io/point72/jobs/8392983002?gh_jid=8392983002 | point72 | Machine Learning Engineer, Genai Technology
@@ -941,7 +692,6 @@
 - [ ] https://job-boards.greenhouse.io/doubleverify/jobs/8060829002 | doubleverify | Sr. Data Scientist I - Rockerbox
 - [ ] https://job-boards.greenhouse.io/impiricus/jobs/5195577008 | impiricus | AI Engineer
 - [ ] https://job-boards.greenhouse.io/impiricus/jobs/5160112008 | impiricus | VP, AI Engineering
-- [ ] https://job-boards.greenhouse.io/planetlabs/jobs/7782580 | planetlabs | AI Engineer, Marketing
 - [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5153808008 | capitalrx | AI / Machine Learning Summer Intern (Graduate level)
 - [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5142980008 | capitalrx | Machine Learning Engineer
 - [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5148286008 | capitalrx | Machine Learning Engineer
@@ -962,7 +712,6 @@
 - [ ] https://job-boards.greenhouse.io/podium81/jobs/7367363 | podium81 | Staff AI Engineer - USA
 - [ ] https://job-boards.greenhouse.io/podium81/jobs/7490572 | podium81 | Staff AI Engineer - Utah
 - [ ] https://job-boards.greenhouse.io/instawork/jobs/4620743006 | instawork | Founding Machine Learning Lead - Instawork Robotics
-- [ ] https://job-boards.greenhouse.io/avride/jobs/4012771009 | avride | Autonomous Vehicle Metrics and Evaluation Data Scientist - Analytics
 - [ ] https://job-boards.greenhouse.io/avride/jobs/4013230009 | avride | Machine Learning Engineer
 - [ ] https://job-boards.greenhouse.io/avride/jobs/4230374009 | avride | Machine Learning Engineer Internship
 - [ ] https://job-boards.greenhouse.io/avride/jobs/4013016009 | avride | Machine Learning Engineer, Motion Planning & Prediction
@@ -987,7 +736,6 @@
 - [ ] https://job-boards.greenhouse.io/queracomputinginc/jobs/5135036008 | queracomputinginc | Postdoctoral Fellow - Applied Machine Learning in Quantum Systems
 - [ ] https://job-boards.greenhouse.io/queracomputinginc/jobs/5075843008 | queracomputinginc | Quantum Scientist - Machine Learning and Quantum Error Correction
 - [ ] https://boards.greenhouse.io/blacksky/jobs/8499022002?gh_jid=8499022002 | blacksky | Machine Learning Engineer (MLE) Intern
-- [ ] https://job-boards.greenhouse.io/lucidmotors/jobs/5104100007 | lucidmotors | Data Scientist, Sales Planning and Forecasting
 - [ ] https://job-boards.greenhouse.io/lucidmotors/jobs/4759229007 | lucidmotors | Senior Machine Learning Engineer - Model Optimization & Deployment (ADAS/Autonomous Driving) 
 - [ ] https://job-boards.greenhouse.io/lucidmotors/jobs/4620390007 | lucidmotors | Staff Machine Learning Engineer – (ADAS/Autonomous Driving)
 - [ ] https://job-boards.greenhouse.io/locusrobotics/jobs/5099333007 | locusrobotics | PhD Research Intern – AI & Computer Vision
@@ -996,8 +744,6 @@
 - [ ] https://job-boards.greenhouse.io/avepoint/jobs/6328839 | avepoint | JUNIOR AI ENGINEER
 - [ ] https://job-boards.greenhouse.io/avepoint/jobs/7407016 | avepoint | Senior Product Data Scientist
 - [ ] https://job-boards.greenhouse.io/sharkninjaoperatingllc/jobs/4600175006 | sharkninjaoperatingllc | Machine Learning and AI Opportunities
-- [ ] https://job-boards.greenhouse.io/honehealth/jobs/5063028008 | honehealth | Senior Data Scientist, Healthcare Operations
-- [ ] https://job-boards.greenhouse.io/honehealth/jobs/5063012008 | honehealth | Senior Data Scientist, Marketing
 - [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684004003 | sigmacomputing | Senior AI/ML Engineer
 - [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684008003 | sigmacomputing | Senior AI/ML Engineer
 - [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684012003 | sigmacomputing | Staff AI/ML Engineer
@@ -1007,7 +753,6 @@
 - [ ] https://job-boards.greenhouse.io/profluent/jobs/5154049008 | profluent | ML Platform / MLOps Engineer
 - [ ] https://job-boards.greenhouse.io/wasabi/jobs/5135801008 | wasabi | Co-op – AI / Machine Learning Engineering
 - [ ] https://job-boards.greenhouse.io/wasabi/jobs/5101129008 | wasabi | Senior Enterprise AI Engineer 
-- [ ] https://job-boards.greenhouse.io/wasabi/jobs/5135717008 | wasabi | Sr. Industry Marketing Manager, Artificial Intelligence & Machine Learning
 - [ ] https://job-boards.greenhouse.io/axq/jobs/5819471004 | axq | AI Engineer
 - [ ] https://job-boards.greenhouse.io/axq/jobs/5636445004 | axq | Machine Learning Researcher
 - [ ] https://job-boards.greenhouse.io/didi/jobs/7802877 | didi | Machine Learning Engineer, Foundation Model
@@ -1045,10 +790,7 @@
 - [ ] https://job-boards.greenhouse.io/autoscout24/jobs/7671592003 | autoscout24 | Senior GenAI Data Scientist (m/f/d)
 - [ ] https://job-boards.greenhouse.io/checkr/jobs/7779296 | checkr | Staff Applied AI Engineer
 - [ ] https://job-boards.greenhouse.io/cabify/jobs/8462001002 | cabify | Data Scientist
-- [ ] https://job-boards.greenhouse.io/cabify/jobs/8462004002 | cabify | Data Scientist, Advanced Analytics
 - [ ] https://job-boards.greenhouse.io/cabify/jobs/8516376002 | cabify | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/cabify/jobs/8462006002 | cabify | Senior Data Scientist, Advanced Analytics
-- [ ] https://job-boards.greenhouse.io/cabify/jobs/8462000002 | cabify | Senior Data Scientist, Marketing Analyst
 - [ ] https://job-boards.greenhouse.io/contentful/jobs/7557680 | contentful | Senior Machine Learning Engineer (f/m/d)
 - [ ] https://job-boards.greenhouse.io/doctolib/jobs/6681347003 | doctolib | Machine Learning Engineer - AI Teams (x/f/m)
 - [ ] https://job-boards.greenhouse.io/doctolib/jobs/7642865003 | doctolib | NLP / AI Research Intern (x/f/m)
@@ -1061,8 +803,6 @@
 - [ ] https://job-boards.greenhouse.io/gitlab/jobs/8464072002 | gitlab | Senior AI Engineer
 - [ ] https://job-boards.greenhouse.io/gitlab/jobs/8452278002 | gitlab | Senior Fullstack Engineer (TypeScript), AI Engineering: Editor Extensions
 - [ ] https://job-boards.greenhouse.io/gitlab/jobs/8450446002 | gitlab | Staff Backend (Python) Engineer, AI Engineering:Duo Chat
-- [ ] https://job-boards.greenhouse.io/extend/jobs/5841127004 | extend | Senior Data Scientist, Finance Analytics
-- [ ] https://job-boards.greenhouse.io/extend/jobs/5880624004 | extend | Senior Data Scientist, Revenue Analytics
 - [ ] https://job-boards.greenhouse.io/gocardless/jobs/7544236 | gocardless | Senior Data Scientist, Fraud Prevention
 - [ ] https://job-boards.greenhouse.io/gocardless/jobs/7661486 | gocardless | Senior Data Scientist, Fraud Prevention
 - [ ] https://job-boards.greenhouse.io/gocardless/jobs/7661485 | gocardless | Senior Data Scientist, Fraud Prevention
@@ -1078,7 +818,6 @@
 - [ ] https://job-boards.greenhouse.io/monzo/jobs/7766052 | monzo | Machine Learning Manager, Borrowing
 - [ ] https://job-boards.greenhouse.io/monzo/jobs/7118972 | monzo | Platform Engineer, Machine Learning
 - [ ] https://job-boards.greenhouse.io/monzo/jobs/6180814 | monzo | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/monzo/jobs/6930501 | monzo | Senior Data Scientist - Marketing and Growth
 - [ ] https://job-boards.greenhouse.io/monzo/jobs/7686352 | monzo | Senior Machine Learning Scientist, Borrowing
 - [ ] https://job-boards.greenhouse.io/newrelic/jobs/4992316008 | newrelic | Lead Data Scientist
 - [ ] https://job-boards.greenhouse.io/newrelic/jobs/5007069008 | newrelic | Senior Manager, Machine Learning Engineering
@@ -1112,11 +851,129 @@
 - [ ] https://job-boards.eu.greenhouse.io/wallapop/jobs/4701711101 | wallapop | Data Scientist -Search
 - [ ] https://job-boards.eu.greenhouse.io/wallapop/jobs/4741205101 | wallapop | MLOps Engineer
 - [ ] https://job-boards.greenhouse.io/vtex/jobs/5591730004 | vtex | Data Scientist - LLMs
-- [ ] https://boards.greenhouse.io/wheely/jobs/7655292003?gh_jid=7655292003 | wheely | Associate Data Scientist - Operations Research
-- [ ] https://boards.greenhouse.io/wheely/jobs/7655287003?gh_jid=7655287003 | wheely | Associate Data Scientist - Operations Research
 - [ ] https://boards.greenhouse.io/wheely/jobs/7588263003?gh_jid=7588263003 | wheely | Data Scientist
 - [ ] https://boards.greenhouse.io/wheely/jobs/7588277003?gh_jid=7588277003 | wheely | Data Scientist
 - [ ] https://job-boards.eu.greenhouse.io/yld/jobs/4653093101 | yld | AI Engineer 
 - [ ] https://job-boards.eu.greenhouse.io/yld/jobs/4829316101 | yld | Contract Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/webflow/jobs/7689676 | webflow | Lead AI Engineer, Enterprise AI Operations
 - [ ] https://job-boards.greenhouse.io/webflow/jobs/7813157 | webflow | Senior Staff Machine Learning Scientist, Assets
+
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676600005 | Scaleai | Full-Stack Software Engineer, (Forward Deployed), GPS
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4650514005 | Scaleai | Product Manager of AI Applications, Global Public Sector
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4687591005 | Scaleai | Product Manager, Public Sector GenAI Test & Evaluation (T&E)
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676606005 | Scaleai | Senior Full-Stack Software Engineer, (Forward Deployed), GPS
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4554440005 | Scaleai | Solutions Engineer, Enterprise
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8335860002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8309177002 | Databricks | Delivery Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8289852002 | Databricks | Delivery Solutions Architect - Public Sector 
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8516118002 | Databricks | Deployment Strategist
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8287372002 | Databricks | Director, Enterprise - Retail & CPG, m/f/d
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8388585002 | Databricks | Director, Strategic Accounts - Logistics & Tech, m/f/d
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8517065002 | Databricks | Manager, Field Engineering France  - Specialist Solutions Architects
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509687002 | Databricks | Named Enterprise Account Executive, Fashion & Retail
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8439178002 | Databricks | Partner Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8413308002 | Databricks | Partner Solutions Architect, CEMEA
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8476500002 | Databricks | Resident Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494153002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8456948002 | Databricks | Resident Solutions Architect - Financial Services
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494146002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494155002 | Databricks | Resident Solutions Architect - Manufacturing
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494130002 | Databricks | Resident Solutions Architect - Public Sector
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437289002 | Databricks | Senior Solutions Architect - AI/BI
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8455054002 | Databricks | Senior Solutions Architect - Lakebase
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8325452002 | Databricks | Senior Solutions Engineer
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8041698002 | Databricks | Senior Technical Solutions Engineer (Platform)
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=5898477002 | Databricks | Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8085877002 | Databricks | Solutions Architect - Healthcare/Life Sciences Team (HLS)
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8506127002 | Databricks | Solutions Architect Spain
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8469076002 | Databricks | Sr. Delivery Solutions Architect - AI Native
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8429978002 | Databricks | Sr. Product Designer, AI/BI
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8136204002 | Databricks | Sr. Product Manager, Databricks AI
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8114836002 | Databricks | Sr. Resident Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8194864002 | Databricks | Sr. Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8458028002 | Databricks | Sr. Solutions Architect - Strategic AI Native
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8434465002 | Databricks | Sr. Solutions Architect - Strat Media
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8368205002 | Databricks | Sr. Solutions Engineer
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8417654002 | Databricks | Sr. Solutions Engineer - MFG
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367022002 | Databricks | Staff Backend Software Engineer- (AI Platform)
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8006984002 | Databricks | Staff Data & AI Technical Solutions Engineer
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8427940002 | Databricks | Staff Product Manager, AI Platform
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8441884002 | Databricks | Strategic AI/BI Account Executive
+- [ ] https://jobs.ashbyhq.com/harvey/01da8934-d3e3-4ebb-beb9-681b3c24fb9c | Harvey | Staff Software Engineer, AI Platform
+- [ ] https://jobs.ashbyhq.com/harvey/f47e1925-2a89-4264-8a1b-09cd9215f4dd | Harvey | Senior Software Engineer, AI Platform
+- [ ] https://jobs.ashbyhq.com/harvey/c7ef6dfd-a72e-4a90-adfe-0587d0eb2674 | Harvey | Business Development Lead, Cloud & AI
+- [ ] https://jobs.ashbyhq.com/skydio/a6973c57-132a-4a0d-b130-02d2bdaecd2a | Skydio | Senior Autonomy Engineer - Deep Learning
+- [ ] https://jobs.ashbyhq.com/skydio/dcb04687-9b4f-425d-8c37-1111cf3ccf3d | Skydio | Autonomy Engineer - Deep Learning Infrastructure
+- [ ] https://jobs.ashbyhq.com/skydio/ae12de71-0010-49d3-b171-c0b257e3b6c1 | Skydio | Autonomy Engineer - Deep Learning
+- [ ] https://jobs.ashbyhq.com/skydio/cd6d8410-419b-4713-8d4d-7eb72b134d5a | Skydio | Autonomy Engineer - Deep Learning Model Acceleration
+- [ ] https://jobs.ashbyhq.com/plaid/195a6c75-b7a1-4c3e-bdcd-e2781205dc54 | Plaid | AI Partner Development - GTM Pod
+- [ ] https://jobs.ashbyhq.com/snowflake/5cf06916-aef0-4fe5-9925-2410389be9d7 | Snowflake | Solutions Architect
+- [ ] https://jobs.ashbyhq.com/snowflake/b6e0f4a7-7e69-4c92-b3cc-13d018bbabe9 | Snowflake | Principal Software Engineer - AI Poland
+- [ ] https://jobs.ashbyhq.com/snowflake/c4a9dac4-d58e-4875-80ac-ecf7c9102d62 | Snowflake | Product Marketing Lead - AI Solutions
+- [ ] https://jobs.ashbyhq.com/snowflake/c66c9e35-4a5a-43af-a8e0-69c5208ef890 | Snowflake | Senior PS Sales Solutions Architect
+- [ ] https://jobs.ashbyhq.com/snowflake/3c018564-63c0-4179-ba91-f42ce75a40fa | Snowflake | Software Engineer - Streamlit
+- [ ] https://jobs.ashbyhq.com/modal/c85a3e3d-f1a5-479d-91e3-9e0b34279a82 | Modal | Forward Deployed Engineer - Systems
+- [ ] https://jobs.ashbyhq.com/modal/84467a68-6876-4730-9d80-6c6f3d0c2d71 | Modal | Member of Technical Staff - Platform Engineering
+- [ ] https://jobs.ashbyhq.com/modal/0d9c249b-f305-4b0e-b325-3242ac7274e7 | Modal | Forward Deployed Engineer - ML
+- [ ] https://jobs.ashbyhq.com/notion/72aa3c47-3b8a-4718-b359-0c486813527c | Notion | Solutions Engineer, EMEA
+- [ ] https://boards.greenhouse.io/figma/jobs/5976930004?gh_jid=5976930004 | Figma | Data Scientist, Core Data -  PhD (2026)
+- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4536716005?gh_jid=4536716005 | Appliedintuition | ML Runtime Optimization Engineer
+- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4686285005?gh_jid=4686285005 | Appliedintuition | Solutions Architect - Modeling & Simulation (Defense)
+- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4687982005?gh_jid=4687982005 | Appliedintuition | Training and Development Lead
+- [ ] https://coreweave.com/careers/job?4412177006&board=coreweave&gh_jid=4412177006 | Coreweave | Solutions Architect - HPC/AI/ML
+- [ ] https://coreweave.com/careers/job?4557835006&board=coreweave&gh_jid=4557835006 | Coreweave | Solutions Architect - Kubernetes
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=7637528 | Waymo | Fleet Response Training Program Manager
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=7424806 | Waymo | Machine Learning Engineer, ML Resources
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=7766491 | Waymo | Principal Software Engineer - Waymo Driver Post Training
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=7767649 | Waymo | Senior Machine Learning Engineer, Multimodal Perception (LLM/VLM)
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=7430187 | Waymo | Senior Machine Learning Engineer, Simulation
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=7593522 | Waymo | Staff Machine Learning Engineer, Perception Data 
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=6503285 | Waymo | Staff Machine Learning Engineer, Simulation
+- [ ] https://careers.withwaymo.com/jobs?gh_jid=7843511 | Waymo | Staff Machine Learning Engineer, Vehicle Compliance Reasoning
+- [ ] https://boards.greenhouse.io/inflectionai/jobs/4675986006?gh_jid=4675986006 | Inflectionai | Senior Product Manager, Consumer AI & Agents
+- [ ] https://jobs.lever.co/zoox/a5b426d5-845c-4d26-bca2-7a32e00882a2 | Zoox | Machine Learning Engineer - 3D Sensor Simulation
+- [ ] https://jobs.lever.co/zoox/809b1301-9654-4673-8f2d-4bc68bcead7f | Zoox | Machine Learning Engineer - MLA Perception Offline Driving Intelligence
+- [ ] https://jobs.lever.co/zoox/7c1a729e-88bd-4c9c-8d0f-7068258c9451 | Zoox | Machine Learning Engineer, 3D Simulation
+- [ ] https://jobs.lever.co/zoox/db46c9bf-3854-4cf9-83b5-ae7a9e28ad31 | Zoox | Senior Machine Learning Engineer - 3D Sensor Simulation
+- [ ] https://jobs.lever.co/zoox/3fa162d1-0953-4971-8a88-3d910dba2f8b | Zoox | Senior/Staff Machine Learning Engineer, 3D Simulation
+
+- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676608005 | Scaleai | Senior Full-Stack Software Engineer, (Forward Deployed), GPS
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8503080002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8285292002 | Databricks | Delivery Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8439182002 | Databricks | Partner Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8514430002 | Databricks | Resident Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8341311002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8456966002 | Databricks | Resident Solutions Architect - Financial Services
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494143002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494154002 | Databricks | Resident Solutions Architect - Manufacturing
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8461321002 | Databricks | Resident Solutions Architect - Public Sector
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437301002 | Databricks | Senior Solutions Architect - AI/BI
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8025494002 | Databricks | Senior Solutions Engineer
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7845320002 | Databricks | Senior Technical Solutions Engineer (Platform)
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8481719002 | Databricks | Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437034002 | Databricks | Sr. Solutions Architect
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8450209002 | Databricks | Sr. Solutions Engineer
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367021002 | Databricks | Staff Backend Software Engineer- (AI Platform)
+- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8441890002 | Databricks | Strategic AI/BI Account Executive
+- [ ] https://jobs.ashbyhq.com/harvey/f7c8e800-c0e4-4606-9860-9822103fe7e4 | Harvey | Staff Software Engineer, AI Platform
+- [ ] https://jobs.ashbyhq.com/harvey/51fb953a-c494-4a09-8fe2-8d7268b863ec | Harvey | Senior Software Engineer, AI Platform
+- [ ] https://jobs.ashbyhq.com/snowflake/b7fba62e-95e8-4304-94fa-d278a20956f1 | Snowflake | Solutions Architect
+- [ ] https://careers.airbnb.com/positions/7158963?gh_jid=7158963 | Airbnb | AI-Enabled Insights Lead
+- [ ] https://careers.airbnb.com/positions/7288960?gh_jid=7288960 | Airbnb | Claims Experience Specialist 
+- [ ] https://careers.airbnb.com/positions/7439746?gh_jid=7439746 | Airbnb | Claims Experience Specialist(Japanese and English Speaking)
+- [ ] https://careers.airbnb.com/positions/7839229?gh_jid=7839229 | Airbnb | Community Support Forecasting and Demand Planning Analyst
+- [ ] https://careers.airbnb.com/positions/7812284?gh_jid=7812284 | Airbnb | Head of Fundraising, Airbnb.org
+- [ ] https://careers.airbnb.com/positions/7721171?gh_jid=7721171 | Airbnb | Head of Homes Supply, Hong Kong, Singapore and Taiwan
+- [ ] https://careers.airbnb.com/positions/7672092?gh_jid=7672092 | Airbnb | Knowledge Strategist (Mandarin)
+- [ ] https://careers.airbnb.com/positions/7586592?gh_jid=7586592 | Airbnb | Lead Advanced Analytics, Digital & AI Products
+- [ ] https://careers.airbnb.com/positions/7651661?gh_jid=7651661 | Airbnb | Product Manager, Trip Quality Merchandising and AI
+- [ ] https://careers.airbnb.com/positions/7812160?gh_jid=7812160 | Airbnb | Programs & Business Operations Lead, Airbnb Services
+- [ ] https://careers.airbnb.com/positions/7535340?gh_jid=7535340 | Airbnb | Responsable du developpement des affaires
+- [ ] https://careers.airbnb.com/positions/6298781?gh_jid=6298781 | Airbnb | Senior Business Affairs Lead 
+- [ ] https://careers.airbnb.com/positions/7716311?gh_jid=7716311 | Airbnb | Senior Business Solutions Engineer, BizTech
+- [ ] https://careers.airbnb.com/positions/7782435?gh_jid=7782435 | Airbnb | Senior Manager, Product & AI Policy
+- [ ] https://careers.airbnb.com/positions/7822781?gh_jid=7822781 | Airbnb | Senior Programs & Business Operations Lead, Airbnb Services 
+- [ ] https://careers.airbnb.com/positions/7730723?gh_jid=7730723 | Airbnb | Senior Software Engineer, BizTech(AI Products)
+- [ ] https://careers.airbnb.com/positions/7644921?gh_jid=7644921 | Airbnb | Senior Staff Operations Engineer, AIOps
+- [ ] https://careers.airbnb.com/positions/7463421?gh_jid=7463421 | Airbnb | Staff GenAI Backend Engineer, Automation Foundation
+- [ ] https://careers.airbnb.com/positions/7712102?gh_jid=7712102 | Airbnb | Staff Software Engineer, Airfam Products
+- [ ] https://careers.airbnb.com/positions/7528577?gh_jid=7528577 | Airbnb | Staff Software Engineer, Listings & Host Tools and AI
