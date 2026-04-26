@@ -2,6 +2,7 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import { buildHumanizer } from './humanize.mjs';
 
 export async function populateAshby(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     let url = targetUrl;
@@ -139,64 +140,36 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
         }
     } catch (e) {}
 
-    console.log("Filling standard details...");
+    // ── Shared humanization engine (burst typing, paste-vs-type, scroll+arc) ──
+    const H = buildHumanizer(page);
+    const { scrollIntoView, biometricClick, interFieldTransition,
+             humanType, humanPaste, safeType, safePaste, smartFill } = H;
+    // Legacy aliases used in downstream heuristic code
+    const safeFill = (selector, value) => smartFill(selector, value);
+
+    // Basic Ashby native fields: short → type, URLs → paste
+    await safeType('input[name="name"]', profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis');
+    await safeType('input[name="_systemfield_name"]', profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis');
     
-    const humanTyping = async (locator, text) => {
-        try { await locator.evaluate(el => el.focus()); } catch(e) {}
-        for (const char of text) {
-            await page.keyboard.press(char, { delay: Math.floor(Math.random() * 40) + 10 }).catch(()=>{});
-            await page.waitForTimeout(Math.floor(Math.random() * 60) + 20);
-            if (char === ' ' || char === '@' || char === '.') {
-                await page.waitForTimeout(Math.floor(Math.random() * 200) + 100);
-            }
-        }
-    };
+    await safeType('input[name="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
+    await safeType('input[name="_systemfield_email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
 
-    const safeType = async (inputHandle, value) => {
-        try {
-            const currentVal = await inputHandle.evaluate(el => el.value).catch(() => '');
-            if (!currentVal) {
-                await inputHandle.scrollIntoViewIfNeeded().catch(()=>{});
-                await humanTyping(inputHandle, value);
-            }
-        } catch (e) {}
-    };
-
-    const safeFill = async (selector, value) => {
-        try {
-            const el = page.locator(selector).first();
-            if (await el.count() > 0) {
-                await el.scrollIntoViewIfNeeded().catch(()=>{});
-                await humanTyping(el, value);
-            }
-        } catch (e) {}
-    };
-
-    // Basic Ashby native fields
-    await safeFill('input[name="name"]', profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis');
-    await safeFill('input[name="_systemfield_name"]', profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis');
-    
-    await safeFill('input[name="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
-    await safeFill('input[name="_systemfield_email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
-
-    // URLs and Profiles
+    // URLs and Profiles — paste
     const linkedin = profileConfig?.candidate?.linkedin || 'https://linkedin.com/in/dhardestylewis';
     const github = profileConfig?.candidate?.github || 'https://github.com/dhardestylewis';
     const website = profileConfig?.candidate?.portfolio_url || 'https://dlewis.ai';
     
-    await safeFill('input[name="linkedin"]', linkedin);
-    await safeFill('input[name="github"]', github);
-    await safeFill('input[name="website"]', website);
-    await safeFill('input[name="urls[LinkedIn]"]', linkedin);
-    await safeFill('input[name="urls[GitHub]"]', github);
-    // ID/placeholder-based fallbacks for Ashby custom field naming variations
-    await safeFill('input[id*="linkedin"], input[placeholder*="LinkedIn"], input[placeholder*="linkedin"]', linkedin);
-    await safeFill('input[id*="github"], input[placeholder*="GitHub"], input[placeholder*="github"]', github);
-    await safeFill('input[id*="portfolio"], input[id*="website"], input[placeholder*="Portfolio"], input[placeholder*="portfolio"]', website);
-    await safeFill('input[name="_systemfield_phone"], input[name="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
-    await safeFill('input[placeholder*="Phone"], input[placeholder*="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
-    // Ashby uses type="tel" for phone with UUID names and placeholder like "1-415-555-1234..."
-    await safeFill('input[type="tel"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    await safePaste('input[name="linkedin"]', linkedin);
+    await safePaste('input[name="github"]', github);
+    await safePaste('input[name="website"]', website);
+    await safePaste('input[name="urls[LinkedIn]"]', linkedin);
+    await safePaste('input[name="urls[GitHub]"]', github);
+    await safePaste('input[id*="linkedin"], input[placeholder*="LinkedIn"], input[placeholder*="linkedin"]', linkedin);
+    await safePaste('input[id*="github"], input[placeholder*="GitHub"], input[placeholder*="github"]', github);
+    await safePaste('input[id*="portfolio"], input[id*="website"], input[placeholder*="Portfolio"], input[placeholder*="portfolio"]', website);
+    await safeType('input[name="_systemfield_phone"], input[name="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    await safeType('input[placeholder*="Phone"], input[placeholder*="phone"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
+    await safeType('input[type="tel"]', profileConfig?.candidate?.phone || '+1 (713) 371-7875');
 
     console.log("Scanning for Custom ATS questions via Heuristic Engine...");
     try {
