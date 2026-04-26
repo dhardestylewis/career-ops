@@ -255,16 +255,42 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     console.log("Detecting and setting Location dropdown (to trigger dynamic EEO questions)...");
     
     // Autocomplete Location fields (Lever Location Autocomplete API)
+    // We type the candidate's city, wait for the dropdown to populate,
+    // then click the first result so the hidden `selectedLocation` JSON field is committed.
     try {
         const locField = page.locator('#location-input, input[name="location"], input[placeholder*="location" i], input[placeholder*="city" i]');
         if (await locField.count() > 0 && await locField.first().isVisible()) {
             await locField.first().focus();
             await locField.first().fill("");
-            await locField.first().pressSequentially('United States', { delay: 100 });
-            await page.waitForTimeout(1500);
-            await page.keyboard.press('ArrowDown');
-            await page.waitForTimeout(200);
-            await page.keyboard.press('Enter');
+
+            // Use the candidate's city from profile, fallback to New York
+            const candidateCity = profileConfig?.location?.city || profileConfig?.candidate?.city || 'New York';
+            await locField.first().pressSequentially(candidateCity, { delay: 80 });
+
+            // Wait for the dropdown results list to appear
+            const dropdownResult = page.locator('.dropdown-location, #location-0, [class*="dropdown-location"]');
+            await page.waitForTimeout(1800);  // allow geocoder API debounce
+
+            if (await dropdownResult.count() > 0) {
+                // Click the very first result — #location-0 is always the best match
+                await dropdownResult.first().click({ force: true });
+                await page.waitForTimeout(500);
+                // Verify hidden selectedLocation was committed
+                const hiddenVal = await page.locator('#selected-location').first().getAttribute('value').catch(() => '');
+                if (!hiddenVal || hiddenVal === '') {
+                    // Fallback: ArrowDown + Enter if click failed to commit
+                    await locField.first().focus();
+                    await page.keyboard.press('ArrowDown');
+                    await page.waitForTimeout(200);
+                    await page.keyboard.press('Enter');
+                }
+            } else {
+                // No visible dropdown — use keyboard fallback
+                await page.keyboard.press('ArrowDown');
+                await page.waitForTimeout(200);
+                await page.keyboard.press('Enter');
+            }
+            await page.waitForTimeout(400);
         }
     } catch(e) {}
     
@@ -472,9 +498,16 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 await clickRadioLabel('No');
             }
 
-            // AngelList Custom: Visa
+            // AngelList Custom: Visa / Work Auth — handle all four variants
             if (text.includes('united states citizen or permanent resident')) {
-                await clickRadioLabel('United States Citizen or Permanent Resident');
+                // Primary answer: US citizen
+                const clicked = await clickRadioLabel('United States Citizen or Permanent Resident');
+                if (!clicked) await clickRadioLabel('Yes'); // fallback
+            }
+            // AngelList: Location commitment (can/cannot work there)
+            if (text.includes('able to work') && (text.includes('this role') || text.includes('this location'))) {
+                const clicked = await clickRadioLabel('Yes');
+                if (!clicked) await clickRadioLabel('Yes, but I would first need to relocate');
             }
 
             // Neon Custom: Portuguese Deep Tech
@@ -567,6 +600,25 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             if (lowerText.includes('determining export licensing requirements') || lowerText.includes('export control')) {
                 const area = await block.$('textarea');
                 if (area && !(await area.inputValue())) await area.fill("United States Citizen, since birth.");
+            }
+
+            // Articulate Custom: Top 3 Technologies
+            if (lowerText.includes('3 technologies') || lowerText.includes('top technologies') || lowerText.includes('most proficient in')) {
+                const area = await block.$('textarea');
+                const techList = (profileConfig?.narrative?.skills || ['Python', 'PyTorch', 'Kubernetes']).slice(0, 3).join(', ');
+                if (area && !(await area.inputValue())) await area.fill(techList);
+            }
+
+            // Generic fallback: any required textarea still empty → fill with catch-all
+            const allRequiredAreas = await block.$$('textarea[required], textarea.required-field');
+            for (const reqArea of allRequiredAreas) {
+                if (!(await reqArea.inputValue())) {
+                    const areaCtx = (await reqArea.evaluate(el => el.closest('.application-question')?.textContent || '')).toLowerCase();
+                    // Don't override questions that already have dedicated handlers above
+                    if (!areaCtx.includes('export control') && !areaCtx.includes('technologies') && !areaCtx.includes('why') && !areaCtx.includes('cover letter') && !areaCtx.includes('achievement')) {
+                        await reqArea.fill(catchAll).catch(() => {});
+                    }
+                }
             }
 
             // Zoox Custom: Checkbox variant for "How did you hear about us"
@@ -975,11 +1027,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-        if (metrics.fillPercentage < 100) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
-            metrics.status = 'Incomplete';
-            return metrics;
-        }
             await context.close();
         }
     })();
