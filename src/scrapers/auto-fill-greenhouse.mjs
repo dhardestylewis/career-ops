@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
+import { getDeterministicMappings } from './heuristics.mjs';
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -142,12 +143,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         unresolved.push({ id, question: labelText.replace(/\n/g, ' ').trim() });
                     }
                 }
-                fs.writeFileSync(path.resolve('data/unresolved_questions.json'), JSON.stringify(unresolved, null, 2));
+                fs.writeFileSync(path.resolve('logs/telemetry/unresolved_questions.json'), JSON.stringify(unresolved, null, 2));
             } catch(e) {}
 
-            if (shouldGenerate || fs.existsSync(path.resolve('data/unresolved_questions.json'))) {
+            if (shouldGenerate || fs.existsSync(path.resolve('logs/telemetry/unresolved_questions.json'))) {
                 const jdText = await jdContainer.allInnerTexts();
-                fs.writeFileSync(path.resolve('data/job_description.txt'), jdText.join('\n\n'));
+                fs.writeFileSync(path.resolve('logs/telemetry/job_description.txt'), jdText.join('\n\n'));
                 import('child_process').then(({ spawnSync }) => {
                     spawnSync('node', [path.resolve('src/generator/generate-cover-letter.mjs')], { stdio: 'inherit' });
                 });
@@ -467,36 +468,38 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 await page.waitForTimeout(2000); // Wait for options to render from API
                 
                 // Try to click the exact option
-                let options = await page.$$('div[class*="option"]');
+                let options = await page.$$('div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"]');
                 
                 // Fallback: If no options, clear and open dropdown manually
                 if (options.length === 0) {
                     await input.fill("").catch(()=>{});
                     await input.press('ArrowDown').catch(()=>{});
                     await page.waitForTimeout(1000);
-                    options = await page.$$('div[class*="option"]');
+                    options = await page.$$('div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"]');
                 }
                 
                 let clicked = false;
                 const returnedOptions = [];
                 for (const opt of options) {
+                    const isVisible = await opt.isVisible().catch(()=>false);
+                    if (!isVisible) continue;
+                    
                     const optText = await opt.innerText().catch(()=>'');
                     if (optText.trim()) returnedOptions.push(optText.trim());
                     
                     if (isMatchOption(optText, targetValue)) {
                         console.log(`[Mapper] React-Select: Searched "${targetValue}", Selected: "${optText.trim()}"`);
                         await opt.click({ delay: 50, force: true }).catch(()=>{});
+                        await input.press('Enter').catch(()=>{}); // Explicit commit
                         clicked = true;
                         break;
                     }
                 }
                 if (!clicked) {
-                    const previewOptions = returnedOptions.slice(0, 5).join(', ') + (returnedOptions.length > 5 ? '...' : '');
-                    console.log(`[Mapper] React-Select: Searched "${targetValue}", No exact match found. Returned options: [${previewOptions}]. Pressing Enter as fallback.`);
-                    await input.press('Enter').catch(()=>{});
+                    console.log(`[Mapper] React-Select: Searched "${targetValue}", No exact match found. Skipping to avoid selecting incorrect default.`);
                 }
                 await page.waitForTimeout(300);
-                await input.press('Tab').catch(()=>{}); // Blur the input so React state flushes
+                await input.press('Escape').catch(()=>{}); // Safely close dropdown without auto-committing like Tab might
                 return true;
 
             } else if (tagName === 'select') {
@@ -549,8 +552,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                             console.log(`[Mapper] Select2: Searched "${targetValue}", No match found. Returned options: [${previewOptions}]. Selecting first: "${returnedOptions[0]}"`);
                             await options[0].click().catch(()=>{});
                         } else if (!clicked) {
-                            console.log(`[Mapper] Select2: Searched "${targetValue}", No options returned. Pressing Enter as fallback.`);
-                            await searchField.press('Enter').catch(()=>{});
+                            console.log(`[Mapper] Select2: Searched "${targetValue}", No options returned. Pressing Escape as fallback.`);
+                            await searchField.press('Escape').catch(()=>{});
                         }
                         
                         await page.waitForTimeout(300);
@@ -654,85 +657,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         return false;
     };
 
-    const DETERMINISTIC_MAPPINGS = [
-        { question: /linkedin profile/i, value: profileConfig?.candidate?.linkedin || 'https://linkedin.com/in/dhardestylewis' },
-        { question: /github/i, value: profileConfig?.candidate?.github || 'https://github.com/dhardestylewis' },
-        { question: /website|portfolio/i, value: profileConfig?.candidate?.portfolio || 'https://dlewis.ai' },
-        { question: /work authorization|authorized to work|right to work|eligibility/i, value: 'Yes' },
-        { question: /require.*sponsorship|need sponsorship|require visa/i, value: 'No' },
-        { question: /gender/i, value: domainOverrides.gender || 'Male' },
-        { question: /hispanic|latino/i, value: 'Decline' },
-        { question: /racial|ethnic/i, value: 'Decline' },
-        { question: /sexual orientation/i, value: 'Decline' },
-        { question: /transgender/i, value: 'Decline' },
-        { question: /veteran/i, value: 'No' },
-        { question: /disability/i, value: 'No' },
-        { question: /^country\b/i, value: domainOverrides.country || 'United States' },
-        { question: /address|mailing address/i, value: '155 Claremont Ave, New York, NY 10027' },
-        { question: /how did you.*hear|find out/i, value: 'LinkedIn' },
-        { question: /pronoun/i, value: 'He/him' },
-        { question: /salary.*expect|compensation/i, value: '$200,000+' },
-        { question: /^degree\b|highest level of education/i, value: 'Bachelor' },
-        { question: /^discipline\b|highest level degree in/i, value: 'Computer Science' },
-        { question: /^school\b/i, value: 'Concordia University Texas' },
-        { question: /start date year|start year/i, value: '2012' },
-        { question: /end date year|end year|graduation year/i, value: '2018' },
-        { question: /^(?!.*(?:russia|belarus)).*(?:comfortable with this requirement|hybrid|onsite|relocat)/i, value: 'Yes' },
-        { question: /do you have.*experience|years.*experience|experience with|familiar with|experience using|experience working/i, value: 'Yes' },
-        { question: /quebec/i, value: 'No' },
-        { question: /data privacy notice/i, value: 'Acknowledge' },
-        { question: /recording.*interview|record.*formats/i, value: 'Acknowledge' },
-        { question: /please specify here/i, value: 'N/A' },
-        { question: /^are you a current.*employee/i, value: 'No' },
-        { question: /current.*company|current firm|most recent company/i, value: profileConfig?.candidate?.company || 'Homecastr' },
-        { question: /preferred programming language/i, value: 'Python' },
-        { question: /past 6 months|previously applied|previously worked|worked for.*before|former.*employee/i, value: 'No' },
-        { question: /18\+ years of age|18 or older/i, value: 'Yes' },
-        { question: /available to work as a full|soonest you can start|earliest.*start/i, value: 'Now' },
-        { question: /technical skills/i, value: 'Expert' },
-        { question: /gpa.*undergraduate|undergraduate gpa/i, value: '3.4' },
-        { question: /gpa.*graduate|graduate gpa/i, value: 'Not applicable' },
-        { question: /gpa.*doctorate|doctorate gpa/i, value: 'Not applicable' },
-        { question: /sat score/i, value: 'Not applicable' },
-        { question: /act score/i, value: 'Not applicable' },
-        { question: /gre score/i, value: 'Not applicable' },
-        { question: /security clearance/i, value: 'None' },
-        { question: /spacex employment/i, value: 'No' },
-        { question: /accommodations/i, value: 'Yes' },
-        { question: /citizenship status/i, value: 'U.S. Citizen' },
-        { question: /type of visa sponsorship/i, value: 'None' },
-        { question: /phd/i, value: 'No' },
-        { question: /indian national/i, value: 'No' },
-        { question: /working status in india/i, value: 'Not applicable' },
-        { question: /restrict your ability to work|non-compete/i, value: 'No' },
-        { question: /preferred first name/i, value: profileConfig?.candidate?.first_name || 'Daniel' },
-        { question: /legal name/i, value: (profileConfig?.candidate?.first_name || 'Daniel') + ' ' + (profileConfig?.candidate?.last_name || 'Hardesty Lewis') },
-        { question: /^first name/i, value: profileConfig?.candidate?.first_name || 'Daniel' },
-        { question: /^last name/i, value: profileConfig?.candidate?.last_name || 'Hardesty Lewis' },
-        { question: /^email/i, value: profileConfig?.candidate?.email || 'daniel.hardestylewis@gmail.com' },
-        { question: /school|university/i, value: domainOverrides.school || profileConfig?.candidate?.university || 'University of Texas at Austin' },
-        { question: /^degree/i, value: domainOverrides.degree || profileConfig?.candidate?.degree || 'Bachelor' },
-        { question: /discipline|what is your major/i, value: domainOverrides.discipline || profileConfig?.candidate?.major || 'Mathematics' },
-        { question: /gpa|grade/i, value: profileConfig?.candidate?.gpa || '3.49' },
-        { question: /pronouns/i, value: profileConfig?.candidate?.pronouns || 'He/him' },
-        { question: /^location \(city\)|^city/i, value: profileConfig?.candidate?.location || 'New York, NY' },
-        { question: /privacy policy|acknowledge|outside assistance|artificial intelligence/i, value: 'acknowledge' },
-        { question: /where do you intend to work/i, value: profileConfig?.candidate?.location || 'New York, NY' },
-        { question: /currently based in|live in/i, value: 'Yes' },
-        { question: /clearance/i, value: 'No' },
-        { question: /NeurIPS|ICML|CVPR/i, value: 'check' },
-        { question: /^Generative AI|^Natural Language Processing|Recommendation Systems/i, value: 'check' },
-        { question: /google scholar/i, value: profileConfig?.candidate?.scholar || 'https://scholar.google.com/citations?user=Gk740W4AAAAJ' },
-        { question: /why applied intuition/i, value: 'I am highly motivated by frontier research and building applied AI systems that solve tangible, high-impact problems.' },
-        { question: /hardest thing you’ve done/i, value: 'Architecting and scaling the data aggregation and real-time inference pipeline for a national real estate prediction model completely solo. Ensuring fault-tolerance and sub-second latency across millions of rows of data required mastering completely new distributed systems paradigms on the fly.' },
-        { question: /highest quality work of your life/i, value: 'Building the state-of-the-art property valuation model at Homecastr. It represents the culmination of my experience in ML, systems engineering, and geospatial data, beating commercial benchmarks while operating efficiently at scale.' },
-        { question: /steps did you take to become the best/i, value: 'Relentless curiosity, diving into research papers to understand the mathematical foundations of models rather than treating them as black boxes, and consistently building end-to-end systems from infrastructure to inference to understand the holistic lifecycle of a product.' },
-        { question: /^none of the above$/i, value: 'check' },
-        { question: /not applicable.*selected.*none of the above/i, value: 'check' },
-        { question: /notice period/i, value: 'Available immediately' }
-    ];
+    const mappings = getDeterministicMappings(profileConfig, domainOverrides);
 
-    for (const map of DETERMINISTIC_MAPPINGS) {
+    for (const map of mappings) {
         await fillDeterministicField(page, map.question, map.value);
     }
 
@@ -1563,7 +1490,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             console.log("MULTI_TAB mode enabled. Leaving tab open natively.");
         }
     }
-
+    return metrics;
 }
 
 

@@ -82,10 +82,24 @@ export function buildHumanizer(page) {
     // ── Burst typing: variable 50-120 WPM, burst clusters, occasional pauses ──
     const humanType = async (value) => {
         let i = 0;
+        const typoRate = 0.04; // 4% chance of a typo per character
+
         while (i < value.length) {
             const burstLen = Math.floor(Math.random() * 6) + 3;
             const burst = value.slice(i, i + burstLen);
             for (const char of burst) {
+                // Simulate occasional typos for letters
+                if (Math.random() < typoRate && /[a-zA-Z]/.test(char)) {
+                    // Type a wrong neighboring character (simplification: +/- 1 ascii)
+                    const wrongChar = String.fromCharCode(char.charCodeAt(0) + (Math.random() > 0.5 ? 1 : -1));
+                    await page.keyboard.type(wrongChar);
+                    await page.waitForTimeout(Math.floor(Math.random() * 120) + 80); // hesitate
+                    
+                    // Notice mistake, backspace
+                    await page.keyboard.press('Backspace');
+                    await page.waitForTimeout(Math.floor(Math.random() * 90) + 50); // think
+                }
+
                 await page.keyboard.type(char);
                 let delay = Math.floor(Math.random() * 80) + 40; // 40–120 ms base
                 if (char === '@')                delay += Math.floor(Math.random() * 180) + 120;

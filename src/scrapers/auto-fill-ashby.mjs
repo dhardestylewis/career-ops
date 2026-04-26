@@ -3,6 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
+import { matchHeuristic } from './heuristics.mjs';
 
 export async function populateAshby(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     let url = targetUrl;
@@ -66,12 +67,12 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                         unresolved.push({ id, question: labelText.replace(/\n/g, ' ').trim() });
                     }
                 }
-                fs.writeFileSync(path.resolve('data/unresolved_questions.json'), JSON.stringify(unresolved, null, 2));
+                fs.writeFileSync(path.resolve('logs/telemetry/unresolved_questions.json'), JSON.stringify(unresolved, null, 2));
             } catch(e) {}
             
-            if (shouldGenerate || fs.existsSync(path.resolve('data/unresolved_questions.json'))) {
+            if (shouldGenerate || fs.existsSync(path.resolve('logs/telemetry/unresolved_questions.json'))) {
                 const jdText = await jdContainer.allInnerTexts();
-                fs.writeFileSync(path.resolve('data/job_description.txt'), jdText.join('\n\n'));
+                fs.writeFileSync(path.resolve('logs/telemetry/job_description.txt'), jdText.join('\n\n'));
                 import('child_process').then(({ spawnSync }) => {
                     spawnSync('node', [path.resolve('generate-cover-letter.mjs')], { stdio: 'inherit' });
                 });
@@ -178,7 +179,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
         const catchAll = profileConfig?.narrative?.catch_all || 'N/A - all relevant information is provided in the resume.';
         
         // Scan custom inputs directly reading labels
-        const allInputs = await page.$$('input[type="text"], input[type="url"], input[type="email"], input[type="tel"], input[type="number"]');
+        const allInputs = await page.$$('input[type="text"], input[type="url"], input[type="email"], input[type="tel"], input[type="number"], input[type="radio"], input[type="checkbox"]');
         for (const input of allInputs) {
              try {
                  const id = await input.getAttribute('id');
@@ -190,12 +191,40 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                  
                  const combinedLabel = labelText + " " + ariaLabel + " " + nameAttr;
                  
+                 const matchedValue = matchHeuristic(combinedLabel, profileConfig, {});
+                 const typeAttr = await input.getAttribute('type');
+                 if (matchedValue) {
+                     if (typeAttr === 'checkbox') {
+                         if (matchedValue === 'check' || matchedValue.toLowerCase() === 'acknowledge') {
+                             if (!(await input.isChecked())) await input.check({ force: true }).catch(()=>{});
+                         }
+                     } else if (typeAttr === 'radio') {
+                         // Find the label for this specific radio button to see if it matches the target value ('Yes', 'No', etc)
+                         let radioLabelEl = await page.$(`label[for="${id}"]`);
+                         if (!radioLabelEl) radioLabelEl = await input.evaluateHandle(el => el.closest('label')).catch(()=>null);
+                         
+                         const radioLabelText = radioLabelEl ? (await radioLabelEl.textContent() || '').toLowerCase() : '';
+                         if (radioLabelText.includes(matchedValue.toLowerCase()) || (matchedValue.toLowerCase() === 'check' && radioLabelText.includes('acknowledge'))) {
+                             if (!(await input.isChecked())) await input.check({ force: true }).catch(()=>{});
+                         }
+                     } else {
+                         if (!(await input.inputValue())) await input.fill(matchedValue);
+                     }
+                     continue;
+                 }
+
                  if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
                      if (!(await input.inputValue())) await input.fill(profileConfig?.candidate?.phone || '+1 (713) 371-7875');
                  } else if (combinedLabel.includes('salary') || combinedLabel.includes('compensation') || combinedLabel.includes('expectations') || combinedLabel.includes('package')) {
                      if (!(await input.inputValue())) await input.fill(minComp.toString());
                  } else if (combinedLabel.includes('notice period') || combinedLabel.includes('available to start') || combinedLabel.includes('earliest date') || combinedLabel.includes('join')) {
                      if (!(await input.inputValue())) await input.fill("2-4 weeks");
+                 } else if (combinedLabel.includes('location')) {
+                     if (!(await input.inputValue())) {
+                         await input.fill(profileConfig?.candidate?.location || 'New York, NY');
+                         await page.waitForTimeout(1000);
+                         await input.press('Enter').catch(()=>{});
+                     }
                  } else if (combinedLabel.includes('linkedin')) {
                      if (!(await input.inputValue())) await input.fill(linkedin);
                  } else if (combinedLabel.includes('website') || combinedLabel.includes('portfolio')) {
@@ -221,6 +250,12 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 }
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
                 const combinedLabel = ariaLabel + " " + labelText;
+
+                const matchedValue = matchHeuristic(combinedLabel, profileConfig, {});
+                if (matchedValue) {
+                    if (!(await area.inputValue())) await area.fill(matchedValue);
+                    continue;
+                }
 
                 if (combinedLabel.includes('why') || combinedLabel.includes('interest') || combinedLabel.includes('reason') || combinedLabel.includes('cover letter') || combinedLabel.includes('achievement') || combinedLabel.includes('project') || combinedLabel.includes('excite') || combinedLabel.includes('mission') || combinedLabel.includes('built') || combinedLabel.includes('impactful') || combinedLabel.includes('contribution') || combinedLabel.includes('hard problem') || combinedLabel.includes('success') || combinedLabel.includes('workflow') || combinedLabel.includes('feature') || combinedLabel.includes('impressive') || combinedLabel.includes('proud')) {
                     if (!(await area.inputValue())) await area.fill(exitStory);
@@ -661,6 +696,7 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         });
     });
 }
+
 
 
 

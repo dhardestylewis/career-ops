@@ -76,26 +76,44 @@ for (let i = 1; i < rawBatch.length; i++) {
     if (url.includes('ashbyhq.com')) ashbyUrls.push(url);
 }
 
-// Shuffle arrays for wide dispersion sampling
-const shuffle = (array) => {
-    for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
+// Aggregate the massive subset of targets for concurrent Multi-Tab execution
+let targets = [
+    ...leverUrls.map(url => ({ url, type: 'lever' })),
+    ...greenhouseUrls.map(url => ({ url, type: 'greenhouse' })),
+    ...ashbyUrls.map(url => ({ url, type: 'ashby' }))
+];
+
+const getCompany = (urlStr) => {
+    try {
+        if(urlStr.includes('job-boards.greenhouse.io') || urlStr.includes('boards.greenhouse.io')) {
+             return new URL(urlStr).pathname.split('/')[1].toLowerCase();
+        }
+        if(urlStr.includes('jobs.lever.co')) {
+             return new URL(urlStr).pathname.split('/')[1].toLowerCase();
+        }
+        if(urlStr.includes('jobs.ashbyhq.com')) {
+             return new URL(urlStr).pathname.split('/')[1].toLowerCase();
+        }
+    } catch(e) {}
+    return 'unknown';
 };
 
-// Aggregate the massive subset of targets for concurrent Multi-Tab execution
-const targets = [
-    ...shuffle(leverUrls).map(url => ({ url, type: 'lever' })),
-    ...shuffle(greenhouseUrls).map(url => ({ url, type: 'greenhouse' })),
-    ...shuffle(ashbyUrls).map(url => ({ url, type: 'ashby' }))
-];
+targets.forEach(t => {
+   const c = getCompany(t.url);
+   t.company = c;
+   t.appCount = companyLimits[c] || 0;
+   t.random = Math.random();
+});
+
+targets.sort((a, b) => {
+   if (a.appCount !== b.appCount) return a.appCount - b.appCount;
+   return a.random - b.random;
+});
 
 const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";
 
-// Limit the run to 50 randomly selected endpoints to prevent memory exhaustion
-const RUN_LIMIT = targets.length;
+// Limit the run to 15 randomly selected endpoints to prevent memory exhaustion
+const RUN_LIMIT = 15;
 const selectedTargets = targets.slice(0, RUN_LIMIT);
 
 console.log(`Starting headless multi-tab validation over ${selectedTargets.length} queued endpoints (from total ${targets.length})...`);
@@ -208,6 +226,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
         }
         if (!fs.existsSync('logs')) fs.mkdirSync('logs');
         if (!fs.existsSync('logs/runs')) fs.mkdirSync('logs/runs');
+        if (!fs.existsSync('logs/telemetry')) fs.mkdirSync('logs/telemetry', { recursive: true });
         
         // Save the permanent timestamped markdown log
         const runTimestamp = new Date().toISOString().replace(/[:.]/g, '-');
@@ -216,10 +235,10 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
         // Also update the convenience pointer
         fs.writeFileSync('logs/evaluation_stats_run_latest.md', markdown);
         
-        fs.writeFileSync('logs/missing_dom.json', JSON.stringify(missingDOMData, null, 2));
+        fs.writeFileSync('logs/telemetry/missing_dom.json', JSON.stringify(missingDOMData, null, 2));
 
         // Append to persistent time-series tracker
-        const trackerFile = 'logs/fill_rate_tracker.tsv';
+        const trackerFile = 'logs/telemetry/fill_rate_tracker.tsv';
         if (!fs.existsSync(trackerFile)) {
             fs.writeFileSync(trackerFile, 'Timestamp\tGitHash\tDomain\tURL\tFillPercentage\tFilled\tTotal\tUnmapped\n');
         }
