@@ -37,3 +37,5 @@ token.json
 .env
 data/chrome-bot-profile*/
 artifacts/
+
+data/archive/chrome-bot-profile*/
