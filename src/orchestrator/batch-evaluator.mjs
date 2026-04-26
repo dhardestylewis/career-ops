@@ -173,11 +173,12 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
                 }
                 
                 console.log(`[${type}] ✅ Fill Rate: ${metrics.fillPercentage}% (${metrics.filled}/${metrics.total} fields) on ${url} -> ${metrics.status}`);
-                if (process.env.DEBUG_MODE !== 'true') { await page.close(); }
+                // Keep tabs open for post-run review — only close hard failures
+                if (metrics.fillPercentage === 0) { await page.close(); }
                 return { url, status: metrics.status || 'Success', ...metrics };
             } catch (error) {
                 console.log(`[${type}] ❌ Script Error/Crash on ${url}:\n`, error);
-                if (process.env.DEBUG_MODE !== 'true') { await page.close(); }
+                await page.close(); // Close crash tabs immediately
                 return { url, status: 'Submission_Exception', fillPercentage: 0 };
             }
         });
@@ -239,11 +240,13 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
     console.log("\n==================================");
     console.log("Concurrent Massive Queue Execution Complete.");
     
-    const needsCaptcha = statsStore.some(s => s.status === 'Success_Unverified' || s.status === 'Success');
-    if (needsCaptcha) {
-        console.log("\n⚠️ [ACTION REQUIRED] Browser context left open. Press ENTER to pull browser to screen and solve any pending CAPTCHAs on the open tabs.");
-        // We do not await context.close() here, the process stays alive
-        await new Promise(() => {}); 
+    const needsReview = statsStore.some(s => s.fillPercentage > 0);
+    if (needsReview) {
+        const filledCount = statsStore.filter(s => s.fillPercentage > 0).length;
+        console.log(`\n✅ ${filledCount} filled form(s) left open for your review.`);
+        console.log("Press [ENTER] to bring the browser on screen, or Ctrl+C when done.");
+        // Keep process alive indefinitely for manual review
+        await new Promise(() => {});
     } else {
         await context.close();
     }
