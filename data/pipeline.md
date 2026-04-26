@@ -992,7 +992,7 @@
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367023002 | Databricks | Staff Backend Software Engineer- (AI Platform)
 - [ ] https://jobs.ashbyhq.com/harvey/0c65292f-a304-46fb-8dee-aaf82a882d9e | Harvey | Staff Software Engineer, AI Platform
 - [ ] https://jobs.ashbyhq.com/baseten/df2f0ebb-a84a-45c2-bc74-dc9589fcc1ae | Baseten | Account Executive - AI Native: Startups
-- [ ] https://jobs.ashbyhq.com/baseten/84c1801c-1a65-49fb-aaaa-beeafd530e7e | Baseten | Forward Deployed Engineer
+- [x] https://jobs.ashbyhq.com/baseten/84c1801c-1a65-49fb-aaaa-beeafd530e7e | Baseten | Forward Deployed Engineer
 - [ ] https://jobs.ashbyhq.com/baseten/916e9d62-492a-4562-971f-3e97e3868392 | Baseten | Cloud Platform Engineer
 - [ ] https://jobs.ashbyhq.com/baseten/0d1f68d4-ee6c-4b5f-9ef9-21a2dabbc152 | Baseten | Account Executive - AI Native: Strategic
 - [ ] https://jobs.ashbyhq.com/baseten/6f947409-2bc0-491a-81b3-507cdc95df85 | Baseten | Software Engineer - Training Infrastructure

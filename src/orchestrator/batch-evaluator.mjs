@@ -1,7 +1,10 @@
 import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
-import { chromium } from 'playwright';
+import { chromium } from 'playwright-extra';
+import stealthPlugin from 'puppeteer-extra-plugin-stealth';
+
+chromium.use(stealthPlugin());
 import { pathToFileURL } from 'url';
 
 // Dynamically extract Profile configuration
@@ -13,14 +16,60 @@ try {
     console.log("⚠️ Could not load profile.yml");
 }
 
-// Identify targeted Job Endpoints from pipeline.md dynamically
-const rawPipeline = fs.readFileSync('data/pipeline.md', 'utf8').split('\n');
+// Identify targeted Job Endpoints from batch-input.tsv dynamically
+const rawBatch = fs.readFileSync('batch/batch-input.tsv', 'utf8').split('\n');
 const leverUrls = [];
 const greenhouseUrls = [];
 const ashbyUrls = [];
-for (const line of rawPipeline) {
-    if (!line.includes('- [ ]')) continue;
-    const rawUrl = line.substring(line.indexOf('[ ]') + 3).split('|')[0].trim();
+
+// [SAFEGUARD] Global ATS Rate Limit tracking
+const MAX_APPS_PER_COMPANY = profileConfig?.execution?.max_apps_per_company || 3;
+
+// History-Aware Parsing: Load historical limits from applications.md within a 60-day window
+let companyLimits = {};
+try {
+    const appsMd = fs.readFileSync('data/applications.md', 'utf8');
+    const lines = appsMd.split('\n');
+    const now = new Date();
+    for (const line of lines) {
+        if (!line.startsWith('|') || line.includes('---') || line.includes('Date')) continue;
+        const cols = line.split('|').map(c => c.trim());
+        if (cols.length >= 4) {
+            const dateStr = cols[2];
+            const company = cols[3].toLowerCase();
+            const date = new Date(dateStr);
+            if (!isNaN(date)) {
+                const diffTime = Math.abs(now - date);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                if (diffDays <= 60) {
+                    if (!companyLimits[company]) companyLimits[company] = 0;
+                    companyLimits[company]++;
+                }
+            }
+        }
+    }
+} catch(e) {}
+
+for (let i = 1; i < rawBatch.length; i++) {
+    const line = rawBatch[i].trim();
+    if (!line) continue;
+    const parts = line.split('\t');
+    if (parts.length < 2) continue;
+    
+    // Check Safeguard Limit
+    if (parts.length >= 3) {
+        const company = parts[2].trim().toLowerCase();
+        if (company) {
+            if (!companyLimits[company]) companyLimits[company] = 0;
+            if (companyLimits[company] >= MAX_APPS_PER_COMPANY) {
+                console.log(`⚠️ [SAFEGUARD] Dropping ${parts[1].trim()} - Max limit (${MAX_APPS_PER_COMPANY}) reached for ${company}`);
+                continue; // Skip queuing this endpoint
+            }
+            companyLimits[company]++;
+        }
+    }
+
+    const rawUrl = parts[1].trim();
     const url = rawUrl.split('?')[0]; 
     if (url.includes('lever.co')) leverUrls.push(url);
     if (url.includes('greenhouse.io') || rawUrl.includes('gh_jid=')) greenhouseUrls.push(rawUrl);
@@ -38,9 +87,9 @@ const shuffle = (array) => {
 
 // Aggregate the massive subset of targets for concurrent Multi-Tab execution
 const targets = [
-    // ...shuffle(leverUrls).map(url => ({ url, type: 'lever' })),
+    ...shuffle(leverUrls).map(url => ({ url, type: 'lever' })),
     ...shuffle(greenhouseUrls).map(url => ({ url, type: 'greenhouse' })),
-    // ...shuffle(ashbyUrls).map(url => ({ url, type: 'ashby' }))
+    ...shuffle(ashbyUrls).map(url => ({ url, type: 'ashby' }))
 ];
 
 const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";
@@ -58,7 +107,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
     const chunkSize = 5;
     
     console.log(`Launching Unified Persistent Chrome Context from ${profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile'}`);
-    const launchArgs = []; // Removed off-screen positioning so it launches visibly by default
+    const launchArgs = ['--disable-blink-features=AutomationControlled']; // Hide headless properties natively
     const audioPath = path.resolve('data/pronunciation.wav');
     if (fs.existsSync(audioPath)) {
         launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
@@ -67,6 +116,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
     const context = await chromium.launchPersistentContext(profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile', { 
         headless: false, 
         args: launchArgs,
+        ignoreDefaultArgs: ["--enable-automation"],
         userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
     });
 
@@ -123,12 +173,12 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
                 }
                 
                 console.log(`[${type}] ✅ Fill Rate: ${metrics.fillPercentage}% (${metrics.filled}/${metrics.total} fields) on ${url} -> ${metrics.status}`);
-                await page.close();
+                if (process.env.DEBUG_MODE !== 'true') { await page.close(); }
                 return { url, status: metrics.status || 'Success', ...metrics };
             } catch (error) {
-                console.log(`[${type}] ❌ Script Error/Crash on ${url}`);
-                await page.close();
-                return { url, status: 'Error', fillPercentage: 0 };
+                console.log(`[${type}] ❌ Script Error/Crash on ${url}:\n`, error);
+                if (process.env.DEBUG_MODE !== 'true') { await page.close(); }
+                return { url, status: 'Submission_Exception', fillPercentage: 0 };
             }
         });
 
