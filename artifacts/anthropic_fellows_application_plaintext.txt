@@ -57,15 +57,15 @@ With your selected team(s) in mind, tell us briefly about one or more research a
 I am particularly excited about the intersection of spatial economics and the Societal Impacts team's work on macro-systemic risk. While initiatives like Massenkoff and McCrory's Anthropic Economic Index and Huang et al.'s 81,000-user survey brilliantly capture digital O*NET task exposure and qualitative sentiment, the vital next frontier is extending these empirical frameworks to predictively model AI's disruption of complex physical and civil infrastructure systems. Forecasting how autonomous agents will interact with real-world constraints—such as energy grids, housing markets, or urban supply chains—can be powerfully augmented by integrating predictive, large-scale multi-agent simulation (MARL) with Anthropic's existing data. Drawing on my experience scaling massive disaster simulations at TACC and modeling real-world markets at Homecastr, I want to design the computational architecture necessary to simulate these macro-spatial economic impacts, stress-testing policy interventions before deployment to ensure agentic AI remains resilient within physical infrastructure.
 
 (Optional) Please share any relevant background and provide links where possible (e.g., research experience, coursework, self-directed study, past roles, relevant projects).
-My technical foundation spans supercomputing infrastructure, academic research labs, and commercial startup environments. Early in my career, I researched and published directly with AAAI President Yolanda Gil on the DARPA World Modelers initiative, simulating complex global systems. Later, at TACC, I scaled massive distributed models across HPC clusters, working closely with researchers like Bagnold Medalist Paola Passalacqua to operationalize physical impact models at scale—work that is now commercially deployed as Summit Geospatial. Moving to consumer technology, I founded Homecastr, building an end-to-end production forecasting platform that achieved an 8% forecast error, beating Zillow’s 8.4% benchmark nationwide, demonstrating my ability to rapidly ship complex AI products that model real-world economic conditions.
+My technical foundation spans supercomputing infrastructure, academic research labs, and applied economic forecasting. Early in my career, I contributed to the DARPA World Modelers initiative, simulating complex global systems. Later, at TACC, I scaled massive distributed flood models across HPC clusters to support physical resilience research. Moving to applied spatial economics, I developed an end-to-end production forecasting platform for real estate markets, demonstrating my ability to rapidly ship complex computational models that predict real-world economic conditions.
 
 How likely are you to accept a full-time offer at Anthropic if you receive one after the Fellows program?
 *
-100%. I am not pursuing the Fellows program as an academic detour; I view it as a direct audition for a long-term role. I am actively looking for roles at the intersection of ML Systems and Economics/Policy where I can model complex global systems at scale. Anthropic's mission perfectly aligns with my objective to join an intensely focused technical team pushing the absolute frontier of machine learning and its societal impacts. If it is a mutual fit, I am ready to deploy and would be absolutely thrilled to join full-time immediately following the program.
+100%. I am pursuing the Fellows program because I am actively looking for a long-term role at the intersection of ML Systems and Economics/Policy. Anthropic's mission perfectly aligns with my objective to join an intensely focused technical team pushing the frontier of machine learning and its societal impacts. I would be thrilled to transition to a full-time role immediately following the program.
 
 How likely are you to be interested in continuing to work on AI safety/security after the Fellows program?
 *
-100%. My background in evaluating models under adversarial conditions and building systems for high-stakes domains—such as scaling national disaster resilience flood models at TACC—has ingrained in me the necessity of robust, reliable, and interpretable systems. When modeling physical disasters that determine civil engineering and emergency response protocols, hallucination or opacity has severe real-world consequences. I view AI systems as critical global infrastructure, and therefore, safety, interpretability, and economic stability are not optional add-ons; they are mandatory engineering requirements. I view AI safety as the most critical policy and engineering challenge of this decade, and I am highly interested in making it the core focus of my long-term career.
+100%. My background in building computational systems for high-stakes domains—such as scaling national disaster resilience flood models at TACC—has ingrained in me the necessity of robust, reliable, and interpretable systems. When modeling physical disasters that determine civil engineering and emergency response protocols, opacity has severe real-world consequences. I view frontier AI models as critical global infrastructure; therefore, safety, interpretability, and economic stability are not optional add-ons, but mandatory requirements. I view AI safety as the most critical challenge of this decade, and I am highly interested in making it the core focus of my long-term career.
 
 References
 Reference 1: Name
@@ -97,7 +97,7 @@ Google Scholar: https://scholar.google.com/citations?user=c2_zC1sAAAAJ
 Relevant Info: Leading researcher in quantitative finance and machine learning applications in financial engineering.
 Reference 2: Please share context on your relationship
 *
-He is my research advisor at Columbia University, where we are currently collaborating on a deep learning latent factor model that outperforms commercial benchmarks on daily mutual fund returns.
+He is my research advisor at Columbia University, where we are currently collaborating on deep learning latent factor models to forecast complex market dynamics.
 
 Reference 3: Name
 *
@@ -137,7 +137,7 @@ In which of these countries do you have (or can you independently obtain) full-t
 USA, UK, Canada
 
 (Optional) Please share any other relevant details that would help us understand your work authorization.
-I am a US citizen with full work authorization in the USA. Additionally, I am eligible to independently obtain the UK Global Talent Visa (if placed in London) and qualify for a USMCA Professional work permit for Canada, ensuring I can secure full-time work authorization in any of these locations for the duration of the program.
+I am a US citizen with full work authorization in the USA.
 We have designated workspaces in London and Berkeley where fellows will work from and mentors will visit. Will you be able to work out of either the London or Berkeley workspace for the duration of the Fellows program?
 *
 Berkeley: for the entire program
