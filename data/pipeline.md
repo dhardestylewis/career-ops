@@ -5,12 +5,12 @@
 
 ## Pendientes
 
-
+- [ ] local:jds/outbreak-labs-senior-machine-learning-scientist.txt | Outbreak Labs | Senior Machine Learning Scientist - Geospatial & Remote Sensing
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4536659005 | Scaleai | Applied AI Engineer, Enterprise
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4514173005 | Scaleai | Applied AI Engineer, Enterprise GenAI
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4413992005 | Scaleai | Applied AI Engineer, Global Public Sector
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4679727005 | Scaleai | Director, Enterprise Machine Learning & Research
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4629589005 | Scaleai | Evals Engineer, Applied AI
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4413992005 | Scaleai | Applied AI Engineer, Global Public Sector~~ <!-- EXPIRED: navigation error: page.goto: Timeout 15000ms exceeded. -->
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4679727005 | Scaleai | Director, Enterprise Machine Learning & Research~~ <!-- EXPIRED: navigation error: page.goto: net::ERR_NAME_NOT_RESOLVED at https://job-boards.greenhouse.io/scaleai/jobs/4679727005 -->
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4629589005 | Scaleai | Evals Engineer, Applied AI~~ <!-- EXPIRED: navigation error: page.goto: net::ERR_NAME_NOT_RESOLVED at https://job-boards.greenhouse.io/scaleai/jobs/4629589005 -->
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4602177005 | Scaleai | Forward Deployed AI Engineering Manager, Enterprise 
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4589592005 | Scaleai | Forward Deployed AI Engineering Manager, GenAI Applications
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4593571005 | Scaleai | Forward Deployed Engineer, GenAI 
@@ -41,7 +41,7 @@
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4281519005 | Scaleai | Senior Machine Learning Engineer, Public Sector
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4591298005 | Scaleai | Senior Software Engineer, GenAI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4658162005 | Scaleai | Senior/Staff Machine Learning Engineer, General Agents, Enterprise GenAI
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676936005 | Scaleai | Software Engineer, AI Developer Tooling
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4676936005 | Scaleai | Software Engineer, AI Developer Tooling~~ <!-- EXPIRED: redirect to https://job-boards.greenhouse.io/scaleai?error=true -->
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4513943005 | Scaleai | Software Engineer, Enterprise AI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4363623005 | Scaleai | Software Engineer, Frontier AI Infrastructure
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4591300005 | Scaleai | Software Engineer, Gen AI
@@ -52,7 +52,7 @@
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4625337005 | Scaleai | Staff Machine Learning Research Engineer, Agent Post-training - Enterprise GenAI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4488520005 | Scaleai | Staff Machine Learning Research Scientist, Agents
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4628044005 | Scaleai | Staff Machine Learning Research Scientist, LLM Evals
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4518088005 | Scaleai | Staff Software Engineer, AI Developer Tooling 
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4518088005 | Scaleai | Staff Software Engineer, AI Developer Tooling ~~ <!-- EXPIRED: redirect to https://job-boards.greenhouse.io/scaleai?error=true -->
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4569678005 | Scaleai | Staff Software Engineer, Enterprise GenAI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4529529005 | Scaleai | Staff Software Engineer, Full-Stack - Enterprise Gen AI
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4623533005 | Scaleai | Strategic Finance Manager, Gen AI
@@ -61,7 +61,7 @@
 - [ ] https://job-boards.greenhouse.io/scaleai/jobs/4618046005 | Scaleai | Tech Lead Manager- MLRE, ML Systems
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8099751002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8415203002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer) - U.S. Federal Sector
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8462016002 | Databricks | Data & AI Platform Architect (Professional Services)
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8462016002 | Databricks | Data & AI Platform Architect (Professional Services)~~ <!-- EXPIRED: navigation error: page.goto: Timeout 15000ms exceeded. -->
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8425303002 | Databricks | Data and AI Solution Architect (Professional Services)
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8295622002 | Databricks | Director, Engineering Governance- Mountain View, CA
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8287373002 | Databricks | Director, Enterprise - Retail & CPG
@@ -77,59 +77,59 @@
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8091041002 | Databricks | Senior Applied AI Engineer
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7859597002 | Databricks | Senior Applied AI Engineer – ML for Systems & Infrastructure
 - [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8490282002 | Databricks | Senior Engineering Manager, AI Runtime
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8297797002 | Databricks | Senior GenAI Research Engineer - Optimization and Kernels
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=6954585002 | Databricks | Senior Machine Learning Engineer - GenAI Platform 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509230002 | Databricks | Senior Software Engineer - AI Platform (NYC)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509096002 | Databricks | Senior Software Engineer - AI Product (NYC)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8233899002 | Databricks | Senior Software Engineer (Backend) - AI/ML Environments
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7897431002 | Databricks | Senior Software Engineer - Data + AI Observability
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002 | Databricks | Software Engineer - GenAI inference 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7930603002 | Databricks | Sr. Developer Advocate, Databricks AI Agentic Systems
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8450580002 | Databricks | Sr. Forward Deployed Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7276195002 | Databricks | Sr. Machine Learning Engineer 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8503070002 | Databricks | Sr. Manager, AI FDE
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8515642002 | Databricks | Sr. Manager, AI Forward Deployed Engineering (FDE)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8491947002 | Databricks | Sr. Manager, Engineering - AI Gateway (LLM Inference)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8431931002 | Databricks | Sr. Manager, Field Engineering - Public Sector (Intel, Navy, Air Force)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8342738002 | Databricks | Sr. Manager, Observability Platform Engineering
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7958676002 | Databricks | Sr Software Engineer, Search Relevance (Applied AI)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002 | Databricks | Staff Backend Software Engineer- (AI Platform)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002 | Databricks | Staff Backline Engineer - Data & AI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=5507088002 | Databricks | Staff Data Scientist 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7069793002 | Databricks | Staff Data Scientist - Infrastructure
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8178287002 | Databricks |  Staff Data Scientist - Trust and Safety
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002 | Databricks | Staff Machine Learning Engineer 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509536002 | Databricks | Staff Software Engineer - AI Platform (NYC)   
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002 | Databricks | Staff Software Engineer - AI Product (NYC)   
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8202698002 | Databricks | Staff Software Engineer - GenAI inference
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8202700002 | Databricks | Staff Software Engineer - GenAI Performance and Kernel
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7958982002 | Databricks | Staff Software Engineer - Machine Learning (Search)
-- [ ] https://nuro.ai/careersitem?gh_jid=6283499 | Nuro | Lead ML Research Scientist
-- [ ] https://nuro.ai/careersitem?gh_jid=5434059 | Nuro | Machine Learning Research Scientist, Behavior Planning and Prediction 
-- [ ] https://nuro.ai/careersitem?gh_jid=5416913 | Nuro | Machine Learning Research Scientist: Generative Modeling for Planning
-- [ ] https://nuro.ai/careersitem?gh_jid=7439020 | Nuro | ML Research Scientist, Prediction & Smart Agents
-- [ ] https://nuro.ai/careersitem?gh_jid=7095296 | Nuro | Senior ML Research Scientist, End-to-End Autonomous Driving
-- [ ] https://nuro.ai/careersitem?gh_jid=7747596 | Nuro | Senior ML Research Scientist, VLM/VLA
-- [ ] https://nuro.ai/careersitem?gh_jid=7472664 | Nuro | Senior Software Engineer, Cloud Infrastructure 
-- [ ] https://nuro.ai/careersitem?gh_jid=7782682 | Nuro | Senior Software Engineer – GenAI Infrastructure & Agent Systems for Engineering Efficiency
-- [ ] https://nuro.ai/careersitem?gh_jid=6824589 | Nuro | Senior Software Engineer, Machine Learning, 3D Reconstruction
-- [ ] https://nuro.ai/careersitem?gh_jid=6849645 | Nuro | Senior Software Engineer, Machine Learning, Calibration 
-- [ ] https://nuro.ai/careersitem?gh_jid=6623715 | Nuro | Senior Software Engineer, Machine Learning, Sensor Simulation
-- [ ] https://nuro.ai/careersitem?gh_jid=7786731 | Nuro | Senior Software Engineer, ML Platform Infrastructure
-- [ ] https://nuro.ai/careersitem?gh_jid=7389868 | Nuro | Senior Software Engineer, Perception ML Data
-- [ ] https://nuro.ai/careersitem?gh_jid=7078804 | Nuro | Senior Software Engineer, Ride-Hailing Product
-- [ ] https://nuro.ai/careersitem?gh_jid=6621871 | Nuro | Senior/Staff Engineer, Machine Learning - Online Mapping
-- [ ] https://nuro.ai/careersitem?gh_jid=6121565 | Nuro | Senior/Staff Machine Learning Research Scientist: Generative Modeling for Planning
-- [ ] https://nuro.ai/careersitem?gh_jid=7137941 | Nuro | Senior/Staff Software Engineer, ML Data
-- [ ] https://nuro.ai/careersitem?gh_jid=5366973 | Nuro | Senior/Staff Software Engineer, ML Data Infrastructure
-- [ ] https://nuro.ai/careersitem?gh_jid=7351066 | Nuro | Software Engineer, AI Platform - New Grad
-- [ ] https://nuro.ai/careersitem?gh_jid=7786771 | Nuro | Software Engineer, ML Platform Infrastructure
-- [ ] https://nuro.ai/careersitem?gh_jid=7463764 | Nuro | Software Engineer, Ride-Hailing Product
-- [ ] https://nuro.ai/careersitem?gh_jid=6376021 | Nuro | Staff ML Research Scientist
-- [ ] https://nuro.ai/careersitem?gh_jid=7528153 | Nuro | Technical Lead Manager, ML Platform Infrastructure
-- [ ] https://jobs.ashbyhq.com/skydio/e039f6f5-6136-4a24-8a30-f4a2979d1ac7 | Skydio | Senior Software Engineer,  Developer Productivity Cloud Infrastructure
-- [ ] https://jobs.ashbyhq.com/skydio/cc83824e-a1cd-4bc7-9206-7264da9fbd61 | Skydio | Autonomy Engineer - Deep Learning
-- [ ] https://jobs.ashbyhq.com/skydio/a6421d3e-fdd0-48d6-8d8f-3fd605cdf09f | Skydio | Senior Autonomy Engineer - Deep Learning
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8297797002 | Databricks | Senior GenAI Research Engineer - Optimization and Kernels~~ <!-- EXPIRED: navigation error: page.goto: net::ERR_INSUFFICIENT_RESOURCES at https://databricks.com/company/careers/open-positions/job?gh_jid=8297797002 -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=6954585002 | Databricks | Senior Machine Learning Engineer - GenAI Platform ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=6954585002" is interrupted by another navigation to "chrome-error://chromewebdata/" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8509230002 | Databricks | Senior Software Engineer - AI Platform (NYC)~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8509230002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/senior-machine-learning-engineer---genai-platform--6954585002?gh_jid=6954585002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8509096002 | Databricks | Senior Software Engineer - AI Product (NYC)~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8509096002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering/senior-software-engineer---ai-platform-nyc-8509230002?gh_jid=8509230002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8233899002 | Databricks | Senior Software Engineer (Backend) - AI/ML Environments~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8233899002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering/senior-software-engineer---ai-product-nyc-8509096002?gh_jid=8509096002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=7897431002 | Databricks | Senior Software Engineer - Data + AI Observability~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=7897431002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/senior-software-engineer-backend---ai-ml-environments-8233899002?gh_jid=8233899002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002 | Databricks | Software Engineer - GenAI inference ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8202670002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/senior-software-engineer---data--ai-observability-7897431002?gh_jid=7897431002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=7930603002 | Databricks | Sr. Developer Advocate, Databricks AI Agentic Systems~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=7930603002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/software-engineer---genai-inference--8202670002?gh_jid=8202670002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8450580002 | Databricks | Sr. Forward Deployed Engineer~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8450580002" is interrupted by another navigation to "https://www.databricks.com/company/careers/product/sr-developer-advocate-databricks-ai-agentic-systems-7930603002?gh_jid=7930603002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=7276195002 | Databricks | Sr. Machine Learning Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=7276195002" is interrupted by another navigation to "https://www.databricks.com/company/careers/professional-services-operations/sr-forward-deployed-engineer-8450580002?gh_jid=8450580002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8503070002 | Databricks | Sr. Manager, AI FDE~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8503070002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/sr-machine-learning-engineer--7276195002?gh_jid=7276195002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8515642002 | Databricks | Sr. Manager, AI Forward Deployed Engineering (FDE)~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8515642002" is interrupted by another navigation to "https://www.databricks.com/company/careers/professional-services-operations/sr-manager-ai-fde-8503070002?gh_jid=8503070002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8491947002 | Databricks | Sr. Manager, Engineering - AI Gateway (LLM Inference)~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8491947002" is interrupted by another navigation to "https://www.databricks.com/company/careers/professional-services-operations/sr-manager-ai-forward-deployed-engineering-fde-8515642002?gh_jid=8515642002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8431931002 | Databricks | Sr. Manager, Field Engineering - Public Sector (Intel, Navy, Air Force)~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8431931002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering/sr-manager-engineering---ai-gateway-llm-inference-8491947002?gh_jid=8491947002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8342738002 | Databricks | Sr. Manager, Observability Platform Engineering~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8342738002" is interrupted by another navigation to "https://www.databricks.com/company/careers/field-engineering---fe-direct-enterprise/sr-manager-field-engineering---public-sector-intel-navy-air-force-8431931002?gh_jid=8431931002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=7958676002 | Databricks | Sr Software Engineer, Search Relevance (Applied AI)~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=7958676002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering/sr-manager-observability-platform-engineering-8342738002?gh_jid=8342738002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002 | Databricks | Staff Backend Software Engineer- (AI Platform)~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8367019002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/sr-software-engineer-search-relevance-applied-ai-7958676002?gh_jid=7958676002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002 | Databricks | Staff Backline Engineer - Data & AI~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=7872746002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering/staff-backend-software-engineer--ai-platform-8367019002?gh_jid=8367019002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=5507088002 | Databricks | Staff Data Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=5507088002" is interrupted by another navigation to "https://www.databricks.com/company/careers/support/staff-backline-engineer---data--ai-7872746002?gh_jid=7872746002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=7069793002 | Databricks | Staff Data Scientist - Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=7069793002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/staff-data-scientist--5507088002?gh_jid=5507088002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8178287002 | Databricks |  Staff Data Scientist - Trust and Safety~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8178287002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/staff-data-scientist---infrastructure-7069793002?gh_jid=7069793002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002 | Databricks | Staff Machine Learning Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8401114002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/-staff-data-scientist---trust-and-safety-8178287002?gh_jid=8178287002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8509536002 | Databricks | Staff Software Engineer - AI Platform (NYC)   ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8509536002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/staff-machine-learning-engineer--8401114002?gh_jid=8401114002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002 | Databricks | Staff Software Engineer - AI Product (NYC)   ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8509534002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/staff-software-engineer---ai-platform-nyc----8509536002?gh_jid=8509536002" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8202698002 | Databricks | Staff Software Engineer - GenAI inference~~ <!-- EXPIRED: navigation error: page.goto: net::ERR_INSUFFICIENT_RESOURCES at https://databricks.com/company/careers/open-positions/job?gh_jid=8202698002 -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8202700002 | Databricks | Staff Software Engineer - GenAI Performance and Kernel~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=8202700002" is interrupted by another navigation to "chrome-error://chromewebdata/" -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=7958982002 | Databricks | Staff Software Engineer - Machine Learning (Search)~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://databricks.com/company/careers/open-positions/job?gh_jid=7958982002" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/staff-software-engineer---genai-performance-and-kernel-8202700002?gh_jid=8202700002" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=6283499 | Nuro | Lead ML Research Scientist~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=6283499" is interrupted by another navigation to "https://www.databricks.com/company/careers/engineering---pipeline/staff-software-engineer---machine-learning-search-7958982002?gh_jid=7958982002" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=5434059 | Nuro | Machine Learning Research Scientist, Behavior Planning and Prediction ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=5434059" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=6283499" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=5416913 | Nuro | Machine Learning Research Scientist: Generative Modeling for Planning~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=5416913" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=5434059" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7439020 | Nuro | ML Research Scientist, Prediction & Smart Agents~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7439020" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=5416913" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7095296 | Nuro | Senior ML Research Scientist, End-to-End Autonomous Driving~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7095296" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7439020" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7747596 | Nuro | Senior ML Research Scientist, VLM/VLA~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7747596" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7095296" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7472664 | Nuro | Senior Software Engineer, Cloud Infrastructure ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7472664" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7747596" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7782682 | Nuro | Senior Software Engineer – GenAI Infrastructure & Agent Systems for Engineering Efficiency~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7782682" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7472664" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=6824589 | Nuro | Senior Software Engineer, Machine Learning, 3D Reconstruction~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=6824589" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7782682" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=6849645 | Nuro | Senior Software Engineer, Machine Learning, Calibration ~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=6849645" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=6824589" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=6623715 | Nuro | Senior Software Engineer, Machine Learning, Sensor Simulation~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=6623715" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=6849645" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7786731 | Nuro | Senior Software Engineer, ML Platform Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7786731" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=6623715" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7389868 | Nuro | Senior Software Engineer, Perception ML Data~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7389868" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7786731" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7078804 | Nuro | Senior Software Engineer, Ride-Hailing Product~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7078804" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7389868" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=6621871 | Nuro | Senior/Staff Engineer, Machine Learning - Online Mapping~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=6621871" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7078804" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=6121565 | Nuro | Senior/Staff Machine Learning Research Scientist: Generative Modeling for Planning~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=6121565" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=6621871" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7137941 | Nuro | Senior/Staff Software Engineer, ML Data~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7137941" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=6121565" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=5366973 | Nuro | Senior/Staff Software Engineer, ML Data Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=5366973" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7137941" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7351066 | Nuro | Software Engineer, AI Platform - New Grad~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7351066" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=5366973" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7786771 | Nuro | Software Engineer, ML Platform Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7786771" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7351066" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7463764 | Nuro | Software Engineer, Ride-Hailing Product~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7463764" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7786771" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=6376021 | Nuro | Staff ML Research Scientist~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=6376021" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7463764" -->
+- [x] ~~https://nuro.ai/careersitem?gh_jid=7528153 | Nuro | Technical Lead Manager, ML Platform Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://nuro.ai/careersitem?gh_jid=7528153" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=6376021" -->
+- [x] ~~https://jobs.ashbyhq.com/skydio/e039f6f5-6136-4a24-8a30-f4a2979d1ac7 | Skydio | Senior Software Engineer,  Developer Productivity Cloud Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://jobs.ashbyhq.com/skydio/e039f6f5-6136-4a24-8a30-f4a2979d1ac7" is interrupted by another navigation to "https://www.nuro.ai/careersitem?gh_jid=7528153" -->
+- [x] ~~https://jobs.ashbyhq.com/skydio/cc83824e-a1cd-4bc7-9206-7264da9fbd61 | Skydio | Autonomy Engineer - Deep Learning~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://jobs.ashbyhq.com/skydio/cc83824e-a1cd-4bc7-9206-7264da9fbd61" is interrupted by another navigation to "https://jobs.ashbyhq.com/skydio/e039f6f5-6136-4a24-8a30-f4a2979d1ac7" -->
+- [x] ~~https://jobs.ashbyhq.com/skydio/a6421d3e-fdd0-48d6-8d8f-3fd605cdf09f | Skydio | Senior Autonomy Engineer - Deep Learning~~ <!-- EXPIRED: navigation error: page.goto: Navigation to "https://jobs.ashbyhq.com/skydio/a6421d3e-fdd0-48d6-8d8f-3fd605cdf09f" is interrupted by another navigation to "https://jobs.ashbyhq.com/skydio/cc83824e-a1cd-4bc7-9206-7264da9fbd61" -->
 - [ ] https://jobs.ashbyhq.com/skydio/c051266c-3e00-4906-abd0-21f18db56b3f | Skydio | Autonomy Engineer - Deep Learning Infrastructure
 - [ ] https://jobs.ashbyhq.com/skydio/5892ea83-ad5a-480a-bd9f-2409bb0b644e | Skydio | Autonomy Engineer - Deep Learning Model Acceleration
 - [ ] https://jobs.ashbyhq.com/skydio/4c4874bf-02da-4ccc-8918-2cca08feaf21 | Skydio | Supplier Quality Engineer, Sustaining
@@ -163,11 +163,11 @@
 - [ ] https://jobs.ashbyhq.com/harvey/ca540d46-f031-4708-bec9-6f84d0245f8e | Harvey | Staff Data Scientist, GTM
 - [ ] https://jobs.ashbyhq.com/harvey/5651ede7-9364-46e6-9edd-e401a422aa8f | Harvey | Privacy and AI Counsel
 - [ ] https://jobs.ashbyhq.com/harvey/789157de-2b76-49ad-8f09-57225f87322e | Harvey | Software Engineer, AI Platform
-- [ ] https://jobs.ashbyhq.com/modal/9fadb51f-ce11-41b1-84d5-470e66cc8ee9 | Modal | Forward Deployed Engineer - ML
-- [ ] https://jobs.ashbyhq.com/modal/af17da5e-23ca-4802-854d-5f0546e1ed32 | Modal | Member of Technical Staff - ML Performance
-- [ ] https://jobs.ashbyhq.com/modal/cbbbee50-3d3b-4873-8ae8-ff4b885b8e54 | Modal | Forward Deployed Engineer - Systems
-- [ ] https://jobs.ashbyhq.com/modal/89bfd784-071a-4dcc-a5ab-6ba9d5e53dad | Modal | Member of Technical Staff - ML Training Systems
-- [ ] https://jobs.ashbyhq.com/braintrust/bade7f86-8304-4515-bb39-5671bed35010 | Braintrust | Cloud Infrastructure Engineer
+- [x] ~~https://jobs.ashbyhq.com/modal/9fadb51f-ce11-41b1-84d5-470e66cc8ee9 | Modal | Forward Deployed Engineer - ML~~ <!-- EXPIRED: navigation error: page.goto: net::ERR_INSUFFICIENT_RESOURCES at https://jobs.ashbyhq.com/modal/9fadb51f-ce11-41b1-84d5-470e66cc8ee9 -->
+- [x] ~~https://jobs.ashbyhq.com/modal/af17da5e-23ca-4802-854d-5f0546e1ed32 | Modal | Member of Technical Staff - ML Performance~~ <!-- EXPIRED: navigation error: page.goto: net::ERR_ABORTED at https://jobs.ashbyhq.com/modal/af17da5e-23ca-4802-854d-5f0546e1ed32 -->
+- [x] ~~https://jobs.ashbyhq.com/modal/cbbbee50-3d3b-4873-8ae8-ff4b885b8e54 | Modal | Forward Deployed Engineer - Systems~~ <!-- EXPIRED: navigation error: page.goto: Timeout 15000ms exceeded. -->
+- [x] ~~https://jobs.ashbyhq.com/modal/89bfd784-071a-4dcc-a5ab-6ba9d5e53dad | Modal | Member of Technical Staff - ML Training Systems~~ <!-- EXPIRED: navigation error: page.goto: net::ERR_INSUFFICIENT_RESOURCES at https://jobs.ashbyhq.com/modal/89bfd784-071a-4dcc-a5ab-6ba9d5e53dad -->
+- [x] ~~https://jobs.ashbyhq.com/braintrust/bade7f86-8304-4515-bb39-5671bed35010 | Braintrust | Cloud Infrastructure Engineer~~ <!-- EXPIRED: navigation error: page.goto: net::ERR_ABORTED at https://jobs.ashbyhq.com/braintrust/bade7f86-8304-4515-bb39-5671bed35010 -->
 - [ ] https://jobs.ashbyhq.com/notion/e3944777-d4a8-41d2-88ab-32daef949d4e | Notion | Application Security Engineer, AI Security
 - [ ] https://jobs.ashbyhq.com/notion/e050309a-6b81-4341-b1ca-9bdd17e62e13 | Notion | Software Engineer, Cloud Infrastructure
 - [ ] https://jobs.ashbyhq.com/notion/10437426-14c8-4c45-8075-67959ce80393 | Notion | Forward Deployed Engineer, GTM
@@ -178,7 +178,7 @@
 - [ ] https://jobs.ashbyhq.com/notion/1cd3f44f-aa30-44a6-a64b-c7bfc813eeb9 | Notion | Forward Deployed Engineer, GTM - Korea
 - [ ] https://jobs.ashbyhq.com/notion/3336e944-0970-48ef-9a97-4ebd6656d0c2 | Notion | GTM AI + Innovation Manager
 - [ ] https://jobs.ashbyhq.com/notion/17330e14-83db-49a4-ae31-411690d97dba | Notion | Software Engineer, AI Workflows
-- [ ] https://jobs.ashbyhq.com/notion/b31ce253-4238-4ed6-a5a2-73b63cbf1709 | Notion | Software Engineer, AI Capture
+- [x] ~~https://jobs.ashbyhq.com/notion/b31ce253-4238-4ed6-a5a2-73b63cbf1709 | Notion | Software Engineer, AI Capture~~ <!-- EXPIRED: navigation error: page.goto: Timeout 15000ms exceeded. -->
 - [ ] https://boards.greenhouse.io/figma/jobs/5707966004?gh_jid=5707966004 | Figma | AI Applied Scientist
 - [ ] https://boards.greenhouse.io/figma/jobs/5802956004?gh_jid=5802956004 | Figma | Automations & AI Specialist, Product Support 
 - [ ] https://boards.greenhouse.io/figma/jobs/5840332004?gh_jid=5840332004 | Figma | Data Platform Engineer
@@ -200,10 +200,10 @@
 - [ ] https://jobs.ashbyhq.com/snowflake/b9b85c1d-0760-4e28-9dfe-41724c8335a1 | Snowflake | Senior Data Scientist - Product
 - [ ] https://jobs.ashbyhq.com/snowflake/44ff3eec-3736-4606-8618-7f414b23baff | Snowflake | Staff Software Engineer - Container Platform 
 - [ ] https://jobs.ashbyhq.com/snowflake/34584833-b410-4c03-bf0c-0208bcf962c6 | Snowflake | Senior/Staff Software Engineer - Machine Learning Platform (Inference)
-- [ ] https://jobs.ashbyhq.com/snowflake/7c9802a9-024f-4e76-832a-64c9fa8392af | Snowflake | Senior AI/ML Architect, Applied Field Engineering/Field CTO
+- [x] ~~https://jobs.ashbyhq.com/snowflake/7c9802a9-024f-4e76-832a-64c9fa8392af | Snowflake | Senior AI/ML Architect, Applied Field Engineering/Field CTO~~ <!-- EXPIRED: insufficient content — likely nav/footer only -->
 - [ ] https://jobs.ashbyhq.com/snowflake/734ff4ee-f15c-4408-a421-aa5144b2ba33 | Snowflake | Industry Lead, Retail & Consumer Goods, Americas
 - [ ] https://jobs.ashbyhq.com/snowflake/cac27b18-bd24-4722-8bb7-0b5ce7b18eaf | Snowflake | Principal Software Engineer - AI Poland
-- [ ] https://jobs.ashbyhq.com/snowflake/a6a3e9d2-b045-466a-8074-1613c07891fe | Snowflake | Applied AI Engineer
+- [x] ~~https://jobs.ashbyhq.com/snowflake/a6a3e9d2-b045-466a-8074-1613c07891fe | Snowflake | Applied AI Engineer~~ <!-- EXPIRED: insufficient content — likely nav/footer only -->
 - [ ] https://jobs.ashbyhq.com/snowflake/2a928b93-a5d4-4285-a92c-032fb389faa2 | Snowflake | Software Engineer - SnowConvert AI
 - [ ] https://jobs.ashbyhq.com/snowflake/69d17996-c9a1-4309-a379-398013a7e410 | Snowflake | Principal Machine Learning Engineer- Search Quality
 - [ ] https://jobs.ashbyhq.com/snowflake/f6d40ad9-da07-477e-8f4f-e29e67e65f6b | Snowflake | Senior Engineering Manager - SnowConvert AI 
@@ -216,14 +216,14 @@
 - [ ] https://jobs.ashbyhq.com/snowflake/c28d684b-c8e8-4a4c-b3e6-76c931728e21 | Snowflake | AI Solution Specialist
 - [ ] https://jobs.ashbyhq.com/snowflake/a4dea157-34aa-4830-8894-4696f1dd843f | Snowflake | Sr. Manager, Global Fulfillment Solutions
 - [ ] https://jobs.ashbyhq.com/snowflake/6721e39d-42d7-4835-8066-2cd03870b88e | Snowflake | AI Deployment Specialist
-- [ ] https://jobs.ashbyhq.com/snowflake/ca34e573-b1c5-4de2-ab6d-8d2f37a6eef4 | Snowflake | Senior Solution Engineer, Retail
+- [x] ~~https://jobs.ashbyhq.com/snowflake/ca34e573-b1c5-4de2-ab6d-8d2f37a6eef4 | Snowflake | Senior Solution Engineer, Retail~~ <!-- EXPIRED: pattern matched: job (listing )?not found -->
 - [ ] https://jobs.ashbyhq.com/snowflake/a6292a81-7cf7-4e29-bb77-f7d0935e7bdb | Snowflake | Staff Software Engineer -  AI Developer Tooling 
 - [ ] https://jobs.ashbyhq.com/snowflake/217b1d27-815a-4ad1-b8b7-8fe52e57cd26 | Snowflake | AI Engineer - Cortex Code Quality
 - [ ] https://jobs.ashbyhq.com/snowflake/ae43323e-8b10-4c01-b1af-987145191d01 | Snowflake | Staff Machine Learning Engineer - Cortex Code Quality
 - [ ] https://jobs.ashbyhq.com/snowflake/deaebf03-4681-417b-a870-648d0d6a2a94 | Snowflake | Staff Research Scientist, AI Agents & LLMs
 - [ ] https://jobs.ashbyhq.com/snowflake/4674b19c-2a2f-4315-8229-b23a2c1336b4 | Snowflake | Technical Director for AI Functions
 - [ ] https://jobs.ashbyhq.com/snowflake/83fde983-9ddd-4bdf-9778-4e0d12a258bf | Snowflake | Senior Manager, Applied Field Engineering - AI/ML Product Specialist
-- [ ] https://jobs.ashbyhq.com/snowflake/188fd235-a9a5-4590-b759-ebcb446aebcb | Snowflake | Principal Software Engineer- ML Search Infrastructure
+- [x] ~~https://jobs.ashbyhq.com/snowflake/188fd235-a9a5-4590-b759-ebcb446aebcb | Snowflake | Principal Software Engineer- ML Search Infrastructure~~ <!-- EXPIRED: pattern matched: job (listing )?not found -->
 - [ ] https://jobs.ashbyhq.com/snowflake/65758ff6-d500-4638-b1ec-95800978a16c | Snowflake | Applied Scientist, Customer FinOps Intelligence
 - [ ] https://jobs.ashbyhq.com/snowflake/bd6e11e3-ee22-49ca-b92b-394cbcaa32d3 | Snowflake | Senior Forward Deployed Engineer - SnowConvert AI
 - [ ] https://boards.greenhouse.io/appliedintuition/jobs/4659522005?gh_jid=4659522005 | Appliedintuition | Data & ML Pipeline Software Engineer
@@ -252,772 +252,772 @@
 - [ ] https://coreweave.com/careers/job?4582453006&board=coreweave&gh_jid=4582453006 | Coreweave | Senior Business Systems Engineer – Supply Chain Systems
 - [ ] https://coreweave.com/careers/job?4652717006&board=coreweave&gh_jid=4652717006 | Coreweave | Senior Manager, Data Center Logistics & Inventory
 - [ ] https://coreweave.com/careers/job?4607559006&board=coreweave&gh_jid=4607559006 | Coreweave | Senior Platform Engineer II, Compute Services
-- [ ] https://coreweave.com/careers/job?4671525006&board=coreweave&gh_jid=4671525006 | Coreweave | Senior Software Engineer, Applied AI
-- [ ] https://coreweave.com/careers/job?4622652006&board=coreweave&gh_jid=4622652006 | Coreweave | Senior Software Engineer (Full-Stack + Agentic AI)
-- [ ] https://coreweave.com/careers/job?4647595006&board=coreweave&gh_jid=4647595006 | Coreweave | Senior Software Engineer II, AI Workload Orchestration
-- [ ] https://coreweave.com/careers/job?4647611006&board=coreweave&gh_jid=4647611006 | Coreweave | Senior Software Engineer II, Applied Training
-- [ ] https://coreweave.com/careers/job?4609928006&board=coreweave&gh_jid=4609928006 | Coreweave | Software Engineer, Inference AI/ML
-- [ ] https://coreweave.com/careers/job?4663051006&board=coreweave&gh_jid=4663051006 | Coreweave | Sr. Data Scientist - Capacity Data
-- [ ] https://coreweave.com/careers/job?4665964006&board=coreweave&gh_jid=4665964006 | Coreweave | Sr. Director of Product, Research and Training Infrastructure
-- [ ] https://coreweave.com/careers/job?4647586006&board=coreweave&gh_jid=4647586006 | Coreweave | Staff Software Engineer- AI Workload Orchestration
-- [ ] https://coreweave.com/careers/job?4647607006&board=coreweave&gh_jid=4647607006 | Coreweave | Staff Software Engineer, Applied Training
-- [ ] https://coreweave.com/careers/job?4661968006&board=coreweave&gh_jid=4661968006 | Coreweave | Sustainable Data Center Design Manager
-- [ ] https://jobs.ashbyhq.com/lambda/bbf99974-b960-40cd-9353-179d9f3b375a | Lambda | Engineering Manager - AI Cloud Platform
-- [ ] https://jobs.ashbyhq.com/character/13006848-6a69-4467-9274-5d54e80b965d | Character | Machine Learning Infrastructure Engineer
-- [ ] https://jobs.ashbyhq.com/character/449bf7c1-41d7-47a4-89a7-0ee0b31f5918 | Character | Research Engineer, Post-Training (All Industry Levels)
-- [ ] https://jobs.ashbyhq.com/character/3ab40c3d-63bd-4634-a126-5a3d25d3263b | Character | Research Engineer, ML Systems (All Industry Levels)
-- [ ] https://jobs.ashbyhq.com/character/690f5ec2-2d7b-4c28-9b4d-d710e7225851 | Character | Software Engineer, Backend/Applied ML (Safety & Integrity)
-- [ ] https://jobs.ashbyhq.com/character/a7ddb640-466f-4a1f-9a94-7465006aad05 | Character | Research Engineer, AI Safety & Alignment
-- [ ] https://jobs.ashbyhq.com/character/3cfa1472-4f6d-46fa-bd08-f6de0833a53f | Character | Software Engineer, Applied ML (Discovery, Recommendation & Search)
-- [ ] https://jobs.ashbyhq.com/character/2673e467-097e-43c0-ba0d-83e54b3a9cb1 | Character | Software Engineer, AI Platform (All Industry Levels)
-- [ ] https://jobs.ashbyhq.com/character/d5a38f47-cd16-4e10-818d-45a4f845b529 | Character | Research Engineer, Multimodal
-- [ ] https://jobs.ashbyhq.com/character/fd023b84-a746-4fe9-8a9d-277899e67a78 | Character | Technical Program Manager, AI Infrastructure
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7488508 | Waymo | Applied Research Scientist, Perception LLM/VLM (PhD, New Grad)
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7435924 | Waymo | Business System Analyst - Supply Chain (SAP)   
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7435297 | Waymo | Claims Advocate 
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6608598 | Waymo | Data Scientist 
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7473464 | Waymo | Director of AI Foundations, Foundation Model Evaluation & Integration
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7724345 | Waymo | Emergency Services Liaison, Japan & Asia / 緊急サービス・リエゾン (日本・アジア担当)
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7435632 | Waymo | Fleet Response Training Program Manager
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7474033 | Waymo | Machine Learning Engineer
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7539786 | Waymo | Machine Learning Engineer, 3D Object Detection  (PhD New Grad)
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7446301 | Waymo | Machine Learning Engineer, Data & Systems 
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7455853 | Waymo | Machine Learning Engineer, Driver Understanding and Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7819946 | Waymo | Machine Learning Engineer (Infra), Driver Understanding and Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7429791 | Waymo | Machine Learning Engineer - Mapping
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7426598 | Waymo | Machine Learning Engineer, ML Flywheel
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7446322 | Waymo | Machine Learning Engineer, Model Optimization
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7446279 | Waymo | Machine Learning Engineer, Perception Modeling
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6506689 | Waymo | Machine Learning Engineer, Prediction & Planning
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6506008 | Waymo | Machine Learning Engineer, Runtime & Optimization
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6499165 | Waymo | Machine Learning Engineer, Simulation Realism
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6688617 | Waymo | Machine Learning Engineer, Simulation Realism 
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7509005 | Waymo | ML Accelerator Architect
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7616808 | Waymo | ML Microarchitect
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7545007 | Waymo | Principal Software Engineer, ML Flywheel Technical Lead
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7773177 | Waymo | Principal Software Engineer, ML System Architect
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6989523 | Waymo | Principal Software Engineer, Perception Pretraining
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7656333 | Waymo | Program Manager, ML Data
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7516673 | Waymo | Program Manager, Scenario Quality and Maintenance Systems 
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7435071 | Waymo | Public Affairs Manager, London
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6508001 | Waymo | Senior Data Scientist
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7569315 | Waymo | Senior Machine Learning Engineer, AI Foundations
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7249525 | Waymo | Senior Machine Learning Engineer, Computer Vision/VLM
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7456078 | Waymo | Senior Machine Learning Engineer, Driver Understanding and Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7819951 | Waymo | Senior Machine Learning Engineer (Infra), Driver Understanding and Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7488596 | Waymo | Senior Machine Learning Engineer, Perception LLM/VLM
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7826591 | Waymo | Senior Machine Learning Engineer, Prediction & Planning, System Architecture
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7454241 | Waymo | Senior Machine Learning Engineer, Sensor Validation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6563602 | Waymo | Senior Machine Learning Engineer, Simulation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7644924 | Waymo | Senior Machine Learning Engineer – VLM/LLM Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7508897 | Waymo | Senior ML Accelerator Modeling Engineer
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7774345 | Waymo | Senior ML Compiler Engineer, Compute
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7697543 | Waymo | Senior Product Data Scientist, In Car Experience
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7416740 | Waymo | Senior Product Data Scientist, Marketplace Algorithms ML
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7572081 | Waymo | Senior Research Scientist, Foundation Model (LLM/VLM)
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7703602 | Waymo | Senior Software Engineer, Machine Learning Performance
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7028592 | Waymo | Senior Software Engineer (ML) - Car Experience
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7334481 | Waymo | Senior Software Engineer, Post-Training & RL Frameworks
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7477172 | Waymo | Senior Software Engineer, Quantitative Evaluations
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7429718 | Waymo | Senior Software Engineer, Simulation ML Infrastructure
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7121224 | Waymo | Senior Software Engineer, Training Efficiency
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7774356 | Waymo | Senior Staff Machine Learning Engineer, Depot Automation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6809263 | Waymo | Senior Staff Machine Learning Engineer, Perception
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7430495 | Waymo | Senior Staff Machine Learning Engineer, Simulation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6669555 | Waymo | Senior/Staff ML Engineer, 3D/4D World Modeling, Simulation 
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7421737 | Waymo | Senior Staff ML Engineer, Driver Understanding and Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7580705 | Waymo | Senior Staff Software Engineer, Model Post Training
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7584885 | Waymo | Software Engineer, Machine Learning Accelerator
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7703664 | Waymo | Software Engineer, Machine Learning Performance
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7698498 | Waymo | Software Engineer, Machine Learning Tooling
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7728681 | Waymo | Software Engineer, ML Accelerator Modeling (TW)
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7426718 | Waymo | Software Engineer, ML Tools
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7466534 | Waymo | Software Engineer, Quantitative Evaluations
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7458013 | Waymo | Staff Data Scientist, Launch Evaluation Quality
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7239320 | Waymo | Staff Data Scientist, TLM, Driving Quality
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7493959 | Waymo | Staff Machine Learning Engineer
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7442152 | Waymo | Staff Machine Learning Engineer, Driver Understanding and Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7438635 | Waymo | Staff Machine Learning Engineer (Infra), Driver Understanding and Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7822067 | Waymo | Staff Machine Learning Engineer, Prediction & Planning, System Architecture
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6563711 | Waymo | Staff Machine Learning Engineer, Simulation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7483051 | Waymo | Staff Machine Learning Engineer, Simulation 
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7719332 | Waymo | Staff Machine Learning Engineer, Tech Lead Active Learning
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7595124 | Waymo | Staff Machine Learning Engineer – VLM/LLM Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7597108 | Waymo | Staff Product Data Scientist, Operation Center
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7488246 | Waymo | Staff Software Engineer/Data Scientist, Large Model Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7170802 | Waymo | Staff Software Engineer, Machine Learning, Planner Selection
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7224992 | Waymo | Staff Software Engineer, Machine Learning- Route and Pin Quality
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7177351 | Waymo | Staff Software Engineer, ML Frameworks & Efficiency
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6901826 | Waymo | Staff Software Engineer, Quantitative Evaluation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6615783 | Waymo | Staff Software Engineer, Simulation ML Infrastructure
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7094669 | Waymo | Staff Technical Lead Manager, ML Sensor Validation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7782792 | Waymo | Strategic Partnerships Development Manager - Airports
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7822860 | Waymo | Systems Test Engineer, Weather and Special Projects
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7686010 | Waymo | Tech Lead  Manager ML Optimization
-- [ ] https://boards.greenhouse.io/inflectionai/jobs/4578240006?gh_jid=4578240006 | Inflectionai | Member of Technical Staff – Model Training
-- [ ] https://job-boards.greenhouse.io/heygen/jobs/4987495007 | Heygen | Data Scientist
-- [ ] https://job-boards.greenhouse.io/heygen/jobs/5113581007 | Heygen | Forward Deployed Engineer, Strategic Accounts
-- [ ] https://job-boards.greenhouse.io/heygen/jobs/4188314007 | Heygen | Research Engineer
-- [ ] https://job-boards.greenhouse.io/heygen/jobs/4996032007 | Heygen | Software Engineer, AI Compute Infrastructure
-- [ ] https://job-boards.greenhouse.io/heygen/jobs/4944653007 | Heygen | Tech Lead, AI Compute Infrastructure
-- [ ] https://boards.greenhouse.io/descript/jobs/7580335003?gh_jid=7580335003 | Descript | Senior Software Engineer, AI Platform and Enablement
-- [ ] https://careers.roblox.com/jobs/7473686?gh_jid=7473686 | Roblox | [2026] Senior Machine Learning Engineer, Account Identity - PhD Early Career
-- [ ] https://careers.roblox.com/jobs/7403998?gh_jid=7403998 | Roblox | [2026] Senior Machine Learning Engineer, AI Platform - PhD Early Career
-- [ ] https://careers.roblox.com/jobs/7473599?gh_jid=7473599 | Roblox | [2026] Senior Machine Learning Engineer, Content Suitability - PhD Early Career
-- [ ] https://careers.roblox.com/jobs/7421746?gh_jid=7421746 | Roblox | [2026] Senior Machine Learning Engineer,  Engine Optimization - PhD Early Career
-- [ ] https://careers.roblox.com/jobs/7323437?gh_jid=7323437 | Roblox | [2026] Senior Machine Learning Engineer, Multimodal AI, Computer Vision and Graphics - PhD Early Career 
-- [ ] https://careers.roblox.com/jobs/7324377?gh_jid=7324377 | Roblox | [2026] Senior Machine Learning Engineer, Natural Language Processing - PhD Early Career
-- [ ] https://careers.roblox.com/jobs/7350081?gh_jid=7350081 | Roblox | [2026] Senior Machine Learning Engineer, Recommendation Systems - PhD Early Career
-- [ ] https://careers.roblox.com/jobs/7595328?gh_jid=7595328 | Roblox | Director of Engineering - AI for Roblox Studio
-- [ ] https://careers.roblox.com/jobs/7332473?gh_jid=7332473 | Roblox | Distinguished Engineer, Machine Learning Systems – Economy
-- [ ] https://careers.roblox.com/jobs/6606035?gh_jid=6606035 | Roblox | Distinguished Machine Learning Engineer - Safety
-- [ ] https://careers.roblox.com/jobs/7739622?gh_jid=7739622 | Roblox | Machine Learning Engineering Manager, Critical Harms
-- [ ] https://careers.roblox.com/jobs/7681009?gh_jid=7681009 | Roblox | Principal Client Platform Engineer
-- [ ] https://careers.roblox.com/jobs/7702486?gh_jid=7702486 | Roblox | Principal Data Scientist - Creator Services
-- [ ] https://careers.roblox.com/jobs/7701054?gh_jid=7701054 | Roblox | Principal Data Scientist - Discovery
-- [ ] https://careers.roblox.com/jobs/7411636?gh_jid=7411636 | Roblox | Principal Data Scientist - Safety
-- [ ] https://careers.roblox.com/jobs/7565086?gh_jid=7565086 | Roblox | Principal Machine Learning Engineer, Alt Defense
-- [ ] https://careers.roblox.com/jobs/7347389?gh_jid=7347389 | Roblox | Principal Machine Learning Engineer, Communication Safety
-- [ ] https://careers.roblox.com/jobs/7617984?gh_jid=7617984 | Roblox | Principal Machine Learning Engineer, Content Safety
-- [ ] https://careers.roblox.com/jobs/7629843?gh_jid=7629843 | Roblox | Principal Machine Learning Engineer, Embodied AI and Smart NPCs
-- [ ] https://careers.roblox.com/jobs/7669310?gh_jid=7669310 | Roblox | Principal Machine Learning Engineer, Engineering Acceleration 
-- [ ] https://careers.roblox.com/jobs/7682993?gh_jid=7682993 | Roblox | Principal Machine Learning Engineer - Reliability 
-- [ ] https://careers.roblox.com/jobs/7272668?gh_jid=7272668 | Roblox | Principal Machine Learning Engineer, Safety Experience 
-- [ ] https://careers.roblox.com/jobs/7351202?gh_jid=7351202 | Roblox | Principal Machine Learning Infrastructure Engineer, Ads
-- [ ] https://careers.roblox.com/jobs/7655346?gh_jid=7655346 | Roblox | Principal/Senior Machine Learning Scientist - Search and Discovery 
-- [ ] https://careers.roblox.com/jobs/7740153?gh_jid=7740153 | Roblox | Principal Software Engineer - Creator Distributed Systems & Storage   
-- [ ] https://careers.roblox.com/jobs/7629489?gh_jid=7629489 | Roblox | Principal Software Engineer - Economy ML (Data Systems)
-- [ ] https://careers.roblox.com/jobs/7736732?gh_jid=7736732 | Roblox | Senior Data Scientist - Alt Defense
-- [ ] https://careers.roblox.com/jobs/7623284?gh_jid=7623284 | Roblox | Senior Data Scientist - App Performance
-- [ ] https://careers.roblox.com/jobs/7435395?gh_jid=7435395 | Roblox | Senior Data Scientist - Ecosystem and Learning Platform
-- [ ] https://careers.roblox.com/jobs/7629528?gh_jid=7629528 | Roblox | Senior Data Scientist, Game Engine Simulation
-- [ ] https://careers.roblox.com/jobs/7420848?gh_jid=7420848 | Roblox | Senior Data Scientist - Generative AI
-- [ ] https://careers.roblox.com/jobs/7822736?gh_jid=7822736 | Roblox | Senior Data Scientist - Machine Intelligence (Creator Services)
-- [ ] https://careers.roblox.com/jobs/7673572?gh_jid=7673572 | Roblox | Senior Engineering Manager, AI Platform 
-- [ ] https://careers.roblox.com/jobs/7463674?gh_jid=7463674 | Roblox | Senior Hardware Engineer - GPU & AI Infrastructure
-- [ ] https://careers.roblox.com/jobs/7249513?gh_jid=7249513 | Roblox | Senior Machine Learning - Avatar, Core AI
-- [ ] https://careers.roblox.com/jobs/7351220?gh_jid=7351220 | Roblox | Senior Machine Learning Engineer, Ads
-- [ ] https://careers.roblox.com/jobs/7573319?gh_jid=7573319 | Roblox | Senior Machine Learning Engineer, Economy
-- [ ] https://careers.roblox.com/jobs/7562965?gh_jid=7562965 | Roblox | Senior Machine Learning Engineer, Home Modeling
-- [ ] https://careers.roblox.com/jobs/7630245?gh_jid=7630245 | Roblox | Senior Machine Learning Engineering Manager
-- [ ] https://careers.roblox.com/jobs/7543090?gh_jid=7543090 | Roblox | Senior Machine Learning Engineer, Safety Core Data
-- [ ] https://careers.roblox.com/jobs/7351059?gh_jid=7351059 | Roblox | Senior Machine Learning Infrastructure Engineer, Ads
-- [ ] https://careers.roblox.com/jobs/7528070?gh_jid=7528070 | Roblox | Senior Mobile and Platform Engineer, Audio Team
-- [ ] https://careers.roblox.com/jobs/6470334?gh_jid=6470334 | Roblox | Senior/Principal AI Data and Feature Platform Engineer 
-- [ ] https://careers.roblox.com/jobs/7767241?gh_jid=7767241 | Roblox | Senior Software Engineer, ML Infra
-- [ ] https://careers.roblox.com/jobs/7376093?gh_jid=7376093 | Roblox | Senior Software Engineer, Safety Data / ML Infra
-- [ ] https://careers.roblox.com/jobs/7292063?gh_jid=7292063 | Roblox | Sr Machine Learning Engineer - Safety Experience
-- [ ] https://careers.roblox.com/jobs/7527229?gh_jid=7527229 | Roblox | Strategic Supply Chain Manager -  Network Hardware
-- [ ] https://jobs.lever.co/zoox/fe3ec246-6f0a-4405-9ae8-10e322ac6799 | Zoox | AI Developer Productivity Engineer
-- [ ] https://jobs.lever.co/zoox/a8097f44-025a-47f5-a2c9-183fb50782ab | Zoox | AI Enterprise Architect Lead
-- [ ] https://jobs.lever.co/zoox/9ab192af-3480-40a7-9ff3-f81061ac6301 | Zoox | Data Scientist - Perception Verification and Validation
-- [ ] https://jobs.lever.co/zoox/08339c96-bc49-422a-9178-33fa8f1ebefb | Zoox | Logistics and Inventory Planner
-- [ ] https://jobs.lever.co/zoox/55e51bf3-68ee-40d4-a1c5-5196e0e2d100 | Zoox | Machine Learning Engineer - 3D Sensor Simulation
-- [ ] https://jobs.lever.co/zoox/effea729-8202-4fa0-aa0f-b786671502e8 | Zoox | Machine Learning Engineer - 3D Vision Perception
-- [ ] https://jobs.lever.co/zoox/03b2ccc5-85ac-4f55-9633-9215451246b2 | Zoox | Machine Learning Engineer - MLA Perception Offline Driving Intelligence
-- [ ] https://jobs.lever.co/zoox/093d7f5e-af1b-4e9c-9e13-69b22de6b390 | Zoox | Machine Learning Engineer - Multi-Modality Foundation Model
-- [ ] https://jobs.lever.co/zoox/50b011cc-1023-4d9a-b8be-c938e2c12f13 | Zoox | Machine Learning Engineer - Perception
-- [ ] https://jobs.lever.co/zoox/c60eadf5-a16d-4d8e-ae49-d6f9b3d2de01 | Zoox | Machine Learning Engineer - Perception Mapping
-- [ ] https://jobs.lever.co/zoox/2d73563c-8039-4d1b-844c-3953259ba6b1 | Zoox | Machine Learning Engineer, 3D Simulation
-- [ ] https://jobs.lever.co/zoox/75488927-aa56-4f3c-a6b2-24a2a53989a9 | Zoox | Machine Learning Engineer, Simulation Scenario Generation
-- [ ] https://jobs.lever.co/zoox/a300a20f-c943-47f5-80cc-7cc379db7a29 | Zoox | Manager, Fleet Testing & Repair
-- [ ] https://jobs.lever.co/zoox/66989270-69df-41fb-a904-ad9d9f314a08 | Zoox | Outbound Logistics Yard Lead
-- [ ] https://jobs.lever.co/zoox/a0185c33-76f1-4516-bec2-a5501c49b081 | Zoox | Part-Time Student Worker – Applied AI & LLM Workflows
-- [ ] https://jobs.lever.co/zoox/789865f1-f929-4905-86e1-c82ed23c5db8 | Zoox | Principal AI Hardware Architect
-- [ ] https://jobs.lever.co/zoox/408784a4-36c2-4d4c-ad50-d2952e2e64cc | Zoox | Principal Systems Engineer, Safety and Fail-operational
-- [ ] https://jobs.lever.co/zoox/041bae07-c771-4ed1-b98e-8e2c47785319 | Zoox | Repair Supervisor
-- [ ] https://jobs.lever.co/zoox/9e0751cd-f651-4cc7-bea7-f21663f082c0 | Zoox | Senior AI Developer Productivity Engineer
-- [ ] https://jobs.lever.co/zoox/c88c8b02-71b6-492c-a666-584458ac8c6e | Zoox | Senior AI Inference Engineer - Model Optimization & Deployment
-- [ ] https://jobs.lever.co/zoox/8664c340-71df-4803-a91e-c2d3d289f019 | Zoox | Senior Data Scientist - Data for Perception Machine Learning
-- [ ] https://jobs.lever.co/zoox/ac7f82e2-2d61-4466-90e3-d067ac8e8a86 | Zoox | Senior Engineering Manager, ML Platform
-- [ ] https://jobs.lever.co/zoox/378816c3-f5aa-4384-a7cc-82366f0dfbc7 | Zoox | Senior Machine Learning Engineer - 3D Sensor Simulation
-- [ ] https://jobs.lever.co/zoox/170c22c2-24f8-4163-a007-45dec5bdb902 | Zoox | Senior Machine Learning Engineer - ML Agents and Planning
-- [ ] https://jobs.lever.co/zoox/2f65fc0e-16f1-48a9-b34d-5ca5dcf76800 | Zoox | Senior Machine Learning Engineer - Perception
-- [ ] https://jobs.lever.co/zoox/4df5862c-edd7-4033-acb8-59ebbfbbb941 | Zoox | Senior Machine Learning Engineer - Perception Mapping
-- [ ] https://jobs.lever.co/zoox/12289ae8-3c49-4e9f-a37c-4fe4449f98ac | Zoox | Senior Machine Learning Engineer - Scene Understanding
-- [ ] https://jobs.lever.co/zoox/ceafb19f-35c5-4563-b686-cb402328149f | Zoox | Senior Machine Learning Engineer - Simulation Scenario Generation
-- [ ] https://jobs.lever.co/zoox/f0b7c639-818b-49ea-98a0-c9531028dafc | Zoox | Senior Public Affairs Manager
-- [ ] https://jobs.lever.co/zoox/bcf1b023-dcb8-43c8-a137-f50747f95f95 | Zoox | Senior Reliability Engineer - EV Powertrain Systems
-- [ ] https://jobs.lever.co/zoox/0e89f7de-2e04-4e4e-8c66-7cd8a76a91f2 | Zoox | Senior Software Engineer - HPC Cost Optimization & Efficiency
-- [ ] https://jobs.lever.co/zoox/1ff0f89b-77ec-4e86-927e-7098c377581f | Zoox | Senior Staff Machine Learning Engineer - Perception
-- [ ] https://jobs.lever.co/zoox/565951e8-1024-417b-aa7d-58312d2b7bef | Zoox | Senior Systems Engineer, Autonomy Verification and Validation (Safety & Fail Operational)
-- [ ] https://jobs.lever.co/zoox/8a596739-4f00-4429-8998-9c03e9cf8a40 | Zoox | Senior Technical Program Manager, Logistics
-- [ ] https://jobs.lever.co/zoox/3f187c4f-71a2-4738-9489-19961485c502 | Zoox | Senior/Staff Machine Learning Engineer - MLA Perception Offline Driving Intelligence
-- [ ] https://jobs.lever.co/zoox/84a33916-6df3-4e9b-8f26-050dc34a8b77 | Zoox | Senior/Staff Machine Learning Engineer - Offline Driving Intelligence
-- [ ] https://jobs.lever.co/zoox/cf049a4a-491e-45c3-bed7-1e8a45dac2bc | Zoox | Senior/Staff Machine Learning Engineer - Perception Offline Driving Intelligence
-- [ ] https://jobs.lever.co/zoox/1dc3a72e-1461-4c66-b424-252f057809ed | Zoox | Senior/Staff Machine Learning Engineer, 3D Simulation
-- [ ] https://jobs.lever.co/zoox/7b625fa4-4524-4d33-8fe8-8c0f5e574b26 | Zoox | Senior/Staff Safety Research Engineer - Quantitative Risk Assessment
-- [ ] https://jobs.lever.co/zoox/87edbf16-c565-48b4-8fcf-546bcc6bdf61 | Zoox | Senior/Staff Software Engineer - Distributed Systems
-- [ ] https://jobs.lever.co/zoox/2ed8a665-cee8-4d70-bcb1-e96b6214b371 | Zoox | Senior/Staff Software Engineer, ML Performance Optimization
-- [ ] https://jobs.lever.co/zoox/d17b2046-b128-4c8d-8ce5-2b8137139f52 | Zoox | Senior/Staff Systems Engineer, Powertrain System Safety and Fail Operational
-- [ ] https://jobs.lever.co/zoox/84b7c9c7-1307-4f0c-a0f2-aab0c9b72335 | Zoox | Senior/Staff Technical Program Manager - AI & Autonomy
-- [ ] https://jobs.lever.co/zoox/686769f4-2fd5-4333-8fe4-548891e675af | Zoox | Software Engineer, ML Core
-- [ ] https://jobs.lever.co/zoox/9e038e75-7a0e-4176-abcf-f57343284d3b | Zoox | Software Engineer, ML Platform (ML Serving)
-- [ ] https://jobs.lever.co/zoox/24acfe86-aa1b-4aa6-903b-99b4596e42cf | Zoox | Staff / Senior Staff Software Engineer - Learned Trajectory Machine Learning Engineer
-- [ ] https://jobs.lever.co/zoox/acaafc9a-486d-4045-80d7-12b09e39330e | Zoox | Staff Data Scientist - Behavior Evaluation
-- [ ] https://jobs.lever.co/zoox/d856c631-446c-452f-81f5-0359b50403c9 | Zoox | Staff Data Scientist - Verification & Validation
-- [ ] https://jobs.lever.co/zoox/7835b97b-f3ff-4409-94f0-d6ad3d8ecaeb | Zoox | Staff Machine Learning Engineer - Mapping
-- [ ] https://jobs.lever.co/zoox/6fd52e5d-88ca-48df-a1af-463b9db66b74 | Zoox | Supply Chain Program Manager
-- [ ] https://jobs.lever.co/zoox/30aabe35-28ba-41a6-a8b9-5352050b8c18 | Zoox | Technical Program Manager, Logistics
-- [ ] https://jobs.lever.co/zoox/7bf2a9b3-8aa5-4950-b8b8-14306ef1069f | Zoox | Technical Program Manager, PMO AI & Product Software (Contract)
+- [x] ~~https://coreweave.com/careers/job?4671525006&board=coreweave&gh_jid=4671525006 | Coreweave | Senior Software Engineer, Applied AI~~ <!-- EXPIRED: navigation error: page.evaluate: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4622652006&board=coreweave&gh_jid=4622652006 | Coreweave | Senior Software Engineer (Full-Stack + Agentic AI)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4647595006&board=coreweave&gh_jid=4647595006 | Coreweave | Senior Software Engineer II, AI Workload Orchestration~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4647611006&board=coreweave&gh_jid=4647611006 | Coreweave | Senior Software Engineer II, Applied Training~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4609928006&board=coreweave&gh_jid=4609928006 | Coreweave | Software Engineer, Inference AI/ML~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4663051006&board=coreweave&gh_jid=4663051006 | Coreweave | Sr. Data Scientist - Capacity Data~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4665964006&board=coreweave&gh_jid=4665964006 | Coreweave | Sr. Director of Product, Research and Training Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4647586006&board=coreweave&gh_jid=4647586006 | Coreweave | Staff Software Engineer- AI Workload Orchestration~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4647607006&board=coreweave&gh_jid=4647607006 | Coreweave | Staff Software Engineer, Applied Training~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4661968006&board=coreweave&gh_jid=4661968006 | Coreweave | Sustainable Data Center Design Manager~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/lambda/bbf99974-b960-40cd-9353-179d9f3b375a | Lambda | Engineering Manager - AI Cloud Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/13006848-6a69-4467-9274-5d54e80b965d | Character | Machine Learning Infrastructure Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/449bf7c1-41d7-47a4-89a7-0ee0b31f5918 | Character | Research Engineer, Post-Training (All Industry Levels)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/3ab40c3d-63bd-4634-a126-5a3d25d3263b | Character | Research Engineer, ML Systems (All Industry Levels)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/690f5ec2-2d7b-4c28-9b4d-d710e7225851 | Character | Software Engineer, Backend/Applied ML (Safety & Integrity)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/a7ddb640-466f-4a1f-9a94-7465006aad05 | Character | Research Engineer, AI Safety & Alignment~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/3cfa1472-4f6d-46fa-bd08-f6de0833a53f | Character | Software Engineer, Applied ML (Discovery, Recommendation & Search)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/2673e467-097e-43c0-ba0d-83e54b3a9cb1 | Character | Software Engineer, AI Platform (All Industry Levels)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/d5a38f47-cd16-4e10-818d-45a4f845b529 | Character | Research Engineer, Multimodal~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/character/fd023b84-a746-4fe9-8a9d-277899e67a78 | Character | Technical Program Manager, AI Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7488508 | Waymo | Applied Research Scientist, Perception LLM/VLM (PhD, New Grad)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7435924 | Waymo | Business System Analyst - Supply Chain (SAP)   ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7435297 | Waymo | Claims Advocate ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6608598 | Waymo | Data Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7473464 | Waymo | Director of AI Foundations, Foundation Model Evaluation & Integration~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7724345 | Waymo | Emergency Services Liaison, Japan & Asia / 緊急サービス・リエゾン (日本・アジア担当)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7435632 | Waymo | Fleet Response Training Program Manager~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7474033 | Waymo | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7539786 | Waymo | Machine Learning Engineer, 3D Object Detection  (PhD New Grad)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7446301 | Waymo | Machine Learning Engineer, Data & Systems ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7455853 | Waymo | Machine Learning Engineer, Driver Understanding and Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7819946 | Waymo | Machine Learning Engineer (Infra), Driver Understanding and Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7429791 | Waymo | Machine Learning Engineer - Mapping~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7426598 | Waymo | Machine Learning Engineer, ML Flywheel~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7446322 | Waymo | Machine Learning Engineer, Model Optimization~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7446279 | Waymo | Machine Learning Engineer, Perception Modeling~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6506689 | Waymo | Machine Learning Engineer, Prediction & Planning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6506008 | Waymo | Machine Learning Engineer, Runtime & Optimization~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6499165 | Waymo | Machine Learning Engineer, Simulation Realism~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6688617 | Waymo | Machine Learning Engineer, Simulation Realism ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7509005 | Waymo | ML Accelerator Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7616808 | Waymo | ML Microarchitect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7545007 | Waymo | Principal Software Engineer, ML Flywheel Technical Lead~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7773177 | Waymo | Principal Software Engineer, ML System Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6989523 | Waymo | Principal Software Engineer, Perception Pretraining~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7656333 | Waymo | Program Manager, ML Data~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7516673 | Waymo | Program Manager, Scenario Quality and Maintenance Systems ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7435071 | Waymo | Public Affairs Manager, London~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6508001 | Waymo | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7569315 | Waymo | Senior Machine Learning Engineer, AI Foundations~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7249525 | Waymo | Senior Machine Learning Engineer, Computer Vision/VLM~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7456078 | Waymo | Senior Machine Learning Engineer, Driver Understanding and Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7819951 | Waymo | Senior Machine Learning Engineer (Infra), Driver Understanding and Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7488596 | Waymo | Senior Machine Learning Engineer, Perception LLM/VLM~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7826591 | Waymo | Senior Machine Learning Engineer, Prediction & Planning, System Architecture~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7454241 | Waymo | Senior Machine Learning Engineer, Sensor Validation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6563602 | Waymo | Senior Machine Learning Engineer, Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7644924 | Waymo | Senior Machine Learning Engineer – VLM/LLM Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7508897 | Waymo | Senior ML Accelerator Modeling Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7774345 | Waymo | Senior ML Compiler Engineer, Compute~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7697543 | Waymo | Senior Product Data Scientist, In Car Experience~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7416740 | Waymo | Senior Product Data Scientist, Marketplace Algorithms ML~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7572081 | Waymo | Senior Research Scientist, Foundation Model (LLM/VLM)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7703602 | Waymo | Senior Software Engineer, Machine Learning Performance~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7028592 | Waymo | Senior Software Engineer (ML) - Car Experience~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7334481 | Waymo | Senior Software Engineer, Post-Training & RL Frameworks~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7477172 | Waymo | Senior Software Engineer, Quantitative Evaluations~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7429718 | Waymo | Senior Software Engineer, Simulation ML Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7121224 | Waymo | Senior Software Engineer, Training Efficiency~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7774356 | Waymo | Senior Staff Machine Learning Engineer, Depot Automation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6809263 | Waymo | Senior Staff Machine Learning Engineer, Perception~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7430495 | Waymo | Senior Staff Machine Learning Engineer, Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6669555 | Waymo | Senior/Staff ML Engineer, 3D/4D World Modeling, Simulation ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7421737 | Waymo | Senior Staff ML Engineer, Driver Understanding and Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7580705 | Waymo | Senior Staff Software Engineer, Model Post Training~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7584885 | Waymo | Software Engineer, Machine Learning Accelerator~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7703664 | Waymo | Software Engineer, Machine Learning Performance~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7698498 | Waymo | Software Engineer, Machine Learning Tooling~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7728681 | Waymo | Software Engineer, ML Accelerator Modeling (TW)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7426718 | Waymo | Software Engineer, ML Tools~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7466534 | Waymo | Software Engineer, Quantitative Evaluations~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7458013 | Waymo | Staff Data Scientist, Launch Evaluation Quality~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7239320 | Waymo | Staff Data Scientist, TLM, Driving Quality~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7493959 | Waymo | Staff Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7442152 | Waymo | Staff Machine Learning Engineer, Driver Understanding and Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7438635 | Waymo | Staff Machine Learning Engineer (Infra), Driver Understanding and Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7822067 | Waymo | Staff Machine Learning Engineer, Prediction & Planning, System Architecture~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6563711 | Waymo | Staff Machine Learning Engineer, Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7483051 | Waymo | Staff Machine Learning Engineer, Simulation ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7719332 | Waymo | Staff Machine Learning Engineer, Tech Lead Active Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7595124 | Waymo | Staff Machine Learning Engineer – VLM/LLM Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7597108 | Waymo | Staff Product Data Scientist, Operation Center~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7488246 | Waymo | Staff Software Engineer/Data Scientist, Large Model Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7170802 | Waymo | Staff Software Engineer, Machine Learning, Planner Selection~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7224992 | Waymo | Staff Software Engineer, Machine Learning- Route and Pin Quality~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7177351 | Waymo | Staff Software Engineer, ML Frameworks & Efficiency~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6901826 | Waymo | Staff Software Engineer, Quantitative Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6615783 | Waymo | Staff Software Engineer, Simulation ML Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7094669 | Waymo | Staff Technical Lead Manager, ML Sensor Validation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7782792 | Waymo | Strategic Partnerships Development Manager - Airports~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7822860 | Waymo | Systems Test Engineer, Weather and Special Projects~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7686010 | Waymo | Tech Lead  Manager ML Optimization~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/inflectionai/jobs/4578240006?gh_jid=4578240006 | Inflectionai | Member of Technical Staff – Model Training~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/heygen/jobs/4987495007 | Heygen | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/heygen/jobs/5113581007 | Heygen | Forward Deployed Engineer, Strategic Accounts~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/heygen/jobs/4188314007 | Heygen | Research Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/heygen/jobs/4996032007 | Heygen | Software Engineer, AI Compute Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/heygen/jobs/4944653007 | Heygen | Tech Lead, AI Compute Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/descript/jobs/7580335003?gh_jid=7580335003 | Descript | Senior Software Engineer, AI Platform and Enablement~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7473686?gh_jid=7473686 | Roblox | [2026] Senior Machine Learning Engineer, Account Identity - PhD Early Career~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7403998?gh_jid=7403998 | Roblox | [2026] Senior Machine Learning Engineer, AI Platform - PhD Early Career~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7473599?gh_jid=7473599 | Roblox | [2026] Senior Machine Learning Engineer, Content Suitability - PhD Early Career~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7421746?gh_jid=7421746 | Roblox | [2026] Senior Machine Learning Engineer,  Engine Optimization - PhD Early Career~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7323437?gh_jid=7323437 | Roblox | [2026] Senior Machine Learning Engineer, Multimodal AI, Computer Vision and Graphics - PhD Early Career ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7324377?gh_jid=7324377 | Roblox | [2026] Senior Machine Learning Engineer, Natural Language Processing - PhD Early Career~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7350081?gh_jid=7350081 | Roblox | [2026] Senior Machine Learning Engineer, Recommendation Systems - PhD Early Career~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7595328?gh_jid=7595328 | Roblox | Director of Engineering - AI for Roblox Studio~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7332473?gh_jid=7332473 | Roblox | Distinguished Engineer, Machine Learning Systems – Economy~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/6606035?gh_jid=6606035 | Roblox | Distinguished Machine Learning Engineer - Safety~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7739622?gh_jid=7739622 | Roblox | Machine Learning Engineering Manager, Critical Harms~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7681009?gh_jid=7681009 | Roblox | Principal Client Platform Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7702486?gh_jid=7702486 | Roblox | Principal Data Scientist - Creator Services~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7701054?gh_jid=7701054 | Roblox | Principal Data Scientist - Discovery~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7411636?gh_jid=7411636 | Roblox | Principal Data Scientist - Safety~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7565086?gh_jid=7565086 | Roblox | Principal Machine Learning Engineer, Alt Defense~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7347389?gh_jid=7347389 | Roblox | Principal Machine Learning Engineer, Communication Safety~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7617984?gh_jid=7617984 | Roblox | Principal Machine Learning Engineer, Content Safety~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7629843?gh_jid=7629843 | Roblox | Principal Machine Learning Engineer, Embodied AI and Smart NPCs~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7669310?gh_jid=7669310 | Roblox | Principal Machine Learning Engineer, Engineering Acceleration ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7682993?gh_jid=7682993 | Roblox | Principal Machine Learning Engineer - Reliability ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7272668?gh_jid=7272668 | Roblox | Principal Machine Learning Engineer, Safety Experience ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7351202?gh_jid=7351202 | Roblox | Principal Machine Learning Infrastructure Engineer, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7655346?gh_jid=7655346 | Roblox | Principal/Senior Machine Learning Scientist - Search and Discovery ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7740153?gh_jid=7740153 | Roblox | Principal Software Engineer - Creator Distributed Systems & Storage   ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7629489?gh_jid=7629489 | Roblox | Principal Software Engineer - Economy ML (Data Systems)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7736732?gh_jid=7736732 | Roblox | Senior Data Scientist - Alt Defense~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7623284?gh_jid=7623284 | Roblox | Senior Data Scientist - App Performance~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7435395?gh_jid=7435395 | Roblox | Senior Data Scientist - Ecosystem and Learning Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7629528?gh_jid=7629528 | Roblox | Senior Data Scientist, Game Engine Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7420848?gh_jid=7420848 | Roblox | Senior Data Scientist - Generative AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7822736?gh_jid=7822736 | Roblox | Senior Data Scientist - Machine Intelligence (Creator Services)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7673572?gh_jid=7673572 | Roblox | Senior Engineering Manager, AI Platform ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7463674?gh_jid=7463674 | Roblox | Senior Hardware Engineer - GPU & AI Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7249513?gh_jid=7249513 | Roblox | Senior Machine Learning - Avatar, Core AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7351220?gh_jid=7351220 | Roblox | Senior Machine Learning Engineer, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7573319?gh_jid=7573319 | Roblox | Senior Machine Learning Engineer, Economy~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7562965?gh_jid=7562965 | Roblox | Senior Machine Learning Engineer, Home Modeling~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7630245?gh_jid=7630245 | Roblox | Senior Machine Learning Engineering Manager~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7543090?gh_jid=7543090 | Roblox | Senior Machine Learning Engineer, Safety Core Data~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7351059?gh_jid=7351059 | Roblox | Senior Machine Learning Infrastructure Engineer, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7528070?gh_jid=7528070 | Roblox | Senior Mobile and Platform Engineer, Audio Team~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/6470334?gh_jid=6470334 | Roblox | Senior/Principal AI Data and Feature Platform Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7767241?gh_jid=7767241 | Roblox | Senior Software Engineer, ML Infra~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7376093?gh_jid=7376093 | Roblox | Senior Software Engineer, Safety Data / ML Infra~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7292063?gh_jid=7292063 | Roblox | Sr Machine Learning Engineer - Safety Experience~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.roblox.com/jobs/7527229?gh_jid=7527229 | Roblox | Strategic Supply Chain Manager -  Network Hardware~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/fe3ec246-6f0a-4405-9ae8-10e322ac6799 | Zoox | AI Developer Productivity Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/a8097f44-025a-47f5-a2c9-183fb50782ab | Zoox | AI Enterprise Architect Lead~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/9ab192af-3480-40a7-9ff3-f81061ac6301 | Zoox | Data Scientist - Perception Verification and Validation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/08339c96-bc49-422a-9178-33fa8f1ebefb | Zoox | Logistics and Inventory Planner~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/55e51bf3-68ee-40d4-a1c5-5196e0e2d100 | Zoox | Machine Learning Engineer - 3D Sensor Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/effea729-8202-4fa0-aa0f-b786671502e8 | Zoox | Machine Learning Engineer - 3D Vision Perception~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/03b2ccc5-85ac-4f55-9633-9215451246b2 | Zoox | Machine Learning Engineer - MLA Perception Offline Driving Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/093d7f5e-af1b-4e9c-9e13-69b22de6b390 | Zoox | Machine Learning Engineer - Multi-Modality Foundation Model~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/50b011cc-1023-4d9a-b8be-c938e2c12f13 | Zoox | Machine Learning Engineer - Perception~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/c60eadf5-a16d-4d8e-ae49-d6f9b3d2de01 | Zoox | Machine Learning Engineer - Perception Mapping~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/2d73563c-8039-4d1b-844c-3953259ba6b1 | Zoox | Machine Learning Engineer, 3D Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/75488927-aa56-4f3c-a6b2-24a2a53989a9 | Zoox | Machine Learning Engineer, Simulation Scenario Generation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/a300a20f-c943-47f5-80cc-7cc379db7a29 | Zoox | Manager, Fleet Testing & Repair~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/66989270-69df-41fb-a904-ad9d9f314a08 | Zoox | Outbound Logistics Yard Lead~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/a0185c33-76f1-4516-bec2-a5501c49b081 | Zoox | Part-Time Student Worker – Applied AI & LLM Workflows~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/789865f1-f929-4905-86e1-c82ed23c5db8 | Zoox | Principal AI Hardware Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/408784a4-36c2-4d4c-ad50-d2952e2e64cc | Zoox | Principal Systems Engineer, Safety and Fail-operational~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/041bae07-c771-4ed1-b98e-8e2c47785319 | Zoox | Repair Supervisor~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/9e0751cd-f651-4cc7-bea7-f21663f082c0 | Zoox | Senior AI Developer Productivity Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/c88c8b02-71b6-492c-a666-584458ac8c6e | Zoox | Senior AI Inference Engineer - Model Optimization & Deployment~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/8664c340-71df-4803-a91e-c2d3d289f019 | Zoox | Senior Data Scientist - Data for Perception Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/ac7f82e2-2d61-4466-90e3-d067ac8e8a86 | Zoox | Senior Engineering Manager, ML Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/378816c3-f5aa-4384-a7cc-82366f0dfbc7 | Zoox | Senior Machine Learning Engineer - 3D Sensor Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/170c22c2-24f8-4163-a007-45dec5bdb902 | Zoox | Senior Machine Learning Engineer - ML Agents and Planning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/2f65fc0e-16f1-48a9-b34d-5ca5dcf76800 | Zoox | Senior Machine Learning Engineer - Perception~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/4df5862c-edd7-4033-acb8-59ebbfbbb941 | Zoox | Senior Machine Learning Engineer - Perception Mapping~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/12289ae8-3c49-4e9f-a37c-4fe4449f98ac | Zoox | Senior Machine Learning Engineer - Scene Understanding~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/ceafb19f-35c5-4563-b686-cb402328149f | Zoox | Senior Machine Learning Engineer - Simulation Scenario Generation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/f0b7c639-818b-49ea-98a0-c9531028dafc | Zoox | Senior Public Affairs Manager~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/bcf1b023-dcb8-43c8-a137-f50747f95f95 | Zoox | Senior Reliability Engineer - EV Powertrain Systems~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/0e89f7de-2e04-4e4e-8c66-7cd8a76a91f2 | Zoox | Senior Software Engineer - HPC Cost Optimization & Efficiency~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/1ff0f89b-77ec-4e86-927e-7098c377581f | Zoox | Senior Staff Machine Learning Engineer - Perception~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/565951e8-1024-417b-aa7d-58312d2b7bef | Zoox | Senior Systems Engineer, Autonomy Verification and Validation (Safety & Fail Operational)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/8a596739-4f00-4429-8998-9c03e9cf8a40 | Zoox | Senior Technical Program Manager, Logistics~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/3f187c4f-71a2-4738-9489-19961485c502 | Zoox | Senior/Staff Machine Learning Engineer - MLA Perception Offline Driving Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/84a33916-6df3-4e9b-8f26-050dc34a8b77 | Zoox | Senior/Staff Machine Learning Engineer - Offline Driving Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/cf049a4a-491e-45c3-bed7-1e8a45dac2bc | Zoox | Senior/Staff Machine Learning Engineer - Perception Offline Driving Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/1dc3a72e-1461-4c66-b424-252f057809ed | Zoox | Senior/Staff Machine Learning Engineer, 3D Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/7b625fa4-4524-4d33-8fe8-8c0f5e574b26 | Zoox | Senior/Staff Safety Research Engineer - Quantitative Risk Assessment~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/87edbf16-c565-48b4-8fcf-546bcc6bdf61 | Zoox | Senior/Staff Software Engineer - Distributed Systems~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/2ed8a665-cee8-4d70-bcb1-e96b6214b371 | Zoox | Senior/Staff Software Engineer, ML Performance Optimization~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/d17b2046-b128-4c8d-8ce5-2b8137139f52 | Zoox | Senior/Staff Systems Engineer, Powertrain System Safety and Fail Operational~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/84b7c9c7-1307-4f0c-a0f2-aab0c9b72335 | Zoox | Senior/Staff Technical Program Manager - AI & Autonomy~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/686769f4-2fd5-4333-8fe4-548891e675af | Zoox | Software Engineer, ML Core~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/9e038e75-7a0e-4176-abcf-f57343284d3b | Zoox | Software Engineer, ML Platform (ML Serving)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/24acfe86-aa1b-4aa6-903b-99b4596e42cf | Zoox | Staff / Senior Staff Software Engineer - Learned Trajectory Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/acaafc9a-486d-4045-80d7-12b09e39330e | Zoox | Staff Data Scientist - Behavior Evaluation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/d856c631-446c-452f-81f5-0359b50403c9 | Zoox | Staff Data Scientist - Verification & Validation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/7835b97b-f3ff-4409-94f0-d6ad3d8ecaeb | Zoox | Staff Machine Learning Engineer - Mapping~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/6fd52e5d-88ca-48df-a1af-463b9db66b74 | Zoox | Supply Chain Program Manager~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/30aabe35-28ba-41a6-a8b9-5352050b8c18 | Zoox | Technical Program Manager, Logistics~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/7bf2a9b3-8aa5-4950-b8b8-14306ef1069f | Zoox | Technical Program Manager, PMO AI & Product Software (Contract)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 
-- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5055488008 | anthropic | Applied AI Engineer
-- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5198108008 | anthropic | Research Engineer, Machine Learning (RL Velocity)
-- [ ] https://job-boards.greenhouse.io/anthropic/jobs/5198074008 | anthropic | Research Engineer, Machine Learning (RL Velocity)
-- [ ] https://stripe.com/jobs/search?gh_jid=7286376 | stripe | AI/ML Engineering Manager, Payment Intelligence
-- [ ] https://stripe.com/jobs/search?gh_jid=7809414 | stripe | Data Scientist
-- [ ] https://stripe.com/jobs/search?gh_jid=5895430 | stripe | Data Scientist
-- [ ] https://stripe.com/jobs/search?gh_jid=7712852 | stripe | Engineering Manager, Machine Learning Platform
-- [ ] https://stripe.com/jobs/search?gh_jid=7079044 | stripe | Machine Learning Engineer, Payments ML Accelerator
-- [ ] https://stripe.com/jobs/search?gh_jid=7629052 | stripe | Machine Learning Engineer, Stripe Assistant 
-- [ ] https://stripe.com/jobs/search?gh_jid=7384709 | stripe | Machine Learning Engineer, Supportability
-- [ ] https://stripe.com/jobs/search?gh_jid=7813942 | stripe | Machine Learning Engineer, Support Experience
-- [ ] https://stripe.com/jobs/search?gh_jid=7285974 | stripe | PhD Data Scientist, Intern
-- [ ] https://stripe.com/jobs/search?gh_jid=7216664 | stripe | PhD Machine Learning Engineer, Intern
-- [ ] https://stripe.com/jobs/search?gh_jid=7216668 | stripe | PhD Machine Learning Engineer, New Grad
-- [ ] https://stripe.com/jobs/search?gh_jid=7376835 | stripe | Software Engineer, Machine Learning Infrastructure
-- [ ] https://stripe.com/jobs/search?gh_jid=7568328 | stripe | Staff Data Scientist
-- [ ] https://careers.airbnb.com/positions/7716341?gh_jid=7716341 | airbnb | Machine Learning Engineer, Community Support Engineering
-- [ ] https://careers.airbnb.com/positions/7826337?gh_jid=7826337 | airbnb | Machine Learning Engineer, Customer Support Engineering
-- [ ] https://careers.airbnb.com/positions/7669906?gh_jid=7669906 | airbnb | Machine Learning Engineering Intern (PhD)
-- [ ] https://careers.airbnb.com/positions/7662244?gh_jid=7662244 | airbnb | Senior Data Scientist, Causal Inference
-- [ ] https://careers.airbnb.com/positions/7446449?gh_jid=7446449 | airbnb | Senior Data Scientist - Inference, Global Markets
-- [ ] https://careers.airbnb.com/positions/7594971?gh_jid=7594971 | airbnb | Senior Data Scientist, Platform (Algorithms/Trust)
-- [ ] https://careers.airbnb.com/positions/7526372?gh_jid=7526372 | airbnb | Senior Data Scientist, Platform - Identity/Algorithms
-- [ ] https://careers.airbnb.com/positions/7755758?gh_jid=7755758 | airbnb |  Senior Machine Learning Engineer, Payments
-- [ ] https://careers.airbnb.com/positions/7672101?gh_jid=7672101 | airbnb | Senior/ Manager, Machine Learning, Community Support Products
-- [ ] https://careers.airbnb.com/positions/7107054?gh_jid=7107054 | airbnb | Senior Staff Data Scientist, Guest & Host Marketplace AI
-- [ ] https://careers.airbnb.com/positions/7005605?gh_jid=7005605 | airbnb | Senior Staff Machine Learning Engineer, Communication & Connectivity
-- [ ] https://careers.airbnb.com/positions/7693033?gh_jid=7693033 | airbnb | Senior/Staff Machine Learning Engineer, Community Support Engineering
-- [ ] https://careers.airbnb.com/positions/6757302?gh_jid=6757302 | airbnb | Senior Staff Machine Learning Engineer, Data & Eval
-- [ ] https://careers.airbnb.com/positions/7747259?gh_jid=7747259 | airbnb | Senior Staff Machine Learning Engineer, Growth Platform Engineering
-- [ ] https://careers.airbnb.com/positions/7592146?gh_jid=7592146 | airbnb | Senior Staff Machine Learning Engineer, Trust
-- [ ] https://careers.airbnb.com/positions/7705262?gh_jid=7705262 | airbnb | Staff Data Scientist, Causal Inference
-- [ ] https://careers.airbnb.com/positions/7116975?gh_jid=7116975 | airbnb | Staff Machine Learning Engineer - Community Support Engineering
-- [ ] https://careers.airbnb.com/positions/7454348?gh_jid=7454348 | airbnb | Staff Machine Learning Engineer, Listings and Host Tools Data and AI
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7586364 | pinterest | Director, Machine Learning Engineering – Growth 
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494658 | pinterest | Engineering Manager II, Machine Learning – User Understanding
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6121450 | pinterest | Machine Learning Engineer, Core Engineering
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7681666 | pinterest | Machine Learning Engineer II
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7473497 | pinterest | Machine Learning Engineer II, Core Engineering 
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6121543 | pinterest | Machine Learning Engineer, Monetization Engineering
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7268778 | pinterest | Machine Learning Intern Fall 2026 (Toronto)
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7528427 | pinterest | Manager II, Machine Learning-Content Success
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7752846 | pinterest | Manager II, Machine Learning Engineering
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7075176 | pinterest | Manager II, Machine Learning Engineering, Core Engineering 
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7239260 | pinterest | Manager II, Machine Learning-Search
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7253017 | pinterest | Master's Fall Machine Learning Internship (ATG - Visual Search)
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7255640 | pinterest | PhD Fall Machine Learning Intern (ATG — Visual, Multimodal, and Recommender Systems)
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6963868 | pinterest | Principal Machine Learning Engineer, Ads Delivery
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6659114 | pinterest | Sr. Data Scientist
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6087213 | pinterest | Sr. Data Scientist, Core
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7527221 | pinterest | Sr. Data Scientist, Gen AI Automation
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=5740948 | pinterest | Sr. Data Scientist, Monetization
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494923 | pinterest | Sr. Data Scientist, Responsible AI
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7642251 | pinterest | Sr. Data Scientist, tvScientific
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6121464 | pinterest | Sr. Machine Learning Engineer, Core Engineering 
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6121551 | pinterest | Sr. Machine Learning Engineer, Monetization Engineering
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494938 | pinterest | Sr. Machine Learning Engineer, Responsible AI– Applied Research Science
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7642268 | pinterest | Sr. Machine Learning Engineer, tvScientific
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=6482819 | pinterest | Staff Data Scientist, Ad Measurement Products
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7435596 | pinterest | Staff Data Scientist, Monetization
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7531060 | pinterest | Staff Machine Learning Engineer, Content Quality Signals
-- [ ] https://www.pinterestcareers.com/jobs/?gh_jid=7494896 | pinterest | Staff Machine Learning Engineer, Conversion Visibility
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7792848 | reddit | Ads Conversion Modeling, Machine Learning Engineering Manager
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/6580815 | reddit | Data Scientist, Ads
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7607124 | reddit | Data Scientist, Ads
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7430544 | reddit | Director of Machine Learning, Safety & Mods
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7131934 | reddit | Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7131932 | reddit | Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7802495 | reddit | Machine Learning Manager, Feed Relevance
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7846885 | reddit | Machine Learning Manager, Notifications Relevance
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7330347 | reddit | Principal Data Scientist, Ads
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/6042236 | reddit | Senior Data Scientist, Ads
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7607121 | reddit | Senior Data Scientist, Ads
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7275414 | reddit | Senior Data Scientist, Consumer
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/6960831 | reddit | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/6960833 | reddit | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7391392 | reddit | Senior Machine Learning Engineer, Core Experience and Growth
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7074776 | reddit | Senior  Machine Learning Engineer, ML Training Platform 
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7731772 | reddit | Senior Machine Learning Systems Engineer
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7791994 | reddit | Senior Staff Machine Learning Engineer, Feed Relevance
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7772274 | reddit | Senior Staff Machine Learning Engineer, GenAI Platform
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7847148 | reddit | Senior Staff Machine Learning Engineer, ML Understanding
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7833622 | reddit | Senior Staff ML Engineer, Search & Recommendation
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7721787 | reddit | Staff Data Scientist, Ads
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7721851 | reddit | Staff Data Scientist, Ads
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/6745284 | reddit | Staff Data Scientist, Consumer
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7181821 | reddit | Staff Machine Learning Engineer, Ads Auction (Ads Marketplace Quality)
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7747244 | reddit | Staff Machine Learning Engineer, Consumer 
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7377109 | reddit | Staff Machine Learning Engineer, Dev Platform Data and Discovery
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7772523 | reddit | Staff Machine Learning Engineer, GenAI Platform
-- [ ] https://job-boards.greenhouse.io/reddit/jobs/7731788 | reddit | Staff Machine Learning Systems Engineer
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7324983?t=gh_src=&gh_jid=7324983 | robinhood | Data Scientist, Product
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7412037?t=gh_src=&gh_jid=7412037 | robinhood | Senior Data Scientist, Fraud 
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7482186?t=gh_src=&gh_jid=7482186 | robinhood | Senior Data Scientist, ML (Brokerage)
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7596426?t=gh_src=&gh_jid=7596426 | robinhood | Senior Data Scientist, ML (Incentives)
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7324981?t=gh_src=&gh_jid=7324981 | robinhood | Senior Data Scientist, Product
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7121213?t=gh_src=&gh_jid=7121213 | robinhood | Senior Machine Learning Engineer, Agentic
-- [ ] https://boards.greenhouse.io/robinhood/jobs/7676714?t=gh_src=&gh_jid=7676714 | robinhood | Staff Machine Learning Engineer, Agentic
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7702644 | twilio | Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7155492 | twilio | Principal Machine Learning & Data Engineer 
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7066029 | twilio | Senior Manager, Machine Learning
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7061880 | twilio | Staff Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7716287 | twilio | Staff Machine Learning Engineer (L4)
-- [ ] https://job-boards.greenhouse.io/twilio/jobs/7520997 | twilio | Staff Machine Learning Engineer (L4)
+- [x] ~~https://job-boards.greenhouse.io/anthropic/jobs/5055488008 | anthropic | Applied AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/anthropic/jobs/5198108008 | anthropic | Research Engineer, Machine Learning (RL Velocity)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/anthropic/jobs/5198074008 | anthropic | Research Engineer, Machine Learning (RL Velocity)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7286376 | stripe | AI/ML Engineering Manager, Payment Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7809414 | stripe | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=5895430 | stripe | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7712852 | stripe | Engineering Manager, Machine Learning Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7079044 | stripe | Machine Learning Engineer, Payments ML Accelerator~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7629052 | stripe | Machine Learning Engineer, Stripe Assistant ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7384709 | stripe | Machine Learning Engineer, Supportability~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7813942 | stripe | Machine Learning Engineer, Support Experience~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7285974 | stripe | PhD Data Scientist, Intern~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7216664 | stripe | PhD Machine Learning Engineer, Intern~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7216668 | stripe | PhD Machine Learning Engineer, New Grad~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7376835 | stripe | Software Engineer, Machine Learning Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://stripe.com/jobs/search?gh_jid=7568328 | stripe | Staff Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7716341?gh_jid=7716341 | airbnb | Machine Learning Engineer, Community Support Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7826337?gh_jid=7826337 | airbnb | Machine Learning Engineer, Customer Support Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7669906?gh_jid=7669906 | airbnb | Machine Learning Engineering Intern (PhD)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7662244?gh_jid=7662244 | airbnb | Senior Data Scientist, Causal Inference~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7446449?gh_jid=7446449 | airbnb | Senior Data Scientist - Inference, Global Markets~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7594971?gh_jid=7594971 | airbnb | Senior Data Scientist, Platform (Algorithms/Trust)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7526372?gh_jid=7526372 | airbnb | Senior Data Scientist, Platform - Identity/Algorithms~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7755758?gh_jid=7755758 | airbnb |  Senior Machine Learning Engineer, Payments~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7672101?gh_jid=7672101 | airbnb | Senior/ Manager, Machine Learning, Community Support Products~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7107054?gh_jid=7107054 | airbnb | Senior Staff Data Scientist, Guest & Host Marketplace AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7005605?gh_jid=7005605 | airbnb | Senior Staff Machine Learning Engineer, Communication & Connectivity~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7693033?gh_jid=7693033 | airbnb | Senior/Staff Machine Learning Engineer, Community Support Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/6757302?gh_jid=6757302 | airbnb | Senior Staff Machine Learning Engineer, Data & Eval~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7747259?gh_jid=7747259 | airbnb | Senior Staff Machine Learning Engineer, Growth Platform Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7592146?gh_jid=7592146 | airbnb | Senior Staff Machine Learning Engineer, Trust~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7705262?gh_jid=7705262 | airbnb | Staff Data Scientist, Causal Inference~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7116975?gh_jid=7116975 | airbnb | Staff Machine Learning Engineer - Community Support Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7454348?gh_jid=7454348 | airbnb | Staff Machine Learning Engineer, Listings and Host Tools Data and AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7586364 | pinterest | Director, Machine Learning Engineering – Growth ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7494658 | pinterest | Engineering Manager II, Machine Learning – User Understanding~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=6121450 | pinterest | Machine Learning Engineer, Core Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7681666 | pinterest | Machine Learning Engineer II~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7473497 | pinterest | Machine Learning Engineer II, Core Engineering ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=6121543 | pinterest | Machine Learning Engineer, Monetization Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7268778 | pinterest | Machine Learning Intern Fall 2026 (Toronto)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7528427 | pinterest | Manager II, Machine Learning-Content Success~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7752846 | pinterest | Manager II, Machine Learning Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7075176 | pinterest | Manager II, Machine Learning Engineering, Core Engineering ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7239260 | pinterest | Manager II, Machine Learning-Search~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7253017 | pinterest | Master's Fall Machine Learning Internship (ATG - Visual Search)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7255640 | pinterest | PhD Fall Machine Learning Intern (ATG — Visual, Multimodal, and Recommender Systems)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=6963868 | pinterest | Principal Machine Learning Engineer, Ads Delivery~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=6659114 | pinterest | Sr. Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=6087213 | pinterest | Sr. Data Scientist, Core~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7527221 | pinterest | Sr. Data Scientist, Gen AI Automation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=5740948 | pinterest | Sr. Data Scientist, Monetization~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7494923 | pinterest | Sr. Data Scientist, Responsible AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7642251 | pinterest | Sr. Data Scientist, tvScientific~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=6121464 | pinterest | Sr. Machine Learning Engineer, Core Engineering ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=6121551 | pinterest | Sr. Machine Learning Engineer, Monetization Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7494938 | pinterest | Sr. Machine Learning Engineer, Responsible AI– Applied Research Science~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7642268 | pinterest | Sr. Machine Learning Engineer, tvScientific~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=6482819 | pinterest | Staff Data Scientist, Ad Measurement Products~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7435596 | pinterest | Staff Data Scientist, Monetization~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7531060 | pinterest | Staff Machine Learning Engineer, Content Quality Signals~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.pinterestcareers.com/jobs/?gh_jid=7494896 | pinterest | Staff Machine Learning Engineer, Conversion Visibility~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7792848 | reddit | Ads Conversion Modeling, Machine Learning Engineering Manager~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/6580815 | reddit | Data Scientist, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7607124 | reddit | Data Scientist, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7430544 | reddit | Director of Machine Learning, Safety & Mods~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7131934 | reddit | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7131932 | reddit | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7802495 | reddit | Machine Learning Manager, Feed Relevance~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7846885 | reddit | Machine Learning Manager, Notifications Relevance~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7330347 | reddit | Principal Data Scientist, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/6042236 | reddit | Senior Data Scientist, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7607121 | reddit | Senior Data Scientist, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7275414 | reddit | Senior Data Scientist, Consumer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/6960831 | reddit | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/6960833 | reddit | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7391392 | reddit | Senior Machine Learning Engineer, Core Experience and Growth~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7074776 | reddit | Senior  Machine Learning Engineer, ML Training Platform ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7731772 | reddit | Senior Machine Learning Systems Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7791994 | reddit | Senior Staff Machine Learning Engineer, Feed Relevance~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7772274 | reddit | Senior Staff Machine Learning Engineer, GenAI Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7847148 | reddit | Senior Staff Machine Learning Engineer, ML Understanding~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7833622 | reddit | Senior Staff ML Engineer, Search & Recommendation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7721787 | reddit | Staff Data Scientist, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7721851 | reddit | Staff Data Scientist, Ads~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/6745284 | reddit | Staff Data Scientist, Consumer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7181821 | reddit | Staff Machine Learning Engineer, Ads Auction (Ads Marketplace Quality)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7747244 | reddit | Staff Machine Learning Engineer, Consumer ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7377109 | reddit | Staff Machine Learning Engineer, Dev Platform Data and Discovery~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7772523 | reddit | Staff Machine Learning Engineer, GenAI Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/reddit/jobs/7731788 | reddit | Staff Machine Learning Systems Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/robinhood/jobs/7324983?t=gh_src=&gh_jid=7324983 | robinhood | Data Scientist, Product~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/robinhood/jobs/7412037?t=gh_src=&gh_jid=7412037 | robinhood | Senior Data Scientist, Fraud ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/robinhood/jobs/7482186?t=gh_src=&gh_jid=7482186 | robinhood | Senior Data Scientist, ML (Brokerage)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/robinhood/jobs/7596426?t=gh_src=&gh_jid=7596426 | robinhood | Senior Data Scientist, ML (Incentives)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/robinhood/jobs/7324981?t=gh_src=&gh_jid=7324981 | robinhood | Senior Data Scientist, Product~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/robinhood/jobs/7121213?t=gh_src=&gh_jid=7121213 | robinhood | Senior Machine Learning Engineer, Agentic~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/robinhood/jobs/7676714?t=gh_src=&gh_jid=7676714 | robinhood | Staff Machine Learning Engineer, Agentic~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/twilio/jobs/7702644 | twilio | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/twilio/jobs/7155492 | twilio | Principal Machine Learning & Data Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/twilio/jobs/7066029 | twilio | Senior Manager, Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/twilio/jobs/7061880 | twilio | Staff Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/twilio/jobs/7716287 | twilio | Staff Machine Learning Engineer (L4)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/twilio/jobs/7520997 | twilio | Staff Machine Learning Engineer (L4)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 
-- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/4828370007 | thetradedesk |  Senior Data Scientist-Measurement 
-- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/4828316007 | thetradedesk | Senior Data Scientist-Measurement 
-- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/4779743007 | thetradedesk | Sr AI Engineer
-- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/5016314007 | thetradedesk | Sr AI Engineer
-- [ ] https://job-boards.greenhouse.io/thetradedesk/jobs/5016313007 | thetradedesk | Sr AI Engineer
-- [ ] https://job-boards.greenhouse.io/affirm/jobs/7695818003 | affirm | Machine Learning Engineer II (Fraud) 
-- [ ] https://job-boards.greenhouse.io/affirm/jobs/7696276003 | affirm | Senior Machine Learning Engineer (Fraud ML)
-- [ ] https://job-boards.greenhouse.io/affirm/jobs/7550522003 | affirm | Senior Staff Machine Learning Engineer, (ML Underwriting)
-- [ ] https://job-boards.greenhouse.io/affirm/jobs/7550524003 | affirm | Senior Staff Machine Learning Engineer, (ML Underwriting)
-- [ ] https://job-boards.greenhouse.io/scoutai/jobs/4643324008 | scoutai | AI Engineer - Fury Team 
-- [ ] https://job-boards.greenhouse.io/attentive/jobs/4121283009 | attentive | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/attentive/jobs/4120595009 | attentive | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/attentive/jobs/4129704009 | attentive | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/twitch/jobs/8401220002 | twitch | Data Scientist
-- [ ] https://job-boards.greenhouse.io/freedomconsulting/jobs/4510005007 | freedomconsulting | Data Scientist
-- [ ] https://job-boards.greenhouse.io/freedomconsulting/jobs/5089277007 | freedomconsulting | Journeyman Data Scientist 
-- [ ] https://job-boards.greenhouse.io/freedomconsulting/jobs/5081498007 | freedomconsulting | Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/freedomconsulting/jobs/5089284007 | freedomconsulting | Senior Data Scientist 
-- [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7167997 | smartsheet | Data Scientist II (Hybrid in Bangalore)
-- [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7798778 | smartsheet | Senior Forward Deployed AI Engineer (Remote Eligible)
-- [ ] https://job-boards.greenhouse.io/smartsheet/jobs/7171724 | smartsheet | Sr. Data Scientist (Hybrid in Bangalore)
-- [ ] https://job-boards.greenhouse.io/mthreerecruitingportal/jobs/4313148006 | mthreerecruitingportal | Junior Data Scientist
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7577003003 | axon | Principal Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7563078003 | axon | Senior Computer Vision and Machine Learning Research Scientist
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7589179003 | axon | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7537801003 | axon | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7583232003 | axon | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7615561003 | axon | Senior Machine Learning Engineer II
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7624679003 | axon | Senior Machine Learning Scientist 
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7624698003 | axon | Senior Machine Learning Scientist 
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7624686003 | axon | Senior Machine Learning Scientist 
-- [ ] https://job-boards.greenhouse.io/axon/jobs/7677568003 | axon | Sr Machine Learning Engineer I
-- [ ] https://job-boards.greenhouse.io/klaviyocampus/jobs/7621072003 | klaviyocampus | AI Engineer I
-- [ ] https://job-boards.greenhouse.io/klaviyocampus/jobs/7484845003 | klaviyocampus | Machine Learning Engineer I
-- [ ] https://job-boards.greenhouse.io/loop/jobs/5391540004 | loop | AI Engineer
-- [ ] https://job-boards.greenhouse.io/perpay/jobs/4946441007 | perpay | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/ophelia/jobs/4826417008 | ophelia | Enrollment Coordinator
-- [ ] https://job-boards.greenhouse.io/uareai/jobs/4030439009 | uareai | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/dv01/jobs/8416034002 | dv01 | MLOps Platform Engineer
-- [ ] https://job-boards.greenhouse.io/verkada/jobs/5040765007 | verkada | Computer Vision Software Engineer - University Graduate 2026
-- [ ] https://job-boards.greenhouse.io/verkada/jobs/5004415007 | verkada | Director of Product, Computer Vision and Artificial Intelligence
-- [ ] https://job-boards.greenhouse.io/verkada/jobs/4626011007 | verkada | Fulfillment Specialist
-- [ ] https://job-boards.greenhouse.io/verkada/jobs/5088291007 | verkada | Fulfillment Specialist (Remote) 
-- [ ] https://job-boards.greenhouse.io/verkada/jobs/5095211007 | verkada | Fulfillment Specialist (Remote) 
-- [ ] https://job-boards.greenhouse.io/verkada/jobs/5097450007 | verkada | Fulfillment Specialist (Remote) 
-- [ ] https://job-boards.greenhouse.io/verkada/jobs/4128624007 | verkada | Software Engineer - Computer Vision
-- [ ] https://job-boards.greenhouse.io/artefactus/jobs/8397937002 | artefactus | Jr. Data Scientist - (Canada-based)
-- [ ] https://job-boards.greenhouse.io/artefactus/jobs/8334907002 | artefactus | Senior Data Scientist - (Canada-based)
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8445206002 | torcrobotics | Data Scientist, I - Decision Science
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8492425002 | torcrobotics | ML Engineer, I - Acceleration Team
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8492427002 | torcrobotics | ML Engineer, II - App Engine
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8516551002 | torcrobotics | ML Engineer, II - App Engine FRENCH
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449468002 | torcrobotics | ML Engineer, II - Birds Eye View (BEV)
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449457002 | torcrobotics | ML Engineer, II - Camera Models
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449459002 | torcrobotics | ML Engineer, II - End to End (E2E)
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449472002 | torcrobotics | ML Engineer, II - Learned Behaviors
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8449463002 | torcrobotics | ML Engineer, II - Road & Lane
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8490701002 | torcrobotics | Senior Machine Learning Engineer - Camera Model
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8518797002 | torcrobotics | Senior, Machine Learning Engineer - End-to-End
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8481096002 | torcrobotics | Senior Machine Learning Engineer - Learned Planning/Reinforcement Learning
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8304653002 | torcrobotics | Senior, ML Engineer - ML Ops Framework
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8308069002 | torcrobotics | Senior, ML Engineer - ML Ops Framework 
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8429809002 | torcrobotics | Senior, ML Engineer - Neural Rendering
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8375567002 | torcrobotics | Senior, ML Engineer - Neural Rendering
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8304659002 | torcrobotics | Senior, ML Engineer - Offline Perception
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8308049002 | torcrobotics | Senior, ML Engineer - Offline Perception
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8324822002 | torcrobotics | Senior, ML Engineer - Road & Lane Detection
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8414773002 | torcrobotics | Senior, ML Engineer - Unstructured Environments
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8304688002 | torcrobotics | Staff, ML Engineer - BEV
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8308045002 | torcrobotics | Staff, ML Engineer - BEV
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8308328002 | torcrobotics | Staff, ML Engineer - Road & Lane Detection
-- [ ] https://job-boards.greenhouse.io/torcrobotics/jobs/8304684002 | torcrobotics | Staff, ML Engineer - Road & Lane Detection
-- [ ] https://boards.greenhouse.io/spacex/jobs/8494810002?gh_jid=8494810002 | spacex | Data Scientist (Starlink)
-- [ ] https://boards.greenhouse.io/spacex/jobs/8104639002?gh_jid=8104639002 | spacex | Fulfillment Buyer (Starship)
-- [ ] https://boards.greenhouse.io/spacex/jobs/8517346002?gh_jid=8517346002 | spacex | Sr. Software Engineer, Computer Vision
-- [ ] https://job-boards.greenhouse.io/newtonresearch/jobs/5020783008 | newtonresearch | Data Scientist
-- [ ] https://job-boards.greenhouse.io/northspyre/jobs/7704668003 | northspyre | AI Engineer Intern (Summer 2026)
-- [ ] https://job-boards.greenhouse.io/appian/jobs/7768920 | appian | Applied AI Engineer - GCP Vertex AI or AWS Bedrock
-- [ ] https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/4968215007 | tenstorrentuniversity | Machine Learning for Physical Design Intern - CPU/AI Hardware   
-- [ ] https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/4501164007 | tenstorrentuniversity | Machine Learning for Physical Design Intern - CPU/AI Hardware   
-- [ ] https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/5076959007 | tenstorrentuniversity | Machine Learning Intern, AI Compiler - Model Training (Serbia)
-- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4626195005 | thenewyorktimes | Machine Learning Scientist
-- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4655096005 | thenewyorktimes | ML Ops Engineer, Machine Learning & AI
-- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4660261005 | thenewyorktimes | R&D Senior LLM Engineer (Temp) 
-- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4653126005 | thenewyorktimes | Senior Software Engineer, Machine Learning Platform
-- [ ] https://job-boards.greenhouse.io/thenewyorktimes/jobs/4653129005 | thenewyorktimes | Software Engineer, Machine Learning Platform
-- [ ] https://job-boards.greenhouse.io/fspco-op012325/jobs/8419046002 | fspco-op012325 | Computational Biology/Machine Learning Co-Op
-- [ ] https://job-boards.greenhouse.io/fspco-op012325/jobs/8427928002 | fspco-op012325 | Machine Learning Co-Op
-- [ ] https://boards.greenhouse.io/point72/jobs/8500448002?gh_jid=8500448002 | point72 | 2026 AI Engineer Intern, Long/Short Equities
-- [ ] https://boards.greenhouse.io/point72/jobs/8041302002?gh_jid=8041302002 | point72 | AI Engineer, IS
-- [ ] https://boards.greenhouse.io/point72/jobs/7001158002?gh_jid=7001158002 | point72 | Cubist Data Scientist
-- [ ] https://boards.greenhouse.io/point72/jobs/7045938002?gh_jid=7045938002 | point72 | Cubist Data Scientist
-- [ ] https://boards.greenhouse.io/point72/jobs/7045995002?gh_jid=7045995002 | point72 | Cubist Senior Data Scientist
-- [ ] https://boards.greenhouse.io/point72/jobs/7045979002?gh_jid=7045979002 | point72 | Cubist Senior Data Scientist
-- [ ] https://boards.greenhouse.io/point72/jobs/8372529002?gh_jid=8372529002 | point72 | Data Scientist
-- [ ] https://boards.greenhouse.io/point72/jobs/8372544002?gh_jid=8372544002 | point72 | Data Scientist
-- [ ] https://boards.greenhouse.io/point72/jobs/7695570002?gh_jid=7695570002 | point72 | Data Scientist, Proprietary Research
-- [ ] https://boards.greenhouse.io/point72/jobs/8170176002?gh_jid=8170176002 | point72 | Machine Learning Engineer
-- [ ] https://boards.greenhouse.io/point72/jobs/8392983002?gh_jid=8392983002 | point72 | Machine Learning Engineer, Genai Technology
-- [ ] https://boards.greenhouse.io/point72/jobs/8342478002?gh_jid=8342478002 | point72 | Machine Learning Engineer, GenAI Technology
-- [ ] https://boards.greenhouse.io/point72/jobs/8472280002?gh_jid=8472280002 | point72 | Machine Learning Infrastructure Engineer, GenAI Technology  
-- [ ] https://boards.greenhouse.io/point72/jobs/7302611002?gh_jid=7302611002 | point72 | Machine Learning Researcher - Intern
-- [ ] https://boards.greenhouse.io/point72/jobs/7661997002?gh_jid=7661997002 | point72 | NLP / AI Engineer
-- [ ] https://boards.greenhouse.io/point72/jobs/7825077002?gh_jid=7825077002 | point72 | NLP Engineer
-- [ ] https://boards.greenhouse.io/point72/jobs/8018850002?gh_jid=8018850002 | point72 | NLP Engineer
-- [ ] https://boards.greenhouse.io/point72/jobs/8023550002?gh_jid=8023550002 | point72 | Quantitative Researcher - Machine Learning
-- [ ] https://boards.greenhouse.io/point72/jobs/7297513002?gh_jid=7297513002 | point72 | Quantitative Researcher - Machine Learning 
-- [ ] https://boards.greenhouse.io/point72/jobs/8018862002?gh_jid=8018862002 | point72 | Quantitative Research Intern (NLP)
-- [ ] https://boards.greenhouse.io/point72/jobs/8466849002?gh_jid=8466849002 | point72 | Senior Software Engineer, Machine Learning
-- [ ] https://boards.greenhouse.io/cloudflare/jobs/7581107?gh_jid=7581107 | cloudflare | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/earnin/jobs/7106869 | earnin | Head of Machine Learning
-- [ ] https://job-boards.greenhouse.io/earnin/jobs/7550049 | earnin | Head of Machine Learning, India
-- [ ] https://job-boards.greenhouse.io/earnin/jobs/7639504 | earnin | Machine Learning Analyst (Gen AI)
-- [ ] https://job-boards.greenhouse.io/earnin/jobs/7770051 | earnin | Machine Learning Intern
-- [ ] https://job-boards.greenhouse.io/earnin/jobs/7017818 | earnin | Senior Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/rackner/jobs/4676566005 | rackner | MLOps Engineer — AI/ML Systems & Deployment (TS/SCI Preferred)
-- [ ] https://job-boards.greenhouse.io/billiontoone/jobs/4680728005 | billiontoone | AI Engineering Intern
-- [ ] https://job-boards.greenhouse.io/billiontoone/jobs/4570095005 | billiontoone | Senior AI Engineer I
-- [ ] https://job-boards.greenhouse.io/dvtrading/jobs/4677605005 | dvtrading | 2026 Summer Internship - AI Engineer
-- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/7681871002 | doubleverify | Data Scientist II
-- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/8087158002 | doubleverify | Senior AI Engineer
-- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/8067284002 | doubleverify | Senior AI Engineer
-- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/7892893002 | doubleverify | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/doubleverify/jobs/8060829002 | doubleverify | Sr. Data Scientist I - Rockerbox
-- [ ] https://job-boards.greenhouse.io/impiricus/jobs/5195577008 | impiricus | AI Engineer
-- [ ] https://job-boards.greenhouse.io/impiricus/jobs/5160112008 | impiricus | VP, AI Engineering
-- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5153808008 | capitalrx | AI / Machine Learning Summer Intern (Graduate level)
-- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5142980008 | capitalrx | Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/5148286008 | capitalrx | Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/4759211008 | capitalrx | Senior Machine Learning Engineer I
-- [ ] https://job-boards.greenhouse.io/capitalrx/jobs/4749307008 | capitalrx | Senior Machine Learning Engineer II
-- [ ] https://job-boards.greenhouse.io/darkwolfsolutions/jobs/7589115003 | darkwolfsolutions | Machine Learning Engineer
-- [ ] https://boards.greenhouse.io/neuralink/jobs/5663271003?gh_jid=5663271003 | neuralink | Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/diligentcorporation/jobs/5844243004 | diligentcorporation | Senior AI Engineer
-- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8234675002 | graphcore | 2026 Graduate Machine Learning Engineer - Applied AI
-- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8420380002 | graphcore | Infrastructure and MLOps Engineer 
-- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8491680002 | graphcore | Senior Machine Learning Engineer (Large Systems)
-- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8392730002 | graphcore | Senior Machine Learning Engineer (Large Systems)
-- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8392724002 | graphcore | Senior Machine Learning Engineer (Large Systems)
-- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8408498002 | graphcore | Senior ML Engineer 
-- [ ] https://job-boards.greenhouse.io/graphcore/jobs/8392727002 | graphcore | Staff Machine Learning Engineer (Large Systems)
-- [ ] https://job-boards.greenhouse.io/podium81/jobs/7243261 | podium81 | Senior AI Engineer - Agentic
-- [ ] https://job-boards.greenhouse.io/podium81/jobs/7774372 | podium81 | Senior Applied AI Engineer
-- [ ] https://job-boards.greenhouse.io/podium81/jobs/7367363 | podium81 | Staff AI Engineer - USA
-- [ ] https://job-boards.greenhouse.io/podium81/jobs/7490572 | podium81 | Staff AI Engineer - Utah
-- [ ] https://job-boards.greenhouse.io/instawork/jobs/4620743006 | instawork | Founding Machine Learning Lead - Instawork Robotics
-- [ ] https://job-boards.greenhouse.io/avride/jobs/4013230009 | avride | Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/avride/jobs/4230374009 | avride | Machine Learning Engineer Internship
-- [ ] https://job-boards.greenhouse.io/avride/jobs/4013016009 | avride | Machine Learning Engineer, Motion Planning & Prediction
-- [ ] https://job-boards.greenhouse.io/jumio/jobs/4627200005 | jumio | Machine Learning Engineer - III (Extraction)
-- [ ] https://job-boards.greenhouse.io/jumio/jobs/4664041005 | jumio | Machine Learning Engineer - IV (Biometrics)
-- [ ] https://job-boards.greenhouse.io/jumio/jobs/4685786005 | jumio | Machine Learning Engineer - IV (Biometrics)
-- [ ] https://job-boards.greenhouse.io/jumio/jobs/4644035005 | jumio | Machine Learning Engineer - IV (Fraud)
-- [ ] https://job-boards.greenhouse.io/rhombuspower/jobs/7601341003 | rhombuspower | Data Scientist, Air Education & Training Command (Active Secret Clearance)
-- [ ] https://job-boards.greenhouse.io/nimblegravity/jobs/4671634005 | nimblegravity | AI Engineer
-- [ ] https://job-boards.greenhouse.io/armada/jobs/4575995008 | armada | AI Engineer
-- [ ] https://job-boards.greenhouse.io/bandwidth/jobs/7362388 | bandwidth | AI Engineer (Research & Development)
-- [ ] https://job-boards.greenhouse.io/bandwidth/jobs/7751575 | bandwidth | Sr. Data Scientist 
-- [ ] https://boards.greenhouse.io/faire/jobs/8510205002?gh_jid=8510205002 | faire | Account Manager, Fulfillment
-- [ ] https://boards.greenhouse.io/faire/jobs/8456064002?gh_jid=8456064002 | faire | Principal Applied AI / ML Engineer
-- [ ] https://boards.greenhouse.io/faire/jobs/8227562002?gh_jid=8227562002 | faire | Senior Data Scientist / Machine Learning Engineer - Listing Quality
-- [ ] https://boards.greenhouse.io/faire/jobs/8227567002?gh_jid=8227567002 | faire | Senior Data Scientist / Machine Learning Engineer - Listing Quality
-- [ ] https://boards.greenhouse.io/faire/jobs/7953219002?gh_jid=7953219002 | faire | Senior Data Scientist - Retailer
-- [ ] https://boards.greenhouse.io/faire/jobs/7953217002?gh_jid=7953217002 | faire | Senior Data Scientist - Retailer
-- [ ] https://boards.greenhouse.io/faire/jobs/8426105002?gh_jid=8426105002 | faire | Senior Staff Machine Learning Platform Engineer
-- [ ] https://boards.greenhouse.io/faire/jobs/8449617002?gh_jid=8449617002 | faire | Senior Staff Machine Learning Platform Engineer
-- [ ] https://boards.greenhouse.io/faire/jobs/8426107002?gh_jid=8426107002 | faire | Staff Machine Learning Platform Engineer
-- [ ] https://job-boards.greenhouse.io/queracomputinginc/jobs/5135036008 | queracomputinginc | Postdoctoral Fellow - Applied Machine Learning in Quantum Systems
-- [ ] https://job-boards.greenhouse.io/queracomputinginc/jobs/5075843008 | queracomputinginc | Quantum Scientist - Machine Learning and Quantum Error Correction
-- [ ] https://boards.greenhouse.io/blacksky/jobs/8499022002?gh_jid=8499022002 | blacksky | Machine Learning Engineer (MLE) Intern
-- [ ] https://job-boards.greenhouse.io/lucidmotors/jobs/4759229007 | lucidmotors | Senior Machine Learning Engineer - Model Optimization & Deployment (ADAS/Autonomous Driving) 
-- [ ] https://job-boards.greenhouse.io/lucidmotors/jobs/4620390007 | lucidmotors | Staff Machine Learning Engineer – (ADAS/Autonomous Driving)
-- [ ] https://job-boards.greenhouse.io/locusrobotics/jobs/5099333007 | locusrobotics | PhD Research Intern – AI & Computer Vision
-- [ ] https://job-boards.greenhouse.io/relaypro/jobs/7675201 | relaypro | Associate Software Engineer (AI/Machine Learning)
-- [ ] https://job-boards.greenhouse.io/avepoint/jobs/7809901 | avepoint | Data Scientist (EDB) 
-- [ ] https://job-boards.greenhouse.io/avepoint/jobs/6328839 | avepoint | JUNIOR AI ENGINEER
-- [ ] https://job-boards.greenhouse.io/avepoint/jobs/7407016 | avepoint | Senior Product Data Scientist
-- [ ] https://job-boards.greenhouse.io/sharkninjaoperatingllc/jobs/4600175006 | sharkninjaoperatingllc | Machine Learning and AI Opportunities
-- [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684004003 | sigmacomputing | Senior AI/ML Engineer
-- [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684008003 | sigmacomputing | Senior AI/ML Engineer
-- [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684012003 | sigmacomputing | Staff AI/ML Engineer
-- [ ] https://job-boards.greenhouse.io/sigmacomputing/jobs/7684011003 | sigmacomputing | Staff AI/ML Engineer
-- [ ] https://job-boards.greenhouse.io/profluent/jobs/4563429008 | profluent | Machine Learning Research Intern
-- [ ] https://job-boards.greenhouse.io/profluent/jobs/4061679008 | profluent | Machine Learning Scientist 
-- [ ] https://job-boards.greenhouse.io/profluent/jobs/5154049008 | profluent | ML Platform / MLOps Engineer
-- [ ] https://job-boards.greenhouse.io/wasabi/jobs/5135801008 | wasabi | Co-op – AI / Machine Learning Engineering
-- [ ] https://job-boards.greenhouse.io/wasabi/jobs/5101129008 | wasabi | Senior Enterprise AI Engineer 
-- [ ] https://job-boards.greenhouse.io/axq/jobs/5819471004 | axq | AI Engineer
-- [ ] https://job-boards.greenhouse.io/axq/jobs/5636445004 | axq | Machine Learning Researcher
-- [ ] https://job-boards.greenhouse.io/didi/jobs/7802877 | didi | Machine Learning Engineer, Foundation Model
-- [ ] https://boards.greenhouse.io/lightmatter/jobs/5148543008?gh_jid=5148543008 | lightmatter | Principal Machine Learning Infrastructure Researcher
-- [ ] https://boards.greenhouse.io/lightmatter/jobs/4893269008?gh_jid=4893269008 | lightmatter | Principal Machine Learning Infrastructure Researcher
-- [ ] https://job-boards.greenhouse.io/workstream/jobs/5156961004 | workstream | AI Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5102920007?gh_jid=5102920007 | andurilindustries | Computer Vision Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016001007?gh_jid=5016001007 | andurilindustries | Computer Vision Engineer, Space
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016334007?gh_jid=5016334007 | andurilindustries | Computer Vision Engineer, Space
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4734570007?gh_jid=4734570007 | andurilindustries | Mission Software Engineer, Vehicle Software, Computer Vision
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4999658007?gh_jid=4999658007 | andurilindustries | Research Engineer, Machine Learning
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4999656007?gh_jid=4999656007 | andurilindustries | Research Engineer, Machine Learning
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4999662007?gh_jid=4999662007 | andurilindustries | Research Engineer, Machine Learning
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5083219007?gh_jid=5083219007 | andurilindustries | Senior AI Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5090921007?gh_jid=5090921007 | andurilindustries | Senior AI Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5114446007?gh_jid=5114446007 | andurilindustries | Senior Computer Vision Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016343007?gh_jid=5016343007 | andurilindustries | Senior Computer Vision Engineer, Space
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016340007?gh_jid=5016340007 | andurilindustries | Senior Computer Vision Engineer, Space
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5083846007?gh_jid=5083846007 | andurilindustries | Senior LLM Software Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5090922007?gh_jid=5090922007 | andurilindustries | Senior LLM Software Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5016403007?gh_jid=5016403007 | andurilindustries | Senior Machine Learning Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5097444007?gh_jid=5097444007 | andurilindustries | Senior Machine Learning Engineer, Perception
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4927589007?gh_jid=4927589007 | andurilindustries | Senior Machine Learning Engineer, Sentry Tower
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/4995797007?gh_jid=4995797007 | andurilindustries | Senior Machine Learning/MLOps Engineer
-- [ ] https://boards.greenhouse.io/andurilindustries/jobs/5077336007?gh_jid=5077336007 | andurilindustries | Senior Software Engineer, Machine Learning
-- [ ] https://boards.greenhouse.io/parallel/jobs/5080721007?gh_jid=5080721007 | parallel | Machine Learning/Computer Vision Engineer
-- [ ] https://boards.greenhouse.io/parallel/jobs/4933273007?gh_jid=4933273007 | parallel | Senior Machine Learning/Computer Vision Engineer
-- [ ] https://boards.greenhouse.io/parallel/jobs/5021874007?gh_jid=5021874007 | parallel | Senior ML Ops Engineer (Machine Learning Infrastructure)
+- [x] ~~https://job-boards.greenhouse.io/thetradedesk/jobs/4828370007 | thetradedesk |  Senior Data Scientist-Measurement ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thetradedesk/jobs/4828316007 | thetradedesk | Senior Data Scientist-Measurement ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thetradedesk/jobs/4779743007 | thetradedesk | Sr AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thetradedesk/jobs/5016314007 | thetradedesk | Sr AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thetradedesk/jobs/5016313007 | thetradedesk | Sr AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/affirm/jobs/7695818003 | affirm | Machine Learning Engineer II (Fraud) ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/affirm/jobs/7696276003 | affirm | Senior Machine Learning Engineer (Fraud ML)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/affirm/jobs/7550522003 | affirm | Senior Staff Machine Learning Engineer, (ML Underwriting)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/affirm/jobs/7550524003 | affirm | Senior Staff Machine Learning Engineer, (ML Underwriting)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/scoutai/jobs/4643324008 | scoutai | AI Engineer - Fury Team ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/attentive/jobs/4121283009 | attentive | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/attentive/jobs/4120595009 | attentive | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/attentive/jobs/4129704009 | attentive | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/twitch/jobs/8401220002 | twitch | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/freedomconsulting/jobs/4510005007 | freedomconsulting | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/freedomconsulting/jobs/5089277007 | freedomconsulting | Journeyman Data Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/freedomconsulting/jobs/5081498007 | freedomconsulting | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/freedomconsulting/jobs/5089284007 | freedomconsulting | Senior Data Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartsheet/jobs/7167997 | smartsheet | Data Scientist II (Hybrid in Bangalore)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartsheet/jobs/7798778 | smartsheet | Senior Forward Deployed AI Engineer (Remote Eligible)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartsheet/jobs/7171724 | smartsheet | Sr. Data Scientist (Hybrid in Bangalore)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/mthreerecruitingportal/jobs/4313148006 | mthreerecruitingportal | Junior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7577003003 | axon | Principal Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7563078003 | axon | Senior Computer Vision and Machine Learning Research Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7589179003 | axon | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7537801003 | axon | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7583232003 | axon | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7615561003 | axon | Senior Machine Learning Engineer II~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7624679003 | axon | Senior Machine Learning Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7624698003 | axon | Senior Machine Learning Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7624686003 | axon | Senior Machine Learning Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axon/jobs/7677568003 | axon | Sr Machine Learning Engineer I~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/klaviyocampus/jobs/7621072003 | klaviyocampus | AI Engineer I~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/klaviyocampus/jobs/7484845003 | klaviyocampus | Machine Learning Engineer I~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/loop/jobs/5391540004 | loop | AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/perpay/jobs/4946441007 | perpay | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/ophelia/jobs/4826417008 | ophelia | Enrollment Coordinator~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/uareai/jobs/4030439009 | uareai | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/dv01/jobs/8416034002 | dv01 | MLOps Platform Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/verkada/jobs/5040765007 | verkada | Computer Vision Software Engineer - University Graduate 2026~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/verkada/jobs/5004415007 | verkada | Director of Product, Computer Vision and Artificial Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/verkada/jobs/4626011007 | verkada | Fulfillment Specialist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/verkada/jobs/5088291007 | verkada | Fulfillment Specialist (Remote) ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/verkada/jobs/5095211007 | verkada | Fulfillment Specialist (Remote) ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/verkada/jobs/5097450007 | verkada | Fulfillment Specialist (Remote) ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/verkada/jobs/4128624007 | verkada | Software Engineer - Computer Vision~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/artefactus/jobs/8397937002 | artefactus | Jr. Data Scientist - (Canada-based)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/artefactus/jobs/8334907002 | artefactus | Senior Data Scientist - (Canada-based)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8445206002 | torcrobotics | Data Scientist, I - Decision Science~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8492425002 | torcrobotics | ML Engineer, I - Acceleration Team~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8492427002 | torcrobotics | ML Engineer, II - App Engine~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8516551002 | torcrobotics | ML Engineer, II - App Engine FRENCH~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8449468002 | torcrobotics | ML Engineer, II - Birds Eye View (BEV)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8449457002 | torcrobotics | ML Engineer, II - Camera Models~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8449459002 | torcrobotics | ML Engineer, II - End to End (E2E)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8449472002 | torcrobotics | ML Engineer, II - Learned Behaviors~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8449463002 | torcrobotics | ML Engineer, II - Road & Lane~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8490701002 | torcrobotics | Senior Machine Learning Engineer - Camera Model~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8518797002 | torcrobotics | Senior, Machine Learning Engineer - End-to-End~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8481096002 | torcrobotics | Senior Machine Learning Engineer - Learned Planning/Reinforcement Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8304653002 | torcrobotics | Senior, ML Engineer - ML Ops Framework~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8308069002 | torcrobotics | Senior, ML Engineer - ML Ops Framework ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8429809002 | torcrobotics | Senior, ML Engineer - Neural Rendering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8375567002 | torcrobotics | Senior, ML Engineer - Neural Rendering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8304659002 | torcrobotics | Senior, ML Engineer - Offline Perception~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8308049002 | torcrobotics | Senior, ML Engineer - Offline Perception~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8324822002 | torcrobotics | Senior, ML Engineer - Road & Lane Detection~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8414773002 | torcrobotics | Senior, ML Engineer - Unstructured Environments~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8304688002 | torcrobotics | Staff, ML Engineer - BEV~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8308045002 | torcrobotics | Staff, ML Engineer - BEV~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8308328002 | torcrobotics | Staff, ML Engineer - Road & Lane Detection~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/torcrobotics/jobs/8304684002 | torcrobotics | Staff, ML Engineer - Road & Lane Detection~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/spacex/jobs/8494810002?gh_jid=8494810002 | spacex | Data Scientist (Starlink)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/spacex/jobs/8104639002?gh_jid=8104639002 | spacex | Fulfillment Buyer (Starship)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/spacex/jobs/8517346002?gh_jid=8517346002 | spacex | Sr. Software Engineer, Computer Vision~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/newtonresearch/jobs/5020783008 | newtonresearch | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/northspyre/jobs/7704668003 | northspyre | AI Engineer Intern (Summer 2026)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/appian/jobs/7768920 | appian | Applied AI Engineer - GCP Vertex AI or AWS Bedrock~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/4968215007 | tenstorrentuniversity | Machine Learning for Physical Design Intern - CPU/AI Hardware   ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/4501164007 | tenstorrentuniversity | Machine Learning for Physical Design Intern - CPU/AI Hardware   ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/tenstorrentuniversity/jobs/5076959007 | tenstorrentuniversity | Machine Learning Intern, AI Compiler - Model Training (Serbia)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thenewyorktimes/jobs/4626195005 | thenewyorktimes | Machine Learning Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thenewyorktimes/jobs/4655096005 | thenewyorktimes | ML Ops Engineer, Machine Learning & AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thenewyorktimes/jobs/4660261005 | thenewyorktimes | R&D Senior LLM Engineer (Temp) ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thenewyorktimes/jobs/4653126005 | thenewyorktimes | Senior Software Engineer, Machine Learning Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/thenewyorktimes/jobs/4653129005 | thenewyorktimes | Software Engineer, Machine Learning Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fspco-op012325/jobs/8419046002 | fspco-op012325 | Computational Biology/Machine Learning Co-Op~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fspco-op012325/jobs/8427928002 | fspco-op012325 | Machine Learning Co-Op~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8500448002?gh_jid=8500448002 | point72 | 2026 AI Engineer Intern, Long/Short Equities~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8041302002?gh_jid=8041302002 | point72 | AI Engineer, IS~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7001158002?gh_jid=7001158002 | point72 | Cubist Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7045938002?gh_jid=7045938002 | point72 | Cubist Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7045995002?gh_jid=7045995002 | point72 | Cubist Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7045979002?gh_jid=7045979002 | point72 | Cubist Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8372529002?gh_jid=8372529002 | point72 | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8372544002?gh_jid=8372544002 | point72 | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7695570002?gh_jid=7695570002 | point72 | Data Scientist, Proprietary Research~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8170176002?gh_jid=8170176002 | point72 | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8392983002?gh_jid=8392983002 | point72 | Machine Learning Engineer, Genai Technology~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8342478002?gh_jid=8342478002 | point72 | Machine Learning Engineer, GenAI Technology~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8472280002?gh_jid=8472280002 | point72 | Machine Learning Infrastructure Engineer, GenAI Technology  ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7302611002?gh_jid=7302611002 | point72 | Machine Learning Researcher - Intern~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7661997002?gh_jid=7661997002 | point72 | NLP / AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7825077002?gh_jid=7825077002 | point72 | NLP Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8018850002?gh_jid=8018850002 | point72 | NLP Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8023550002?gh_jid=8023550002 | point72 | Quantitative Researcher - Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/7297513002?gh_jid=7297513002 | point72 | Quantitative Researcher - Machine Learning ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8018862002?gh_jid=8018862002 | point72 | Quantitative Research Intern (NLP)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/point72/jobs/8466849002?gh_jid=8466849002 | point72 | Senior Software Engineer, Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/cloudflare/jobs/7581107?gh_jid=7581107 | cloudflare | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/earnin/jobs/7106869 | earnin | Head of Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/earnin/jobs/7550049 | earnin | Head of Machine Learning, India~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/earnin/jobs/7639504 | earnin | Machine Learning Analyst (Gen AI)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/earnin/jobs/7770051 | earnin | Machine Learning Intern~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/earnin/jobs/7017818 | earnin | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/rackner/jobs/4676566005 | rackner | MLOps Engineer — AI/ML Systems & Deployment (TS/SCI Preferred)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/billiontoone/jobs/4680728005 | billiontoone | AI Engineering Intern~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/billiontoone/jobs/4570095005 | billiontoone | Senior AI Engineer I~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/dvtrading/jobs/4677605005 | dvtrading | 2026 Summer Internship - AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doubleverify/jobs/7681871002 | doubleverify | Data Scientist II~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doubleverify/jobs/8087158002 | doubleverify | Senior AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doubleverify/jobs/8067284002 | doubleverify | Senior AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doubleverify/jobs/7892893002 | doubleverify | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doubleverify/jobs/8060829002 | doubleverify | Sr. Data Scientist I - Rockerbox~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/impiricus/jobs/5195577008 | impiricus | AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/impiricus/jobs/5160112008 | impiricus | VP, AI Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/capitalrx/jobs/5153808008 | capitalrx | AI / Machine Learning Summer Intern (Graduate level)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/capitalrx/jobs/5142980008 | capitalrx | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/capitalrx/jobs/5148286008 | capitalrx | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/capitalrx/jobs/4759211008 | capitalrx | Senior Machine Learning Engineer I~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/capitalrx/jobs/4749307008 | capitalrx | Senior Machine Learning Engineer II~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/darkwolfsolutions/jobs/7589115003 | darkwolfsolutions | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/neuralink/jobs/5663271003?gh_jid=5663271003 | neuralink | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/diligentcorporation/jobs/5844243004 | diligentcorporation | Senior AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/graphcore/jobs/8234675002 | graphcore | 2026 Graduate Machine Learning Engineer - Applied AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/graphcore/jobs/8420380002 | graphcore | Infrastructure and MLOps Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/graphcore/jobs/8491680002 | graphcore | Senior Machine Learning Engineer (Large Systems)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/graphcore/jobs/8392730002 | graphcore | Senior Machine Learning Engineer (Large Systems)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/graphcore/jobs/8392724002 | graphcore | Senior Machine Learning Engineer (Large Systems)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/graphcore/jobs/8408498002 | graphcore | Senior ML Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/graphcore/jobs/8392727002 | graphcore | Staff Machine Learning Engineer (Large Systems)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/podium81/jobs/7243261 | podium81 | Senior AI Engineer - Agentic~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/podium81/jobs/7774372 | podium81 | Senior Applied AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/podium81/jobs/7367363 | podium81 | Staff AI Engineer - USA~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/podium81/jobs/7490572 | podium81 | Staff AI Engineer - Utah~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/instawork/jobs/4620743006 | instawork | Founding Machine Learning Lead - Instawork Robotics~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/avride/jobs/4013230009 | avride | Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/avride/jobs/4230374009 | avride | Machine Learning Engineer Internship~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/avride/jobs/4013016009 | avride | Machine Learning Engineer, Motion Planning & Prediction~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/jumio/jobs/4627200005 | jumio | Machine Learning Engineer - III (Extraction)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/jumio/jobs/4664041005 | jumio | Machine Learning Engineer - IV (Biometrics)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/jumio/jobs/4685786005 | jumio | Machine Learning Engineer - IV (Biometrics)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/jumio/jobs/4644035005 | jumio | Machine Learning Engineer - IV (Fraud)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/rhombuspower/jobs/7601341003 | rhombuspower | Data Scientist, Air Education & Training Command (Active Secret Clearance)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/nimblegravity/jobs/4671634005 | nimblegravity | AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/armada/jobs/4575995008 | armada | AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/bandwidth/jobs/7362388 | bandwidth | AI Engineer (Research & Development)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/bandwidth/jobs/7751575 | bandwidth | Sr. Data Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/8510205002?gh_jid=8510205002 | faire | Account Manager, Fulfillment~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/8456064002?gh_jid=8456064002 | faire | Principal Applied AI / ML Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/8227562002?gh_jid=8227562002 | faire | Senior Data Scientist / Machine Learning Engineer - Listing Quality~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/8227567002?gh_jid=8227567002 | faire | Senior Data Scientist / Machine Learning Engineer - Listing Quality~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/7953219002?gh_jid=7953219002 | faire | Senior Data Scientist - Retailer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/7953217002?gh_jid=7953217002 | faire | Senior Data Scientist - Retailer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/8426105002?gh_jid=8426105002 | faire | Senior Staff Machine Learning Platform Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/8449617002?gh_jid=8449617002 | faire | Senior Staff Machine Learning Platform Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/faire/jobs/8426107002?gh_jid=8426107002 | faire | Staff Machine Learning Platform Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/queracomputinginc/jobs/5135036008 | queracomputinginc | Postdoctoral Fellow - Applied Machine Learning in Quantum Systems~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/queracomputinginc/jobs/5075843008 | queracomputinginc | Quantum Scientist - Machine Learning and Quantum Error Correction~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/blacksky/jobs/8499022002?gh_jid=8499022002 | blacksky | Machine Learning Engineer (MLE) Intern~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/lucidmotors/jobs/4759229007 | lucidmotors | Senior Machine Learning Engineer - Model Optimization & Deployment (ADAS/Autonomous Driving) ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/lucidmotors/jobs/4620390007 | lucidmotors | Staff Machine Learning Engineer – (ADAS/Autonomous Driving)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/locusrobotics/jobs/5099333007 | locusrobotics | PhD Research Intern – AI & Computer Vision~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/relaypro/jobs/7675201 | relaypro | Associate Software Engineer (AI/Machine Learning)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/avepoint/jobs/7809901 | avepoint | Data Scientist (EDB) ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/avepoint/jobs/6328839 | avepoint | JUNIOR AI ENGINEER~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/avepoint/jobs/7407016 | avepoint | Senior Product Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/sharkninjaoperatingllc/jobs/4600175006 | sharkninjaoperatingllc | Machine Learning and AI Opportunities~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/sigmacomputing/jobs/7684004003 | sigmacomputing | Senior AI/ML Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/sigmacomputing/jobs/7684008003 | sigmacomputing | Senior AI/ML Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/sigmacomputing/jobs/7684012003 | sigmacomputing | Staff AI/ML Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/sigmacomputing/jobs/7684011003 | sigmacomputing | Staff AI/ML Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/profluent/jobs/4563429008 | profluent | Machine Learning Research Intern~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/profluent/jobs/4061679008 | profluent | Machine Learning Scientist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/profluent/jobs/5154049008 | profluent | ML Platform / MLOps Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/wasabi/jobs/5135801008 | wasabi | Co-op – AI / Machine Learning Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/wasabi/jobs/5101129008 | wasabi | Senior Enterprise AI Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axq/jobs/5819471004 | axq | AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/axq/jobs/5636445004 | axq | Machine Learning Researcher~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/didi/jobs/7802877 | didi | Machine Learning Engineer, Foundation Model~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/lightmatter/jobs/5148543008?gh_jid=5148543008 | lightmatter | Principal Machine Learning Infrastructure Researcher~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/lightmatter/jobs/4893269008?gh_jid=4893269008 | lightmatter | Principal Machine Learning Infrastructure Researcher~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/workstream/jobs/5156961004 | workstream | AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5102920007?gh_jid=5102920007 | andurilindustries | Computer Vision Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5016001007?gh_jid=5016001007 | andurilindustries | Computer Vision Engineer, Space~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5016334007?gh_jid=5016334007 | andurilindustries | Computer Vision Engineer, Space~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/4734570007?gh_jid=4734570007 | andurilindustries | Mission Software Engineer, Vehicle Software, Computer Vision~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/4999658007?gh_jid=4999658007 | andurilindustries | Research Engineer, Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/4999656007?gh_jid=4999656007 | andurilindustries | Research Engineer, Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/4999662007?gh_jid=4999662007 | andurilindustries | Research Engineer, Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5083219007?gh_jid=5083219007 | andurilindustries | Senior AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5090921007?gh_jid=5090921007 | andurilindustries | Senior AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5114446007?gh_jid=5114446007 | andurilindustries | Senior Computer Vision Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5016343007?gh_jid=5016343007 | andurilindustries | Senior Computer Vision Engineer, Space~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5016340007?gh_jid=5016340007 | andurilindustries | Senior Computer Vision Engineer, Space~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5083846007?gh_jid=5083846007 | andurilindustries | Senior LLM Software Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5090922007?gh_jid=5090922007 | andurilindustries | Senior LLM Software Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5016403007?gh_jid=5016403007 | andurilindustries | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5097444007?gh_jid=5097444007 | andurilindustries | Senior Machine Learning Engineer, Perception~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/4927589007?gh_jid=4927589007 | andurilindustries | Senior Machine Learning Engineer, Sentry Tower~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/4995797007?gh_jid=4995797007 | andurilindustries | Senior Machine Learning/MLOps Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/andurilindustries/jobs/5077336007?gh_jid=5077336007 | andurilindustries | Senior Software Engineer, Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/parallel/jobs/5080721007?gh_jid=5080721007 | parallel | Machine Learning/Computer Vision Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/parallel/jobs/4933273007?gh_jid=4933273007 | parallel | Senior Machine Learning/Computer Vision Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/parallel/jobs/5021874007?gh_jid=5021874007 | parallel | Senior ML Ops Engineer (Machine Learning Infrastructure)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 
-- [ ] https://www.scout24.com/en/career/jobs/7795627?gh_jid=7795627 | scout24 | Working Student AI Engineering (m/w/d) 
-- [ ] https://job-boards.greenhouse.io/adyen/jobs/7434460 | adyen | Machine Learning Scientist
-- [ ] https://job-boards.greenhouse.io/adyen/jobs/7300108 | adyen | Senior Data Scientist - Experimentation Platform
-- [ ] https://job-boards.greenhouse.io/autoscout24/jobs/7681898003 | autoscout24 | Principal Data Scientist (m/f/d)
-- [ ] https://job-boards.greenhouse.io/autoscout24/jobs/7594404003 | autoscout24 | Senior GenAI Data Scientist (m/f/d)
-- [ ] https://job-boards.greenhouse.io/autoscout24/jobs/7671592003 | autoscout24 | Senior GenAI Data Scientist (m/f/d)
-- [ ] https://job-boards.greenhouse.io/checkr/jobs/7779296 | checkr | Staff Applied AI Engineer
-- [ ] https://job-boards.greenhouse.io/cabify/jobs/8462001002 | cabify | Data Scientist
-- [ ] https://job-boards.greenhouse.io/cabify/jobs/8516376002 | cabify | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/contentful/jobs/7557680 | contentful | Senior Machine Learning Engineer (f/m/d)
-- [ ] https://job-boards.greenhouse.io/doctolib/jobs/6681347003 | doctolib | Machine Learning Engineer - AI Teams (x/f/m)
-- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7642865003 | doctolib | NLP / AI Research Intern (x/f/m)
-- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7647049003 | doctolib | Senior AI Engineer (x/f/m)
-- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7629374003 | doctolib | Senior AI Engineer (x/f/m) - Phone Assistant
-- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7692278003 | doctolib | Senior MLOps Engineer - Data Ingestion - Paris
-- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7510762003 | doctolib | Senior Staff Machine Learning Engineer - Clinical - AI Teams (x/f/m)
-- [ ] https://job-boards.greenhouse.io/doctolib/jobs/7527262003 | doctolib | Senior/Staff Machine Learning Engineer - Health Evaluation - AI Teams (x/f/m)
-- [ ] https://job-boards.greenhouse.io/gitlab/jobs/8484753002 | gitlab | Engineering Manager, AI Engineering:Workflow Catalog
-- [ ] https://job-boards.greenhouse.io/gitlab/jobs/8464072002 | gitlab | Senior AI Engineer
-- [ ] https://job-boards.greenhouse.io/gitlab/jobs/8452278002 | gitlab | Senior Fullstack Engineer (TypeScript), AI Engineering: Editor Extensions
-- [ ] https://job-boards.greenhouse.io/gitlab/jobs/8450446002 | gitlab | Staff Backend (Python) Engineer, AI Engineering:Duo Chat
-- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7544236 | gocardless | Senior Data Scientist, Fraud Prevention
-- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7661486 | gocardless | Senior Data Scientist, Fraud Prevention
-- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7661485 | gocardless | Senior Data Scientist, Fraud Prevention
-- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7526075 | gocardless | Senior Data Scientist, Payment Intelligence
-- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7526068 | gocardless | Senior Data Scientist, Payment Intelligence
-- [ ] https://job-boards.greenhouse.io/gocardless/jobs/7526078 | gocardless | Senior Data Scientist, Payment Intelligence
-- [ ] https://careers.hellofresh.com/global/en/job/7699418?gh_jid=7699418 | hellofresh | [US-DC] Director, Fulfillment
-- [ ] https://job-boards.greenhouse.io/launchdarkly/jobs/7617683003 | launchdarkly | Data Scientist, Data Science
-- [ ] https://job-boards.greenhouse.io/mozilla/jobs/7811887 | mozilla | Senior Data Scientist, Product
-- [ ] https://job-boards.greenhouse.io/mozilla/jobs/7812350 | mozilla | Senior Data Scientist, Product
-- [ ] https://job-boards.greenhouse.io/monzo/jobs/6369658 | monzo | Lead Data Scientist
-- [ ] https://job-boards.greenhouse.io/monzo/jobs/7457551 | monzo | Lead Data Scientist
-- [ ] https://job-boards.greenhouse.io/monzo/jobs/7766052 | monzo | Machine Learning Manager, Borrowing
-- [ ] https://job-boards.greenhouse.io/monzo/jobs/7118972 | monzo | Platform Engineer, Machine Learning
-- [ ] https://job-boards.greenhouse.io/monzo/jobs/6180814 | monzo | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/monzo/jobs/7686352 | monzo | Senior Machine Learning Scientist, Borrowing
-- [ ] https://job-boards.greenhouse.io/newrelic/jobs/4992316008 | newrelic | Lead Data Scientist
-- [ ] https://job-boards.greenhouse.io/newrelic/jobs/5007069008 | newrelic | Senior Manager, Machine Learning Engineering
-- [ ] https://job-boards.greenhouse.io/nubank/jobs/7242278 | nubank | Data Scientist
-- [ ] https://job-boards.greenhouse.io/nubank/jobs/7615916 | nubank | Data Scientist [All Levels]
-- [ ] https://job-boards.greenhouse.io/nubank/jobs/7587179 | nubank | Lead Machine Learning Engineer / Applied AI Scientist
-- [ ] https://job-boards.greenhouse.io/nubank/jobs/7615798 | nubank | Machine Learning Engineer [All Levels]
-- [ ] https://job-boards.greenhouse.io/nubank/jobs/7732512 | nubank | Staff Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/philo/jobs/7259010 | philo | Sr. Machine Learning Engineer (Recommendation Systems)
-- [ ] https://job-boards.greenhouse.io/sertis/jobs/7847750002 | sertis | AI/Machine Learning Engineer Intern
-- [ ] https://job-boards.greenhouse.io/sertis/jobs/7974356002 | sertis | Machine Learning Engineer (Mid-Senior level)
-- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5790147004 | smartlyio | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5796036004 | smartlyio | Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5687120004 | smartlyio | Senior Machine Learning Engineer (AI Platform)
-- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5688559004 | smartlyio | Senior Machine Learning Engineer (AI Platform)
-- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5478498004 | smartlyio | Staff Machine Learning Engineer (AI Platform)
-- [ ] https://job-boards.greenhouse.io/smartlyio/jobs/5471822004 | smartlyio | Staff Machine Learning Engineer (AI Platform)
-- [ ] https://sumup.com/careers/positions/8458929002?gh_jid=8458929002 | sumup | Data Scientist
-- [ ] https://sumup.com/careers/positions/8364207002?gh_jid=8364207002 | sumup | Senior Data Engineer – AI AML Engineering
-- [ ] https://sumup.com/careers/positions/8459126002?gh_jid=8459126002 | sumup | Senior Data Scientist
-- [ ] https://sumup.com/careers/positions/8458919002?gh_jid=8458919002 | sumup | Senior Machine Learning Engineer
-- [ ] https://sumup.com/careers/positions/8503516002?gh_jid=8503516002 | sumup | Senior Machine Learning Engineer 
-- [ ] https://www.thoughtworks.com/careers/jobs/7747358?gh_jid=7747358 | thoughtworks | Lead Data Scientist
-- [ ] https://www.thoughtworks.com/careers/jobs/7395726?gh_jid=7395726 | thoughtworks | Lead Data Scientist
-- [ ] https://www.thoughtworks.com/careers/jobs/7378858?gh_jid=7378858 | thoughtworks | Senior Data Scientist
-- [ ] https://www.thoughtworks.com/careers/jobs/7264551?gh_jid=7264551 | thoughtworks | Senior Data Scientist
-- [ ] https://www.thoughtworks.com/careers/jobs/7228447?gh_jid=7228447 | thoughtworks | Senior Machine Learning Engineer
-- [ ] https://www.thoughtworks.com/careers/jobs/7228589?gh_jid=7228589 | thoughtworks | Senior Machine Learning Engineer
-- [ ] https://careers.trivago.com/job/r8464320002?gh_jid=8464320002 | trivago | Data Scientist - AI Search & Ranking
-- [ ] https://careers.trivago.com/job/r8401443002?gh_jid=8401443002 | trivago | Data Scientist - Price
-- [ ] https://job-boards.eu.greenhouse.io/wallapop/jobs/4701711101 | wallapop | Data Scientist -Search
-- [ ] https://job-boards.eu.greenhouse.io/wallapop/jobs/4741205101 | wallapop | MLOps Engineer
-- [ ] https://job-boards.greenhouse.io/vtex/jobs/5591730004 | vtex | Data Scientist - LLMs
-- [ ] https://boards.greenhouse.io/wheely/jobs/7588263003?gh_jid=7588263003 | wheely | Data Scientist
-- [ ] https://boards.greenhouse.io/wheely/jobs/7588277003?gh_jid=7588277003 | wheely | Data Scientist
-- [ ] https://job-boards.eu.greenhouse.io/yld/jobs/4653093101 | yld | AI Engineer 
-- [ ] https://job-boards.eu.greenhouse.io/yld/jobs/4829316101 | yld | Contract Senior Data Scientist
-- [ ] https://job-boards.greenhouse.io/webflow/jobs/7813157 | webflow | Senior Staff Machine Learning Scientist, Assets
+- [x] ~~https://www.scout24.com/en/career/jobs/7795627?gh_jid=7795627 | scout24 | Working Student AI Engineering (m/w/d) ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/adyen/jobs/7434460 | adyen | Machine Learning Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/adyen/jobs/7300108 | adyen | Senior Data Scientist - Experimentation Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/autoscout24/jobs/7681898003 | autoscout24 | Principal Data Scientist (m/f/d)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/autoscout24/jobs/7594404003 | autoscout24 | Senior GenAI Data Scientist (m/f/d)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/autoscout24/jobs/7671592003 | autoscout24 | Senior GenAI Data Scientist (m/f/d)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/checkr/jobs/7779296 | checkr | Staff Applied AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/cabify/jobs/8462001002 | cabify | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/cabify/jobs/8516376002 | cabify | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/contentful/jobs/7557680 | contentful | Senior Machine Learning Engineer (f/m/d)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doctolib/jobs/6681347003 | doctolib | Machine Learning Engineer - AI Teams (x/f/m)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doctolib/jobs/7642865003 | doctolib | NLP / AI Research Intern (x/f/m)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doctolib/jobs/7647049003 | doctolib | Senior AI Engineer (x/f/m)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doctolib/jobs/7629374003 | doctolib | Senior AI Engineer (x/f/m) - Phone Assistant~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doctolib/jobs/7692278003 | doctolib | Senior MLOps Engineer - Data Ingestion - Paris~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doctolib/jobs/7510762003 | doctolib | Senior Staff Machine Learning Engineer - Clinical - AI Teams (x/f/m)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/doctolib/jobs/7527262003 | doctolib | Senior/Staff Machine Learning Engineer - Health Evaluation - AI Teams (x/f/m)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gitlab/jobs/8484753002 | gitlab | Engineering Manager, AI Engineering:Workflow Catalog~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gitlab/jobs/8464072002 | gitlab | Senior AI Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gitlab/jobs/8452278002 | gitlab | Senior Fullstack Engineer (TypeScript), AI Engineering: Editor Extensions~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gitlab/jobs/8450446002 | gitlab | Staff Backend (Python) Engineer, AI Engineering:Duo Chat~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gocardless/jobs/7544236 | gocardless | Senior Data Scientist, Fraud Prevention~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gocardless/jobs/7661486 | gocardless | Senior Data Scientist, Fraud Prevention~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gocardless/jobs/7661485 | gocardless | Senior Data Scientist, Fraud Prevention~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gocardless/jobs/7526075 | gocardless | Senior Data Scientist, Payment Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gocardless/jobs/7526068 | gocardless | Senior Data Scientist, Payment Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/gocardless/jobs/7526078 | gocardless | Senior Data Scientist, Payment Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.hellofresh.com/global/en/job/7699418?gh_jid=7699418 | hellofresh | [US-DC] Director, Fulfillment~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/launchdarkly/jobs/7617683003 | launchdarkly | Data Scientist, Data Science~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/mozilla/jobs/7811887 | mozilla | Senior Data Scientist, Product~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/mozilla/jobs/7812350 | mozilla | Senior Data Scientist, Product~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/monzo/jobs/6369658 | monzo | Lead Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/monzo/jobs/7457551 | monzo | Lead Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/monzo/jobs/7766052 | monzo | Machine Learning Manager, Borrowing~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/monzo/jobs/7118972 | monzo | Platform Engineer, Machine Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/monzo/jobs/6180814 | monzo | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/monzo/jobs/7686352 | monzo | Senior Machine Learning Scientist, Borrowing~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/newrelic/jobs/4992316008 | newrelic | Lead Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/newrelic/jobs/5007069008 | newrelic | Senior Manager, Machine Learning Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/nubank/jobs/7242278 | nubank | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/nubank/jobs/7615916 | nubank | Data Scientist [All Levels]~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/nubank/jobs/7587179 | nubank | Lead Machine Learning Engineer / Applied AI Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/nubank/jobs/7615798 | nubank | Machine Learning Engineer [All Levels]~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/nubank/jobs/7732512 | nubank | Staff Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/philo/jobs/7259010 | philo | Sr. Machine Learning Engineer (Recommendation Systems)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/sertis/jobs/7847750002 | sertis | AI/Machine Learning Engineer Intern~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/sertis/jobs/7974356002 | sertis | Machine Learning Engineer (Mid-Senior level)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartlyio/jobs/5790147004 | smartlyio | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartlyio/jobs/5796036004 | smartlyio | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartlyio/jobs/5687120004 | smartlyio | Senior Machine Learning Engineer (AI Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartlyio/jobs/5688559004 | smartlyio | Senior Machine Learning Engineer (AI Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartlyio/jobs/5478498004 | smartlyio | Staff Machine Learning Engineer (AI Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/smartlyio/jobs/5471822004 | smartlyio | Staff Machine Learning Engineer (AI Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://sumup.com/careers/positions/8458929002?gh_jid=8458929002 | sumup | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://sumup.com/careers/positions/8364207002?gh_jid=8364207002 | sumup | Senior Data Engineer – AI AML Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://sumup.com/careers/positions/8459126002?gh_jid=8459126002 | sumup | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://sumup.com/careers/positions/8458919002?gh_jid=8458919002 | sumup | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://sumup.com/careers/positions/8503516002?gh_jid=8503516002 | sumup | Senior Machine Learning Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.thoughtworks.com/careers/jobs/7747358?gh_jid=7747358 | thoughtworks | Lead Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.thoughtworks.com/careers/jobs/7395726?gh_jid=7395726 | thoughtworks | Lead Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.thoughtworks.com/careers/jobs/7378858?gh_jid=7378858 | thoughtworks | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.thoughtworks.com/careers/jobs/7264551?gh_jid=7264551 | thoughtworks | Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.thoughtworks.com/careers/jobs/7228447?gh_jid=7228447 | thoughtworks | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://www.thoughtworks.com/careers/jobs/7228589?gh_jid=7228589 | thoughtworks | Senior Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.trivago.com/job/r8464320002?gh_jid=8464320002 | trivago | Data Scientist - AI Search & Ranking~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.trivago.com/job/r8401443002?gh_jid=8401443002 | trivago | Data Scientist - Price~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.eu.greenhouse.io/wallapop/jobs/4701711101 | wallapop | Data Scientist -Search~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.eu.greenhouse.io/wallapop/jobs/4741205101 | wallapop | MLOps Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/vtex/jobs/5591730004 | vtex | Data Scientist - LLMs~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/wheely/jobs/7588263003?gh_jid=7588263003 | wheely | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/wheely/jobs/7588277003?gh_jid=7588277003 | wheely | Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.eu.greenhouse.io/yld/jobs/4653093101 | yld | AI Engineer ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.eu.greenhouse.io/yld/jobs/4829316101 | yld | Contract Senior Data Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/webflow/jobs/7813157 | webflow | Senior Staff Machine Learning Scientist, Assets~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676600005 | Scaleai | Full-Stack Software Engineer, (Forward Deployed), GPS
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4650514005 | Scaleai | Product Manager of AI Applications, Global Public Sector
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4687591005 | Scaleai | Product Manager, Public Sector GenAI Test & Evaluation (T&E)
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676606005 | Scaleai | Senior Full-Stack Software Engineer, (Forward Deployed), GPS
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4554440005 | Scaleai | Solutions Engineer, Enterprise
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8335860002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8309177002 | Databricks | Delivery Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8289852002 | Databricks | Delivery Solutions Architect - Public Sector 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8516118002 | Databricks | Deployment Strategist
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8287372002 | Databricks | Director, Enterprise - Retail & CPG, m/f/d
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8388585002 | Databricks | Director, Strategic Accounts - Logistics & Tech, m/f/d
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8517065002 | Databricks | Manager, Field Engineering France  - Specialist Solutions Architects
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8509687002 | Databricks | Named Enterprise Account Executive, Fashion & Retail
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8439178002 | Databricks | Partner Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8413308002 | Databricks | Partner Solutions Architect, CEMEA
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8476500002 | Databricks | Resident Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494153002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8456948002 | Databricks | Resident Solutions Architect - Financial Services
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494146002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494155002 | Databricks | Resident Solutions Architect - Manufacturing
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494130002 | Databricks | Resident Solutions Architect - Public Sector
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437289002 | Databricks | Senior Solutions Architect - AI/BI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8455054002 | Databricks | Senior Solutions Architect - Lakebase
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8325452002 | Databricks | Senior Solutions Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8041698002 | Databricks | Senior Technical Solutions Engineer (Platform)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=5898477002 | Databricks | Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8085877002 | Databricks | Solutions Architect - Healthcare/Life Sciences Team (HLS)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8506127002 | Databricks | Solutions Architect Spain
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8469076002 | Databricks | Sr. Delivery Solutions Architect - AI Native
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8429978002 | Databricks | Sr. Product Designer, AI/BI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8136204002 | Databricks | Sr. Product Manager, Databricks AI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8114836002 | Databricks | Sr. Resident Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8194864002 | Databricks | Sr. Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8458028002 | Databricks | Sr. Solutions Architect - Strategic AI Native
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8434465002 | Databricks | Sr. Solutions Architect - Strat Media
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8368205002 | Databricks | Sr. Solutions Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8417654002 | Databricks | Sr. Solutions Engineer - MFG
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367022002 | Databricks | Staff Backend Software Engineer- (AI Platform)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8006984002 | Databricks | Staff Data & AI Technical Solutions Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8427940002 | Databricks | Staff Product Manager, AI Platform
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8441884002 | Databricks | Strategic AI/BI Account Executive
-- [ ] https://jobs.ashbyhq.com/harvey/01da8934-d3e3-4ebb-beb9-681b3c24fb9c | Harvey | Staff Software Engineer, AI Platform
-- [ ] https://jobs.ashbyhq.com/harvey/f47e1925-2a89-4264-8a1b-09cd9215f4dd | Harvey | Senior Software Engineer, AI Platform
-- [ ] https://jobs.ashbyhq.com/harvey/c7ef6dfd-a72e-4a90-adfe-0587d0eb2674 | Harvey | Business Development Lead, Cloud & AI
-- [ ] https://jobs.ashbyhq.com/skydio/a6973c57-132a-4a0d-b130-02d2bdaecd2a | Skydio | Senior Autonomy Engineer - Deep Learning
-- [ ] https://jobs.ashbyhq.com/skydio/dcb04687-9b4f-425d-8c37-1111cf3ccf3d | Skydio | Autonomy Engineer - Deep Learning Infrastructure
-- [ ] https://jobs.ashbyhq.com/skydio/ae12de71-0010-49d3-b171-c0b257e3b6c1 | Skydio | Autonomy Engineer - Deep Learning
-- [ ] https://jobs.ashbyhq.com/skydio/cd6d8410-419b-4713-8d4d-7eb72b134d5a | Skydio | Autonomy Engineer - Deep Learning Model Acceleration
-- [ ] https://jobs.ashbyhq.com/plaid/195a6c75-b7a1-4c3e-bdcd-e2781205dc54 | Plaid | AI Partner Development - GTM Pod
-- [ ] https://jobs.ashbyhq.com/snowflake/5cf06916-aef0-4fe5-9925-2410389be9d7 | Snowflake | Solutions Architect
-- [ ] https://jobs.ashbyhq.com/snowflake/b6e0f4a7-7e69-4c92-b3cc-13d018bbabe9 | Snowflake | Principal Software Engineer - AI Poland
-- [ ] https://jobs.ashbyhq.com/snowflake/c4a9dac4-d58e-4875-80ac-ecf7c9102d62 | Snowflake | Product Marketing Lead - AI Solutions
-- [ ] https://jobs.ashbyhq.com/snowflake/c66c9e35-4a5a-43af-a8e0-69c5208ef890 | Snowflake | Senior PS Sales Solutions Architect
-- [ ] https://jobs.ashbyhq.com/snowflake/3c018564-63c0-4179-ba91-f42ce75a40fa | Snowflake | Software Engineer - Streamlit
-- [ ] https://jobs.ashbyhq.com/modal/c85a3e3d-f1a5-479d-91e3-9e0b34279a82 | Modal | Forward Deployed Engineer - Systems
-- [ ] https://jobs.ashbyhq.com/modal/84467a68-6876-4730-9d80-6c6f3d0c2d71 | Modal | Member of Technical Staff - Platform Engineering
-- [ ] https://jobs.ashbyhq.com/modal/0d9c249b-f305-4b0e-b325-3242ac7274e7 | Modal | Forward Deployed Engineer - ML
-- [ ] https://jobs.ashbyhq.com/notion/72aa3c47-3b8a-4718-b359-0c486813527c | Notion | Solutions Engineer, EMEA
-- [ ] https://boards.greenhouse.io/figma/jobs/5976930004?gh_jid=5976930004 | Figma | Data Scientist, Core Data -  PhD (2026)
-- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4536716005?gh_jid=4536716005 | Appliedintuition | ML Runtime Optimization Engineer
-- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4686285005?gh_jid=4686285005 | Appliedintuition | Solutions Architect - Modeling & Simulation (Defense)
-- [ ] https://boards.greenhouse.io/appliedintuition/jobs/4687982005?gh_jid=4687982005 | Appliedintuition | Training and Development Lead
-- [ ] https://coreweave.com/careers/job?4412177006&board=coreweave&gh_jid=4412177006 | Coreweave | Solutions Architect - HPC/AI/ML
-- [ ] https://coreweave.com/careers/job?4557835006&board=coreweave&gh_jid=4557835006 | Coreweave | Solutions Architect - Kubernetes
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7637528 | Waymo | Fleet Response Training Program Manager
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7424806 | Waymo | Machine Learning Engineer, ML Resources
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7766491 | Waymo | Principal Software Engineer - Waymo Driver Post Training
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7767649 | Waymo | Senior Machine Learning Engineer, Multimodal Perception (LLM/VLM)
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7430187 | Waymo | Senior Machine Learning Engineer, Simulation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7593522 | Waymo | Staff Machine Learning Engineer, Perception Data 
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=6503285 | Waymo | Staff Machine Learning Engineer, Simulation
-- [ ] https://careers.withwaymo.com/jobs?gh_jid=7843511 | Waymo | Staff Machine Learning Engineer, Vehicle Compliance Reasoning
-- [ ] https://boards.greenhouse.io/inflectionai/jobs/4675986006?gh_jid=4675986006 | Inflectionai | Senior Product Manager, Consumer AI & Agents
-- [ ] https://jobs.lever.co/zoox/a5b426d5-845c-4d26-bca2-7a32e00882a2 | Zoox | Machine Learning Engineer - 3D Sensor Simulation
-- [ ] https://jobs.lever.co/zoox/809b1301-9654-4673-8f2d-4bc68bcead7f | Zoox | Machine Learning Engineer - MLA Perception Offline Driving Intelligence
-- [ ] https://jobs.lever.co/zoox/7c1a729e-88bd-4c9c-8d0f-7068258c9451 | Zoox | Machine Learning Engineer, 3D Simulation
-- [ ] https://jobs.lever.co/zoox/db46c9bf-3854-4cf9-83b5-ae7a9e28ad31 | Zoox | Senior Machine Learning Engineer - 3D Sensor Simulation
-- [ ] https://jobs.lever.co/zoox/3fa162d1-0953-4971-8a88-3d910dba2f8b | Zoox | Senior/Staff Machine Learning Engineer, 3D Simulation
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4676600005 | Scaleai | Full-Stack Software Engineer, (Forward Deployed), GPS~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4650514005 | Scaleai | Product Manager of AI Applications, Global Public Sector~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4687591005 | Scaleai | Product Manager, Public Sector GenAI Test & Evaluation (T&E)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4676606005 | Scaleai | Senior Full-Stack Software Engineer, (Forward Deployed), GPS~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4554440005 | Scaleai | Solutions Engineer, Enterprise~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8335860002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8309177002 | Databricks | Delivery Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8289852002 | Databricks | Delivery Solutions Architect - Public Sector ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8516118002 | Databricks | Deployment Strategist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8287372002 | Databricks | Director, Enterprise - Retail & CPG, m/f/d~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8388585002 | Databricks | Director, Strategic Accounts - Logistics & Tech, m/f/d~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8517065002 | Databricks | Manager, Field Engineering France  - Specialist Solutions Architects~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8509687002 | Databricks | Named Enterprise Account Executive, Fashion & Retail~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8439178002 | Databricks | Partner Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8413308002 | Databricks | Partner Solutions Architect, CEMEA~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8476500002 | Databricks | Resident Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8494153002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8456948002 | Databricks | Resident Solutions Architect - Financial Services~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8494146002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8494155002 | Databricks | Resident Solutions Architect - Manufacturing~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8494130002 | Databricks | Resident Solutions Architect - Public Sector~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8437289002 | Databricks | Senior Solutions Architect - AI/BI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8455054002 | Databricks | Senior Solutions Architect - Lakebase~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8325452002 | Databricks | Senior Solutions Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8041698002 | Databricks | Senior Technical Solutions Engineer (Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=5898477002 | Databricks | Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8085877002 | Databricks | Solutions Architect - Healthcare/Life Sciences Team (HLS)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8506127002 | Databricks | Solutions Architect Spain~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8469076002 | Databricks | Sr. Delivery Solutions Architect - AI Native~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8429978002 | Databricks | Sr. Product Designer, AI/BI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8136204002 | Databricks | Sr. Product Manager, Databricks AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8114836002 | Databricks | Sr. Resident Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8194864002 | Databricks | Sr. Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8458028002 | Databricks | Sr. Solutions Architect - Strategic AI Native~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8434465002 | Databricks | Sr. Solutions Architect - Strat Media~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8368205002 | Databricks | Sr. Solutions Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8417654002 | Databricks | Sr. Solutions Engineer - MFG~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8367022002 | Databricks | Staff Backend Software Engineer- (AI Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8006984002 | Databricks | Staff Data & AI Technical Solutions Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8427940002 | Databricks | Staff Product Manager, AI Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8441884002 | Databricks | Strategic AI/BI Account Executive~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/harvey/01da8934-d3e3-4ebb-beb9-681b3c24fb9c | Harvey | Staff Software Engineer, AI Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/harvey/f47e1925-2a89-4264-8a1b-09cd9215f4dd | Harvey | Senior Software Engineer, AI Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/harvey/c7ef6dfd-a72e-4a90-adfe-0587d0eb2674 | Harvey | Business Development Lead, Cloud & AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/skydio/a6973c57-132a-4a0d-b130-02d2bdaecd2a | Skydio | Senior Autonomy Engineer - Deep Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/skydio/dcb04687-9b4f-425d-8c37-1111cf3ccf3d | Skydio | Autonomy Engineer - Deep Learning Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/skydio/ae12de71-0010-49d3-b171-c0b257e3b6c1 | Skydio | Autonomy Engineer - Deep Learning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/skydio/cd6d8410-419b-4713-8d4d-7eb72b134d5a | Skydio | Autonomy Engineer - Deep Learning Model Acceleration~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/plaid/195a6c75-b7a1-4c3e-bdcd-e2781205dc54 | Plaid | AI Partner Development - GTM Pod~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/snowflake/5cf06916-aef0-4fe5-9925-2410389be9d7 | Snowflake | Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/snowflake/b6e0f4a7-7e69-4c92-b3cc-13d018bbabe9 | Snowflake | Principal Software Engineer - AI Poland~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/snowflake/c4a9dac4-d58e-4875-80ac-ecf7c9102d62 | Snowflake | Product Marketing Lead - AI Solutions~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/snowflake/c66c9e35-4a5a-43af-a8e0-69c5208ef890 | Snowflake | Senior PS Sales Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/snowflake/3c018564-63c0-4179-ba91-f42ce75a40fa | Snowflake | Software Engineer - Streamlit~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/modal/c85a3e3d-f1a5-479d-91e3-9e0b34279a82 | Modal | Forward Deployed Engineer - Systems~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/modal/84467a68-6876-4730-9d80-6c6f3d0c2d71 | Modal | Member of Technical Staff - Platform Engineering~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/modal/0d9c249b-f305-4b0e-b325-3242ac7274e7 | Modal | Forward Deployed Engineer - ML~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/notion/72aa3c47-3b8a-4718-b359-0c486813527c | Notion | Solutions Engineer, EMEA~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/figma/jobs/5976930004?gh_jid=5976930004 | Figma | Data Scientist, Core Data -  PhD (2026)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/appliedintuition/jobs/4536716005?gh_jid=4536716005 | Appliedintuition | ML Runtime Optimization Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/appliedintuition/jobs/4686285005?gh_jid=4686285005 | Appliedintuition | Solutions Architect - Modeling & Simulation (Defense)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/appliedintuition/jobs/4687982005?gh_jid=4687982005 | Appliedintuition | Training and Development Lead~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4412177006&board=coreweave&gh_jid=4412177006 | Coreweave | Solutions Architect - HPC/AI/ML~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://coreweave.com/careers/job?4557835006&board=coreweave&gh_jid=4557835006 | Coreweave | Solutions Architect - Kubernetes~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7637528 | Waymo | Fleet Response Training Program Manager~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7424806 | Waymo | Machine Learning Engineer, ML Resources~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7766491 | Waymo | Principal Software Engineer - Waymo Driver Post Training~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7767649 | Waymo | Senior Machine Learning Engineer, Multimodal Perception (LLM/VLM)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7430187 | Waymo | Senior Machine Learning Engineer, Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7593522 | Waymo | Staff Machine Learning Engineer, Perception Data ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=6503285 | Waymo | Staff Machine Learning Engineer, Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.withwaymo.com/jobs?gh_jid=7843511 | Waymo | Staff Machine Learning Engineer, Vehicle Compliance Reasoning~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://boards.greenhouse.io/inflectionai/jobs/4675986006?gh_jid=4675986006 | Inflectionai | Senior Product Manager, Consumer AI & Agents~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/a5b426d5-845c-4d26-bca2-7a32e00882a2 | Zoox | Machine Learning Engineer - 3D Sensor Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/809b1301-9654-4673-8f2d-4bc68bcead7f | Zoox | Machine Learning Engineer - MLA Perception Offline Driving Intelligence~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/7c1a729e-88bd-4c9c-8d0f-7068258c9451 | Zoox | Machine Learning Engineer, 3D Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/db46c9bf-3854-4cf9-83b5-ae7a9e28ad31 | Zoox | Senior Machine Learning Engineer - 3D Sensor Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.lever.co/zoox/3fa162d1-0953-4971-8a88-3d910dba2f8b | Zoox | Senior/Staff Machine Learning Engineer, 3D Simulation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 
-- [ ] https://job-boards.greenhouse.io/scaleai/jobs/4676608005 | Scaleai | Senior Full-Stack Software Engineer, (Forward Deployed), GPS
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8503080002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8285292002 | Databricks | Delivery Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8439182002 | Databricks | Partner Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8514430002 | Databricks | Resident Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8341311002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8456966002 | Databricks | Resident Solutions Architect - Financial Services
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494143002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494154002 | Databricks | Resident Solutions Architect - Manufacturing
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8461321002 | Databricks | Resident Solutions Architect - Public Sector
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437301002 | Databricks | Senior Solutions Architect - AI/BI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8025494002 | Databricks | Senior Solutions Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=7845320002 | Databricks | Senior Technical Solutions Engineer (Platform)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8481719002 | Databricks | Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437034002 | Databricks | Sr. Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8450209002 | Databricks | Sr. Solutions Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367021002 | Databricks | Staff Backend Software Engineer- (AI Platform)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8441890002 | Databricks | Strategic AI/BI Account Executive
-- [ ] https://jobs.ashbyhq.com/harvey/f7c8e800-c0e4-4606-9860-9822103fe7e4 | Harvey | Staff Software Engineer, AI Platform
-- [ ] https://jobs.ashbyhq.com/harvey/51fb953a-c494-4a09-8fe2-8d7268b863ec | Harvey | Senior Software Engineer, AI Platform
-- [ ] https://jobs.ashbyhq.com/snowflake/b7fba62e-95e8-4304-94fa-d278a20956f1 | Snowflake | Solutions Architect
-- [ ] https://careers.airbnb.com/positions/7158963?gh_jid=7158963 | Airbnb | AI-Enabled Insights Lead
-- [ ] https://careers.airbnb.com/positions/7288960?gh_jid=7288960 | Airbnb | Claims Experience Specialist 
-- [ ] https://careers.airbnb.com/positions/7439746?gh_jid=7439746 | Airbnb | Claims Experience Specialist(Japanese and English Speaking)
-- [ ] https://careers.airbnb.com/positions/7839229?gh_jid=7839229 | Airbnb | Community Support Forecasting and Demand Planning Analyst
-- [ ] https://careers.airbnb.com/positions/7812284?gh_jid=7812284 | Airbnb | Head of Fundraising, Airbnb.org
-- [ ] https://careers.airbnb.com/positions/7721171?gh_jid=7721171 | Airbnb | Head of Homes Supply, Hong Kong, Singapore and Taiwan
-- [ ] https://careers.airbnb.com/positions/7672092?gh_jid=7672092 | Airbnb | Knowledge Strategist (Mandarin)
-- [ ] https://careers.airbnb.com/positions/7586592?gh_jid=7586592 | Airbnb | Lead Advanced Analytics, Digital & AI Products
-- [ ] https://careers.airbnb.com/positions/7651661?gh_jid=7651661 | Airbnb | Product Manager, Trip Quality Merchandising and AI
-- [ ] https://careers.airbnb.com/positions/7812160?gh_jid=7812160 | Airbnb | Programs & Business Operations Lead, Airbnb Services
-- [ ] https://careers.airbnb.com/positions/7535340?gh_jid=7535340 | Airbnb | Responsable du developpement des affaires
-- [ ] https://careers.airbnb.com/positions/6298781?gh_jid=6298781 | Airbnb | Senior Business Affairs Lead 
-- [ ] https://careers.airbnb.com/positions/7716311?gh_jid=7716311 | Airbnb | Senior Business Solutions Engineer, BizTech
-- [ ] https://careers.airbnb.com/positions/7782435?gh_jid=7782435 | Airbnb | Senior Manager, Product & AI Policy
-- [ ] https://careers.airbnb.com/positions/7822781?gh_jid=7822781 | Airbnb | Senior Programs & Business Operations Lead, Airbnb Services 
-- [ ] https://careers.airbnb.com/positions/7730723?gh_jid=7730723 | Airbnb | Senior Software Engineer, BizTech(AI Products)
-- [ ] https://careers.airbnb.com/positions/7644921?gh_jid=7644921 | Airbnb | Senior Staff Operations Engineer, AIOps
-- [ ] https://careers.airbnb.com/positions/7463421?gh_jid=7463421 | Airbnb | Staff GenAI Backend Engineer, Automation Foundation
-- [ ] https://careers.airbnb.com/positions/7712102?gh_jid=7712102 | Airbnb | Staff Software Engineer, Airfam Products
-- [ ] https://careers.airbnb.com/positions/7528577?gh_jid=7528577 | Airbnb | Staff Software Engineer, Listings & Host Tools and AI
+- [x] ~~https://job-boards.greenhouse.io/scaleai/jobs/4676608005 | Scaleai | Senior Full-Stack Software Engineer, (Forward Deployed), GPS~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8503080002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8285292002 | Databricks | Delivery Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8439182002 | Databricks | Partner Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8514430002 | Databricks | Resident Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8341311002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8456966002 | Databricks | Resident Solutions Architect - Financial Services~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8494143002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8494154002 | Databricks | Resident Solutions Architect - Manufacturing~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8461321002 | Databricks | Resident Solutions Architect - Public Sector~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8437301002 | Databricks | Senior Solutions Architect - AI/BI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8025494002 | Databricks | Senior Solutions Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=7845320002 | Databricks | Senior Technical Solutions Engineer (Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8481719002 | Databricks | Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8437034002 | Databricks | Sr. Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8450209002 | Databricks | Sr. Solutions Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8367021002 | Databricks | Staff Backend Software Engineer- (AI Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8441890002 | Databricks | Strategic AI/BI Account Executive~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/harvey/f7c8e800-c0e4-4606-9860-9822103fe7e4 | Harvey | Staff Software Engineer, AI Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/harvey/51fb953a-c494-4a09-8fe2-8d7268b863ec | Harvey | Senior Software Engineer, AI Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/snowflake/b7fba62e-95e8-4304-94fa-d278a20956f1 | Snowflake | Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7158963?gh_jid=7158963 | Airbnb | AI-Enabled Insights Lead~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7288960?gh_jid=7288960 | Airbnb | Claims Experience Specialist ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7439746?gh_jid=7439746 | Airbnb | Claims Experience Specialist(Japanese and English Speaking)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7839229?gh_jid=7839229 | Airbnb | Community Support Forecasting and Demand Planning Analyst~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7812284?gh_jid=7812284 | Airbnb | Head of Fundraising, Airbnb.org~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7721171?gh_jid=7721171 | Airbnb | Head of Homes Supply, Hong Kong, Singapore and Taiwan~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7672092?gh_jid=7672092 | Airbnb | Knowledge Strategist (Mandarin)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7586592?gh_jid=7586592 | Airbnb | Lead Advanced Analytics, Digital & AI Products~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7651661?gh_jid=7651661 | Airbnb | Product Manager, Trip Quality Merchandising and AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7812160?gh_jid=7812160 | Airbnb | Programs & Business Operations Lead, Airbnb Services~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7535340?gh_jid=7535340 | Airbnb | Responsable du developpement des affaires~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/6298781?gh_jid=6298781 | Airbnb | Senior Business Affairs Lead ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7716311?gh_jid=7716311 | Airbnb | Senior Business Solutions Engineer, BizTech~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7782435?gh_jid=7782435 | Airbnb | Senior Manager, Product & AI Policy~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7822781?gh_jid=7822781 | Airbnb | Senior Programs & Business Operations Lead, Airbnb Services ~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7730723?gh_jid=7730723 | Airbnb | Senior Software Engineer, BizTech(AI Products)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7644921?gh_jid=7644921 | Airbnb | Senior Staff Operations Engineer, AIOps~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7463421?gh_jid=7463421 | Airbnb | Staff GenAI Backend Engineer, Automation Foundation~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7712102?gh_jid=7712102 | Airbnb | Staff Software Engineer, Airfam Products~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://careers.airbnb.com/positions/7528577?gh_jid=7528577 | Airbnb | Staff Software Engineer, Listings & Host Tools and AI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8024004002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8368003002 | Databricks | Delivery Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8461168002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8456965002 | Databricks | Resident Solutions Architect - Financial Services
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8371312002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8494156002 | Databricks | Resident Solutions Architect - Manufacturing
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8423296002 | Databricks | Resident Solutions Architect - Public Sector
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8437302002 | Databricks | Senior Solutions Architect - AI/BI
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8243219002 | Databricks | Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8476064002 | Databricks | Sr. Solutions Architect
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8455750002 | Databricks | Sr. Solutions Engineer
-- [ ] https://databricks.com/company/careers/open-positions/job?gh_jid=8367023002 | Databricks | Staff Backend Software Engineer- (AI Platform)
-- [ ] https://jobs.ashbyhq.com/harvey/0c65292f-a304-46fb-8dee-aaf82a882d9e | Harvey | Staff Software Engineer, AI Platform
-- [ ] https://jobs.ashbyhq.com/baseten/df2f0ebb-a84a-45c2-bc74-dc9589fcc1ae | Baseten | Account Executive - AI Native: Startups
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8024004002 | Databricks | AI Engineer - FDE (Forward Deployed Engineer)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8368003002 | Databricks | Delivery Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8461168002 | Databricks | Resident Solutions Architect - Communications, Media, Entertainment & Games~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8456965002 | Databricks | Resident Solutions Architect - Financial Services~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8371312002 | Databricks | Resident Solutions Architect - Healthcare & Life Sciences~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8494156002 | Databricks | Resident Solutions Architect - Manufacturing~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8423296002 | Databricks | Resident Solutions Architect - Public Sector~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8437302002 | Databricks | Senior Solutions Architect - AI/BI~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8243219002 | Databricks | Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8476064002 | Databricks | Sr. Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8455750002 | Databricks | Sr. Solutions Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://databricks.com/company/careers/open-positions/job?gh_jid=8367023002 | Databricks | Staff Backend Software Engineer- (AI Platform)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/harvey/0c65292f-a304-46fb-8dee-aaf82a882d9e | Harvey | Staff Software Engineer, AI Platform~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/df2f0ebb-a84a-45c2-bc74-dc9589fcc1ae | Baseten | Account Executive - AI Native: Startups~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 - [x] https://jobs.ashbyhq.com/baseten/84c1801c-1a65-49fb-aaaa-beeafd530e7e | Baseten | Forward Deployed Engineer
-- [ ] https://jobs.ashbyhq.com/baseten/916e9d62-492a-4562-971f-3e97e3868392 | Baseten | Cloud Platform Engineer
-- [ ] https://jobs.ashbyhq.com/baseten/0d1f68d4-ee6c-4b5f-9ef9-21a2dabbc152 | Baseten | Account Executive - AI Native: Strategic
-- [ ] https://jobs.ashbyhq.com/baseten/6f947409-2bc0-491a-81b3-507cdc95df85 | Baseten | Software Engineer - Training Infrastructure
-- [ ] https://jobs.ashbyhq.com/baseten/508b792d-57a0-467e-9a89-76fe72e84433 | Baseten | AI Solutions Engineer
-- [ ] https://jobs.ashbyhq.com/baseten/90e9ff4e-1225-4b1b-b0b4-2362e36d9cfa | Baseten | Applied AI Inference Engineer
-- [ ] https://jobs.ashbyhq.com/baseten/126d54b4-a7bc-4456-bf4d-5d224e4f5d63 | Baseten | Software Engineer - Training Product
-- [ ] https://jobs.ashbyhq.com/baseten/b88a68b7-d2bc-4a30-a79a-3ef292ad7c26 | Baseten | Software Engineer - AI Enablement
-- [ ] https://jobs.ashbyhq.com/baseten/1f7d7fda-5540-4205-890b-cdbf774f0814 | Baseten | Software Engineer — GPU Networking & Distributed Systems
-- [ ] https://jobs.ashbyhq.com/baseten/7c9d2bb0-ac03-4a3c-86c3-cf720cd314e8 | Baseten | Post-Training Research Scientist
-- [ ] https://jobs.ashbyhq.com/baseten/2d18b2aa-b6fc-4f1c-8936-33b03255a090 | Baseten | Post-Training Applied Researcher
-- [ ] https://jobs.ashbyhq.com/baseten/68328a94-f785-463b-a3d7-b0dfc11839b5 | Baseten | Post-Training Research Engineer
-- [ ] https://jobs.ashbyhq.com/baseten/6e396eb7-acb3-436a-89ec-05e755c477f2 | Baseten | Software Engineer - Voice AI (Inference Runtime)
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4001304009 | Fireworks AI | Applied Machine Learning Engineer
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4194142009 | Fireworks AI | Fireworks AI Microsoft Alliance Director
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4008626009 | Fireworks AI | Forward Deployed Product Manager
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4013136009 | Fireworks AI | GenAI GTM Representative – GenAI Startups
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4000408009 | Fireworks AI | Member of Technical Staff, AI Training Infrastructure
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4177932009 | Fireworks AI | Member of Technical Staff, Backend/Platform Engineer
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4210320009 | Fireworks AI | Member of Technical Staff, Data Platform Engineer
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4053672009 | Fireworks AI | Member of Technical Staff, Evals & Post-Training Product
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4056271009 | Fireworks AI |  Software Engineer, AI Infrastructure
-- [ ] https://job-boards.greenhouse.io/fireworksai/jobs/4059100009 | Fireworks AI | Solutions Architect
-- [ ] https://jobs.ashbyhq.com/unstructured/d0c516ec-cbb2-4560-99d9-abdc535ed645 | Unstructured | Forward Deployed Engineer
-- [ ] https://jobs.ashbyhq.com/unstructured/9df95483-7177-4f98-850e-4abbdf530434 | Unstructured | AI Engineer - Public Sector
-- [ ] https://jobs.ashbyhq.com/llamaindex/fd7a074f-7d80-44b7-8520-8ac787387e92 | LlamaIndex | Multimodal AI Engineer, Document Understanding
-- [ ] https://jobs.ashbyhq.com/llamaindex/36a0249e-a672-44df-a08e-b5a5523dec26 | LlamaIndex | AI Content Engineer
-- [ ] https://jobs.ashbyhq.com/llamaindex/84bcd1df-a4da-421d-b325-45684d8b7e4d | LlamaIndex | Applied AI Solutions Architect (SF)
-- [ ] https://jobs.ashbyhq.com/llamaindex/a0e44fff-ae8b-4ecc-9600-9c789d85aa81 | LlamaIndex | Applied AI Solutions Architect (East Coast)
+- [x] ~~https://jobs.ashbyhq.com/baseten/916e9d62-492a-4562-971f-3e97e3868392 | Baseten | Cloud Platform Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/0d1f68d4-ee6c-4b5f-9ef9-21a2dabbc152 | Baseten | Account Executive - AI Native: Strategic~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/6f947409-2bc0-491a-81b3-507cdc95df85 | Baseten | Software Engineer - Training Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/508b792d-57a0-467e-9a89-76fe72e84433 | Baseten | AI Solutions Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/90e9ff4e-1225-4b1b-b0b4-2362e36d9cfa | Baseten | Applied AI Inference Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/126d54b4-a7bc-4456-bf4d-5d224e4f5d63 | Baseten | Software Engineer - Training Product~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/b88a68b7-d2bc-4a30-a79a-3ef292ad7c26 | Baseten | Software Engineer - AI Enablement~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/1f7d7fda-5540-4205-890b-cdbf774f0814 | Baseten | Software Engineer — GPU Networking & Distributed Systems~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/7c9d2bb0-ac03-4a3c-86c3-cf720cd314e8 | Baseten | Post-Training Research Scientist~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/2d18b2aa-b6fc-4f1c-8936-33b03255a090 | Baseten | Post-Training Applied Researcher~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/68328a94-f785-463b-a3d7-b0dfc11839b5 | Baseten | Post-Training Research Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/baseten/6e396eb7-acb3-436a-89ec-05e755c477f2 | Baseten | Software Engineer - Voice AI (Inference Runtime)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4001304009 | Fireworks AI | Applied Machine Learning Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4194142009 | Fireworks AI | Fireworks AI Microsoft Alliance Director~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4008626009 | Fireworks AI | Forward Deployed Product Manager~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4013136009 | Fireworks AI | GenAI GTM Representative – GenAI Startups~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4000408009 | Fireworks AI | Member of Technical Staff, AI Training Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4177932009 | Fireworks AI | Member of Technical Staff, Backend/Platform Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4210320009 | Fireworks AI | Member of Technical Staff, Data Platform Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4053672009 | Fireworks AI | Member of Technical Staff, Evals & Post-Training Product~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4056271009 | Fireworks AI |  Software Engineer, AI Infrastructure~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://job-boards.greenhouse.io/fireworksai/jobs/4059100009 | Fireworks AI | Solutions Architect~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/unstructured/d0c516ec-cbb2-4560-99d9-abdc535ed645 | Unstructured | Forward Deployed Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/unstructured/9df95483-7177-4f98-850e-4abbdf530434 | Unstructured | AI Engineer - Public Sector~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/llamaindex/fd7a074f-7d80-44b7-8520-8ac787387e92 | LlamaIndex | Multimodal AI Engineer, Document Understanding~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/llamaindex/36a0249e-a672-44df-a08e-b5a5523dec26 | LlamaIndex | AI Content Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/llamaindex/84bcd1df-a4da-421d-b325-45684d8b7e4d | LlamaIndex | Applied AI Solutions Architect (SF)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+- [x] ~~https://jobs.ashbyhq.com/llamaindex/a0e44fff-ae8b-4ecc-9600-9c789d85aa81 | LlamaIndex | Applied AI Solutions Architect (East Coast)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->

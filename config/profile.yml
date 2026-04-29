@@ -120,7 +120,7 @@ experience_years:
   machine_learning: 7
 
 execution:
-  auto_submit: true
+  auto_submit: false
   cover_letters: "required_only"
   max_apps_per_company: 5
   chrome_profilePath: "C:\\Users\\dhl\\data\\Portfolio\\career-ops\\data\\chrome-bot-profile"
