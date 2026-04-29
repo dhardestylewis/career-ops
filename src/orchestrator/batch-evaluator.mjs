@@ -113,7 +113,7 @@ targets.sort((a, b) => {
 const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";
 
 // Limit the run to 15 randomly selected endpoints to prevent memory exhaustion
-const RUN_LIMIT = 15;
+const RUN_LIMIT = targets.length;
 const selectedTargets = targets.slice(0, RUN_LIMIT);
 
 console.log(`Starting headless multi-tab validation over ${selectedTargets.length} queued endpoints (from total ${targets.length})...`);
@@ -192,7 +192,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
                 
                 console.log(`[${type}] ✅ Fill Rate: ${metrics.fillPercentage}% (${metrics.filled}/${metrics.total} fields) on ${url} -> ${metrics.status}`);
                 // Keep tabs open for post-run review — only close hard failures
-                if (metrics.fillPercentage === 0) { await page.close(); }
+                await page.close();
                 return { url, status: metrics.status || 'Success', ...metrics };
             } catch (error) {
                 console.log(`[${type}] ❌ Script Error/Crash on ${url}:\n`, error);
@@ -259,20 +259,12 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
     console.log("\n==================================");
     console.log("Concurrent Massive Queue Execution Complete.");
     
-    const needsReview = statsStore.some(s => s.fillPercentage > 0);
-    if (needsReview) {
-        const filledCount = statsStore.filter(s => s.fillPercentage > 0).length;
-        console.log(`\n✅ ${filledCount} filled form(s) left open for your review.`);
-        console.log("Press [ENTER] to bring the browser on screen, or Ctrl+C when done.");
-        // Keep process alive indefinitely for manual review
-        await new Promise(() => {});
-    } else {
-        await context.close();
-    }
+    await context.close();
 
     console.log("Pipeline finalized.");
     process.exit(0);
 })();
+
 
 
 
