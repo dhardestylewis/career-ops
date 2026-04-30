@@ -50,7 +50,7 @@ Why are you interested in participating in the Fellows program?
 *
 The frontier of AI capabilities is increasingly intersecting with the physical world, where the deployment of advanced models will generate massive infrastructure demands and complex societal impacts. I am applying to the Fellows program because my background bridges deep learning research in physical systems with applied engineering in spatial economics. I previously engineered the machine learning pipelines for a $40M DARPA disaster resiliency initiative at TACC, working directly with leading scientists to scale distributed ML models predicting the cascading physical failures of climate events on critical infrastructure across million-node simulations. From there, I founded Homecastr, building an automated spatial valuation model capable of processing high-dimensional spatial-economic data at national scale, achieving an 8% one-year forecast error across the nationwide parcel dataset, giving me firsthand experience operationalizing large-scale economic AI models.
 
-Anthropic's rigorous, empirical approach to societal impacts aligns exactly with my methodology. Building high-stakes models at TACC taught me that intelligent systems deployed without robust systemic alignment are dangerous. The Fellows program represents the ideal environment to translate my dual background in large-scale machine learning and urban infrastructure modeling into empirical AI alignment research. By integrating Maxim Massenkoff's quantitative economic research and Deep Ganguli's systemic impact frameworks with my expertise in high-dimensional spatial modeling, I want to apply my computational foundation to forecast and shape the spatial economics and societal resilience of Anthropic's most advanced systems.
+I want to translate my dual background in large-scale machine learning and urban infrastructure modeling directly into empirical AI alignment research. By integrating Maxim Massenkoff's quantitative economic research and Deep Ganguli's systemic impact frameworks with my expertise in high-dimensional spatial modeling, I aim to forecast and shape the spatial economics and societal resilience of Anthropic's most advanced systems.
 
 With your selected team(s) in mind, tell us briefly about one or more research areas you're excited about right now, and why.
 *
@@ -69,7 +69,7 @@ How likely are you to accept a full-time offer at Anthropic if you receive one a
 
 How likely are you to be interested in continuing to work on AI safety/security after the Fellows program?
 *
-100%. Scaling disaster resilience models for critical physical infrastructure (TACC/DARPA) ingrained in me the severe consequences of opacity in high-stakes environments. I view frontier AI as the next critical global infrastructure, and I intend to make AI safety and interpretability the core focus of my long-term career.
+100%. I view frontier AI as the next critical global infrastructure, and I intend to make AI safety and interpretability the core focus of my long-term career.
 
 References
 Reference 1: Name
