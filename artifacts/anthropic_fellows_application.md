@@ -28,6 +28,10 @@ Here are the drafted responses for your Anthropic Fellows Application, tailored 
 
 **(Optional) Please share any relevant background and provide links where possible (e.g., research experience, coursework, self-directed study, past roles, relevant projects).** *(1 paragraph)*
 > To provide additional technical context: At Columbia University, my research focuses on embedding physical and economic constraints directly into neural architectures, developing deep learning latent factor models capable of forecasting highly non-stationary spatial market dynamics. Previously, at TACC, my work involved optimizing highly parallelized ML workloads on massive HPC clusters, managing millions of dollars in computational resources and demonstrating my capacity to engineer and deploy resource-intensive models. Moving to applied AI, Homecastr proved my ability to take complex spatial economic theories and translate them into a production-grade, API-first inference system that maintains a highly stable 25% MdAE at a 4-year horizon. I bring a unique hybrid of theoretical academic modeling, high-performance computing engineering, and applied systems architecture.
+>
+> **Relevant Links:**
+> - [Homecastr Probabilistic ML Methodology](https://homecastr.com/methodology)
+> - [Academic Publications (Google Scholar)](https://scholar.google.com/citations?user=agBdssgAAAAJ)
 
 **How likely are you to accept a full-time offer at Anthropic if you receive one after the Fellows program?**
 > 100%. I am applying specifically to secure a long-term role at the intersection of ML Systems and Economics/Policy. Anthropic's mission aligns exactly with my methodology, and I would transition immediately following the program.
