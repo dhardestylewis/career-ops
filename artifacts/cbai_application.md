@@ -45,10 +45,21 @@
 ## Logistical Questions
 
 **How likely are you to accept a multi-month extension of your fellowship if offered?**
+*(Please include a brief explanation and a percentage estimate.)*
 > 90%. Building production-grade spatial ML architectures for global biosurveillance (such as optimizing sensor networks for the NAO) is a massive engineering undertaking. Translating theoretical pathogen models into operational, highly available inference APIs inherently requires multi-month infrastructure development, stress-testing, and continuous iteration.
 
-**How likely are you (0-100%) to attend the program if admitted? (Explain your answer)**
-> 100%. The specific concentration of mentors focused on macro-spatial biosurveillance and physical threat modeling (e.g., Dr. Esvelt, SecureBio) makes this the optimal environment to transition my HPC and spatial ML expertise directly into the biosecurity domain.
+**How likely are you (0-100%) to attend the program if admitted?**
+> 100%
+
+**(Optional) Explain your answer**
+> The specific concentration of mentors focused on macro-spatial biosurveillance and physical threat modeling (e.g., Dr. Esvelt, SecureBio) makes this the optimal environment to transition my HPC and spatial ML expertise directly into the biosecurity domain.
 
 **How likely are you to continue being interested in working on AIxBio, biosecurity, or AI safety after the program?**
+*(Please include a brief explanation and a percentage estimate.)*
 > 100%. My objective is a permanent career pivot. I have spent my career modeling traditional physical risks (disaster resiliency, real estate economics) at scale. The democratization of AI bio-design tools has convinced me that the highest-impact application of my spatial compute expertise is building the necessary data architecture to defend physical infrastructure against existential biological threats.
+
+**(Optional) How did you hear about the CBAI Fellowship?**
+> [Leave blank or insert referral]
+
+**(Optional) Anything else you want to share?**
+> [Leave blank]
