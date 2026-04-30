@@ -1,0 +1,27 @@
+# South Park Commons (SPC) Application Drafts
+
+## Proudest Achievement
+*What personal or professional product, project, or achievement are you most proud of? Please link us to it and briefly tell us about it.* (Keep under 1000 characters)
+
+**Draft (737 characters):**
+> Homecastr (https://homecastr.com/methodology): I built and deployed an automated spatial valuation model capable of processing high-dimensional spatial-economic data at a national scale. Operating entirely solo, I engineered the end-to-end machine learning pipeline, from raw county appraisal ingestion to a production-grade inference API. The probabilistic ML system outperformed industry baselines by achieving an 8% annual compounding forecast error across the nationwide parcel dataset. This wasn't just a research concept; it was a grueling, high-agency engineering sprint to translate complex spatial economic theory into a highly stable, low-latency commercial architecture capable of maintaining a 25% MdAE at a 4-year horizon.
+
+## Exploration Proposal
+*Please share a brief proposal outlining what you’d like to explore at SPC. Include the ideas, themes, or research areas you’re interested in, why they matter to you, and any anticipated timelines that you have.*
+
+**Draft:**
+> I want to explore the foundational data layer required to unblock physical infrastructure development in the US. Right now, building anything in the physical world—whether it's high-density housing or a billion-dollar data center—is bottlenecked by opaque spatial, political, and physical constraints (climate risk, zoning friction, grid capacity). 
+> 
+> My "Request for Curiosity" is this: Can we build a universal "Spatial Economics Engine"—an API layer that dynamically prices the physical and political friction of any parcel of land? At TACC and Homecastr, I built national-scale spatial ML models to quantify flood risk and real estate valuations. I want to use the SPC -1 to 0 phase to explore whether these probabilistic ML architectures can be generalized into a venture-scale infrastructure layer (a "Plaid for physical world data") that allows developers and energy companies to instantly O(1) query the true cost of breaking ground anywhere. SPC is the ideal environment to stress-test the commercial viability of this architecture alongside other founders.
+
+## Side Projects & Curiosities
+*What side projects, curiosities, or experiments have you pursued that might help us understand how you think or what you’re drawn to?* (Keep under 1000 characters)
+
+**Draft (784 characters):**
+> oppsAlert: A machine learning pipeline designed to predict NIMBYism and homeowner zoning protests. I was curious why some high-density housing developments passed while others faced massive resistance, so I scraped 15 years of municipal zoning records, public hearing transcripts, and property tax data from the City of Austin. I built a natural language processing and spatial lag model that accurately predicted which parcels would trigger organized neighborhood opposition. It was a weekend curiosity that evolved into a robust predictive engine, proving out my thesis that hyper-local political friction could be quantified, modeled, and priced into real estate development risk.
+
+## SPC Recommendation
+*Who is someone you know well who you’d want to bring into SPC in the immediate future? If you were on the SPC membership committee, why would you enthusiastically invite this person to join the community?*
+
+**Draft:**
+> Alia Friedman. She possesses the rare combination of deep technical execution and commercial product intuition. With a background in Cognitive Science and CS from Carnegie Mellon, she engineered complex systems at Morgan Stanley before pursuing her MBA at Imperial College Business School. She recently built an award-winning predictive analytics engine to identify at-risk students, proving her ability to apply rigorous technical architecture to high-impact societal problems. She is exactly the kind of hybrid builder—bridging human-computer interaction, hard engineering, and business strategy—who would thrive in the SPC -1 to 0 exploration phase.
