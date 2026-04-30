@@ -1,3 +1,6 @@
+Anthropic Fellows Application
+Applications are open for the July 2026 cohort. 
+
 General Information
 First Name
 *
@@ -14,18 +17,22 @@ Dan‧iel
 he/him
 Resume
 *
+
+resume-dhl-20260420-staff-mle.pdf
 resume-dhl-20260420-staff-mle.pdf
 Have you applied to work with Anthropic full-time roles, or to collaborate with Anthropic researchers via programs like MATS, Astra, or the Anthropic Fellows Program within the past year?
 *
+Yes
 No
-
+Clear selection
 Please specify which programs and cohorts, and feel free to elaborate on any changes/additions/improvements to your application and experience since you last applied.
-
-
+Alongside this application, I have been applying for full-time engineering roles at Anthropic. All applications are very recent and I have not yet heard back from any.
 Please review Anthropic's AI policy for applications and confirm your understanding by selecting 'Yes'.
 *
-Yes
+We believe that AI will have a transformative impact on the world, and we're seeking exceptional candidates who collaborate thoughtfully with AI to realize this vision. At the same time, we want to understand your unique skills, expertise, and perspective through our hiring process. We invite you to review our AI partnership guidelines for candidates.
 
+Yes
+Clear selection
 (Optional) Links & Code Samples
 Please share any links to information about you and your technical contributions below.
 
@@ -37,41 +44,69 @@ GitHub
 https://github.com/dhardestylewis
 Other links (personal website, blog posts, specific repos)
 dlewis.ai, homecastr.com, summitgeospatial.com
-
 Motivation & Fit
 You'll be paired with a project and researcher from one of the following teams. Which is your top choice?
-Economics & Policy
-
-Which other teams would you like to be considered for?
+AI Safety & Alignment
+AI Safety: Mechanistic Interpretability & Model Internals
+AI Security & Frontier Red Team
 ML Systems & Performance
-Societal Impacts
+Reinforcement Learning
+Economics & Policy
+Clear selection
+Which other teams would you like to be considered for?
+Select any additional teams where you have a strong background.
 
+AI Safety & Alignment
+AI Safety: Mechanistic Interpretability & Model Internals
+AI Security & Frontier Red Team
+ML Systems & Performance
+Reinforcement Learning
+Economics & Policy
+Economics & Societal Impacts
 Why are you interested in participating in the Fellows program?
 *
-The frontier of AI capabilities is increasingly intersecting with the physical world, where the deployment of advanced models will generate massive infrastructure demands and complex societal impacts. I am applying to the Fellows program because my background bridges deep learning research in physical systems with applied engineering in spatial economics. I previously engineered the machine learning pipelines for a $40M DARPA disaster resiliency initiative at TACC, working directly with leading scientists to scale distributed ML models predicting the cascading physical failures of climate events on critical infrastructure across million-node simulations. From there, I founded Homecastr, building an automated spatial valuation model capable of processing high-dimensional spatial-economic data at national scale, achieving an 8% one-year forecast error across the nationwide parcel dataset, giving me firsthand experience operationalizing large-scale economic AI models.
+1-2 paragraphs
+
+The frontier of AI capabilities is increasingly intersecting with the physical world, where the deployment of advanced models will generate massive infrastructure demands and complex societal impacts. I am applying to the Fellows program because my background bridges deep learning research in physical systems with applied engineering in spatial economics. I previously engineered the machine learning pipelines for a $40M DARPA disaster resiliency initiative at TACC, working directly with leading scientists to scale distributed ML models predicting the cascading physical failures of climate events on critical infrastructure across million-node simulations. From there, I founded Homecastr, building an automated spatial valuation model capable of processing high-dimensional spatial-economic data at national scale, achieving an 8% annual compounding forecast error across the nationwide parcel dataset, giving me firsthand experience operationalizing large-scale economic AI models.
 
 I want to translate my dual background in large-scale machine learning and physical risk modeling directly into empirical AI alignment research. By integrating Maxim Massenkoff's quantitative economic research and Deep Ganguli's systemic impact frameworks with my expertise in high-dimensional spatial modeling, I aim to forecast and shape the spatial economics and societal resilience of Anthropic's most advanced systems.
 
+
 With your selected team(s) in mind, tell us briefly about one or more research areas you're excited about right now, and why.
 *
-I am particularly excited about the intersection of spatial economics and the Societal Impacts team's work on catastrophic systemic risk. While initiatives like Massenkoff and McCrory's Anthropic Economic Index and Huang et al.'s 81,000-user survey rigorously capture digital O*NET task exposure and qualitative sentiment, the vital next frontier is extending these empirical frameworks to predictively model AI's disruption of physical and civil infrastructure systems. Forecasting how autonomous agents might inadvertently compromise real-world constraints—such as energy grids, critical logistics, or urban supply chains—can be powerfully augmented by using Anthropic's empirical data to initialize and ground large-scale multi-agent reinforcement learning (MARL) simulations. Drawing on my experience scaling highly parallelized geospatial models at TACC and modeling real-world markets at Homecastr, I want to engineer the MARL simulation environments necessary to model these macro-spatial impacts, stress-testing policy interventions before deployment to ensure agentic AI remains safe and resilient within physical infrastructure.
+1 paragraph
+
+I am particularly excited about the intersection of spatial economics and the Societal Impacts team's work on catastrophic systemic risk. While initiatives like Massenkoff and McCrory's Anthropic Economic Index and Huang et al.'s 81,000-user survey rigorously capture digital O*NET task exposure and qualitative sentiment, the vital next frontier is extending these empirical frameworks to predictively model AI's disruption of physical and civil infrastructure systems. Forecasting how autonomous agents might inadvertently compromise real-world constraints - such as energy grids, critical logistics, or urban supply chains - can be powerfully augmented by using Anthropic's empirical data to initialize and ground large-scale multi-agent reinforcement learning (MARL) simulations. Drawing on my experience scaling highly parallelized geospatial models at TACC and modeling real-world markets at Homecastr, I want to engineer the MARL simulation environments necessary to model these macro-spatial impacts, stress-testing policy interventions before deployment to ensure agentic AI remains safe and resilient within physical infrastructure.
 
 (Optional) Please share any relevant background and provide links where possible (e.g., research experience, coursework, self-directed study, past roles, relevant projects).
+1 paragraph
+
 To provide additional technical context: At Columbia University, my research focuses on embedding physical and economic constraints directly into neural architectures, developing deep learning latent factor models capable of forecasting highly non-stationary spatial market dynamics. Previously, at TACC, my work involved optimizing highly parallelized ML workloads on massive HPC clusters, managing millions of dollars in computational resources and demonstrating my capacity to engineer and deploy resource-intensive models. Moving to applied AI, Homecastr proved my ability to take complex spatial economic theories and translate them into a production-grade, API-first inference system that maintains a highly stable 25% MdAE at a 4-year horizon. I bring a unique hybrid of theoretical academic modeling, high-performance computing engineering, and applied systems architecture.
 
 Relevant Links:
 - Homecastr Probabilistic ML Methodology: https://homecastr.com/methodology
 - Academic Publications (Google Scholar): https://scholar.google.com/citations?user=agBdssgAAAAJ
 
+
 How likely are you to accept a full-time offer at Anthropic if you receive one after the Fellows program?
 *
+Please include a brief explanation, and if possible, a % estimate. You don't have to be confident in your estimate.
+
 100%. I am applying specifically to secure a long-term role at the intersection of ML Systems and Economics/Policy. Anthropic's mission aligns exactly with my methodology, and I would transition immediately following the program.
 
 How likely are you to be interested in continuing to work on AI safety/security after the Fellows program?
 *
+Please include a brief explanation, and if possible, a % estimate. You don't have to be confident in your estimate.
+
 100%. I view frontier AI as the next critical global infrastructure, and I intend to make AI safety and interpretability the core focus of my long-term career.
 
 References
+Please share at least three references who you would be comfortable with us reaching out to.
+
+References are one of the main ways we assess candidates. The most useful references come from people who've collaborated with you on technical work and can speak concretely to your strengths and weaknesses. References from the ML research community are preferred if available.
+
+Please note: Depending on our review of your application, we plan to reach out to your references without giving you notice. We will ask them to respond within a week.
+
 Reference 1: Name
 *
 Paola Passalacqua
@@ -80,11 +115,15 @@ Reference 1: Email
 ppassalacqua@ethz.ch
 Reference 1: Please share context on their background
 *
+Include their title, website, Google Scholar, and any other relevant public information.
+
 Title: Professor of Water Resources Engineering and Geomorphology, ETH Zurich (formerly UT Austin)
 Google Scholar: https://scholar.google.com/citations?user=PaolaPassalacqua
 Relevant Info: She is a leading expert in water resources engineering and recipient of the 2022 EGU Bagnold Medal.
 Reference 1: Please share context on your relationship
 *
+Include what you worked on together, when and for how long you worked together, how closely you collaborated, and your relationship to them.
+
 We collaborated extensively at the Texas Advanced Computing Center (TACC) on national disaster resiliency initiatives, where I scaled climate and flood models on world-leading supercomputers to support her research.
 
 Reference 2: Name
@@ -95,73 +134,95 @@ Reference 2: Email
 ah2347@columbia.edu
 Reference 2: Please share context on their background
 *
+Include their title, website, Google Scholar, and any other relevant public information.
+
 Title: Director of Financial Engineering, Columbia University
 Website: https://ieor.columbia.edu/content/ali-hirsa
 Google Scholar: https://scholar.google.com/citations?user=c2_zC1sAAAAJ
 Relevant Info: Leading researcher in quantitative finance and machine learning applications in financial engineering.
+
 Reference 2: Please share context on your relationship
 *
+Include what you worked on together, when and for how long you worked together, how closely you collaborated, and your relationship to them.
+
 He is my research advisor at Columbia University, where we are currently collaborating on deep learning latent factor models to forecast complex market dynamics.
 
 Reference 3: Name
 *
 Christopher Munsell
+
 Reference 3: Email
 *
 cwm2132@columbia.edu
+
 Reference 3: Please share context on their background
 *
+Include their title, website, Google Scholar, and any other relevant public information.
+
 Title: Glascock Associate Professor of Professional Practice of Real Estate Development Finance, Columbia GSAPP
 Website: https://www.arch.columbia.edu/faculty/1560-christopher-munsell
 Relevant Info: Principal at APRE Consulting with over 15 years of experience structuring and managing real estate capital markets.
 Reference 3: Please share context on your relationship
 *
+Include what you worked on together, when and for how long you worked together, how closely you collaborated, and your relationship to them.
+
 He is an academic reference from my MS in Urban Planning program at Columbia University.
-
 (Optional) Please share any additional references you'd like to include.
-
+We may reach out to these references at later stages in the application process. 
 
 Logistics
 Our next cohort starts on July 20. Each cohort will run for 4 months. Please confirm your availability here.
 *
 July 2026
+Interested in future cohorts
+Please share more about your availability.
 (Optional) Do you have any timelines or deadlines we should be aware of?
-I anticipate graduating from my MS program at Columbia University in May 2026, so I will be fully available for the July 2026 cohort with no conflicting deadlines or academic obligations.
+I will be fully available for the July 2026 cohort with no conflicting deadlines or academic obligations.
 
 If you were to start at Anthropic full-time after the Fellows program, when is the earliest you could start?
 *
-Immediately after the program ends.
+E.g., immediately after the program ends, or some other date
 
+Immediately after the program ends.
 What is your current country of residence?
 *
-United States
+We are not currently able to sponsor visas for fellows. To participate in the Fellows program, you need to have or independently obtain full-time work authorization in one of the following countries: USA, UK, Canada
 
+You must be based in the country where you hold full-time work authorization for the duration of the program. If you have full-time work authorization in the UK or USA, we prefer for you to work from London or Berkeley during the program.
+
+USA
 In which of these countries do you have (or can you independently obtain) full-time work authorization during the Fellows program?
 *
-USA, UK, Canada
-
+USA
+UK
+Canada
+None
 (Optional) Please share any other relevant details that would help us understand your work authorization.
-I am a US citizen with full work authorization in the USA.
-We have designated workspaces in London and Berkeley where fellows will work from and mentors will visit. Will you be able to work out of either the London or Berkeley workspace for the duration of the Fellows program?
+I am a US citizen with full work authorization in the USA. Additionally, I am eligible to independently obtain the UK Global Talent Visa (if placed in London) and qualify for a USMCA Professional work permit for Canada, ensuring I can secure full-time work authorization in any of these locations for the duration of the program.
+We have designated shared workspaces in London and Berkeley where fellows will work from and mentors will visit. Will you be able to work out of either the London or Berkeley workspace for the duration of the Fellows program?
 *
+If not, please share where you would like to work from instead. 
+
 Berkeley: for the entire program
-
-If not, please share where you would like to work from instead.
-N/A
-
+Berkeley: for 25%+ of the program
+London: for the entire program
+London: for 25%+ of the program
+Other
+Clear selection
 Have you previously applied to or interviewed at Anthropic?
 *
+Yes
 No
-
+Clear selection
 Do you have any other commitments or obligations during the Fellows program period?
 *
-None that would conflict with a full-time schedule.
+Please include a brief explanation of any other commitments (e.g., vacations, work, school, or other projects) and, if possible, hours per week you would spend on ongoing obligations versus on the program. Please note that this program is full-time (40 hours per week).
 
+None
 (Optional) How did you hear about the Fellows program?
-
-
+Apart Research's AIxBio AI Safety Hackathon
 (Optional) Is there anything else you would like to share?
-
-
 I'm happy for Anthropic and Constellation to contact me about future programs, opportunities, and updates in the AI safety ecosystem.
 Yes
+No
+Clear selection

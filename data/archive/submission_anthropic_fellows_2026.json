@@ -1,0 +1,67 @@
+{
+  "company": "Anthropic",
+  "role": "Anthropic Fellows Program",
+  "cohort": "July 2026",
+  "first_name": "Daniel",
+  "last_name": "Lewis",
+  "email": "daniel@homecastr.com",
+  "pronunciation": "Dan‧iel",
+  "pronouns": "he/him",
+  "resume": "resume-dhl-20260420-staff-mle.pdf",
+  "applied_previously": "Yes",
+  "previous_applications_details": "Alongside this application, I have been applying for full-time engineering roles at Anthropic. All applications are very recent and I have not yet heard back from any.",
+  "ai_policy_agreed": "Yes",
+  "links": {
+    "google_scholar": "https://scholar.google.com/citations?user=agBdssgAAAAJ",
+    "linkedin": "https://www.linkedin.com/in/dhardestylewis/",
+    "github": "https://github.com/dhardestylewis",
+    "other": "dlewis.ai, homecastr.com, summitgeospatial.com"
+  },
+  "top_team_choice": "Economics & Policy",
+  "other_teams": [
+    "ML Systems & Performance",
+    "Societal Impacts"
+  ],
+  "fellows_program_motivation": "The frontier of AI capabilities is increasingly intersecting with the physical world, where the deployment of advanced models will generate massive infrastructure demands and complex societal impacts. I am applying to the Fellows program because my background bridges deep learning research in physical systems with applied engineering in spatial economics. I previously engineered the machine learning pipelines for a $40M DARPA disaster resiliency initiative at TACC, working directly with leading scientists to scale distributed ML models predicting the cascading physical failures of climate events on critical infrastructure across million-node simulations. From there, I founded Homecastr, building an automated spatial valuation model capable of processing high-dimensional spatial-economic data at national scale, achieving an 8% annual compounding forecast error across the nationwide parcel dataset, giving me firsthand experience operationalizing large-scale economic AI models.\n\nI want to translate my dual background in large-scale machine learning and physical risk modeling directly into empirical AI alignment research. By integrating Maxim Massenkoff's quantitative economic research and Deep Ganguli's systemic impact frameworks with my expertise in high-dimensional spatial modeling, I aim to forecast and shape the spatial economics and societal resilience of Anthropic's most advanced systems.",
+  "research_areas_excited_about": "I am particularly excited about the intersection of spatial economics and the Societal Impacts team's work on catastrophic systemic risk. While initiatives like Massenkoff and McCrory's Anthropic Economic Index and Huang et al.'s 81,000-user survey rigorously capture digital O*NET task exposure and qualitative sentiment, the vital next frontier is extending these empirical frameworks to predictively model AI's disruption of physical and civil infrastructure systems. Forecasting how autonomous agents might inadvertently compromise real-world constraints - such as energy grids, critical logistics, or urban supply chains - can be powerfully augmented by using Anthropic's empirical data to initialize and ground large-scale multi-agent reinforcement learning (MARL) simulations. Drawing on my experience scaling highly parallelized geospatial models at TACC and modeling real-world markets at Homecastr, I want to engineer the MARL simulation environments necessary to model these macro-spatial impacts, stress-testing policy interventions before deployment to ensure agentic AI remains safe and resilient within physical infrastructure.",
+  "relevant_background": "To provide additional technical context: At Columbia University, my research focuses on embedding physical and economic constraints directly into neural architectures, developing deep learning latent factor models capable of forecasting highly non-stationary spatial market dynamics. Previously, at TACC, my work involved optimizing highly parallelized ML workloads on massive HPC clusters, managing millions of dollars in computational resources and demonstrating my capacity to engineer and deploy resource-intensive models. Moving to applied AI, Homecastr proved my ability to take complex spatial economic theories and translate them into a production-grade, API-first inference system that maintains a highly stable 25% MdAE at a 4-year horizon. I bring a unique hybrid of theoretical academic modeling, high-performance computing engineering, and applied systems architecture.\n\nRelevant Links:\n- Homecastr Probabilistic ML Methodology: https://homecastr.com/methodology\n- Academic Publications (Google Scholar): https://scholar.google.com/citations?user=agBdssgAAAAJ",
+  "likelihood_accept_full_time": "100%. I am applying specifically to secure a long-term role at the intersection of ML Systems and Economics/Policy. Anthropic's mission aligns exactly with my methodology, and I would transition immediately following the program.",
+  "likelihood_continue_ai_safety": "100%. I view frontier AI as the next critical global infrastructure, and I intend to make AI safety and interpretability the core focus of my long-term career.",
+  "references": [
+    {
+      "name": "Paola Passalacqua",
+      "email": "ppassalacqua@ethz.ch",
+      "background": "Title: Professor of Water Resources Engineering and Geomorphology, ETH Zurich (formerly UT Austin)\nGoogle Scholar: https://scholar.google.com/citations?user=PaolaPassalacqua\nRelevant Info: She is a leading expert in water resources engineering and recipient of the 2022 EGU Bagnold Medal.",
+      "relationship": "We collaborated extensively at the Texas Advanced Computing Center (TACC) on national disaster resiliency initiatives, where I scaled climate and flood models on world-leading supercomputers to support her research."
+    },
+    {
+      "name": "Ali Hirsa",
+      "email": "ah2347@columbia.edu",
+      "background": "Title: Director of Financial Engineering, Columbia University\nWebsite: https://ieor.columbia.edu/content/ali-hirsa\nGoogle Scholar: https://scholar.google.com/citations?user=c2_zC1sAAAAJ\nRelevant Info: Leading researcher in quantitative finance and machine learning applications in financial engineering.",
+      "relationship": "He is my research advisor at Columbia University, where we are currently collaborating on deep learning latent factor models to forecast complex market dynamics."
+    },
+    {
+      "name": "Christopher Munsell",
+      "email": "cwm2132@columbia.edu",
+      "background": "Title: Glascock Associate Professor of Professional Practice of Real Estate Development Finance, Columbia GSAPP\nWebsite: https://www.arch.columbia.edu/faculty/1560-christopher-munsell\nRelevant Info: Principal at APRE Consulting with over 15 years of experience structuring and managing real estate capital markets.",
+      "relationship": "He is an academic reference from my MS in Urban Planning program at Columbia University."
+    }
+  ],
+  "availability": "July 2026",
+  "timelines_deadlines": "I will be fully available for the July 2026 cohort with no conflicting deadlines or academic obligations.",
+  "earliest_start_date": "Immediately after the program ends.",
+  "country_of_residence": "USA",
+  "work_authorization": [
+    "USA",
+    "UK",
+    "Canada"
+  ],
+  "work_authorization_details": "I am a US citizen with full work authorization in the USA. Additionally, I am eligible to independently obtain the UK Global Talent Visa (if placed in London) and qualify for a USMCA Professional work permit for Canada, ensuring I can secure full-time work authorization in any of these locations for the duration of the program.",
+  "workspace_preference": "Berkeley: for the entire program",
+  "previously_applied": "Yes",
+  "other_commitments": "None",
+  "how_did_you_hear": "Apart Research's AIxBio AI Safety Hackathon",
+  "anything_else": "",
+  "contact_future_programs": "Yes",
+  "timestamp": "2026-04-29T20:22:04-04:00"
+}
