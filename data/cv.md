@@ -29,11 +29,11 @@ Consumer real-estate pricing and forecasting platform with interactive uncertain
 - Owned end-to-end pipeline from source data ingestion to real-time serving via production web UI (homecastr.com), refined product strategy through feedback from a16z and MetaProp
 
 ### PoliBOM -- Seattle, WA
-**Co-founder**
-Nov 2024 -- Present
+**Technical Advisor**
+Oct 2024 -- Sep 2025
 
 Top-5% YC entrant. KPMG rolled out their Tariff Modeller after we put polibom.com in front of them.
-- Now targeting early stage investment
+- Advised on and architected the backend agentic workflow for BOM parsing and tariff simulation, leading development through the end of summer 2025
 
 ### Summit Geospatial -- New York, NY
 **Founder**
