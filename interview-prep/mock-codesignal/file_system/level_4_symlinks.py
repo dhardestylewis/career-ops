@@ -9,12 +9,18 @@ class FileSystem:
     def read(self, path: str) -> str | None: return None
     def create_symlink(self, target_path: str, link_path: str) -> bool: return False
 
-\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_FSLevel1(unittest.TestCase):
+
+
+# --- CUMULATIVE PAST TESTS ---
+
+class TestPast_0_FSLevel1(unittest.TestCase):
     def setUp(self): self.fs = FileSystem()
     def test_basic(self):
         self.assertTrue(self.fs.mkdir("/a"))
         self.assertTrue(self.fs.create_file("/a/b.txt"))
-        self.assertEqual(self.fs.ls("/a"), ["b.txt"])\n\nclass TestPast_1_FSLevel2(unittest.TestCase):
+        self.assertEqual(self.fs.ls("/a"), ["b.txt"])
+
+class TestPast_1_FSLevel2(unittest.TestCase):
     def setUp(self): self.fs = FileSystem()
     def test_write_read(self):
         self.fs.mkdir("/a")
@@ -24,7 +30,9 @@ class FileSystem:
         
         # Appending
         self.fs.write("/a/b.txt", " world")
-        self.assertEqual(self.fs.read("/a/b.txt"), "hello world")\n\nclass TestPast_2_FSLevel3(unittest.TestCase):
+        self.assertEqual(self.fs.read("/a/b.txt"), "hello world")
+
+class TestPast_2_FSLevel3(unittest.TestCase):
     def setUp(self): self.fs = FileSystem()
     def test_permissions(self):
         self.fs.mkdir("/a")
@@ -33,7 +41,13 @@ class FileSystem:
         
         # Only owner can write
         self.assertFalse(self.fs.write("/a/b.txt", "hello", user="guest"))
-        self.assertTrue(self.fs.write("/a/b.txt", "hello", user="admin"))\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestFSLevel4(unittest.TestCase):
+        self.assertTrue(self.fs.write("/a/b.txt", "hello", user="admin"))
+
+
+
+# --- CURRENT LEVEL TESTS ---
+
+class TestFSLevel4(unittest.TestCase):
     def setUp(self): self.fs = FileSystem()
     def test_symlink_cycle(self):
         self.fs.mkdir("/a")

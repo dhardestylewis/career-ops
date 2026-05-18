@@ -4,13 +4,23 @@ class RateLimiter:
     def __init__(self, limit: int, window_sec: int): pass
     def allow_request(self, user_id: str, timestamp: int) -> bool: return False
 
-\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_RL1(unittest.TestCase):
+
+
+# --- CUMULATIVE PAST TESTS ---
+
+class TestPast_0_RL1(unittest.TestCase):
     def setUp(self): self.rl = RateLimiter(2)
     def test_basic(self):
         self.assertTrue(self.rl.allow_request("u1"))
         self.assertTrue(self.rl.allow_request("u1"))
         self.assertFalse(self.rl.allow_request("u1")) # Limit reached
-        self.assertTrue(self.rl.allow_request("u2"))  # Different user\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestRL2(unittest.TestCase):
+        self.assertTrue(self.rl.allow_request("u2"))  # Different user
+
+
+
+# --- CURRENT LEVEL TESTS ---
+
+class TestRL2(unittest.TestCase):
     def setUp(self): self.rl = RateLimiter(limit=2, window_sec=10)
     def test_window(self):
         self.assertTrue(self.rl.allow_request("u1", timestamp=0))

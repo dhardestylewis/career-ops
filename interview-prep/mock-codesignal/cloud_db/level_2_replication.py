@@ -6,11 +6,21 @@ class CloudDB:
     def write(self, key: str, value: str) -> None: pass
     def read(self, key: str, replica_id: int = 0) -> str | None: return None
 
-\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_CDBLevel1(unittest.TestCase):
+
+
+# --- CUMULATIVE PAST TESTS ---
+
+class TestPast_0_CDBLevel1(unittest.TestCase):
     def setUp(self): self.db = CloudDB()
     def test_basic(self):
         self.db.write("k1", "v1")
-        self.assertEqual(self.db.read("k1"), "v1")\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestCDBLevel2(unittest.TestCase):
+        self.assertEqual(self.db.read("k1"), "v1")
+
+
+
+# --- CURRENT LEVEL TESTS ---
+
+class TestCDBLevel2(unittest.TestCase):
     def setUp(self): self.db = CloudDB(replicas=3)
     def test_replication(self):
         self.db.write("k1", "v1")

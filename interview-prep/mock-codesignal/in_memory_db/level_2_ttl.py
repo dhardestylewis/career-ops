@@ -9,7 +9,11 @@ class InMemoryDB:
     def delete(self, key: str) -> bool: return False
     def cleanup(self, now: int) -> int: return 0 # Returns number of keys cleaned up via heap
 
-\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_Level1(unittest.TestCase):
+
+
+# --- CUMULATIVE PAST TESTS ---
+
+class TestPast_0_Level1(unittest.TestCase):
     def setUp(self): self.db = InMemoryDB()
     def test_basic(self):
         self.db.put("a", 1)
@@ -22,7 +26,13 @@ class InMemoryDB:
     def test_overwrite(self):
         self.db.put("a", 1)
         self.db.put("a", 2)
-        self.assertEqual(self.db.get("a"), 2)\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestLevel2(unittest.TestCase):
+        self.assertEqual(self.db.get("a"), 2)
+
+
+
+# --- CURRENT LEVEL TESTS ---
+
+class TestLevel2(unittest.TestCase):
     def setUp(self): self.db = InMemoryDB()
     def test_ttl_cleanup(self):
         self.db.put("a", 1, ttl=10, now=0)

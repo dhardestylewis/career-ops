@@ -8,12 +8,22 @@ class FileSystem:
     def write(self, path: str, content: str) -> bool: return False
     def read(self, path: str) -> str | None: return None
 
-\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_FSLevel1(unittest.TestCase):
+
+
+# --- CUMULATIVE PAST TESTS ---
+
+class TestPast_0_FSLevel1(unittest.TestCase):
     def setUp(self): self.fs = FileSystem()
     def test_basic(self):
         self.assertTrue(self.fs.mkdir("/a"))
         self.assertTrue(self.fs.create_file("/a/b.txt"))
-        self.assertEqual(self.fs.ls("/a"), ["b.txt"])\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestFSLevel2(unittest.TestCase):
+        self.assertEqual(self.fs.ls("/a"), ["b.txt"])
+
+
+
+# --- CURRENT LEVEL TESTS ---
+
+class TestFSLevel2(unittest.TestCase):
     def setUp(self): self.fs = FileSystem()
     def test_write_read(self):
         self.fs.mkdir("/a")

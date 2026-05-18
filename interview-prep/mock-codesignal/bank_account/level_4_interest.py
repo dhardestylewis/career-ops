@@ -10,7 +10,11 @@ class Bank:
     def apply_interest(self) -> None: pass
     def get_balance(self, name: str) -> Decimal: return Decimal('0.00')
 
-\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_BankLevel1(unittest.TestCase):
+
+
+# --- CUMULATIVE PAST TESTS ---
+
+class TestPast_0_BankLevel1(unittest.TestCase):
     def setUp(self): self.bank = Bank()
     def test_basic(self):
         self.assertTrue(self.bank.create_account("A"))
@@ -20,7 +24,9 @@ class Bank:
         # Add a way to check balance in tests implicitly by failing overdraws
         self.assertFalse(self.bank.transfer("A", "B", 60)) # insufficient
     def test_missing_account(self):
-        self.assertFalse(self.bank.transfer("A", "C", 10))\n\nclass TestPast_1_BankLevel2(unittest.TestCase):
+        self.assertFalse(self.bank.transfer("A", "C", 10))
+
+class TestPast_1_BankLevel2(unittest.TestCase):
     def setUp(self): self.bank = Bank()
     def test_ledger(self):
         self.bank.create_account("A")
@@ -33,7 +39,9 @@ class Bank:
         # Verify it captures the transfer amount
         amounts = [t.get("amount") for t in txs]
         self.assertIn(100, amounts)
-        self.assertIn(40, amounts)\n\nclass TestPast_2_BankLevel3(unittest.TestCase):
+        self.assertIn(40, amounts)
+
+class TestPast_2_BankLevel3(unittest.TestCase):
     def setUp(self): self.bank = Bank()
     def test_schedule(self):
         self.bank.create_account("A")
@@ -46,7 +54,13 @@ class Bank:
         
         self.bank.process_scheduled(now=15)
         # Schedule fires but insufficient funds (100 - 60 = 40, needs 50)
-        # Verify it drops or leaves pending\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestBankLevel4(unittest.TestCase):
+        # Verify it drops or leaves pending
+
+
+
+# --- CURRENT LEVEL TESTS ---
+
+class TestBankLevel4(unittest.TestCase):
     def setUp(self): self.bank = Bank()
     def test_decimal_interest(self):
         self.bank.create_account("A")

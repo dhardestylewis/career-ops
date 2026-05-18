@@ -1,0 +1,52 @@
+{
+  "in_memory_db": {
+    "last_seen": 1779142782.124131,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "file_system": {
+    "last_seen": false,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "bank_account": {
+    "last_seen": 1779142653.1633618,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "inventory_cart": {
+    "last_seen": false,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "rate_limiter": {
+    "last_seen": false,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "message_queue": {
+    "last_seen": false,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "cloud_db": {
+    "last_seen": false,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "spreadsheet": {
+    "last_seen": false,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "text_editor": {
+    "last_seen": false,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  },
+  "json_parser": {
+    "last_seen": false,
+    "recovery_hours": 12.0,
+    "level_reached": 0
+  }
+}
