@@ -1,0 +1,16 @@
+import unittest
+
+class RateLimiter:
+    def __init__(self, limit: int, window_sec: int): pass
+    def allow_request(self, user_id: str, timestamp: int) -> bool: return False
+
+class TestRL2(unittest.TestCase):
+    def setUp(self): self.rl = RateLimiter(limit=2, window_sec=10)
+    def test_window(self):
+        self.assertTrue(self.rl.allow_request("u1", timestamp=0))
+        self.assertTrue(self.rl.allow_request("u1", timestamp=5))
+        self.assertFalse(self.rl.allow_request("u1", timestamp=9)) # Blocked
+        
+        # At t=11, the first request (t=0) falls out of the 10s window
+        self.assertTrue(self.rl.allow_request("u1", timestamp=11)) 
+if __name__ == "__main__": unittest.main()
