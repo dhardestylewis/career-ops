@@ -8,7 +8,17 @@ class Bank:
     def transfer(self, src: str, dst: str, amount: int) -> bool: return False
     def get_transactions(self, account: str) -> list[dict]: return []
 
-class TestBankLevel2(unittest.TestCase):
+\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_BankLevel1(unittest.TestCase):
+    def setUp(self): self.bank = Bank()
+    def test_basic(self):
+        self.assertTrue(self.bank.create_account("A"))
+        self.assertTrue(self.bank.create_account("B"))
+        self.assertTrue(self.bank.deposit("A", 100))
+        self.assertTrue(self.bank.transfer("A", "B", 50))
+        # Add a way to check balance in tests implicitly by failing overdraws
+        self.assertFalse(self.bank.transfer("A", "B", 60)) # insufficient
+    def test_missing_account(self):
+        self.assertFalse(self.bank.transfer("A", "C", 10))\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestBankLevel2(unittest.TestCase):
     def setUp(self): self.bank = Bank()
     def test_ledger(self):
         self.bank.create_account("A")
