@@ -6,7 +6,14 @@ class Cart:
     def apply_coupon(self, user_id: str, pct_off: int) -> None: pass
     def get_total(self, user_id: str) -> float: return 0.0
 
-class TestInv2(unittest.TestCase):
+\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_Inv1(unittest.TestCase):
+    def setUp(self): self.c = Cart()
+    def test_basic(self):
+        self.c.add_item("u1", "apple", 10)
+        self.c.add_item("u1", "banana", 5)
+        self.assertEqual(self.c.get_total("u1"), 15)
+        self.assertTrue(self.c.remove_item("u1", "apple"))
+        self.assertEqual(self.c.get_total("u1"), 5)\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestInv2(unittest.TestCase):
     def setUp(self): self.c = Cart()
     def test_discount(self):
         self.c.add_item("u1", "apple", 100)

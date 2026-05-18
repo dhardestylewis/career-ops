@@ -6,7 +6,19 @@ class Store:
     def add_to_cart(self, user_id: str, item_id: str) -> bool: return False
     def get_stock(self, item_id: str) -> int: return 0
 
-class TestInv3(unittest.TestCase):
+\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_Inv1(unittest.TestCase):
+    def setUp(self): self.c = Cart()
+    def test_basic(self):
+        self.c.add_item("u1", "apple", 10)
+        self.c.add_item("u1", "banana", 5)
+        self.assertEqual(self.c.get_total("u1"), 15)
+        self.assertTrue(self.c.remove_item("u1", "apple"))
+        self.assertEqual(self.c.get_total("u1"), 5)\n\nclass TestPast_1_Inv2(unittest.TestCase):
+    def setUp(self): self.c = Cart()
+    def test_discount(self):
+        self.c.add_item("u1", "apple", 100)
+        self.c.apply_coupon("u1", 20) # 20% off
+        self.assertEqual(self.c.get_total("u1"), 80.0)\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestInv3(unittest.TestCase):
     def setUp(self): self.s = Store()
     def test_stock(self):
         self.s.add_stock("apple", 1)
