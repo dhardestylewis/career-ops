@@ -7,7 +7,11 @@ class InMemoryDB:
     def get(self, key: str, at_time: int = None, now: int = 0) -> int | None: return None
     def delete(self, key: str) -> bool: return False
 
-\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_Level1(unittest.TestCase):
+
+
+# --- CUMULATIVE PAST TESTS ---
+
+class TestPast_0_Level1(unittest.TestCase):
     def setUp(self): self.db = InMemoryDB()
     def test_basic(self):
         self.db.put("a", 1)
@@ -20,13 +24,21 @@ class InMemoryDB:
     def test_overwrite(self):
         self.db.put("a", 1)
         self.db.put("a", 2)
-        self.assertEqual(self.db.get("a"), 2)\n\nclass TestPast_1_Level2(unittest.TestCase):
+        self.assertEqual(self.db.get("a"), 2)
+
+class TestPast_1_Level2(unittest.TestCase):
     def setUp(self): self.db = InMemoryDB()
     def test_ttl_cleanup(self):
         self.db.put("a", 1, ttl=10, now=0)
         self.db.put("b", 2, ttl=5, now=0)
         self.assertEqual(self.db.cleanup(now=6), 1) # b should be cleaned
-        self.assertIsNone(self.db.get("b", now=6))\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestLevel3(unittest.TestCase):
+        self.assertIsNone(self.db.get("b", now=6))
+
+
+
+# --- CURRENT LEVEL TESTS ---
+
+class TestLevel3(unittest.TestCase):
     def setUp(self): self.db = InMemoryDB()
     def test_history(self):
         self.db.put("a", 1, now=10)

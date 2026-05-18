@@ -5,13 +5,19 @@ class RateLimiter:
     def set_user_tier(self, user_id: str, limit: int) -> None: pass
     def allow_request(self, user_id: str, timestamp: int) -> bool: return False
 
-\n\n# --- CUMULATIVE PAST TESTS ---\n\nclass TestPast_0_RL1(unittest.TestCase):
+
+
+# --- CUMULATIVE PAST TESTS ---
+
+class TestPast_0_RL1(unittest.TestCase):
     def setUp(self): self.rl = RateLimiter(2)
     def test_basic(self):
         self.assertTrue(self.rl.allow_request("u1"))
         self.assertTrue(self.rl.allow_request("u1"))
         self.assertFalse(self.rl.allow_request("u1")) # Limit reached
-        self.assertTrue(self.rl.allow_request("u2"))  # Different user\n\nclass TestPast_1_RL2(unittest.TestCase):
+        self.assertTrue(self.rl.allow_request("u2"))  # Different user
+
+class TestPast_1_RL2(unittest.TestCase):
     def setUp(self): self.rl = RateLimiter(limit=2, window_sec=10)
     def test_window(self):
         self.assertTrue(self.rl.allow_request("u1", timestamp=0))
@@ -19,7 +25,13 @@ class RateLimiter:
         self.assertFalse(self.rl.allow_request("u1", timestamp=9)) # Blocked
         
         # At t=11, the first request (t=0) falls out of the 10s window
-        self.assertTrue(self.rl.allow_request("u1", timestamp=11))\n\n\n\n# --- CURRENT LEVEL TESTS ---\n\nclass TestRL3(unittest.TestCase):
+        self.assertTrue(self.rl.allow_request("u1", timestamp=11))
+
+
+
+# --- CURRENT LEVEL TESTS ---
+
+class TestRL3(unittest.TestCase):
     def setUp(self): self.rl = RateLimiter(default_limit=1, window_sec=10)
     def test_tiers(self):
         self.rl.set_user_tier("premium_user", 5)
