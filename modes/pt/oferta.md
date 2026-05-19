@@ -149,7 +149,7 @@ Salvar avaliacao completa em `reports/{###}-{company-slug}-{YYYY-MM-DD}.md`.
 
 ### 2. Registrar no tracker
 
-**SEMPRE** registrar em `data/applications.md`:
+**SEMPRE** registrar em `data/tracker/applications.md`:
 - Proximo numero sequencial
 - Data atual
 - Empresa

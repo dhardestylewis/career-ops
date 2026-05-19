@@ -22,9 +22,9 @@ const parseYaml = yaml.load;
 // ── Config ──────────────────────────────────────────────────────────
 
 const PORTALS_PATH = 'portals.yml';
-const SCAN_HISTORY_PATH = 'data/scan-history.tsv';
-const PIPELINE_PATH = 'data/pipeline.md';
-const APPLICATIONS_PATH = 'data/applications.md';
+const SCAN_HISTORY_PATH = 'data/state/scan-history.tsv';
+const PIPELINE_PATH = 'data/tracker/pipeline.md';
+const APPLICATIONS_PATH = 'data/tracker/applications.md';
 
 const CONCURRENCY = 10;
 const FETCH_TIMEOUT_MS = 10_000;
@@ -278,9 +278,9 @@ async function main() {
   const seenUrls = loadSeenUrls();
   const seenCompanyRoles = loadSeenCompanyRoles();
   let excludedCompanies = new Set();
-  if (existsSync('data/excluded_companies.json')) {
+  if (existsSync('data/state/excluded_companies.json')) {
     try {
-      const excludedArray = JSON.parse(readFileSync('data/excluded_companies.json', 'utf-8'));
+      const excludedArray = JSON.parse(readFileSync('data/state/excluded_companies.json', 'utf-8'));
       excludedCompanies = new Set(excludedArray.map(c => c.toLowerCase()));
     } catch(e) {}
   }

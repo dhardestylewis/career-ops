@@ -4,7 +4,7 @@ import { google } from 'googleapis';
 
 const TOKEN_PATH = path.resolve('token.json');
 const CREDENTIALS_PATH = path.resolve('credentials.json');
-const STATE_PATH = path.resolve('data/followups_state.json');
+const STATE_PATH = path.resolve('data/state/followups_state.json');
 
 (async () => {
     try {

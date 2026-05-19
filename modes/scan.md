@@ -67,8 +67,8 @@ Los niveles son aditivos — se ejecutan todos, los resultados se mezclan y dedu
 ## Workflow
 
 1. **Leer configuración**: `portals.yml`
-2. **Leer historial**: `data/scan-history.tsv` → URLs ya vistas
-3. **Leer dedup sources**: `data/applications.md` + `data/pipeline.md`
+2. **Leer historial**: `data/state/scan-history.tsv` → URLs ya vistas
+3. **Leer dedup sources**: `data/tracker/applications.md` + `data/tracker/pipeline.md`
 
 4. **Nivel 1 — Playwright scan** (paralelo en batches de 3-5):
    Para cada empresa en `tracked_companies` con `enabled: true` y `careers_url` definida:
@@ -157,7 +157,7 @@ Si se encuentra una URL no accesible públicamente:
 
 ## Scan History
 
-`data/scan-history.tsv` trackea TODAS las URLs vistas:
+`data/state/scan-history.tsv` trackea TODAS las URLs vistas:
 
 ```
 url	first_seen	portal	title	company	status

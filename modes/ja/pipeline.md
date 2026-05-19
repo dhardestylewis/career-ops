@@ -1,10 +1,10 @@
 # モード: pipeline -- URL インボックス（Second Brain）
 
-`data/pipeline.md` に蓄積された求人 URL を処理する。候補者がいつでも URL を追加し、後から `/career-ops pipeline` を実行してまとめて処理する。
+`data/tracker/pipeline.md` に蓄積された求人 URL を処理する。候補者がいつでも URL を追加し、後から `/career-ops pipeline` を実行してまとめて処理する。
 
 ## ワークフロー
 
-1. **読み取り** `data/pipeline.md` → 「未処理」セクションの `- [ ]` アイテムを検索
+1. **読み取り** `data/tracker/pipeline.md` → 「未処理」セクションの `- [ ]` アイテムを検索
 2. **各未処理 URL に対して**：
    a. 次の `REPORT_NUM` を連番で計算（`reports/` を読み、最大番号 + 1）
    b. **JD を抽出** Playwright（browser_navigate + browser_snapshot）→ WebFetch → WebSearch の順で

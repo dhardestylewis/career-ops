@@ -1,10 +1,10 @@
 # Режим: pipeline — Очередь URL (Second Brain)
 
-Обрабатывает URL вакансий из `data/pipeline.md`. Пользователь добавляет URL когда угодно, затем запускает `/career-ops pipeline` для обработки.
+Обрабатывает URL вакансий из `data/tracker/pipeline.md`. Пользователь добавляет URL когда угодно, затем запускает `/career-ops pipeline` для обработки.
 
 ## Workflow
 
-1. **Прочитать** `data/pipeline.md` → найти `- [ ]` в секции "Ожидающие" (или "Pendientes" / "Pending" — pipeline.md может содержать заголовки на любом языке)
+1. **Прочитать** `data/tracker/pipeline.md` → найти `- [ ]` в секции "Ожидающие" (или "Pendientes" / "Pending" — pipeline.md может содержать заголовки на любом языке)
 2. **Для каждого URL**:
    a. Вычислить следующий `REPORT_NUM` (прочитать `reports/`, взять макс + 1)
    b. **Извлечь JD** через Playwright → WebFetch → WebSearch

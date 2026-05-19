@@ -28,7 +28,7 @@ const MAX_APPS_PER_COMPANY = profileConfig?.execution?.max_apps_per_company || 3
 // History-Aware Parsing: Load historical limits from applications.md within a 60-day window
 let companyLimits = {};
 try {
-    const appsMd = fs.readFileSync('data/applications.md', 'utf8');
+    const appsMd = fs.readFileSync('data/tracker/applications.md', 'utf8');
     const lines = appsMd.split('\n');
     const now = new Date();
     for (const line of lines) {
@@ -110,7 +110,7 @@ targets.sort((a, b) => {
    return a.random - b.random;
 });
 
-const resumePath = path.resolve('data/resume-dhl-20260421-staff-mle.pdf');
+const resumePath = path.resolve('data/assets/resume-dhl-20260421-staff-mle.pdf');
 
 // Limit the run to 15 randomly selected endpoints to prevent memory exhaustion
 const RUN_LIMIT = targets.length;
@@ -126,7 +126,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
     
     console.log(`Launching Unified Persistent Chrome Context from ${profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile'}`);
     const launchArgs = ['--disable-blink-features=AutomationControlled']; // Hide headless properties natively
-    const audioPath = path.resolve('data/pronunciation.wav');
+    const audioPath = path.resolve('data/assets/pronunciation.wav');
     if (fs.existsSync(audioPath)) {
         launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
     }

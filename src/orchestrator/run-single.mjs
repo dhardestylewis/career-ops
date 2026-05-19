@@ -10,7 +10,7 @@ import yaml from 'js-yaml';
 import { populateLever } from '../scrapers/auto-fill-lever.mjs';
 
 const profileConfig = yaml.load(fs.readFileSync('config/profile.yml', 'utf8'));
-const resumePath = path.resolve('data/resume-dhl-20260421-staff-mle.pdf');
+const resumePath = path.resolve('data/assets/resume-dhl-20260421-staff-mle.pdf');
 const chromePath = profileConfig?.execution?.chrome_profilePath || './data/chrome-bot-profile';
 
 // ── TARGETS ─────────────────────────────────────────────────────────────────

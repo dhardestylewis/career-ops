@@ -16,7 +16,7 @@ import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const ROOT = join(__dirname, '..', '..');
 const QUICK = process.argv.includes('--quick');
 

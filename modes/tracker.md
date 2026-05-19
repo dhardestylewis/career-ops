@@ -1,6 +1,6 @@
 # Modo: tracker — Tracker de Aplicaciones
 
-Lee y muestra `data/applications.md`.
+Lee y muestra `data/tracker/applications.md`.
 
 **Formato del tracker:**
 ```markdown
