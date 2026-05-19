@@ -15,9 +15,9 @@ import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const CAREER_OPS = dirname(fileURLToPath(import.meta.url));
-const APPS_FILE = existsSync(join(CAREER_OPS, 'data/applications.md'))
-  ? join(CAREER_OPS, 'data/applications.md')
+const CAREER_OPS = join(dirname(fileURLToPath(import.meta.url)), '../..');
+const APPS_FILE = existsSync(join(CAREER_OPS, 'data/tracker/applications.md'))
+  ? join(CAREER_OPS, 'data/tracker/applications.md')
   : join(CAREER_OPS, 'applications.md');
 const FOLLOWUPS_FILE = join(CAREER_OPS, 'data/follow-ups.md');
 

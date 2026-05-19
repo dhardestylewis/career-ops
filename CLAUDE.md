@@ -49,9 +49,9 @@ AI-powered job search automation built on Claude Code: pipeline tracking, offer 
 
 | File | Function |
 |------|----------|
-| `data/applications.md` | Application tracker |
-| `data/pipeline.md` | Inbox of pending URLs |
-| `data/scan-history.tsv` | Scanner dedup history |
+| `data/tracker/applications.md` | Application tracker |
+| `data/tracker/pipeline.md` | Inbox of pending URLs |
+| `data/state/scan-history.tsv` | Scanner dedup history |
 | `portals.yml` | Query and company config |
 | `templates/cv-template.html` | HTML template for CVs |
 | `generate-pdf.mjs` | Playwright: HTML to PDF |
@@ -133,7 +133,7 @@ If `portals.yml` is missing:
 Copy `templates/portals.example.yml` → `portals.yml`. If they gave target roles in Step 2, update `title_filter.positive` to match.
 
 #### Step 4: Tracker
-If `data/applications.md` doesn't exist, create it:
+If `data/tracker/applications.md` doesn't exist, create it:
 ```markdown
 # Applications Tracker
 

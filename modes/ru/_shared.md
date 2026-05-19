@@ -169,7 +169,7 @@
 7. Быть прямым и конкретным — без воды
 8. Для русскоязычных вакансий: технический русский, короткие предложения, глаголы действия.
 8b. URL-ы кейсов в Professional Summary PDF (рекрутер может прочитать только это).
-9. **Добавления в трекер как TSV** — не добавлять НОВЫЕ записи в `data/applications.md` напрямую; для новых записей писать TSV в `batch/tracker-additions/` и делать merge. Прямое редактирование существующих строк допустимо для обновления `status`/`notes`.
+9. **Добавления в трекер как TSV** — не добавлять НОВЫЕ записи в `data/tracker/applications.md` напрямую; для новых записей писать TSV в `batch/tracker-additions/` и делать merge. Прямое редактирование существующих строк допустимо для обновления `status`/`notes`.
 10. **Включать `**URL:**` в заголовок каждого отчёта.**
 
 ### Инструменты
@@ -180,7 +180,7 @@
 | WebFetch | Fallback для извлечения JD со статических страниц |
 | Playwright | Верификация вакансий (browser_navigate + browser_snapshot). **НИКОГДА 2+ агентов с Playwright параллельно.** |
 | Read | cv.md, _profile.md, article-digest.md, cv-template.html |
-| Write | Временный HTML для PDF, data/applications.md, отчёты .md |
+| Write | Временный HTML для PDF, data/tracker/applications.md, отчёты .md |
 | Edit | Обновление трекера |
 | Bash | `node generate-pdf.mjs` |
 

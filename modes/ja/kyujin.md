@@ -151,7 +151,7 @@ JD の要件にマッピングした 6-10 の STAR+R ストーリー（STAR + **
 
 ### 2. tracker に記録
 
-**必ず** `data/applications.md` に記録：
+**必ず** `data/tracker/applications.md` に記録：
 - 次の連番
 - 現在の日付
 - 企業名

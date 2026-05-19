@@ -1,10 +1,10 @@
 # Modo: pipeline — Inbox de URLs (Second Brain)
 
-Procesa URLs de ofertas acumuladas en `data/pipeline.md`. El usuario agrega URLs cuando quiera y luego ejecuta `/career-ops pipeline` para procesarlas todas.
+Procesa URLs de ofertas acumuladas en `data/tracker/pipeline.md`. El usuario agrega URLs cuando quiera y luego ejecuta `/career-ops pipeline` para procesarlas todas.
 
 ## Workflow
 
-1. **Leer** `data/pipeline.md` → buscar items `- [ ]` en la sección "Pendientes"
+1. **Leer** `data/tracker/pipeline.md` → buscar items `- [ ]` en la sección "Pendientes"
 2. **Para cada URL pendiente**:
    a. Calcular siguiente `REPORT_NUM` secuencial (leer `reports/`, tomar el número más alto + 1)
    b. **Extraer JD** usando Playwright (browser_navigate + browser_snapshot) → WebFetch → WebSearch

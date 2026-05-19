@@ -13,10 +13,10 @@ import { readFileSync, writeFileSync, copyFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const CAREER_OPS = dirname(fileURLToPath(import.meta.url));
-// Support both layouts: data/applications.md (boilerplate) and applications.md (original)
-const APPS_FILE = existsSync(join(CAREER_OPS, 'data/applications.md'))
-  ? join(CAREER_OPS, 'data/applications.md')
+const CAREER_OPS = join(dirname(fileURLToPath(import.meta.url)), '../..');
+// Support both layouts: data/tracker/applications.md (boilerplate) and applications.md (original)
+const APPS_FILE = existsSync(join(CAREER_OPS, 'data/tracker/applications.md'))
+  ? join(CAREER_OPS, 'data/tracker/applications.md')
   : join(CAREER_OPS, 'applications.md');
 const DRY_RUN = process.argv.includes('--dry-run');
 

@@ -11,11 +11,11 @@
  */
 
 import { chromium } from 'playwright';
-import { resolve, dirname } from 'path';
+import { resolve, dirname , join} from 'path';
 import { readFile } from 'fs/promises';
 import { fileURLToPath } from 'url';
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
+const __dirname = join(dirname(fileURLToPath(import.meta.url)), '../..');
 
 /**
  * Normalize text for ATS compatibility by converting problematic Unicode.

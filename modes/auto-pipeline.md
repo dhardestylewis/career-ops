@@ -63,6 +63,6 @@ Si el score final es >= 4.5, generar borrador de respuestas para el formulario d
 **Idioma**: Siempre en el idioma del JD (EN default). Aplicar `/tech-translate`.
 
 ## Paso 5 — Actualizar Tracker
-Registrar en `data/applications.md` con todas las columnas incluyendo Report y PDF en ✅.
+Registrar en `data/tracker/applications.md` con todas las columnas incluyendo Report y PDF en ✅.
 
 **Si algún paso falla**, continuar con los siguientes y marcar el paso fallido como pendiente en el tracker.

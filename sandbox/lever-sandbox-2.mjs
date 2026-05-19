@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { execSync } from 'child_process';
 
-const p = fs.readFileSync('data/pipeline.md', 'utf8').split('\n');
+const p = fs.readFileSync('data/tracker/pipeline.md', 'utf8').split('\n');
 let url = null;
 for (let i = p.length - 1; i >= 0; i--) {
     if (p[i].includes('lever.co') && p[i].includes('- [ ]')) {
