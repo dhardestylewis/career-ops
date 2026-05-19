@@ -26,7 +26,7 @@ async function runOCR() {
         const filePath = path.join(archiveDir, file);
         console.log(`Analyzing ${file}...`);
         try {
-            const { data: { text } } = await Tesseract.recognize(filePath, 'eng', { logger: m => {} });
+            const { data: { text } } = await Tesseract.recognize(filePath, 'eng', { langPath: path.resolve('data'), logger: m => {} });
             results[file] = text.split('\n').filter(line => line.trim().length > 10);
             console.log(`✅ Extracted ${results[file].length} lines of text from ${file}`);
             

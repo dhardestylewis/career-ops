@@ -39,3 +39,9 @@ data/chrome-bot-profile*/
 artifacts/
 
 data/archive/chrome-bot-profile*/
+
+# OA Simulator Ephemeral State
+interview-prep/.active_session.json
+interview-prep/workspace.py
+interview-prep/.run.py
+interview-prep/history/

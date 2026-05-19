@@ -8,7 +8,7 @@ import yaml from 'js-yaml';
 
 const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
 const profileConfig = yaml.load(fileContents);
-const resumePath = path.resolve('resume-dhl-20260421-staff-mle.pdf');
+const resumePath = path.resolve('data/resume-dhl-20260421-staff-mle.pdf');
 
 (async () => {
     const browser = await chromium.launch({ headless: false });

@@ -9,6 +9,13 @@ import argparse
 import re
 from pathlib import Path
 
+if sys.platform == 'win32':
+    try:
+        sys.stdout.reconfigure(encoding='utf-8')
+        sys.stderr.reconfigure(encoding='utf-8')
+    except AttributeError:
+        pass
+
 BASE_DIR = Path(__file__).parent
 PROGRESS_FILE = BASE_DIR / ".oa_progress.json"
 ACTIVE_SESSION_FILE = BASE_DIR / ".active_session.json"
@@ -83,27 +90,27 @@ def extract_workspace_skeleton(file_path):
 
 def run_timer(minutes=90):
     seconds = int(minutes * 60)
-    print(f"\\n==============================================")
+    print(f"\n==============================================")
     print(f"⏳ PROCTOR TIMER STARTED ({minutes} MINUTES)")
     print(f"Press Ctrl+C at any time to finish early and grade.")
-    print(f"==============================================\\n")
+    print(f"==============================================\n")
     try:
         while seconds > 0:
             mins, secs = divmod(seconds, 60)
             timer_str = f"Time Remaining: {mins:02d}:{secs:02d}"
-            sys.stdout.write(f"\\r{timer_str}")
+            sys.stdout.write(f"\r{timer_str}")
             sys.stdout.flush()
             time.sleep(1)
             seconds -= 1
-        print("\\n\\n⏰ TIME IS UP!")
-        print("\\a")
+        print("\n\n⏰ TIME IS UP!")
+        print("\a")
     except KeyboardInterrupt:
-        print("\\n\\n⏹️  Timer stopped early by user.")
+        print("\n\n⏹️  Timer stopped early by user.")
 
 def run_simulation_start():
     print("==============================================")
     print("🤖 ANTHROPIC CODESIGNAL SIMULATOR")
-    print("==============================================\\n")
+    print("==============================================\n")
     
     if ACTIVE_SESSION_FILE.exists():
         print("⚠️  You already have an active session!")
@@ -122,11 +129,11 @@ def run_simulation_start():
     actual_pct = (current_weights[selected] / total_wt) * 100
     
     print(f"ALGORITHM SELECTED: {selected.upper()}")
-    print(f"(Dynamic Probability: {actual_pct:.1f}% | Base: {BASE_WEIGHTS[selected]}%)\\n")
+    print(f"(Dynamic Probability: {actual_pct:.1f}% | Base: {BASE_WEIGHTS[selected]}%)\n")
     
     if selected in progress and progress[selected].get("level_reached", 0) > 0:
         prev_level = progress[selected]["level_reached"]
-        print(f"📊 HISTORY: You previously reached Level {prev_level} on this problem.\\n")
+        print(f"📊 HISTORY: You previously reached Level {prev_level} on this problem.\n")
         
     level_1_files = glob.glob(str(MOCK_DIR / selected / "level_1_*.py"))
     if level_1_files:
@@ -169,12 +176,12 @@ def extract_tests(file_path):
 def extract_prompt(file_path):
     with open(file_path, 'r', encoding='utf-8') as f:
         content = f.read()
-    lines = content.split('\\n')
+    lines = content.split('\n')
     prompt_lines = []
     for line in lines:
         if line.startswith('class '): break
         if line.startswith('#'): prompt_lines.append(line)
-    return "\\n".join(prompt_lines)
+    return "\n".join(prompt_lines)
 
 def run_submission():
     session = load_session()
@@ -202,21 +209,21 @@ def run_submission():
     
     with open(RUNNER_FILE, 'w', encoding='utf-8') as f:
         f.write(workspace_content)
-        f.write("\\n\\nimport unittest\\nimport os\\nfrom decimal import Decimal\\n\\n")
+        f.write("\n\nimport unittest\nimport os\nfrom decimal import Decimal\n\n")
         f.write(tests_content)
         
     result = subprocess.run([sys.executable, str(RUNNER_FILE)], capture_output=True, text=True)
     if RUNNER_FILE.exists(): os.remove(RUNNER_FILE)
     
     if result.returncode != 0:
-        print("\\nTESTS FAILED\\n")
+        print("\nTESTS FAILED\n")
         print("--- Output ---")
         print(result.stdout)
         print(result.stderr)
-        print("--------------\\nFix your code in workspace.py and run 'python oa.py submit' again.")
+        print("--------------\nFix your code in workspace.py and run 'python oa.py submit' again.")
         sys.exit(1)
         
-    print("\\nALL TESTS PASSED!\\n")
+    print("\nALL TESTS PASSED!\n")
     print(result.stderr)
     
     # Auto Checkpoint
@@ -225,7 +232,7 @@ def run_submission():
     checkpoint_file = history_dir / f"level_{level}_passed.py"
     with open(checkpoint_file, 'w', encoding='utf-8') as f:
         f.write(workspace_content)
-    print(f"💾 Checkpoint saved: If you mess up the next level, recover your code from history/level_{level}_passed.py\\n")
+    print(f"💾 Checkpoint saved: If you mess up the next level, recover your code from history/level_{level}_passed.py\n")
     
     next_level = level + 1
     next_level_file = get_level_file(topic, next_level)
@@ -236,13 +243,13 @@ def run_submission():
         os.remove(ACTIVE_SESSION_FILE)
         sys.exit(0)
         
-    print(f"UNLOCKED LEVEL {next_level}\\n")
+    print(f"UNLOCKED LEVEL {next_level}\n")
     prompt = extract_prompt(next_level_file)
     print("======================================================")
     print("NEW REQUIREMENTS:")
     print("======================================================")
     print(prompt)
-    print("======================================================\\n")
+    print("======================================================\n")
     print("Implement these requirements in workspace.py and run 'python oa.py submit' when ready.")
     
     session["level"] = next_level
@@ -265,15 +272,15 @@ def run_grading():
         progress[category] = {"last_seen": time.time(), "recovery_hours": DEFAULT_RECOVERY, "level_reached": session["level"]}
     
     data = progress[category]
-    print("\\n==============================================")
+    print("\n==============================================")
     print(f"GRADING SESSION: {category.upper()}")
-    print("==============================================\\n")
+    print("==============================================\n")
     
     level = input("What level did you successfully complete? (0-5): ")
     try: data["level_reached"] = int(level)
     except: pass
         
-    print("\\nHow difficult was this session?")
+    print("\nHow difficult was this session?")
     print("1: Easy   (I breezed through it. Don't show me this again for a while.)")
     print("2: Medium (Challenging, but I figured it out. Standard review.)")
     print("3: Hard   (I struggled or failed. I need to practice this again soon.)")
@@ -291,7 +298,7 @@ def run_grading():
         
     save_progress(progress)
     os.remove(ACTIVE_SESSION_FILE)
-    print("\\n✅ Progress saved. Great work!")
+    print("\n✅ Progress saved. Great work!")
 
 def main():
     parser = argparse.ArgumentParser(description="CodeSignal OA Simulator CLI")
