@@ -90,7 +90,7 @@ cp config/profile.example.yml config/profile.yml  # Edit with your details
 cp templates/portals.example.yml portals.yml       # Customize companies
 
 # 4. Add your CV
-# Create cv.md in the project root with your CV in markdown
+# Create data/cv.md with your CV in markdown
 
 # 5. Personalize with Claude
 claude   # Open Claude Code in this directory
@@ -143,7 +143,7 @@ You paste a job URL or description
          │
 ┌────────▼─────────┐
 │  A-F Evaluation  │  Match, gaps, comp research, STAR stories
-│  (reads cv.md)   │
+│(reads data/cv.md)│
 └────────┬─────────┘
          │
     ┌────┼────┐
@@ -184,7 +184,6 @@ Features: 6 filter tabs, 4 sort modes, grouped/flat view, lazy-loaded previews, 
 ```
 career-ops/
 ├── CLAUDE.md                    # Agent instructions
-├── cv.md                        # Your CV (create this)
 ├── article-digest.md            # Your proof points (optional)
 ├── config/
 │   └── profile.example.yml      # Template for your profile
@@ -203,7 +202,8 @@ career-ops/
 │   ├── batch-prompt.md          # Self-contained worker prompt
 │   └── batch-runner.sh          # Orchestrator script
 ├── dashboard/                   # Go TUI pipeline viewer
-├── data/                        # Your tracking data (gitignored)
+├── data/                        # Your tracking data (gitignored except cv.md)
+│   └── cv.md                    # Your CV (create this)
 ├── reports/                     # Evaluation reports (gitignored)
 ├── output/                      # Generated PDFs (gitignored)
 ├── fonts/                       # Space Grotesk + DM Sans

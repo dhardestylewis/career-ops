@@ -1,6 +1,6 @@
 {
   "in_memory_db": {
-    "last_seen": 1779142782.124131,
+    "last_seen": 1779234373.0498316,
     "recovery_hours": 12.0,
     "level_reached": 0
   },
@@ -11,16 +11,16 @@
   },
   "bank_account": {
     "last_seen": 1779142653.1633618,
-    "recovery_hours": 12.0,
-    "level_reached": 0
+    "recovery_hours": 48.0,
+    "level_reached": 5
   },
   "inventory_cart": {
-    "last_seen": false,
+    "last_seen": 1779234830.2782068,
     "recovery_hours": 12.0,
     "level_reached": 0
   },
   "rate_limiter": {
-    "last_seen": false,
+    "last_seen": 1779234200.2234108,
     "recovery_hours": 12.0,
     "level_reached": 0
   },

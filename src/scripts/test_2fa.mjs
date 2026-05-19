@@ -70,7 +70,7 @@ async function getLatestGreenhouseCode() {
     await page.goto(testUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
     
     console.log("Auto-filling form...");
-    await populateGreenhouse(page, testUrl, "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf", {}, true);
+    await populateGreenhouse(page, testUrl, path.resolve('data/resume-dhl-20260421-staff-mle.pdf'), {}, true);
     
     console.log("\n==============================================");
     console.log("🛑 APPLICATION FILLED BUT NOT SUBMITTED 🛑");

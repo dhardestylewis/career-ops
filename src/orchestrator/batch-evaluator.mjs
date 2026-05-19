@@ -110,7 +110,7 @@ targets.sort((a, b) => {
    return a.random - b.random;
 });
 
-const resumePath = "C:\\Users\\dhl\\data\\Portfolio\\cv-dhl.git\\resume\\2-page\\without-cover-letter\\resume-dhl-20260420-staff-mle\\resume-dhl-20260420-staff-mle.pdf";
+const resumePath = path.resolve('data/resume-dhl-20260421-staff-mle.pdf');
 
 // Limit the run to 15 randomly selected endpoints to prevent memory exhaustion
 const RUN_LIMIT = targets.length;
