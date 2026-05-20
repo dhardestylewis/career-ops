@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Discovery Dashboard</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; background-color: #f9fafb; margin: 0; padding: 40px; color: #111827; }
+        h1 { margin-bottom: 8px; font-weight: 800; }
+        p { color: #6b7280; margin-bottom: 32px; }
+        table { width: 100%; border-collapse: collapse; background: white; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1); }
+        th, td { padding: 16px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+        th { background-color: #f3f4f6; font-weight: 600; color: #374151; font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.05em; }
+        tr:last-child td { border-bottom: none; }
+        tr:hover { background-color: #f9fafb; }
+        .btn { display: inline-block; padding: 8px 16px; background-color: #2563eb; color: white; text-decoration: none; border-radius: 6px; font-weight: 500; font-size: 0.875rem; transition: background-color 0.2s; }
+        .btn:hover { background-color: #1d4ed8; }
+        .btn-secondary { background-color: #10b981; }
+        .btn-secondary:hover { background-color: #059669; }
+        .known-contact { display: inline-flex; align-items: center; padding: 4px 12px; background-color: #d1fae5; color: #065f46; border-radius: 9999px; font-size: 0.875rem; font-weight: 500; }
+        .badge { margin-left: 8px; font-size: 0.75rem; background: #e5e7eb; padding: 2px 6px; border-radius: 4px; color: #4b5563; }
+    </style>
+</head>
+<body>
+    <h1>Contact Discovery Dashboard</h1>
+    <p>Use the 1-click LinkedIn Search buttons to rapidly identify the Hiring Manager, Engineering Manager, or Recruiter for each position.</p>
+    <table>
+        <thead>
+            <tr>
+                <th>Date Applied</th>
+                <th>Company</th>
+                <th>Position</th>
+                <th>Contact Status / Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Nuro</td>
+                <td style="color: #4b5563;">Technical Lead Manager, ML Platform Infrastructure</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Nuro%20(%22Technical%20Lead%20Manager%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Nuro</td>
+                <td style="color: #4b5563;">Senior Software Engineer, Perception ML Data</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Nuro%20(%22Senior%20Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Applied Intuition</td>
+                <td style="color: #4b5563;">Missions Software Engineer - Physical AI</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Applied%20Intuition%20(%22Missions%20Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Sr. Solutions Architect - Financial Services (Wealth & Asset Management)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Sr.%20Solutions%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Figma</td>
+                <td style="color: #4b5563;">Software Engineer, AI Platforms</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Figma%20(%22Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">dv01</td>
+                <td style="color: #4b5563;">MLOps Platform Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=dv01%20(%22MLOps%20Platform%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">HeyGen</td>
+                <td style="color: #4b5563;">Research Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=HeyGen%20(%22Research%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Solutions Architect (Thailand)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Solutions%20Architect%20(Thailand)%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Solutions Architect - Financial Services (Insurance)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Solutions%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Sr. Events Marketing Manager, Data + AI World Tour</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Sr.%20Events%20Marketing%20Manager%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Newton Research</td>
+                <td style="color: #4b5563;">Data Scientist</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Newton%20Research%20(%22Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Figma</td>
+                <td style="color: #4b5563;">Product Manager, AI Platform</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Figma%20(%22Product%20Manager%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Scale AI</td>
+                <td style="color: #4b5563;">Applied AI Engineer, Enterprise</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Scale%20AI%20(%22Applied%20AI%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Applied Intuition</td>
+                <td style="color: #4b5563;">Research Engineer - 3D Vision and Generation, Self-Driving</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Applied%20Intuition%20(%22Research%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">Airbnb</td>
+                <td style="color: #4b5563;">Senior Data Scientist - Inference, Global Markets</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Airbnb%20(%22Senior%20Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 23, 2026</td>
+                <td style="font-weight: 500;">HeyGen</td>
+                <td style="color: #4b5563;">Software Engineer, AI Compute Infrastructure</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=HeyGen%20(%22Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Black Forest Labs</td>
+                <td style="color: #4b5563;">Senior Solutions Architect</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Black%20Forest%20Labs%20(%22Senior%20Solutions%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Together AI</td>
+                <td style="color: #4b5563;">Staff Engineer, Distributed Storage,HPC & AI Infrastructure</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Together%20AI%20(%22Staff%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Roblox</td>
+                <td style="color: #4b5563;">Technical Sourcer, AI/ML, Short Term</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Roblox%20(%22Technical%20Sourcer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Waymo</td>
+                <td style="color: #4b5563;">Senior Machine Learning Engineer, AI Foundations</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Waymo%20(%22Senior%20Machine%20Learning%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Together AI</td>
+                <td style="color: #4b5563;">Research Engineer, Frontier Speculative Decoding</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Together%20AI%20(%22Research%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Figma</td>
+                <td style="color: #4b5563;">Data Scientist</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Figma%20(%22Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Figma</td>
+                <td style="color: #4b5563;">Software Engineer, Distributed Systems</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Figma%20(%22Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Solutions Architect (Hong-Kong)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Solutions%20Architect%20(Hong-Kong)%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Scale AI</td>
+                <td style="color: #4b5563;">Machine Learning Systems Research Engineer, Agent Post-training - Enterprise GenAI</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Scale%20AI%20(%22Machine%20Learning%20Systems%20Research%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Applied Intuition</td>
+                <td style="color: #4b5563;">Research Engineer - AI/RL Infrastructure</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Applied%20Intuition%20(%22Research%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Scale AI</td>
+                <td style="color: #4b5563;">Product Manager of AI Applications, Global Public Sector</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Scale%20AI%20(%22Product%20Manager%20of%20AI%20Applications%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Scale Solutions Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Scale%20Solutions%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Senior Specialist Solutions Architect - AI & ML Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Senior%20Specialist%20Solutions%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Sr. Specialist Solutions Architect - Data Warehousing (Financial Services)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Sr.%20Specialist%20Solutions%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Scale AI</td>
+                <td style="color: #4b5563;">Deployment Strategist</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Scale%20AI%20(%22Deployment%20Strategist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">HeyGen</td>
+                <td style="color: #4b5563;">Head of Developer and AI Platform Marketing</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=HeyGen%20(%22Head%20of%20Developer%20and%20AI%20Platform%20Marketing%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Scale AI</td>
+                <td style="color: #4b5563;">Forward Deployed AI Engineering Manager, Enterprise</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Scale%20AI%20(%22Forward%20Deployed%20AI%20Engineering%20Manager%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Named Enterprise Account Executive  - Retail/CPG</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Named%20Enterprise%20Account%20Executive%20%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Nuro</td>
+                <td style="color: #4b5563;">Staff ML Research Scientist</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Nuro%20(%22Staff%20ML%20Research%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Applied Intuition</td>
+                <td style="color: #4b5563;">Senior Software Engineer - ML Infrastructure</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Applied%20Intuition%20(%22Senior%20Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Waymo</td>
+                <td style="color: #4b5563;">ML Microarchitect</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Waymo%20(%22ML%20Microarchitect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Waymo</td>
+                <td style="color: #4b5563;">Senior Product Manager, AI Data Mining</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Waymo%20(%22Senior%20Product%20Manager%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 22, 2026</td>
+                <td style="font-weight: 500;">Mistral AI</td>
+                <td style="color: #4b5563;">Account Executive – AI for Citizens</td>
+                <td><span class="known-contact">✓ Mistral AI</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Mistral%20AI%20Mistral%20AI" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">LinkedIn</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=LinkedIn%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">LinkedIn</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=LinkedIn%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">LinkedIn</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=LinkedIn%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">LinkedIn</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=LinkedIn%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">LinkedIn</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=LinkedIn%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">a16z speedrun</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ a16z speedrun</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=a16z%20speedrun%20a16z%20speedrun" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 21, 2026</td>
+                <td style="font-weight: 500;">Wander Amorim</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Wander Amorim</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Wander%20Amorim%20Wander%20Amorim" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Helsing</td>
+                <td style="color: #4b5563;">AI Research Engineer - AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Helsing%20(%22AI%20Research%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Arize AI</td>
+                <td style="color: #4b5563;">AI Engineer, Instrumentation</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Arize%20AI%20(%22AI%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Glean</td>
+                <td style="color: #4b5563;">AI Outcomes Manager, ANZ</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Glean%20(%22AI%20Outcomes%20Manager%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Airtable</td>
+                <td style="color: #4b5563;">AI Agent Architect, Customer Experience</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Airtable%20(%22AI%20Agent%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Helsing</td>
+                <td style="color: #4b5563;">AI Research Engineer - AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Helsing%20(%22AI%20Research%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Airtable</td>
+                <td style="color: #4b5563;">AI Agent Architect, Customer Experience</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Airtable%20(%22AI%20Agent%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Celonis</td>
+                <td style="color: #4b5563;">Account Executive - Retail</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Celonis%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">PhysicsX</td>
+                <td style="color: #4b5563;">Data Scientist / Algorithm Engineer</td>
+                <td><span class="known-contact">✓ Wander Amorim</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=PhysicsX%20Wander%20Amorim" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Hightouch 💚</td>
+                <td style="color: #4b5563;">Account Executive, Enterprise -Mountain West</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Hightouch%20%F0%9F%92%9A%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Hightouch 💚</td>
+                <td style="color: #4b5563;">Account Executive, Enterprise -Mountain West</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Hightouch%20%F0%9F%92%9A%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Celonis</td>
+                <td style="color: #4b5563;">Account Executive - Retail</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Celonis%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Helsing</td>
+                <td style="color: #4b5563;">AI Research Engineer - AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Helsing%20(%22AI%20Research%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Celonis</td>
+                <td style="color: #4b5563;">Account Executive - Retail</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Celonis%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">PhysicsX</td>
+                <td style="color: #4b5563;">Data Scientist / Algorithm Engineer</td>
+                <td><span class="known-contact">✓ Wander Amorim</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=PhysicsX%20Wander%20Amorim" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Wayve</td>
+                <td style="color: #4b5563;">Applied Scientist, Controllable GAIA</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Wayve%20(%22Applied%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Wayve</td>
+                <td style="color: #4b5563;">Applied Scientist, Controllable GAIA</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Wayve%20(%22Applied%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Celonis</td>
+                <td style="color: #4b5563;">Account Executive - Retail</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Celonis%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">PhysicsX</td>
+                <td style="color: #4b5563;">Data Scientist / Algorithm Engineer</td>
+                <td><span class="known-contact">✓ Wander Amorim</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=PhysicsX%20Wander%20Amorim" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Hightouch 💚</td>
+                <td style="color: #4b5563;">Account Executive, Enterprise -Mountain West</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Hightouch%20%F0%9F%92%9A%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">PlanetScale</td>
+                <td style="color: #4b5563;">Solutions Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=PlanetScale%20(%22Solutions%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Anthropic</td>
+                <td style="color: #4b5563;">Anthropic Fellows Program — AI Safety</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anthropic%20(%22Anthropic%20Fellows%20Program%20%E2%80%94%20AI%20Safety%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Celonis</td>
+                <td style="color: #4b5563;">Account Executive - Retail</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Celonis%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Hightouch 💚</td>
+                <td style="color: #4b5563;">Account Executive, Enterprise -Mountain West</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Hightouch%20%F0%9F%92%9A%20(%22Account%20Executive%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Vercel</td>
+                <td style="color: #4b5563;">Solutions Architect</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Vercel%20(%22Solutions%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Vercel</td>
+                <td style="color: #4b5563;">Forward Deployed Engineer, v0</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Vercel%20(%22Forward%20Deployed%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Black Forest Labs</td>
+                <td style="color: #4b5563;">Senior Solutions Architect</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Black%20Forest%20Labs%20(%22Senior%20Solutions%20Architect%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Cohesity</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Cohesity%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Cohesity</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Cohesity%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Spotify</td>
+                <td style="color: #4b5563;">Government Affairs Lead, Türkiye</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Spotify%20(%22Government%20Affairs%20Lead%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Spotify</td>
+                <td style="color: #4b5563;">Data Scientist II - Platform Mission</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Spotify%20(%22Data%20Scientist%20II%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Spotify</td>
+                <td style="color: #4b5563;">Data Scientist, Subscriptions</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Spotify%20(%22Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Mistral AI</td>
+                <td style="color: #4b5563;">Account Executive – AI for Citizens</td>
+                <td><span class="known-contact">✓ Mistral AI</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Mistral%20AI%20Mistral%20AI" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 20, 2026</td>
+                <td style="font-weight: 500;">Mistral AI</td>
+                <td style="color: #4b5563;">Account Executive – AI for Citizens</td>
+                <td><span class="known-contact">✓ Mistral AI</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Mistral%20AI%20Mistral%20AI" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 15, 2026</td>
+                <td style="font-weight: 500;">Hume AI</td>
+                <td style="color: #4b5563;">AI Researcher</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Hume%20AI%20(%22AI%20Researcher%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 13, 2026</td>
+                <td style="font-weight: 500;">Kareem’s Job Search Newsletter</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Kareem%E2%80%99s%20Job%20Search%20Newsletter%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 13, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 13, 2026</td>
+                <td style="font-weight: 500;">Allison Rebaza</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Allison Rebaza</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Allison%20Rebaza%20Allison%20Rebaza" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 12, 2026</td>
+                <td style="font-weight: 500;">Jensen Hughes</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Jensen%20Hughes%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 12, 2026</td>
+                <td style="font-weight: 500;">Tarro Hiring Team</td>
+                <td style="color: #4b5563;">Data Scientist</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Tarro%20Hiring%20Team%20(%22Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 10, 2026</td>
+                <td style="font-weight: 500;">Dell My HR</td>
+                <td style="color: #4b5563;">Data Science Advisor</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Dell%20My%20HR%20(%22Data%20Science%20Advisor%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 7, 2026</td>
+                <td style="font-weight: 500;">Vannevar</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Vannevar%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Apr 2, 2026</td>
+                <td style="font-weight: 500;">Google GIC</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Google GIC</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Google%20GIC%20Google%20GIC" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Apr 1, 2026</td>
+                <td style="font-weight: 500;">Lila Sciences</td>
+                <td style="color: #4b5563;">Machine Learning Scientist I/II, Decision Making f...</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Lila%20Sciences%20(%22Machine%20Learning%20Scientist%20I%2FII%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 31, 2026</td>
+                <td style="font-weight: 500;">Google GIC</td>
+                <td style="color: #4b5563;">a Google.org Impact Challenge, and we want to ensu...</td>
+                <td><span class="known-contact">✓ Google GIC</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Google%20GIC%20Google%20GIC" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 29, 2026</td>
+                <td style="font-weight: 500;">Cara Debbaudt</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Cara Debbaudt</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Cara%20Debbaudt%20Cara%20Debbaudt" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 27, 2026</td>
+                <td style="font-weight: 500;">Metropolis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Metropolis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 25, 2026</td>
+                <td style="font-weight: 500;">Austin Amberg</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Austin Amberg</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Austin%20Amberg%20Austin%20Amberg" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 20, 2026</td>
+                <td style="font-weight: 500;">WorldQuant</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=WorldQuant%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 19, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 19, 2026</td>
+                <td style="font-weight: 500;">Marissa Alava-Henry via Docusign</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Marissa Alava-Henry</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Marissa%20Alava-Henry%20via%20Docusign%20Marissa%20Alava-Henry" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 19, 2026</td>
+                <td style="font-weight: 500;">Stack Team</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Stack%20Team%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 19, 2026</td>
+                <td style="font-weight: 500;">Marissa Alava-Henry</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Marissa Alava-Henry</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Marissa%20Alava-Henry%20Marissa%20Alava-Henry" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 19, 2026</td>
+                <td style="font-weight: 500;">Reminder</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Reminder%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 19, 2026</td>
+                <td style="font-weight: 500;">Kalshi Support</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Kalshi%20Support%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">Scale AI</td>
+                <td style="color: #4b5563;">AI Applications Ops Lead, GPS</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Scale%20AI%20(%22AI%20Applications%20Ops%20Lead%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">Distyl AI</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Distyl%20AI%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">No reply - AWS Startups</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=No%20reply%20-%20AWS%20Startups%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">PlusAI</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=PlusAI%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">ICF Human Resources</td>
+                <td style="color: #4b5563;">Data Scientist (Remote) and are curren...</td>
+                <td><span class="known-contact">✓ ICF Human Resources</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=ICF%20Human%20Resources%20ICF%20Human%20Resources" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">Artefact</td>
+                <td style="color: #4b5563;">Jr. Data Scientist - (Canada-based)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Artefact%20(%22Jr.%20Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">Zip</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Zip%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 17, 2026</td>
+                <td style="font-weight: 500;">Afresh</td>
+                <td style="color: #4b5563;">Software Engineer, ML Platform</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Afresh%20(%22Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 16, 2026</td>
+                <td style="font-weight: 500;">X, the moonshot factory</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=X%2C%20the%20moonshot%20factory%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 16, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 14, 2026</td>
+                <td style="font-weight: 500;">Oksana Tugayeva</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Oksana Tugayeva</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Oksana%20Tugayeva%20Oksana%20Tugayeva" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 13, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 13, 2026</td>
+                <td style="font-weight: 500;">Oksana Tugayeva</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Oksana Tugayeva</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Oksana%20Tugayeva%20Oksana%20Tugayeva" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 13, 2026</td>
+                <td style="font-weight: 500;">Oksana Tugayeva</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Oksana Tugayeva</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Oksana%20Tugayeva%20Oksana%20Tugayeva" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 13, 2026</td>
+                <td style="font-weight: 500;">Airbnb</td>
+                <td style="color: #4b5563;">Machine Learning Engineer, Community Support Engineering</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Airbnb%20(%22Machine%20Learning%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 12, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 12, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 12, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 12, 2026</td>
+                <td style="font-weight: 500;">oksanat@pulserisetech.com</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=oksanat%40pulserisetech.com%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 12, 2026</td>
+                <td style="font-weight: 500;">Artefact</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Artefact%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 12, 2026</td>
+                <td style="font-weight: 500;">Daniel Lewis</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Daniel%20Lewis%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 12, 2026</td>
+                <td style="font-weight: 500;">Raymond Sheerin</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Raymond Sheerin</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Raymond%20Sheerin%20Raymond%20Sheerin" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 11, 2026</td>
+                <td style="font-weight: 500;">Anduril Industries</td>
+                <td style="color: #4b5563;">Senior Software Engineer, Nix</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anduril%20Industries%20(%22Senior%20Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 11, 2026</td>
+                <td style="font-weight: 500;">Workday rgare</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Workday rgare</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Workday%20rgare%20Workday%20rgare" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 10, 2026</td>
+                <td style="font-weight: 500;">Mirai Bio</td>
+                <td style="color: #4b5563;">Machine Learning Software Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Mirai%20Bio%20(%22Machine%20Learning%20Software%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">CoreWeave</td>
+                <td style="color: #4b5563;">AI Engineer- Gen AI/SWE- Weights & Biases</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=CoreWeave%20(%22AI%20Engineer-%20Gen%20AI%2FSWE-%20Weights%20%26%20Biases%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">Credit Karma</td>
+                <td style="color: #4b5563;">Senior Credit AI Scientist - Consumer Risk</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Credit%20Karma%20(%22Senior%20Credit%20AI%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">Lila Sciences</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Lila%20Sciences%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">Affirm</td>
+                <td style="color: #4b5563;">Machine Learning Engineer II (Fraud)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Affirm%20(%22Machine%20Learning%20Engineer%20II%20(Fraud)%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">Tabby</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Tabby%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">Extend</td>
+                <td style="color: #4b5563;">Senior Data Scientist, Finance Analytics</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Extend%20(%22Senior%20Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">GenLogs Corporation</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ GenLogs Corporation</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=GenLogs%20Corporation%20GenLogs%20Corporation" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">Artefact</td>
+                <td style="color: #4b5563;">Jr. Data Scientist - (Canada-based)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Artefact%20(%22Jr.%20Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">SentiLink</td>
+                <td style="color: #4b5563;">Senior Data Scientist, Full Stack</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=SentiLink%20(%22Senior%20Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 9, 2026</td>
+                <td style="font-weight: 500;">Ryan from Stack</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Ryan from Stack</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Ryan%20from%20Stack%20Ryan%20from%20Stack" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Workday</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Workday rgare</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Workday%20Workday%20rgare" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;"></td>
+                <td style="color: #4b5563;">AI Researcher</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=%20(%22AI%20Researcher%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Woven by Toyota</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Woven by Toyota</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Woven%20by%20Toyota%20Woven%20by%20Toyota" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Kikoff</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Kikoff%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Point72</td>
+                <td style="color: #4b5563;">2026 AI Engineer Intern, Long/Short Equities</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Point72%20(%222026%20AI%20Engineer%20Intern%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Mercury Insurance Services, LLC</td>
+                <td style="color: #4b5563;">Senior Software Engineer (2026-6086)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Mercury%20Insurance%20Services%2C%20LLC%20(%22Senior%20Software%20Engineer%20(2026-6086)%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Anduril Industries</td>
+                <td style="color: #4b5563;">Computer Vision Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Anduril%20Industries%20(%22Computer%20Vision%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Klaviyo</td>
+                <td style="color: #4b5563;">AI Engineer I</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Klaviyo%20(%22AI%20Engineer%20I%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">State Street</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=State%20Street%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">WorldQuant</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=WorldQuant%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Shield AI</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Shield AI</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Shield%20AI%20Shield%20AI" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Zoox</td>
+                <td style="color: #4b5563;">AI Developer Productivity Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Zoox%20(%22AI%20Developer%20Productivity%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">CHAOS Industries</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=CHAOS%20Industries%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">PlusAI</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=PlusAI%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Cambridge Mobile Telematics</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Cambridge%20Mobile%20Telematics%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Dell Technologies</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Dell%20Technologies%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">Affirm</td>
+                <td style="color: #4b5563;">Machine Learning Engineer II (Fraud)</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Affirm%20(%22Machine%20Learning%20Engineer%20II%20(Fraud)%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 8, 2026</td>
+                <td style="font-weight: 500;">oksanat@pulserisetech.com</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=oksanat%40pulserisetech.com%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">The Cadmus Group</td>
+                <td style="color: #4b5563;">Data Scientist</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=The%20Cadmus%20Group%20(%22Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">The Cadmus Group</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=The%20Cadmus%20Group%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Quantifind</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Quantifind%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Cambridge Mobile Telematics</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Cambridge%20Mobile%20Telematics%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Coinbase</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Coinbase%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Databricks</td>
+                <td style="color: #4b5563;">Staff Data Scientist</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Databricks%20(%22Staff%20Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Axon</td>
+                <td style="color: #4b5563;">Principal Machine Learning Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Axon%20(%22Principal%20Machine%20Learning%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Garner Health</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Garner%20Health%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Scribd, Inc.</td>
+                <td style="color: #4b5563;">Senior Machine Learning Engineer</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Scribd%2C%20Inc.%20(%22Senior%20Machine%20Learning%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Flagship Pioneering, Inc.</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Flagship%20Pioneering%2C%20Inc.%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">CAIS</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=CAIS%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Uniphore</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Uniphore%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">X, the moonshot factory</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=X%2C%20the%20moonshot%20factory%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Runway</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Runway%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Tech Holding</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Tech%20Holding%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 7, 2026</td>
+                <td style="font-weight: 500;">Workday rgare</td>
+                <td style="color: #4b5563;">Senior Data Scientist</td>
+                <td><span class="known-contact">✓ Workday rgare</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Workday%20rgare%20Workday%20rgare" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Mar 5, 2026</td>
+                <td style="font-weight: 500;">Cohesity</td>
+                <td style="color: #4b5563;">Senior Data Scientist</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Cohesity%20(%22Senior%20Data%20Scientist%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 5, 2026</td>
+                <td style="font-weight: 500;">Definitive Healthcare, US</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Definitive%20Healthcare%2C%20US%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 5, 2026</td>
+                <td style="font-weight: 500;">Equip</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Equip%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 5, 2026</td>
+                <td style="font-weight: 500;">Airbnb</td>
+                <td style="color: #4b5563;">Machine Learning Engineer, Community Support Engineering</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Airbnb%20(%22Machine%20Learning%20Engineer%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 4, 2026</td>
+                <td style="font-weight: 500;">Sage</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=Sage%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 3, 2026</td>
+                <td style="font-weight: 500;">RunPod Team</td>
+                <td style="color: #4b5563;">Forward Deployed Engineer APAC</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=RunPod%20Team%20(%22Forward%20Deployed%20Engineer%20APAC%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 2, 2026</td>
+                <td style="font-weight: 500;">No reply - AWS Startups</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=No%20reply%20-%20AWS%20Startups%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Mar 2, 2026</td>
+                <td style="font-weight: 500;">No reply - AWS Startups</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><a href="https://www.linkedin.com/search/results/people/?keywords=No%20reply%20-%20AWS%20Startups%20(%22Unknown%22%20OR%20Recruiter%20OR%20%22Hiring%20Manager%22%20OR%20%22Engineering%20Manager%22%20OR%20%22Talent%22)" target="_blank" class="btn">Search LinkedIn</a></td>
+            </tr>
+            <tr>
+                <td>Feb 27, 2026</td>
+                <td style="font-weight: 500;">Google for Startups</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Google for Startups</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Google%20for%20Startups%20Google%20for%20Startups" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+            <tr>
+                <td>Feb 27, 2026</td>
+                <td style="font-weight: 500;">Google for Startups</td>
+                <td style="color: #4b5563;">Unknown</td>
+                <td><span class="known-contact">✓ Google for Startups</span>
+                      <a href="https://www.linkedin.com/search/results/people/?keywords=Google%20for%20Startups%20Google%20for%20Startups" target="_blank" class="badge" style="text-decoration:none;">Find Profile</a></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
