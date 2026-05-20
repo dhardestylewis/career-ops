@@ -55,7 +55,7 @@ def save_progress(progress):
 
 def load_session():
     if not ACTIVE_SESSION_FILE.exists():
-        print("❌ No active session found. Start one with: python oa.py start")
+        print("❌ No active session found. Start one with: python interview-prep/simulator/oa.py start")
         sys.exit(1)
     with open(ACTIVE_SESSION_FILE, 'r') as f:
         return json.load(f)
@@ -114,7 +114,7 @@ def run_simulation_start():
     
     if ACTIVE_SESSION_FILE.exists():
         print("⚠️  You already have an active session!")
-        print("Run 'python oa.py submit' to test your code, or 'python oa.py grade' to end it.")
+        print("Run 'python interview-prep/simulator/oa.py submit' to test your code, or 'python interview-prep/simulator/oa.py grade' to end it.")
         return
         
     progress = load_progress()
@@ -151,9 +151,9 @@ def run_simulation_start():
     save_progress(progress)
     
     print("INSTRUCTIONS:")
-    print("1. Open 'workspace.py' in your IDE.")
+    print("1. Open 'interview-prep/simulator/workspace.py' in your IDE.")
     print("2. Open a *second* terminal window.")
-    print("3. Start coding! Run 'python oa.py submit' in the second terminal to test your code.")
+    print("3. Start coding! Run 'python interview-prep/simulator/oa.py submit' in the second terminal to test your code.")
     
     run_timer(minutes=90)
     run_grading()
@@ -220,7 +220,7 @@ def run_submission():
         print("--- Output ---")
         print(result.stdout)
         print(result.stderr)
-        print("--------------\nFix your code in workspace.py and run 'python oa.py submit' again.")
+        print("--------------\nFix your code in workspace.py and run 'python interview-prep/simulator/oa.py submit' again.")
         sys.exit(1)
         
     print("\nALL TESTS PASSED!\n")
@@ -239,7 +239,7 @@ def run_submission():
     
     if not next_level_file:
         print("YOU PASSED LEVEL 5! CONGRATULATIONS!")
-        print("Assessment Complete. Run 'python oa.py grade' to log your score.")
+        print("Assessment Complete. Run 'python interview-prep/simulator/oa.py grade' to log your score.")
         os.remove(ACTIVE_SESSION_FILE)
         sys.exit(0)
         
@@ -250,7 +250,7 @@ def run_submission():
     print("======================================================")
     print(prompt)
     print("======================================================\n")
-    print("Implement these requirements in workspace.py and run 'python oa.py submit' when ready.")
+    print("Implement these requirements in workspace.py and run 'python interview-prep/simulator/oa.py submit' when ready.")
     
     session["level"] = next_level
     save_session(session)
