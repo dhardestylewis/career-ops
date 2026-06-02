@@ -18,8 +18,8 @@
 ## Professional Experience
 
 ### Homecastr -- New York, NY
-**Co-founder**
-Nov 2024 -- Present
+**Founder**
+Apr 2025 -- Present
 
 Consumer real-estate pricing and forecasting platform with interactive uncertainty fancharts and temporal leakage-safe expanding-window evaluation.
 
@@ -37,7 +37,7 @@ Top-5% YC entrant. KPMG rolled out their Tariff Modeller after we put polibom.co
 
 ### Summit Geospatial -- New York, NY
 **Founder**
-Nov 2023 -- Present
+Nov 2023 -- Mar 2025
 
 Developed the highest quality seamless elevation data for Texas (summitgeospatial.com).
 - VP of IP spin-out from UT Austin
@@ -66,11 +66,11 @@ Feb 2018 -- Jul 2021
 
 ### Columbia University -- New York, NY
 **Research Assistant to Dir. Electrical Engineering Zoran Kostic**
-May 2025 -- Present
+May 2025 -- Aug 2025
 - Targeting theory publications on DeepSeek's GRPO algorithm
 
 **Research Assistant to Dir. Financial Engineering Ali Hirsa**
-Jan 2025 -- Present
+Jan 2025 -- Oct 2025
 - Achieved better than commercial R² on backtested holdout prediction of daily mutual fund returns across asset classes
 - Using DL latent factor model to produce better factors than Fama-French 5-factor model
 - Targeting SHAP explainability publication
