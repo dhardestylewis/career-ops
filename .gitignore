@@ -40,6 +40,17 @@ artifacts/
 
 data/archive/chrome-bot-profile*/
 
+# User data (personalization — never commit)
+config/profile.yml
+modes/_profile.md
+portals.yml
+data/cv.md
+data/bio.md
+data/tracker/
+data/follow-ups.md
+article-digest.md
+reports/
+
 # OA Simulator Ephemeral State
 interview-prep/simulator/.active_session.json
 interview-prep/simulator/workspace.py

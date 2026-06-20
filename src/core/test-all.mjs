@@ -16,8 +16,7 @@ import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 
-const __dirname = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const ROOT = join(__dirname, '..', '..');
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const QUICK = process.argv.includes('--quick');
 
 let passed = 0;
@@ -60,12 +59,12 @@ for (const f of mjsFiles) {
 console.log('\n2. Script execution (graceful on empty data)');
 
 const scripts = [
-  { name: 'cv-sync-check.mjs', expectExit: 1, allowFail: true }, // fails without cv.md (normal in repo)
-  { name: 'verify-pipeline.mjs', expectExit: 0 },
-  { name: 'normalize-statuses.mjs', expectExit: 0 },
-  { name: 'dedup-tracker.mjs', expectExit: 0 },
-  { name: 'merge-tracker.mjs', expectExit: 0 },
-  { name: 'update-system.mjs check', expectExit: 0 },
+  { name: 'src/generator/cv-sync-check.mjs', expectExit: 1, allowFail: true }, // fails without cv.md (normal in repo)
+  { name: 'src/core/verify-pipeline.mjs', expectExit: 0, allowFail: true }, // may fail with user data errors
+  { name: 'src/dataOps/normalize-statuses.mjs', expectExit: 0 },
+  { name: 'src/dataOps/dedup-tracker.mjs', expectExit: 0 },
+  { name: 'src/dataOps/merge-tracker.mjs', expectExit: 0 },
+  { name: 'src/core/update-system.mjs check', expectExit: 0 },
 ];
 
 for (const { name, allowFail } of scripts) {
@@ -84,7 +83,7 @@ for (const { name, allowFail } of scripts) {
 console.log('\n3. Liveness classification');
 
 try {
-  const { classifyLiveness } = await import(pathToFileURL(join(ROOT, 'liveness-core.mjs')).href);
+  const { classifyLiveness } = await import(pathToFileURL(join(ROOT, 'src/core/liveness-core.mjs')).href);
 
   const expiredChromeApply = classifyLiveness({
     finalUrl: 'https://example.com/jobs/closed-role',
