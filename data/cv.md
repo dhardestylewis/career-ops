@@ -21,12 +21,12 @@
 **Founder**
 Apr 2025 -- Present
 
-Consumer real-estate pricing and forecasting platform with interactive uncertainty fancharts and temporal leakage-safe expanding-window evaluation.
+Consumer AI forecasting platform serving 66K+ unique visitors and 4.3M weekly API requests.
 
-- Architected and deployed a nationwide, tract-level score-based diffusion forecasting model, achieving an 8% one-year forecast error that outperforms Zillow's 8.4% benchmark, and maintaining a highly stable 25% MdAE at a 4-year horizon
-- Engineered advanced architecture -- including spatial inducing tokens, per-horizon loss normalization, and DDIM sampling -- to balance high predictive accuracy with probabilistically calibrated price trajectories at scale
-- Developed a rigorous probabilistic evaluation suite (optimizing for PIT uniformity, interval coverage, and sharpness) to strictly validate forecast reliability prior to web delivery
-- Owned end-to-end pipeline from source data ingestion to real-time serving via production web UI (homecastr.com), refined product strategy through feedback from a16z and MetaProp
+- Architected a nationwide diffusion forecasting model trained on 50M+ parcel-year observations, achieving 7% one-year forecast error competitive with Zillow's current valuation accuracy on a strictly harder forward-looking task, and 12.6% MdAE at 4-year horizons on NYC parcel-scale data
+- Built LLM chat engine with 30+ function-calling tools integrating geographic data and comparables; dual-model routing between Claude and GPT-4o Mini optimized for cost and latency
+- Engineered architecture incorporating spatial inducing tokens, per-horizon loss normalization, and DDIM sampling; validated via PIT uniformity, interval coverage, and sharpness diagnostics
+- Owned end-to-end pipeline from data ingestion to real-time serving; refined product strategy through direct feedback from a16z and MetaProp
 
 ### PoliBOM -- Seattle, WA
 **Technical Advisor**
