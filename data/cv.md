@@ -23,7 +23,7 @@ Apr 2025 -- Present
 
 Consumer AI forecasting platform serving 66K+ unique visitors and 4.3M weekly API requests.
 
-- Architected a nationwide diffusion forecasting model trained on 50M+ transactions, achieving 7% one-year forecast error competitive with Zillow's current valuation accuracy on a strictly harder forward-looking task, and 12.6% MdAE at 4-year horizons on NYC parcel-scale data
+- Architected a nationwide diffusion forecasting model trained on 50M+ parcel-year observations, achieving 7% one-year forecast error competitive with Zillow's current valuation accuracy on a strictly harder forward-looking task, and 12.6% MdAE at 4-year horizons on NYC parcel-scale data
 - Built LLM chat engine with 30+ function-calling tools integrating geographic data and comparables; dual-model routing between Claude and GPT-4o Mini optimized for cost and latency
 - Engineered architecture incorporating spatial inducing tokens, per-horizon loss normalization, and DDIM sampling; validated via PIT uniformity, interval coverage, and sharpness diagnostics
 - Owned end-to-end pipeline from data ingestion to real-time serving; refined product strategy through direct feedback from a16z and MetaProp
