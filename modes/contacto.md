@@ -6,10 +6,9 @@
    - 2-3 peers del equipo (gente con rol similar)
    - Interviewer (si el candidato ya tiene entrevista programada)
 
-2. **Regla de canal por grado de conexión**:
-   - **1st-degree**: usar DM.
-   - **2nd/3rd-degree**: usar nota de conexión o note-like intro, no DM.
-   - **InMail**: no usarlo por defecto; solo si el usuario lo pide explícitamente o si no existe otra ruta viable.
+2. **Leer antes de redactar**:
+   - `docs/outreach-guardrails.md`
+   - `data/outreach-template-evidence.md`
 
 3. **Clasificar tipo de contacto** -- preguntar al candidato o inferir del contexto:
    - **Recruiter** -- persona cuyo rol es talent acquisition, sourcing, o recruiting
@@ -50,11 +49,10 @@
 7. **Targets alternativos** con justificacion de por que son buenos second choices
 
 8. **Evidence-backed defaults**:
-   - Read `data/outreach-template-evidence.md` before drafting.
+   - Follow `docs/outreach-guardrails.md` for thread state, channel routing, approval, and logging.
    - Use the smallest viable template for the contact type.
    - If the message needs more than one proof point, rewrite it shorter.
    - Log any live send in `data/outreach-log.md` immediately after it goes out.
-   - If the target is 2nd or 3rd degree, prefer a connection note or note-like intro over a DM so we do not waste scarce InMail.
 
 **Reglas del mensaje:**
 - Maximo 300 caracteres (LinkedIn connection request limit)

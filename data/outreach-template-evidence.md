@@ -21,6 +21,12 @@ Use this skeleton unless the recipient type clearly demands otherwise:
 2. One proof point about you.
 3. One small ask.
 
+## Canonical Guardrails
+
+- Read `docs/outreach-guardrails.md` before drafting anything.
+- Treat that file as the single source of truth for thread state, channel routing, send approval, and logging.
+- If this template pack and the guardrails file disagree, the guardrails file wins.
+
 ## Channel Routing Rule
 
 - Use a LinkedIn DM only for 1st-degree connections or existing threads.

@@ -58,8 +58,9 @@ layer.
 ## LinkedIn Feed Notes
 
 - LinkedIn feed sampling notes and heuristics live in `docs/linkedin-feed-observations.md`.
+- The canonical outreach guardrails block lives in `docs/outreach-guardrails.md`.
+- Broader source classes for LinkedIn, job boards, and public writing live in `docs/outreach-discovery-sources.md`.
 - The reusable outreach templates and the evidence behind each template live in `data/outreach-template-evidence.md`.
-- Default LinkedIn channel routing: DM only for 1st-degree connections or existing threads; use a note-style connection request for 2nd/3rd-degree contacts; do not spend InMail by default.
 - Record every live outbound touch in `data/outreach-log.md` before moving to the next recipient so future agents can avoid duplicates.
 - If a message is going to a real person, draft first and only send after the user has confirmed the recipient batch.
 

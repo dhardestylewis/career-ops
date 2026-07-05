@@ -92,6 +92,7 @@ The next agent should treat this feed sample as a lead list, not as a reason to 
 
 Before sending anything:
 
+0. Read `docs/outreach-guardrails.md`.
 1. Check `data/outreach-template-evidence.md` for the current template library and the evidence behind each template choice.
 2. Check `data/outreach-log.md` so you do not duplicate an already-sent recipient.
 3. Keep messages to one specific hook, one proof point, and one small ask.

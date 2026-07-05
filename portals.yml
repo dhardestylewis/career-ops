@@ -1,0 +1,191 @@
+# Portal Scanner Configuration
+# User-specific scan config for Staff ML / AI platform / forward-deployed roles.
+
+title_filter:
+  positive:
+    - "AI"
+    - "ML"
+    - "Machine Learning"
+    - "LLM"
+    - "Agent"
+    - "Agentic"
+    - "GenAI"
+    - "Generative AI"
+    - "LLMOps"
+    - "MLOps"
+    - "Platform"
+    - "Infrastructure"
+    - "Forward Deployed"
+    - "Deployed Engineer"
+    - "Solutions Architect"
+    - "Solutions Engineer"
+    - "Applied"
+    - "Data Scientist"
+    - "Data Platform"
+    - "Research Engineer"
+    - "Staff"
+    - "Principal"
+    - "Lead"
+  negative:
+    - "Junior"
+    - "Intern"
+    - "Salesforce Admin"
+    - "COBOL"
+    - "Mainframe"
+    - "PHP"
+    - "Ruby"
+    - "Android"
+    - "iOS"
+  seniority_boost:
+    - "Senior"
+    - "Staff"
+    - "Principal"
+    - "Lead"
+    - "Head"
+    - "Director"
+
+search_queries:
+  - name: Ashby â€” AI / Platform
+    query: 'site:jobs.ashbyhq.com "AI" OR "Machine Learning" OR "Platform" OR "Forward Deployed" remote'
+    enabled: true
+  - name: Greenhouse â€” AI / Platform
+    query: 'site:job-boards.greenhouse.io OR site:boards.greenhouse.io "AI" OR "Machine Learning" OR "Platform" OR "Forward Deployed" remote'
+    enabled: true
+  - name: Lever â€” AI / Platform
+    query: 'site:jobs.lever.co "AI" OR "Machine Learning" OR "Platform" OR "Forward Deployed" remote'
+    enabled: true
+
+tracked_companies:
+  - name: Anthropic
+    careers_url: https://job-boards.greenhouse.io/anthropic
+    api: https://boards-api.greenhouse.io/v1/boards/anthropic/jobs
+    enabled: true
+  - name: OpenAI
+    careers_url: https://openai.com/careers
+    scan_method: websearch
+    scan_query: 'site:openai.com/careers "AI" OR "Machine Learning" OR "Solutions"'
+    enabled: true
+  - name: PolyAI
+    careers_url: https://job-boards.eu.greenhouse.io/polyai
+    api: https://boards-api.greenhouse.io/v1/boards/polyai/jobs
+    enabled: true
+  - name: Parloa
+    careers_url: https://job-boards.eu.greenhouse.io/parloa
+    api: https://boards-api.greenhouse.io/v1/boards/parloa/jobs
+    enabled: true
+  - name: Intercom
+    careers_url: https://job-boards.greenhouse.io/intercom
+    api: https://boards-api.greenhouse.io/v1/boards/intercom/jobs
+    enabled: true
+  - name: Hume AI
+    careers_url: https://job-boards.greenhouse.io/humeai
+    api: https://boards-api.greenhouse.io/v1/boards/humeai/jobs
+    enabled: true
+  - name: Airtable
+    careers_url: https://job-boards.greenhouse.io/airtable
+    api: https://boards-api.greenhouse.io/v1/boards/airtable/jobs
+    enabled: true
+  - name: Vercel
+    careers_url: https://job-boards.greenhouse.io/vercel
+    api: https://boards-api.greenhouse.io/v1/boards/vercel/jobs
+    enabled: true
+  - name: Temporal
+    careers_url: https://job-boards.greenhouse.io/temporal
+    api: https://boards-api.greenhouse.io/v1/boards/temporal/jobs
+    enabled: true
+  - name: Arize AI
+    careers_url: https://job-boards.greenhouse.io/arizeai
+    api: https://boards-api.greenhouse.io/v1/boards/arizeai/jobs
+    enabled: true
+  - name: RunPod
+    careers_url: https://job-boards.greenhouse.io/runpod
+    api: https://boards-api.greenhouse.io/v1/boards/runpod/jobs
+    enabled: true
+  - name: Glean
+    careers_url: https://job-boards.greenhouse.io/gleanwork
+    api: https://boards-api.greenhouse.io/v1/boards/gleanwork/jobs
+    enabled: true
+  - name: Speechmatics
+    careers_url: https://job-boards.greenhouse.io/speechmatics
+    api: https://boards-api.greenhouse.io/v1/boards/speechmatics/jobs
+    enabled: true
+  - name: Runway
+    careers_url: https://job-boards.greenhouse.io/runwayml
+    api: https://boards-api.greenhouse.io/v1/boards/runwayml/jobs
+    enabled: true
+  - name: Hightouch
+    careers_url: https://job-boards.greenhouse.io/hightouch
+    api: https://boards-api.greenhouse.io/v1/boards/hightouch/jobs
+    enabled: true
+  - name: Databricks
+    careers_url: https://www.databricks.com/company/careers
+    scan_method: websearch
+    scan_query: 'site:databricks.com/company/careers "AI" OR "Machine Learning" OR "Solutions Architect" OR "Forward Deployed"'
+    enabled: true
+  - name: Baseten
+    careers_url: https://jobs.ashbyhq.com/baseten
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/baseten "AI" OR "Machine Learning" OR "Forward Deployed"'
+    enabled: true
+  - name: Harvey
+    careers_url: https://jobs.ashbyhq.com/harvey
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/harvey "AI" OR "Machine Learning" OR "Forward Deployed"'
+    enabled: true
+  - name: Cohere
+    careers_url: https://jobs.ashbyhq.com/cohere
+    enabled: true
+  - name: LangChain
+    careers_url: https://jobs.ashbyhq.com/langchain
+    enabled: true
+  - name: Pinecone
+    careers_url: https://jobs.ashbyhq.com/pinecone
+    enabled: true
+  - name: WorkOS
+    careers_url: https://jobs.ashbyhq.com/workos
+    scan_method: websearch
+    scan_query: 'site:jobs.ashbyhq.com/workos "Solutions Engineer" OR "Developer Success" OR "AI"'
+    enabled: true
+  - name: Supabase
+    careers_url: https://jobs.ashbyhq.com/supabase
+    enabled: true
+  - name: Clerk
+    careers_url: https://jobs.ashbyhq.com/clerk
+    enabled: true
+  - name: Inngest
+    careers_url: https://jobs.ashbyhq.com/inngest
+    enabled: true
+  - name: ElevenLabs
+    careers_url: https://jobs.ashbyhq.com/elevenlabs
+    enabled: true
+  - name: Deepgram
+    careers_url: https://jobs.ashbyhq.com/deepgram
+    enabled: true
+  - name: Vapi
+    careers_url: https://jobs.ashbyhq.com/vapi
+    enabled: true
+  - name: Sierra
+    careers_url: https://jobs.ashbyhq.com/sierra
+    enabled: true
+  - name: Decagon
+    careers_url: https://jobs.ashbyhq.com/decagon
+    enabled: true
+  - name: Photoroom
+    careers_url: https://jobs.ashbyhq.com/photoroom
+    enabled: true
+  - name: Wayve
+    careers_url: https://job-boards.greenhouse.io/wayve
+    api: https://boards-api.greenhouse.io/v1/boards/wayve/jobs
+    enabled: true
+  - name: Isomorphic Labs
+    careers_url: https://job-boards.greenhouse.io/isomorphiclabs
+    api: https://boards-api.greenhouse.io/v1/boards/isomorphiclabs/jobs
+    enabled: true
+  - name: PhysicsX
+    careers_url: https://job-boards.greenhouse.io/physicsx
+    api: https://boards-api.greenhouse.io/v1/boards/physicsx/jobs
+    enabled: true
+  - name: Stability AI
+    careers_url: https://job-boards.greenhouse.io/stabilityai
+    api: https://boards-api.greenhouse.io/v1/boards/stabilityai/jobs
+    enabled: true
