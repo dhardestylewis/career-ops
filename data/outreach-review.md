@@ -73,6 +73,8 @@ This is a convenience sample from recent live mailbox / messaging data, not a fu
 - Warm threads, intros, and logistics replies work best when the first line is specific and the CTA is easy to answer.
 - My inference from this sample: short logistics, clear asks, and post-call / post-meeting follow-ups are the most reliable win patterns.
 - My inference from this sample: broader cold outreach and founder-style intros are more likely to sit pending than the short, concrete threads.
+- For research-oriented collaborators, the best frame is publication plus reproducibility: name the world-model stack, name the durable run artifacts, then ask to compare notes on experiment design or evaluation.
+- When the overlap is truly world-modeling, say that directly. The strongest bridge is physical-world ML experience meeting a publication-minded world-model paper, especially if diffusion or flow matching is part of the method.
 
 ## Follow-up search
 
@@ -231,6 +233,10 @@ Decision rule:
 `Subject: Re: [Role] at [Company]`
 
 `Hi [Name], I applied for the [role] on [date]. I thought I’d share that [proof point] maps closely to the work described in the posting. If helpful, I’d be glad to share more or talk this week.`
+
+### Research collaboration reply
+
+`Hi [Name] - that makes sense. I’ve been building a publishable world-model stack with reproducible Modal runs, durable R2 manifests/logs, and a research-grade evaluation loop. If it would be useful, I’d love to compare notes on experiment design and evaluation, especially around diffusion or flow matching.`
 
 ## Notes
 

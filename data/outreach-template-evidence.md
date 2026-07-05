@@ -47,6 +47,35 @@ Use this skeleton unless the recipient type clearly demands otherwise:
 2. One proof point about you.
 3. One small ask.
 
+## Canonical Guardrails
+
+- Read `docs/outreach-guardrails.md` before drafting anything.
+- Treat that file as the single source of truth for thread state, channel routing, send approval, and logging.
+- If this template pack and the guardrails file disagree, the guardrails file wins.
+
+## Channel Routing Rule
+
+- Use a LinkedIn DM only for 1st-degree connections or existing threads.
+- Use a note-style connection request for 2nd-degree and 3rd-degree contacts.
+- Do not spend InMail by default on 2nd-degree or 3rd-degree contacts unless the user explicitly asks for it.
+- If a profile only exposes a note path, keep the note short and let the follow-up happen after connection acceptance.
+
+## Applied Evidence For World-Model Collaboration
+
+Use this when the recipient is explicitly research-oriented or mentions a workshop or conference outcome.
+
+- The current pitch docs already frame Homecastr as a forecast and scenario-analysis layer with live causal ML through sliders and chat.
+- The latest run trail is durable: Modal launch manifests and transcripts are recorded in R2, so future conversations can cite concrete artifacts instead of ephemeral UI state.
+- The world-model docs lean research-grade: typed latent world model, state-transition-first evaluation, and a queue worker that turns durable ingress into model work.
+- The architecture notes already leave room for a publishable causal extension, including a Student Causal FM path with Granger-causality discovery.
+- The research side already has publication-shaped evidence: 261 Tavus conversations, discovery-workshop framing, and an explicit note to publish research.
+
+This combination supports a collaboration pitch that sounds like:
+
+1. publishable world-model research
+2. reproducible Modal / R2 / Supabase artifacts
+3. one small ask: compare notes on experiment design or evaluation, especially diffusion or flow matching
+
 ## Template Library
 
 ### 300-char LinkedIn request
@@ -149,7 +178,20 @@ Evidence:
 - They improved when the bridge was explicit and the bio was compressed.
 - The message should sound like a bridge, not a pitch.
 - Avoid phrases that pile on multiple actions, like "consider a quick intro call" plus "hear more about your current priorities" plus "see if there'"'"'s a way our work could be useful."
+### Research collaborator note
 
+Use when the recipient says the project is research-oriented and wants a workshop or conference outcome.
+
+Template:
+
+`Hi [Name] - that makes sense. I’ve been building a publishable world-model stack with reproducible Modal runs, durable R2 manifests/logs, and a research-grade evaluation loop. If it would be useful, I’d love to compare notes on experiment design and evaluation, especially around diffusion or flow matching.`
+
+Evidence:
+
+- Research-oriented recipients generally need a collaboration frame, not a job pitch.
+- Reproducibility is the strongest bridge when the recipient is thinking about publication.
+- The ask should be to compare notes, not to force a role conversation.
+- The message works best when it names one concrete artifact class: run manifests, logs, or evals.
 ### Broader cold outreach
 
 Use when there is no warm intro and the recipient has low time tolerance.
