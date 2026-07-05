@@ -54,26 +54,24 @@ Daniel
 These are not sent yet. Use them only after checking the person's current LinkedIn or current company first.
 
 - Gabriel Schook: if he is willing to help, ask for non-Harvey technical recruiter contacts at xWF or similar agencies that still cover geospatial, ML systems, or applied AI.
-- Melisa Magnuson, AdAstra: senior technical headhunter. Possible ask is whether she has other technical recruiter contacts outside the current opening.
-- Raymond Sheerin, Guardian Life: senior recruiter. Possible ask is whether he knows adjacent data / AI recruiter contacts or hiring managers in finance / insurance.
-- Cora Moore, Elwood Staffing: lead staffing recruiter. Possible ask is whether she has students / early-career / technical recruiter contacts who touch climate, GIS, or ML.
-- Allison Rebaza, Tech Holding: technical recruiter. Possible ask is whether she has other contractor-focused technical recruiter contacts.
+- Do not add more recruiter targets from Harvey, Guardian, Elwood, Tech Holding, or AdAstra unless the user explicitly asks for a separate referral path.
 - Jack & Jill AI: separate candidate-intake path, not a normal recruiter contact. Use Jack for the job-seeker side and Jill for company-side recruiting.
 - Clera: not counted as a human recruiter lane in this repo. Keep it external unless it comes back as a live, tracked intake path.
 
 ## Fresh recruiter discovery
 
-Use these for first-pass discovery after checking the current LinkedIn or company page. Keep each note to one hook, one proof point, and one ask.
+Use these for first-pass discovery after checking the person's current LinkedIn or company page. Keep each note to one hook, one proof point, and one ask. Recruiter discovery now means new companies only, not extra people at companies already represented in the sent tracker.
 
-- Maggie Landers, Harvey: open with Harvey's AI and ML hiring leadership, use Homecastr's production ML and forecasting as the proof point, and ask for the best-fit technical recruiter colleague if she is not the right owner.
-- Kimberly Taylor, Harvey: open with the Central AI org, use production ML and infrastructure work as the proof point, and ask whether she owns ML infra or data science hiring.
-- Eugene Pushin, Harvey: open with ML systems, tooling, and evals, use production ML and validation work as the proof point, and ask who owns the most relevant technical search.
-- Nidhi Gupta, Harvey: open with her embedded talent-partner role, use production ML and model infrastructure as the proof point, and ask whether she partners on AI, ML, or infra roles.
-- Alex Dotson, Harvey via Talentful: open with AI, ML, and data science hiring, use production forecasting and data systems as the proof point, and ask which Harvey search he supports.
-- Andrew Aho, AdAstra Talent Advisors: open with hard-tech recruiting across climate, space, and defense, use geospatial and production ML work as the proof point, and ask for the best-fit colleague if he is not the right person.
-- Mike Barley, Guardian Life: open with data, analytics, and AI roles, use production ML and forecasting as the proof point, and ask whether he owns that lane or can route it.
-- Julie Doyle, Elwood Professional: open with the professional and IT side, use data, analytics, and ML work as the proof point, and ask whether she handles those searches.
-- Aanal Dave, Tech Holding: open with ML, data, and AI contract roles, use geospatial ML and production systems as the proof point, and ask who owns that search.
+- Sama Alavi, LinkedIn: open with data science, machine learning, and systems/infrastructure hiring, use production ML and forecasting as the proof point, and ask whether she owns the relevant search or can route it.
+- Daniel Hernandez, Databricks: open with AI / ML / data science hiring, use production ML and validation as the proof point, and ask who owns the best-fit engineering or data science search.
+- Joshua Winter, Anthropic: open with inference-team recruiting, use production ML systems and evaluation as the proof point, and ask whether he owns inference or can route to the right recruiter.
+- Sarah Warkov, OpenAI: open with robotics, software, and research recruiting, use production ML systems and infrastructure as the proof point, and ask whether she owns the best-fit technical lane.
+- Lauren Tague, Scale AI: open with SWE, AI/ML Research, and ops recruiting, use production ML and infrastructure as the proof point, and ask who owns the most relevant search.
+- Jennifer Xing, Snowflake: open with engineering recruiting, use data infrastructure and forecasting as the proof point, and ask whether she handles engineering hiring or can route it.
+- Emilie Schwartz, Stripe: open with technical recruiting leadership, use production ML and systems work as the proof point, and ask which engineering or data lane she owns.
+- Michael Franchi, Roblox: open with consumer product ML and product org hiring, use production ML and validation as the proof point, and ask whether he owns the relevant role or can route it.
+- Michael Jaffe, Figma: open with data-focused technical recruiting, use analytics and model-validation work as the proof point, and ask whether he handles engineering or data roles.
+- Miguel Valle, Perplexity: open with his talent background at Perplexity, use production ML and data systems as the proof point, and ask which recruiting lane is the best fit.
 
 ## Harvey fit shortlist
 
@@ -93,6 +91,11 @@ Jack & Jill AI is a separate candidate-intake path, not a normal recruiter conta
 
 - Create a Jack profile with the current production ML / forecasting / geospatial positioning.
 - Use Jill only if we ever want the company-side recruiting path.
+
+## Clera / intake lanes
+
+- Clera is external-only for now and should not appear in the human recruiter count unless a live, tracked intake path is added later.
+- Jack & Jill AI stays queued as candidate intake until the website onboarding flow is actually completed.
 
 ## Queue audit priority
 
