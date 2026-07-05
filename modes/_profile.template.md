@@ -100,3 +100,12 @@ If you have a live demo/dashboard (check profile.yml), offer access in applicati
 **In evaluations (scoring):**
 - Remote dimension for hybrid outside your country: score **3.0** (not 1.0)
 - Only score 1.0 if JD says "must be on-site 4-5 days/week, no exceptions"
+
+## Outreach Dossier Rule
+
+- Before live outreach, complete a contact dossier with source refs, last touch, why now, hook, proof point, ask, avoid, status, and next follow-up.
+- If the dossier is incomplete, treat the contact as research, not ready.
+- For professors and former instructors, prefer a public-work hook when available: paper, talk, lecture, lab page, editorship, blog post, or publication.
+- Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack. If they are SPC-affiliated or the check is unclear, do not use a work pitch; switch to a non-work reconnect or mark the contact blocked for that lane.
+- Before sending, check the recipient's current LinkedIn profile or organization page. If they moved, rewrite the note as a reconnect or current-role note, not an active-role follow-up.
+- For browser-assisted outreach, prefer the Chrome profile first when LinkedIn, Pando, or Superhuman are already authenticated there. Treat those tabs as handoff state only; login state is not permanent across new sessions. Use the in-app browser only as a backup Gmail surface.

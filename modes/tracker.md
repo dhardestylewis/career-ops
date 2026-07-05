@@ -11,7 +11,7 @@ Estados posibles: `Evaluada` → `Aplicado` → `Respondido` → `Contacto` → 
 
 - `Aplicado` = el candidato envió su candidatura
 - `Respondido` = Un recruiter/empresa contactó y el candidato respondió (inbound)
-- `Contacto` = El candidato contactó proactivamente a alguien de la empresa (outbound, ej: LinkedIn power move)
+- `Contacto` = El candidato contactó proactivamente a alguien de la empresa (outbound, ej: outreach multi-lane)
 
 Si el usuario pide actualizar un estado, editar la fila correspondiente.
 

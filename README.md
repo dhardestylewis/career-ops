@@ -55,6 +55,8 @@ Career-Ops turns any AI coding CLI into a full job search command center. Instea
 
 Career-ops is agentic: Claude Code navigates career pages with Playwright, evaluates fit by reasoning about your CV vs the job description (not keyword matching), and adapts your resume per listing.
 
+When a safe durable action is available, the agent should make the repo change and record it instead of only narrating what should happen.
+
 > **Heads up: the first evaluations won't be great.** The system doesn't know you yet. Feed it context -- your CV, your career story, your proof points, your preferences, what you're good at, what you want to avoid. The more you nurture it, the better it gets. Think of it as onboarding a new recruiter: the first week they need to learn about you, then they become invaluable.
 
 Built by someone who used it to evaluate 740+ job offers, generate 100+ tailored CVs, and land a Head of Applied AI role. [Read the full case study](https://santifer.io/career-ops-system).
@@ -107,6 +109,8 @@ claude   # Open Claude Code in this directory
 
 > **The system is designed to be customized by Claude itself.** Modes, archetypes, scoring weights, negotiation scripts -- just ask Claude to change them. It reads the same files it uses, so it knows exactly what to edit.
 
+When a safe repo-backed action is available, Claude should take it now instead of only describing it.
+
 See [docs/SETUP.md](docs/SETUP.md) for the full setup guide.
 
 ## Usage
@@ -122,11 +126,14 @@ Career-ops is a single slash command with multiple modes:
 /career-ops tracker        → View application status
 /career-ops apply          → Fill application forms with AI
 /career-ops pipeline       → Process pending URLs
-/career-ops contacto       → LinkedIn outreach message
+/career-ops contacto       → LinkedIn outreach message with a source-backed contact dossier and SPC affiliation gate
 /career-ops deep           → Deep company research
 /career-ops training       → Evaluate a course/cert
 /career-ops project        → Evaluate a portfolio project
 ```
+
+Live outreach is dossier-driven: gather sources, the last touch, the reason now, the smallest sensible ask, and the South Park Commons affiliation check before sending any work-related pitch.
+If the Chrome profile already has authenticated LinkedIn, Pando, or Superhuman tabs open, keep those tabs as handoff state and use Chrome first. Login state is not permanent across brand-new sessions, so the in-app browser should be treated as a backup Gmail surface rather than the only durable surface.
 
 Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
 
@@ -203,7 +210,9 @@ career-ops/
 │   └── batch-runner.sh          # Orchestrator script
 ├── dashboard/                   # Go TUI pipeline viewer
 ├── data/                        # Your tracking data (gitignored except cv.md)
-│   └── cv.md                    # Your CV (create this)
+│   ├── cv.md                    # Your CV (create this)
+│   ├── outreach-drafts.md       # Draft-only outreach workspace
+│   └── outreach-contact-dossier.md # Per-contact source-backed dossier + SPC affiliation gate
 ├── reports/                     # Evaluation reports (gitignored)
 ├── output/                      # Generated PDFs (gitignored)
 ├── fonts/                       # Space Grotesk + DM Sans

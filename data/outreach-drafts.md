@@ -2,7 +2,7 @@
 
 Date: 2026-07-05
 
-Draft-only workspace. These are the drafted originals; check `data/outreach-log.md` for the live-send ledger.
+Draft-only workspace. These are the drafted originals and routing notes; check `data/outreach-log.md` for the live-send ledger.
 
 Parallel worktree notes:
 
@@ -18,10 +18,256 @@ Send gate:
 
 - Check the recipient's current LinkedIn profile or organization page before sending.
 - If a person has moved, rewrite the note as a reconnect or current-role note, not an active-role follow-up.
-- LinkedIn search confirmed all 15 speakers are 2nd-degree, so use connection-request notes rather than direct DMs.
-- If a public email is easy to find, send a separate email touch too; do not delay the LinkedIn request.
-- Keep the ask small: one hook, one proof point, one ask.
-- For this batch, the ask is usually: `If you're around before the session, I'd love to grab coffee.`
+- Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack. If they are SPC-affiliated or the result is unclear, do not send the work pitch; use only a non-work reconnect, academic, or community angle.
+- If pando or Slack is only showing a login page in this workspace, leave the SPC fields blank and treat the contact as unchecked until the directory check can actually be completed.
+- Keep Bellwether closed as an application thread; use Gabriel only as a warm contact for other X openings.
+- Org items stay in discovery until a human contact is identified on LinkedIn.
+
+## Bellwether re-engagement
+
+**To:** Gabriel Schook <schook@xwf.x.team>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn check:** Technical Recruiting @ Harvey, Chicago. Warm recruiter contact, formerly on the Bellwether path.
+
+**Dossier**
+- Relationship: warm recruiter who helped route the Bellwether process.
+- Last touch: Mar 19, 2026 in the Gmail thread `Exploring Opportunities at GoogleX`.
+- Why now: he appears to have moved to Harvey, so this is a reconnect rather than an active Bellwether follow-up.
+- Hook: we already established trust around geospatial / production ML work and the old recruiting thread.
+- Proof point: Homecastr has a nationwide probabilistic forecasting system plus production ML tooling.
+- Ask: stay in touch, keep me in mind for any relevant X openings, and if X is not the right lane ask whether he knows any non-Harvey technical recruiters at xWF or adjacent agencies who still cover geospatial, ML systems, or applied AI roles.
+- Avoid: treating Bellwether as an active role, over-explaining the rejection, or making it sound like a fresh cold pitch.
+- Status: draft only.
+- Next follow-up: no automatic follow-up unless he replies or there is a truly new opening.
+
+**Subject:** Good to stay in touch
+
+```text
+Hi Gabriel,
+
+I heard you may have moved on from Bellwether, and I wanted to reconnect. We had a strong thread around geospatial and production ML work, and I am still building in that same space at Homecastr.
+
+If there are other X roles where that background could be useful, I would be glad to stay on your radar.
+
+Best,
+Daniel
+```
+
+## Warm Network: Aaron Wilson
+
+**To:** Aaron Wilson
+
+**Channel:** Email
+
+**Status:** Watch / no further contact
+
+**Context:** Founder of Belleau Labs. David sent my resume his way and we had a short call on the warm intro thread.
+
+**Dossier**
+- Relationship: warm founder contact.
+- Last touch: Jun 17, 2026 in the Gmail thread `Summer Availability`.
+- Why now: the intro already happened, and the thread is a live founder bridge rather than a cold ask.
+- Hook: Belleau Labs sits in defense tech dealflow and capability scoring, which is adjacent to the applied ML / infra work I keep building.
+- Proof point: Homecastr's production ML and forecasting stack plus the founder/operator context I can bring to an applied systems conversation.
+- Ask: stay in touch and compare notes on where those systems might overlap.
+- Avoid: turning it into a hard pitch or over-explaining the whole company.
+- Status: watch only; no further contact unless the user asks.
+- Next follow-up: none.
+
+**Subject:** Good to stay in touch
+
+```text
+Hi Aaron,
+
+It was great meeting, and I appreciated the intro from David. The Belleau Labs / defense-tech dealflow and capability-scoring angle felt interesting alongside the production ML and forecasting work I am building at Homecastr.
+
+If it is useful, I would love to stay in touch and compare notes on where those systems might overlap.
+
+Best,
+Daniel
+```
+
+## Recruiter: Jill Cherrstrom
+
+**To:** Jill Cherrstrom <jillc@x.team>
+
+**Channel:** Email
+
+**Status:** Watch / only if a new X role appears
+
+**Context:** Jill handled the Bellwether interview feedback thread and gave the ML architecture notes directly.
+
+**Dossier**
+- Relationship: recruiter / hiring-process contact from a rejected Bellwether candidacy.
+- Last touch: Apr 18, 2026 in the Gmail thread `Daniel Lewis - Please Confirm Your Google Meet with X on 4/6 & 4/9`.
+- Why now: this is a reconnect only, not an active Bellwether application thread.
+- Hook: she gave specific feedback on the ML architecture portion of the interview.
+- Proof point: I have kept building production ML and forecasting systems since that interview.
+- Ask: stay in touch and keep me in mind for future X openings or any adjacent roles.
+- Avoid: reopening the rejected Bellwether candidacy or arguing the feedback.
+- Status: watch only; only re-open if a genuinely new X role appears.
+- Next follow-up: none unless a new role creates a real reason to reach out.
+
+**Subject:** Thanks again for the feedback
+
+```text
+Hi Jill,
+
+Thank you again for the detailed feedback on the Bellwether process. I have taken the ML architecture notes seriously, and I am still building in the same production ML and forecasting space at Homecastr.
+
+If you are open to it, I would love to stay in touch and keep me in mind for future X openings or anything adjacent where that background could be useful.
+
+Best,
+Daniel
+```
+
+## Hiring Manager: Yash Nevatia
+
+**To:** Yash Nevatia
+
+**Channel:** Email
+
+**Status:** Watch / no further contact
+
+**Context:** Current warm thread about a part-time engineer / agentic infra role, with a coffee chat and same-day follow-up already in motion.
+
+**Dossier**
+- Relationship: warm hiring contact and live chat thread.
+- Last touch: Jul 5, 2026 in the Gmail thread `Part-time engineer - agentic infra role`.
+- Why now: the conversation is active and the role is already framed around agentic infrastructure.
+- Hook: the agentic infra lane is close to the kind of applied systems work I build.
+- Proof point: Homecastr founder / AI engineer background plus production ML execution.
+- Ask: keep in touch and hear how the role or team evolves.
+- Avoid: turning it into a generic networking note or overfilling the message with biography.
+- Status: watch only; no further contact unless the user requests it.
+- Next follow-up: none.
+
+**Subject:** Great chatting today
+
+```text
+Hi Yash,
+
+It was great chatting today about the agentic infrastructure lane at Bjorn Labs. The way you described the role felt close to the kinds of applied systems I have been building at Homecastr.
+
+If it is useful, I would love to stay in touch and hear how the role evolves.
+
+Best,
+Daniel
+```
+
+## Founder Ecosystem: Gian / Dynamite Growth
+
+**To:** Gian
+
+**Channel:** Email
+
+**Status:** Follow-up draft only, existing warm thread, persist
+
+**Context:** Warm sales / partnership thread around a strategy call and possible sales conversations.
+
+**Dossier**
+- Relationship: warm ecosystem / partnership contact.
+- Last touch: Jul 5, 2026 in the Gmail thread `Strategy call. Dynamite Growth × Daniel Lewis`.
+- Why now: the thread is already open and the ask is about next steps, not a cold introduction.
+- Hook: potential sales calls and a founder-to-founder bridge around Homecastr.
+- Proof point: Homecastr is the product and systems context I can bring to a partnership or customer conversation.
+- Ask: keep me in the loop if there are upcoming sales conversations or a useful next step.
+- Avoid: sounding like a repeated nudge with no new substance.
+- Status: follow-up draft only; keep warm and persist.
+- Next follow-up: one nudge after 5 business days if there is no reply.
+
+**Subject:** Re: Strategy call
+
+```text
+Hi Gian,
+
+Just wanted to follow up on our call from a couple weeks back. If there are any upcoming sales conversations where a data / ML founder angle would be useful, I would be glad to stay in the loop.
+
+Best,
+Daniel
+```
+
+## Founder Ecosystem: Robbie Bent
+
+**To:** Robbie Bent <robbiebent@othership.us>
+
+**Channel:** Email
+
+**Status:** Ready to send after SPC check
+
+**Context:** Inbound Othership note about a first-timer credit and a warm founder-facing brand touchpoint.
+
+**Dossier**
+- Relationship: founder / ecosystem contact.
+- Last touch: Jul 4, 2026 in the Gmail thread `Fwd: The Towel's Been Waved, Just For You`.
+- Why now: the thread is warm, light, and external to SPC.
+- Hook: the sauna / plunge / breathwork brand is a good founder-community bridge.
+- Proof point: I build Homecastr and spend a lot of time thinking about high-output founder rhythms and systems.
+- Ask: stay in touch and compare notes on founders, recovery, or community.
+- Avoid: making it feel like a random cold pitch.
+- Status: ready to send once the SPC check clears.
+- Next follow-up: one gentle nudge only if there is no reply and the thread stays relevant.
+
+**Subject:** Thanks for the note
+
+```text
+Hi Robbie,
+
+Thanks for the note and the first-timer credit. The sauna / breathwork / recovery angle is a fun one, and it made me think about how much founders need good recovery loops around intense build cycles.
+
+If it is useful, I would love to stay in touch and compare notes on what you are building at Othership.
+
+Best,
+Daniel
+```
+
+## Warm Network: Joshua Lesser
+
+**To:** Joshua Lesser
+
+**Channel:** LinkedIn
+
+**Status:** Watch / no further contact
+
+**Context:** Active LinkedIn DM about meeting near Cooper Square / finding a coffee spot.
+
+**Dossier**
+- Relationship: warm direct DM contact.
+- Last touch: Jul 5, 2026 in the LinkedIn thread that is currently open in Chrome.
+- Why now: the thread is active and the next step is just a simple logistics reply.
+- Hook: the Cooper Square / uptown meetup thread already has a natural local angle.
+- Proof point: I can meet in person, keep it simple, and keep the conversation moving.
+- Ask: confirm a coffee spot and whether he wants to do it in person or virtually.
+- Avoid: turning it into a big pitch or a long explanation.
+- Status: watch only; do not contact again.
+- Next follow-up: none.
+
+**Message**
+
+```text
+Hey Joshua,
+
+Cooper Square works for me. If you have a preferred coffee spot, send it over and I will meet you there. If easier, I am also happy to do it virtually.
+
+Best,
+Daniel
+```
+
+**Note:** Do not reopen the rejected Bellwether interview as an active application. Treat this as a warm reconnect only.
+
+## Recruiter network notes
+
+These are not sent yet. Use them only after checking the person's current LinkedIn or current company first.
+
+- Gabriel Schook: if he is willing to help, ask for non-Harvey technical recruiter contacts at xWF or similar agencies that still cover geospatial, ML systems, or applied AI.
+- Melisa Magnuson, AdAstra: senior technical headhunter. Possible ask is whether she has other technical recruiter contacts outside the current opening.
+- Raymond Sheerin, Guardian Life: senior recruiter. Possible ask is whether he knows adjacent data / AI recruiter contacts or hiring managers in finance / insurance.
+- Cora Moore, Elwood Staffing: lead staffing recruiter. Possible ask is whether she has students / early-career / technical recruiter contacts who touch climate, GIS, or ML.
+- Kimberly, Toptal: recruiter. Possible ask is whether there are other freelancer / contract-network recruiter contacts.
 
 ## Cohere Labs Community ML Summer School
 

@@ -1,5 +1,7 @@
 # Customization Guide
 
+If a customization request is safe and repo-backed, make the change in the files now rather than only describing the plan.
+
 ## Profile (config/profile.yml)
 
 This is the single source of truth for your identity. All modes read from here.
