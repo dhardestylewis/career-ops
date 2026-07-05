@@ -9,6 +9,8 @@ Use this first if you are the next agent picking up live outreach.
 - The live LinkedIn send state has been verified.
 - Sent: Li-Yun (James) Wang, 3Dtrees team, Kyle Baranko, Maxime Meilland, Vrushali Mundhe.
 - Blocked route: Apurva Singh due to LinkedIn verification / CAPTCHA.
+- Jill Cherrstrom is Bellwether reconnect only; only reopen if one of the current X / Bellwether roles is a real fit.
+- Ram Mohan Rao Kadiyala is now handled with both the LinkedIn follow-up and the email invite sent on Friday, July 10 at 4:30 PM IST / 7:00 AM ET.
 
 ## Read Order
 
@@ -40,3 +42,4 @@ Use this first if you are the next agent picking up live outreach.
 - Do not stack multiple asks into one note.
 - Do not improvise around CAPTCHA.
 - Do not re-send duplicates already recorded in the log.
+- Do not treat a Gmail notification that merely mentions Gabriel Schook, Bellwether, xwf, or GoogleX in the body as an outreach thread; only log or reply when the sender, subject, and thread context clearly match the actual person or recruiter conversation.

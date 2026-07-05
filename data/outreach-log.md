@@ -11,3 +11,26 @@ This log records live outbound messages sent from the current browser session so
 | LinkedIn DM | Kyle Baranko | LinkedIn message thread | broader cold outreach, one proof point, one small ask | Follow-up on compression of dev timelines | Sent | Tightened the outreach playbook and offered a one-paragraph Homecastr ML summary if useful. |
 | LinkedIn DM | Maxime Meilland | LinkedIn message thread | hiring-manager / role-fit note | Machine Learning Engineer, Video Engineering | Sent | Short fit note referencing production ML, geospatial forecasting, flood-resilience work, and reliability/evaluation focus. |
 | LinkedIn DM | Vrushali Mundhe | LinkedIn message thread | hiring-manager / role-fit note | Machine Learning Engineer, Video Engineering | Sent | Message is visible in the live conversation thread; browser screenshot confirmed delivery. |
+| LinkedIn connection request | Amir Bar | LinkedIn profile | speaker-connection-request-note | World Models with Amir Bar | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Elizabeth Lingg | LinkedIn profile | speaker-connection-request-note | Career Building Panel with Puyuan Peng, Sreyan Ghosh & Elizabeth Lingg | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Irem Ergun | LinkedIn profile | speaker-connection-request-note | Beginners journey with Julia Kreutzer and Irem Ergun | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Julia Kreutzer | LinkedIn profile | speaker-connection-request-note | Beginners journey with Julia Kreutzer and Irem Ergun | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Katrina Lawrence | LinkedIn profile | speaker-connection-request-note | ML Math with Katrina Lawrence | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Laurie Voss | LinkedIn profile | speaker-connection-request-note | Evaluations with Laurie Voss | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Maxime Labonne | LinkedIn profile | speaker-connection-request-note | Building the First Agentic Model for Edge Devices with Maxime Labonne | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Nishanth Anand | LinkedIn profile | speaker-connection-request-note | Summer school speaker lineup | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Puyuan Peng | LinkedIn profile | speaker-connection-request-note | Career Building Panel with Puyuan Peng, Sreyan Ghosh & Elizabeth Lingg | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Ram Mohan Rao Kadiyala | LinkedIn profile | speaker-connection-request-note | Agentic AI fundamentals with Ram Kadiyala | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Siddhant Gupta | LinkedIn profile | speaker-connection-request-note | The Death of NLP? with Siddhant Gupta | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Sreyan Ghosh | LinkedIn profile | speaker-connection-request-note | Career Building Panel with Puyuan Peng, Sreyan Ghosh & Elizabeth Lingg | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Tushar Udeshi | LinkedIn profile | speaker-connection-request-note | Edtech with Tushar Udeshi | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Vivian White | LinkedIn profile | speaker-connection-request-note | Computer Vision Fundamentals with Vivian White and Yash Mali | Sent | Verified Pending on profile after send. |
+| LinkedIn connection request | Yash Mali | LinkedIn profile | speaker-connection-request-note | Computer Vision Fundamentals with Vivian White and Yash Mali | Sent | Verified Pending on profile after send. |
+| LinkedIn DM | Ram Mohan Rao Kadiyala | LinkedIn message thread | calendar follow-up, virtual coffee | Friday, July 10 at 4:30 PM IST / 7:00 AM ET | Sent | Short follow-up confirms the virtual coffee slot and notes the invite will go to `contact@rkadiyala.com`. |
+| Email | Ram Mohan Rao Kadiyala | `contact@rkadiyala.com` | calendar invite / follow-up note | Coffee before Agentic AI fundamentals | Sent | 80-ish word note; kept the coffee virtual and referenced Friday, July 10 at 4:30 PM IST / 7:00 AM ET. |
+
+## Bellwether clarification
+
+- Jill Cherrstrom is a Bellwether reconnect only. Treat her as `new-role only` unless one of the current X / Bellwether roles is a real fit.
+- Do not reopen Jill as an active Bellwether follow-up unless the role match is confirmed against the latest branch / PR state first.
+- For Gabriel Schook and related Bellwether searches, ignore GitHub or repo notification mail that only mentions his name in the preview/body. Only treat a Gmail result as a real outreach thread if the sender/subject is explicitly Gabriel, x.team, or the Bellwether recruiter conversation.
