@@ -14,6 +14,7 @@ Use this first if you are the next agent picking up live outreach.
 - Jack & Jill AI is a separate candidate-intake lane. Treat Jack as the job-seeker side and Jill as the company-side recruiter platform.
 - Clera is not tracked in this repo. Treat it as external candidate-intake only if it is reintroduced as a live, separate lane.
 - Recruiter discovery must use new companies only. Do not add more people from Harvey, Guardian, Elwood, Tech Holding, or AdAstra unless the user explicitly asks for a separate referral path.
+- Exclude Databricks from the current recruiter batch per user instruction; keep it out of drafts and sends unless the user explicitly reopens that lane.
 - Ignore Toptal entirely. Do not create, queue, revive, or route outreach to any Toptal contacts in future sessions.
 - Harvey is the main company lane to keep watching. Prioritize `Software Engineer, Agents`, then `Data Scientist, Marketing`, with `Applied Legal Researcher` as a stretch backup.
 - Current mailbox access in this session is only `daniel@homecastr.com` in Gmail. Columbia/UT inboxes are not connected here yet, and Superhuman mail is not exposed in this thread.
