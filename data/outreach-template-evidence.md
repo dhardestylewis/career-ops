@@ -21,6 +21,19 @@ Use this skeleton unless the recipient type clearly demands otherwise:
 2. One proof point about you.
 3. One small ask.
 
+## Canonical Guardrails
+
+- Read `docs/outreach-guardrails.md` before drafting anything.
+- Treat that file as the single source of truth for thread state, channel routing, send approval, and logging.
+- If this template pack and the guardrails file disagree, the guardrails file wins.
+
+## Channel Routing Rule
+
+- Use a LinkedIn DM only for 1st-degree connections or existing threads.
+- Use a note-style connection request for 2nd-degree and 3rd-degree contacts.
+- Do not spend InMail by default on 2nd-degree or 3rd-degree contacts unless the user explicitly asks for it.
+- If a profile only exposes a note path, keep the note short and let the follow-up happen after connection acceptance.
+
 ## Template Library
 
 ### 300-char LinkedIn request
@@ -122,7 +135,7 @@ Evidence:
 - Founder-style intros were one of the weaker buckets in the sample when they started with too much context.
 - They improved when the bridge was explicit and the bio was compressed.
 - The message should sound like a bridge, not a pitch.
-- Avoid phrases that pile on multiple actions, like "consider a quick intro call" plus "hear more about your current priorities" plus "see if there'"'"'s a way our work could be useful."
+- Avoid phrases that pile on multiple actions, like "consider a quick intro call" plus "hear more about your current priorities" plus "see if there's a way our work could be useful."
 
 ### Broader cold outreach
 
@@ -159,9 +172,8 @@ Evidence:
 
 Before sending anything, the next agent should:
 
-1. Check `modes/_profile.md`.
-2. Check `modes/contacto.md`.
-3. Check `modes/followup.md`.
-4. Check `data/outreach-review.md`.
-5. Draft first, then wait for send approval unless the user has already explicitly approved the recipient batch.
-6. Log the send immediately if it goes out.
+1. Check `data/outreach-operator-card.md`.
+2. Check `data/outreach-log.md`.
+3. Pick the smallest viable template.
+4. Draft first, then wait for send approval unless the user has already explicitly approved the recipient batch.
+5. Log the send immediately if it goes out.

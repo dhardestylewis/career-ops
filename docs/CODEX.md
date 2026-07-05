@@ -54,6 +54,16 @@ layer.
 - Never verify a job’s live status with generic web fetch when Playwright is available.
 - Never submit an application for the user.
 - Never add new tracker rows directly to `data/tracker/applications.md`; use the TSV addition flow and `merge-tracker.mjs`.
+- Prefer a safe concrete repo action over only describing what should happen. If the user asked for a durable change, write it into the repo now and then summarize the result.
+
+## LinkedIn Feed Notes
+
+- LinkedIn feed sampling notes and heuristics live in `docs/linkedin-feed-observations.md`.
+- The canonical outreach guardrails block lives in `docs/outreach-guardrails.md`.
+- Broader source classes for LinkedIn, job boards, and public writing live in `docs/outreach-discovery-sources.md`.
+- The reusable outreach templates and the evidence behind each template live in `data/outreach-template-evidence.md`.
+- Record every live outbound touch in `data/outreach-log.md` before moving to the next recipient so future agents can avoid duplicates.
+- If a message is going to a real person, draft first and only send after the user has confirmed the recipient batch.
 
 ## Outreach Handoff
 
