@@ -22,7 +22,16 @@ There are two layers. Read `DATA_CONTRACT.md` for the full list.
 
 **THE RULE: When the user asks to customize anything (archetypes, narrative, negotiation scripts, proof points, location policy, comp targets), ALWAYS write to `modes/_profile.md` or `config/profile.yml`. NEVER edit `modes/_shared.md` for user-specific content.** This ensures system updates don't overwrite their customizations.
 
-When the user asks for a safe durable change, take the next concrete repo action instead of only describing it. If the change can be made now without meaningful risk, make it in the repo and then report what changed.
+## Action First
+
+- Prefer safe durable action over narration. If a change can be made safely in the repo, make it and record it instead of only describing what should happen.
+- If the action has meaningful risk or cannot be inferred safely, pause and ask for the missing decision.
+- Keep user-specific preferences in `config/profile.yml`, `modes/_profile.md`, or `article-digest.md`; do not bury them in shared system files.
+- For live outreach, require a completed contact dossier before the first send: source refs, last touch, why now, hook, proof point, ask, avoid, status, and next follow-up. If that dossier is incomplete, treat the contact as `research`, not `ready`.
+- For professors and former instructors, prefer a public-work reference when one exists, such as a paper, talk, lecture, lab page, editorship, blog post, or publication.
+- Before sending, check the recipient's current LinkedIn profile or organization page. If they moved, rewrite the note as a reconnect or current-role note, not an active-role follow-up.
+- Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack. If they are SPC-affiliated or the check is unclear, treat the person as blocked for that pitch and use only a non-work reconnect or academic/community angle.
+- Login state is not permanent across brand-new sessions. If Chrome already has authenticated LinkedIn, Pando, or Superhuman tabs open, preserve them as handoff tabs and use the Chrome profile first for browser-based outreach. Use the in-app browser only as a backup Gmail surface.
 
 ## Update Check
 
@@ -61,8 +70,9 @@ AI-powered job search automation built on Claude Code: pipeline tracking, offer 
 | `interview-prep/behavioral/story-bank.md` | Accumulated STAR+R stories across evaluations |
 | `interview-prep/behavioral/{company}-{role}.md` | Company-specific interview intel reports |
 | `analyze-patterns.mjs` | Pattern analysis script (JSON output) |
-| `followup-cadence.mjs` | Follow-up cadence calculator (JSON output) |
+| `src/dataOps/followup-cadence.mjs` | Follow-up cadence calculator (JSON output) |
 | `data/follow-ups.md` | Follow-up history tracker |
+| `data/outreach-contact-dossier.md` | Per-contact source-backed dossier, SPC affiliation gate, and send gate |
 | `scan.mjs` | Zero-token portal scanner — hits Greenhouse/Ashby/Lever APIs directly, zero LLM cost |
 | `check-liveness.mjs` | Job posting liveness checker |
 | `liveness-core.mjs` | Shared liveness logic (expired signals win over generic Apply text) |
@@ -78,7 +88,7 @@ When using [OpenCode](https://opencode.ai), the following slash commands are ava
 | `/career-ops-pipeline` | `/career-ops pipeline` | Process pending URLs from inbox |
 | `/career-ops-evaluate` | `/career-ops oferta` | Evaluate job offer (A-F scoring) |
 | `/career-ops-compare` | `/career-ops ofertas` | Compare and rank multiple offers |
-| `/career-ops-contact` | `/career-ops contacto` | LinkedIn outreach (find contacts + draft) |
+| `/career-ops-contact` | `/career-ops contacto` | Multi-lane outreach (find contacts + draft) |
 | `/career-ops-deep` | `/career-ops deep` | Deep company research |
 | `/career-ops-pdf` | `/career-ops pdf` | Generate ATS-optimized CV |
 | `/career-ops-training` | `/career-ops training` | Evaluate course/cert against goals |
@@ -180,8 +190,6 @@ If the user accepts, use the `/loop` or `/schedule` skill (if available) to set 
 
 This system is designed to be customized by YOU (AI Agent). When the user asks you to change archetypes, translate modes, adjust scoring, add companies, or modify negotiation scripts -- do it directly. You read the same files you use, so you know exactly what to edit.
 
-Prefer concrete action over narration: update files, run checks, or draft the artifact first, then explain the result.
-
 **Common customization requests:**
 - "Change the archetypes to [backend/frontend/data/devops] roles" → edit `modes/_profile.md` or `config/profile.yml`
 - "Translate the modes to English" → edit all files in `modes/`
@@ -222,7 +230,7 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 | Pastes JD or URL | auto-pipeline (evaluate + report + PDF + tracker) |
 | Asks to evaluate offer | `oferta` |
 | Asks to compare offers | `ofertas` |
-| Wants LinkedIn outreach | `contacto` |
+| Wants outreach / contact discovery | `contacto` |
 | Asks for company research | `deep` |
 | Preps for interview at specific company | `interview-prep` |
 | Wants to generate CV/PDF | `pdf` |
@@ -234,7 +242,7 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 | Processes pending URLs | `pipeline` |
 | Batch processes offers | `batch` |
 | Asks about rejection patterns or wants to improve targeting | `patterns` |
-| Asks about follow-ups or application cadence | `followup` |
+| Asks about follow-ups or outreach cadence | `followup` |
 
 ### CV Source of Truth
 

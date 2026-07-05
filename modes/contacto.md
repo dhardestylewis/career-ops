@@ -1,69 +1,88 @@
-# Modo: contacto -- LinkedIn Power Move
+# Modo: contacto -- Outreach multi-lane
 
-1. **Identificar targets** via WebSearch:
-   - Hiring manager del equipo
-   - Recruiter asignado
-   - 2-3 peers del equipo (gente con rol similar)
-   - Interviewer (si el candidato ya tiene entrevista programada)
+0. **Construir dossier antes de escribir**
+   - No redactar ni enviar hasta completar un dossier por contacto con fuentes reales.
+   - Campos minimos: persona / relacion, ultimo contacto real, por que ahora, hook especifico, proof point mio, ask pequeno, que evitar, estado, y regla de follow-up.
+   - Fuentes minimas: Gmail, LinkedIn, web publica de 1 a 2 piezas, y contexto interno (CV / repo / notas).
+   - Revisar el LinkedIn actual o la pagina de la organizacion antes de enviar. Si la persona cambio de rol, reescribir como reconnect / current-role note, no como follow-up de rol activo.
+  - Antes de outreach sobre trabajo, dinero, gigs, contratos o jobs, revisar la afiliacion en el directorio pando de South Park Commons y en South Park Commons Slack. Si la persona es SPC-affiliated o el estado es incierto, no enviar ese pitch y usar solo un reconnect no laboral o dejarlo bloqueado.
+  - Si Chrome ya tiene LinkedIn, Pando o Superhuman autenticados, usarlos primero y dejarlos como handoff para futuras sesiones. La login state no es permanente entre sesiones nuevas; el in-app browser queda como respaldo para Gmail.
+  - Si falta un campo, el estado es `research` y no se envia.
 
-2. **Leer antes de redactar**:
-   - `docs/outreach-guardrails.md`
+1. **Cargar primero**
+   - `data/outreach-operator-card.md`
+   - `data/outreach-contact-dossier.md`
+   - `data/outreach-drafts.md`
+   - `data/outreach-targets.tsv`
+   - `data/outreach-universe.tsv`
+   - `data/outreach-queue.tsv`
+   - `data/outreach-log.md`
    - `data/outreach-template-evidence.md`
+   - `data/outreach-scripts.md`
+   - `data/outreach-review.md`
+   - `modes/_profile.md`
 
-3. **Clasificar tipo de contacto** -- preguntar al candidato o inferir del contexto:
-   - **Recruiter** -- persona cuyo rol es talent acquisition, sourcing, o recruiting
-   - **Hiring Manager** -- la persona que lidera el equipo que contrata
-   - **Peer** -- alguien con un rol similar en el equipo (referral indirecto)
-   - **Interviewer** -- alguien que va a entrevistar al candidato (fecha conocida)
+2. **Elegir lane**
+   - warm academic / profesor / ex instructor
+   - alumni / career services
+   - recruiter
+   - hiring manager
+   - lab / research
+   - nonprofit / public-sector
+   - dormant warm tie
+   - founder / ecosystem connector
 
-4. **Seleccionar target primario**: la persona que mas se beneficiaria de que el candidato estuviera alli
+3. **Clasificar el contacto**
+   - **Recruiter**: talent acquisition, sourcing, recruiting, staffing
+   - **Hiring Manager**: lider del equipo o del proyecto
+   - **Professor / former instructor**: profesor, advisor, mentor academico
+   - **Alumni / career services**: alumni office, career services, school staff
+   - **Lab / researcher**: lab lead, PI, research staff, program lead
+   - **Nonprofit / public-sector**: civic, government, housing, resilience, mission org
+   - **Dormant warm tie**: hilo viejo que ya tuvo contexto
+   - **Founder / ecosystem**: founder, operator, connector, community lead
 
-5. **Generar mensaje** con framework de 3 frases adaptado al tipo de contacto:
+4. **Seleccionar el target primario**
+   - Elige la persona que tiene el puente mas directo hacia la oportunidad.
+   - Si la fila en `data/outreach-queue.tsv` esta en `research`, primero resuelve la ruta.
+   - Si el contacto esta bloqueado, registra el bloqueo y cambia de ruta.
 
-   ### Recruiter
-   - **Frase 1 (Fit)**: Criterios de match directo -- rol, experiencia relevante, disponibilidad o ubicacion
-   - **Frase 2 (Prueba)**: Dato que responda sus preguntas de screening antes de que las hagan (ej: "5 years building ML pipelines, currently in Berlin, available immediately")
-   - **Frase 3 (CTA)**: "Happy to share my CV if this aligns with what you're looking for"
+5. **Redactar con el mismo esqueleto**
+   - `hook sobre ellos -> 1 proof point sobre ti -> 1 ask pequeno`
+   - Mantener LinkedIn en 300 caracteres o menos.
+   - Usar email cuando haga falta un poco mas de contexto.
+   - Personalizar la primera frase, no todo el mensaje.
+   - En founder / ecosystem, abrir con el puente.
+   - En alumni / career services, pedir direccion, no un favor grande.
+   - En professor / former instructor, nombrar la clase, proyecto o investigacion compartida, o un trabajo publico concreto si existe (paper, charla, laboratorio, blog, editorship).
+   - En recruiter, poner los screening facts al inicio.
+   - En hiring manager, abrir con el problema del equipo o el trabajo reciente.
+   - En lab / research, nombrar el tema o paper primero.
+   - En nonprofit / public-sector, abrir con la mision o programa.
+   - En dormant warm tie, recordar el contexto anterior antes de nada mas.
+   - En outreach sobre trabajo, dinero, gigs, contratos o jobs, aplicar primero la afiliacion SPC y no hacer pitch laboral a contactos SPC-affiliated o inciertos.
 
-   ### Hiring Manager
-   - **Frase 1 (Gancho)**: Reto especifico que enfrenta su equipo (extraido del JD, company blog, o noticias)
-   - **Frase 2 (Prueba)**: Mayor logro cuantificable del candidato que demuestre que ha resuelto problemas similares
-   - **Frase 3 (CTA)**: "Would love to hear how your team is approaching [reto especifico]"
+6. **Usar los templates evidenciados**
+   - Consultar `data/outreach-scripts.md` para copia lista para enviar.
+   - Consultar `data/outreach-template-evidence.md` para la evidencia de por que funciona.
+   - Si hace falta mas de un proof point, reescribir mas corto.
 
-   ### Peer (referral)
-   - **Frase 1 (Interes)**: Referencia genuina a su trabajo -- blog post, charla, proyecto open source, o publicacion
-   - **Frase 2 (Conexion)**: Algo que el candidato esta haciendo en el mismo espacio (NO un pitch de empleo)
-   - **Frase 3 (CTA)**: "I've been working on similar problems at [empresa], would love to hear your take on [tema]"
-   - **Nota**: NO pedir empleo. La referral ocurre naturalmente si la conversacion fluye.
+7. **Enviar y registrar**
+   - Si el send path esta permitido, enviar.
+   - Registrar el send inmediatamente en `data/outreach-log.md`.
+   - No duplicar contactos que ya estan en `data/outreach-universe.tsv`.
+   - No enviar si el dossier esta incompleto.
 
-   ### Interviewer (pre-entrevista)
-   - **Frase 1 (Research)**: Referencia a algo especifico de su trabajo o trayectoria
-   - **Frase 2 (Contexto)**: Conexion ligera con la experiencia del candidato en ese tema
-   - **Frase 3 (CTA)**: "Looking forward to our conversation on [fecha]"
-   - **Nota**: Tono ligero, no desesperado. El objetivo es que sepan que te preparaste.
+8. **Responder y seguir**
+   - Si responden con un `yes/no` simple o una pregunta de agenda, contestar directo y breve.
+   - Si la respuesta cambia la estrategia o es ambigua, parar y avisar al usuario.
+   - Si no hay respuesta, seguir la cadencia de `modes/followup.md`.
 
-6. **Versiones**:
-   - EN (default)
-   - ES (si empresa espanola)
+**Reglas del mensaje**
 
-7. **Targets alternativos** con justificacion de por que son buenos second choices
-
-8. **Evidence-backed defaults**:
-   - Follow `docs/outreach-guardrails.md` for thread state, channel routing, approval, and logging.
-   - Use the smallest viable template for the contact type.
-   - If the message needs more than one proof point, rewrite it shorter.
-   - Log any live send in `data/outreach-log.md` immediately after it goes out.
-
-7. **Evidence-backed defaults**:
-   - Read `data/outreach-template-evidence.md` before drafting.
-   - Use the smallest viable template for the contact type.
-   - If the message needs more than one proof point, rewrite it shorter.
-   - Log any live send in `data/outreach-log.md` immediately after it goes out.
-
-**Reglas del mensaje:**
-- Maximo 300 caracteres (LinkedIn connection request limit)
-- NO corporate-speak
-- NO "I'm passionate about..."
-- Algo que haga que quieran responder
-- NUNCA compartir telefono
-- El tipo de contacto cambia el ENFASIS, no la estructura
+- Maximo 300 caracteres para LinkedIn.
+- No usar corporate-speak.
+- No usar `I'm passionate about...`
+- No usar `just checking in`, `touching base`, o `circling back` por defecto.
+- No compartir telefono.
+- El tipo de contacto cambia el enfasis, no la estructura.

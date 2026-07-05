@@ -6,26 +6,44 @@ Use this first if you are the next agent picking up live outreach.
 
 ## Current State
 
-- The live LinkedIn send state has been verified.
+- The live multi-lane send state has been verified.
 - Sent: Li-Yun (James) Wang, 3Dtrees team, Kyle Baranko, Maxime Meilland, Vrushali Mundhe.
 - Blocked route: Apurva Singh due to LinkedIn verification / CAPTCHA.
-- Google X / Bellwether was rejected after the late-stage process. Do not send a normal follow-up on the old role; only draft a re-engagement note if a warm Bellwether contact surfaces a clearly separate opening.
-- Bellwether recruiter contact surfaced in Gmail: Gabriel Schook <schook@xwf.x.team>. Keep that thread separate from the rejected application and only use it for other X/Bellwether openings.
-- Current mailbox access in this session is only `daniel@homecastr.com` in Gmail. Columbia/UT inboxes are not connected here yet, and Superhuman mail is not exposed in this thread.
+- Current mailbox access in this session is only `daniel@homecastr.com` in Gmail. Columbia/UT inboxes are not connected here yet.
+- A Columbia inbox tab exists in Chrome, but its contents were not inspected in this session.
+- Chrome currently has live authenticated surfaces open, including LinkedIn, Pando, and Superhuman tabs. Preserve them as handoff tabs when useful, but do not assume login state will survive a brand-new session.
+- Use the Chrome profile first for browser-based mail, LinkedIn, and Pando work. Treat the in-app browser as a backup Gmail surface, not the primary long-term login store.
+- Bellwether is closed as an application thread. Gabriel Schook is a warm recruiter contact for other X openings only.
+- Canonical draft source: `data/outreach-drafts.md`; `data/outreach-next-batch.md` is the compact mirror view.
+- New queue files: `data/outreach-drafts.md`, `data/outreach-next-batch.md`, `data/outreach-targets.tsv`, `data/outreach-universe.tsv`, `data/outreach-queue.tsv`.
+- SPC status is tracked in `spc_affiliation` and `spc_checked_at` across the dossier and queue rows.
+- Dossier gate: no first-touch or follow-up send until the contact dossier is complete and source-backed.
+- South Park Commons gate: before any work, money, gigs, contracts, or jobs outreach, verify the recipient in the pando member directory and South Park Commons Slack; if they are SPC-affiliated or the result is unclear, do not send the work pitch.
 
 ## Read Order
 
 1. `modes/_profile.md`
-2. `data/outreach-log.md`
-3. `data/outreach-template-evidence.md`
-4. `data/outreach-scripts.md`
-5. `data/outreach-review.md`
+2. `data/outreach-contact-dossier.md`
+3. `data/outreach-drafts.md`
+4. `data/outreach-next-batch.md`
+5. `data/outreach-targets.tsv`
+6. `data/outreach-universe.tsv`
+7. `data/outreach-queue.tsv`
+8. `data/outreach-log.md`
+9. `data/outreach-template-evidence.md`
+10. `data/outreach-scripts.md`
+11. `data/outreach-review.md`
 
 ## Operating Rule
 
 - Use one hook, one proof point, one ask.
+- Build the dossier first: source refs, last touch, why now, hook, proof point, ask, avoid, status, next follow-up.
 - Keep LinkedIn short and email only when more context is needed.
+- Use the lane-specific template that matches the contact type.
 - Do not send if the path is blocked or the message needs more than one proof point.
+- For professors and former instructors, prefer public work references when available instead of generic gratitude.
+- Before sending, check the recipient's current LinkedIn profile or organization page. If they moved, rewrite the note as a reconnect or current-role note, not an active-role follow-up.
+- Before any work, money, gigs, contracts, or jobs outreach, check South Park Commons affiliation first and avoid work pitches to SPC-affiliated or unclear contacts.
 - If a reply needs judgment, stop and notify the user.
 - If there is no reply, use the first follow-up after 3 to 5 business days and the second after another 3 to 5 business days.
 
@@ -43,5 +61,5 @@ Use this first if you are the next agent picking up live outreach.
 - Do not stack multiple asks into one note.
 - Do not improvise around CAPTCHA.
 - Do not re-send duplicates already recorded in the log.
-- Do not reopen the rejected Bellwether interview as if it were still active.
-- Do not draft outreach without first checking LinkedIn for current company/role when the contact could have moved.
+- Do not send if the contact dossier is incomplete.
+- If Chrome already has a live authenticated LinkedIn, Pando, or Superhuman tab open, preserve it and keep working from that session instead of reauthenticating from scratch.
