@@ -64,6 +64,18 @@ layer.
 - Record every live outbound touch in `data/outreach-log.md` before moving to the next recipient so future agents can avoid duplicates.
 - If a message is going to a real person, draft first and only send after the user has confirmed the recipient batch.
 
+## Outreach Handoff
+
+If the task is live outreach, read this first before drafting or sending:
+
+1. `data/outreach-operator-card.md`
+2. `data/outreach-template-evidence.md`
+3. `data/outreach-log.md`
+4. `data/outreach-scripts.md`
+5. `data/outreach-review.md`
+
+Then follow the existing repo flow instead of inventing a new one.
+
 ## Verification
 
 ```bash

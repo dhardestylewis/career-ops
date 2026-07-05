@@ -54,6 +54,12 @@
    - If the message needs more than one proof point, rewrite it shorter.
    - Log any live send in `data/outreach-log.md` immediately after it goes out.
 
+7. **Evidence-backed defaults**:
+   - Read `data/outreach-template-evidence.md` before drafting.
+   - Use the smallest viable template for the contact type.
+   - If the message needs more than one proof point, rewrite it shorter.
+   - Log any live send in `data/outreach-log.md` immediately after it goes out.
+
 **Reglas del mensaje:**
 - Maximo 300 caracteres (LinkedIn connection request limit)
 - NO corporate-speak

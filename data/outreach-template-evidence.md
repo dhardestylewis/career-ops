@@ -172,7 +172,7 @@ Evidence:
 
 Before sending anything, the next agent should:
 
-1. Check `docs/linkedin-feed-observations.md`.
+1. Check `data/outreach-operator-card.md`.
 2. Check `data/outreach-log.md`.
 3. Pick the smallest viable template.
 4. Draft first, then wait for send approval unless the user has already explicitly approved the recipient batch.
