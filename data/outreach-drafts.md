@@ -1,0 +1,287 @@
+# Outreach Drafts
+
+Date: 2026-07-05
+
+Draft-only workspace. Nothing below has been sent yet. Check `data/outreach-log.md` for the live-send ledger.
+
+Send gate:
+
+- Check the recipient's current LinkedIn profile or organization page before sending.
+- If a person has moved, rewrite the note as a reconnect or current-role note, not an active-role follow-up.
+- Keep Bellwether closed as an application thread; use Gabriel only as a warm contact for other X openings.
+- Org items stay in discovery until a human contact is identified on LinkedIn.
+
+## Bellwether re-engagement
+
+**To:** Gabriel Schook <schook@xwf.x.team>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn check:** Technical Recruiting @ Harvey, Chicago. Warm recruiter contact, formerly on the Bellwether path.
+
+**Dossier**
+- Relationship: warm recruiter who helped route the Bellwether process.
+- Last touch: Mar 19, 2026 in the Gmail thread `Exploring Opportunities at GoogleX`.
+- Why now: he appears to have moved to Harvey, so this is a reconnect rather than an active Bellwether follow-up.
+- Hook: we already established trust around geospatial / production ML work and the old recruiting thread.
+- Proof point: Homecastr has a nationwide probabilistic forecasting system plus production ML tooling.
+- Ask: stay in touch, keep me in mind for any relevant X openings, and if X is not the right lane ask whether he knows any non-Harvey technical recruiters at xWF or adjacent agencies who still cover geospatial, ML systems, or applied AI roles.
+- Avoid: treating Bellwether as an active role, over-explaining the rejection, or making it sound like a fresh cold pitch.
+- Status: draft only.
+- Next follow-up: no automatic follow-up unless he replies or there is a truly new opening.
+
+**Subject:** Good to stay in touch
+
+```text
+Hi Gabriel,
+
+I heard you may have moved on from Bellwether, and I wanted to reconnect. We had a strong thread around geospatial and production ML work, and I am still building in that same space at Homecastr.
+
+If there are other X roles where that background could be useful, I would be glad to stay on your radar.
+
+Best,
+Daniel
+```
+
+**Note:** Do not reopen the rejected Bellwether interview as an active application. Treat this as a warm reconnect only.
+
+## Recruiter network notes
+
+These are not sent yet. Use them only after checking the person's current LinkedIn or current company first.
+
+- Gabriel Schook: if he is willing to help, ask for non-Harvey technical recruiter contacts at xWF or similar agencies that still cover geospatial, ML systems, or applied AI.
+- Melisa Magnuson, AdAstra: senior technical headhunter. Possible ask is whether she has other technical recruiter contacts outside the current opening.
+- Raymond Sheerin, Guardian Life: senior recruiter. Possible ask is whether he knows adjacent data / AI recruiter contacts or hiring managers in finance / insurance.
+- Cora Moore, Elwood Staffing: lead staffing recruiter. Possible ask is whether she has students / early-career / technical recruiter contacts who touch climate, GIS, or ML.
+- Kimberly, Toptal: recruiter. Possible ask is whether there are other freelancer / contract-network recruiter contacts.
+- Allison Rebaza, Tech Holding: technical recruiter. Possible ask is whether she has other contractor-focused technical recruiter contacts.
+
+## Warm Academic: Paola Passalacqua
+
+**To:** Paola Passalacqua <ppassalacqua@ethz.ch>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Professor of Hydrology and River System Science at ETH Zurich and Eawag. Her work spans river deltas, hydrological connectivity, and flood risk.
+
+**Dossier**
+- Relationship: former collaborator on national disaster resiliency work at TACC.
+- Last touch: archived collaborator thread in the Anthropic Fellows reference data plus our TACC history.
+- Why now: the ETH move makes the reconnect feel timely, and the flood / river systems angle is still directly relevant.
+- Hook: her hydrology and river-system work is a clean bridge to the flood-resilience systems I've built.
+- Proof point: I scaled climate and flood models on world-leading supercomputers at TACC and now run Homecastr's forecasting stack.
+- Ask: a quick catch-up and any advice on current research directions.
+- Avoid: vague "just checking in" language or a generic alumni-style note.
+- Status: draft only.
+- Next follow-up: one soft nudge after 7 business days if useful, otherwise stop.
+
+**Subject:** Reconnecting from TACC
+
+```text
+Hi Paola,
+
+I was thinking about our TACC work on disaster resiliency and wanted to reconnect. I saw your work on hydrology and river system science at ETH Zurich and Eawag, and it maps closely to the flood-resilience work I have kept building at Homecastr.
+
+If you are open to it, I would love to catch up and hear what you are working on these days.
+
+Best,
+Daniel
+```
+
+## Warm Academic: Ali Hirsa
+
+**To:** Ali Hirsa <ah2347@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Columbia professor who directs the Financial Engineering Program and the Center for AI in Business Analytics & FinTech.
+
+**Dossier**
+- Relationship: research advisor at Columbia.
+- Last touch: Columbia research collaboration already in progress in the repo context.
+- Why now: his current Columbia AI/finance work gives a sharper public hook than a generic check-in.
+- Hook: the financial engineering / AI-in-finance theme overlaps with my latent-factor and validation work.
+- Proof point: my Columbia latent-factor modeling work and Homecastr's model-validation discipline.
+- Ask: a brief reconnect and any research direction he wants me to keep in mind.
+- Avoid: saying only "the Columbia work" without naming the finance / AI angle.
+- Status: draft only.
+- Next follow-up: one soft nudge after 7 business days if there is no response.
+
+**Subject:** Reconnecting on the Columbia work
+
+```text
+Hi Ali,
+
+I wanted to share a quick update from the Columbia side. I saw your current work directing Financial Engineering and the Center for AI in Business Analytics & FinTech, and the latent-factor research has continued to shape how I think about production ML at Homecastr.
+
+If you have time, I would be glad to catch up and hear whether there are any new research directions you would want me to keep in mind.
+
+Best,
+Daniel
+```
+
+## Warm Academic: Christopher Munsell
+
+**To:** Christopher Munsell <cwm2132@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Columbia GSAPP professor of Real Estate Development Finance who teaches MSRED finance courses.
+
+**Dossier**
+- Relationship: academic reference from the MS in Urban Planning program.
+- Last touch: GSAPP reference / prior academic relationship.
+- Why now: his current finance-and-development role is a clean bridge to the housing / real-estate angle in Homecastr.
+- Hook: his real estate finance teaching and development work pair naturally with the housing forecasting product.
+- Proof point: Homecastr forecasts property value trajectories at scale and I've built the geospatial/urban-planning side of that system.
+- Ask: a quick catch-up plus any advice on the real-estate / housing side of my work.
+- Avoid: generic GSAPP gratitude without mentioning the real-estate finance bridge.
+- Status: draft only.
+- Next follow-up: one soft nudge after 7 business days if useful.
+
+**Subject:** Reconnecting from GSAPP
+
+```text
+Hi Christopher,
+
+I wanted to reconnect from the GSAPP side. I saw your current work in Real Estate Development Finance at Columbia and the overlap with Homecastr's housing and geospatial forecasting still feels strong.
+
+If you are open, I would love to catch up and hear what you are focused on lately.
+
+Best,
+Daniel
+```
+
+## Alumni Career Services: Columbia University
+
+**To:** Columbia Career Services / Alumni Office
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Subject:** Columbia alum looking for the right routing path
+
+```text
+Hi Columbia Career Services team,
+
+I am a Columbia M.S. Urban Planning student and founder of Homecastr, where I have been building geospatial forecasting systems with a production ML focus. I am trying to find the best routing path to faculty, programs, or alumni who might be relevant to spatial data, ML systems, or civic-tech roles.
+
+If there is a better office or person to speak with, I would be grateful for the pointer.
+
+Best,
+Daniel
+```
+
+## Alumni Career Services: Columbia IEOR / GSAPP / DSI
+
+**To:** Columbia IEOR / GSAPP / Data Science Institute
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Subject:** Routing question from an IEOR / GSAPP student
+
+```text
+Hi Columbia IEOR / GSAPP / Data Science Institute team,
+
+I am a Columbia M.S. Urban Planning student and the founder of Homecastr, where I have been building production geospatial ML systems. I am hoping to find the right faculty or staff contact for work that sits at the intersection of spatial data, ML systems, and applied research.
+
+If there is a better person or lab to route this to, I would be very grateful.
+
+Best,
+Daniel
+```
+
+## Alumni Career Services: Cornell Tech
+
+**To:** Cornell Tech faculty / labs / startup programs
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Subject:** Cornell Tech routing question
+
+```text
+Hi Cornell Tech team,
+
+I am reaching out because I am building production geospatial ML systems at Homecastr and have a long-running background in disaster-resilience modeling at TACC. I would love to find the right faculty, lab, or startup-program contact for a warm introduction or conversation.
+
+If there is a better place to route this, I would appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Alumni Career Services: Cooper Union
+
+**To:** Cooper Union alumni / career services
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Subject:** Cooper Union alumni routing
+
+```text
+Hi Cooper Union career services team,
+
+I am a Columbia and UT alum working on production ML for geospatial and civic-impact systems. I am trying to find the best alumni or faculty contact path for that background.
+
+If there is a better office or person to speak with, I would be grateful for the direction.
+
+Best,
+Daniel
+```
+
+## Alumni Career Services: Parsons School of Design
+
+**To:** Parsons alumni / career services
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Subject:** Parsons alumni routing question
+
+```text
+Hi Parsons team,
+
+I am building production geospatial ML systems at Homecastr and have been thinking a lot about the product, design, and data bridge. I would love to find the right alumni or career-services contact path for a warm introduction or conversation.
+
+If there is a better person to route this to, I would appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Alumni Career Services: Vanderbilt University
+
+**To:** Vanderbilt alumni / career services
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Subject:** Vanderbilt alumni routing
+
+```text
+Hi Vanderbilt alumni and career services team,
+
+I am reaching out because I am looking for warm routing to alumni or faculty who work at the intersection of data, product, and mission-driven tech. My background is in production ML, geospatial forecasting, and flood-resilience work, and I think there may be a useful bridge there.
+
+If there is a better contact path, I would be grateful for the direction.
+
+Best,
+Daniel
+```
