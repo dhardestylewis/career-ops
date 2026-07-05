@@ -19,6 +19,7 @@ Use this first if you are the next agent picking up live outreach.
 - New queue files: `data/outreach-drafts.md`, `data/outreach-next-batch.md`, `data/outreach-targets.tsv`, `data/outreach-universe.tsv`, `data/outreach-queue.tsv`.
 - Terra AI research-role package is staged for John Mern, Anthony Corso, Markus Zechner, Michael L. Spence, Richard Rex, and the `contact@terraAI.earth` fallback; live LinkedIn checks are complete and show all five people as 2nd-degree, so there is no direct DM lane from this account.
 - SPC status is still pending because the pando member directory and South Park Commons Slack check are not yet verified in a live authenticated surface. The live Pando search and the PDF export did not surface clear exact-name member hits for the Terra AI targets, so the work pitch remains blocked.
+- Archived SPC evidence lives at `data/archive/south-park-commons-members-2026-07-05.pdf` with a companion note at `data/archive/south-park-commons-members-2026-07-05.md`; future agents should use those files for provenance, not as a substitute for live SPC verification.
 - Dossier gate: no first-touch or follow-up send until the contact dossier is complete and source-backed.
 - South Park Commons gate: before any work, money, gigs, contracts, or jobs outreach, verify the recipient in the pando member directory and South Park Commons Slack; if they are SPC-affiliated or the result is unclear, do not send the work pitch.
 - User routing notes:
