@@ -376,6 +376,8 @@ function enrichRows(rows) {
       const due = addBusinessDays(lastTouch, meta.followupDays);
       if (due) nextTouch = formatDate(due);
       actionState = nextTouch ? (due <= TODAY_START ? 'followup_due' : 'watch') : 'watch';
+    } else if (normalizeKey(row.status) === 'watch') {
+      actionState = 'watch';
     } else if (normalizeKey(row.status) === 'blocked' || normalizeKey(row.status) === 'needs-login' || normalizeKey(row.status) === 'needs_login') {
       actionState = 'blocked';
     } else if (normalizeKey(row.status) === 'discovered') {

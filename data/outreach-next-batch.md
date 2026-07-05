@@ -73,31 +73,31 @@ Best,
 Daniel
 
 ## Aaron Wilson / Belleau Labs
-Status: Follow-up draft
+Status: Watch / no contact
 
-Warm founder thread from `Summer Availability`. Keep it short, collaborative, and founder-to-founder.
+Warm founder thread from `Summer Availability`. Keep it short, collaborative, and founder-to-founder, but do not contact again unless the user changes the instruction.
 
 ## Jill Cherrstrom / x.team
-Status: Follow-up draft
+Status: Watch / new-role only
 
-Bellwether recruiter reconnect only. Keep it as a light future-X note and do not reopen the rejection.
+Bellwether recruiter reconnect only. Only re-open if a genuinely new X role appears; do not reopen the rejection.
 
 ## Yash Nevatia / Bjorn Labs
-Status: Follow-up draft
+Status: Watch / no contact
 
-Live agentic-infra thread from today. Follow the chat, stay concise, and keep the thread warm.
+Live agentic-infra thread from today. Stay concise and keep the thread warm, but do not send a further note.
 
 ## Gian / Dynamite Growth
 Status: Follow-up draft
 
-Warm sales / partnership thread. Ask only about next steps or upcoming calls.
+Warm sales / partnership thread. Ask only about next steps or upcoming calls and keep it warm.
 
 ## Robbie Bent / Othership
-Status: Draft only
+Status: Ready to send after SPC check
 
 Warm founder/community note from the Othership credit thread. Keep it light and not pitchy.
 
 ## Joshua Lesser / LinkedIn
-Status: Draft only
+Status: Watch / no contact
 
-Active DM about meeting near Cooper Square. Keep it purely logistical and short.
+Active DM about meeting near Cooper Square. Keep it purely logistical and short, but do not send another note unless the thread changes.
