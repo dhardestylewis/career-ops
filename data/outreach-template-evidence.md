@@ -178,7 +178,6 @@ Evidence:
 - They improved when the bridge was explicit and the bio was compressed.
 - The message should sound like a bridge, not a pitch.
 - Avoid phrases that pile on multiple actions, like "consider a quick intro call" plus "hear more about your current priorities" plus "see if there'"'"'s a way our work could be useful."
-
 ### Research collaborator note
 
 Use when the recipient says the project is research-oriented and wants a workshop or conference outcome.
@@ -193,7 +192,6 @@ Evidence:
 - Reproducibility is the strongest bridge when the recipient is thinking about publication.
 - The ask should be to compare notes, not to force a role conversation.
 - The message works best when it names one concrete artifact class: run manifests, logs, or evals.
-
 ### Broader cold outreach
 
 Use when there is no warm intro and the recipient has low time tolerance.
