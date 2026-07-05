@@ -6,8 +6,8 @@ Draft-only workspace. These are the drafted originals and routing notes; check `
 
 Parallel worktree notes:
 
-- `C:/Users/dhl/.codex/worktrees/d7db/career-ops` is carrying the live outreach queue for the recruiter / academic / alumni lanes.
-- `C:/Users/dhl/.codex/worktrees/4879/career-ops` is on a separate cleanup lane and should not be used as a second copy of this batch.
+- The live outreach queue is carried in the active worktree for the recruiter / academic / alumni lanes.
+- The current cleanup worktree should not be used as a second copy of this batch.
 
 Source page:
 
