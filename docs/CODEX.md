@@ -55,6 +55,13 @@ layer.
 - Never submit an application for the user.
 - Never add new tracker rows directly to `data/tracker/applications.md`; use the TSV addition flow and `merge-tracker.mjs`.
 
+## LinkedIn Feed Notes
+
+- LinkedIn feed sampling notes and heuristics live in `docs/linkedin-feed-observations.md`.
+- The reusable outreach templates and the evidence behind each template live in `data/outreach-template-evidence.md`.
+- Record every live outbound touch in `data/outreach-log.md` before moving to the next recipient so future agents can avoid duplicates.
+- If a message is going to a real person, draft first and only send after the user has confirmed the recipient batch.
+
 ## Verification
 
 ```bash
