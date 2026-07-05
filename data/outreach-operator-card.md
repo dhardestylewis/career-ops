@@ -9,6 +9,9 @@ Use this first if you are the next agent picking up live outreach.
 - The live LinkedIn send state has been verified.
 - Sent: Li-Yun (James) Wang, 3Dtrees team, Kyle Baranko, Maxime Meilland, Vrushali Mundhe.
 - Blocked route: Apurva Singh due to LinkedIn verification / CAPTCHA.
+- Google X / Bellwether was rejected after the late-stage process. Do not send a normal follow-up on the old role; only draft a re-engagement note if a warm Bellwether contact surfaces a clearly separate opening.
+- Bellwether recruiter contact surfaced in Gmail: Gabriel Schook <schook@xwf.x.team>. Keep that thread separate from the rejected application and only use it for other X/Bellwether openings.
+- Current mailbox access in this session is only `daniel@homecastr.com` in Gmail. Columbia/UT inboxes are not connected here yet, and Superhuman mail is not exposed in this thread.
 
 ## Read Order
 
@@ -40,3 +43,5 @@ Use this first if you are the next agent picking up live outreach.
 - Do not stack multiple asks into one note.
 - Do not improvise around CAPTCHA.
 - Do not re-send duplicates already recorded in the log.
+- Do not reopen the rejected Bellwether interview as if it were still active.
+- Do not draft outreach without first checking LinkedIn for current company/role when the contact could have moved.
