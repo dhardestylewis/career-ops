@@ -64,6 +64,7 @@ const scripts = [
   { name: 'src/dataOps/normalize-statuses.mjs', expectExit: 0 },
   { name: 'src/dataOps/dedup-tracker.mjs', expectExit: 0 },
   { name: 'src/dataOps/merge-tracker.mjs', expectExit: 0 },
+  { name: 'src/dataOps/outreach-ledger.mjs --dry-run', expectExit: 0 },
   { name: 'src/core/update-system.mjs check', expectExit: 0 },
 ];
 

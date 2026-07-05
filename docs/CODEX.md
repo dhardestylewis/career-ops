@@ -42,6 +42,7 @@ npx playwright install chromium
 | Deep company research | `modes/deep.md` |
 | Training / certification review | `modes/training.md` |
 | Project evaluation | `modes/project.md` |
+| Live outreach / contact discovery | `modes/contacto.md` + `modes/followup.md` + outreach files |
 
 The key point: Codex support is additive. It should route into the existing
 Career-Ops modes and scripts rather than introducing a parallel automation
@@ -49,31 +50,39 @@ layer.
 
 ## Behavioral Rules
 
+- Prefer safe durable action over narration. If Codex can make a change safely in the repo, it should make it and record it instead of only describing the next step.
 - Treat raw JD text or a job URL as the full auto-pipeline path unless the user explicitly asks for evaluation only.
 - Keep all personalization in `config/profile.yml`, `modes/_profile.md`, `article-digest.md`, or `portals.yml`.
 - Never verify a job’s live status with generic web fetch when Playwright is available.
 - Never submit an application for the user.
 - Never add new tracker rows directly to `data/tracker/applications.md`; use the TSV addition flow and `merge-tracker.mjs`.
-- Prefer a safe concrete repo action over only describing what should happen. If the user asked for a durable change, write it into the repo now and then summarize the result.
-
-## LinkedIn Feed Notes
-
-- LinkedIn feed sampling notes and heuristics live in `docs/linkedin-feed-observations.md`.
-- The canonical outreach guardrails block lives in `docs/outreach-guardrails.md`.
-- Broader source classes for LinkedIn, job boards, and public writing live in `docs/outreach-discovery-sources.md`.
-- The reusable outreach templates and the evidence behind each template live in `data/outreach-template-evidence.md`.
-- Record every live outbound touch in `data/outreach-log.md` before moving to the next recipient so future agents can avoid duplicates.
-- If a message is going to a real person, draft first and only send after the user has confirmed the recipient batch.
+- For browser-assisted outreach, prefer the Chrome profile first when LinkedIn, Pando, or Superhuman are already authenticated there. Treat those tabs as handoff state only; login state is not permanent across brand-new sessions. Use the in-app browser as a backup Gmail surface when needed.
 
 ## Outreach Handoff
 
 If the task is live outreach, read this first before drafting or sending:
 
 1. `data/outreach-operator-card.md`
-2. `data/outreach-template-evidence.md`
-3. `data/outreach-log.md`
-4. `data/outreach-scripts.md`
-5. `data/outreach-review.md`
+2. `data/outreach-contact-dossier.md`
+3. `data/outreach-drafts.md`
+4. `data/outreach-targets.tsv`
+5. `data/outreach-universe.tsv`
+6. `data/outreach-queue.tsv`
+7. `data/outreach-log.md`
+8. `data/outreach-template-evidence.md`
+9. `data/outreach-scripts.md`
+10. `data/outreach-review.md`
+11. `src/dataOps/outreach-ledger.mjs`
+
+Rules:
+
+- Keep the same skeleton everywhere: hook on them, one proof point, one small ask.
+- Prefer the shortest viable lane-specific template from the evidence pack.
+- Log each send immediately so a second agent cannot duplicate it.
+- If a row is blocked, solve the route or pause for judgment instead of improvising around access friction.
+- Do not send until the contact dossier is complete and source-backed.
+- For professors and former instructors, prefer public work hooks when available.
+- Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack. If they are SPC-affiliated or the status is unclear, do not send the work pitch; use only a non-work reconnect or mark the row blocked for that lane.
 
 Then follow the existing repo flow instead of inventing a new one.
 
