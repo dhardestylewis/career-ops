@@ -53,7 +53,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Follow-up draft only, existing warm thread
+**Status:** Watch / no further contact
 
 **Context:** Founder of Belleau Labs. David sent my resume his way and we had a short call on the warm intro thread.
 
@@ -65,8 +65,8 @@ Daniel
 - Proof point: Homecastr's production ML and forecasting stack plus the founder/operator context I can bring to an applied systems conversation.
 - Ask: stay in touch and compare notes on where those systems might overlap.
 - Avoid: turning it into a hard pitch or over-explaining the whole company.
-- Status: follow-up draft only.
-- Next follow-up: one gentle nudge after 5 business days if there is no reply.
+- Status: watch only; no further contact unless the user asks.
+- Next follow-up: none.
 
 **Subject:** Good to stay in touch
 
@@ -87,7 +87,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Follow-up draft only, existing Bellwether thread
+**Status:** Watch / only if a new X role appears
 
 **Context:** Jill handled the Bellwether interview feedback thread and gave the ML architecture notes directly.
 
@@ -99,8 +99,8 @@ Daniel
 - Proof point: I have kept building production ML and forecasting systems since that interview.
 - Ask: stay in touch and keep me in mind for future X openings or any adjacent roles.
 - Avoid: reopening the rejected Bellwether candidacy or arguing the feedback.
-- Status: follow-up draft only.
-- Next follow-up: one gentle check-in after 7 business days if there is no reply.
+- Status: watch only; only re-open if a genuinely new X role appears.
+- Next follow-up: none unless a new role creates a real reason to reach out.
 
 **Subject:** Thanks again for the feedback
 
@@ -121,7 +121,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Follow-up draft only, existing live thread
+**Status:** Watch / no further contact
 
 **Context:** Current warm thread about a part-time engineer / agentic infra role, with a coffee chat and same-day follow-up already in motion.
 
@@ -133,8 +133,8 @@ Daniel
 - Proof point: Homecastr founder / AI engineer background plus production ML execution.
 - Ask: keep in touch and hear how the role or team evolves.
 - Avoid: turning it into a generic networking note or overfilling the message with biography.
-- Status: follow-up draft only.
-- Next follow-up: only if the thread stalls or he asks for it.
+- Status: watch only; no further contact unless the user requests it.
+- Next follow-up: none.
 
 **Subject:** Great chatting today
 
@@ -155,7 +155,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Follow-up draft only, existing warm thread
+**Status:** Follow-up draft only, existing warm thread, persist
 
 **Context:** Warm sales / partnership thread around a strategy call and possible sales conversations.
 
@@ -167,7 +167,7 @@ Daniel
 - Proof point: Homecastr is the product and systems context I can bring to a partnership or customer conversation.
 - Ask: keep me in the loop if there are upcoming sales conversations or a useful next step.
 - Avoid: sounding like a repeated nudge with no new substance.
-- Status: follow-up draft only.
+- Status: follow-up draft only; keep warm and persist.
 - Next follow-up: one nudge after 5 business days if there is no reply.
 
 **Subject:** Re: Strategy call
@@ -187,7 +187,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Ready to send after SPC check
 
 **Context:** Inbound Othership note about a first-timer credit and a warm founder-facing brand touchpoint.
 
@@ -199,7 +199,7 @@ Daniel
 - Proof point: I build Homecastr and spend a lot of time thinking about high-output founder rhythms and systems.
 - Ask: stay in touch and compare notes on founders, recovery, or community.
 - Avoid: making it feel like a random cold pitch.
-- Status: draft only.
+- Status: ready to send once the SPC check clears.
 - Next follow-up: one gentle nudge only if there is no reply and the thread stays relevant.
 
 **Subject:** Thanks for the note
@@ -221,7 +221,7 @@ Daniel
 
 **Channel:** LinkedIn
 
-**Status:** Draft only, not sent
+**Status:** Watch / no further contact
 
 **Context:** Active LinkedIn DM about meeting near Cooper Square / finding a coffee spot.
 
@@ -233,8 +233,8 @@ Daniel
 - Proof point: I can meet in person, keep it simple, and keep the conversation moving.
 - Ask: confirm a coffee spot and whether he wants to do it in person or virtually.
 - Avoid: turning it into a big pitch or a long explanation.
-- Status: draft only.
-- Next follow-up: only if the thread stalls after the logistics reply.
+- Status: watch only; do not contact again.
+- Next follow-up: none.
 
 **Message**
 

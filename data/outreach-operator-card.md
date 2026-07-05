@@ -13,12 +13,20 @@ Use this first if you are the next agent picking up live outreach.
 - A Columbia inbox tab exists in Chrome, but its contents were not inspected in this session.
 - Chrome currently has live authenticated surfaces open, including LinkedIn, Pando, and Superhuman tabs. Preserve them as handoff tabs when useful, but do not assume login state will survive a brand-new session.
 - Use the Chrome profile first for browser-based mail, LinkedIn, and Pando work. Treat the in-app browser as a backup Gmail surface, not the primary long-term login store.
+- Pando currently lands on the login page in this session, so the South Park Commons affiliation check remains pending until access is available.
 - Bellwether is closed as an application thread. Gabriel Schook is a warm recruiter contact for other X openings only.
 - Canonical draft source: `data/outreach-drafts.md`; `data/outreach-next-batch.md` is the compact mirror view.
 - New queue files: `data/outreach-drafts.md`, `data/outreach-next-batch.md`, `data/outreach-targets.tsv`, `data/outreach-universe.tsv`, `data/outreach-queue.tsv`.
 - SPC status is tracked in `spc_affiliation` and `spc_checked_at` across the dossier and queue rows.
 - Dossier gate: no first-touch or follow-up send until the contact dossier is complete and source-backed.
 - South Park Commons gate: before any work, money, gigs, contracts, or jobs outreach, verify the recipient in the pando member directory and South Park Commons Slack; if they are SPC-affiliated or the result is unclear, do not send the work pitch.
+- User routing notes:
+  - Aaron Wilson: no further contact.
+  - Jill Cherrstrom: only re-open if there is a genuinely new X role to discuss.
+  - Yash Nevatia: no further contact.
+  - Gian / Dynamite Growth: keep warm and persist.
+  - Robbie Bent: reach out after the SPC check clears.
+  - Joshua Lesser: no further contact.
 
 ## Read Order
 
