@@ -2,7 +2,7 @@
 
 Date: 2026-07-05
 
-This file is the evidence-backed template library for outbound LinkedIn and email outreach in this worktree.
+This file is the evidence-backed template library for multi-lane LinkedIn and email outreach in this worktree.
 
 ## Evidence Base
 
@@ -12,6 +12,7 @@ This file is the evidence-backed template library for outbound LinkedIn and emai
 - External GTM guidance broadly agrees: personalized, concise messages with one clear CTA outperform generic or overlong outreach.
 - The strongest messages usually have one decision point only: reply, redirect, or agree to a next step. Stacking several asks into one note makes the message weaker.
 - Warm follow-ups do better when the opening line names the previous context explicitly, especially if the thread started on LinkedIn and moved to email.
+- Warm academic, alumni, lab, and public-interest lanes follow the same pattern: one shared-context hook, one proof point, one small ask.
 
 ## Core Rule
 
@@ -139,6 +140,78 @@ Evidence:
 - One sentence of value is enough; do not stack multiple asks.
 - Name the recipient's specific post, project, or role in the first line. Generic "wanted to reach out" openers are too soft for cold outreach.
 
+### Professor / former instructor reconnect
+
+Template:
+
+`Hi [Name] - I enjoyed working with you on [class / project / research context]. I've been building [proof point], and I thought it could be worth reconnecting if you are open to it.`
+
+Evidence:
+
+- Warm academic threads benefit from a shared-context hook because the relationship already exists.
+- The strongest live messages in the sample were short, specific, and easy to answer.
+- Inference: faculty and former instructors are more likely to respond when the first line names the shared project or class immediately.
+
+### Alumni / career-services note
+
+Template:
+
+`Hi [Name] - I found your work through the [school] network. I've been building [proof point], and I would love to ask who the best person is to speak with about [area].`
+
+Evidence:
+
+- School-affiliated contacts work best as routers, not as pitch recipients.
+- The smallest viable ask is usually "who should I talk to?" rather than "can you help me find a job?"
+- Inference: alumni and career-services contacts respond better when the ask is for direction, not advocacy.
+
+### Lab lead / researcher note
+
+Template:
+
+`Hi [Name] - your work on [specific topic] stood out. I'm building [proof point], and I thought there may be a useful overlap for a short connect.`
+
+Evidence:
+
+- The live sample showed that concrete hooks beat biography dumps.
+- Research/lab contacts respond best when the message sounds like an informed peer note, not a mass email.
+- Inference: one proof point plus one topical hook is enough for a lab lead.
+
+### Nonprofit / public-sector note
+
+Template:
+
+`Hi [Name] - I saw your work on [mission / program]. I've been building [proof point], and I thought it could be worth a short connect if useful.`
+
+Evidence:
+
+- Mission-aligned outreach follows the same short-ask pattern as the best-performing messages in the sample.
+- Public-interest contacts need a clean bridge to the mission, not a long personal history.
+- Inference: the more constrained the time budget, the smaller the ask should be.
+
+### Dormant warm tie nudge
+
+Template:
+
+`Hi [Name] - I wanted to revive our earlier thread on [context]. Since then, I've been working on [proof point], and I thought it could be worth reconnecting if you are open to it.`
+
+Evidence:
+
+- Warm follow-ups did better when the first line named the prior context explicitly.
+- The sample suggests that restarting from scratch is weaker than re-anchoring the old thread.
+- Inference: dormant warm ties need memory of the prior relationship more than they need a brand-new intro.
+
+### Ecosystem connector / founder bridge
+
+Template:
+
+`Hi [Name] - I saw your work on [specific thing]. I've been building [proof point], and I thought there may be a useful bridge if you are open to a quick connect.`
+
+Evidence:
+
+- Founder-style intros were weaker when they led with too much context.
+- They improved when the bridge was explicit and the ask stayed small.
+- Inference: ecosystem connectors respond best to a bridge note, not a full founder bio.
+
 ## What To Keep Constant
 
 - Personalize the first sentence, not the whole message.
@@ -162,6 +235,9 @@ Before sending anything, the next agent should:
 1. Check `modes/_profile.md`.
 2. Check `modes/contacto.md`.
 3. Check `modes/followup.md`.
-4. Check `data/outreach-review.md`.
-5. Draft first, then wait for send approval unless the user has already explicitly approved the recipient batch.
-6. Log the send immediately if it goes out.
+4. Check `data/outreach-targets.tsv`.
+5. Check `data/outreach-universe.tsv`.
+6. Check `data/outreach-queue.tsv`.
+7. Check `data/outreach-review.md`.
+8. Draft first, then wait for send approval unless the user has already explicitly approved the recipient batch.
+9. Log the send immediately if it goes out.

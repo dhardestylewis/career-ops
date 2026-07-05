@@ -8,6 +8,8 @@
     "normalize": "node src/dataOps/normalize-statuses.mjs",
     "dedup": "node src/dataOps/dedup-tracker.mjs",
     "merge": "node src/dataOps/merge-tracker.mjs",
+    "outreach:ledger": "node src/dataOps/outreach-ledger.mjs",
+    "outreach:ledger:dry": "node src/dataOps/outreach-ledger.mjs --dry-run",
     "pdf": "node src/generator/generate-pdf.mjs",
     "sync-check": "node src/generator/cv-sync-check.mjs",
     "update:check": "node src/core/update-system.mjs check",

@@ -42,6 +42,7 @@ npx playwright install chromium
 | Deep company research | `modes/deep.md` |
 | Training / certification review | `modes/training.md` |
 | Project evaluation | `modes/project.md` |
+| Live outreach / contact discovery | `modes/contacto.md` + `modes/followup.md` + outreach files |
 
 The key point: Codex support is additive. It should route into the existing
 Career-Ops modes and scripts rather than introducing a parallel automation
@@ -60,10 +61,21 @@ layer.
 If the task is live outreach, read this first before drafting or sending:
 
 1. `data/outreach-operator-card.md`
-2. `data/outreach-template-evidence.md`
-3. `data/outreach-log.md`
-4. `data/outreach-scripts.md`
-5. `data/outreach-review.md`
+2. `data/outreach-targets.tsv`
+3. `data/outreach-universe.tsv`
+4. `data/outreach-queue.tsv`
+5. `data/outreach-log.md`
+6. `data/outreach-template-evidence.md`
+7. `data/outreach-scripts.md`
+8. `data/outreach-review.md`
+9. `src/dataOps/outreach-ledger.mjs`
+
+Rules:
+
+- Keep the same skeleton everywhere: hook on them, one proof point, one small ask.
+- Prefer the shortest viable lane-specific template from the evidence pack.
+- Log each send immediately so a second agent cannot duplicate it.
+- If a row is blocked, solve the route or pause for judgment instead of improvising around access friction.
 
 Then follow the existing repo flow instead of inventing a new one.
 

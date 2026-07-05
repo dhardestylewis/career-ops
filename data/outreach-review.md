@@ -6,6 +6,10 @@ Date: 2026-07-05
 
 - Gmail inbox/search results for messages from and to `daniel@homecastr.com`
 - LinkedIn Messaging preview threads in the authenticated browser
+- `data/outreach-targets.tsv`
+- `data/outreach-operator-card.md`
+- `data/outreach-template-evidence.md`
+- `data/outreach-scripts.md`
 - `modes/contacto.md`
 - `modes/followup.md`
 - `data/cv.md`
@@ -128,6 +132,20 @@ That same structure held up across:
 - Follow-up: name the role, date/context, and one value-add.
 - Founder-style intro: make the bridge explicit in the first line, then keep the rest to one sentence of context and one ask. Do not lead with a full founder bio.
 - Broader cold outreach: shorten the ask even further and make the value proposition easy to answer in one sentence.
+- Professor / former instructor: lead with the shared class, project, or research context, then one proof point and one small reconnect ask.
+- Alumni / career-services: treat the recipient as a router or bridge, not as the final decision-maker; ask for direction, not a full pitch.
+- Lab / researcher: name the topic or paper first, then give one proof point and a short connect ask.
+- Nonprofit / public-sector: lead with the mission or program and keep the ask extremely small.
+- Dormant warm tie: re-anchor the earlier thread before anything else.
+
+## Lane expansion note
+
+The same skeleton now appears to hold across the wider outreach lanes the user wants to run in parallel. The lane changes are mostly about the hook and the channel, not the message shape:
+
+- Warm academic and alumni lanes work best with shared context and a routing ask.
+- Lab and research lanes work best when the topic reference is specific and current.
+- Nonprofit and public-sector lanes work best when the mission connection is obvious.
+- Founder and ecosystem lanes work best when the bridge is explicit and the message stays short.
 
 ## What to keep constant
 

@@ -6,22 +6,27 @@ Use this first if you are the next agent picking up live outreach.
 
 ## Current State
 
-- The live LinkedIn send state has been verified.
+- The live multi-lane send state has been verified.
 - Sent: Li-Yun (James) Wang, 3Dtrees team, Kyle Baranko, Maxime Meilland, Vrushali Mundhe.
 - Blocked route: Apurva Singh due to LinkedIn verification / CAPTCHA.
+- New queue files: `data/outreach-targets.tsv`, `data/outreach-universe.tsv`, `data/outreach-queue.tsv`.
 
 ## Read Order
 
 1. `modes/_profile.md`
-2. `data/outreach-log.md`
-3. `data/outreach-template-evidence.md`
-4. `data/outreach-scripts.md`
-5. `data/outreach-review.md`
+2. `data/outreach-targets.tsv`
+3. `data/outreach-universe.tsv`
+4. `data/outreach-queue.tsv`
+5. `data/outreach-log.md`
+6. `data/outreach-template-evidence.md`
+7. `data/outreach-scripts.md`
+8. `data/outreach-review.md`
 
 ## Operating Rule
 
 - Use one hook, one proof point, one ask.
 - Keep LinkedIn short and email only when more context is needed.
+- Use the lane-specific template that matches the contact type.
 - Do not send if the path is blocked or the message needs more than one proof point.
 - If a reply needs judgment, stop and notify the user.
 - If there is no reply, use the first follow-up after 3 to 5 business days and the second after another 3 to 5 business days.
