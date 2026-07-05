@@ -250,6 +250,12 @@ Default modes are in `modes/` (English). Additional language-specific modes are 
 - `article-digest.md` has detailed proof points (optional)
 - **NEVER hardcode metrics** -- read them from these files at evaluation time
 
+### Default Resume Attachment
+
+- `data/assets/resume-dhl-20260630-causal-mle.pdf` is the default PDF attachment for applications, autofill tests, and outreach workflows.
+- `src/core/resume-asset.mjs` is the single source of truth for that path.
+- `data/assets/resume-dhl-20260421-staff-mle.pdf` is a legacy artifact and should not be used by default.
+
 ---
 
 ## Ethical Use -- CRITICAL
