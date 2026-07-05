@@ -22,6 +22,8 @@ There are two layers. Read `DATA_CONTRACT.md` for the full list.
 
 **THE RULE: When the user asks to customize anything (archetypes, narrative, negotiation scripts, proof points, location policy, comp targets), ALWAYS write to `modes/_profile.md` or `config/profile.yml`. NEVER edit `modes/_shared.md` for user-specific content.** This ensures system updates don't overwrite their customizations.
 
+When the user asks for a safe durable change, take the next concrete repo action instead of only describing it. If the change can be made now without meaningful risk, make it in the repo and then report what changed.
+
 ## Update Check
 
 On the first message of each session, run the update checker silently:
@@ -177,6 +179,8 @@ If the user accepts, use the `/loop` or `/schedule` skill (if available) to set 
 ### Personalization
 
 This system is designed to be customized by YOU (AI Agent). When the user asks you to change archetypes, translate modes, adjust scoring, add companies, or modify negotiation scripts -- do it directly. You read the same files you use, so you know exactly what to edit.
+
+Prefer concrete action over narration: update files, run checks, or draft the artifact first, then explain the result.
 
 **Common customization requests:**
 - "Change the archetypes to [backend/frontend/data/devops] roles" → edit `modes/_profile.md` or `config/profile.yml`

@@ -6,15 +6,19 @@
    - 2-3 peers del equipo (gente con rol similar)
    - Interviewer (si el candidato ya tiene entrevista programada)
 
-2. **Clasificar tipo de contacto** -- preguntar al candidato o inferir del contexto:
+2. **Leer antes de redactar**:
+   - `docs/outreach-guardrails.md`
+   - `data/outreach-template-evidence.md`
+
+3. **Clasificar tipo de contacto** -- preguntar al candidato o inferir del contexto:
    - **Recruiter** -- persona cuyo rol es talent acquisition, sourcing, o recruiting
    - **Hiring Manager** -- la persona que lidera el equipo que contrata
    - **Peer** -- alguien con un rol similar en el equipo (referral indirecto)
    - **Interviewer** -- alguien que va a entrevistar al candidato (fecha conocida)
 
-3. **Seleccionar target primario**: la persona que mas se beneficiaria de que el candidato estuviera alli
+4. **Seleccionar target primario**: la persona que mas se beneficiaria de que el candidato estuviera alli
 
-4. **Generar mensaje** con framework de 3 frases adaptado al tipo de contacto:
+5. **Generar mensaje** con framework de 3 frases adaptado al tipo de contacto:
 
    ### Recruiter
    - **Frase 1 (Fit)**: Criterios de match directo -- rol, experiencia relevante, disponibilidad o ubicacion
@@ -38,11 +42,17 @@
    - **Frase 3 (CTA)**: "Looking forward to our conversation on [fecha]"
    - **Nota**: Tono ligero, no desesperado. El objetivo es que sepan que te preparaste.
 
-5. **Versiones**:
+6. **Versiones**:
    - EN (default)
    - ES (si empresa espanola)
 
-6. **Targets alternativos** con justificacion de por que son buenos second choices
+7. **Targets alternativos** con justificacion de por que son buenos second choices
+
+8. **Evidence-backed defaults**:
+   - Follow `docs/outreach-guardrails.md` for thread state, channel routing, approval, and logging.
+   - Use the smallest viable template for the contact type.
+   - If the message needs more than one proof point, rewrite it shorter.
+   - Log any live send in `data/outreach-log.md` immediately after it goes out.
 
 7. **Evidence-backed defaults**:
    - Read `data/outreach-template-evidence.md` before drafting.

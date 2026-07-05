@@ -1021,3 +1021,74 @@
 - [x] ~~https://jobs.ashbyhq.com/llamaindex/36a0249e-a672-44df-a08e-b5a5523dec26 | LlamaIndex | AI Content Engineer~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 - [x] ~~https://jobs.ashbyhq.com/llamaindex/84bcd1df-a4da-421d-b325-45684d8b7e4d | LlamaIndex | Applied AI Solutions Architect (SF)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
 - [x] ~~https://jobs.ashbyhq.com/llamaindex/a0e44fff-ae8b-4ecc-9600-9c789d85aa81 | LlamaIndex | Applied AI Solutions Architect (East Coast)~~ <!-- EXPIRED: navigation error: page.goto: Target page, context or browser has been closed -->
+
+- [ ] https://jobs.ashbyhq.com/pinecone/4ef4269b-94c4-4c7c-93ee-15a882caa767 | Pinecone | Senior/Staff Software Engineer, Database Team
+- [ ] https://jobs.ashbyhq.com/pinecone/773e953d-8f53-4313-93b4-35a553bad1cb | Pinecone | Senior/Staff Software Engineer, Experience
+- [ ] https://jobs.ashbyhq.com/pinecone/7ef089cb-a721-4ad8-a6d0-c390e64991d2 | Pinecone | Senior/Staff Software Engineer, Search & Retrieval Infrastructure
+- [ ] https://jobs.ashbyhq.com/baseten/0870ed34-7365-4b9f-a50a-481783b8c266 | Baseten | Engineering Manager, Cloud Platform
+- [ ] https://jobs.ashbyhq.com/baseten/0cf1410f-39ca-47b5-9fc3-8e75bd9c1e0e | Baseten | Assistant General Counsel, Infrastructure & Compute
+- [ ] https://jobs.ashbyhq.com/baseten/1261fe76-f577-4b3d-aac8-df65846ae445 | Baseten | Account Executive - AI Native: Startups
+- [ ] https://jobs.ashbyhq.com/baseten/1532aa00-5a93-4967-bb24-6561495d9605 | Baseten | Manager, Solutions Architect
+- [ ] https://jobs.ashbyhq.com/baseten/1b6fc00e-f3fa-440b-9e4e-3013f7a5010e | Baseten | Engineering Manager - Forward Deployed Engineering (LLM)
+- [ ] https://jobs.ashbyhq.com/baseten/1c9b9d23-a1b3-426a-9a88-000be4679960 | Baseten | Manager, Cloud Platform & Site Reliability
+- [ ] https://jobs.ashbyhq.com/baseten/3027e0bc-731f-4fef-b081-2031590766fd | Baseten | Product Manager, Inference Platform
+- [ ] https://jobs.ashbyhq.com/baseten/54c83823-574e-40ad-9cff-a57acff0ffe6 | Baseten | Solution Architect (AI/LLM Inference)
+- [ ] https://jobs.ashbyhq.com/baseten/5a1c6228-3906-4ccc-9988-d9bd67383b9d | Baseten | Field Productivity & Enablement Lead
+- [ ] https://jobs.ashbyhq.com/baseten/7d9d5a1f-3834-434e-b22f-4bd62317be3c | Baseten | Technical Program Manager, Infrastructure
+- [ ] https://jobs.ashbyhq.com/baseten/844e2c96-690a-4365-9822-f092ffa03944 | Baseten | Infrastructure Ops Engineer
+- [ ] https://jobs.ashbyhq.com/baseten/8608bdbc-1b8b-4b69-a433-83864f151375 | Baseten | Account Executive - AI Native: Strategic
+- [ ] https://jobs.ashbyhq.com/baseten/ae64d1d4-7b0a-4be4-8d77-7f5ce63849a7 | Baseten | Software Engineer - Infrastructure
+- [ ] https://jobs.ashbyhq.com/baseten/cfb2c11e-20f9-4039-a130-21fc9dc4cb34 | Baseten | Cost Analytics Lead
+- [ ] https://jobs.ashbyhq.com/baseten/e2638fb0-15c8-4109-b7ee-70df1325885d | Baseten | Software Engineer - Enterprise Platform
+- [ ] https://jobs.ashbyhq.com/baseten/ebd93dba-ffdb-4b34-b9d4-2b72be3914f5 | Baseten | Infrastructure Finance Lead
+- [ ] https://jobs.ashbyhq.com/harvey/01f31ece-f3fe-4991-b6fb-b59f21faa8e9 | Harvey | Staff Software Engineer, Full Stack
+- [ ] https://jobs.ashbyhq.com/harvey/04eb457b-e985-4e3b-9635-0a2b867ada97 | Harvey | Senior Software Engineer, Agents
+- [ ] https://jobs.ashbyhq.com/harvey/0c3ccbfd-25d1-4f66-be9c-e3c680fbe2fc | Harvey | Software Engineer, Agents
+- [ ] https://jobs.ashbyhq.com/harvey/1321b20d-d6f8-4bdb-b2de-ec33c0948b53 | Harvey | Data Scientist, Product
+- [ ] https://jobs.ashbyhq.com/harvey/14852d91-3ba5-46c9-8eca-311b8feb09c0 | Harvey | Staff Software Engineer - Developer Experience (DevEx)
+- [ ] https://jobs.ashbyhq.com/harvey/174ffc54-76a9-4fd5-98ee-1edbe6ed4941 | Harvey | People Data Analytics Lead
+- [ ] https://jobs.ashbyhq.com/harvey/18f569eb-49e9-4766-bb4b-49c2b3243f41 | Harvey | Staff Software Engineer, Site Reliability Engineering (SRE)
+- [ ] https://jobs.ashbyhq.com/harvey/24616c39-e293-4bcc-a3dd-e6f33a71c8ee | Harvey | Staff Product Designer
+- [ ] https://jobs.ashbyhq.com/harvey/24a1df80-c1b7-4e16-b938-1cb3b129463d | Harvey | Staff Software Engineer, Agents
+- [ ] https://jobs.ashbyhq.com/harvey/24f9a3fa-476a-490f-87bf-e8cebb7b3928 | Harvey | Frontend Platform Engineer
+- [ ] https://jobs.ashbyhq.com/harvey/26eb4ce2-0904-412d-a6b4-ce0cabf1fda5 | Harvey | SEO/GEO Lead
+- [ ] https://jobs.ashbyhq.com/harvey/27604e7e-e25a-46ba-bc2d-aecf04f08bfb | Harvey | Enterprise Sales Leader, Southern Europe
+- [ ] https://jobs.ashbyhq.com/harvey/2cbe13b9-a44b-47d3-abb8-45d9a98b05f6 | Harvey | Staff Product Manager, New Verticals
+- [ ] https://jobs.ashbyhq.com/harvey/2da1f72b-114a-4e6c-b6f4-453df9cb1959 | Harvey | Competitive Intelligence Lead
+- [ ] https://jobs.ashbyhq.com/harvey/313d5aa8-bfc9-4057-b9a3-b73b4894f6a7 | Harvey | Staff Database Engineer
+- [ ] https://jobs.ashbyhq.com/harvey/3931a1b7-573d-4bd8-8fed-3fa8132c3201 | Harvey | Staff Software Engineer, Frontend - NYC
+- [ ] https://jobs.ashbyhq.com/harvey/39688e87-ddf1-42bf-ad98-d968faf360a1 | Harvey | Senior Performance Marketing Manager, Paid Search
+- [ ] https://jobs.ashbyhq.com/harvey/40239019-ff5f-40eb-bace-15370134d647 | Harvey | Physical Security Technology Lead
+- [ ] https://jobs.ashbyhq.com/harvey/4221e6ce-fb4f-4f20-a615-aa1b85d2ef3c | Harvey | Staff Product Manager, Legal Operations Platform
+- [ ] https://jobs.ashbyhq.com/harvey/42f38d0c-b931-4edb-b988-a6c6e89f7701 | Harvey | Senior Privacy and AI Counsel
+- [ ] https://jobs.ashbyhq.com/harvey/45a49240-f928-4547-93ec-cd3bf5b0191d | Harvey | Staff Software Engineer, Developer Experience 
+- [ ] https://jobs.ashbyhq.com/harvey/467049ce-b5ea-4063-95aa-71c9742768d5 | Harvey | Technical Program Manager, Platform & Infrastructure
+- [ ] https://jobs.ashbyhq.com/harvey/47d3d763-8c64-4e33-b76e-ca15f584c1fd | Harvey | Staff Software Engineer, Frontend
+- [ ] https://jobs.ashbyhq.com/harvey/4a82c276-1113-41f6-baf9-a5be27e5c78f | Harvey | Staff Software Engineer, Core Infrastructure
+- [ ] https://jobs.ashbyhq.com/harvey/4b57fc7f-3b29-4501-b41d-b700f4e3d6c6 | Harvey | Head of Brand Campaigns
+- [ ] https://jobs.ashbyhq.com/harvey/4d661139-19ad-42af-9f6c-a68c71263e14 | Harvey | Staff Software Engineer, Site Reliability Engineer 
+- [ ] https://jobs.ashbyhq.com/harvey/5025299f-6a46-4e1a-9f38-c39dd4a056dc | Harvey | Practice Lead, Law Firm Transformation
+- [ ] https://jobs.ashbyhq.com/harvey/51f9f397-c7ca-4b4f-a8f1-f5ff17076503 | Harvey | Partner Program Lead
+- [ ] https://jobs.ashbyhq.com/harvey/6684931f-a85f-4849-9240-e2329b21305f | Harvey | UXR Operations Lead, AI
+- [ ] https://jobs.ashbyhq.com/harvey/6ad3902b-2888-4c02-913d-de942e807133 | Harvey | Staff Software Engineer, Backend
+- [ ] https://jobs.ashbyhq.com/harvey/748edfbe-f819-47fd-85bb-3c4974f8913f | Harvey | Senior Software Engineer, Core Infrastructure
+- [ ] https://jobs.ashbyhq.com/harvey/7c71db12-6edb-441e-b76c-847ef6d00527 | Harvey | Staff Software Engineer, Backend Platform
+- [ ] https://jobs.ashbyhq.com/harvey/7fd9be3d-7b34-49bc-ba75-f8a90b7269a0 | Harvey | Product Lead
+- [ ] https://jobs.ashbyhq.com/harvey/8684a735-fbef-422f-8fec-5ee08e264e1d | Harvey | Staff Motion Designer
+- [ ] https://jobs.ashbyhq.com/harvey/8b16bcf7-9255-4859-8416-a7ff921032e6 | Harvey | Senior Staff Software Engineer, Backend
+- [ ] https://jobs.ashbyhq.com/harvey/8c07cb74-765a-46ea-a0f1-795f45597d79 | Harvey | Staff Software Engineer, OfficeJS
+- [ ] https://jobs.ashbyhq.com/harvey/8d092528-2554-42e4-a68b-67307b48e6aa | Harvey | Staff Product Manager
+- [ ] https://jobs.ashbyhq.com/harvey/8e513820-55f8-4cbd-8bdd-28a67992469c | Harvey | Staff Software Engineer, Full Stack - NYC
+- [ ] https://jobs.ashbyhq.com/harvey/9814b9ca-5917-43f8-8f76-6df7aa7e2be3 | Harvey | Staff Design Systems Designer
+- [ ] https://jobs.ashbyhq.com/harvey/99c7e2f7-9fe9-4373-9bf3-5470044bcd77 | Harvey | GTM Strategic Finance Lead
+- [ ] https://jobs.ashbyhq.com/harvey/9cc08902-8916-47a8-a849-eec2c67ab3bd | Harvey | Staff Software Engineer, Developer Experience
+- [ ] https://jobs.ashbyhq.com/harvey/9ce0c68b-80f2-4467-88d0-02473f98e2d4 | Harvey | Founding Product Growth Lead
+- [ ] https://jobs.ashbyhq.com/harvey/a35efd1c-e5ad-4556-bfa4-d2e13f8b7f1c | Harvey | Applied Legal Researcher
+- [ ] https://jobs.ashbyhq.com/harvey/b26ccc21-fb10-4428-90be-a7af2076ff77 | Harvey | Senior Performance Marketing Manager, Paid Social
+- [ ] https://jobs.ashbyhq.com/harvey/b774c88e-5d8f-48d3-aed7-948f2e4292b7 | Harvey | Staff Software Engineer, Backend - NYC
+- [ ] https://jobs.ashbyhq.com/harvey/c3eae74b-d8a4-48f5-9845-c9e069f491f3 | Harvey | Practice Lead, In-house Transformation
+- [ ] https://jobs.ashbyhq.com/harvey/ca25e4fd-45bc-48ef-9089-0a160e1845f8 | Harvey | Staff Product Security Engineer 
+- [ ] https://jobs.ashbyhq.com/harvey/d2aaaa58-eb59-42ba-9a62-ca6ce4cdf206 | Harvey | Staff Product Security Engineer
+- [ ] https://jobs.ashbyhq.com/harvey/d78083d9-a203-4ae4-b4b9-454d65df3702 | Harvey | Research Engineer, Post-Training
+- [ ] https://jobs.ashbyhq.com/harvey/e89103ca-765f-42f1-882a-80364f3c2321 | Harvey | Staff Product Manager, New Products
+- [ ] https://jobs.ashbyhq.com/harvey/e8ed59d5-798c-49d3-a6ab-9e628d5dc221 | Harvey | Customer Success Manager, Mid-Market, Spain
