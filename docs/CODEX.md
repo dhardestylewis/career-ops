@@ -55,6 +55,18 @@ layer.
 - Never submit an application for the user.
 - Never add new tracker rows directly to `data/tracker/applications.md`; use the TSV addition flow and `merge-tracker.mjs`.
 
+## Outreach Handoff
+
+If the task is live outreach, read this first before drafting or sending:
+
+1. `data/outreach-operator-card.md`
+2. `data/outreach-template-evidence.md`
+3. `data/outreach-log.md`
+4. `data/outreach-scripts.md`
+5. `data/outreach-review.md`
+
+Then follow the existing repo flow instead of inventing a new one.
+
 ## Verification
 
 ```bash
