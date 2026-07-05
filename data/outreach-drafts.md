@@ -63,7 +63,6 @@ These are not sent yet. Use them only after checking the person's current Linked
 Use these for first-pass discovery after checking the person's current LinkedIn or company page. Keep each note to one hook, one proof point, and one ask. Recruiter discovery now means new companies only, not extra people at companies already represented in the sent tracker.
 
 - Sama Alavi, LinkedIn: open with data science, machine learning, and systems/infrastructure hiring, use production ML and forecasting as the proof point, and ask whether she owns the relevant search or can route it.
-- Daniel Hernandez, Databricks: open with AI / ML / data science hiring, use production ML and validation as the proof point, and ask who owns the best-fit engineering or data science search.
 - Joshua Winter, Anthropic: open with inference-team recruiting, use production ML systems and evaluation as the proof point, and ask whether he owns inference or can route to the right recruiter.
 - Sarah Warkov, OpenAI: open with robotics, software, and research recruiting, use production ML systems and infrastructure as the proof point, and ask whether she owns the best-fit technical lane.
 - Lauren Tague, Scale AI: open with SWE, AI/ML Research, and ops recruiting, use production ML and infrastructure as the proof point, and ask who owns the most relevant search.
@@ -96,6 +95,7 @@ Jack & Jill AI is a separate candidate-intake path, not a normal recruiter conta
 
 - Clera is external-only for now and should not appear in the human recruiter count unless a live, tracked intake path is added later.
 - Jack & Jill AI stays queued as candidate intake until the website onboarding flow is actually completed.
+- Databricks is excluded from this recruiter batch per user instruction; do not re-add it unless the user explicitly reopens that lane.
 
 ## Queue audit priority
 
