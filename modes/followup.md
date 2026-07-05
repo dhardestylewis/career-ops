@@ -90,6 +90,7 @@ Generate a 3-4 sentence email:
 
 Reuse the contacto framework: 3 sentences, 300 character max.
 - Hook specific to company → proof point → soft ask
+- Check `data/outreach-template-evidence.md` for the exact short-form variants before drafting.
 - Suggest the user run `/career-ops contacto {company}` to find the right person first
 
 ### Second Follow-up (followupCount == 1)
