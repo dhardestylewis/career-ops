@@ -564,3 +564,181 @@ If there is a better contact path, I would be grateful for the direction.
 Best,
 Daniel
 ```
+
+## Terra AI research-role outreach
+
+Target role: `Senior/Staff Machine Learning Researcher`
+
+Send gate:
+
+- Do not send any work pitch until the SPC check is complete.
+- Check each LinkedIn profile in the live session before choosing DM vs note-style connection request.
+- If the profile is not 1st-degree, use a short connection note.
+- If a direct person email is not visible, use `contact@terraAI.earth` as the fallback route.
+
+### John Mern
+
+**To:** John Mern
+
+**Channel:** LinkedIn note (2nd-degree)
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** CEO and co-founder of Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
+
+**Dossier**
+- Relationship: cold company leader and boss-of-bosses target.
+- Last touch: none.
+- Why now: Terra AI is actively hiring a Senior/Staff Machine Learning Researcher.
+- Hook: the role sits at the intersection of generative AI, foundation modeling, and autonomous decision optimization for geosciences.
+- Proof point: production ML, geospatial AI, distributed systems, and research-heavy modeling from my CV.
+- Ask: connect and tell me who is best to speak with about the research team.
+- Avoid: a long bio or asking about multiple roles.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but do not send before the SPC gate is cleared.
+- Next follow-up: one nudge after 5 business days if there is no reply.
+
+**Subject:** Terra AI research role
+
+```text
+Hi John - Terra AI's Senior/Staff ML Researcher role feels directly aligned with the production ML, geospatial modeling, and validation work I've been building. If helpful, I'd love to connect and hear who is best to speak with about the research team.
+```
+
+### Anthony Corso
+
+**To:** Anthony Corso
+
+**Channel:** LinkedIn note (2nd-degree)
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** CTO and co-founder of Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
+
+**Dossier**
+- Relationship: cold technical leader and likely hiring manager.
+- Last touch: none.
+- Why now: the open research role maps cleanly to his technical remit.
+- Hook: the role is framed around generative AI, foundation modeling, and autonomous decision optimization.
+- Proof point: production ML systems plus geospatial modeling and validation work from my CV.
+- Ask: connect and confirm whether he owns the research hiring loop.
+- Avoid: a broad product pitch or a generic networking note.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but keep it blocked until the SPC gate is cleared.
+- Next follow-up: one nudge after 5 business days if useful.
+
+**Subject:** Terra AI research role
+
+```text
+Hi Anthony - the Senior/Staff ML Researcher role at Terra AI looks like a close fit with the production ML and geospatial modeling work I've been building. If you're the right person, I'd love to connect; if not, who owns this hire?
+```
+
+### Markus Zechner
+
+**To:** Markus Zechner
+
+**Channel:** LinkedIn note (2nd-degree)
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Co-founder and General Manager of Reservoirs at Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
+
+**Dossier**
+- Relationship: cold domain leader.
+- Last touch: none.
+- Why now: the role is deeply tied to subsurface modeling, which is his lane.
+- Hook: his subsurface uncertainty work maps directly to the modeling side of the research role.
+- Proof point: production ML, geospatial systems, and probabilistic modeling from my CV.
+- Ask: connect and compare notes on where the research team is pushing next.
+- Avoid: sounding like a generic cold pitch.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but wait for the SPC gate to clear.
+- Next follow-up: one nudge after 5 business days if there is no reply.
+
+**Subject:** Terra AI research role
+
+```text
+Hi Markus - your subsurface uncertainty work at Terra AI feels directly relevant to the modeling side of the Senior/Staff ML Researcher role. I've been building production ML and geospatial systems, and I'd love to connect if you're open.
+```
+
+### Michael L. Spence
+
+**To:** Michael L. Spence
+
+**Channel:** LinkedIn note (2nd-degree)
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Chief of Staff at Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
+
+**Dossier**
+- Relationship: ops proxy and hiring-loop routing contact.
+- Last touch: none.
+- Why now: no verified Terra AI recruiter surfaced in the current search.
+- Hook: he is the closest operational route to the research hiring process.
+- Proof point: production ML, geospatial AI, and research-heavy modeling from my CV.
+- Ask: who owns the Senior/Staff Machine Learning Researcher hiring loop.
+- Avoid: pretending he is a recruiter when he is not.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but do not send until the SPC gate is cleared.
+- Next follow-up: one nudge after 5 business days if there is no reply.
+
+**Subject:** Terra AI research role routing question
+
+```text
+Hi Michael - I couldn't find a verified Terra AI recruiter, so I wanted to ask who owns the Senior/Staff ML Researcher hiring loop. My background is production ML, geospatial AI, and research-heavy modeling, and the role looks like a strong fit.
+```
+
+### Richard Rex
+
+**To:** Richard Rex
+
+**Channel:** LinkedIn note (2nd-degree)
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Senior AI/ML Engineer at Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
+
+**Dossier**
+- Relationship: cold team-member contact.
+- Last touch: none.
+- Why now: he is on the team that will feel the research-role impact directly.
+- Hook: the research role is adjacent to the production ML and model validation work he is already doing.
+- Proof point: production ML, geospatial modeling, and reliability work from my CV.
+- Ask: connect and hear how the team is thinking about the research role.
+- Avoid: asking for too much context in the first message.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but keep it blocked until the SPC gate is cleared.
+- Next follow-up: one nudge after 5 business days if useful.
+
+**Subject:** Terra AI research role
+
+```text
+Hi Richard - I saw you're building AI/ML at Terra AI. The Senior/Staff ML Researcher role looks tightly aligned with my production ML and geospatial modeling work, and I'd love to connect if you're open.
+```
+
+### Terra AI contact fallback
+
+**To:** `contact@terraAI.earth`
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Dossier**
+- Relationship: public company contact fallback.
+- Last touch: none.
+- Why now: the research role is open and public Terra AI materials invite contact.
+- Hook: the company is actively growing geoscientists, AI researchers, engineers, and mission-driven problem solvers.
+- Proof point: production ML, geospatial AI, and research-heavy modeling from my CV.
+- Ask: route me to the right person for the Senior/Staff Machine Learning Researcher role.
+- Avoid: a long company history or a multi-role pitch.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but do not send until the SPC gate is cleared.
+- Next follow-up: one gentle nudge after 5 business days if there is no reply.
+
+**Subject:** Terra AI Senior/Staff ML Researcher
+
+```text
+Hi Terra AI team,
+
+I am reaching out about the Senior/Staff Machine Learning Researcher role. My background is in production ML, geospatial AI, distributed systems, and research-heavy modeling, and the role looks like a strong fit.
+
+If there is a better person to route this to, I would appreciate the pointer.
+
+Best,
+Daniel
+```
