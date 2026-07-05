@@ -57,6 +57,9 @@ layer.
 - Never submit an application for the user.
 - Never add new tracker rows directly to `data/tracker/applications.md`; use the TSV addition flow and `merge-tracker.mjs`.
 - For browser-assisted outreach, prefer the Chrome profile first when LinkedIn, Pando, or Superhuman are already authenticated there. Treat those tabs as handoff state only; login state is not permanent across brand-new sessions. Use the in-app browser as a backup Gmail surface when needed.
+- Before drafting or sending live outreach, refresh the latest branch/PR state and outreach ledger so you stay aligned with other agents working in parallel.
+- Treat `data/outreach-operator-card.md` as the canonical outreach run sheet and `data/outreach-log.md` as the live-send ledger. Run the session preflight before any live send, then log it immediately.
+- Keep the queue as the worklist, not a second source of truth.
 
 ## Outreach Handoff
 

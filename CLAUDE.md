@@ -33,6 +33,10 @@ There are two layers. Read `DATA_CONTRACT.md` for the full list.
 - Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack. If they are SPC-affiliated or the check is unclear, treat the person as blocked for that pitch and use only a non-work reconnect or academic/community angle.
 - Login state is not permanent across brand-new sessions. If Chrome already has authenticated LinkedIn, Pando, or Superhuman tabs open, preserve them as handoff tabs and use the Chrome profile first for browser-based outreach. Use the in-app browser only as a backup Gmail surface.
 
+- Before live outreach, refresh the latest branch/PR state and outreach ledger so parallel agents stay aligned.
+- Use `data/outreach-operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach-log.md` as the live-send ledger.
+- Do not split outreach state across drafts, queue, and log; the queue is the worklist and the log is the source of truth.
+
 ## Update Check
 
 On the first message of each session, run the update checker silently:
