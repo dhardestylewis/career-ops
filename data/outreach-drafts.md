@@ -17,7 +17,7 @@ Send gate:
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-05
 
 **LinkedIn check:** Technical Recruiting @ Harvey, Chicago. Warm recruiter contact, formerly on the Bellwether path.
 
@@ -27,7 +27,7 @@ Send gate:
 - Why now: he appears to have moved to Harvey, so this is a reconnect rather than an active Bellwether follow-up.
 - Hook: we already established trust around geospatial / production ML work and the old recruiting thread.
 - Proof point: Homecastr has a nationwide probabilistic forecasting system plus production ML tooling.
-- Ask: stay in touch, keep me in mind for any relevant X openings, and if X is not the right lane ask whether he knows any non-Harvey technical recruiters at xWF or adjacent agencies who still cover geospatial, ML systems, or applied AI roles.
+- Ask: stay in touch, keep me in mind for any relevant X openings, and if X is not the right lane ask whether he knows the best-fit non-Harvey technical recruiter colleague at xWF or an adjacent agency who still covers geospatial, ML systems, or applied AI roles.
 - Avoid: treating Bellwether as an active role, over-explaining the rejection, or making it sound like a fresh cold pitch.
 - Status: draft only.
 - Next follow-up: no automatic follow-up unless he replies or there is a truly new opening.
@@ -57,6 +57,95 @@ These are not sent yet. Use them only after checking the person's current Linked
 - Cora Moore, Elwood Staffing: lead staffing recruiter. Possible ask is whether she has students / early-career / technical recruiter contacts who touch climate, GIS, or ML.
 - Kimberly, Toptal: recruiter. Possible ask is whether there are other freelancer / contract-network recruiter contacts.
 - Allison Rebaza, Tech Holding: technical recruiter. Possible ask is whether she has other contractor-focused technical recruiter contacts.
+- Jaclyn Price, Toptal: senior recruiter focused on AI + data-driven recruiting. Good candidate for contract / freelance ML and data roles.
+- Lyndsey Price, Toptal: executive recruiting lead. Good escalation point if Toptal has a more senior recruiter who owns the best-fit technical lane.
+- Jack & Jill AI: separate candidate-intake path, not a normal recruiter contact. Use Jack for the job-seeker side and Jill for company-side recruiting.
+
+## Fresh recruiter targets
+
+These are queued from public current-profile checks and can be sent or messaged once we decide the best channel.
+
+### Jaclyn Price, Toptal
+
+**To:** Jaclyn Price
+
+**Channel:** LinkedIn
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Senior Recruiter | AI + Data-Driven Recruiting @ Toptal.
+
+**Dossier**
+- Relationship: new recruiter lead from a current public-profile check.
+- Why now: Toptal is a strong fit for contract / freelance networking, and her focus is already AI/data-heavy.
+- Hook: production ML, forecasting, and geospatial systems should be legible for Toptal's technical matchers.
+- Ask: stay in touch for contract or freelance ML/data roles, and if another Toptal recruiter owns the best-fit lane, point me to that person.
+- Status: draft only.
+
+**Draft**
+
+```text
+Hi Jaclyn,
+
+I saw that you focus on AI + data-driven recruiting at Toptal. My background is in production ML, forecasting, and geospatial systems, and I’d love to stay on your radar for contract or freelance roles where that mix is useful.
+
+If another Toptal recruiter owns a closer technical lane, I’d be grateful for the pointer.
+
+Best,
+Daniel
+```
+
+### Lyndsey Price, Toptal
+
+**To:** Lyndsey Price
+
+**Channel:** LinkedIn
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Executive Recruiting Lead at Toptal.
+
+**Dossier**
+- Relationship: senior recruiting lead from the same current-profile check.
+- Why now: she looks like the right escalation point if Toptal has a more senior or better-connected recruiter.
+- Hook: production ML, forecasting, and geospatial systems map well to the kind of contractor and technical roles Toptal places.
+- Ask: keep me in mind for the best-fit technical lane, or route me to the right recruiter if someone else owns ML/data placements.
+- Status: draft only.
+
+**Draft**
+
+```text
+Hi Lyndsey,
+
+I saw that you lead executive recruiting at Toptal. I’m keeping an eye out for roles where production ML, forecasting, and geospatial systems are useful, and I’d love to stay on your radar.
+
+If there is a better recruiter for that lane, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+### Jack & Jill AI
+
+**To:** Jack / Jill
+
+**Channel:** Platform intake
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Jack is the candidate-side AI career agent; Jill is the company-side AI recruiter.
+
+**Dossier**
+- Relationship: separate platform intake path, not a recruiter thread.
+- Why now: it can act as an always-on matching layer for job-seeker intake and introductions.
+- Hook: use Jack as the candidate intake flow rather than trying to treat it like a person.
+- Ask: sign up and feed it the current role profile so it can surface matches and intros.
+- Status: draft only.
+
+**Next action**
+
+- Create a Jack profile with the current production ML / forecasting / geospatial positioning.
+- Use Jill only if we ever want the company-side recruiting path.
 
 ## Recruiter follow-ups
 
@@ -421,3 +510,4 @@ If there is a better contact path, I would be grateful for the direction.
 Best,
 Daniel
 ```
+

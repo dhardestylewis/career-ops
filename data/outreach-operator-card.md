@@ -11,6 +11,8 @@ Use this first if you are the next agent picking up live outreach.
 - Blocked route: Apurva Singh due to LinkedIn verification / CAPTCHA.
 - Google X / Bellwether was rejected after the late-stage process. Do not send a normal follow-up on the old role; only draft a re-engagement note if a warm Bellwether contact surfaces a clearly separate opening.
 - Bellwether recruiter contact surfaced in Gmail: Gabriel Schook <schook@xwf.x.team>. Keep that thread separate from the rejected application and only use it for other X/Bellwether openings.
+- Jack & Jill AI is a separate candidate-intake lane. Treat Jack as the job-seeker side and Jill as the company-side recruiter platform.
+- Toptal now has two fresh recruiter leads in scope: Jaclyn Price (AI + data-driven recruiting) and Lyndsey Price (executive recruiting lead).
 - Current mailbox access in this session is only `daniel@homecastr.com` in Gmail. Columbia/UT inboxes are not connected here yet, and Superhuman mail is not exposed in this thread.
 
 ## Read Order

@@ -15,6 +15,7 @@ This log records live outbound messages sent from the current browser session so
 | Email | Raymond Sheerin | `Raymond_sheerin@glic.com` | data / cyber recruiter note | Reaching out on the data and security side | Sent | Short note referencing production ML, forecasting, and model validation. |
 | Email | Allison Rebaza Vargas | `allison.vargas@techholding.co` | ML contractor follow-up | Reaching back on the Tech Holding ML lane | Sent | Sent from the live Gmail compose thread after the Tech Holding rejection / keep-in-touch reply. |
 | Email | Cora Moore | `coramoore0011@gmail.com` | Elwood professional / IT lane note | Professional / IT side at Elwood | Sent | Replied directly in the Gmail thread and asked whether she owns the professional / IT openings. |
-| Email | Columbia Alumni Center | `alumni@columbia.edu` | UNI / password reset help | `UNI / password reset help for dl3645` | Sent | Asked for the correct login/reset path because the UNI management page was not finding the record. |
+| Email | Gabriel Schook | schook@xwf.x.team | Bellwether reconnect / referral ask | Good to stay in touch | Sent | Reconnected on the Harvey move and asked for the best-fit technical recruiter colleague at xWF or a related agency. |
 | Email | Alvin Lansing | `Alvin_lansing@glic.com` | data science handoff from Raymond OOO | Following up on the data science lane | Sent | Raymond Sheerin was kept in CC while asking about data science / ML / analytics roles. |
 | Email | Danny Taveras | `Danny_Taveras@glic.com` | other roles handoff from Raymond OOO | Following up on other Guardian roles | Sent | Raymond Sheerin was kept in CC while asking about non-data-science Guardian roles. |
+
