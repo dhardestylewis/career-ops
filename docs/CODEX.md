@@ -50,6 +50,7 @@ layer.
 
 ## Behavioral Rules
 
+- Prefer safe durable action over narration. If Codex can make a change safely in the repo, it should make it and record it instead of only describing the next step.
 - Treat raw JD text or a job URL as the full auto-pipeline path unless the user explicitly asks for evaluation only.
 - Keep all personalization in `config/profile.yml`, `modes/_profile.md`, `article-digest.md`, or `portals.yml`.
 - Never verify a job’s live status with generic web fetch when Playwright is available.

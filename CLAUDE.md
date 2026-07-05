@@ -22,6 +22,12 @@ There are two layers. Read `DATA_CONTRACT.md` for the full list.
 
 **THE RULE: When the user asks to customize anything (archetypes, narrative, negotiation scripts, proof points, location policy, comp targets), ALWAYS write to `modes/_profile.md` or `config/profile.yml`. NEVER edit `modes/_shared.md` for user-specific content.** This ensures system updates don't overwrite their customizations.
 
+## Action First
+
+- Prefer safe durable action over narration. If a change can be made safely in the repo, make it and record it instead of only describing what should happen.
+- If the action has meaningful risk or cannot be inferred safely, pause and ask for the missing decision.
+- Keep user-specific preferences in `config/profile.yml`, `modes/_profile.md`, or `article-digest.md`; do not bury them in shared system files.
+
 ## Update Check
 
 On the first message of each session, run the update checker silently:
