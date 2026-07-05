@@ -21,6 +21,13 @@ Use this skeleton unless the recipient type clearly demands otherwise:
 2. One proof point about you.
 3. One small ask.
 
+## Channel Routing Rule
+
+- Use a LinkedIn DM only for 1st-degree connections or existing threads.
+- Use a note-style connection request for 2nd-degree and 3rd-degree contacts.
+- Do not spend InMail by default on 2nd-degree or 3rd-degree contacts unless the user explicitly asks for it.
+- If a profile only exposes a note path, keep the note short and let the follow-up happen after connection acceptance.
+
 ## Template Library
 
 ### 300-char LinkedIn request

@@ -6,15 +6,20 @@
    - 2-3 peers del equipo (gente con rol similar)
    - Interviewer (si el candidato ya tiene entrevista programada)
 
-2. **Clasificar tipo de contacto** -- preguntar al candidato o inferir del contexto:
+2. **Regla de canal por grado de conexión**:
+   - **1st-degree**: usar DM.
+   - **2nd/3rd-degree**: usar nota de conexión o note-like intro, no DM.
+   - **InMail**: no usarlo por defecto; solo si el usuario lo pide explícitamente o si no existe otra ruta viable.
+
+3. **Clasificar tipo de contacto** -- preguntar al candidato o inferir del contexto:
    - **Recruiter** -- persona cuyo rol es talent acquisition, sourcing, o recruiting
    - **Hiring Manager** -- la persona que lidera el equipo que contrata
    - **Peer** -- alguien con un rol similar en el equipo (referral indirecto)
    - **Interviewer** -- alguien que va a entrevistar al candidato (fecha conocida)
 
-3. **Seleccionar target primario**: la persona que mas se beneficiaria de que el candidato estuviera alli
+4. **Seleccionar target primario**: la persona que mas se beneficiaria de que el candidato estuviera alli
 
-4. **Generar mensaje** con framework de 3 frases adaptado al tipo de contacto:
+5. **Generar mensaje** con framework de 3 frases adaptado al tipo de contacto:
 
    ### Recruiter
    - **Frase 1 (Fit)**: Criterios de match directo -- rol, experiencia relevante, disponibilidad o ubicacion
@@ -38,17 +43,18 @@
    - **Frase 3 (CTA)**: "Looking forward to our conversation on [fecha]"
    - **Nota**: Tono ligero, no desesperado. El objetivo es que sepan que te preparaste.
 
-5. **Versiones**:
+6. **Versiones**:
    - EN (default)
    - ES (si empresa espanola)
 
-6. **Targets alternativos** con justificacion de por que son buenos second choices
+7. **Targets alternativos** con justificacion de por que son buenos second choices
 
-7. **Evidence-backed defaults**:
+8. **Evidence-backed defaults**:
    - Read `data/outreach-template-evidence.md` before drafting.
    - Use the smallest viable template for the contact type.
    - If the message needs more than one proof point, rewrite it shorter.
    - Log any live send in `data/outreach-log.md` immediately after it goes out.
+   - If the target is 2nd or 3rd degree, prefer a connection note or note-like intro over a DM so we do not waste scarce InMail.
 
 **Reglas del mensaje:**
 - Maximo 300 caracteres (LinkedIn connection request limit)
