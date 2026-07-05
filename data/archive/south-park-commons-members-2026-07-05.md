@@ -2,8 +2,8 @@
 
 ## File
 
-- Archived PDF: [south-park-commons-members-2026-07-05.pdf](/C:/Users/dhl/.codex/worktrees/f0cb/career-ops/data/archive/south-park-commons-members-2026-07-05.pdf)
-- Original local source: `C:\Users\dhl\Downloads\Members - South Park Commons.pdf`
+- Archived PDF: [south-park-commons-members-2026-07-05.pdf](south-park-commons-members-2026-07-05.pdf)
+- Original local source: `Members - South Park Commons.pdf` from the user's Downloads folder
 - Archive date: `2026-07-05`
 - SHA256: `7410A9DAE6DDB8108C315BB3FCD57C11A5D38E2C93C9668D70492FAB19A0737E`
 
