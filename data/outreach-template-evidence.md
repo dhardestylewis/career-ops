@@ -13,6 +13,31 @@ This file is the evidence-backed template library for multi-lane LinkedIn and em
 - The strongest messages usually have one decision point only: reply, redirect, or agree to a next step. Stacking several asks into one note makes the message weaker.
 - Warm follow-ups do better when the opening line names the previous context explicitly, especially if the thread started on LinkedIn and moved to email.
 - Warm academic, alumni, lab, and public-interest lanes follow the same pattern: one shared-context hook, one proof point, one small ask.
+- Before sending, check the recipient's current LinkedIn profile or organization page. If they moved roles, rewrite the note as a reconnect or current-role note rather than an active-role follow-up.
+- Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack. If the person is SPC-affiliated or the status is unclear, do not send the work pitch.
+
+## Pre-Send Dossier
+
+No template should be considered sendable until the contact dossier can answer these from actual sources:
+
+1. Who the contact is and how they relate to the user.
+2. The last real touch and its date.
+3. Why the outreach is happening now.
+4. The specific hook about the recipient.
+5. The proof point that makes the ask credible.
+6. The smallest sensible ask for the channel.
+7. The risky, stale, or irrelevant material to avoid.
+8. The send state and follow-up rule if there is no reply.
+9. Whether South Park Commons affiliation has been checked when the pitch is work-related.
+
+Minimum source set:
+
+- Gmail thread history and exact subject lines.
+- LinkedIn profile, post, and DM context.
+- 1 to 2 public artifacts if the contact is academic, research, founder, or operator facing.
+- One matching proof point from the user's CV, project notes, or repo.
+
+If the source chain is incomplete, mark the row `research` or `blocked` instead of drafting a send.
 
 ## Core Rule
 
@@ -144,11 +169,12 @@ Evidence:
 
 Template:
 
-`Hi [Name] - I enjoyed working with you on [class / project / research context]. I've been building [proof point], and I thought it could be worth reconnecting if you are open to it.`
+`Hi [Name] - I appreciated your work on [specific paper / talk / lab theme] and the chance to work with you on [class / project / research context]. I've been building [proof point], and I thought it could be worth reconnecting if you are open to it.`
 
 Evidence:
 
 - Warm academic threads benefit from a shared-context hook because the relationship already exists.
+- When the professor has a public artifact, that is usually a stronger hook than generic gratitude.
 - The strongest live messages in the sample were short, specific, and easy to answer.
 - Inference: faculty and former instructors are more likely to respond when the first line names the shared project or class immediately.
 
@@ -219,6 +245,8 @@ Evidence:
 - Use one CTA only.
 - Prefer a conversational tone over formal corporate language.
 - Do not use `just checking in`, `touching base`, or `circling back`.
+- Do not send until the dossier has source refs, a last touch, a why-now, a hook, a proof point, and an ask.
+- Do not send a work pitch until the South Park Commons affiliation check is complete when relevant.
 
 ## What To Vary
 

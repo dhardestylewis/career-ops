@@ -1,7 +1,18 @@
 # Modo: contacto -- Outreach multi-lane
 
+0. **Construir dossier antes de escribir**
+   - No redactar ni enviar hasta completar un dossier por contacto con fuentes reales.
+   - Campos minimos: persona / relacion, ultimo contacto real, por que ahora, hook especifico, proof point mio, ask pequeno, que evitar, estado, y regla de follow-up.
+   - Fuentes minimas: Gmail, LinkedIn, web publica de 1 a 2 piezas, y contexto interno (CV / repo / notas).
+   - Revisar el LinkedIn actual o la pagina de la organizacion antes de enviar. Si la persona cambio de rol, reescribir como reconnect / current-role note, no como follow-up de rol activo.
+  - Antes de outreach sobre trabajo, dinero, gigs, contratos o jobs, revisar la afiliacion en el directorio pando de South Park Commons y en South Park Commons Slack. Si la persona es SPC-affiliated o el estado es incierto, no enviar ese pitch y usar solo un reconnect no laboral o dejarlo bloqueado.
+  - Si Chrome ya tiene LinkedIn, Pando o Superhuman autenticados, usarlos primero y dejarlos como handoff para futuras sesiones. La login state no es permanente entre sesiones nuevas; el in-app browser queda como respaldo para Gmail.
+  - Si falta un campo, el estado es `research` y no se envia.
+
 1. **Cargar primero**
    - `data/outreach-operator-card.md`
+   - `data/outreach-contact-dossier.md`
+   - `data/outreach-drafts.md`
    - `data/outreach-targets.tsv`
    - `data/outreach-universe.tsv`
    - `data/outreach-queue.tsv`
@@ -43,12 +54,13 @@
    - Personalizar la primera frase, no todo el mensaje.
    - En founder / ecosystem, abrir con el puente.
    - En alumni / career services, pedir direccion, no un favor grande.
-   - En professor / former instructor, nombrar la clase, proyecto o investigacion compartida.
+   - En professor / former instructor, nombrar la clase, proyecto o investigacion compartida, o un trabajo publico concreto si existe (paper, charla, laboratorio, blog, editorship).
    - En recruiter, poner los screening facts al inicio.
    - En hiring manager, abrir con el problema del equipo o el trabajo reciente.
    - En lab / research, nombrar el tema o paper primero.
    - En nonprofit / public-sector, abrir con la mision o programa.
    - En dormant warm tie, recordar el contexto anterior antes de nada mas.
+   - En outreach sobre trabajo, dinero, gigs, contratos o jobs, aplicar primero la afiliacion SPC y no hacer pitch laboral a contactos SPC-affiliated o inciertos.
 
 6. **Usar los templates evidenciados**
    - Consultar `data/outreach-scripts.md` para copia lista para enviar.
@@ -59,6 +71,7 @@
    - Si el send path esta permitido, enviar.
    - Registrar el send inmediatamente en `data/outreach-log.md`.
    - No duplicar contactos que ya estan en `data/outreach-universe.tsv`.
+   - No enviar si el dossier esta incompleto.
 
 8. **Responder y seguir**
    - Si responden con un `yes/no` simple o una pregunta de agenda, contestar directo y breve.

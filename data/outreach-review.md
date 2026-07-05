@@ -154,6 +154,47 @@ The same skeleton now appears to hold across the wider outreach lanes the user w
 - No corporate filler.
 - No multi-paragraph biography.
 - No "just checking in" style openers.
+- No send until the dossier has actual source refs, last touch, why now, hook, proof point, ask, and follow-up rule.
+- Before sending, verify the recipient's current LinkedIn profile or organization page; if they moved, rewrite as a reconnect or current-role note.
+- Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack; if they are SPC-affiliated or the check is unclear, do not send the work pitch and use only a non-work reconnect or academic/community angle.
+- Treat blank `spc_affiliation` / `spc_checked_at` values as unchecked, not as external approval.
+
+## Minimum pre-send dossier
+
+For every contact, write a compact dossier before drafting the message:
+
+```text
+contact:
+relationship:
+lane:
+source_refs:
+last_touch:
+why_now:
+hook:
+proof_point:
+ask:
+avoid:
+status:
+next_followup:
+spc_affiliation:
+spc_checked_at:
+```
+
+Required source chain:
+
+- Gmail: latest thread, prior thread if it exists, subject lines, dates, asks, replies, commitments, intros, attachments.
+- LinkedIn: profile, recent posts or activity, DM history, mutual connections, role changes.
+- Public web: one or two concrete artifacts only, with title and date.
+- Internal context: one proof point from CV, project notes, or repo that supports the ask.
+
+Decision rule:
+
+- Send only when `why_now`, `hook`, `proof_point`, and `ask` are filled from sources.
+- If the hook is generic or the relationship is unclear, stop and research more.
+- For professors and former instructors, use public work references when available instead of generic gratitude.
+- For cold contacts, keep the ask smaller than the first instinct.
+- If the recipient is SPC-affiliated or the affiliation check is unclear, do not send a work pitch; switch to a non-work reconnect or mark the contact blocked for that lane.
+- If a reply would require judgment, leave the thread paused for the user.
 
 ## Banned / low-performing phrasing
 

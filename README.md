@@ -124,11 +124,14 @@ Career-ops is a single slash command with multiple modes:
 /career-ops tracker        → View application status
 /career-ops apply          → Fill application forms with AI
 /career-ops pipeline       → Process pending URLs
-/career-ops contacto       → LinkedIn outreach message
+/career-ops contacto       → LinkedIn outreach message with a source-backed contact dossier and SPC affiliation gate
 /career-ops deep           → Deep company research
 /career-ops training       → Evaluate a course/cert
 /career-ops project        → Evaluate a portfolio project
 ```
+
+Live outreach is dossier-driven: gather sources, the last touch, the reason now, the smallest sensible ask, and the South Park Commons affiliation check before sending any work-related pitch.
+If the Chrome profile already has authenticated LinkedIn, Pando, or Superhuman tabs open, keep those tabs as handoff state and use Chrome first. Login state is not permanent across brand-new sessions, so the in-app browser should be treated as a backup Gmail surface rather than the only durable surface.
 
 Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
 
@@ -205,7 +208,9 @@ career-ops/
 │   └── batch-runner.sh          # Orchestrator script
 ├── dashboard/                   # Go TUI pipeline viewer
 ├── data/                        # Your tracking data (gitignored except cv.md)
-│   └── cv.md                    # Your CV (create this)
+│   ├── cv.md                    # Your CV (create this)
+│   ├── outreach-drafts.md       # Draft-only outreach workspace
+│   └── outreach-contact-dossier.md # Per-contact source-backed dossier + SPC affiliation gate
 ├── reports/                     # Evaluation reports (gitignored)
 ├── output/                      # Generated PDFs (gitignored)
 ├── fonts/                       # Space Grotesk + DM Sans

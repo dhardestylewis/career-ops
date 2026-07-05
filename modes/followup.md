@@ -10,6 +10,8 @@ Track follow-up cadence for active applications and live outreach threads. Flag 
 - `data/follow-ups.md` - Follow-up history (created on first use)
 - `data/outreach-queue.tsv` - Active outreach queue generated from the multi-lane ledger
 - `data/outreach-log.md` - Sent outreach history and live thread context
+- `data/outreach-drafts.md` - Draft-only outreach workspace and LinkedIn-first reconnect notes
+- `data/outreach-contact-dossier.md` - Per-contact source-backed dossier and send gate
 - `reports/` - Evaluation reports (for context in drafts)
 - `config/profile.yml` - User profile (name, identity)
 - `data/cv.md` - CV for proof points in drafts
@@ -43,7 +45,7 @@ node src/dataOps/outreach-ledger.mjs
 The ledger builds `data/outreach-universe.tsv` and `data/outreach-queue.tsv`. Treat `data/outreach-queue.tsv` as the active outreach work queue and sort by `action_state`:
 
 - `followup_due` - send the lane-specific follow-up now
-- `ready` - send the first touch if the contact is approved and unblocked
+- `ready` - send the first touch if the contact is approved, unblocked, and the dossier is complete
 - `research` - find the right route before drafting
 - `blocked` - pause for human judgment or route access
 
@@ -76,7 +78,7 @@ Outreach Queue - {date}
 Prioritize by `action_state`:
 
 - `followup_due` - send now
-- `ready` - send the first touch or discovery note
+- `ready` - send the first touch or discovery note if the dossier is complete
 - `research` - find the right route first
 - `blocked` - stop and ask for judgment or access
 
@@ -85,10 +87,11 @@ Use the same cadence discipline unless the lane notes say otherwise:
 - First follow-up: 3 to 5 business days after the send
 - Second follow-up: 3 to 5 business days after the first follow-up
 - After that, stop unless the user explicitly wants another pass
+- For no-response outreach, auto-schedule the next follow-up on that same 3 to 5 business day cadence rather than calendar days.
 
 Lane-specific reminders:
 
-- Professor / former instructor: reconnect on the shared academic context
+- Professor / former instructor: reconnect on the shared academic context or a specific public work
 - Alumni / career services: ask for direction or the best contact path
 - Recruiter: surface screening facts early
 - Hiring manager: reference the team problem or role fit
@@ -96,14 +99,17 @@ Lane-specific reminders:
 - Nonprofit / public-sector: lead with the mission or program
 - Dormant warm tie: revive the prior thread, do not restart cold
 - Founder / ecosystem: bridge first, bio second
+- South Park Commons-affiliated or unclear: do not send a work, money, gigs, contracts, or jobs pitch; use a non-work reconnect or pause for judgment.
+- If Chrome already has LinkedIn, Pando, or Superhuman authenticated, keep working from that profile first and preserve those tabs as handoff state. Login state is not permanent across brand-new sessions; use the in-app browser only as a backup Gmail surface.
 
 ## Step 3 - Generate Follow-up Drafts
 
 For each **overdue** or **urgent** entry only:
 
-1. Read the linked report (`reportPath` from JSON) for company context
-2. Read `data/cv.md` for proof points
-3. Read `config/profile.yml` for candidate name and identity
+1. Read the linked dossier (`data/outreach-contact-dossier.md` or the queue notes) for source refs, last touch, why now, hook, proof point, ask, avoid, next follow-up, and South Park Commons affiliation if the pitch is work-related.
+2. Read the linked report (`reportPath` from JSON) for company context
+3. Read `data/cv.md` for proof points
+4. Read `config/profile.yml` for candidate name and identity
 
 ### Email Follow-up Framework (first follow-up, followupCount == 0)
 
@@ -156,6 +162,16 @@ Do NOT generate another follow-up. Instead suggest:
 > - Updating status to `Discarded` if the role seems filled
 > - Trying a different contact via `/career-ops contacto`
 > - Keeping in `Applied` status but deprioritizing"
+
+### Response Action Matrix
+
+Keep the action state explicit for the next agent:
+
+| Reply state | Next action | Follow-up handling |
+|---|---|---|
+| Simple yes/no or scheduling question | Reply directly with a short answer | Do not draft a new follow-up; stay in the thread |
+| Strategic or ambiguous reply | Pause and notify the user | Wait for human judgment before answering |
+| No response | Schedule the next follow-up automatically | Use the existing 3 to 5 business day cadence |
 
 ## Step 4 - Present Drafts
 
