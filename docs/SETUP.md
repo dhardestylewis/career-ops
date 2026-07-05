@@ -52,6 +52,8 @@ claude
 
 Then paste a job offer URL or description. Career-ops will automatically evaluate it, generate a report, create a tailored PDF, and track it.
 
+If a safe repo-backed action is available while you are setting things up, do it now instead of only describing it.
+
 ## Available Commands
 
 | Action | How |

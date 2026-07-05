@@ -2,6 +2,8 @@
 
 Thanks for your interest in contributing! Career-Ops is built with Claude Code, and you can use it for development too.
 
+If you are using an AI agent, prefer taking the next safe repo action directly instead of only narrating what should happen.
+
 ## Before Submitting a PR
 
 **Please open an issue first to discuss the change you'd like to make.** This helps us align on direction before you invest time coding.
