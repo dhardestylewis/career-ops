@@ -58,6 +58,142 @@ These are not sent yet. Use them only after checking the person's current Linked
 - Kimberly, Toptal: recruiter. Possible ask is whether there are other freelancer / contract-network recruiter contacts.
 - Allison Rebaza, Tech Holding: technical recruiter. Possible ask is whether she has other contractor-focused technical recruiter contacts.
 
+## Recruiter follow-ups
+
+These are for follow-up only after the LinkedIn / company check confirms the lane is still current.
+
+### Melisa Magnuson, AdAstra
+
+**To:** Melisa Magnuson <Melisa@AdAstra.us>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Headhunting Lead & Advisor for hard tech startups. AdAstra focuses on space, climate, embodied AI, and defense.
+
+**Dossier**
+- Relationship: recruiter contact from the hard-tech side.
+- Last touch: Gmail thread `FPGA Engineer | Funded, Demo This Summer`.
+- Why now: her current AdAstra lane is directly relevant to climate, embodied AI, and defense searches.
+- Hook: production ML and geospatial forecasting should be a good fit for hard-tech teams that need applied data and infrastructure builders.
+- Proof point: Homecastr has production forecasting and geospatial systems that map well to climate and hard-tech teams.
+- Ask: keep me in mind for relevant hard-tech searches and, if useful, point me to the right AdAstra teammate for climate or embodied AI roles.
+- Avoid: generic recruiting-spray language or making it sound like a mass outbound note.
+- Status: draft only.
+
+**Subject:** Staying in touch on hard-tech roles
+
+```text
+Hi Melisa,
+
+I saw your work at AdAstra across space, climate, embodied AI, and defense. My background is in production ML and geospatial forecasting, and I would love to stay on your radar for hard-tech roles where that mix is relevant.
+
+If there are any searches you think I should keep an eye on, or a teammate on your side who is closer to those roles, I would be grateful for the pointer.
+
+Best,
+Daniel
+```
+
+### Raymond Sheerin, Guardian Life
+
+**To:** Raymond Sheerin <Raymond_sheerin@glic.com>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Open to connect and actively recruiting cyber security and data science experts at Guardian Life.
+
+**Dossier**
+- Relationship: recruiter contact from the Guardian Life lane.
+- Last touch: Gmail thread `Quick Questions - Data Scientist Application | Guardian Life`.
+- Why now: his LinkedIn explicitly signals cyber security and data science recruiting.
+- Hook: my background sits closer to data science, ML infrastructure, and applied analytics than to generic recruiting.
+- Proof point: Homecastr is a production ML system with forecasting and validation work.
+- Ask: stay in touch on data science, cyber security, and AI roles at Guardian, especially where customer analytics, risk, or fraud work is involved.
+- Avoid: pretending the old application thread is still active or leading with a broad career update.
+- Status: draft only.
+
+**Subject:** Reaching out on the data and security side
+
+```text
+Hi Raymond,
+
+I saw that you are actively recruiting cyber security and data science experts at Guardian. My work is in production ML, forecasting, and model validation, so I wanted to stay in touch for anything on the data, AI, or security side that could be a fit.
+
+If there is a role or team you think I should watch, I would be glad to keep the conversation going.
+
+Best,
+Daniel
+```
+
+### Cora Moore, Elwood Staffing
+
+**To:** Cora Moore
+
+**Channel:** LinkedIn or Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Lead Staffing Recruiter at Elwood Staffing in Greater Houston.
+
+**Dossier**
+- Relationship: staffing recruiter contact from the Elwood lane.
+- Last touch: Gmail thread `Exclusive: A Quick Question About Your Career Growth Goals`.
+- Why now: Elwood Professional covers engineering and IT, and Elwood's job search shows current professional data roles.
+- Hook: ask whether she handles professional / IT searches or can route me to the right recruiter for data, analytics, or ML openings.
+- Proof point: production ML and geospatial systems map better to Elwood's professional side than to general labor staffing.
+- Ask: if she is not the right person, point me to the recruiter who owns IT, data, or analytics roles.
+- Avoid: assuming she owns the warehouse / light-industrial side of the house.
+- Status: draft only.
+
+**Subject:** Quick question on the professional side
+
+```text
+Hi Cora,
+
+I saw that you are a lead staffing recruiter at Elwood Staffing. I am mostly interested in the professional / IT side rather than general staffing, especially data, analytics, and ML roles.
+
+If you handle that lane, I would be glad to stay in touch. If not, I would appreciate it if you could point me to the recruiter who owns those openings.
+
+Best,
+Daniel
+```
+
+### Allison Rebaza, Tech Holding
+
+**To:** Allison Rebaza Vargas
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** Technical Recruiter, Program Manager, Talent Acquisition, and AI-driven hiring at Tech Holding.
+
+**Dossier**
+- Relationship: recruiter contact from the Tech Holding ML lane.
+- Last touch: Gmail thread `Machine Learning Engineer (Contractor) - Tech Holding`.
+- Why now: Tech Holding is actively staffing data, analytics, AI, and contract engineering roles.
+- Hook: keep the note tied to the specific ML / data contractor lane instead of a generic recruiter follow-up.
+- Proof point: production ML, geospatial forecasting, and infrastructure work should be legible for their AI / data searches.
+- Ask: stay in touch for ML, data, or AI contract roles, and if needed point me to the hiring manager or recruiter who owns that search.
+- Avoid: broad "let me know if anything comes up" language without the role context.
+- Status: draft only.
+
+**Subject:** Staying in touch on the ML contractor lane
+
+```text
+Hi Allison,
+
+I wanted to follow up on the Machine Learning Engineer contractor lane at Tech Holding. My background is in production ML, forecasting, and geospatial systems, so I wanted to stay in touch for any ML, data, or AI contract roles that might be a fit.
+
+If there is another recruiter or hiring manager who owns that search, I would be grateful for the pointer.
+
+Best,
+Daniel
+```
+
 ## Warm Academic: Paola Passalacqua
 
 **To:** Paola Passalacqua <ppassalacqua@ethz.ch>
