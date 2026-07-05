@@ -46,10 +46,14 @@ modes/_profile.md
 portals.yml
 data/cv.md
 data/bio.md
-data/tracker/
 data/follow-ups.md
 article-digest.md
 reports/
+
+# Canonical tracker files are committed and should stay visible
+!data/tracker/
+!data/tracker/applications.md
+!data/tracker/pipeline.md
 
 # OA Simulator Ephemeral State
 interview-prep/simulator/.active_session.json
