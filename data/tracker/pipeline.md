@@ -1061,12 +1061,12 @@
 - [ ] https://jobs.ashbyhq.com/harvey/40239019-ff5f-40eb-bace-15370134d647 | Harvey | Physical Security Technology Lead
 - [ ] https://jobs.ashbyhq.com/harvey/4221e6ce-fb4f-4f20-a615-aa1b85d2ef3c | Harvey | Staff Product Manager, Legal Operations Platform
 - [ ] https://jobs.ashbyhq.com/harvey/42f38d0c-b931-4edb-b988-a6c6e89f7701 | Harvey | Senior Privacy and AI Counsel
-- [ ] https://jobs.ashbyhq.com/harvey/45a49240-f928-4547-93ec-cd3bf5b0191d | Harvey | Staff Software Engineer, Developer Experience 
+- [ ] https://jobs.ashbyhq.com/harvey/45a49240-f928-4547-93ec-cd3bf5b0191d | Harvey | Staff Software Engineer, Developer Experience
 - [ ] https://jobs.ashbyhq.com/harvey/467049ce-b5ea-4063-95aa-71c9742768d5 | Harvey | Technical Program Manager, Platform & Infrastructure
 - [ ] https://jobs.ashbyhq.com/harvey/47d3d763-8c64-4e33-b76e-ca15f584c1fd | Harvey | Staff Software Engineer, Frontend
 - [ ] https://jobs.ashbyhq.com/harvey/4a82c276-1113-41f6-baf9-a5be27e5c78f | Harvey | Staff Software Engineer, Core Infrastructure
 - [ ] https://jobs.ashbyhq.com/harvey/4b57fc7f-3b29-4501-b41d-b700f4e3d6c6 | Harvey | Head of Brand Campaigns
-- [ ] https://jobs.ashbyhq.com/harvey/4d661139-19ad-42af-9f6c-a68c71263e14 | Harvey | Staff Software Engineer, Site Reliability Engineer 
+- [ ] https://jobs.ashbyhq.com/harvey/4d661139-19ad-42af-9f6c-a68c71263e14 | Harvey | Staff Software Engineer, Site Reliability Engineer
 - [ ] https://jobs.ashbyhq.com/harvey/5025299f-6a46-4e1a-9f38-c39dd4a056dc | Harvey | Practice Lead, Law Firm Transformation
 - [ ] https://jobs.ashbyhq.com/harvey/51f9f397-c7ca-4b4f-a8f1-f5ff17076503 | Harvey | Partner Program Lead
 - [ ] https://jobs.ashbyhq.com/harvey/6684931f-a85f-4849-9240-e2329b21305f | Harvey | UXR Operations Lead, AI
@@ -1087,7 +1087,7 @@
 - [ ] https://jobs.ashbyhq.com/harvey/b26ccc21-fb10-4428-90be-a7af2076ff77 | Harvey | Senior Performance Marketing Manager, Paid Social
 - [ ] https://jobs.ashbyhq.com/harvey/b774c88e-5d8f-48d3-aed7-948f2e4292b7 | Harvey | Staff Software Engineer, Backend - NYC
 - [ ] https://jobs.ashbyhq.com/harvey/c3eae74b-d8a4-48f5-9845-c9e069f491f3 | Harvey | Practice Lead, In-house Transformation
-- [ ] https://jobs.ashbyhq.com/harvey/ca25e4fd-45bc-48ef-9089-0a160e1845f8 | Harvey | Staff Product Security Engineer 
+- [ ] https://jobs.ashbyhq.com/harvey/ca25e4fd-45bc-48ef-9089-0a160e1845f8 | Harvey | Staff Product Security Engineer
 - [ ] https://jobs.ashbyhq.com/harvey/d2aaaa58-eb59-42ba-9a62-ca6ce4cdf206 | Harvey | Staff Product Security Engineer
 - [ ] https://jobs.ashbyhq.com/harvey/d78083d9-a203-4ae4-b4b9-454d65df3702 | Harvey | Research Engineer, Post-Training
 - [ ] https://jobs.ashbyhq.com/harvey/e89103ca-765f-42f1-882a-80364f3c2321 | Harvey | Staff Product Manager, New Products
