@@ -1,4 +1,4 @@
-# Ready-To-Send Outreach Scripts
+﻿# Ready-To-Send Outreach Scripts
 
 Date: 2026-07-05
 
