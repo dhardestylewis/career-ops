@@ -68,7 +68,7 @@ These are for follow-up only after the LinkedIn / company check confirms the lan
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-05
 
 **LinkedIn / public check:** Headhunting Lead & Advisor for hard tech startups. AdAstra focuses on space, climate, embodied AI, and defense.
 
@@ -101,7 +101,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-05
 
 **LinkedIn / public check:** Open to connect and actively recruiting cyber security and data science experts at Guardian Life.
 
@@ -132,9 +132,9 @@ Daniel
 
 **To:** Cora Moore
 
-**Channel:** LinkedIn or Email
+**Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-05
 
 **LinkedIn / public check:** Lead Staffing Recruiter at Elwood Staffing in Greater Houston.
 
@@ -167,7 +167,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-05
 
 **LinkedIn / public check:** Technical Recruiter, Program Manager, Talent Acquisition, and AI-driven hiring at Tech Holding.
 
