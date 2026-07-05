@@ -47,6 +47,8 @@ Daniel
 
 **Note:** Do not reopen the rejected Bellwether interview as an active application. Treat this as a warm reconnect only.
 
+**Follow-up sent:** 2026-07-05 with a Harvey-specific note about the Software Engineer, Agents role.
+
 ## Recruiter network notes
 
 These are not sent yet. Use them only after checking the person's current LinkedIn or current company first.
