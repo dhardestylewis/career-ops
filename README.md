@@ -132,7 +132,7 @@ Career-ops is a single slash command with multiple modes:
 /career-ops project        → Evaluate a portfolio project
 ```
 
-Live outreach is dossier-driven: gather sources, the last touch, the reason now, the smallest sensible ask, and the South Park Commons affiliation check before sending any work-related pitch.
+Live outreach is dossier-driven: gather sources, the last touch, the reason now, the smallest sensible ask, and the South Park Commons affiliation check before sending any work-related pitch. Operationally, use `data/outreach-operator-card.md` as the canonical run sheet, `data/outreach-contact-dossier.md` as the send gate, and `data/outreach-log.md` as the live ledger. Before each send, verify the current auth surface, latest branch/PR state, SPC gate, attachment readiness, and reply-routing choice, then log the send immediately.
 If the Chrome profile already has authenticated LinkedIn, Pando, or Superhuman tabs open, keep those tabs as handoff state and use Chrome first. Login state is not permanent across brand-new sessions, so the in-app browser should be treated as a backup Gmail surface rather than the only durable surface.
 
 Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
