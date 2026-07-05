@@ -109,6 +109,8 @@ claude   # Open Claude Code in this directory
 
 > **The system is designed to be customized by Claude itself.** Modes, archetypes, scoring weights, negotiation scripts -- just ask Claude to change them. It reads the same files it uses, so it knows exactly what to edit.
 
+When a safe repo-backed action is available, Claude should take it now instead of only describing it.
+
 See [docs/SETUP.md](docs/SETUP.md) for the full setup guide.
 
 ## Usage
