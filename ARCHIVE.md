@@ -7,9 +7,9 @@ This repository is a durable career-ops workspace for job search, outreach, and 
 - `CLAUDE.md`
 - `AGENTS.md`
 - `docs/CODEX.md`
-- `data/outreach-operator-card.md`
-- `data/outreach-contact-dossier.md`
-- `data/outreach-log.md`
+- `data/outreach/operator-card.md`
+- `data/outreach/contact-dossier.md`
+- `data/outreach/log.md`
 
 ## Canonical Workflow
 

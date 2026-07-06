@@ -27,6 +27,6 @@ This PDF is the offline South Park Commons members export that was used during t
 
 ## Related repo state
 
-- Terra AI outreach drafts are staged in `data/outreach-drafts.md`.
-- The ready-but-held send packet is in `data/outreach-terra-ai-send-packet.md`.
-- Routing notes about the SPC gate are recorded in `data/outreach-operator-card.md`.
+- Terra AI outreach drafts are staged in `data/outreach/drafts.md`.
+- The ready-but-held send packet is in `data/outreach/terra-ai-send-packet.md`.
+- Routing notes about the SPC gate are recorded in `data/outreach/operator-card.md`.
