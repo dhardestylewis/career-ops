@@ -16,3 +16,12 @@
 - Avoid rapid taps or clicks on any ATS or job portal unless the page clearly needs it.
 - Prefer visible browser sessions over headless ones for fragile application portals.
 - When a portal begins to look suspicious, stop early and preserve the session rather than escalating the traffic.
+
+## Calendar Availability Safety
+
+- When checking meeting availability, confirm the exact day view and the correct primary calendar column before calling a slot free.
+- Do not infer availability from empty-looking space in week view if another calendar column, an in-progress create-event drawer, or a Calendly booking page shows a meeting at that time.
+- If a visible event title, booking page, or draft clearly uses the candidate time, treat that slot as booked even if the label is partially truncated.
+- When the user asks for buffer, apply it on both sides of the candidate slot and say when a time is too close to an existing event to be safe.
+- When sharing availability, explicitly name which calendar(s) were checked so the source of truth is clear.
+- If the view is ambiguous or occluded, re-check rather than guess.
