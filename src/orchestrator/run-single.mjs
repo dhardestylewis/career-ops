@@ -8,10 +8,10 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import { populateLever } from '../scrapers/auto-fill-lever.mjs';
-import { DEFAULT_RESUME_PDF_PATH } from '../core/resume-asset.mjs';
+import { getResumePath } from '../core/profile.mjs';
 
 const profileConfig = yaml.load(fs.readFileSync('config/profile.yml', 'utf8'));
-const resumePath = DEFAULT_RESUME_PDF_PATH;
+const resumePath = getResumePath(profileConfig);
 const chromePath = profileConfig?.execution?.chrome_profilePath || './data/chrome-bot-profile';
 
 // ── TARGETS ─────────────────────────────────────────────────────────────────

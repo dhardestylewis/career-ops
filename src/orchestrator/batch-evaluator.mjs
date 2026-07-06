@@ -1,21 +1,14 @@
 import fs from 'fs';
 import path from 'path';
-import yaml from 'js-yaml';
 import { chromium } from 'playwright-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
-import { DEFAULT_RESUME_PDF_PATH } from '../core/resume-asset.mjs';
+import { getResumePath, loadProfileConfig } from '../core/profile.mjs';
 
 chromium.use(stealthPlugin());
 import { pathToFileURL } from 'url';
 
 // Dynamically extract Profile configuration
-let profileConfig = {};
-try {
-    const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
-    profileConfig = yaml.load(fileContents);
-} catch (e) {
-    console.log("⚠️ Could not load profile.yml");
-}
+const profileConfig = loadProfileConfig();
 
 // Identify targeted Job Endpoints from batch-input.tsv dynamically
 const rawBatch = fs.readFileSync('batch/batch-input.tsv', 'utf8').split('\n');
@@ -111,7 +104,7 @@ targets.sort((a, b) => {
    return a.random - b.random;
 });
 
-const resumePath = DEFAULT_RESUME_PDF_PATH;
+const resumePath = getResumePath(profileConfig);
 
 // Limit the run to 15 randomly selected endpoints to prevent memory exhaustion
 const RUN_LIMIT = targets.length;

@@ -16,6 +16,11 @@ There are two layers. Read `DATA_CONTRACT.md` for the full list.
 - `cv.md`, `config/profile.yml`, `modes/_profile.md`, `modes/_custom.md`, `article-digest.md`, `portals.yml`
 - `data/*`, `reports/*`, `output/*`, `interview-prep/*`
 
+**Canonical Resume Attachment:**
+- `config/profile.yml` should point `execution.resume_path` at:
+  `data/assets/resume-dhl-20260630-causal-mle.pdf`
+- Treat that file as the default resume for all application, outreach, and test workflows unless the user explicitly changes it.
+
 **System Layer (auto-updatable, DON'T put user data here):**
 - `modes/_shared.md`, `modes/oferta.md`, all other modes
 - `CLAUDE.md`, `*.mjs` scripts, `dashboard/*`, `templates/*`, `batch/*`

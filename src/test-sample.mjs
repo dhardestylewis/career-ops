@@ -5,11 +5,11 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
-import { DEFAULT_RESUME_PDF_PATH } from './core/resume-asset.mjs';
+import { getResumePath } from './core/profile.mjs';
 
 const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
 const profileConfig = yaml.load(fileContents);
-const resumePath = DEFAULT_RESUME_PDF_PATH;
+const resumePath = getResumePath(profileConfig);
 
 (async () => {
     const browser = await chromium.launch({ headless: false });
