@@ -209,7 +209,7 @@ Daniel
 - Proof point: I build Homecastr and spend a lot of time thinking about high-output founder rhythms and systems.
 - Ask: stay in touch and compare notes on founders, recovery, or community.
 - Avoid: making it feel like a random cold pitch.
-- Status: ready to send once the SPC check clears.
+- Status: ready to send.
 - Next follow-up: one gentle nudge only if there is no reply and the thread stays relevant.
 
 **Subject:** Thanks for the note
@@ -481,4 +481,80 @@ Hi Vivian - I saw your work at UBC and I'm looking forward to Computer Vision Fu
 
 ```text
 Hi Yash - I saw your work at UBC and I'm looking forward to Computer Vision Fundamentals. I'm building Homecastr's production ML systems, so the research-to-deployment bridge feels especially close to what I am doing now. If you're around before the session, I'd love to grab coffee.
+```
+
+## Built In shortlist
+
+These are draft-only LinkedIn notes for the current roles. The South Park Commons directory PDF does not match these contacts, so they are ready for the normal LinkedIn / email send path.
+
+### Catherine Del Hierro - LTS
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Catherine - I saw the Lead Forward Deployed Engineer opening at LTS and your current role in talent acquisition. I build production ML systems with real-world validation at Homecastr and TACC. Would love to connect and learn who owns the FDE search.
+```
+
+### David Wilmot - LTS
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Dr. Wilmot - I saw your current role as Chief Medical Officer at LTS and the healthcare IT / public-health mission. I build production ML systems for high-stakes physical-world decisions. Would love to connect if a short chat on the FDE lane is useful.
+```
+
+### James Pickard - Accenture
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi James - I saw the AI Transformation & Solutions Lead opening at Accenture and your talent acquisition work there. I build production ML and enterprise-facing systems with a strong evaluation discipline. Would love to connect and hear how the team is thinking about the role.
+```
+
+### Jim Murrin - Accenture
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Jim - your AI and data executive search work at Accenture stood out, especially with the company's push into AI transformation. I have been building production ML systems and customer-facing solutions at Homecastr. If useful, I would love to connect and ask who is best to speak with.
+```
+
+### Iliana Lytton - Billtrust
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Iliana - I saw the VP Product Management roles in Applied Intelligence and Payments at Billtrust and your role leading talent acquisition. I build production ML systems and productized decision support with measurable outcomes. Would love to connect and learn who owns the searches.
+```
+
+### Lee An Schommer - Billtrust
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Lee - Billtrust's AI-powered product direction and the open Applied Intelligence role caught my eye. I build production ML systems, but also care a lot about turning that work into usable product. Would love to connect if a short conversation would be useful.
+```
+
+### Harrison Zolot - Trexquant
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Harrison - I saw the Quantitative Researcher (PhD) opening at Trexquant and your role leading talent acquisition. I bring ML, statistics, and rigorous evaluation work from Columbia, Homecastr, and TACC. Would love to connect and learn who owns the search.
+```
+
+### Denis Lapitski - Trexquant
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Denis - your strategy research work at Trexquant stood out, and the Quantitative Researcher opening looks like a strong research lane. I have been building rigorous ML systems and evaluation loops in production settings. Would love to connect if it is useful.
 ```
