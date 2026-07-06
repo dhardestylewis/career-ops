@@ -254,7 +254,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-06
 
 **LinkedIn / public check:** Professor of Hydrology and River System Science at ETH Zurich and Eawag. Her work spans river deltas, hydrological connectivity, and flood risk.
 
@@ -288,7 +288,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-06
 
 **LinkedIn / public check:** Columbia professor who directs the Financial Engineering Program and the Center for AI in Business Analytics & FinTech.
 
@@ -322,7 +322,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-06
 
 **LinkedIn / public check:** Columbia GSAPP professor of Real Estate Development Finance who teaches MSRED finance courses.
 
@@ -342,9 +342,9 @@ Daniel
 ```text
 Hi Christopher,
 
-I wanted to reconnect from the GSAPP side. I saw your current work in Real Estate Development Finance at Columbia and the overlap with Homecastr's housing and geospatial forecasting still feels strong.
+I wanted to reconnect from GSAPP, and I’ve been thinking about how closely your real estate finance work connects to what I’m building at Homecastr.
 
-If you are open, I would love to catch up and hear what you are focused on lately.
+If you’re open, I’d love to hear your thoughts on Homecastr and catch up over coffee sometime. I’d also be grateful for any roles or research assistantships you think I should keep in mind.
 
 Best,
 Daniel
@@ -356,7 +356,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-06
 
 **Subject:** Columbia alum looking for the right routing path
 
