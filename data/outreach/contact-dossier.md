@@ -238,3 +238,75 @@ action_state: sent
 next_followup: Wait for his reply; only follow up if he responds or asks for more context.
 spc_affiliation: not checked; non-work lane
 spc_checked_at: n/a
+
+### Palantir - Jessie Miller
+
+contact: Jessie Miller
+relationship: cold recruiter target; Technical Recruiter at Palantir and routing point for the Baseline / FDE lane
+lane: recruiter
+source_refs: https://blog.palantir.com/the-baseline-team-and-forward-deployed-infrastructure-engineering-at-palantir-efd84e72e40b ; https://www.palantir.com/careers/open-positions/ ; https://www.linkedin.com/in/jessie-miller-nyc
+last_touch: none
+why_now: Palantir's Baseline team has a live Forward Deployed AI Engineer opening and the public Baseline post explicitly points interested candidates to baseline-recruiting@palantir.com.
+hook: She is the current technical recruiter at Palantir and the Baseline / FDE lane is the specific team route for the role.
+proof_point: I build production ML systems end to end, including data ingestion, evaluation, and serving for physical-world forecasting problems.
+ask: Ask whether she owns the Forward Deployed AI Engineer search or can route me to the right owner.
+avoid: A long background paragraph, compensation questions, or a generic spray-and-pray pitch.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-10
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Legora - Arielle Mills
+
+contact: Arielle Mills
+relationship: cold recruiter target; Senior Recruiter at Legora
+lane: recruiter
+source_refs: https://legora.com/contact-us ; https://legora.com/careers ; https://www.linkedin.com/in/arielle-mills-7a743044
+last_touch: none
+why_now: Legora's careers page is live and the company is hiring into AI-forward legal work right now.
+hook: She is the current recruiter at Legora and the public contact page is the routing path for general inquiries.
+proof_point: I build production ML systems with a reliability and evaluation focus and have shipped them end to end.
+ask: Ask whether she owns the AI Marketing Engineer search or can route me to the right recruiter or hiring manager.
+avoid: Over-indexing on marketing jargon or writing a mass job spray.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-10
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Omada - Ashish Kapadia
+
+contact: Ashish Kapadia
+relationship: cold recruiter target; Head of Talent Acquisition at Omada Health
+lane: recruiter
+source_refs: https://www.omadahealth.com/about-us/careers ; https://www.omadahealth.com/contact ; https://www.linkedin.com/in/ashishkapadia
+last_touch: none
+why_now: Omada's careers page is live and the company is hiring into product marketing for the cardiometabolic platform.
+hook: He owns talent acquisition at Omada and is the clearest routing point for the open product marketing search.
+proof_point: I build productized ML systems and know how to translate technical work into user-facing decisions.
+ask: Ask whether he owns the Director, Cardiometabolic Health Product Marketing search or can route it.
+avoid: A generic healthcare pitch or trying to force a pure marketing identity that I do not have.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-10
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Mixpanel - Jasmine Cheng
+
+contact: Jasmine Cheng
+relationship: cold recruiter target; Technical Recruiter at Mixpanel
+lane: recruiter
+source_refs: https://mixpanel.com/jobs/ ; https://www.linkedin.com/in/jasminemcheng ; https://mixpanel.com/legal/security-awareness
+last_touch: none
+why_now: Mixpanel's careers page is live and explicitly tells candidates to send a cover letter and resume to jobs@mixpanel.com or apply directly.
+hook: She is the current technical recruiter at Mixpanel and the jobs inbox is the public routing path.
+proof_point: I build production ML systems end to end, with evaluation and reliability discipline.
+ask: Ask whether she handles the Software Engineer, AI Product Insights search or can route me to the right owner.
+avoid: A long technical essay or over-explaining the whole background.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-10
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06

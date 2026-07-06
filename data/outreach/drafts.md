@@ -11,74 +11,6 @@ Send gate:
 - Keep Bellwether closed as an application thread; use Gabriel only as a warm contact for other X openings.
 - Org items stay in discovery until a human contact is identified on LinkedIn.
 
-## Warm Academic: Christopher Munsell
-
-**To:** Christopher Munsell <cwm2132@columbia.edu>
-
-**Channel:** Email
-
-**Status:** Sent 2026-07-05
-
-**LinkedIn check:** Columbia GSAPP. Current-role reconnect, not a cold outreach.
-
-**Dossier**
-- Relationship: academic reference from the MS in Urban Planning program.
-- Last touch: 2026-07-05 in UTmail; search surfaced an earlier same-day `Reconnecting from GSAPP` thread and the latest `Thank you from GSAPP` send.
-- Why now: the GSAPP / housing / development finance bridge is still live and specific.
-- Hook: the housing / development finance overlap with Homecastr is the clearest shared thread.
-- Proof point: Columbia MS in Urban Planning work plus Homecastr's applied modeling background.
-- Ask: quick catch-up and any advice on the housing / real-estate side of the work.
-- Avoid: making it sound like a generic cold pitch or an active job ask.
-- Status: sent.
-- Next follow-up: 2026-07-10 if no reply.
-
-**Subject:** Thank you from GSAPP
-
-```text
-Hi Christopher,
-
-I saw your work in Real Estate Development Finance at Columbia, and the housing / development finance overlap with Homecastr still feels very real. The GSAPP reference from my MS in Urban Planning work still comes up whenever I think about the next step here.
-
-If you're open to it, I'd love a quick catch-up and any advice you have on the housing / real-estate side of the work.
-
-Best,
-Daniel
-```
-
-## Warm Academic: Paola Passalacqua
-
-**To:** Paola Passalacqua <ppassalacqua@ethz.ch>
-
-**Channel:** Email
-
-**Status:** Sent 2026-07-05
-
-**LinkedIn check:** ETH Zurich / Eawag. Current-role reconnect, not an active UT Austin follow-up.
-
-**Dossier**
-- Relationship: former collaborator on national disaster resiliency work.
-- Last touch: 2026-07-05 in UTmail; search surfaced an earlier same-day `Reconnecting from TACC` thread and the latest `Reconnecting after TACC` send.
-- Why now: the ETH Zurich / Eawag role and the TACC collaboration are still the clearest shared bridge.
-- Hook: the river-delta / connectivity angle maps closely to the flood-resilience modeling I keep building at Homecastr.
-- Proof point: TACC disaster-resiliency work plus Homecastr's flood and spatial modeling.
-- Ask: reconnect and hear what she is focused on at ETH Zurich.
-- Avoid: treating this like a cold pitch or a work request.
-- Status: sent.
-- Next follow-up: 2026-07-10 if no reply.
-
-**Subject:** Reconnecting after TACC
-
-```text
-Hi Paola,
-
-I saw your work on hydrology and river system science at ETH Zurich and Eawag, and that river-delta / connectivity angle still maps closely to the flood-resilience modeling I keep building at Homecastr. Our TACC disaster-resiliency work still feels like the clearest shared thread.
-
-If you have a few minutes, I'd love to reconnect and hear what you're focused on at ETH Zurich.
-
-Best,
-Daniel
-```
-
 ## Bellwether re-engagement
 
 **To:** Gabriel Schook <schook@xwf.x.team>
@@ -611,6 +543,165 @@ Hi Vanderbilt alumni and career services team,
 I am reaching out because I am looking for warm routing to alumni or faculty who work at the intersection of data, product, and mission-driven tech. My background is in production ML, geospatial forecasting, and flood-resilience work, and I think there may be a useful bridge there.
 
 If there is a better contact path, I would be grateful for the direction.
+
+Best,
+Daniel
+```
+
+## Palantir - Jessie Miller
+
+**To:** Jessie Miller <baseline-recruiting@palantir.com>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Technical Recruiter at Palantir. Current-role reconnect routed through the Baseline team inbox.
+
+**Dossier**
+- Relationship: cold recruiter target; current routing point for the Baseline / FDE lane.
+- Last touch: none.
+- Why now: Palantir's Baseline team has a live Forward Deployed AI Engineer opening.
+- Hook: she is the current technical recruiter at Palantir and the Baseline / FDE lane is the exact team route.
+- Proof point: production ML systems end to end, including data ingestion, evaluation, and serving for physical-world forecasting problems.
+- Ask: route me to the right owner for the Forward Deployed AI Engineer search.
+- Avoid: a long background paragraph, compensation questions, or a generic spray-and-pray pitch.
+- Status: sent.
+- Next follow-up: 2026-07-10 if no reply.
+
+**Subject:** Forward Deployed AI Engineer application
+
+```text
+Hi Jessie,
+
+I just applied for Palantir's Forward Deployed AI Engineer role. I build production ML systems end to end, including data ingestion, evaluation, and serving for physical-world forecasting problems, so the Baseline / FDE lane felt like a strong fit.
+
+I attached my CV in case it helps. If you're the right owner, I'd love to share more; if not, could you point me to whoever owns the search?
+
+Best,
+Daniel
+```
+
+## Legora - Arielle Mills
+
+**To:** Arielle Mills <contact@legora.com>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Senior Recruiter at Legora. Current-role reconnect routed through the public contact page.
+
+**Dossier**
+- Relationship: cold recruiter target; current recruiting point for Legora.
+- Last touch: none.
+- Why now: Legora's careers page is live and the company is hiring into AI-forward legal work.
+- Hook: she is the current recruiter at Legora and the public contact page is the routing path.
+- Proof point: production ML systems with a reliability and evaluation focus, shipped end to end.
+- Ask: route me to the right recruiter or hiring manager for the AI Marketing Engineer search.
+- Avoid: over-indexing on marketing jargon or writing a mass job spray.
+- Status: sent.
+- Next follow-up: 2026-07-10 if no reply.
+
+**Subject:** AI Marketing Engineer application
+
+```text
+Hi Arielle,
+
+I just applied for Legora's AI Marketing Engineer role. I build production ML systems with a reliability and evaluation focus and have shipped them end to end, so the role felt like a strong fit.
+
+I attached my CV in case useful. If you're the right owner, I'd love to share more; if not, could you route me to whoever owns the search?
+
+Best,
+Daniel
+```
+
+## Omada - Ashish Kapadia
+
+**To:** Ashish Kapadia <recruiting@omadahealth.com>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Head of Talent Acquisition at Omada Health. Current-role reconnect routed through recruiting@omadahealth.com.
+
+**Dossier**
+- Relationship: cold recruiter target; current talent acquisition point for Omada.
+- Last touch: none.
+- Why now: Omada's careers page is live and the company is hiring into product marketing for the cardiometabolic platform.
+- Hook: he owns talent acquisition at Omada and is the clearest routing point for the search.
+- Proof point: productized ML systems and a track record of translating technical work into user-facing decisions.
+- Ask: route me to the right owner for the Director, Cardiometabolic Health Product Marketing search.
+- Avoid: a generic healthcare pitch or trying to force a pure marketing identity that I do not have.
+- Status: sent.
+- Next follow-up: 2026-07-10 if no reply.
+
+**Subject:** Director, Cardiometabolic Health Product Marketing application
+
+```text
+Hi Ashish,
+
+I just applied for the Director, Cardiometabolic Health Product Marketing role. I build productized ML systems and know how to translate technical work into user-facing decisions, so the role looked like a useful fit even though my background is more on the data/product side.
+
+I attached my CV in case useful. If you're the right owner, I'd love to share more; if not, could you point me to whoever owns this search?
+
+Best,
+Daniel
+```
+
+## Mixpanel - Jasmine Cheng
+
+**To:** Jasmine Cheng <jobs@mixpanel.com>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Technical Recruiter at Mixpanel. Current-role reconnect routed through the jobs inbox.
+
+**Dossier**
+- Relationship: cold recruiter target; current technical recruiting point for Mixpanel.
+- Last touch: none.
+- Why now: Mixpanel's careers page is live and explicitly tells candidates to send a cover letter and resume to jobs@mixpanel.com or apply directly.
+- Hook: she is the current technical recruiter at Mixpanel and the jobs inbox is the public routing path.
+- Proof point: production ML systems end to end, with evaluation and reliability discipline.
+- Ask: route me to the recruiter or hiring manager for the Software Engineer, AI Product Insights search.
+- Avoid: a long technical essay or over-explaining the whole background.
+- Status: sent.
+- Next follow-up: 2026-07-10 if no reply.
+
+**Subject:** Software Engineer, AI Product Insights application
+
+```text
+Hi Jasmine,
+
+I just applied for the Software Engineer, AI Product Insights role. I build production ML systems end to end, with evaluation and reliability discipline, so this looked like a strong fit.
+
+I attached my CV in case useful. If you're the right owner, I'd love to share more; if not, could you route me to the recruiter or hiring manager?
+
+Best,
+Daniel
+```
+
+## Elsa Bismuth / The FOMO Group
+
+**To:** Elsa Bismuth <fear-of-missing-out@mail.beehiiv.com>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Gate:** The work/application lane stays blocked until the SPC check is resolved. Keep this as a non-work reconnect only.
+
+**Subject:** Good to stay in touch
+
+```text
+Hi Elsa,
+
+I saw the July FOMO digest and wanted to say thanks for putting it together. The mix of builder stories, hackathon wins, and events feels like a genuinely useful signal stream.
+
+I’m following along and would be glad to stay in touch.
 
 Best,
 Daniel
