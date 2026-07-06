@@ -19,4 +19,13 @@ This log records live outbound messages sent from the current browser session so
 | Email | Gabriel Schook | schook@xwf.x.team | Harvey agents role follow-up | Harvey agents role came to mind | Sent | Warm follow-up acknowledging the Harvey move and referencing the Software Engineer, Agents lane as the most relevant current fit. |
 | Email | Alvin Lansing | `Alvin_lansing@glic.com` | data science handoff from Raymond OOO | Following up on the data science lane | Sent | Raymond Sheerin was kept in CC while asking about data science / ML / analytics roles. |
 | Email | Danny Taveras | `Danny_Taveras@glic.com` | other roles handoff from Raymond OOO | Following up on other Guardian roles | Sent | Raymond Sheerin was kept in CC while asking about non-data-science Guardian roles. |
+| LinkedIn Connect | Sama Alavi | LinkedIn invite note | recruiter bridge | Data science, ML, and systems/infrastructure fit | Sent | Short connect note asking whether she owns the relevant search or can route it. |
+| LinkedIn Connect | Joshua Winter | LinkedIn invite note | recruiter bridge | Inference and reliability fit | Sent | Short connect note asking whether he owns inference or can route to the right recruiter. |
+| LinkedIn Connect | Sarah Warkov | LinkedIn invite note | recruiter bridge | Robotics, software, and research fit | Sent | Short connect note asking whether she owns the best-fit technical lane. |
+| LinkedIn Connect | Lauren Tague | LinkedIn invite note | recruiter bridge | SWE, AI/ML research, and ops fit | Sent | Short connect note asking who owns the most relevant search. |
+| LinkedIn DM | Jennifer Xing | LinkedIn message thread | recruiter bridge | Engineering and data platform fit | Sent | Short DM asking whether she handles engineering hiring or can route it. |
+| LinkedIn Connect | Emilie Schwartz | LinkedIn invite note | recruiter bridge | Technical recruiting fit | Sent | Short connect note asking which engineering or data lane she owns. |
+| LinkedIn Connect | Michael Franchi | LinkedIn invite note | recruiter bridge | Consumer product ML fit | Sent | Short connect note asking whether he owns the relevant role or can route it. |
+| LinkedIn DM | Michael Jaffe | LinkedIn message thread | recruiter bridge | Data-focused technical recruiting fit | Sent | Short DM asking whether he handles engineering or data roles. |
+| LinkedIn Connect | Miguel Valle | LinkedIn invite note | recruiter bridge | Talent and technical recruiting fit | Sent | Short connect note asking which recruiting lane is the best fit. |
 
