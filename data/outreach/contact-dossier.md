@@ -239,6 +239,24 @@ next_followup: Wait for his reply; only follow up if he responds or asks for mor
 spc_affiliation: not checked; non-work lane
 spc_checked_at: n/a
 
+### AllianceBernstein - Bernd Wuebben
+
+contact: Bernd Wuebben
+relationship: cold executive reconnect; Global Head - Fixed Income Systematic Investing and Quantitative Research at AllianceBernstein
+lane: executive / boss-of-boss
+source_refs: https://www.linkedin.com/in/berndwuebben
+last_touch: none
+why_now: The live LinkedIn profile showed 1st-degree access and the role is adjacent to systematic fixed income, ML, and agentic AI.
+hook: A current-relevance bridge to forecasting, model validation, and systematic alpha.
+proof_point: I have been building ML systems at Homecastr.
+ask: Quick conversation on how he thinks about systematic alpha and portfolio construction in fixed income.
+avoid: Making it feel like a long pitch or leading with product jargon.
+status: sent
+action_state: sent
+next_followup: Wait for his reply; only follow up if he responds or asks for more context.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
 ## Columbia / housing research routing
 
 ### Douglas Woodward
@@ -248,14 +266,14 @@ relationship: Columbia GSAPP career-routing contact; not a collaborator
 lane: Columbia program routing
 source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.arch.columbia.edu/faculty/353-douglas-woodward; https://www.arch.columbia.edu/career-services; https://www.arch.columbia.edu/programs/10-m-s-urban-planning
 last_touch: 2026-07-06 reply in the Columbia GSAPP thread asking what mission or housing lane I was targeting.
-why_now: Douglas asked for more specificity, and I now have the named contacts plus the current resume to make the routing easier.
+why_now: Douglas asked for more specificity, and I now have the named contacts plus a current resume to make the routing easier.
 hook: GSAPP lists him as the Associate Director for Professional Development and Practice and the Urban Planning career-services contact.
 proof_point: Attached current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
 ask: Ask for the names or an introduction to the best current contact for affordable housing or housing-data / innovation work.
 avoid: Collaborator language, abstract lane-narrowing language, or broad follow-up phrasing like "if helpful, I can narrow this more."
 status: sent
 action_state: sent
-next_followup: 2026-07-10 if no reply.
+next_followup: wait for reply; if none, one brief nudge after 4 business days.
 spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
 spc_checked_at: 2026-07-06
 
