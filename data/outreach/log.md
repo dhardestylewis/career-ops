@@ -6,6 +6,13 @@ This log records live outbound messages sent from the current browser session so
 
 | Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
 |---|---|---|---|---|---|---|
+| Email | Douglas Woodward | `dw38@columbia.edu` | Columbia routing reply | Opportunity routing from Homecastr | Sent | Replied with the current Furman, GSAPP Housing Lab, CHPC, Columbia planning, and JCHS contacts after sending separate notes to each of them. |
+| Email | Douglas Woodward | `dw38@columbia.edu` | Columbia routing follow-up | Re: Opportunity routing from Homecastr | Sent | Sent the current 06/30 causal MLE resume and asked for specific names or an introduction instead of vague lane narrowing. |
+| Email | Brad Greenburg | `brad.greenburg@nyu.edu` | housing research routing note | Furman / quick routing question | Sent | Routed to the current Furman Center executive director after Douglas Woodward pointed to Furman as a housing research home. |
+| Email | Galia Solomonoff | `gs66@columbia.edu` | lab routing note | GSAPP Housing Lab / quick routing question | Sent | Routed to the current GSAPP Housing Lab director with a student-collaboration question. |
+| Email | Howard Slatkin | `info@chpcny.org` | public-interest routing note | CHPC / quick routing question | Sent | Routed to CHPC's public contact for the current executive director and housing policy lane. |
+| Email | Weiping Wu | `weiping.wu@columbia.edu` | Columbia program routing note | Columbia housing initiative / quick routing question | Sent | Routed to the Columbia GSAPP planning director after the GSAPP student-affairs pointer. |
+| Email | Kerry Donahue | `kerry_donahue@harvard.edu` | research center routing note | JCHS / quick routing question | Sent | Routed to the JCHS communications director and public contact for fellowship / research pointers. |
 | Email | Kelsey Richmond | `kelsey.richmond@newlab.com` | startup membership reply | `Re: Newlab Contact Form Submission` | Sent | Submitted the Newlab startup membership application and replied in-thread with a short confirmation. |
 | LinkedIn DM | Alexander Nevedovsky | LinkedIn message thread | warm reply / product-interest | Audos experiment reply | Sent | Replied in the existing 1st-degree thread after checking the current profile; asked to try Audos via a referral link and kept the note short. |
 | Email | Christopher Munsell | `cwm2132@columbia.edu` | warm academic reconnect | Reconnecting from GSAPP | Sent | Sent from the live Gmail compose thread with the GSAPP / Homecastr bridge and the coffee-chat / research-assistantship ask. |
