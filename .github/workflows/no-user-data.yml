@@ -48,6 +48,7 @@ jobs:
               /^data\/tracker\//,
               /^data\/state\//,
               /^data\/outreach-[^/]+$/,
+              /^data\/outreach\//,
               /^interview-prep\//,
               /^reports\//,
               /^output\//,
