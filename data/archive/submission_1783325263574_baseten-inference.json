@@ -1,0 +1,12 @@
+{
+  "targetUrl": "https://jobs.ashbyhq.com/baseten/90e9ff4e-1225-4b1b-b0b4-2362e36d9cfa/application",
+  "resumePath": "C:/Users/dhl/data/Portfolio/career-ops/data/assets/resume-dhl-20260630-causal-mle.pdf",
+  "timestamp": "2026-07-06T08:07:43.5740000Z",
+  "metrics": {
+    "total": 5,
+    "filled": 5,
+    "fillPercentage": 100,
+    "missingDOM": [],
+    "status": "Success_Unverified"
+  }
+}

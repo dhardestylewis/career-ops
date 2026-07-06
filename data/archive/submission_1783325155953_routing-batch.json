@@ -1,0 +1,36 @@
+{
+  "sentAt": "2026-07-06T08:05:55.953Z",
+  "from": "daniel@homecastr.com",
+  "results": [
+    {
+      "label": "Columbia GSAPP Student Affairs",
+      "to": "studentaffairs@arch.columbia.edu",
+      "id": "19f3676593c9e393",
+      "threadId": "19f3676593c9e393"
+    },
+    {
+      "label": "Columbia GSAPP Alumni and Development",
+      "to": "gsappalumni@arch.columbia.edu",
+      "id": "19f367658b1f9589",
+      "threadId": "19f367658b1f9589"
+    },
+    {
+      "label": "Cornell Tech Student & Academic Affairs",
+      "to": "studentaffairs@tech.cornell.edu",
+      "id": "19f36765ae6f9dae",
+      "threadId": "19f36765ae6f9dae"
+    },
+    {
+      "label": "HPD Resiliency",
+      "to": "Resiliency@hpd.nyc.gov",
+      "id": "19f36765d236cbef",
+      "threadId": "19f36765d236cbef"
+    },
+    {
+      "label": "NYCHA Disaster Recovery Team",
+      "to": "disaster.recovery@nycha.nyc.gov",
+      "id": "19f36765ec44af68",
+      "threadId": "19f36765ec44af68"
+    }
+  ]
+}
