@@ -311,6 +311,13 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 - **Quality over speed.** A well-targeted application to 5 companies beats a generic blast to 50. Guide the user toward fewer, better applications.
 - **Respect recruiters' time.** Every application a human reads costs someone's attention. Only send what's worth reading.
 
+## Messaging Safety -- CRITICAL
+
+- **NEVER send or paste LinkedIn outreach from an already-open DM thread unless the user explicitly asked for that exact thread and recipient.**
+- **For every LinkedIn DM, connection note, or invite note, verify the recipient in two independent UI signals immediately before typing and again before sending:** the target profile URL/name, and the visible compose or thread recipient name.
+- If the current LinkedIn tab is a conversation and the outreach target is someone else, stop using that tab for sending. Open the target profile or custom-invite surface fresh, then verify the recipient again.
+- After any LinkedIn send, confirm an authoritative success signal on the correct recipient: profile shows `Pending`, the sent note appears in the correct thread, or an equivalent visible confirmation. If that signal is missing, treat the action as **unsent** and do not log it as sent.
+
 ---
 
 ## Offer Verification -- MANDATORY
