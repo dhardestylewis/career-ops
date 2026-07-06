@@ -1,8 +1,8 @@
 ---
-description: LinkedIn power move - find contacts and draft message
+description: Multi-lane outreach - find contacts and draft message
 ---
 
-LinkedIn outreach for company/role using career-ops contacto mode:
+Multi-lane outreach for company/role using career-ops contacto mode:
 
 $ARGUMENTS
 

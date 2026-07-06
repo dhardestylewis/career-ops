@@ -1,0 +1,14 @@
+sample_order	captured_at	person_org	url_kind	url	contact_method	notes
+1	2026-07-05T14:32:29.8728965-04:00	Li-Yun (James) Wang	contact text		DM / contact me	Post text says "please contact me" for a computer-vision side project.
+3	2026-07-05T14:32:29.8728965-04:00	Teja Kattenborn	website	https://3Dtrees.earth	Follow the site	Contribution / data-sharing link in the post.
+10	2026-07-05T14:32:29.8728965-04:00	Snorkel AI	job page		Apply via job page	No direct URL captured from the post text.
+15	2026-07-05T14:32:29.8728965-04:00	Brian Merritt, Bubble	text only		DM and ask for the application link	No direct URL captured from the post text.
+19	2026-07-05T14:32:29.8728965-04:00	Vrushali Mundhe, Apple	text only		DM with fit note	Requested DM with relevant ML systems background.
+27	2026-07-05T14:32:29.8728965-04:00	Maxime Meilland, Apple	short link	https://lnkd.in/gcGbYPxD	Apply via careers link	Apple job page title also captured in the post.
+31	2026-07-05T14:32:29.8728965-04:00	Apurva Singh, WSP	text only		View job, then reach out if helpful	No direct URL captured from the post text.
+36	2026-07-05T14:32:29.8728965-04:00	Axiom Space	text only		Open portal and apply	Multiple roles listed, but no stable URL captured.
+45	2026-07-05T14:32:29.8728965-04:00	Sinoha Rivas, Apple	short link	https://lnkd.in/gUGiakk2	Apply directly to the link	Apple job page title also captured in the post.
+46	2026-07-05T14:32:29.8728965-04:00	Mechanize	short link	https://lnkd.in/gwfFs_qW	Open link and apply	Promoted post with a short link.
+72	2026-07-05T14:32:29.8728965-04:00	Mohammad Haghighat, WBD	short link	https://lnkd.in/g2VvfKeW	Apply via careers page	WBD careers page title also captured in the post.
+77	2026-07-05T14:32:29.8728965-04:00	Allen Wang, Ditto	text only		Apply in comments or via posted path	No direct URL captured from the post text.
+88	2026-07-05T14:32:29.8728965-04:00	Pierre Elias, NYP / OpenEvidence	text only		Apply via the posted path	Medical AI hiring post; no stable URL captured.

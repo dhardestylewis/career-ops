@@ -49,7 +49,7 @@ Available commands:
   /career-ops pipeline  → Process pending URLs from inbox (data/pipeline.md)
   /career-ops oferta    → Evaluation only A-F (no auto PDF)
   /career-ops ofertas   → Compare and rank multiple offers
-  /career-ops contacto  → LinkedIn power move: find contacts + draft message
+  /career-ops contacto  → Multi-lane outreach: find contacts + draft message
   /career-ops deep      → Deep research prompt about company
   /career-ops pdf       → PDF only, ATS-optimized CV
   /career-ops training  → Evaluate course/cert against North Star
@@ -64,6 +64,8 @@ Available commands:
 Inbox: add URLs to data/pipeline.md → /career-ops pipeline
 Or paste a JD directly to run the full pipeline.
 ```
+
+<!-- Bundled in-repo so CI and local shells can read the skill without an external symlink. -->
 
 ---
 
