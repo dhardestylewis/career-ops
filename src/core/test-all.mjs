@@ -157,7 +157,7 @@ for (const f of systemFiles) {
 
 // Check user files are NOT tracked (gitignored)
 const userFiles = [
-  'config/profile.yml', 'modes/_profile.md', 'portals.yml',
+  'config/profile.yml', 'modes/_profile.md', 'modes/_custom.md', 'portals.yml',
 ];
 for (const f of userFiles) {
   const tracked = run(`git ls-files ${f}`);
