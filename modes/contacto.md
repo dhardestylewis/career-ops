@@ -1,5 +1,7 @@
 # Mode: contacto -- Outreach messages
 
+> This mode is job-search specific. For GTM lead, customer, partner, or advisor outreach, use `modes/gtm-outreach.md`.
+
 > Apply `voice-dna.md` (if present) to every generated message — full guardrail, conversational voice included (Tier 1 + Tier 2). See `_shared.md` → Voice DNA.
 
 This mode has two variants that share the same persona engine (recruiter → hard
