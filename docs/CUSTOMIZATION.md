@@ -68,6 +68,14 @@ Career-ops can integrate with external systems via Claude Code hooks. Example ho
 
 Save hooks in `.claude/settings.json` (Claude Code). OpenCode does not support hooks. For equivalent functionality, use custom commands (`.opencode/commands/`) or agents (`.opencode/agents/`) — see https://opencode.ai/docs/commands/.
 
+## Resume Asset
+
+For outreach and application workflows, the canonical resume attachment is:
+
+- `data/assets/resume-dhl-20260630-causal-mle.pdf`
+
+If that file is missing, consult `docs/resume-attachment.md` for the source path and restore the PDF before sending anything that expects an attachment.
+
 ## States (templates/states.yml)
 
 The canonical states rarely need changing. If you add new states, update:
