@@ -65,6 +65,8 @@ Inbox: add URLs to data/pipeline.md → /career-ops pipeline
 Or paste a JD directly to run the full pipeline.
 ```
 
+<!-- Bundled in-repo so CI and local shells can read the skill without an external symlink. -->
+
 ---
 
 ## Context Loading by Mode
