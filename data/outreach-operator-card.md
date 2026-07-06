@@ -17,7 +17,9 @@ Use this first if you are the next agent picking up live outreach.
 - Bellwether is closed as an application thread. Gabriel Schook is a warm recruiter contact for other X openings only.
 - Canonical draft source: `data/outreach-drafts.md`; `data/outreach-next-batch.md` is the compact mirror view.
 - New queue files: `data/outreach-drafts.md`, `data/outreach-next-batch.md`, `data/outreach-targets.tsv`, `data/outreach-universe.tsv`, `data/outreach-queue.tsv`.
-- SPC status is tracked in `spc_affiliation` and `spc_checked_at` across the dossier and queue rows.
+- Terra AI research-role package is staged for John Mern, Anthony Corso, Markus Zechner, Michael L. Spence, Richard Rex, and the `contact@terraAI.earth` fallback; live LinkedIn checks are complete and show all five people as 2nd-degree, so there is no direct DM lane from this account.
+- SPC status is still pending because the pando member directory and South Park Commons Slack check are not yet verified in a live authenticated surface. The live Pando search and the PDF export did not surface clear exact-name member hits for the Terra AI targets, so the work pitch remains blocked.
+- Archived SPC evidence lives at `data/archive/south-park-commons-members-2026-07-05.pdf` with a companion note at `data/archive/south-park-commons-members-2026-07-05.md`; future agents should use those files for provenance, not as a substitute for live SPC verification.
 - Dossier gate: no first-touch or follow-up send until the contact dossier is complete and source-backed.
 - South Park Commons gate: before any work, money, gigs, contracts, or jobs outreach, verify the recipient in the pando member directory and South Park Commons Slack; if they are SPC-affiliated or the result is unclear, do not send the work pitch.
 - User routing notes:
@@ -49,9 +51,12 @@ Use this first if you are the next agent picking up live outreach.
 - Keep LinkedIn short and email only when more context is needed.
 - Use the lane-specific template that matches the contact type.
 - Do not send if the path is blocked or the message needs more than one proof point.
+- Use the state machine: research -> blocked -> draft -> ready -> sent -> waiting -> replied -> no-contact.
+- After each send, log it immediately in `data/outreach-log.md` before moving on.
 - For professors and former instructors, prefer public work references when available instead of generic gratitude.
 - Before sending, check the recipient's current LinkedIn profile or organization page. If they moved, rewrite the note as a reconnect or current-role note, not an active-role follow-up.
 - Before any work, money, gigs, contracts, or jobs outreach, check South Park Commons affiliation first and avoid work pitches to SPC-affiliated or unclear contacts.
+- Before drafting, sync the latest branch/PR state and outreach ledger so parallel agents stay aligned.
 - If a reply needs judgment, stop and notify the user.
 - If there is no reply, use the first follow-up after 3 to 5 business days and the second after another 3 to 5 business days.
 
@@ -71,4 +76,6 @@ Use this first if you are the next agent picking up live outreach.
 - Do not re-send duplicates already recorded in the log.
 - Do not treat a Gmail notification that merely mentions Gabriel Schook, Bellwether, xwf, or GoogleX in the body as an outreach thread; only log or reply when the sender, subject, and thread context clearly match the actual person or recruiter conversation.
 - Do not send if the contact dossier is incomplete.
+- Do not send if the attachment is not ready or the reply route has not been chosen.
+- Do not treat drafts or next-batch as the source of truth.
 - If Chrome already has a live authenticated LinkedIn, Pando, or Superhuman tab open, preserve it and keep working from that session instead of reauthenticating from scratch.

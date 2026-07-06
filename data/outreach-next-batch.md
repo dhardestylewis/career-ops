@@ -101,3 +101,13 @@ Warm founder/community note from the Othership credit thread. Keep it light and 
 Status: Watch / no contact
 
 Active DM about meeting near Cooper Square. Keep it purely logistical and short, but do not send another note unless the thread changes.
+
+## Terra AI research role
+Status: Draft / research / LinkedIn checked (all Terra AI targets here are 2nd-degree) / SPC pending
+
+- John Mern - CEO/co-founder. LinkedIn checked: 2nd-degree, so use a short note rather than a DM. Email fallback: `contact@terraAI.earth`.
+- Anthony Corso - CTO/co-founder. LinkedIn checked: 2nd-degree, so use a short note rather than a DM. Email fallback: `contact@terraAI.earth`.
+- Markus Zechner - Co-founder / GM of Reservoirs. LinkedIn checked: 2nd-degree, so use a short note rather than a DM. Email fallback: `contact@terraAI.earth`.
+- Michael L. Spence - Chief of Staff. LinkedIn checked: 2nd-degree, so use a short note rather than a DM. Treat as the hiring-ops proxy because no verified recruiter surfaced. Email fallback: `contact@terraAI.earth`.
+- Richard Rex - Senior AI/ML Engineer. LinkedIn checked: 2nd-degree, so use a short note rather than a DM. Email fallback: `contact@terraAI.earth`.
+- Terra AI contact fallback - public company email route for the research-role package.

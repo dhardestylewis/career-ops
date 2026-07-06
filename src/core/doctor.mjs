@@ -9,8 +9,7 @@ import { existsSync, mkdirSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const projectRoot = join(__dirname, '..', '..');
+const projectRoot = join(dirname(fileURLToPath(import.meta.url)), '../..');
 
 // ANSI colors (only on TTY)
 const isTTY = process.stdout.isTTY;
