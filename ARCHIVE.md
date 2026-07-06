@@ -29,4 +29,3 @@ This repository is a durable career-ops workspace for job search, outreach, and 
 - Keep the outreach workflow safe, repeatable, and deduplicated.
 - Keep future agents aligned on SPC gating, reply routing, and immediate logging.
 - Leave one canonical path for drafting, sending, and follow-up.
-
