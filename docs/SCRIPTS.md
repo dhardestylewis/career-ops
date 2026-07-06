@@ -25,6 +25,7 @@ All scripts live in the project root as `.mjs` modules and are exposed via `npm 
 | `npm run validate:portals` | `validate-portals.mjs` | Validate portals.yml shape before scanning |
 | `npm run tracker` | `tracker.mjs` | SQLite derived index over applications.md — sync/query/history/export |
 | `npm run find` | `find.mjs` | Resolve a report#/tracker#/company query to its full pipeline identity |
+| `npm run outreach:audit -- "Name"` | `src/dataOps/outreach-recipient-audit.mjs` | Audit outreach state for a recipient before any live send |
 
 ---
 
@@ -320,3 +321,23 @@ node find.mjs acme --json       # machine-readable output
 Multiple matches print as a table; zero matches print a clean message.
 
 **Exit codes:** `0` at least one match, `1` no match, missing query, or no `applications.md`.
+
+---
+
+## outreach:audit
+
+Audits outreach state for one recipient before any live send or follow-up. It checks the outreach ledger, targets, routes, log, drafts, dossier, operator card, next-batch mirror, and LinkedIn feed captures for prior-touch evidence.
+
+```bash
+npm run outreach:audit -- "Li-Yun (James) Wang"
+npm run outreach:audit -- "Li-Yun (James) Wang" --json
+```
+
+Use it immediately before drafting final send copy or replying in a live session.
+
+**Exit codes:**
+
+- `0` no prior-send evidence found; a new outreach may be possible if the dossier and SPC checks also clear
+- `2` prior send or live thread found; do not send a new intro
+- `3` recipient already exists in a draft, research, or blocked workflow; resolve that state first
+- `1` usage error or runtime failure

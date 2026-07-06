@@ -1,0 +1,36 @@
+{
+  "payload": {
+    "company": "Scale AI",
+    "role": "Senior/Staff Machine Learning Engineer, General Agents, Enterprise GenAI",
+    "url": "https://job-boards.greenhouse.io/scaleai/jobs/4658162005",
+    "submittedAt": "2026-07-06T09:08:05.4780000Z",
+    "fields": {
+      "#first_name": "Daniel",
+      "#last_name": "Lewis",
+      "#email": "daniel@homecastr.com",
+      "#resume_text": "[manual resume text pasted from canonical PDF content]",
+      "#question_8372040005": "https://www.linkedin.com/in/dhardestylewis/",
+      "#question_8372041005": "https://dlewis.ai",
+      "#question_8372042005": "Yes",
+      "#question_8372043005": "No",
+      "#question_8372045005": "Yes",
+      "#question_8372046005": "No",
+      "#country": "United States +1",
+      "#phone": "7133717875",
+      "#gender": "Male",
+      "#hispanic_ethnicity": "Decline To Self Identify",
+      "#veteran_status": "I am not a protected veteran",
+      "#disability_status": "No, I do not have a disability and have not had one in the past"
+    },
+    "meta": {
+      "resumeMode": "manual-text-fallback",
+      "resumeSource": "C:/Users/dhl/data/Portfolio/career-ops/data/assets/resume-dhl-20260630-causal-mle.pdf"
+    }
+  },
+  "post": {
+    "submittedAt": "2026-07-06T09:08:05.4780000Z",
+    "url": "https://job-boards.greenhouse.io/scaleai/jobs/4658162005",
+    "invalidCount": 0,
+    "success": true
+  }
+}
