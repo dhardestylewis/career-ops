@@ -10,6 +10,8 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Do not send anything until the user has approved the recipient batch, unless the user explicitly asks for a specific send.
 - If thread context is unclear, stop at `draft only`.
 - Never "fix" a bad send with a second apology or self-correction unless the user explicitly asks for it.
+- Before any live send, stage the exact outbound copy in `data/outreach/*send-packet.md` and run `node src/dataOps/outreach-preflight.mjs --packet <path>`.
+- A failed preflight is a hard stop. Do not improvise in the browser composer after a failure.
 
 ## Thread State
 
@@ -38,6 +40,15 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Log every live outbound touch in `data/outreach/log.md` before moving to the next recipient.
 - Keep the discovery trail in the appropriate TSV or note file so future agents can recover the context without reopening the browser session.
 - Do not invent contact details, application links, or replies.
+- If a send misfire ever happens, archive the thread, log the incident in the operator card, and tighten the packet or dossier before any further outreach that session.
+
+## Preflight Requirements
+
+- The send packet must contain one `### Recipient Name` block per outbound note.
+- The greeting in the message body must match that recipient exactly.
+- The body must not contain another recipient's name from the same packet.
+- Every sendable contact must have a matching `contact:` block in `data/outreach/contact-dossier.md` with `status: ready...`, `why_now`, `hook`, `proof_point`, and `ask` filled from sources.
+- Any work-related pitch also needs recorded `spc_affiliation` and `spc_checked_at` values before preflight can pass.
 
 ## Discovery Sources
 

@@ -79,6 +79,7 @@ Prioritize by `action_state`:
 
 - `followup_due` - send now
 - `ready` - send the first touch or discovery note if the dossier is complete
+- `ready` still requires `node src/dataOps/outreach-preflight.mjs --packet <send-packet-path>` to pass before anything is actually sent
 - `research` - find the right route first
 - `blocked` - stop and ask for judgment or access
 
