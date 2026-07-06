@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 
-import './src/core/test-all.mjs';
+// Backward-compatible shim for callers that invoke the test suite from the repo root.
+await import('./src/core/test-all.mjs');

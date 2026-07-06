@@ -23,6 +23,10 @@ let passed = 0;
 let failed = 0;
 let warnings = 0;
 
+function parseVersion(raw) {
+  return raw.trim().split(/\s+/)[0] || '';
+}
+
 function pass(msg) { console.log(`  ✅ ${msg}`); passed++; }
 function fail(msg) { console.log(`  ❌ ${msg}`); failed++; }
 function warn(msg) { console.log(`  ⚠️  ${msg}`); warnings++; }
@@ -282,7 +286,7 @@ for (const section of requiredSections) {
 console.log('\n10. Version file');
 
 if (fileExists('VERSION')) {
-  const version = readFile('VERSION').trim();
+  const version = parseVersion(readFile('VERSION'));
   if (/^\d+\.\d+\.\d+$/.test(version)) {
     pass(`VERSION is valid semver: ${version}`);
   } else {
