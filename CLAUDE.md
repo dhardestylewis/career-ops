@@ -63,6 +63,10 @@ Auto-memory **never** holds content claims about the user's work, technical acco
 
 Rules belong in files the harness reads automatically — `CLAUDE.md`, `AGENTS.md`, `modes/*.md`, `MEMORY.md`. Do not create sidecar documentation that requires manual loading. Reinforcement-without-enforcement decays.
 
+- Before live outreach, refresh the latest branch/PR state and outreach ledger so parallel agents stay aligned.
+- Use `data/outreach-operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach-log.md` as the live-send ledger.
+- Do not split outreach state across drafts, queue, and log; the queue is the worklist and the log is the source of truth.
+
 ## Update Check
 
 On the first message of each session, run the update checker silently:
@@ -284,6 +288,12 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 - `cv.md` in project root is the canonical CV
 - `article-digest.md` has detailed proof points (optional)
 - **NEVER hardcode metrics** -- read them from these files at evaluation time
+
+### Default Resume Attachment
+
+- `data/assets/resume-dhl-20260630-causal-mle.pdf` is the default PDF attachment for applications, autofill tests, and outreach workflows.
+- `src/core/resume-asset.mjs` is the single source of truth for that path.
+- `data/assets/resume-dhl-20260421-staff-mle.pdf` is a legacy artifact and should not be used by default.
 
 ---
 
