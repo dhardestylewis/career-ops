@@ -658,3 +658,140 @@ Best,
 Daniel
 ```
 
+## Columbia / housing research routing: Douglas Woodward
+
+**To:** Douglas Woodward <dw38@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Columbia GSAPP. Current-role routing contact, not a collaborator.
+
+**Dossier**
+- Relationship: career-routing contact in the Columbia GSAPP urban planning program.
+- Last touch: 2026-07-06 reply in the Columbia GSAPP thread.
+- Why now: Douglas asked for more specificity, and I now have the named contacts plus a current resume to make the routing easier.
+- Hook: GSAPP lists him as the Associate Director for Professional Development and Practice and the Urban Planning career-services contact.
+- Proof point: current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+- Ask: names or an introduction to the best current contact for affordable housing or housing-data / innovation work.
+- Avoid: collaborator language, abstract lane-narrowing language, or a long status update.
+- Status: sent.
+- Next follow-up: wait for reply; if none, one brief nudge after 4 business days.
+
+**Subject:** Re: Opportunity routing from Homecastr
+
+```text
+Hi Douglas,
+
+Thanks again for the pointers and for narrowing the lane. I’ve attached my current 06/30 causal MLE resume in case it helps with routing. If one or two specific contacts come to mind for affordable housing or housing-data and innovation roles, I’d be grateful for the names or an introduction.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Brad Greenburg
+
+**To:** Brad Greenburg <brad.greenburg@nyu.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** Furman / quick routing question
+
+```text
+Hi Brad,
+
+Douglas Woodward pointed me to Furman as one of the strongest housing research homes in the field. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know who at Furman is the best person to speak with about housing research and data work.
+
+If someone else is a better first stop, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Galia Solomonoff
+
+**To:** Galia Solomonoff <gs66@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** GSAPP Housing Lab / quick routing question
+
+```text
+Hi Galia,
+
+Douglas Woodward pointed me to the GSAPP Housing Lab, and the lab page says you direct it. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a good Columbia contact for housing research that touches student collaboration too.
+
+If another person on the GSAPP side is better, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Howard Slatkin
+
+**To:** Howard Slatkin <info@chpcny.org>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** CHPC / quick routing question
+
+```text
+Hi Howard,
+
+Douglas Woodward pointed me to CHPC as a housing NGO think tank worth knowing. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know who at CHPC is the best person to speak with about housing research and data work.
+
+If someone else is the better first stop, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Weiping Wu
+
+**To:** Weiping Wu <weiping.wu@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** Columbia housing initiative / quick routing question
+
+```text
+Hi Weiping,
+
+GSAPP Academic and Student Affairs pointed me your way, and Douglas Woodward also mentioned Columbia’s housing initiative. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a good Columbia contact for housing research or student-facing work this summer.
+
+If another person would be better, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Kerry Donahue
+
+**To:** Kerry Donahue <kerry_donahue@harvard.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** JCHS / quick routing question
+
+```text
+Hi Kerry,
+
+Douglas Woodward mentioned the Joint Center as one of the strongest housing research groups to know. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a better person at JCHS to speak with about housing research or fellowship paths.
+
+If you’re the right contact, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+

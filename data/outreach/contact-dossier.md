@@ -256,3 +256,113 @@ action_state: sent
 next_followup: Wait for his reply; only follow up if he responds or asks for more context.
 spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
 spc_checked_at: 2026-07-06
+
+## Columbia / housing research routing
+
+### Douglas Woodward
+
+contact: Douglas Woodward
+relationship: Columbia GSAPP career-routing contact; not a collaborator
+lane: Columbia program routing
+source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.arch.columbia.edu/faculty/353-douglas-woodward; https://www.arch.columbia.edu/career-services; https://www.arch.columbia.edu/programs/10-m-s-urban-planning
+last_touch: 2026-07-06 reply in the Columbia GSAPP thread asking what mission or housing lane I was targeting.
+why_now: Douglas asked for more specificity, and I now have the named contacts plus a current resume to make the routing easier.
+hook: GSAPP lists him as the Associate Director for Professional Development and Practice and the Urban Planning career-services contact.
+proof_point: Attached current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+ask: Ask for the names or an introduction to the best current contact for affordable housing or housing-data / innovation work.
+avoid: Collaborator language, abstract lane-narrowing language, or broad follow-up phrasing like "if helpful, I can narrow this more."
+status: sent
+action_state: sent
+next_followup: wait for reply; if none, one brief nudge after 4 business days.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Brad Greenburg
+
+contact: Brad Greenburg
+relationship: cold institutional contact; current executive director of the NYU Furman Center
+lane: research routing
+source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.furmancenter.org/people/brad-greenburg/; https://www.furmancenter.org/contact/; https://www.furmancenter.org/for-the-media/
+last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, which named Furman as a housing research home worth contacting.
+why_now: Douglas pointed me to Furman while I was narrowing the housing and urban-data lane, and Furman is currently active on housing research and data inquiries.
+hook: Brad is the current executive director, and Furman routes media inquiries through Donna Borak and data inquiries through Rohun Iyer.
+proof_point: Homecastr's housing forecasting and validation stack plus my production ML background fit a data and research conversation.
+ask: Ask for the best person at Furman to speak with about housing research and data work.
+avoid: Turning it into a broad job pitch, leading with salary, or overexplaining the full founder story.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-13 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Galia Solomonoff
+
+contact: Galia Solomonoff
+relationship: cold Columbia faculty contact; director of the GSAPP Housing Lab
+lane: lab routing
+source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.arch.columbia.edu/research/labs/15-housing-lab; https://www.arch.columbia.edu/faculty/201-galia-solomonoff
+last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, which named the GSAPP Housing Lab.
+why_now: Douglas pointed me to the Housing Lab, and the lab page currently lists Galia as Director and gives the current faculty and alumni routing addresses.
+hook: Galia directs the lab, and the page routes faculty to facultyaffairs@arch.columbia.edu and alums or professionals to gsappalumni@columbia.edu.
+proof_point: Homecastr's housing forecasting and validation stack gives me a concrete way into housing research.
+ask: Ask whether there is a Columbia contact for housing research that could include student collaboration.
+avoid: Making it sound like a generic cold pitch or an active hiring request.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-13 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Howard Slatkin
+
+contact: Howard Slatkin
+relationship: cold institutional contact; executive director of CHPC
+lane: public-interest routing
+source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://chpcny.org/about-us/our-staff/; https://chpcny.org/chpc-welcomes-new-executive-director-howard-slatkin/
+last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, which named CHPC as a housing NGO think tank worth knowing.
+why_now: Douglas pointed me to CHPC as a housing nonprofit worth knowing, and CHPC is currently active on housing policy and planning.
+hook: Howard is the current executive director, and CHPC's public contact is info@chpcny.org.
+proof_point: Homecastr's housing forecasting and validation stack plus my applied ML background fit a data and policy conversation.
+ask: Ask for the best person at CHPC to speak with about housing research and data work.
+avoid: Overloading him with a long founder bio or a broad ask.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-13 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Weiping Wu
+
+contact: Weiping Wu
+relationship: cold Columbia faculty contact; Professor and Director of the M.S. in Urban Planning program
+lane: Columbia program routing
+source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://provost.columbia.edu/people/weiping-wu; https://www.arch.columbia.edu/research/labs/15-housing-lab
+last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, plus the GSAPP Academic and Student Affairs note that pointed me to Weiping Wu.
+why_now: Columbia is putting together a housing initiative this summer, and GSAPP academic staff already pointed to Weiping as the director of planning.
+hook: Weiping currently directs the urban planning program and works on housing and infrastructure.
+proof_point: Homecastr's housing forecasting and validation stack gives a concrete applied-ML bridge.
+ask: Ask whether there is a Columbia contact for housing research or student-facing work this summer.
+avoid: Treating it like a generic cold pitch or sounding like I am trying to force a match.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-13 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Kerry Donahue
+
+contact: Kerry Donahue
+relationship: cold institutional contact; director of communications at the Harvard Joint Center for Housing Studies
+lane: research center routing
+source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.jchs.harvard.edu/staff/kerry-donahue; https://www.jchs.harvard.edu/staff; https://www.jchs.harvard.edu/state-nations-housing-2026
+last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, which named the Harvard Joint Center as a respected housing research home.
+why_now: Douglas pointed me to JCHS as a respected housing research group, and the 2026 State of the Nation's Housing page lists Kerry as the current media contact.
+hook: Kerry is the communications director and the public contact for interview requests at JCHS.
+proof_point: Homecastr's housing forecasting and validation stack plus my applied ML background are a credible bridge into housing research.
+ask: Ask whether there is a better person at JCHS to speak with about housing research or fellowship paths.
+avoid: Making it sound like a blanket networking blast or a direct pitch for a specific opening.
+status: ready to send
+action_state: ready
+next_followup: 2026-07-13 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06

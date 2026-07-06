@@ -39,6 +39,8 @@ data/chrome-bot-profile*/
 artifacts/
 
 data/archive/chrome-bot-profile*/
+data/archive/submission_*.json
+data/archive/submission_*.png
 
 # User data (personalization — never commit)
 config/profile.yml

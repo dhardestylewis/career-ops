@@ -125,6 +125,26 @@ Best,
 Hi [Name] - I found your work through the [school] network. I've been building [proof point], and I would love to ask who the best person is to speak with about [area].
 ```
 
+### Career Routing Contact Follow-up
+
+**Use when:** the recipient is a program, career-services, or professional-development contact whose job is to route you to the right person.
+
+**Email**
+
+```text
+Hi [Name],
+
+Thanks again for the pointers. I have attached my current resume in case it helps with routing. If one or two specific contacts come to mind for [lane], I would be grateful for the names or an introduction.
+
+Best,
+[Your Name]
+```
+
+**Why this works**
+- Treats the recipient as a router instead of a collaborator.
+- Gives them a concrete artifact they can use immediately.
+- Asks for names or an introduction, not a vague lane-narrowing conversation.
+
 ### Lab Lead / Researcher Note
 
 **Use when:** the recipient leads a lab, program, or research group.
