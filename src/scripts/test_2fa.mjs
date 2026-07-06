@@ -69,7 +69,7 @@ async function getLatestGreenhouseCode() {
     
     console.log(`Navigating to ${testUrl}...`);
     await page.goto(testUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    
+
     console.log("Auto-filling form...");
     const profileConfig = loadProfileConfig();
     await populateGreenhouse(page, testUrl, getResumePath(profileConfig), profileConfig, true);

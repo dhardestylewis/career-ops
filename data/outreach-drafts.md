@@ -2,7 +2,17 @@
 
 Date: 2026-07-05
 
-Draft-only workspace. Nothing below has been sent yet. Check `data/outreach-log.md` for the live-send ledger.
+Draft-only workspace. These are the drafted originals and routing notes; check `data/outreach-log.md` for the live-send ledger.
+
+Parallel worktree notes:
+
+- The live outreach queue is carried in the active worktree for the recruiter / academic / alumni lanes.
+- The current cleanup worktree should not be used as a second copy of this batch.
+
+Source page:
+
+- Zoom event: `Cohere Labs Community ML Summer School`
+- Speakers and session titles were read from the live event page already open in the browser.
 
 Send gate:
 
@@ -240,7 +250,7 @@ Daniel
 - Proof point: I build Homecastr and spend a lot of time thinking about high-output founder rhythms and systems.
 - Ask: stay in touch and compare notes on founders, recovery, or community.
 - Avoid: making it feel like a random cold pitch.
-- Status: ready to send once the SPC check clears.
+- Status: ready to send.
 - Next follow-up: one gentle nudge only if there is no reply and the thread stays relevant.
 
 **Subject:** Thanks for the note
@@ -299,309 +309,469 @@ These are not sent yet. Use them only after checking the person's current Linked
 - Raymond Sheerin, Guardian Life: senior recruiter. Possible ask is whether he knows adjacent data / AI recruiter contacts or hiring managers in finance / insurance.
 - Cora Moore, Elwood Staffing: lead staffing recruiter. Possible ask is whether she has students / early-career / technical recruiter contacts who touch climate, GIS, or ML.
 - Kimberly, Toptal: recruiter. Possible ask is whether there are other freelancer / contract-network recruiter contacts.
-- Allison Rebaza, Tech Holding: technical recruiter. Possible ask is whether she has other contractor-focused technical recruiter contacts.
 
-## AllianceBernstein: Bernd Wuebben
+## Cohere Labs Community ML Summer School
 
-**To:** Bernd Wuebben
+### Amir Bar
 
-**Channel:** LinkedIn
+**Current role:** Assistant Professor at Imperial College London and Researcher at AMI Labs
+
+**Session:** World Models with Amir Bar
+
+**Channel:** LinkedIn connection request
 
 **Status:** Draft only, not sent
 
-**LinkedIn / public check:** Global Head - Fixed Income Systematic Investing and Quantitative Research at AllianceBernstein. His profile emphasizes modern asset pricing theory, ML, agentic AI, systematic fixed income, and Portfolio Management 2.0. Mutual connections: Johan, Spencer, and others.
+```text
+Hi Amir - I saw your work at Imperial College London and AMI Labs, and I'm looking forward to your World Models session. I'm building Homecastr's production forecasting stack, so the world-model angle feels close to my work. If you're around before the session, I'd love to grab coffee.
+```
+
+### Elizabeth Lingg
+
+**Current role:** Director, Applied Research, Thomson Reuters Labs
+
+**Session:** Career Building Panel with Puyuan Peng, Sreyan Ghosh & Elizabeth Lingg
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Elizabeth - I saw your work at Thomson Reuters Labs and I'm looking forward to the Career Building Panel. I'm currently building Homecastr's production ML systems, so the applied-research path feels directly relevant. If you're around before the panel, I'd love to grab coffee.
+```
+
+### Irem Ergun
+
+**Current role:** Senior Machine Learning Engineer at Cohere
+
+**Session:** Beginners journey with Julia Kreutzer and Irem Ergun
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Irem - I saw your work at Cohere and I'm looking forward to the Beginners journey session. I'm building production ML systems at Homecastr, and the path from strong engineering to real-world shipping feels especially relevant. If you're around before the session, I'd love to grab coffee.
+```
+
+### Julia Kreutzer
+
+**Current role:** Senior Research Scientist at Cohere Labs
+
+**Session:** Beginners journey with Julia Kreutzer and Irem Ergun
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Julia - I saw your work at Cohere Labs and I'm looking forward to the Beginners journey session. I'm currently building Homecastr's forecasting and evaluation stack, so the research-to-practice arc feels very close to my day to day. If you're around before the session, I'd love to grab coffee.
+```
+
+### Katrina Lawrence
+
+**Current role:** Applied Mathematician
+
+**Session:** ML Math with Katrina Lawrence
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Katrina - I saw your work as an applied mathematician and I'm looking forward to ML Math. I'm building Homecastr's production forecasting system, so the math and evaluation side feels directly relevant to what I am doing now. If you're around before the session, I'd love to grab coffee.
+```
+
+### Laurie Voss
+
+**Current role:** Head of Developer Relations at Arize
+
+**Session:** Evaluations with Laurie Voss
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Laurie - I saw your work at Arize and I'm looking forward to Evaluations. I'm currently building Homecastr's forecasting stack with a heavy validation discipline, so your session feels especially aligned. If you're around before the session, I'd love to grab coffee.
+```
+
+### Maxime Labonne
+
+**Current role:** Head of Post-Training @ Liquid AI
+
+**Session:** Building the First Agentic Model for Edge Devices with Maxime Labonne
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Maxime - I saw your work at Liquid AI and I'm looking forward to Building the First Agentic Model for Edge Devices. I'm building production ML systems at Homecastr, and the reliability plus deployment side feels like a strong overlap. If you're around before the session, I'd love to grab coffee.
+```
+
+### Nishanth Anand
+
+**Current role:** Ph.D. graduate, McGill University and Mila
+
+**Session:** Summer school speaker lineup
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Nishanth - I saw your work at Mila and I'm looking forward to the summer school lineup. I'm building Homecastr's production ML and evaluation stack, so the research-to-practice path feels very relevant. If you're around before the event, I'd love to grab coffee.
+```
+
+### Puyuan Peng
+
+**Current role:** Researcher at Meta Superintelligence Lab
+
+**Session:** Career Building Panel with Puyuan Peng, Sreyan Ghosh & Elizabeth Lingg
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Puyuan - I saw your work at Meta Superintelligence Lab and I'm looking forward to the Career Building Panel. I'm currently building Homecastr's forecasting systems, so the path from research to shipped product feels directly relevant. If you're around before the panel, I'd love to grab coffee.
+```
+
+### Ram Mohan Rao Kadiyala
+
+**Current role:** Community Projects lead at Cohere Labs Community
+
+**Session:** Agentic AI fundamentals with Ram Kadiyala
+
+**Channel:** LinkedIn connection request
+
+**Status:** LinkedIn follow-up sent; email invite sent
+
+**Follow-up note:** Thursday, July 9 is busy, but Friday, July 10 is open. Best overlap is 7:00 AM ET / 4:30 PM IST for a virtual coffee.
+
+```text
+Friday, July 10 at 4:30 PM IST / 7:00 AM ET works for me. I'll send the invite to contact@rkadiyala.com now. Looking forward to coffee before the session.
+```
+
+### Siddhant Gupta
+
+**Current role:** Co-founder and CTO, Cadingo
+
+**Session:** The Death of NLP? with Siddhant Gupta
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Siddhant - I saw your work at Cadingo and I'm looking forward to The Death of NLP?. I'm building Homecastr's production forecasting stack, and the shift from language models to broader agentic systems feels like a useful overlap. If you're around before the session, I'd love to grab coffee.
+```
+
+### Sreyan Ghosh
+
+**Current role:** Research at Google DeepMind
+
+**Session:** Career Building Panel with Puyuan Peng, Sreyan Ghosh & Elizabeth Lingg
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Sreyan - I saw your work at Google DeepMind and I'm looking forward to the Career Building Panel. I'm building Homecastr's production ML systems, and the research-to-production bridge is exactly what I'm working through now. If you're around before the panel, I'd love to grab coffee.
+```
+
+### Tushar Udeshi
+
+**Current role:** Software Engineer at Khan Academy
+
+**Session:** Edtech with Tushar Udeshi
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Tushar - I saw your work at Khan Academy and I'm looking forward to Edtech. I'm currently building Homecastr's production ML and evaluation stack, so the applied learning and product side feels very relevant. If you're around before the session, I'd love to grab coffee.
+```
+
+### Vivian White
+
+**Current role:** CS PhD student at UBC
+
+**Session:** Computer Vision Fundamentals with Vivian White and Yash Mali
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Vivian - I saw your work at UBC and I'm looking forward to Computer Vision Fundamentals. I'm building Homecastr's forecasting systems, so the modeling and evaluation rigor feels directly relevant. If you're around before the session, I'd love to grab coffee.
+```
+
+### Yash Mali
+
+**Current role:** AI Research, The University of British Columbia
+
+**Session:** Computer Vision Fundamentals with Vivian White and Yash Mali
+
+**Channel:** LinkedIn connection request
+
+**Status:** Draft only, not sent
+
+```text
+Hi Yash - I saw your work at UBC and I'm looking forward to Computer Vision Fundamentals. I'm building Homecastr's production ML systems, so the research-to-deployment bridge feels especially close to what I am doing now. If you're around before the session, I'd love to grab coffee.
+```
+
+## Terra AI research-role outreach
+
+Target role: `Senior/Staff Machine Learning Researcher`
+
+Send gate:
+
+- Do not send any work pitch until the SPC check is complete.
+- Check each LinkedIn profile in the live session before choosing DM vs note-style connection request.
+- If the profile is not 1st-degree, use a short connection note.
+- If a direct person email is not visible, use `contact@terraAI.earth` as the fallback route.
+
+### John Mern
+
+**To:** John Mern
+
+**Channel:** LinkedIn note (2nd-degree)
+
+**Status:** Draft only, not sent
+
+**LinkedIn / public check:** CEO and co-founder of Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
 
 **Dossier**
-- Relationship: adjacent company leader; currently a cold-to-warm company contact through public profile and shared quant/ML interests.
-- Last touch: none yet.
-- Why now: his current role is a direct bridge to the kind of production ML, forecasting, and reliability work I am building at Homecastr.
-- Hook: the mix of systematic fixed income, machine learning, and agentic AI maps cleanly to the Homecastr forecasting stack.
-- Proof point: I have built production geospatial forecasting systems at scale and can speak to model validation, reliability, and execution.
-- Ask: a short LinkedIn note asking for a quick conversation about systematic alpha, portfolio construction, and ML in fixed income.
-- Avoid: making it a raw job ask or over-explaining the whole product.
-- SPC gate: check affiliation before any work, money, gig, or job pitch.
-- Status: draft only.
-- Next follow-up: one nudge after 7 business days if he accepts or if there is a clear reason to reconnect.
+- Relationship: cold company leader and boss-of-bosses target.
+- Last touch: none.
+- Why now: Terra AI is actively hiring a Senior/Staff Machine Learning Researcher.
+- Hook: the role sits at the intersection of generative AI, foundation modeling, and autonomous decision optimization for geosciences.
+- Proof point: production ML, geospatial AI, distributed systems, and research-heavy modeling from my CV.
+- Ask: connect and tell me who is best to speak with about the research team.
+- Avoid: a long bio or asking about multiple roles.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but do not send before the SPC gate is cleared.
+- Next follow-up: one nudge after 5 business days if there is no reply.
 
-**Message**
+**Subject:** Terra AI research role
 
 ```text
-Hi Bernd,
-
-I came across your profile and the way you describe systematic fixed income, machine learning, and agentic AI at AllianceBernstein. That blend feels unusually close to the forecasting and model-validation work I have been building at Homecastr.
-
-If you are open to it, I would love a quick conversation and to hear how you think about systematic alpha and portfolio construction in fixed income.
-
-Best,
-Daniel
+Hi John - Terra AI's Senior/Staff ML Researcher role feels directly aligned with the production ML, geospatial modeling, and validation work I've been building. If helpful, I'd love to connect and hear who is best to speak with about the research team.
 ```
 
-## Professor-specific hook table
+### Anthony Corso
 
-Use this to keep the opener personal without dumping a full bio:
+**To:** Anthony Corso
 
-| Person | Public-work hook | Shared context | Small ask |
-|---|---|---|---|
-| Ali Hirsa | Financial Engineering Program + Center for AI in Business Analytics & FinTech | Columbia latent-factor modeling and production ML | brief reconnect and any research direction to keep in mind |
-| Paola Passalacqua | Hydrology and River System Science at ETH Zurich and Eawag | TACC disaster resiliency and flood modeling | quick catch-up and advice on current research directions |
-| Christopher Munsell | Real Estate Development Finance at Columbia GSAPP | MS Urban Planning reference and housing work | quick catch-up and advice on the housing / real-estate side of the work |
-
-## FinTech Pitch: Oliver Doering
-
-**To:** Oliver Doering
-
-**Channel:** Email
+**Channel:** LinkedIn note (2nd-degree)
 
 **Status:** Draft only, not sent
 
-**Context:** Oliver wrote in the Gmail thread asking whether I would like to pitch at the virtual FinTech Investment Conference, then followed up on Jun 24 and Jun 28.
+**LinkedIn / public check:** CTO and co-founder of Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
 
 **Dossier**
-- Relationship: inbound conference organizer / warm opportunity.
-- Last touch: Jun 28, 2026 in the Gmail thread.
-- Why now: he explicitly asked whether I would like to pitch and the event window is current.
-- Hook: the conference is a direct route to tell the Homecastr story to finance and investor audiences.
-- Proof point: Homecastr's nationwide property-value forecasting and production ML stack give a concrete pitchable story.
-- Ask: confirm interest and ask for deck format, pitch length, and deadline.
-- Avoid: overlong company history; keep it to the pitch and logistics.
-- Status: draft only.
-- Next follow-up: if no reply, one gentle nudge after the event window or stop if the date passes.
+- Relationship: cold technical leader and likely hiring manager.
+- Last touch: none.
+- Why now: the open research role maps cleanly to his technical remit.
+- Hook: the role is framed around generative AI, foundation modeling, and autonomous decision optimization.
+- Proof point: production ML systems plus geospatial modeling and validation work from my CV.
+- Ask: connect and confirm whether he owns the research hiring loop.
+- Avoid: a broad product pitch or a generic networking note.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but keep it blocked until the SPC gate is cleared.
+- Next follow-up: one nudge after 5 business days if useful.
 
-**Subject:** Re: virtual FinTech Investment Conference
+**Subject:** Terra AI research role
 
 ```text
-Hi Oliver,
-
-Yes, I would be glad to pitch. I can send a deck and keep it concise. What format, deadline, and pitch length should I plan for?
-
-Best,
-Daniel
+Hi Anthony - the Senior/Staff ML Researcher role at Terra AI looks like a close fit with the production ML and geospatial modeling work I've been building. If you're the right person, I'd love to connect; if not, who owns this hire?
 ```
 
-## Warm Academic: Paola Passalacqua
+### Markus Zechner
 
-**To:** Paola Passalacqua <ppassalacqua@ethz.ch>
+**To:** Markus Zechner
 
-**Channel:** Email
+**Channel:** LinkedIn note (2nd-degree)
 
 **Status:** Draft only, not sent
 
-**LinkedIn / public check:** Professor of Hydrology and River System Science at ETH Zurich and Eawag. Her work spans river deltas, hydrological connectivity, and flood risk.
+**LinkedIn / public check:** Co-founder and General Manager of Reservoirs at Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
 
 **Dossier**
-- Relationship: former collaborator on national disaster resiliency work at TACC.
-- Last touch: archived collaborator thread in the Anthropic Fellows reference data plus our TACC history.
-- Why now: the ETH move makes the reconnect feel timely, and the flood / river systems angle is still directly relevant.
-- Hook: her hydrology and river-system work is a clean bridge to the flood-resilience systems I've built.
-- Proof point: I scaled climate and flood models on world-leading supercomputers at TACC and now run Homecastr's forecasting stack.
-- Ask: a quick catch-up and any advice on current research directions.
-- Avoid: vague "just checking in" language or a generic alumni-style note.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if useful, otherwise stop.
+- Relationship: cold domain leader.
+- Last touch: none.
+- Why now: the role is deeply tied to subsurface modeling, which is his lane.
+- Hook: his subsurface uncertainty work maps directly to the modeling side of the research role.
+- Proof point: production ML, geospatial systems, and probabilistic modeling from my CV.
+- Ask: connect and compare notes on where the research team is pushing next.
+- Avoid: sounding like a generic cold pitch.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but wait for the SPC gate to clear.
+- Next follow-up: one nudge after 5 business days if there is no reply.
 
-**Subject:** Reconnecting from TACC
+**Subject:** Terra AI research role
 
 ```text
-Hi Paola,
-
-I saw your work on hydrology and river system science at ETH Zurich and Eawag, and it made me think of our TACC disaster-resiliency work. That river / flood-resilience overlap still feels very alive in the work I keep building at Homecastr.
-
-If you are open to it, I would love to catch up and hear what you are working on these days.
-
-Best,
-Daniel
+Hi Markus - your subsurface uncertainty work at Terra AI feels directly relevant to the modeling side of the Senior/Staff ML Researcher role. I've been building production ML and geospatial systems, and I'd love to connect if you're open.
 ```
 
-## Warm Academic: Ali Hirsa
+### Michael L. Spence
 
-**To:** Ali Hirsa <ah2347@columbia.edu>
+**To:** Michael L. Spence
 
-**Channel:** Email
+**Channel:** LinkedIn note (2nd-degree)
 
 **Status:** Draft only, not sent
 
-**LinkedIn / public check:** Columbia professor who directs the Financial Engineering Program and the Center for AI in Business Analytics & FinTech.
+**LinkedIn / public check:** Chief of Staff at Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
 
 **Dossier**
-- Relationship: research advisor at Columbia.
-- Last touch: Columbia research collaboration already in progress in the repo context.
-- Why now: his current Columbia AI/finance work gives a sharper public hook than a generic check-in.
-- Hook: the financial engineering / AI-in-finance theme overlaps with my latent-factor and validation work.
-- Proof point: my Columbia latent-factor modeling work and Homecastr's model-validation discipline.
-- Ask: a brief reconnect and any research direction he wants me to keep in mind.
-- Avoid: saying only "the Columbia work" without naming the finance / AI angle.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if there is no response.
+- Relationship: ops proxy and hiring-loop routing contact.
+- Last touch: none.
+- Why now: no verified Terra AI recruiter surfaced in the current search.
+- Hook: he is the closest operational route to the research hiring process.
+- Proof point: production ML, geospatial AI, and research-heavy modeling from my CV.
+- Ask: who owns the Senior/Staff Machine Learning Researcher hiring loop.
+- Avoid: pretending he is a recruiter when he is not.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but do not send until the SPC gate is cleared.
+- Next follow-up: one nudge after 5 business days if there is no reply.
 
-**Subject:** Reconnecting on the Columbia work
+**Subject:** Terra AI research role routing question
 
 ```text
-Hi Ali,
-
-I saw your current work directing Financial Engineering and the Center for AI in Business Analytics & FinTech, and it made me think of the latent-factor work we did at Columbia. That theme still shapes how I think about production ML at Homecastr.
-
-If you have time, I would be glad to catch up and hear whether there are any new research directions you would want me to keep in mind.
-
-Best,
-Daniel
+Hi Michael - I couldn't find a verified Terra AI recruiter, so I wanted to ask who owns the Senior/Staff ML Researcher hiring loop. My background is production ML, geospatial AI, and research-heavy modeling, and the role looks like a strong fit.
 ```
 
-## Warm Academic: Christopher Munsell
+### Richard Rex
 
-**To:** Christopher Munsell <cwm2132@columbia.edu>
+**To:** Richard Rex
 
-**Channel:** Email
+**Channel:** LinkedIn note (2nd-degree)
 
 **Status:** Draft only, not sent
 
-**LinkedIn / public check:** Columbia GSAPP professor of Real Estate Development Finance who teaches MSRED finance courses.
+**LinkedIn / public check:** Senior AI/ML Engineer at Terra AI; live LinkedIn check shows 2nd-degree, so use a short note rather than a DM.
 
 **Dossier**
-- Relationship: academic reference from the MS in Urban Planning program.
-- Last touch: GSAPP reference / prior academic relationship.
-- Why now: his current finance-and-development role is a clean bridge to the housing / real-estate angle in Homecastr.
-- Hook: his real estate finance teaching and development work pair naturally with the housing forecasting product.
-- Proof point: Homecastr forecasts property value trajectories at scale and I've built the geospatial/urban-planning side of that system.
-- Ask: a quick catch-up plus any advice on the real-estate / housing side of my work.
-- Avoid: generic GSAPP gratitude without mentioning the real-estate finance bridge.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if useful.
+- Relationship: cold team-member contact.
+- Last touch: none.
+- Why now: he is on the team that will feel the research-role impact directly.
+- Hook: the research role is adjacent to the production ML and model validation work he is already doing.
+- Proof point: production ML, geospatial modeling, and reliability work from my CV.
+- Ask: connect and hear how the team is thinking about the research role.
+- Avoid: asking for too much context in the first message.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but keep it blocked until the SPC gate is cleared.
+- Next follow-up: one nudge after 5 business days if useful.
 
-**Subject:** Reconnecting from GSAPP
+**Subject:** Terra AI research role
 
 ```text
-Hi Christopher,
-
-I saw your current work in Real Estate Development Finance at Columbia, and it made me think of the GSAPP / housing bridge from my MS in Urban Planning work. That overlap still feels strong in the Homecastr forecasting work.
-
-If you are open, I would love to catch up and hear what you are focused on lately.
-
-Best,
-Daniel
+Hi Richard - I saw you're building AI/ML at Terra AI. The Senior/Staff ML Researcher role looks tightly aligned with my production ML and geospatial modeling work, and I'd love to connect if you're open.
 ```
 
-## Alumni Career Services: Columbia University
+### Terra AI contact fallback
 
-**To:** Columbia Career Services / Alumni Office
+**To:** `contact@terraAI.earth`
 
 **Channel:** Email
 
 **Status:** Draft only, not sent
 
-**Subject:** Columbia alum looking for the right routing path
+**Dossier**
+- Relationship: public company contact fallback.
+- Last touch: none.
+- Why now: the research role is open and public Terra AI materials invite contact.
+- Hook: the company is actively growing geoscientists, AI researchers, engineers, and mission-driven problem solvers.
+- Proof point: production ML, geospatial AI, and research-heavy modeling from my CV.
+- Ask: route me to the right person for the Senior/Staff Machine Learning Researcher role.
+- Avoid: a long company history or a multi-role pitch.
+- Status: draft only; LinkedIn check is complete (2nd-degree), but do not send until the SPC gate is cleared.
+- Next follow-up: one gentle nudge after 5 business days if there is no reply.
+
+**Subject:** Terra AI Senior/Staff ML Researcher
 
 ```text
-Hi Columbia Career Services team,
+Hi Terra AI team,
 
-I am a Columbia M.S. Urban Planning student and founder of Homecastr, where I have been building geospatial forecasting systems with a production ML focus. I am trying to find the best routing path to faculty, programs, or alumni who might be relevant to spatial data, ML systems, or civic-tech roles.
-
-If there is a better office or person to speak with, I would be grateful for the pointer.
-
-Best,
-Daniel
-```
-
-## Alumni Career Services: Columbia IEOR / GSAPP / DSI
-
-**To:** Columbia IEOR / GSAPP / Data Science Institute
-
-**Channel:** Email
-
-**Status:** Draft only, not sent
-
-**Subject:** Routing question from an IEOR / GSAPP student
-
-```text
-Hi Columbia IEOR / GSAPP / Data Science Institute team,
-
-I am a Columbia M.S. Urban Planning student and the founder of Homecastr, where I have been building production geospatial ML systems. I am hoping to find the right faculty or staff contact for work that sits at the intersection of spatial data, ML systems, and applied research.
-
-If there is a better person or lab to route this to, I would be very grateful.
-
-Best,
-Daniel
-```
-
-## Alumni Career Services: Cornell Tech
-
-**To:** Cornell Tech faculty / labs / startup programs
-
-**Channel:** Email
-
-**Status:** Draft only, not sent
-
-**Subject:** Cornell Tech routing question
-
-```text
-Hi Cornell Tech team,
-
-I am reaching out because I am building production geospatial ML systems at Homecastr and have a long-running background in disaster-resilience modeling at TACC. I would love to find the right faculty, lab, or startup-program contact for a warm introduction or conversation.
-
-If there is a better place to route this, I would appreciate the pointer.
-
-Best,
-Daniel
-```
-
-## Alumni Career Services: Cooper Union
-
-**To:** Cooper Union alumni / career services
-
-**Channel:** Email
-
-**Status:** Draft only, not sent
-
-**Subject:** Cooper Union alumni routing
-
-```text
-Hi Cooper Union career services team,
-
-I am a Columbia and UT alum working on production ML for geospatial and civic-impact systems. I am trying to find the best alumni or faculty contact path for that background.
-
-If there is a better office or person to speak with, I would be grateful for the direction.
-
-Best,
-Daniel
-```
-
-## Alumni Career Services: Parsons School of Design
-
-**To:** Parsons alumni / career services
-
-**Channel:** Email
-
-**Status:** Draft only, not sent
-
-**Subject:** Parsons alumni routing question
-
-```text
-Hi Parsons team,
-
-I am building production geospatial ML systems at Homecastr and have been thinking a lot about the product, design, and data bridge. I would love to find the right alumni or career-services contact path for a warm introduction or conversation.
+I am reaching out about the Senior/Staff Machine Learning Researcher role. My background is in production ML, geospatial AI, distributed systems, and research-heavy modeling, and the role looks like a strong fit.
 
 If there is a better person to route this to, I would appreciate the pointer.
 
 Best,
 Daniel
-```
 
-## Alumni Career Services: Vanderbilt University
+## Built In shortlist
 
-**To:** Vanderbilt alumni / career services
+These are draft-only LinkedIn notes for the current roles. The South Park Commons directory PDF does not match these contacts, so they are ready for the normal LinkedIn / email send path.
 
-**Channel:** Email
+### Catherine Del Hierro - LTS
 
-**Status:** Draft only, not sent
-
-**Subject:** Vanderbilt alumni routing
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
 
 ```text
-Hi Vanderbilt alumni and career services team,
-
-I am reaching out because I am looking for warm routing to alumni or faculty who work at the intersection of data, product, and mission-driven tech. My background is in production ML, geospatial forecasting, and flood-resilience work, and I think there may be a useful bridge there.
-
-If there is a better contact path, I would be grateful for the direction.
-
-Best,
-Daniel
+Hi Catherine - I saw the Lead Forward Deployed Engineer opening at LTS and your current role in talent acquisition. I build production ML systems with real-world validation at Homecastr and TACC. Would love to connect and learn who owns the FDE search.
 ```
+
+### David Wilmot - LTS
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Dr. Wilmot - I saw your current role as Chief Medical Officer at LTS and the healthcare IT / public-health mission. I build production ML systems for high-stakes physical-world decisions. Would love to connect if a short chat on the FDE lane is useful.
+```
+
+### James Pickard - Accenture
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi James - I saw the AI Transformation & Solutions Lead opening at Accenture and your talent acquisition work there. I build production ML and enterprise-facing systems with a strong evaluation discipline. Would love to connect and hear how the team is thinking about the role.
+```
+
+### Jim Murrin - Accenture
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Jim - your AI and data executive search work at Accenture stood out, especially with the company's push into AI transformation. I have been building production ML systems and customer-facing solutions at Homecastr. If useful, I would love to connect and ask who is best to speak with.
+```
+
+### Iliana Lytton - Billtrust
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Iliana - I saw the VP Product Management roles in Applied Intelligence and Payments at Billtrust and your role leading talent acquisition. I build production ML systems and productized decision support with measurable outcomes. Would love to connect and learn who owns the searches.
+```
+
+### Lee An Schommer - Billtrust
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Lee - Billtrust's AI-powered product direction and the open Applied Intelligence role caught my eye. I build production ML systems, but also care a lot about turning that work into usable product. Would love to connect if a short conversation would be useful.
+```
+
+### Harrison Zolot - Trexquant
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Harrison - I saw the Quantitative Researcher (PhD) opening at Trexquant and your role leading talent acquisition. I bring ML, statistics, and rigorous evaluation work from Columbia, Homecastr, and TACC. Would love to connect and learn who owns the search.
+```
+
+### Denis Lapitski - Trexquant
+
+**Channel:** LinkedIn note
+**Status:** Draft ready for send
+
+```text
+Hi Denis - your strategy research work at Trexquant stood out, and the Quantitative Researcher opening looks like a strong research lane. I have been building rigorous ML systems and evaluation loops in production settings. Would love to connect if it is useful.```
