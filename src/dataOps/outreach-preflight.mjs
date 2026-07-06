@@ -7,6 +7,8 @@ import { fileURLToPath } from 'url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const DEFAULT_PACKET = 'data/outreach/terra-ai-send-packet.md';
 const DEFAULT_DOSSIER = 'data/outreach/contact-dossier.md';
+const DEFAULT_DRAFTS = 'data/outreach/drafts.md';
+const DEFAULT_LOG = 'data/outreach/log.md';
 
 function normalizeText(value) {
   return String(value || '').trim();
@@ -40,12 +42,28 @@ function extractFirstName(name) {
   return tokens[0] || '';
 }
 
+function normalizeMessageBody(value) {
+  return normalizeKey(value).replace(/\s+/g, ' ').trim();
+}
+
+function extractRecipientName(value) {
+  return normalizeText(value).replace(/\s*<[^>]+>\s*$/, '');
+}
+
 function parseArgs(argv) {
-  const args = { packet: DEFAULT_PACKET, dossier: DEFAULT_DOSSIER, selfTest: false };
+  const args = {
+    packet: DEFAULT_PACKET,
+    dossier: DEFAULT_DOSSIER,
+    drafts: DEFAULT_DRAFTS,
+    log: DEFAULT_LOG,
+    selfTest: false,
+  };
   for (let i = 0; i < argv.length; i++) {
     const arg = argv[i];
     if (arg === '--packet') args.packet = argv[++i];
     else if (arg === '--dossier') args.dossier = argv[++i];
+    else if (arg === '--drafts') args.drafts = argv[++i];
+    else if (arg === '--log') args.log = argv[++i];
     else if (arg === '--self-test') args.selfTest = true;
   }
   return args;
@@ -79,6 +97,84 @@ function parsePacket(content) {
   }
 
   return { status, messages };
+}
+
+function parseMarkdownTableContent(content) {
+  const rows = [];
+  let block = [];
+
+  const flush = () => {
+    if (block.length < 2) {
+      block = [];
+      return;
+    }
+
+    const header = block[0]
+      .split('|')
+      .map(normalizeText)
+      .filter(Boolean)
+      .map(h => h.toLowerCase().replace(/[^a-z0-9]+/g, '_'));
+
+    for (const line of block.slice(2)) {
+      const values = line.split('|').map(normalizeText).filter(Boolean);
+      if (!values.length) continue;
+      const row = {};
+      for (let i = 0; i < header.length; i++) {
+        row[header[i]] = normalizeText(values[i]);
+      }
+      rows.push(row);
+    }
+
+    block = [];
+  };
+
+  for (const line of String(content || '').split(/\r?\n/)) {
+    if (line.trim().startsWith('|')) {
+      block.push(line);
+    } else {
+      flush();
+    }
+  }
+  flush();
+  return rows;
+}
+
+function parseMarkdownTable(filePath) {
+  if (!existsSync(filePath)) return [];
+  return parseMarkdownTableContent(readFileSync(filePath, 'utf8'));
+}
+
+function parseDraftMirrorContent(content) {
+  const sections = [];
+  const source = String(content || '');
+  const headings = [...source.matchAll(/^##\s+(.+)$/gm)];
+
+  for (let i = 0; i < headings.length; i++) {
+    const heading = normalizeText(headings[i][1]);
+    const start = headings[i].index + headings[i][0].length;
+    const end = i + 1 < headings.length ? headings[i + 1].index : source.length;
+    const raw = source.slice(start, end).trim();
+    const toMatch = raw.match(/^\*\*To:\*\*\s*(.+)$/m);
+    const statusMatch = raw.match(/^\*\*Status:\*\*\s*(.+)$/m);
+    const fenceMatch = raw.match(/```(?:text)?\s*([\s\S]*?)```/i);
+    const recipient = extractRecipientName(toMatch?.[1] || '');
+    const body = normalizeText(fenceMatch?.[1] || '');
+    sections.push({
+      heading,
+      recipient,
+      recipientKey: normalizeKey(recipient || heading),
+      status: normalizeText(statusMatch?.[1] || ''),
+      body,
+      bodyKey: normalizeMessageBody(body),
+    });
+  }
+
+  return sections;
+}
+
+function parseDraftMirror(filePath) {
+  if (!existsSync(filePath)) return [];
+  return parseDraftMirrorContent(readFileSync(filePath, 'utf8'));
 }
 
 function parseDossiers(content) {
@@ -116,9 +212,13 @@ function greetingTarget(body) {
   return normalizeText(match?.[2] || '');
 }
 
-function validatePacket(packet, dossiers) {
+function validatePacket(packet, dossiers, mirrors = {}) {
   const errors = [];
   const warnings = [];
+  const draftSections = Array.isArray(mirrors.drafts) ? mirrors.drafts : [];
+  const liveSentKeys = mirrors.liveSentKeys instanceof Set ? mirrors.liveSentKeys : new Set();
+  const draftByRecipient = new Map();
+  const seenDraftRecipients = new Map();
 
   if (!packet.messages.length) {
     errors.push('No `### Recipient` message blocks found in the send packet.');
@@ -131,12 +231,32 @@ function validatePacket(packet, dossiers) {
 
   const firstNames = unique(packet.messages.map(message => normalizeKey(message.firstName)));
   const normalizedBodies = new Map();
+  const seenPacketRecipients = new Map();
+
+  for (const draft of draftSections) {
+    if (!draft.recipientKey) continue;
+    const priorDraft = seenDraftRecipients.get(draft.recipientKey);
+    if (priorDraft) {
+      errors.push(`${draft.recipient || draft.heading}: draft mirror duplicates ${priorDraft.recipient || priorDraft.heading}.`);
+      continue;
+    }
+    seenDraftRecipients.set(draft.recipientKey, draft);
+    draftByRecipient.set(draft.recipientKey, draft);
+  }
 
   for (const message of packet.messages) {
     const body = message.body;
     if (!body) {
       errors.push(`${message.heading}: message body is empty.`);
       continue;
+    }
+
+    const packetKey = normalizeKey(message.heading);
+    const packetHeading = seenPacketRecipients.get(packetKey);
+    if (packetHeading) {
+      errors.push(`${message.heading}: packet contains duplicate recipient headings (${packetHeading}).`);
+    } else {
+      seenPacketRecipients.set(packetKey, message.heading);
     }
 
     if (/\[[^\]]+\]/.test(body)) {
@@ -172,7 +292,7 @@ function validatePacket(packet, dossiers) {
       normalizedBodies.set(normalizedBody, message.heading);
     }
 
-    const dossier = dossiers.find(entry => entry.key === message.headingKey);
+    const dossier = dossiers.find(entry => entry.key === packetKey);
     if (!dossier) {
       warnings.push(`${message.heading}: no exact contact dossier found.`);
       continue;
@@ -198,6 +318,23 @@ function validatePacket(packet, dossiers) {
         errors.push(`${message.heading}: SPC status "${dossier.spcAffiliation}" blocks a work pitch.`);
       }
     }
+
+    const draft = draftByRecipient.get(packetKey);
+    if (draft) {
+      const draftBodyKey = draft.bodyKey || normalizeMessageBody(draft.body);
+      const draftStatusSent = /^sent\b/i.test(draft.status);
+      const liveAlreadySent = liveSentKeys.has(packetKey);
+
+      if (draftBodyKey && normalizedBody === draftBodyKey && (draftStatusSent || liveAlreadySent)) {
+        errors.push(`${message.heading}: duplicate send detected; the packet body matches the sent draft mirror.`);
+      }
+
+      if (draftStatusSent && !liveAlreadySent) {
+        errors.push(`${message.heading}: draft mirror says sent, but the live log does not contain a matching sent row.`);
+      }
+    } else if (liveSentKeys.has(packetKey)) {
+      warnings.push(`${message.heading}: recipient already appears in the live log, but no draft mirror entry was found.`);
+    }
   }
 
   return { errors: unique(errors), warnings: unique(warnings) };
@@ -221,22 +358,90 @@ status: ready to send
 spc_affiliation: not-affiliated
 spc_checked_at: 2026-07-05
 `);
-  const good = validatePacket(goodPacket, goodDossiers);
+  const goodDrafts = parseDraftMirrorContent(`
+## Julia Kreutzer
+
+**To:** Julia Kreutzer <julia@example.com>
+
+**Status:** Draft
+
+**Subject:** Example reconnect
+
+\`\`\`text
+Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's forecasting and evaluation stack, and I'd love to stay in touch if that overlap feels interesting.
+\`\`\`
+`);
+  const goodLog = parseMarkdownTableContent(`
+| Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
+|---|---|---|---|---|---|---|
+| Email | Someone Else | LinkedIn message thread | reconnect-style intro | Example reconnect | Sent | Example send already logged. |
+`);
+  const good = validatePacket(goodPacket, goodDossiers, {
+    drafts: goodDrafts,
+    liveSentKeys: new Set(
+      goodLog
+        .filter(row => /^sent\b/i.test(normalizeText(row.status)))
+        .map(row => normalizeKey(row.recipient)),
+    ),
+  });
   if (good.errors.length) {
     throw new Error(`Self-test good packet unexpectedly failed: ${good.errors.join(' | ')}`);
   }
 
-  const badPacket = parsePacket(`
+  const contaminationPacket = parsePacket(`
 Status: ready to send
 
 ### Julia Kreutzer
 
 Hi Tim - I'm applying to Accenture's AI Transformation & Solutions Lead role. Would love to connect.
 `);
-  const badDossiers = goodDossiers;
-  const bad = validatePacket(badPacket, badDossiers);
-  if (!bad.errors.some(error => error.includes('greeting targets "Tim"'))) {
+  const contamination = validatePacket(contaminationPacket, goodDossiers, {
+    drafts: goodDrafts,
+    liveSentKeys: new Set(
+      goodLog
+        .filter(row => /^sent\b/i.test(normalizeText(row.status)))
+        .map(row => normalizeKey(row.recipient)),
+    ),
+  });
+  if (!contamination.errors.some(error => error.includes('greeting targets "Tim"'))) {
     throw new Error('Self-test bad packet did not catch recipient contamination.');
+  }
+
+  const duplicateDrafts = parseDraftMirrorContent(`
+## Julia Kreutzer
+
+**To:** Julia Kreutzer <julia@example.com>
+
+**Status:** Sent 2026-07-05
+
+**Subject:** Example reconnect
+
+\`\`\`text
+Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's forecasting and evaluation stack, and I'd love to stay in touch if that overlap feels interesting.
+\`\`\`
+`);
+  const duplicateLog = parseMarkdownTableContent(`
+| Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
+|---|---|---|---|---|---|---|
+| Email | Julia Kreutzer | LinkedIn message thread | reconnect-style intro | Example reconnect | Sent | Example send already logged. |
+`);
+  const duplicatePacket = parsePacket(`
+Status: ready to send
+
+### Julia Kreutzer
+
+Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's forecasting and evaluation stack, and I'd love to stay in touch if that overlap feels interesting.
+`);
+  const duplicate = validatePacket(duplicatePacket, goodDossiers, {
+    drafts: duplicateDrafts,
+    liveSentKeys: new Set(
+      duplicateLog
+        .filter(row => /^sent\b/i.test(normalizeText(row.status)))
+        .map(row => normalizeKey(row.recipient)),
+    ),
+  });
+  if (!duplicate.errors.some(error => error.includes('duplicate send detected'))) {
+    throw new Error('Self-test duplicate packet did not catch a stale resend.');
   }
 
   console.log('outreach-preflight self-test passed');
@@ -251,6 +456,8 @@ function main() {
 
   const packetPath = resolvePath(args.packet);
   const dossierPath = resolvePath(args.dossier);
+  const draftsPath = resolvePath(args.drafts);
+  const logPath = resolvePath(args.log);
 
   if (!existsSync(packetPath)) {
     console.error(`Packet not found: ${args.packet}`);
@@ -263,7 +470,13 @@ function main() {
 
   const packet = parsePacket(readFileSync(packetPath, 'utf8'));
   const dossiers = parseDossiers(readFileSync(dossierPath, 'utf8'));
-  const result = validatePacket(packet, dossiers);
+  const drafts = parseDraftMirror(draftsPath);
+  const liveSentKeys = new Set(
+    parseMarkdownTable(logPath)
+      .filter(row => /^sent\b/i.test(normalizeText(row.status)))
+      .map(row => normalizeKey(row.recipient)),
+  );
+  const result = validatePacket(packet, dossiers, { drafts, liveSentKeys });
 
   if (!result.errors.length && !result.warnings.length) {
     console.log(`PASS ${args.packet}`);

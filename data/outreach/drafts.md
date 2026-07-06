@@ -2,7 +2,7 @@
 
 Date: 2026-07-05
 
-Draft-only workspace. Nothing below has been sent yet. Check `data/outreach/log.md` for the live-send ledger.
+Draft-only workspace. Nothing below has been sent yet. Check `data/outreach/log.md` for the live-send ledger. The send preflight will hard-stop if a packet tries to resend something already mirrored here and recorded in the live log.
 
 Send gate:
 
