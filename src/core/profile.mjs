@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import yaml from 'js-yaml';
 
-export const DEFAULT_RESUME_PATH = 'C:/Users/dhl/data/Portfolio/cv-dhl.git/resume/2-page/without-cover-letter/resume-dhl-20260630-causal-mle/resume-dhl-20260630-causal-mle.pdf';
+export const DEFAULT_RESUME_PATH = path.resolve('data/assets/resume-dhl-20260630-causal-mle.pdf');
 
 export function loadProfileConfig(profilePath = 'config/profile.yml') {
   try {

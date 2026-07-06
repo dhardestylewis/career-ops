@@ -73,4 +73,4 @@ location:
 execution:
   # Canonical resume attachment used by application helpers and test runners.
   # Override this with your current PDF path.
-  # resume_path: "C:/Users/dhl/data/Portfolio/cv-dhl.git/resume/2-page/without-cover-letter/resume-dhl-20260630-causal-mle/resume-dhl-20260630-causal-mle.pdf"
+  # resume_path: "data/assets/resume-dhl-20260630-causal-mle.pdf"
