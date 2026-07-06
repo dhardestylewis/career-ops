@@ -75,6 +75,14 @@ spc_checked_at:
 - If `action_state` is `blocked`, `research`, or `no-contact`, do not send the work pitch.
 - If a reply changes strategy or is ambiguous, pause and notify the user instead of guessing.
 
+## Mailbox Review Note
+
+- Mailbox access in this session only covered `danielhardestylewis@utexas.edu` in UTmail.
+- Paola Passalacqua: two same-day UTmail threads were present, with the latest send now logged as `Reconnecting after TACC`. No blocker.
+- Christopher Munsell: two same-day UTmail threads were present, with the latest send now logged as `Thank you from GSAPP`. No blocker.
+- Jeffrey Shaman: no UTmail match in this session. Blocker is missing source-backed mailbox evidence in this worktree; next step is Columbia mailbox access or another source-backed row before drafting.
+- Alex de Sherbinin: no UTmail match in this session. Blocker is the pending LinkedIn route outside this worktree; next step is to wait for the connection or recover the separate tracker entry before any resend.
+
 ## Built In Shortlist
 
 ### LTS - Catherine Del Hierro
