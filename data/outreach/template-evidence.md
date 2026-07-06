@@ -84,7 +84,7 @@ Use when sending a first-touch connection request.
 
 Template:
 
-`Loved your work on [specific thing]. I’m building [relevant project] and have solved [proof point]. Would be great to connect.`
+`Loved your work on [specific thing]. Iâ€™m building [relevant project] and have solved [proof point]. Would be great to connect.`
 
 Evidence:
 
@@ -98,7 +98,7 @@ Use when the contact is clearly talent/recruiting and screening facts matter.
 
 Template:
 
-`Hi [Name] - I just applied for [role]. I’m a [current role / profile] with [1 proof point]. Happy to share more if useful.`
+`Hi [Name] - I just applied for [role]. Iâ€™m a [current role / profile] with [1 proof point]. Happy to share more if useful.`
 
 Evidence:
 
@@ -112,7 +112,7 @@ Use when the person owns the team, product, or project.
 
 Template:
 
-`Hi [Name] - your work on [specific thing] stood out. I’ve built [relevant proof point] and would love to hear how your team is thinking about [problem].`
+`Hi [Name] - your work on [specific thing] stood out. Iâ€™ve built [relevant proof point] and would love to hear how your team is thinking about [problem].`
 
 Evidence:
 
@@ -126,7 +126,7 @@ Use when the goal is relationship-building or a warm bridge, not a job ask.
 
 Template:
 
-`Hi [Name] - I liked your post on [specific thing]. I’m working on [adjacent thing] and would love to hear your take.`
+`Hi [Name] - I liked your post on [specific thing]. Iâ€™m working on [adjacent thing] and would love to hear your take.`
 
 Evidence:
 
@@ -156,7 +156,7 @@ Template:
 
 `Subject: Re: [Role] at [Company]`
 
-`Hi [Name], I applied for the [role] on [date]. I thought I’d share that [proof point] maps closely to the work described in the posting. If helpful, I’d be glad to share more or talk this week.`
+`Hi [Name], I applied for the [role] on [date]. I thought Iâ€™d share that [proof point] maps closely to the work described in the posting. If helpful, Iâ€™d be glad to share more or talk this week.`
 
 Evidence:
 
@@ -170,7 +170,7 @@ Use when the recipient likely cares about the bridge, not your full background.
 
 Template:
 
-`Saw your work on [specific thing]. I’m building [proof point], and [bridge context]. Open to a quick connect?`
+`Saw your work on [specific thing]. Iâ€™m building [proof point], and [bridge context]. Open to a quick connect?`
 
 Evidence:
 
@@ -184,7 +184,7 @@ Use when the recipient says the project is research-oriented and wants a worksho
 
 Template:
 
-`Hi [Name] - that makes sense. I’ve been building a publishable world-model stack with reproducible Modal runs, durable R2 manifests/logs, and a research-grade evaluation loop. If it would be useful, I’d love to compare notes on experiment design and evaluation, especially around diffusion or flow matching.`
+`Hi [Name] - that makes sense. Iâ€™ve been building a publishable world-model stack with reproducible Modal runs, durable R2 manifests/logs, and a research-grade evaluation loop. If it would be useful, Iâ€™d love to compare notes on experiment design and evaluation, especially around diffusion or flow matching.`
 
 Evidence:
 
@@ -198,7 +198,7 @@ Use when there is no warm intro and the recipient has low time tolerance.
 
 Template:
 
-`I’m reaching out because [specific reason]. I’ve [proof point], and I think there may be a fit on [team/problem]. Worth a short chat?`
+`Iâ€™m reaching out because [specific reason]. Iâ€™ve [proof point], and I think there may be a fit on [team/problem]. Worth a short chat?`
 
 Evidence:
 
@@ -305,9 +305,9 @@ Before sending anything, the next agent should:
 1. Check `modes/_profile.md`.
 2. Check `modes/contacto.md`.
 3. Check `modes/followup.md`.
-4. Check `data/outreach-targets.tsv`.
-5. Check `data/outreach-universe.tsv`.
-6. Check `data/outreach-queue.tsv`.
-7. Check `data/outreach-review.md`.
+4. Check `data/outreach/targets.tsv`.
+5. Check `data/outreach/universe.tsv`.
+6. Check `data/outreach/queue.tsv`.
+7. Check `data/outreach/review.md`.
 8. Draft first, then wait for send approval unless the user has already explicitly approved the recipient batch.
 9. Log the send immediately if it goes out.

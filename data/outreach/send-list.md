@@ -1,6 +1,6 @@
 # Outreach Send List
 
-Use this as the compact schedule view. Canonical draft source: `data/outreach-drafts.md`.
+Use this as the compact schedule view. Canonical draft source: `data/outreach/drafts.md`.
 
 Date: 2026-07-05
 
@@ -12,7 +12,7 @@ Already sent ahead of the plan window: Ali Hirsa on 2026-07-05. Christopher Muns
 
 ## Cadence Note
 
-Sent items should be logged immediately in `data/outreach-log.md`. Once logged, they move into the watch/follow-up cadence: if there is no reply, the first follow-up is due on the date listed below, then the next follow-up is 5 business days after that, and then the thread should pause or re-route instead of being pushed repeatedly.
+Sent items should be logged immediately in `data/outreach/log.md`. Once logged, they move into the watch/follow-up cadence: if there is no reply, the first follow-up is due on the date listed below, then the next follow-up is 5 business days after that, and then the thread should pause or re-route instead of being pushed repeatedly.
 - Before any work, money, gigs, contracts, or jobs outreach, check South Park Commons affiliation in the pando member directory and South Park Commons Slack. If the recipient is SPC-affiliated or the status is unclear, do not send the work pitch.
 
 ## 2026-07-06

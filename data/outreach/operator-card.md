@@ -22,10 +22,10 @@ Use this first if you are the next agent picking up live outreach.
 ## Read Order
 
 1. `modes/_profile.md`
-2. `data/outreach-log.md`
-3. `data/outreach-template-evidence.md`
-4. `data/outreach-scripts.md`
-5. `data/outreach-review.md`
+2. `data/outreach/log.md`
+3. `data/outreach/template-evidence.md`
+4. `data/outreach/scripts.md`
+5. `data/outreach/review.md`
 
 ## Operating Rule
 
