@@ -6,6 +6,9 @@ This log records live outbound messages sent from the current browser session so
 
 | Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
 |---|---|---|---|---|---|---|
+| LinkedIn DM | Alexander Nevedovsky | LinkedIn message thread | warm reply / product-interest | Audos experiment reply | Sent | Replied in the existing 1st-degree thread after checking the current profile; asked to try Audos via a referral link and kept the note short. |
+| Email | Christopher Munsell | `cwm2132@columbia.edu` | warm academic reconnect | Reconnecting from GSAPP | Sent | Sent from the live Gmail compose thread with the GSAPP / Homecastr bridge and the coffee-chat / research-assistantship ask. |
+| Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | warm academic reconnect | Reconnecting from TACC | Sent | Sent from the live Gmail compose thread with the TACC / flood-resilience bridge and the catch-up ask. |
 | LinkedIn DM | Li-Yun (James) Wang, PhD | LinkedIn message thread | founder-style intro, bridge-first | Collaboration note on the CV side project post | Sent | Short, specific note referencing production ML, geospatial forecasting, and flood-resilience work. |
 | Email | 3Dtrees team | `info@3dtrees.earth` | direct contact / contribution ask | `3Dtrees contribution workflow` | Sent | Public site contact email on 3Dtrees.earth; message asked for the best path for contributing forest data. |
 | LinkedIn DM | Kyle Baranko | LinkedIn message thread | broader cold outreach, one proof point, one small ask | Follow-up on compression of dev timelines | Sent | Tightened the outreach playbook and offered a one-paragraph Homecastr ML summary if useful. |
