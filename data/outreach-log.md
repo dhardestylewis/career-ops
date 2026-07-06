@@ -29,6 +29,8 @@ This log records live outbound messages sent from the current browser session so
 | 2026-07-05 | speaker-outreach | LinkedIn connection request | Yash Mali | LinkedIn profile | speaker-connection-request-note | Computer Vision Fundamentals with Vivian White and Yash Mali | Sent | Connection request note sent; keep an eye out for a public email route if one appears later. |
 | 2026-07-05 | warm-network | LinkedIn DM | Ram Mohan Rao Kadiyala | LinkedIn message thread | calendar follow-up, virtual coffee | Friday, July 10 at 4:30 PM IST / 7:00 AM ET | Sent | Short follow-up confirms the virtual coffee slot and notes the invite will go to `contact@rkadiyala.com`. |
 | 2026-07-05 | warm-network | Email | Ram Mohan Rao Kadiyala | `contact@rkadiyala.com` | calendar invite / follow-up note | Coffee before Agentic AI fundamentals | Sent | 80-ish word note; kept the coffee virtual and referenced Friday, July 10 at 4:30 PM IST / 7:00 AM ET. |
+| 2026-07-05 | warm-academic | Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | professor-reconnect | Reconnecting after TACC | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from TACC` conversation. |
+| 2026-07-05 | warm-academic | Email | Christopher Munsell | `cwm2132@columbia.edu` | professor-reconnect | Thank you from GSAPP | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from GSAPP` conversation. |
 
 ## Bellwether clarification
 
