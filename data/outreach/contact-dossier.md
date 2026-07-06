@@ -20,6 +20,7 @@ Use this before any live send or follow-up. If you cannot fill it from actual so
 - Public web: 1 to 2 concrete artifacts only, such as a paper, talk, lab page, article, editorship, lecture, or publication, with title and date.
 - Internal context: one matching proof point from `data/cv.md`, `article-digest.md`, project notes, or the repo that directly supports the ask.
 - Before sending, verify the recipient's current LinkedIn profile or organization page. If they have moved, rewrite the note as a reconnect or current-role note instead of an active-role follow-up.
+- Before sending, verify that the current profile or thread name matches the dossier `contact:` and the send-packet `### Recipient` heading exactly. If any name differs, stop and rebuild the draft from scratch.
 
 ## Send-State Model
 
@@ -74,6 +75,7 @@ spc_checked_at:
 - If a contact has changed roles, treat that as a reconnect signal and rewrite the opener around the new role.
 - If `action_state` is `blocked`, `research`, or `no-contact`, do not send the work pitch.
 - If a reply changes strategy or is ambiguous, pause and notify the user instead of guessing.
+- Do not send if the visible recipient name, the dossier `contact:`, the send-packet heading, and the greeting do not all point to the same person.
 
 ## Mailbox Review Note
 

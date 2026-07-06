@@ -239,6 +239,14 @@ node src/dataOps/outreach-preflight.mjs --packet <send-packet-path>
 
 If preflight fails, do not send.
 
+Recipient verification ritual:
+
+1. Keep only one live outreach composer open.
+2. Match the visible profile or thread name to the dossier `contact:` and the send-packet `### Recipient`.
+3. Paste only that matching packet block.
+4. Re-read the composer header and the first line together before sending.
+5. If any recipient name differs, clear or close the draft and restart from the dossier and packet.
+
 Minimum source inputs:
 
 - Gmail thread or LinkedIn DM history
@@ -287,6 +295,7 @@ Hi [Name] - thanks again for the intro / earlier discussion. Just checking wheth
 - The role, project, or post is clearly relevant.
 - The thread is not blocked by CAPTCHA or login friction.
 - You are not stacking several asks into one note.
+- The current profile or thread name, dossier `contact:`, send-packet heading, and greeting all match the same person.
 
 ### No-Send
 
@@ -299,6 +308,7 @@ Hi [Name] - thanks again for the intro / earlier discussion. Just checking wheth
 - The recipient's current role has changed and the note has not been rewritten as a reconnect/current-role note.
 - The South Park Commons affiliation is unclear for a work-related pitch.
 - The preflight reports a wrong greeting, another recipient's name, or a missing dossier field.
+- More than one live outreach composer is open, or the visible recipient name does not match the packet and dossier exactly.
 
 ## Response Handling
 
