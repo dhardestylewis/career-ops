@@ -33,8 +33,3 @@ This log records live outbound messages sent from the current browser session so
 | LinkedIn Connect | Miguel Valle | LinkedIn invite note | recruiter bridge | Talent and technical recruiting fit | Sent | Short connect note asking which recruiting lane is the best fit. |
 | 2026-07-05 | warm-academic | Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | professor-reconnect | Reconnecting after TACC | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from TACC` conversation. |
 | 2026-07-05 | warm-academic | Email | Christopher Munsell | `cwm2132@columbia.edu` | professor-reconnect | Thank you from GSAPP | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from GSAPP` conversation. |
-
-## Incident Notes
-
-- 2026-07-05 evening local, user-provided LinkedIn thread excerpt: Julia Kreutzer's thread received a wrong-recipient Accenture / Tim message. Julia replied that the message or agent had mixed something up. Daniel sent an immediate apology and stated that the conversation would be archived. Treat that lane as closed unless the user explicitly reopens it.
-- Follow-on rule from that incident: no more than one live outreach composer at a time, and every send must pass the recipient-verification protocol plus packet preflight before Send.
