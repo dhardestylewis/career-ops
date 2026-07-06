@@ -28,4 +28,5 @@ This log records live outbound messages sent from the current browser session so
 | LinkedIn Connect | Michael Franchi | LinkedIn invite note | recruiter bridge | Consumer product ML fit | Sent | Short connect note asking whether he owns the relevant role or can route it. |
 | LinkedIn DM | Michael Jaffe | LinkedIn message thread | recruiter bridge | Data-focused technical recruiting fit | Sent | Short DM asking whether he handles engineering or data roles. |
 | LinkedIn Connect | Miguel Valle | LinkedIn invite note | recruiter bridge | Talent and technical recruiting fit | Sent | Short connect note asking which recruiting lane is the best fit. |
-
+| 2026-07-05 | warm-academic | Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | professor-reconnect | Reconnecting after TACC | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from TACC` conversation. |
+| 2026-07-05 | warm-academic | Email | Christopher Munsell | `cwm2132@columbia.edu` | professor-reconnect | Thank you from GSAPP | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from GSAPP` conversation. |
