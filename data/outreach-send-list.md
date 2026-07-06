@@ -120,3 +120,4 @@ Cap: 3 sends
 - `founder-ecosystem / Gian` is a warm partnership thread from Dynamite Growth; only nudge if the call stalls.
 - `founder-ecosystem / Robbie Bent` is a draft-only founder-community reconnect from Othership.
 - `warm-network / Joshua Lesser` is an active LinkedIn DM about meeting around Cooper Square; keep it to the logistics reply.
+- `speaker-outreach / Tushar Udeshi` is on hold until Monday, 2026-07-13 after vacation; do not nudge before then.

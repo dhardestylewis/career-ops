@@ -449,7 +449,9 @@ Hi Sreyan - I saw your work at Google DeepMind and I'm looking forward to the Ca
 
 **Channel:** LinkedIn connection request
 
-**Status:** Draft only, not sent
+**Status:** Sent; follow-up on hold until after vacation
+
+**Follow-up plan:** Send one short LinkedIn nudge on Monday, July 13, 2026 if there is still no reply.
 
 ```text
 Hi Tushar - I saw your work at Khan Academy and I'm looking forward to Edtech. I'm currently building Homecastr's production ML and evaluation stack, so the applied learning and product side feels very relevant. If you're around before the session, I'd love to grab coffee.
