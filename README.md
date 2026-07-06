@@ -211,8 +211,9 @@ career-ops/
 ├── dashboard/                   # Go TUI pipeline viewer
 ├── data/                        # Your tracking data (gitignored except cv.md)
 │   ├── cv.md                    # Your CV (create this)
-│   ├── outreach-drafts.md       # Draft-only outreach workspace
-│   ├── outreach-contact-dossier.md # Per-contact source-backed dossier + SPC affiliation gate
+│   ├── outreach/                # Draft-only outreach workspace + contact dossier
+│   │   ├── drafts.md            # Draft-only outreach workspace
+│   │   └── contact-dossier.md   # Per-contact source-backed dossier + SPC affiliation gate
 │   └── assets/                  # Local-only attachment assets, never committed
 ├── reports/                     # Evaluation reports (gitignored)
 ├── output/                      # Generated PDFs (gitignored)

@@ -1,6 +1,6 @@
 # Current Outreach Batch
 
-Canonical source: `data/outreach-drafts.md`.
+Canonical source: `data/outreach/drafts.md`.
 This file is the compact mirror view for the next send batch. Do not edit it independently.
 Before sending any work-related pitch, confirm the recipient is not SPC-affiliated in the South Park Commons directory PDF; if the result is unclear, keep it to a non-work reconnect or pause.
 

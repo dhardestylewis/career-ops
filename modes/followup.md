@@ -8,10 +8,10 @@ Track follow-up cadence for active applications and live outreach threads. Flag 
 
 - `data/tracker/applications.md` - Application tracker
 - `data/follow-ups.md` - Follow-up history (created on first use)
-- `data/outreach-queue.tsv` - Active outreach queue generated from the multi-lane ledger
-- `data/outreach-log.md` - Sent outreach history and live thread context
-- `data/outreach-drafts.md` - Draft-only outreach workspace and LinkedIn-first reconnect notes
-- `data/outreach-contact-dossier.md` - Per-contact source-backed dossier and send gate
+- `data/outreach/queue.tsv` - Active outreach queue generated from the multi-lane ledger
+- `data/outreach/log.md` - Sent outreach history and live thread context
+- `data/outreach/drafts.md` - Draft-only outreach workspace and LinkedIn-first reconnect notes
+- `data/outreach/contact-dossier.md` - Per-contact source-backed dossier and send gate
 - `reports/` - Evaluation reports (for context in drafts)
 - `config/profile.yml` - User profile (name, identity)
 - `data/cv.md` - CV for proof points in drafts
@@ -42,7 +42,7 @@ Then run the outreach ledger when live outreach is in scope:
 node src/dataOps/outreach-ledger.mjs
 ```
 
-The ledger builds `data/outreach-universe.tsv` and `data/outreach-queue.tsv`. Treat `data/outreach-queue.tsv` as the active outreach work queue and sort by `action_state`:
+The ledger builds `data/outreach/universe.tsv` and `data/outreach/queue.tsv`. Treat `data/outreach/queue.tsv` as the active outreach work queue and sort by `action_state`:
 
 - `followup_due` - send the lane-specific follow-up now
 - `ready` - send the first touch if the contact is approved, unblocked, and the dossier is complete
@@ -68,7 +68,7 @@ Use visual indicators:
 
 ## Outreach Queue Overlay
 
-For rows in `data/outreach-queue.tsv`, present the same kind of dashboard with the lane fields visible:
+For rows in `data/outreach/queue.tsv`, present the same kind of dashboard with the lane fields visible:
 
 ```
 Outreach Queue - {date}
@@ -106,7 +106,7 @@ Lane-specific reminders:
 
 For each **overdue** or **urgent** entry only:
 
-1. Read the linked dossier (`data/outreach-contact-dossier.md` or the queue notes) for source refs, last touch, why now, hook, proof point, ask, avoid, next follow-up, and South Park Commons affiliation if the pitch is work-related.
+1. Read the linked dossier (`data/outreach/contact-dossier.md` or the queue notes) for source refs, last touch, why now, hook, proof point, ask, avoid, next follow-up, and South Park Commons affiliation if the pitch is work-related.
 2. Read the linked report (`reportPath` from JSON) for company context
 3. Read `data/cv.md` for proof points
 4. Read `config/profile.yml` for candidate name and identity
@@ -145,7 +145,7 @@ Generate a 3-4 sentence email:
 
 Reuse the contacto framework: 3 sentences, 300 character max.
 - Hook specific to company -> proof point -> soft ask
-- Check `data/outreach-template-evidence.md` for the exact short-form variants before drafting.
+- Check `data/outreach/template-evidence.md` for the exact short-form variants before drafting.
 - Suggest the user run `/career-ops contacto {company}` to find the right person first
 
 ### Second Follow-up (followupCount == 1)
