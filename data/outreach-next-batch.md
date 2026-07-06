@@ -2,7 +2,7 @@
 
 Canonical source: `data/outreach-drafts.md`.
 This file is the compact mirror view for the next send batch. Do not edit it independently.
-Before sending any work-related pitch, confirm the recipient is not SPC-affiliated in the pando member directory / South Park Commons Slack; if the result is unclear, keep it to a non-work reconnect or pause.
+Before sending any work-related pitch, confirm the recipient is not SPC-affiliated in the South Park Commons directory PDF; if the result is unclear, keep it to a non-work reconnect or pause.
 
 ## Ali Hirsa <ah2347@columbia.edu>
 Status: Sent 2026-07-05
@@ -93,7 +93,7 @@ Status: Follow-up draft
 Warm sales / partnership thread. Ask only about next steps or upcoming calls and keep it warm.
 
 ## Robbie Bent / Othership
-Status: Ready to send after SPC check
+Status: Ready to send
 
 Warm founder/community note from the Othership credit thread. Keep it light and not pitchy.
 
@@ -111,3 +111,22 @@ Status: Draft / research / LinkedIn checked (all Terra AI targets here are 2nd-d
 - Michael L. Spence - Chief of Staff. LinkedIn checked: 2nd-degree, so use a short note rather than a DM. Treat as the hiring-ops proxy because no verified recruiter surfaced. Email fallback: `contact@terraAI.earth`.
 - Richard Rex - Senior AI/ML Engineer. LinkedIn checked: 2nd-degree, so use a short note rather than a DM. Email fallback: `contact@terraAI.earth`.
 - Terra AI contact fallback - public company email route for the research-role package.
+
+## Built In shortlist
+
+| Contact | Company | Channel | Status | Note |
+|---|---|---|---|---|
+| Catherine Del Hierro | LTS | LinkedIn note | Draft ready for send | Lead FDE recruiter / talent acquisition lead |
+| David Wilmot | LTS | LinkedIn note | Draft ready for send | Chief Medical Officer, executive sponsor |
+| James Pickard | Accenture | LinkedIn note | Draft ready for send | Talent Acquisition Lead |
+| Jim Murrin | Accenture | LinkedIn note | Draft ready for send | Global executive search, AI & data |
+| Iliana Lytton | Billtrust | LinkedIn note | Draft ready for send | Lead Talent Acquisition Partner |
+| Lee An Schommer | Billtrust | LinkedIn note | Draft ready for send | Chief Product Officer |
+| Harrison Zolot | Trexquant | LinkedIn note | Draft ready for send | Head of Talent Acquisition |
+| Denis Lapitski | Trexquant | LinkedIn note | Draft ready for send | Director of Strategy Research |
+
+## Notes
+
+- All of these are work-related pitches, and the South Park Commons directory PDF does not show an SPC match for these contacts.
+- The source-backed current-role check is complete from the public LinkedIn profiles and company pages.
+- These can move from draft to ready without rewriting the skeleton.
