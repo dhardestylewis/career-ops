@@ -81,11 +81,163 @@ Hi [Name] - I saw the Machine Learning Engineer, Video Engineering opening. I've
 Hi [Name] - I saw your work on video engineering at Apple. I've been building production ML systems for geospatial forecasting and reliability work, so I thought there might be a useful overlap for a quick connect.
 ```
 
+## 5) Lane-Specific Variants
+
+### Professor / Former Instructor Reconnect
+
+**Use when:** the recipient is a professor, advisor, or former instructor.
+
+**Email**
+
+```text
+Hi [Name],
+
+I appreciated your work on [specific paper / talk / lab theme] and the chance to work with you on [class / project / research context]. I have been building [proof point], and I thought it could be worth reconnecting if you are open to a quick conversation.
+
+Best,
+[Your Name]
+```
+
+**LinkedIn DM**
+
+```text
+Hi [Name] - I appreciated your work on [specific paper / talk / lab theme]. I've been building [proof point], and I thought it could be worth reconnecting if a short chat is useful.
+```
+
+### Alumni / Career Services Note
+
+**Use when:** the recipient is an alumni-office contact, career-services staffer, or school-affiliated connector.
+
+**Email**
+
+```text
+Hi [Name],
+
+I am reaching out through the [school] network because I am looking to connect with people working on [area]. I have been building [proof point], and I would appreciate any guidance on the best person or path to speak with.
+
+Best,
+[Your Name]
+```
+
+**LinkedIn DM**
+
+```text
+Hi [Name] - I found your work through the [school] network. I've been building [proof point], and I would love to ask who the best person is to speak with about [area].
+```
+
+### Lab Lead / Researcher Note
+
+**Use when:** the recipient leads a lab, program, or research group.
+
+**Email**
+
+```text
+Hi [Name],
+
+Your work on [specific project / paper / lab theme] stood out. I have been working on [proof point], and I thought there may be a useful overlap for a short conversation or a pointer to the right person.
+
+Best,
+[Your Name]
+```
+
+**LinkedIn DM**
+
+```text
+Hi [Name] - your work on [specific topic] stood out. I'm building [proof point], and I thought there may be a useful overlap for a short connect.
+```
+
+### Nonprofit / Public-Sector Note
+
+**Use when:** the recipient works in a nonprofit, civic-tech, or public-sector role.
+
+**Email**
+
+```text
+Hi [Name],
+
+I came across your work on [mission / program]. I have been building [proof point], and I thought it could be useful to connect if your team is open to a short chat.
+
+Best,
+[Your Name]
+```
+
+**LinkedIn DM**
+
+```text
+Hi [Name] - I saw your work on [mission / program]. I've been building [proof point], and I thought it could be worth a short connect if useful.
+```
+
+### Dormant Warm Tie Nudge
+
+**Use when:** you already know the person but the thread has gone quiet.
+
+**Email**
+
+```text
+Hi [Name],
+
+I wanted to revive our earlier thread on [context]. Since then, I have been working on [proof point], and I thought it could be worth reconnecting if you are open to it.
+
+Best,
+[Your Name]
+```
+
+**LinkedIn DM**
+
+```text
+Hi [Name] - circling back on our earlier thread is probably too much, so I'll just say I still think the overlap on [context] is real. I've been building [proof point], and I'm happy to reconnect if useful.
+```
+
+### Ecosystem Connector / Founder Bridge
+
+**Use when:** the recipient is a founder, operator, community lead, or startup-network connector.
+
+**Email**
+
+```text
+Hi [Name],
+
+I saw your work on [specific thing]. I have been building [proof point], and I thought there may be a useful bridge if you are open to a quick connect.
+
+Best,
+[Your Name]
+```
+
+**LinkedIn DM**
+
+```text
+Hi [Name] - I saw your work on [specific thing]. I've been building [proof point], and I thought it could be worth a quick connect if helpful.
+```
+
 ## Fill Rules
 
 - Replace only the bracketed text.
 - If you need a second proof point, you probably need to shorten the script instead.
 - If the message gets longer than this, convert it to an email and keep the LinkedIn version short.
+- If the contact dossier is incomplete, do not send yet. Mark the row `research` and gather the missing source material first.
+- For professors and former instructors, use a public artifact when one exists. A paper, lecture, talk, lab page, or editorship is usually a better hook than generic thanks.
+
+## Required Pre-Send Dossier
+
+Before any send, write down:
+
+1. Contact and relationship
+2. Last real touch and date
+3. Why now
+4. Specific hook about them
+5. Proof point about you
+6. Smallest sensible ask
+7. What to avoid
+8. Send state and follow-up rule
+9. South Park Commons affiliation check if the outreach is about work, money, gigs, contracts, or jobs
+
+Minimum source inputs:
+
+- Gmail thread or LinkedIn DM history
+- LinkedIn profile and recent activity
+- 1 to 2 public artifacts if the person is academic, research, founder, or operator facing
+- One matching proof point from the user's CV or repo
+- Verify the person's current LinkedIn profile or organization page before sending. If the person moved, rewrite the note as a reconnect or current-role note, not an active-role follow-up.
 
 ## Quick Adjustments
 
@@ -119,6 +271,9 @@ Hi [Name] - thanks again for the intro / earlier discussion. Just checking wheth
 ### Send
 
 - There is a named person or direct contact path.
+- The contact dossier is complete and source-backed.
+- The current LinkedIn role or org page has been checked when the recipient could have moved.
+- The South Park Commons affiliation check is complete for any work, money, gigs, contracts, or jobs pitch.
 - You can write the message with one hook, one proof point, and one ask.
 - The role, project, or post is clearly relevant.
 - The thread is not blocked by CAPTCHA or login friction.
@@ -131,6 +286,9 @@ Hi [Name] - thanks again for the intro / earlier discussion. Just checking wheth
 - The message would become a pitch deck.
 - There is no obvious role or context to reference.
 - The note relies on vague phrases like "just checking in" or "wanted to reach out."
+- The dossier has missing source refs, missing last touch, or a missing why-now.
+- The recipient's current role has changed and the note has not been rewritten as a reconnect/current-role note.
+- The South Park Commons affiliation is unclear for a work-related pitch.
 
 ## Response Handling
 
