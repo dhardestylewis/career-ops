@@ -1,7 +1,5 @@
 # Customization Guide
 
-If a customization request is safe and repo-backed, make the change in the files now rather than only describing the plan.
-
 ## Profile (config/profile.yml)
 
 This is the single source of truth for your identity. All modes read from here.
@@ -68,7 +66,7 @@ Career-ops can integrate with external systems via Claude Code hooks. Example ho
 }
 ```
 
-Save hooks in `.claude/settings.json`.
+Save hooks in `.claude/settings.json` (Claude Code). OpenCode does not support hooks. For equivalent functionality, use custom commands (`.opencode/commands/`) or agents (`.opencode/agents/`) — see https://opencode.ai/docs/commands/.
 
 ## States (templates/states.yml)
 
