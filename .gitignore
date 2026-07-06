@@ -43,6 +43,7 @@ data/archive/chrome-bot-profile*/
 # User data (personalization — never commit)
 config/profile.yml
 modes/_profile.md
+modes/_custom.md
 portals.yml
 data/cv.md
 data/bio.md
