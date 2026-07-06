@@ -2,7 +2,7 @@
 
 Date: 2026-07-05
 
-Draft-only workspace. Nothing below has been sent yet. Check `data/outreach-log.md` for the live-send ledger.
+Draft-only workspace. Nothing below has been sent yet. Check `data/outreach/log.md` for the live-send ledger.
 
 Send gate:
 
@@ -410,9 +410,9 @@ Daniel
 ```text
 Hi Christopher,
 
-I wanted to reconnect from GSAPP, and I’ve been thinking about how closely your real estate finance work connects to what I’m building at Homecastr.
+I wanted to reconnect from GSAPP, and Iâ€™ve been thinking about how closely your real estate finance work connects to what Iâ€™m building at Homecastr.
 
-If you’re open, I’d love to hear your thoughts on Homecastr and catch up over coffee sometime. I’d also be grateful for any roles or research assistantships you think I should keep in mind.
+If youâ€™re open, Iâ€™d love to hear your thoughts on Homecastr and catch up over coffee sometime. Iâ€™d also be grateful for any roles or research assistantships you think I should keep in mind.
 
 Best,
 Daniel

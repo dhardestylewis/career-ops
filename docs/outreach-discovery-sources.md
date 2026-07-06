@@ -32,6 +32,6 @@ Use this note when expanding beyond the current LinkedIn feed sample.
 
 ## Logging
 
-- Record live outbound touches in `data/outreach-log.md`
+- Record live outbound touches in `data/outreach/log.md`
 - Record route discoveries in the appropriate TSV before sending
 - Keep public-writing leads and job-board leads separate so future agents can sort them quickly

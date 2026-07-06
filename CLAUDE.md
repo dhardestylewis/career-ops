@@ -25,10 +25,10 @@ There are two layers. Read `DATA_CONTRACT.md` for the full list.
 - `modes/_shared.md`, `modes/oferta.md`, all other modes
 - `CLAUDE.md`, `*.mjs` scripts, `dashboard/*`, `templates/*`, `batch/*`
 
-**THE RULE: When the user asks to customize anything, write to the USER layer, NEVER to a system file — that is what survives `node update-system.mjs`.**
-- **Profile / evaluation content** (archetypes, narrative, negotiation scripts, proof points, location policy, comp targets) → `modes/_profile.md` or `config/profile.yml`.
-- **Procedural rules** (house rules, custom workflows, output preferences, "always/never do X" automations) → `modes/_custom.md` (create it from `modes/_custom.template.md` if missing).
-- **NEVER** edit `modes/_shared.md`, `CLAUDE.md`, or any other system file for user-specific content — those get overwritten on update.
+**THE RULE: When the user asks to customize anything, write to the USER layer, NEVER to a system file â€” that is what survives `node update-system.mjs`.**
+- **Profile / evaluation content** (archetypes, narrative, negotiation scripts, proof points, location policy, comp targets) â†’ `modes/_profile.md` or `config/profile.yml`.
+- **Procedural rules** (house rules, custom workflows, output preferences, "always/never do X" automations) â†’ `modes/_custom.md` (create it from `modes/_custom.template.md` if missing).
+- **NEVER** edit `modes/_shared.md`, `CLAUDE.md`, or any other system file for user-specific content â€” those get overwritten on update.
 
 ## Source-of-Truth Boundary (CRITICAL)
 
@@ -39,19 +39,19 @@ User-facing content (CV, cover letters, application emails, form answers, recrui
 - `config/profile.yml`
 - `modes/_profile.md`
 - `writing-samples/`
-- `voice-dna.md` (voice/style only — governs *how* text reads, never introduces factual claims)
-- `interview-prep/story-bank.md` and `interview-prep/{company}-{role}.md` (the user's own STAR stories and interview-prep notes — same trust level as `cv.md`; consumed by the `interview` and `apply`/`match-star` modes)
+- `voice-dna.md` (voice/style only â€” governs *how* text reads, never introduces factual claims)
+- `interview-prep/story-bank.md` and `interview-prep/{company}-{role}.md` (the user's own STAR stories and interview-prep notes â€” same trust level as `cv.md`; consumed by the `interview` and `apply`/`match-star` modes)
 
 Anything not in this list is **out of scope for content generation**, including:
 
-- Auto-memory at `~/.claude/projects/.../memory/` — see scope clarification below
-- Any directory outside the career-ops project — for example, parent-directory repos containing the user's product code, sibling project directories, or other unrelated codebases on the same machine
+- Auto-memory at `~/.claude/projects/.../memory/` â€” see scope clarification below
+- Any directory outside the career-ops project â€” for example, parent-directory repos containing the user's product code, sibling project directories, or other unrelated codebases on the same machine
 - Cross-session inferences about the user's work that have not been written into one of the in-scope files
 - Knowledge from other Claude Code projects on the same machine
 
-**Rule from the original design (santifer's case study):** *"Keywords get reformulated, never fabricated."* Reorder, reframe, emphasise — but never invent. If a claim isn't backed by an in-scope file, ask the user. If they cannot or do not want to add it, the output goes without it. Silence on a topic is fine; manufactured detail is not.
+**Rule from the original design (santifer's case study):** *"Keywords get reformulated, never fabricated."* Reorder, reframe, emphasise â€” but never invent. If a claim isn't backed by an in-scope file, ask the user. If they cannot or do not want to add it, the output goes without it. Silence on a topic is fine; manufactured detail is not.
 
-**Authorship claims are non-negotiable.** Never claim the user authored a project, repo, library, tool, framework, or open-source artefact unless explicitly attributed to them in `cv.md` or `article-digest.md`. Tool-of-trade conflation (the user uses X → the user built X) is the most common fabrication pattern and is explicitly forbidden.
+**Authorship claims are non-negotiable.** Never claim the user authored a project, repo, library, tool, framework, or open-source artefact unless explicitly attributed to them in `cv.md` or `article-digest.md`. Tool-of-trade conflation (the user uses X â†’ the user built X) is the most common fabrication pattern and is explicitly forbidden.
 
 ### Auto-memory scope (clarification, not exception)
 
@@ -66,10 +66,10 @@ Auto-memory **never** holds content claims about the user's work, technical acco
 
 ### Where rules live
 
-Rules belong in files the harness reads automatically — `CLAUDE.md`, `AGENTS.md`, `modes/*.md`, `MEMORY.md`. Do not create sidecar documentation that requires manual loading. Reinforcement-without-enforcement decays.
+Rules belong in files the harness reads automatically â€” `CLAUDE.md`, `AGENTS.md`, `modes/*.md`, `MEMORY.md`. Do not create sidecar documentation that requires manual loading. Reinforcement-without-enforcement decays.
 
 - Before live outreach, refresh the latest branch/PR state and outreach ledger so parallel agents stay aligned.
-- Use `data/outreach-operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach-log.md` as the live-send ledger.
+- Use `data/outreach/operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach/log.md` as the live-send ledger.
 - Do not split outreach state across drafts, queue, and log; the queue is the worklist and the log is the source of truth.
 
 ## Update Check
@@ -81,13 +81,13 @@ node update-system.mjs check
 ```
 
 Parse the JSON output:
-- `{"status": "update-available", "local": "1.0.0", "remote": "1.1.0", "changelog": "..."}` → tell the user:
-  > "career-ops update available (v{local} → v{remote}). Your data (CV, profile, tracker, reports) will NOT be touched. Want me to update?"
-  If yes → run `node update-system.mjs apply`. If no → run `node update-system.mjs dismiss`.
-- `{"status": "up-to-date"}` → say nothing
-- `{"status": "dismissed"}` → say nothing
-- `{"status": "offline"}` → say nothing
-- `{"status": "no-remote-version"}` → say nothing (checker reached GitHub but neither VERSION nor the latest release tag parsed as semver — treat as a silent non-failure, same as offline)
+- `{"status": "update-available", "local": "1.0.0", "remote": "1.1.0", "changelog": "..."}` â†’ tell the user:
+  > "career-ops update available (v{local} â†’ v{remote}). Your data (CV, profile, tracker, reports) will NOT be touched. Want me to update?"
+  If yes â†’ run `node update-system.mjs apply`. If no â†’ run `node update-system.mjs dismiss`.
+- `{"status": "up-to-date"}` â†’ say nothing
+- `{"status": "dismissed"}` â†’ say nothing
+- `{"status": "offline"}` â†’ say nothing
+- `{"status": "no-remote-version"}` â†’ say nothing (checker reached GitHub but neither VERSION nor the latest release tag parsed as semver â€” treat as a silent non-failure, same as offline)
 
 The user can also say "check for updates" or "update career-ops" at any time to force a check.
 To rollback: `node update-system.mjs rollback`
@@ -115,7 +115,7 @@ AI-powered job search automation built on Claude Code: pipeline tracking, offer 
 | `followup-cadence.mjs` | Follow-up cadence calculator (JSON output) |
 | `followup-seed.mjs` | Seeds `data/follow-ups.md` with a pinned first follow-up date when a row turns Applied (JSON output) |
 | `data/follow-ups.md` | Follow-up history tracker |
-| `scan.mjs` | Zero-token portal scanner — hits Greenhouse/Ashby/Lever APIs directly, zero LLM cost |
+| `scan.mjs` | Zero-token portal scanner â€” hits Greenhouse/Ashby/Lever APIs directly, zero LLM cost |
 | `check-liveness.mjs` | Job posting liveness checker |
 | `liveness-core.mjs` | Shared liveness logic (expired signals win over generic Apply text) |
 | `reports/` | Evaluation reports (format: `{###}-{company-slug}-{YYYY-MM-DD}.md`). Blocks A-F + G (Posting Legitimacy), plus `## Machine Summary` YAML for downstream scripts. Header includes `**Legitimacy:** {tier}`. |
@@ -133,29 +133,29 @@ You can invoke the command center or any of its modes directly within your CLI:
 * `/career-ops [subcommand]` (Runs a specific subcommand)
 
 #### Subcommands:
-* `pipeline` — Process pending URLs from inbox
-* `scan` — Scan job portals for new offers
-* `tracker` — Show application status overview
-* `pdf` — Generate ATS-optimized CV PDF
-* `latex` — Export CV as LaTeX/Overleaf .tex
-* `cover` — Generate cover letter
-* `email` — Draft formal application email only; never sends, submits, or clicks
-* `interview-prep` — Generate interview preparation guide
-* `interview` — Onboarding/on-demand interview
-* `contacto` — Generate LinkedIn outreach message
-* `deep` — Execute deep company research
-* `training` — Evaluate course/cert against North Star
-* `project` — Evaluate portfolio project idea
-* `batch` — Run parallel batch evaluations
-* `patterns` — Analyze rejection patterns
-* `followup` — Update and calculate follow-ups
-* `update` — Update system files
+* `pipeline` â€” Process pending URLs from inbox
+* `scan` â€” Scan job portals for new offers
+* `tracker` â€” Show application status overview
+* `pdf` â€” Generate ATS-optimized CV PDF
+* `latex` â€” Export CV as LaTeX/Overleaf .tex
+* `cover` â€” Generate cover letter
+* `email` â€” Draft formal application email only; never sends, submits, or clicks
+* `interview-prep` â€” Generate interview preparation guide
+* `interview` â€” Onboarding/on-demand interview
+* `contacto` â€” Generate LinkedIn outreach message
+* `deep` â€” Execute deep company research
+* `training` â€” Evaluate course/cert against North Star
+* `project` â€” Evaluate portfolio project idea
+* `batch` â€” Run parallel batch evaluations
+* `patterns` â€” Analyze rejection patterns
+* `followup` â€” Update and calculate follow-ups
+* `update` â€” Update system files
 
 All `modes/*` files and prompt contexts are shared across Claude Code, OpenCode, Antigravity CLI, and Grok Build CLI. `GEMINI.md` remains only as a legacy no-op guard so Antigravity does not duplicate the full project instructions.
 
-### First Run — Onboarding (IMPORTANT)
+### First Run â€” Onboarding (IMPORTANT)
 
-**Before doing ANYTHING else, check if the system is set up.** On the first message of each session, run the cold-start check — one deterministic source of truth (this doc and `doctor.mjs` share the same prerequisite list, so they can never drift):
+**Before doing ANYTHING else, check if the system is set up.** On the first message of each session, run the cold-start check â€” one deterministic source of truth (this doc and `doctor.mjs` share the same prerequisite list, so they can never drift):
 
 ```bash
 node doctor.mjs --json
@@ -192,7 +192,7 @@ Fill in `config/profile.yml` with their answers. For archetypes and targeting na
 If `portals.yml` is missing:
 > "I'll set up the job scanner with 45+ pre-configured companies. Want me to customize the search keywords for your target roles?"
 
-Copy `templates/portals.example.yml` → `portals.yml`. If they gave target roles in Step 2, update `title_filter.positive` to match.
+Copy `templates/portals.example.yml` â†’ `portals.yml`. If they gave target roles in Step 2, update `title_filter.positive` to match.
 
 #### Step 4: Tracker
 If `data/applications.md` doesn't exist, create it:
@@ -211,10 +211,10 @@ After the basics are set up, proactively ask for more context. The more you know
 > - What makes you unique? What's your 'superpower' that other candidates don't have?
 > - What kind of work excites you? What drains you?
 > - Any deal-breakers? (e.g., no on-site, no startups under 20 people, no Java shops)
-> - Your best professional achievement — the one you'd lead with in an interview
+> - Your best professional achievement â€” the one you'd lead with in an interview
 > - Any projects, articles, or case studies you've published?
 >
-> The more context you give me, the better I filter. Think of it as onboarding a recruiter — the first week I need to learn about you, then I become invaluable."
+> The more context you give me, the better I filter. Think of it as onboarding a recruiter â€” the first week I need to learn about you, then I become invaluable."
 
 Store any insights the user shares in `config/profile.yml` (under narrative), `modes/_profile.md`, or in `article-digest.md` if they share proof points. Do not put user-specific archetypes or framing into `modes/_shared.md`.
 
@@ -227,9 +227,9 @@ Once all files exist, confirm:
 > - Run `/career-ops scan` to search portals
 > - Run `/career-ops` to see all commands
 >
-> Everything is customizable — just ask me to change anything.
+> Everything is customizable â€” just ask me to change anything.
 >
-> Tip: Having a personal portfolio dramatically improves your job search. If you don't have one yet, the author's portfolio is also open source: github.com/santifer/cv-santiago — feel free to fork it and make it yours."
+> Tip: Having a personal portfolio dramatically improves your job search. If you don't have one yet, the author's portfolio is also open source: github.com/santifer/cv-santiago â€” feel free to fork it and make it yours."
 
 Then suggest automation:
 > "Want me to scan for new offers automatically? I can set up a recurring scan every few days so you don't miss anything. Just say 'scan every 3 days' and I'll configure it."
@@ -241,16 +241,16 @@ If the user accepts, use the `/loop` or `/schedule` skill (if available) to set 
 This system is designed to be customized by YOU (AI Agent). When the user asks you to change archetypes, translate modes, adjust scoring, add companies, or modify negotiation scripts -- do it directly. You read the same files you use, so you know exactly what to edit.
 
 **Common customization requests:**
-- "Change the archetypes to [backend/frontend/data/devops] roles" → edit `modes/_profile.md` or `config/profile.yml`
-- "Translate the modes to English" → edit all files in `modes/`
-- "Add these companies to my portals" → edit `portals.yml`
-- "Update my profile" → edit `config/profile.yml`
-- "Change the CV template design" → edit `templates/cv-template.html`
-- "Adjust the scoring weights" → edit `modes/_profile.md` for user-specific weighting, or edit `modes/_shared.md` and `batch/batch-prompt.md` only when changing the shared system defaults for everyone
+- "Change the archetypes to [backend/frontend/data/devops] roles" â†’ edit `modes/_profile.md` or `config/profile.yml`
+- "Translate the modes to English" â†’ edit all files in `modes/`
+- "Add these companies to my portals" â†’ edit `portals.yml`
+- "Update my profile" â†’ edit `config/profile.yml`
+- "Change the CV template design" â†’ edit `templates/cv-template.html`
+- "Adjust the scoring weights" â†’ edit `modes/_profile.md` for user-specific weighting, or edit `modes/_shared.md` and `batch/batch-prompt.md` only when changing the shared system defaults for everyone
 
 ### Language Modes
 
-Default modes are in `modes/` (English). Language-specific modes live in `modes/{lang}/` — each has `_shared.md`, the eval/apply/`pipeline.md` modes, and a `README.md` documenting that market's vocabulary:
+Default modes are in `modes/` (English). Language-specific modes live in `modes/{lang}/` â€” each has `_shared.md`, the eval/apply/`pipeline.md` modes, and a `README.md` documenting that market's vocabulary:
 
 | Language | Dir | Markets |
 |----------|-----|---------|
@@ -258,9 +258,9 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 | French | `modes/fr/` | France, Belgium, Switzerland, Luxembourg, Quebec |
 | Japanese | `modes/ja/` | Japan |
 
-**When to use a `{lang}` mode** — if any holds: the user says "use {lang} modes"; `config/profile.yml` sets `language.modes_dir: modes/{lang}`; or you detect a {lang} JD (then suggest switching). Read from `modes/{lang}/` instead of `modes/`.
+**When to use a `{lang}` mode** â€” if any holds: the user says "use {lang} modes"; `config/profile.yml` sets `language.modes_dir: modes/{lang}`; or you detect a {lang} JD (then suggest switching). Read from `modes/{lang}/` instead of `modes/`.
 
-**When NOT to:** if the user applies to English-language roles — even at French, German, or Japanese companies — use the default English modes.
+**When NOT to:** if the user applies to English-language roles â€” even at French, German, or Japanese companies â€” use the default English modes.
 
 ### Skill Modes
 
@@ -270,7 +270,7 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 | Asks to evaluate offer | `oferta` |
 | Asks to compare offers | `ofertas` |
 | Wants LinkedIn outreach | `contacto` |
-| Wants a formal application email | `email` — draft-only; never sends, submits, or clicks anything |
+| Wants a formal application email | `email` â€” draft-only; never sends, submits, or clicks anything |
 | Asks for company research | `deep` |
 | Preps for interview at specific company | `interview-prep` |
 | Wants interactive profile/CV onboarding | `interview` |
@@ -315,12 +315,12 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 
 ## Offer Verification -- MANDATORY
 
-Verify a posting is still live before applying — using the cheapest check that works (a false "expired" is worse than a slow check: it makes the user miss a real job):
+Verify a posting is still live before applying â€” using the cheapest check that works (a false "expired" is worse than a slow check: it makes the user miss a real job):
 
-1. **ATS-hosted postings (Greenhouse, Lever, ...) — API first, zero tokens:** run `node check-liveness.mjs <url>`. It hits the posting's public ATS JSON API directly (no browser, no tokens) and reports `active`/`expired`, falling back to a browser only when the API is inconclusive. A definitive `expired` from the API is authoritative.
-2. **Non-ATS pages, or when the API is inconclusive — Playwright:** `browser_navigate` to the URL + `browser_snapshot`. Only footer/navbar without JD = closed; title + description + Apply = active.
+1. **ATS-hosted postings (Greenhouse, Lever, ...) â€” API first, zero tokens:** run `node check-liveness.mjs <url>`. It hits the posting's public ATS JSON API directly (no browser, no tokens) and reports `active`/`expired`, falling back to a browser only when the API is inconclusive. A definitive `expired` from the API is authoritative.
+2. **Non-ATS pages, or when the API is inconclusive â€” Playwright:** `browser_navigate` to the URL + `browser_snapshot`. Only footer/navbar without JD = closed; title + description + Apply = active.
 
-**NEVER decide liveness from a bare WebSearch/WebFetch snippet** — use `check-liveness.mjs` (which does the API rung) or Playwright.
+**NEVER decide liveness from a bare WebSearch/WebFetch snippet** â€” use `check-liveness.mjs` (which does the API rung) or Playwright.
 
 **Exception for batch workers (`claude -p`):** Playwright is unavailable in headless pipe mode. The API rung above still works for ATS postings; for non-ATS pages use WebFetch as a fallback and mark the report header `**Verification:** unconfirmed (batch mode)`.
 
@@ -328,15 +328,15 @@ Verify a posting is still live before applying — using the cheapest check that
 
 ## CI/CD and Quality
 
-- **GitHub Actions** run on every PR: `test-all.mjs` (63+ checks), auto-labeler (risk-based: 🔴 core-architecture, ⚠️ agent-behavior, 📄 docs), welcome bot for first-time contributors
+- **GitHub Actions** run on every PR: `test-all.mjs` (63+ checks), auto-labeler (risk-based: ðŸ”´ core-architecture, âš ï¸ agent-behavior, ðŸ“„ docs), welcome bot for first-time contributors
 - **Branch protection** on `main`: status checks must pass before merge. No direct pushes to main (except admin bypass).
 - **Dependabot** monitors npm, Go modules, and GitHub Actions for security updates
-- **Contributing process**: issue first → discussion → PR with linked issue → CI passes → maintainer review → merge
+- **Contributing process**: issue first â†’ discussion â†’ PR with linked issue â†’ CI passes â†’ maintainer review â†’ merge
 
 ## Community and Governance
 
 - **Code of Conduct**: Contributor Covenant 2.1 with enforcement actions (see `CODE_OF_CONDUCT.md`)
-- **Governance**: BDFL model with contributor ladder — Participant → Contributor → Triager → Reviewer → Maintainer (see `GOVERNANCE.md`)
+- **Governance**: BDFL model with contributor ladder â€” Participant â†’ Contributor â†’ Triager â†’ Reviewer â†’ Maintainer (see `GOVERNANCE.md`)
 - **Security**: private vulnerability reporting via email (see `SECURITY.md`)
 - **Support**: help questions go to Discord/Discussions, not issues (see `SUPPORT.md`)
 - **Discord**: https://discord.gg/8pRpHETxa4
@@ -367,13 +367,13 @@ Write one TSV file per evaluation to `batch/tracker-additions/{num}-{company-slu
 4. `role` -- job title
 5. `status` -- canonical status (e.g., `Evaluated`)
 6. `score` -- format `X.X/5` (e.g., `4.2/5`)
-7. `pdf` -- `✅` or `❌`
+7. `pdf` -- `âœ…` or `âŒ`
 8. `report` -- markdown link, always written **root-relative**: `[num](reports/...)`
 9. `notes` -- one-line summary
 
 **Note:** In applications.md, score comes BEFORE status. The merge script handles this column swap automatically.
 
-**Report link normalization:** The TSV always carries a **root-relative** `[num](reports/...)` link. `merge-tracker.mjs` rewrites it so the link is relative to the tracker file's own directory before writing it into the tracker — `../reports/...` when the tracker is at `data/applications.md`, or `reports/...` at the root layout. This keeps links clickable from the tracker (markdown links resolve relative to the file that contains them). Normalization is idempotent. To fix links in an existing tracker, run `node merge-tracker.mjs --migrate` (see #760).
+**Report link normalization:** The TSV always carries a **root-relative** `[num](reports/...)` link. `merge-tracker.mjs` rewrites it so the link is relative to the tracker file's own directory before writing it into the tracker â€” `../reports/...` when the tracker is at `data/applications.md`, or `reports/...` at the root layout. This keeps links clickable from the tracker (markdown links resolve relative to the file that contains them). Normalization is idempotent. To fix links in an existing tracker, run `node merge-tracker.mjs --migrate` (see #760).
 
 ### Pipeline Integrity
 
@@ -387,7 +387,7 @@ Write one TSV file per evaluation to `batch/tracker-additions/{num}-{company-slu
 
 ### Canonical States (applications.md)
 
-**Source of truth (full descriptions + aliases):** `templates/states.yml`. The 8 canonical states (use exactly one): `Evaluated` · `Applied` · `Responded` · `Interview` · `Offer` · `Rejected` · `Discarded` · `SKIP`.
+**Source of truth (full descriptions + aliases):** `templates/states.yml`. The 8 canonical states (use exactly one): `Evaluated` Â· `Applied` Â· `Responded` Â· `Interview` Â· `Offer` Â· `Rejected` Â· `Discarded` Â· `SKIP`.
 
 **RULES:** no markdown bold (`**`), no dates (those go in the date column), no extra text (use the notes column) in the status field.
 @AGENTS.md
