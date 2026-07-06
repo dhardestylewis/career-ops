@@ -3,7 +3,6 @@ https://databricks.com/company/careers/open-positions/job?gh_jid=8415203002 | Da
 https://databricks.com/company/careers/open-positions/job?gh_jid=8456277002 | Databricks | Principal Data Scientist
 https://databricks.com/company/careers/open-positions/job?gh_jid=8091041002 | Databricks | Senior Applied AI Engineer
 https://databricks.com/company/careers/open-positions/job?gh_jid=7859597002 | Databricks | Senior Applied AI Engineer – ML for Systems & Infrastructure
-https://databricks.com/company/careers/open-positions/job?gh_jid=6954585002 | Databricks | Senior Machine Learning Engineer - GenAI Platform
 https://databricks.com/company/careers/open-positions/job?gh_jid=8450580002 | Databricks | Sr. Forward Deployed Engineer
 https://databricks.com/company/careers/open-positions/job?gh_jid=7276195002 | Databricks | Sr. Machine Learning Engineer
 https://databricks.com/company/careers/open-positions/job?gh_jid=7958676002 | Databricks | Sr Software Engineer, Search Relevance (Applied AI)

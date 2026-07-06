@@ -2,12 +2,15 @@
 
 Date: 2026-07-05
 
+This file is job-search specific. For GTM lead, customer, partner, or advisor outreach, use `docs/gtm-outreach-guardrails.md`.
+
 This is the canonical guardrails block for all outreach work in this worktree. Future agents should read this first, then read the template pack and the relevant mode.
 
 ## Send Gate
 
 - Draft first.
 - Do not send anything until the user has approved the recipient batch, unless the user explicitly asks for a specific send.
+- Before any live send or follow-up, run `npm run outreach:audit -- "Recipient Name"`. If it exits `2`, do not send a new intro; if it exits `3`, resolve the existing draft / research / blocked state first.
 - If thread context is unclear, stop at `draft only`.
 - Never "fix" a bad send with a second apology or self-correction unless the user explicitly asks for it.
 
@@ -36,6 +39,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 ## Logging
 
 - Log every live outbound touch in `data/outreach-log.md` before moving to the next recipient.
+- Re-run `npm run outreach:audit -- "Recipient Name"` after logging if the next step is unclear; the audit should now point to the existing thread instead of a fresh send.
 - Keep the discovery trail in the appropriate TSV or note file so future agents can recover the context without reopening the browser session.
 - Do not invent contact details, application links, or replies.
 

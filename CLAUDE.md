@@ -133,6 +133,8 @@ You can invoke the command center or any of its modes directly within your CLI:
 * `/career-ops [subcommand]` (Runs a specific subcommand)
 
 #### Subcommands:
+* `/career-ops gtm-outreach` â€” Generate GTM lead outreach message
+* `/career-ops gtm-followup` â€” Generate GTM follow-up cadence and drafts
 * `pipeline` — Process pending URLs from inbox
 * `scan` — Scan job portals for new offers
 * `tracker` — Show application status overview
@@ -270,6 +272,7 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 | Asks to evaluate offer | `oferta` |
 | Asks to compare offers | `ofertas` |
 | Wants LinkedIn outreach | `contacto` |
+| Wants GTM lead/customer/partner outreach | `gtm-outreach` |
 | Wants a formal application email | `email` — draft-only; never sends, submits, or clicks anything |
 | Asks for company research | `deep` |
 | Preps for interview at specific company | `interview-prep` |
@@ -287,6 +290,7 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 | Batch processes offers | `batch` |
 | Asks about rejection patterns, wants to improve targeting, or wants to match interview answers to best-fit roles | `patterns` |
 | Asks about follow-ups or application cadence | `followup` |
+| Asks about GTM follow-ups or next touches | `gtm-followup` |
 
 ### CV Source of Truth
 

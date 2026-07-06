@@ -119,19 +119,26 @@ function parseTsv(filePath) {
   return rows;
 }
 
+function splitMarkdownCells(line) {
+  return line
+    .trim()
+    .replace(/^\|/, '')
+    .replace(/\|$/, '')
+    .split('|')
+    .map(normalizeText);
+}
+
 function parseMarkdownTable(filePath) {
   if (!existsSync(filePath)) return [];
   const lines = readFileSync(filePath, 'utf8').split(/\r?\n/);
   const tableLines = lines.filter(line => line.trim().startsWith('|'));
   if (tableLines.length < 2) return [];
-  const header = tableLines[0]
-    .split('|')
-    .map(normalizeText)
+  const header = splitMarkdownCells(tableLines[0])
     .filter(Boolean)
     .map(h => h.toLowerCase().replace(/[^a-z0-9]+/g, '_'));
   const rows = [];
   for (const line of tableLines.slice(2)) {
-    const values = line.split('|').map(normalizeText).filter(Boolean);
+    const values = splitMarkdownCells(line);
     if (values.length === 0) continue;
     const row = {};
     for (let i = 0; i < header.length; i++) {
@@ -139,6 +146,156 @@ function parseMarkdownTable(filePath) {
     }
     rows.push(row);
   }
+  return rows;
+}
+
+function buildLaneLookup() {
+  const lookup = new Map();
+
+  function registerLane(row, lane, ...keys) {
+    const normalizedLane = normalizeText(lane);
+    if (!normalizedLane) return;
+    for (const key of keys) {
+      const normalizedKey = normalizeKey(key);
+      if (normalizedKey && !lookup.has(normalizedKey)) {
+        lookup.set(normalizedKey, normalizedLane);
+      }
+    }
+  }
+
+  for (const row of parseTsv(TARGETS_FILE)) {
+    registerLane(row, row.lane, row.contact_name, row.organization, row.source, row.notes);
+  }
+
+  for (const row of parseTsv(ROUTES_FILE)) {
+    registerLane(row, row.lane, row.person_org, row.profile_url, row.route_url, row.notes);
+  }
+
+  for (const row of parseArchiveSeeds(ARCHIVE_FILE)) {
+    registerLane(row, row.lane, row.contact_name, row.organization, row.notes);
+  }
+
+  return lookup;
+}
+
+function inferLaneFromText(...parts) {
+  const text = parts.map(normalizeText).join(' ').toLowerCase();
+  if (!text) return 'warm-network';
+
+  if (/\b(professor|instructor|academic|research advisor|tacc|gsapp|columbia university|eth zurich|eawag)\b/.test(text)) {
+    return 'warm-academic';
+  }
+
+  if (/\b(alumni|career services|career center|career development|student affairs|routing path|alumni office)\b/.test(text)) {
+    return 'alumni-career-services';
+  }
+
+  if (/\b(lab|research|paper|publication|lecture|talk|project|modeling)\b/.test(text)) {
+    return 'lab-research';
+  }
+
+  if (/\b(public sector|nonprofit|civic|housing|resilien|gov|hpd|nycha|hud|code for america|fast forward)\b/.test(text)) {
+    return 'nonprofit-gov';
+  }
+
+  if (/\b(founder|ecosystem|community|partnership|startup|innovation|studio|operator)\b/.test(text)) {
+    return 'founder-ecosystem';
+  }
+
+  if (/\b(recruiter|talent acquisition|recruiting|headhunter|hard-tech|technical recruiting|data \/ cyber)\b/.test(text)) {
+    return 'recruiter';
+  }
+
+  if (/\b(hiring manager|role-fit|team problem|lead fde|machine learning engineer|video engineering|systematic research|product leadership)\b/.test(text)) {
+    return 'hiring-manager';
+  }
+
+  return 'warm-network';
+}
+
+function inferLaneForLogRow({ recipient, destination, template, subject, notes }, laneLookup) {
+  const lookupKeys = [recipient, destination, template, subject, notes];
+  for (const key of lookupKeys) {
+    const normalizedKey = normalizeKey(key);
+    if (normalizedKey && laneLookup.has(normalizedKey)) {
+      return laneLookup.get(normalizedKey);
+    }
+  }
+  return inferLaneFromText(recipient, destination, template, subject, notes);
+}
+
+function parseOutreachLog(filePath, laneLookup) {
+  if (!existsSync(filePath)) return [];
+  const lines = readFileSync(filePath, 'utf8').split(/\r?\n/);
+  const rows = [];
+  let currentDate = '';
+
+  for (const line of lines) {
+    const dateMatch = line.match(/^\s*Date:\s*(\d{4}-\d{2}-\d{2})\s*$/);
+    if (dateMatch) {
+      currentDate = dateMatch[1];
+      continue;
+    }
+
+    if (!line.trim().startsWith('|')) continue;
+
+    const cells = splitMarkdownCells(line);
+    if (cells.length === 0) continue;
+
+    const firstCell = normalizeText(cells[0]).toLowerCase();
+    if (firstCell === 'channel' || firstCell === 'date') continue;
+    if (cells.every(cell => !cell || /^-+$/.test(cell.replace(/:/g, '')))) continue;
+
+    const isNewFormat = /^\d{4}-\d{2}-\d{2}$/.test(cells[0]);
+
+    if (isNewFormat && cells.length >= 8) {
+      const [date, lane, channel, contactName, organization, template, subject, status, ...rest] = cells;
+      const notes = rest.filter(Boolean).join(' | ');
+      rows.push({
+        lane: lane || inferLaneFromText(contactName, organization, template, subject, notes),
+        scope: inferScopeFromText(contactName, organization, template, subject, notes),
+        contact_name: contactName,
+        organization,
+        channel,
+        source: 'data/outreach-log.md',
+        status,
+        priority: String(laneMeta(lane || inferLaneFromText(contactName, organization, template, subject, notes)).priority),
+        last_touch: date,
+        next_action: normalizeKey(status) === 'sent'
+          ? 'Wait for reply; if none, follow the lane cadence'
+          : '',
+        notes: appendUnique(template, appendUnique(subject, notes)),
+        spc_affiliation: '',
+        spc_checked_at: '',
+      });
+      continue;
+    }
+
+    if (cells.length >= 7) {
+      const [channel, recipient, destination, template, subject, status, ...rest] = cells;
+      const notes = rest.filter(Boolean).join(' | ');
+      const lane = inferLaneForLogRow({ recipient, destination, template, subject, notes }, laneLookup);
+
+      rows.push({
+        lane,
+        scope: inferScopeFromText(recipient, destination, template, subject, notes),
+        contact_name: recipient,
+        organization: destination,
+        channel,
+        source: 'data/outreach-log.md',
+        status,
+        priority: String(laneMeta(lane).priority),
+        last_touch: currentDate,
+        next_action: normalizeKey(status) === 'sent'
+          ? 'Wait for reply; if none, follow the lane cadence'
+          : '',
+        notes: appendUnique(template, appendUnique(subject, notes)),
+        spc_affiliation: '',
+        spc_checked_at: '',
+      });
+    }
+  }
+
   return rows;
 }
 
@@ -277,6 +434,7 @@ function deriveResponseState(status) {
 
 function buildRows() {
   const rows = [];
+  const laneLookup = buildLaneLookup();
 
   for (const row of parseTsv(TARGETS_FILE)) {
     rows.push({
@@ -296,25 +454,7 @@ function buildRows() {
     });
   }
 
-  for (const row of parseMarkdownTable(LOG_FILE)) {
-    rows.push({
-      lane: row.lane || 'warm-network',
-      scope: inferScopeFromText(row.recipient, row.destination, row.template, row.notes),
-      contact_name: row.recipient || row.channel || 'unknown',
-      organization: row.destination || '',
-      channel: row.channel,
-      source: 'data/outreach-log.md',
-      status: row.status || 'sent',
-      priority: String(laneMeta(row.lane || 'warm-network').priority),
-      last_touch: row.date,
-      next_action: row.status && row.status.toLowerCase() === 'sent'
-        ? 'Wait for reply; if none, follow the lane cadence'
-        : '',
-      notes: appendUnique(row.template, row.notes),
-      spc_affiliation: '',
-      spc_checked_at: '',
-    });
-  }
+  rows.push(...parseOutreachLog(LOG_FILE, laneLookup));
 
   for (const row of parseTsv(ROUTES_FILE)) {
     rows.push({

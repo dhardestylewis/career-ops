@@ -1397,7 +1397,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             await page.mouse.wheel(0, -Math.floor(Math.random() * 300) + 100);
             
             console.log("Locating Greenhouse POST submit button...");
-            const submitBtn = page.locator('#submit_app, button[type="submit"], input[type="submit"], #submit_button');
+            let submitBtn = page.getByRole('button', { name: 'Submit application' });
+            if (await submitBtn.count() === 0) {
+                submitBtn = page.getByRole('button', { name: 'Submit' });
+            }
+            if (await submitBtn.count() === 0) {
+                submitBtn = page.locator('#submit_app, button[type="submit"], input[type="submit"], #submit_button');
+            }
             if (await submitBtn.count() > 0) {
                 const box = await submitBtn.first().boundingBox();
                 if (box) {
