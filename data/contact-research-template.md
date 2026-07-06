@@ -1,4 +1,4 @@
-# Contact Research Template — Finding Hiring Managers & Recruiters
+# Contact Research Template â€” Finding Hiring Managers & Recruiters
 
 **For each company in your Tier 1 targets, use this process to find 4-6 key contacts.**
 
@@ -19,7 +19,7 @@
 
 ### Step 1: LinkedIn Search (5 minutes per company)
 
-**Go to LinkedIn → Search bar**
+**Go to LinkedIn â†’ Search bar**
 
 ```
 [Company Name] [Role Keywords]
@@ -139,7 +139,7 @@ Look for:
 - **Job postings**: anthropic.com/careers
 - **Apply method**: Greenhouse (greenhouse.io/anthropic)
 
-### Capital One  
+### Capital One
 - **Phone**: 1-800-304-9102
 - **Email**: RecruitingAccommodation@capitalone.com
 - **Apply method**: capitalonecareers.com
@@ -165,7 +165,7 @@ Look for:
 ## Example: Completed Contact List (Anthropic)
 
 ```
-# Anthropic Contacts — Engineering Manager, Enterprise
+# Anthropic Contacts â€” Engineering Manager, Enterprise
 
 ## Tier 1: Direct Hiring
 - **Hiring Manager**: [Find via LinkedIn search "Anthropic" "Engineering Manager" "Enterprise"]
@@ -201,16 +201,16 @@ Look for:
 
 ## Tools to Set Up (One-Time)
 
-1. **Hunter.io** — Free account (50 searches/month)
+1. **Hunter.io** â€” Free account (50 searches/month)
    - Sign up: hunter.io
    - Install browser extension
    - Save Chrome shortcut
 
-2. **RocketReach** — Optional (limited free tier)
+2. **RocketReach** â€” Optional (limited free tier)
    - Sign up: rocketreach.com
    - Free tier: 5-10 searches/month
 
-3. **LinkedIn** — Already have it
+3. **LinkedIn** â€” Already have it
    - Set up saved searches:
      - "Anthropic" "recruiter"
      - "Capital One" "AI engineer"

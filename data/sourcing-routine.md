@@ -1,6 +1,6 @@
-# Daily Sourcing Routine — Last 24 Hours NYC ML Roles
+# Daily Sourcing Routine â€” Last 24 Hours NYC ML Roles
 
-**Time investment:** 5 minutes per day (best done 8am ET Monday–Friday)
+**Time investment:** 5 minutes per day (best done 8am ET Mondayâ€“Friday)
 
 ---
 
@@ -28,7 +28,7 @@
 
 ---
 
-## Step 3: LinkedIn Jobs — NYC Filter (2 minutes)
+## Step 3: LinkedIn Jobs â€” NYC Filter (2 minutes)
 
 1. Go to: https://www.linkedin.com/jobs/
 2. **Search bar:** `machine learning engineer` OR `staff ml engineer` OR `senior ml engineer`
@@ -71,7 +71,7 @@ Check these NYC-based companies' careers pages (bookmark these):
 **Save as:** `data/sourcing-daily-[YYYY-MM-DD].md`
 
 ```markdown
-# Daily Sourcing Report — [Date]
+# Daily Sourcing Report â€” [Date]
 
 ## New Postings Found (Last 24 Hours)
 
@@ -92,8 +92,8 @@ Check these NYC-based companies' careers pages (bookmark these):
 
 ## High-Priority Roles (Score 4.0+ estimated)
 
-1. [Company/Role] — Why high-priority
-2. [Company/Role] — Why high-priority
+1. [Company/Role] â€” Why high-priority
+2. [Company/Role] â€” Why high-priority
 
 ## Follow-ups Needed
 
@@ -133,7 +133,7 @@ Would you like me to build this?
 - Research contacts with `/career-ops outreach-campaign` for top 3 (15 min)
 - **Total: 50 minutes**
 
-**Tuesday–Friday 8am:**
+**Tuesdayâ€“Friday 8am:**
 - Run daily checklist (5 min)
 - Log new postings (5 min)
 - Add to pipeline if score >4.0 (5 min)
@@ -143,11 +143,11 @@ Would you like me to build this?
 
 ## Why This Works
 
-✅ **Last 24 hours focus** — catches fresh postings before competition surges  
-✅ **NYC-biased** — plays to your geographic advantage  
-✅ **Repeatable** — same checklist every day, takes 5 minutes  
-✅ **Feeds into pipeline** — integrates with `/career-ops pipeline` for bulk evaluation  
-✅ **Scalable to automation** — can upgrade to daily script if desired  
+âœ… **Last 24 hours focus** â€” catches fresh postings before competition surges
+âœ… **NYC-biased** â€” plays to your geographic advantage
+âœ… **Repeatable** â€” same checklist every day, takes 5 minutes
+âœ… **Feeds into pipeline** â€” integrates with `/career-ops pipeline` for bulk evaluation
+âœ… **Scalable to automation** â€” can upgrade to daily script if desired
 
 ---
 
@@ -171,6 +171,6 @@ node sourcing-automation.mjs
 # Output: data/sourcing-daily-[YYYY-MM-DD].md with today's postings
 ```
 
-This would **eliminate the manual search** entirely — it runs automatically, pulls the data, and waits for you to evaluate.
+This would **eliminate the manual search** entirely â€” it runs automatically, pulls the data, and waits for you to evaluate.
 
 **Want me to build it?**
