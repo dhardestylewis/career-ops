@@ -12,6 +12,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Never "fix" a bad send with a second apology or self-correction unless the user explicitly asks for it.
 - Before any live send, stage the exact outbound copy in `data/outreach/*send-packet.md` and run `node src/dataOps/outreach-preflight.mjs --packet <path>`.
 - A failed preflight is a hard stop. Do not improvise in the browser composer after a failure.
+- Preflight now hard-stops if the packet would resend a message already mirrored in `data/outreach/drafts.md` and recorded in `data/outreach/log.md`.
 
 ## Thread State
 
