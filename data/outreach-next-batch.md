@@ -19,7 +19,7 @@ Best,
 Daniel
 
 ## Christopher Munsell <cwm2132@columbia.edu>
-Status: Draft
+Status: Sent 2026-07-06
 
 Subject: Thank you from GSAPP
 
@@ -33,7 +33,7 @@ Best,
 Daniel
 
 ## Paola Passalacqua <ppassalacqua@ethz.ch>
-Status: Draft
+Status: Sent 2026-07-06
 
 Subject: Reconnecting after TACC
 

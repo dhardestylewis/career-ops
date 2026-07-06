@@ -212,3 +212,21 @@ status: ready to send
 next_followup: Only after connection acceptance or a direct reply.
 spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
 spc_checked_at: 2026-07-05
+
+### Alexander Nevedovsky
+
+contact: Alexander Nevedovsky
+relationship: 1st-degree LinkedIn connection; existing thread from March 26, 2026
+lane: non-work product-interest reply
+source_refs: https://www.linkedin.com/in/ednevsky/ ; https://www.linkedin.com/feed/update/urn:li:activity:7475605007585775616/
+last_touch: Alexander sent a March 26, 2026 update about the No Cap acquisition; replied on July 5, 2026 at 9:33 PM
+why_now: He posted about an Audos experiment that lets founders build for free and invited DMs for a referral link.
+hook: Current Audos experiment, especially the free-to-build plus rev share model.
+proof_point: I build ML systems at Homecastr.
+ask: Share a referral link or let me try Audos.
+avoid: Turning this into a work pitch or overexplaining the background.
+status: sent
+action_state: sent
+next_followup: Wait for his reply; only follow up if he responds or asks for more context.
+spc_affiliation: not checked; non-work lane
+spc_checked_at: n/a
