@@ -23,6 +23,10 @@ let passed = 0;
 let failed = 0;
 let warnings = 0;
 
+function parseVersion(raw) {
+  return raw.trim().split(/\s+/)[0] || '';
+}
+
 function pass(msg) { console.log(`  ✅ ${msg}`); passed++; }
 function fail(msg) { console.log(`  ❌ ${msg}`); failed++; }
 function warn(msg) { console.log(`  ⚠️  ${msg}`); warnings++; }
@@ -64,6 +68,7 @@ const scripts = [
   { name: 'src/dataOps/normalize-statuses.mjs', expectExit: 0 },
   { name: 'src/dataOps/dedup-tracker.mjs', expectExit: 0 },
   { name: 'src/dataOps/merge-tracker.mjs', expectExit: 0 },
+  { name: 'src/dataOps/outreach-ledger.mjs --dry-run', expectExit: 0 },
   { name: 'src/core/update-system.mjs check', expectExit: 0 },
 ];
 
@@ -281,7 +286,7 @@ for (const section of requiredSections) {
 console.log('\n10. Version file');
 
 if (fileExists('VERSION')) {
-  const version = readFile('VERSION').trim();
+  const version = parseVersion(readFile('VERSION'));
   if (/^\d+\.\d+\.\d+$/.test(version)) {
     pass(`VERSION is valid semver: ${version}`);
   } else {

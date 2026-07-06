@@ -158,6 +158,8 @@ function parseArchiveSeeds(filePath) {
     last_touch: '',
     next_action: 'Reconnect with a short note that names the shared project or research context',
     notes: normalizeText(ref.relationship) || normalizeText(ref.background),
+    spc_affiliation: '',
+    spc_checked_at: '',
   }));
 }
 
@@ -205,18 +207,25 @@ function appendUnique(existing, incoming) {
 function mergeRecord(existing, incoming) {
   const merged = { ...existing };
 
-  if (inferStatusRank(incoming.status) > inferStatusRank(existing.status)) {
-    merged.status = incoming.status;
-  }
-
   if (Number(incoming.priority) > Number(existing.priority || 0)) {
     merged.priority = incoming.priority;
   }
 
   const existingTouch = parseDate(existing.last_touch);
   const incomingTouch = parseDate(incoming.last_touch);
+  const existingStatusRank = inferStatusRank(existing.status);
+  const incomingStatusRank = inferStatusRank(incoming.status);
+
   if (incomingTouch && (!existingTouch || incomingTouch > existingTouch)) {
     merged.last_touch = incoming.last_touch;
+  }
+
+  if (
+    (incomingTouch && (!existingTouch || incomingTouch > existingTouch)) ||
+    (!incomingTouch && !existingTouch && incomingStatusRank > existingStatusRank) ||
+    (incomingTouch && existingTouch && incomingTouch.getTime() === existingTouch.getTime() && incomingStatusRank >= existingStatusRank)
+  ) {
+    merged.status = incoming.status;
   }
 
   if (!merged.next_action && incoming.next_action) {
@@ -244,6 +253,14 @@ function mergeRecord(existing, incoming) {
 
   if (!merged.channel && incoming.channel) {
     merged.channel = incoming.channel;
+  }
+
+  if (!merged.spc_affiliation && incoming.spc_affiliation) {
+    merged.spc_affiliation = incoming.spc_affiliation;
+  }
+
+  if (!merged.spc_checked_at && incoming.spc_checked_at) {
+    merged.spc_checked_at = incoming.spc_checked_at;
   }
 
   return merged;
@@ -274,6 +291,8 @@ function buildRows() {
       last_touch: row.last_touch,
       next_action: row.next_action,
       notes: row.notes,
+      spc_affiliation: row.spc_affiliation,
+      spc_checked_at: row.spc_checked_at,
     });
   }
 
@@ -292,6 +311,8 @@ function buildRows() {
         ? 'Wait for reply; if none, follow the lane cadence'
         : '',
       notes: appendUnique(row.template, row.notes),
+      spc_affiliation: '',
+      spc_checked_at: '',
     });
   }
 
@@ -310,6 +331,8 @@ function buildRows() {
         ? 'Solve the route block before retrying'
         : 'Send the smallest viable message on this route',
       notes: row.notes,
+      spc_affiliation: '',
+      spc_checked_at: '',
     });
   }
 
@@ -353,6 +376,8 @@ function enrichRows(rows) {
       const due = addBusinessDays(lastTouch, meta.followupDays);
       if (due) nextTouch = formatDate(due);
       actionState = nextTouch ? (due <= TODAY_START ? 'followup_due' : 'watch') : 'watch';
+    } else if (normalizeKey(row.status) === 'watch') {
+      actionState = 'watch';
     } else if (normalizeKey(row.status) === 'blocked' || normalizeKey(row.status) === 'needs-login' || normalizeKey(row.status) === 'needs_login') {
       actionState = 'blocked';
     } else if (normalizeKey(row.status) === 'discovered') {
@@ -370,6 +395,8 @@ function enrichRows(rows) {
       next_followup_date: nextTouch,
       response_state: row.response_state || deriveResponseState(row.status),
       action_state: actionState,
+      spc_affiliation: normalizeText(row.spc_affiliation),
+      spc_checked_at: normalizeText(row.spc_checked_at),
     };
   });
 }
@@ -428,11 +455,13 @@ function main() {
   const universeHeaders = [
     'lane', 'scope', 'contact_name', 'organization', 'channel',
     'status', 'response_state', 'priority', 'last_touch', 'next_followup_date',
+    'spc_affiliation', 'spc_checked_at',
     'action_state', 'recommended_template', 'source', 'notes', 'key',
   ];
   const queueHeaders = [
     'lane', 'scope', 'contact_name', 'organization', 'channel',
     'status', 'response_state', 'priority', 'last_touch', 'next_followup_date',
+    'spc_affiliation', 'spc_checked_at',
     'action_state', 'recommended_template', 'source', 'notes',
   ];
 

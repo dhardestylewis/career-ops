@@ -3,6 +3,7 @@ import { populateGreenhouse } from '../scrapers/auto-fill-greenhouse.mjs';
 import fs from 'fs';
 import path from 'path';
 import { google } from 'googleapis';
+import { getResumePath, loadProfileConfig } from '../core/profile.mjs';
 
 const TOKEN_PATH = path.resolve('token.json');
 const CREDENTIALS_PATH = path.resolve('credentials.json');
@@ -68,9 +69,10 @@ async function getLatestGreenhouseCode() {
     
     console.log(`Navigating to ${testUrl}...`);
     await page.goto(testUrl, { waitUntil: 'domcontentloaded', timeout: 30000 });
-    
+
     console.log("Auto-filling form...");
-    await populateGreenhouse(page, testUrl, path.resolve('data/assets/resume-dhl-20260421-staff-mle.pdf'), {}, true);
+    const profileConfig = loadProfileConfig();
+    await populateGreenhouse(page, testUrl, getResumePath(profileConfig), profileConfig, true);
     
     console.log("\n==============================================");
     console.log("🛑 APPLICATION FILLED BUT NOT SUBMITTED 🛑");
