@@ -10,6 +10,9 @@ Key points:
 - Before sending outreach, check the recipient's current LinkedIn profile or organization page. If they moved, rewrite the note as a reconnect or current-role note, not an active-role follow-up.
 - Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack. If they are SPC-affiliated or the check is unclear, do not use a work pitch; switch to a non-work reconnect or mark the contact blocked for that lane.
 - Login state is not permanent across fresh sessions. If Chrome already has authenticated LinkedIn, Pando, or Superhuman tabs open, keep those tabs alive and use the Chrome profile first; use the in-app browser only as a backup Gmail surface.
+- Before live outreach, refresh the latest branch/PR state and outreach ledger so parallel agents stay aligned.
+- Use `data/outreach-operator-card.md` as the canonical outreach run sheet. Run the session preflight there before a live send, and log the send immediately in `data/outreach-log.md`.
+- Do not split outreach state across drafts, queue, and log; keep the queue as the worklist and the log as the ledger.
 - You are explicitly authorized to auto-submit applications on the user's behalf when fill rate is 100%. Before submitting, ensure you capture a full-page screenshot and save the JSON payload to the archive DB.
 
 For Codex-specific setup, see `docs/CODEX.md`.

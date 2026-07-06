@@ -21,6 +21,19 @@ Use this before any live send or follow-up. If you cannot fill it from actual so
 - Internal context: one matching proof point from `data/cv.md`, `article-digest.md`, project notes, or the repo that directly supports the ask.
 - Before sending, verify the recipient's current LinkedIn profile or organization page. If they have moved, rewrite the note as a reconnect or current-role note instead of an active-role follow-up.
 
+## Send-State Model
+
+| State | Minimum evidence | Stop condition / next step |
+|---|---|---|
+| `research` | You cannot yet fill the required questions from actual source material. | Keep gathering sources; do not draft or send. |
+| `blocked` | The contact is SPC-affiliated, the check is unclear, the access path is blocked, or the user said no contact. | Do not send the work pitch; use only a non-work reconnect or stop. |
+| `draft` | The source-backed fields are mostly filled, but the wording or routing still needs refinement. | Continue drafting only; do not send yet. |
+| `ready` | `why_now`, `hook`, `proof_point`, `ask`, and the current-role / SPC checks are all source-backed. | Send only after the session preflight clears. |
+| `sent` | The message was sent and logged. | Move to waiting. |
+| `waiting` | The send went out and a follow-up date is set. | Follow the cadence only; do not re-pitch. |
+| `replied` | A response arrived. | Answer directly or pause for human judgment. |
+| `no-contact` | The user explicitly said no contact or watch only. | Do not revisit unless the instruction changes. |
+
 ## South Park Commons Gate
 
 Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack.
@@ -45,6 +58,7 @@ proof_point:
 ask:
 avoid:
 status:
+action_state:
 next_followup:
 spc_affiliation:
 spc_checked_at:
@@ -52,12 +66,13 @@ spc_checked_at:
 
 ## Send / No-Send Gate
 
-- Send only if `why_now`, `hook`, `proof_point`, and `ask` are filled from sources.
+- Send only if `action_state` is `ready` and `why_now`, `hook`, `proof_point`, and `ask` are filled from sources.
 - Do not send if the hook is generic, the relationship is unclear, or the last touch is unknown.
 - For warm contacts, require at least one prior thread or shared history plus one current reason to reach out.
 - For cold contacts, require one strong public-work hook and one very small ask.
 - For professors and former instructors, prefer a public-work reference when one exists. Good hooks include a paper, talk, lecture, lab page, blog post, or editorship.
 - If a contact has changed roles, treat that as a reconnect signal and rewrite the opener around the new role.
+- If `action_state` is `blocked`, `research`, or `no-contact`, do not send the work pitch.
 - If a reply changes strategy or is ambiguous, pause and notify the user instead of guessing.
 
 ## Built In Shortlist
