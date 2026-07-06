@@ -316,40 +316,6 @@ Best,
 Daniel
 ```
 
-## Warm Academic: Paola Passalacqua
-
-**To:** Paola Passalacqua <ppassalacqua@ethz.ch>
-
-**Channel:** Email
-
-**Status:** Sent on 2026-07-06
-
-**LinkedIn / public check:** Professor of Hydrology and River System Science at ETH Zurich and Eawag. Her work spans river deltas, hydrological connectivity, and flood risk.
-
-**Dossier**
-- Relationship: former collaborator on national disaster resiliency work at TACC.
-- Last touch: archived collaborator thread in the Anthropic Fellows reference data plus our TACC history.
-- Why now: the ETH move makes the reconnect feel timely, and the flood / river systems angle is still directly relevant.
-- Hook: her hydrology and river-system work is a clean bridge to the flood-resilience systems I've built.
-- Proof point: I scaled climate and flood models on world-leading supercomputers at TACC and now run Homecastr's forecasting stack.
-- Ask: a quick catch-up and any advice on current research directions.
-- Avoid: vague "just checking in" language or a generic alumni-style note.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if useful, otherwise stop.
-
-**Subject:** Reconnecting from TACC
-
-```text
-Hi Paola,
-
-I was thinking about our TACC work on disaster resiliency and wanted to reconnect. I saw your work on hydrology and river system science at ETH Zurich and Eawag, and it maps closely to the flood-resilience work I have kept building at Homecastr.
-
-If you are open to it, I would love to catch up and hear what you are working on these days.
-
-Best,
-Daniel
-```
-
 ## Warm Academic: Ali Hirsa
 
 **To:** Ali Hirsa <ah2347@columbia.edu>
@@ -383,41 +349,6 @@ If you have time, I would be glad to catch up and hear whether there are any new
 Best,
 Daniel
 ```
-
-## Warm Academic: Christopher Munsell
-
-**To:** Christopher Munsell <cwm2132@columbia.edu>
-
-**Channel:** Email
-
-**Status:** Sent on 2026-07-06
-
-**LinkedIn / public check:** Columbia GSAPP professor of Real Estate Development Finance who teaches MSRED finance courses.
-
-**Dossier**
-- Relationship: academic reference from the MS in Urban Planning program.
-- Last touch: GSAPP reference / prior academic relationship.
-- Why now: his current finance-and-development role is a clean bridge to the housing / real-estate angle in Homecastr.
-- Hook: his real estate finance teaching and development work pair naturally with the housing forecasting product.
-- Proof point: Homecastr forecasts property value trajectories at scale and I've built the geospatial/urban-planning side of that system.
-- Ask: a quick catch-up plus any advice on the real-estate / housing side of my work.
-- Avoid: generic GSAPP gratitude without mentioning the real-estate finance bridge.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if useful.
-
-**Subject:** Reconnecting from GSAPP
-
-```text
-Hi Christopher,
-
-I wanted to reconnect from GSAPP, and Iâ€™ve been thinking about how closely your real estate finance work connects to what Iâ€™m building at Homecastr.
-
-If youâ€™re open, Iâ€™d love to hear your thoughts on Homecastr and catch up over coffee sometime. Iâ€™d also be grateful for any roles or research assistantships you think I should keep in mind.
-
-Best,
-Daniel
-```
-
 ## Alumni Career Services: Columbia University
 
 **To:** Columbia Career Services / Alumni Office
@@ -611,6 +542,117 @@ Hi Vanderbilt alumni and career services team,
 I am reaching out because I am looking for warm routing to alumni or faculty who work at the intersection of data, product, and mission-driven tech. My background is in production ML, geospatial forecasting, and flood-resilience work, and I think there may be a useful bridge there.
 
 If there is a better contact path, I would be grateful for the direction.
+
+Best,
+Daniel
+```
+
+## Accenture AI Transformation & Solutions Lead
+
+**To:** James Pickard <james.pickard@accenture.com>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Accenture Talent Acquisition Lead. Current-role work pitch, not a reconnect.
+
+**Dossier**
+- Relationship: cold recruiter target.
+- Last touch: none.
+- Why now: Accenture is actively surfacing AI Transformation & Solutions roles and related AI / data careers.
+- Hook: He owns sourcing and recruiting for the kind of enterprise AI transformation lane this role sits in.
+- Proof point: I have shipped production ML, validated models rigorously, and worked across technical and non-technical stakeholders.
+- Ask: Ask for the right owner for the AI Transformation & Solutions Lead role and whether the team is open to a brief connect.
+- Avoid: Sending a long technical bio or leading with salary.
+- Status: sent.
+- Next follow-up: 2026-07-10 if no reply.
+
+**Subject:** Accenture AI Transformation & Solutions Lead
+
+```text
+Hi James - I saw Accenture's AI Transformation & Solutions Lead role and wanted to reach out. I've been building production ML and model-validation systems, and I thought it could be worth a brief connect to make sure I'm talking to the right owner.
+```
+
+## Opportunity for startups in FinTech
+
+**To:** Oliver Doering <oliver@thestartupclub.net>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** The Startup Club / current conference thread. Existing thread, not a cold outreach.
+
+**Dossier**
+- Relationship: founder-ecosystem contact from the FinTech Investment Conference invite.
+- Last touch: live Gmail thread.
+- Why now: Oliver asked for a pitch deck and confirmed a future conference slot.
+- Hook: The pitch-deck and conference slot details are the current live thread.
+- Proof point: Homecastr's pitch deck / production ML systems.
+- Ask: clarify format, deadline, and pitch length.
+- Avoid: sending a long pitch or assuming the conference timing without confirming.
+- Status: sent.
+- Next follow-up: after his reply.
+
+**Subject:** Opportunity for startups in FinTech
+
+```text
+Hi Oliver,
+
+Yes, I would be glad to pitch. I can send a deck and keep it concise. What format, deadline, and pitch length should I plan for?
+
+Best,
+Daniel
+```
+
+## LTS - Catherine Del Hierro
+
+**To:** Catherine Del Hierro
+
+**Channel:** LinkedIn DM
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Current live profile showed 1st-degree access at LTS.
+
+**Message**
+```text
+Hi Catherine - I saw the Lead Forward Deployed Engineer opening at LTS and wanted to connect. My background in production ML and public-interest infrastructure feels like a strong fit, so I thought it could be worth a short note on who owns the FDE lane.
+```
+
+## Trexquant - Harrison Zolot
+
+**To:** Harrison Zolot
+
+**Channel:** LinkedIn DM
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Current live profile showed 1st-degree access at Trexquant.
+
+**Message**
+```text
+Hi Harrison - I saw Trexquant's Quantitative Researcher opening and wanted to ask if you own the intake for that search. My background blends ML, statistics, and engineering, so I thought it could be worth a short connect.
+```
+
+## AllianceBernstein - Bernd Wuebben
+
+**To:** Bernd Wuebben
+
+**Channel:** LinkedIn DM
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Current live profile showed 1st-degree access at AllianceBernstein.
+
+**Message**
+```text
+Hi Bernd,
+
+I came across your profile and the way you describe systematic fixed income, machine learning, and agentic AI at AllianceBernstein. That blend feels unusually close to the forecasting and model-validation work I have been building at Homecastr.
+
+If you are open to it, I would love a quick conversation and to hear how you think about systematic alpha and portfolio construction in fixed income.
 
 Best,
 Daniel
