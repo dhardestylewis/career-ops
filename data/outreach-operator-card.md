@@ -71,5 +71,6 @@ Use this first if you are the next agent picking up live outreach.
 - Do not stack multiple asks into one note.
 - Do not improvise around CAPTCHA.
 - Do not re-send duplicates already recorded in the log.
+- Do not treat a Gmail notification that merely mentions Gabriel Schook, Bellwether, xwf, or GoogleX in the body as an outreach thread; only log or reply when the sender, subject, and thread context clearly match the actual person or recruiter conversation.
 - Do not send if the contact dossier is incomplete.
 - If Chrome already has a live authenticated LinkedIn, Pando, or Superhuman tab open, preserve it and keep working from that session instead of reauthenticating from scratch.
