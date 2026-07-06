@@ -3,6 +3,7 @@ import path from 'path';
 import yaml from 'js-yaml';
 import { chromium } from 'playwright-extra';
 import stealthPlugin from 'puppeteer-extra-plugin-stealth';
+import { DEFAULT_RESUME_PDF_PATH } from '../core/resume-asset.mjs';
 
 chromium.use(stealthPlugin());
 import { pathToFileURL } from 'url';
@@ -110,7 +111,7 @@ targets.sort((a, b) => {
    return a.random - b.random;
 });
 
-const resumePath = path.resolve('data/assets/resume-dhl-20260421-staff-mle.pdf');
+const resumePath = DEFAULT_RESUME_PDF_PATH;
 
 // Limit the run to 15 randomly selected endpoints to prevent memory exhaustion
 const RUN_LIMIT = targets.length;
