@@ -259,6 +259,116 @@ next_followup: 2026-07-10 if no reply.
 spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
 spc_checked_at: 2026-07-06
 
+## Thesis reader batch
+
+### Dory Thrasher
+
+contact: Dory Thrasher
+relationship: thesis reader and Columbia GSAPP adjunct; not a collaborator
+lane: warm-academic
+source_refs: thesis acknowledgments in the Homecastr thesis; https://www.arch.columbia.edu/faculty/6946-dory-thrasher; https://frac.org/about/staff
+last_touch: 2026-07-06 send from daniel@homecastr.com
+why_now: Homecastr has sharpened around affordable housing and housing-data / ML applications that can drive measurable impact, and Dory's current Columbia GSAPP / FRAC policy lane is a relevant academic bridge.
+hook: Adjunct Assistant Professor at Columbia GSAPP and Senior SNAP Policy Analyst at FRAC.
+proof_point: The current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+ask: Ask for thoughts on Homecastr and any specific people, labs, programs, or openings that could be a fit.
+avoid: Vague "if helpful" narrowing language, broad job-pitch framing, or overexplaining the entire founder story.
+status: sent
+action_state: sent
+next_followup: 2026-07-10 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### James Piacentini
+
+contact: James Piacentini
+relationship: thesis reader and Columbia GSAPP academic contact; not a collaborator
+lane: warm-academic
+source_refs: thesis acknowledgments in the Homecastr thesis; https://www.arch.columbia.edu/faculty/990-james-piacentini; https://jamespiacentini.com/
+last_touch: 2026-07-06 send from daniel@homecastr.com
+why_now: Homecastr has sharpened around affordable housing and spatial / map-heavy housing-data work, and James's map and urban-tech lane is a relevant academic bridge.
+hook: Senior Map Designer at Mapbox and Adjunct Assistant Professor at Columbia.
+proof_point: The current 06/30 causal MLE resume plus Homecastr's geospatial forecasting and validation stack.
+ask: Ask for thoughts on Homecastr and any specific people, labs, programs, or openings that could be a fit.
+avoid: Generic networking language, overloading the note with background, or making the ask sound like a cold job blast.
+status: sent
+action_state: sent
+next_followup: 2026-07-10 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Matthew Bauer
+
+contact: Matthew Bauer
+relationship: thesis reader and Columbia GSAPP adjunct; not a collaborator
+lane: warm-academic
+source_refs: thesis acknowledgments in the Homecastr thesis; https://www.arch.columbia.edu/faculty/4302-matthew-bauer
+last_touch: 2026-07-06 send from daniel@homecastr.com
+why_now: Homecastr has sharpened around affordable housing and urban-planning / city-data work, and Matthew's planning and BID background is a relevant academic bridge.
+hook: Adjunct Associate Professor at Columbia GSAPP and President of the Madison Avenue BID.
+proof_point: The current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+ask: Ask for thoughts on Homecastr and any specific people, labs, programs, or openings that could be a fit.
+avoid: Generic alumni-style language, a broad pitch, or asking for too many things at once.
+status: sent
+action_state: sent
+next_followup: 2026-07-10 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Josh Begley
+
+contact: Josh Begley
+relationship: thesis reader and Columbia GSAPP adjunct; not a collaborator
+lane: warm-academic
+source_refs: thesis acknowledgments in the Homecastr thesis; https://www.arch.columbia.edu/faculty/5276-josh-begley; https://joshbegley.com/
+last_touch: 2026-07-06 send from daniel@homecastr.com
+why_now: Homecastr sits at the intersection of housing-data systems and public-facing storytelling / visualization, and Josh's data-art and filmmaking lane is a relevant academic bridge.
+hook: Adjunct Assistant Professor at Columbia GSAPP, Technical Director at Field of Vision, and a data artist / filmmaker.
+proof_point: The current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+ask: Ask for thoughts on Homecastr and any specific people, labs, programs, or openings that could be a fit.
+avoid: Turning the note into a generic cold pitch or trying to explain the whole thesis context in the opener.
+status: sent
+action_state: sent
+next_followup: 2026-07-10 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Adam Vosburgh
+
+contact: Adam Vosburgh
+relationship: thesis reader and Columbia GSAPP adjunct; not a collaborator
+lane: warm-academic
+source_refs: thesis acknowledgments in the Homecastr thesis; https://www.arch.columbia.edu/faculty/3217-adam-vosburgh; https://adamvosburgh.com/about/
+last_touch: 2026-07-06 send from daniel@homecastr.com
+why_now: Homecastr has sharpened around affordable housing and geospatial / computational-design-adjacent data work, and Adam's MSCDP background is a relevant academic bridge.
+hook: Adjunct Assistant Professor and Assistant Director of the M.S. Computational Design Practices program at Columbia GSAPP.
+proof_point: The current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+ask: Ask for thoughts on Homecastr and any specific people, labs, programs, or openings that could be a fit.
+avoid: Generic job pitch language, a long founder bio, or asking for more than one concrete next step.
+status: sent
+action_state: sent
+next_followup: 2026-07-10 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
+### Stijn Van Nieuwerburgh
+
+contact: Stijn Van Nieuwerburgh
+relationship: thesis reader and Columbia Business School academic contact; not a collaborator
+lane: warm-academic
+source_refs: thesis acknowledgments in the Homecastr thesis; https://business.columbia.edu/faculty/people/stijn-van-nieuwerburgh; https://cepr.org/about/people/stijn-van-nieuwerburgh
+last_touch: 2026-07-06 send from daniel@homecastr.com
+why_now: Homecastr has sharpened around affordable housing and housing-data / real-estate analysis, and Stijn's housing-markets work is the clearest academic bridge.
+hook: Professor of Real Estate and Finance at Columbia Business School and Co-Director of the Paul Milstein Center for Real Estate.
+proof_point: The current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+ask: Ask for thoughts on Homecastr and any specific people, labs, programs, or openings that could be a fit.
+avoid: Making the note sound like a blanket networking ask or a direct job application.
+status: sent
+action_state: sent
+next_followup: 2026-07-10 if no reply.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
+
 ### Brad Greenburg
 
 contact: Brad Greenburg
