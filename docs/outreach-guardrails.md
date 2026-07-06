@@ -14,6 +14,14 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - A failed preflight is a hard stop. Do not improvise in the browser composer after a failure.
 - Preflight now hard-stops if the packet would resend a message already mirrored in `data/outreach/drafts.md` and recorded in `data/outreach/log.md`.
 
+## Recipient Verification Protocol
+
+- Keep exactly one live outreach composer open while drafting or sending.
+- Before pasting anything, compare the current profile or thread name, the dossier `contact:`, and the send-packet `### Recipient` heading. They must match exactly.
+- Paste only the matching recipient block from the send packet.
+- Before clicking Send, re-read the composer header and the first line of the draft together. The greeting must name the same person shown in the header.
+- If any of those names differ, stop immediately. Clear or close the draft, reopen the packet and dossier, and restart verification from scratch.
+
 ## Thread State
 
 - `new outreach` if there is no inbound response.
@@ -42,6 +50,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Keep the discovery trail in the appropriate TSV or note file so future agents can recover the context without reopening the browser session.
 - Do not invent contact details, application links, or replies.
 - If a send misfire ever happens, archive the thread, log the incident in the operator card, and tighten the packet or dossier before any further outreach that session.
+- Keep the browser or plugin blocker, if any, as a separate operational note. Do not let browser troubleshooting displace incident logging, packet cleanup, or dossier repair.
 
 ## Preflight Requirements
 
@@ -63,3 +72,4 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Prefer note-style intros for 2nd/3rd-degree contacts.
 - Prefer direct DM only when the connection is already warm or first-degree.
 - Keep the routing rule and send gate in this file, not in chat memory.
+- If Chrome or another live browser surface fails after the supported retry path, record the blocker and continue the repo-side safety work anyway.
