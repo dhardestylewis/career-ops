@@ -1,0 +1,21 @@
+{
+  "site": "Newlab",
+  "application": "startup membership",
+  "source_url": "https://www.newlab.com/apply",
+  "form_action": "https://forms.hsforms.com/submissions/v3/public/submit/formsnext/multipart/6429773/ef30b5cf-8f1e-4435-9fb3-5197bfc89a8b",
+  "submitted_at": "2026-07-06T17:49:46.971Z",
+  "screenshot": "data/archive/submission_newlab_20260706.png",
+  "fields": {
+    "firstname": "Daniel",
+    "lastname": "Lewis",
+    "linkedin_url": "https://www.linkedin.com/in/dhardestylewis/",
+    "company": "Homecastr",
+    "website": "https://homecastr.com",
+    "email": "daniel@homecastr.com",
+    "membership_location": "Brooklyn",
+    "company_deck_url": "https://homecastr.com/methodology",
+    "role": "Founder",
+    "why_newlab": "Homecastr builds production ML systems for forecasting physical-world and real-estate dynamics. We want to join Newlab to connect with pilot partners, test deployments in the field, and collaborate with a community that helps turn technical work into real-world impact.",
+    "how_did_you_hear_about_newlab_new": "Newlab Staff"
+  }
+}
