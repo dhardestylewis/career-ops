@@ -20,8 +20,7 @@ import { readFileSync, writeFileSync, existsSync, unlinkSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
-const __dirname = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const ROOT = join(__dirname, '..', '..');
+const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 
 const CANONICAL_REPO = 'https://github.com/santifer/career-ops.git';
 const RAW_VERSION_URL = 'https://raw.githubusercontent.com/santifer/career-ops/main/VERSION';
