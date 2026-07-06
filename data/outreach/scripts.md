@@ -231,6 +231,14 @@ Before any send, write down:
 8. Send state and follow-up rule
 9. South Park Commons affiliation check if the outreach is about work, money, gigs, contracts, or jobs
 
+Then stage the final outbound copy in `data/outreach/*send-packet.md` and run:
+
+```bash
+node src/dataOps/outreach-preflight.mjs --packet <send-packet-path>
+```
+
+If preflight fails, do not send.
+
 Minimum source inputs:
 
 - Gmail thread or LinkedIn DM history
@@ -272,6 +280,7 @@ Hi [Name] - thanks again for the intro / earlier discussion. Just checking wheth
 
 - There is a named person or direct contact path.
 - The contact dossier is complete and source-backed.
+- The exact outbound text has passed `node src/dataOps/outreach-preflight.mjs --packet <send-packet-path>`.
 - The current LinkedIn role or org page has been checked when the recipient could have moved.
 - The South Park Commons affiliation check is complete for any work, money, gigs, contracts, or jobs pitch.
 - You can write the message with one hook, one proof point, and one ask.
@@ -289,6 +298,7 @@ Hi [Name] - thanks again for the intro / earlier discussion. Just checking wheth
 - The dossier has missing source refs, missing last touch, or a missing why-now.
 - The recipient's current role has changed and the note has not been rewritten as a reconnect/current-role note.
 - The South Park Commons affiliation is unclear for a work-related pitch.
+- The preflight reports a wrong greeting, another recipient's name, or a missing dossier field.
 
 ## Response Handling
 

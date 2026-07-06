@@ -1,6 +1,6 @@
 # Outreach Send List
 
-Use this as the compact schedule view. Canonical draft source: `data/outreach-drafts.md`.
+Use this as the compact schedule view. Canonical draft source: `data/outreach/drafts.md`.
 
 Date: 2026-07-05
 
@@ -8,11 +8,11 @@ Planning window: the next 10 business days starting Monday, 2026-07-06.
 
 Conservative send cap: 2 sends per business day by default, with occasional 3-send days only where a clean lane block fits together. Follow-up dates below use a conservative first-follow-up trigger of 5 business days after send, per `modes/followup.md`.
 
-Already sent ahead of the plan window: Ali Hirsa on 2026-07-05; Christopher Munsell on 2026-07-05; Paola Passalacqua on 2026-07-05. Their follow-up cadence is now tracked from those send dates, so they are excluded from the scheduled first-touch batch below.
+Already sent ahead of the plan window: Ali Hirsa on 2026-07-05. Christopher Munsell and Paola Passalacqua were also sent on 2026-07-06, so their follow-up cadence is now tracked from those send dates and they are excluded from the scheduled first-touch batch below.
 
 ## Cadence Note
 
-Sent items should be logged immediately in `data/outreach-log.md`. Once logged, they move into the watch/follow-up cadence: if there is no reply, the first follow-up is due on the date listed below, then the next follow-up is 5 business days after that, and then the thread should pause or re-route instead of being pushed repeatedly.
+Sent items should be logged immediately in `data/outreach/log.md`. Once logged, they move into the watch/follow-up cadence: if there is no reply, the first follow-up is due on the date listed below, then the next follow-up is 5 business days after that, and then the thread should pause or re-route instead of being pushed repeatedly.
 - Before any work, money, gigs, contracts, or jobs outreach, check South Park Commons affiliation in the pando member directory and South Park Commons Slack. If the recipient is SPC-affiliated or the status is unclear, do not send the work pitch.
 
 ## 2026-07-06
@@ -21,8 +21,8 @@ Cap: 2 sends
 
 | Lane | Contact / org | Channel | Action | Follow-up date |
 |---|---|---|---|---|
-| warm-academic | Christopher Munsell / Columbia GSAPP | Email | Sent 2026-07-05 | 2026-07-10 |
-| warm-academic | Paola Passalacqua / ETH Zurich / formerly UT Austin | Email | Sent 2026-07-05 | 2026-07-10 |
+| warm-academic | Christopher Munsell / Columbia GSAPP | Email | Sent first touch | 2026-07-13 |
+| warm-academic | Paola Passalacqua / ETH Zurich / formerly UT Austin | Email | Sent first touch | 2026-07-13 |
 
 ## 2026-07-07
 

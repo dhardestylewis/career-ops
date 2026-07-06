@@ -38,7 +38,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 
 ## Logging
 
-- Log every live outbound touch in `data/outreach-log.md` before moving to the next recipient.
+- Log every live outbound touch in `data/outreach/log.md` before moving to the next recipient.
 - Re-run `npm run outreach:audit -- "Recipient Name"` after logging if the next step is unclear; the audit should now point to the existing thread instead of a fresh send.
 - Keep the discovery trail in the appropriate TSV or note file so future agents can recover the context without reopening the browser session.
 - Do not invent contact details, application links, or replies.

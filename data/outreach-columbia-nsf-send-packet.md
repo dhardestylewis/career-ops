@@ -13,7 +13,7 @@ Status: held because this lane is still draft-only and no live work-pitch send i
 - Keep the notes institutional and narrow: one ask, no submission claim, no request to solve the NSF login itself.
 - Use these as routing notes, not as full startup pitches.
 - Do not send while the lane is still draft-only.
-- If a reply identifies a named person, update `data/outreach-contact-dossier.md` before any follow-up.
+- If a reply identifies a named person, update `data/outreach/contact-dossier.md` before any follow-up.
 - Before any direct follow-up to a named person, run the current-role check plus the SPC / pando gate for that individual.
 
 ## Final message templates

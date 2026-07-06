@@ -3,14 +3,14 @@
  * outreach-ledger.mjs — Build the multi-lane outreach universe and queue.
  *
  * Inputs:
- * - data/outreach-targets.tsv
- * - data/outreach-log.md
- * - data/outreach-route-discovery.tsv
+ * - data/outreach/targets.tsv
+ * - data/outreach/log.md
+ * - data/outreach/route-discovery.tsv
  * - data/archive/submission_anthropic_fellows_2026.json
  *
  * Outputs:
- * - data/outreach-universe.tsv
- * - data/outreach-queue.tsv
+ * - data/outreach/universe.tsv
+ * - data/outreach/queue.tsv
  *
  * Run:
  *   node src/dataOps/outreach-ledger.mjs
@@ -22,12 +22,12 @@ import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
-const TARGETS_FILE = join(ROOT, 'data/outreach-targets.tsv');
-const LOG_FILE = join(ROOT, 'data/outreach-log.md');
-const ROUTES_FILE = join(ROOT, 'data/outreach-route-discovery.tsv');
+const TARGETS_FILE = join(ROOT, 'data/outreach/targets.tsv');
+const LOG_FILE = join(ROOT, 'data/outreach/log.md');
+const ROUTES_FILE = join(ROOT, 'data/outreach/route-discovery.tsv');
 const ARCHIVE_FILE = join(ROOT, 'data/archive/submission_anthropic_fellows_2026.json');
-const UNIVERSE_FILE = join(ROOT, 'data/outreach-universe.tsv');
-const QUEUE_FILE = join(ROOT, 'data/outreach-queue.tsv');
+const UNIVERSE_FILE = join(ROOT, 'data/outreach/universe.tsv');
+const QUEUE_FILE = join(ROOT, 'data/outreach/queue.tsv');
 const DRY_RUN = process.argv.includes('--dry-run');
 
 const LANE_META = {
@@ -257,7 +257,7 @@ function parseOutreachLog(filePath, laneLookup) {
         contact_name: contactName,
         organization,
         channel,
-        source: 'data/outreach-log.md',
+        source: 'data/outreach/log.md',
         status,
         priority: String(laneMeta(lane || inferLaneFromText(contactName, organization, template, subject, notes)).priority),
         last_touch: date,
@@ -282,7 +282,7 @@ function parseOutreachLog(filePath, laneLookup) {
         contact_name: recipient,
         organization: destination,
         channel,
-        source: 'data/outreach-log.md',
+        source: 'data/outreach/log.md',
         status,
         priority: String(laneMeta(lane).priority),
         last_touch: currentDate,
@@ -463,7 +463,7 @@ function buildRows() {
       contact_name: row.person_org,
       organization: row.profile_url || '',
       channel: row.channel,
-      source: row.route_url || 'data/outreach-route-discovery.tsv',
+      source: row.route_url || 'data/outreach/route-discovery.tsv',
       status: row.status || 'discovered',
       priority: String(laneMeta(row.lane || 'warm-network').priority - 1),
       last_touch: row.discovered_on,

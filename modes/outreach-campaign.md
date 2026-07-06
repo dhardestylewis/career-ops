@@ -1,4 +1,4 @@
-# Modo: outreach-campaign — Systematic Multi-Touch Verified Contact Outreach
+# Modo: outreach-campaign â€” Systematic Multi-Touch Verified Contact Outreach
 
 When given a company + role, systematically identify verified contacts using SPC tools (Gem/Nyne) and generate personalized outreach sequences.
 
@@ -14,17 +14,17 @@ When given a company + role, systematically identify verified contacts using SPC
    - Search: [Company name] + "[Role type]" (e.g., "Engineering Manager")
    - Export results to CSV
    - Get: 5-10 names, titles, verified emails, phone numbers
-   
+
 2. Organize contacts (5 min):
    - Sort by role into tiers (Hiring Manager, Recruiter, Team IC, Skip-level)
    - Copy template from Step 2 below
    - Fill in details from Gem export
-   
+
 3. Generate messages (10 min):
    - Use templates from Step 3 + Step 4 below
    - Personalize with company/product research
    - Save draft in contact list
-   
+
 4. Execute outreach (5 min/day):
    - Day 1: Hiring Manager
    - Day 2-3: Team IC + Skip-level
@@ -45,37 +45,37 @@ Status: [Evaluated/Applied/In Progress]
 Contact Source: [Gem / Nyne / Dover]
 ```
 
-## Step 0 — Contact Tiers & Identification Strategy
+## Step 0 â€” Contact Tiers & Identification Strategy
 
 Tier 1 (Direct hiring power):
-- **Hiring Manager** — typically "Manager, [team]" or "Engineering Manager, [domain]"
+- **Hiring Manager** â€” typically "Manager, [team]" or "Engineering Manager, [domain]"
   - Role: Direct decision-maker on hire
   - Why: Direct yes/no authority. Coldest outreach, highest conversion if personalized.
 
-- **Recruiting Lead** — typically "Technical Recruiter" or "Talent Acquisition Manager"
+- **Recruiting Lead** â€” typically "Technical Recruiter" or "Talent Acquisition Manager"
   - Role: Manages candidate flow, advocates internally
   - Why: Professional gatekeeper. More likely to respond, can champion your profile.
 
 Tier 2 (Credibility & team fit):
-- **Team IC / Senior Individual Contributor** — peer-level engineer on the team
+- **Team IC / Senior Individual Contributor** â€” peer-level engineer on the team
   - Role: Will work with you day-to-day
   - Why: Technical validation, referral power, internal feedback loop.
 
-- **Team Lead / Skip-level** — one level above the hiring manager
+- **Team Lead / Skip-level** â€” one level above the hiring manager
   - Role: Strategic sponsor, team structure insight
   - Why: Can pull you in informally, advocates at higher level.
 
 Tier 3 (Strategic):
-- **Department VP / Head** — Director or VP level
+- **Department VP / Head** â€” Director or VP level
   - Role: Org-level relationships
   - Why: Use only for strategic vision alignment or warm intro access.
 
-## Step 1 — Contact Discovery (Using SPC Tools)
+## Step 1 â€” Contact Discovery (Using SPC Tools)
 
-### Option A: Gem (Recommended — Fastest)
+### Option A: Gem (Recommended â€” Fastest)
 
-**What it is:** AI recruiting platform with 650M+ profiles, sourcing tools, verified contact data  
-**SPC Deal:** Built-in (standard SPC access)  
+**What it is:** AI recruiting platform with 650M+ profiles, sourcing tools, verified contact data
+**SPC Deal:** Built-in (standard SPC access)
 **Time per company:** 15 minutes
 
 **Steps:**
@@ -85,8 +85,8 @@ Tier 3 (Strategic):
 2. Create search query:
    Company: [Company name]
    Keywords: [Role type] (e.g., "Engineering Manager", "Senior Engineer", "Recruiter")
-   Location: [Optional — NYC, etc.]
-   
+   Location: [Optional â€” NYC, etc.]
+
 3. Example queries:
    - Anthropic + "Engineering Manager"
    - Capital One + "AI Engineer"
@@ -95,12 +95,12 @@ Tier 3 (Strategic):
    - T. Rowe Price + "Senior Engineer"
 
 4. Results show:
-   ✅ Name
-   ✅ Current title
-   ✅ Email address (verified)
-   ✅ Phone (sometimes)
-   ✅ Work history
-   ✅ Location/team
+   âœ… Name
+   âœ… Current title
+   âœ… Email address (verified)
+   âœ… Phone (sometimes)
+   âœ… Work history
+   âœ… Location/team
 
 5. Export to CSV/download contact list
 
@@ -116,8 +116,8 @@ Tier 3 (Strategic):
 
 ### Option B: Nyne (Backup/Supplementary)
 
-**What it is:** People search + enrichment API  
-**SPC Deal:** 30% off  
+**What it is:** People search + enrichment API
+**SPC Deal:** 30% off
 **Time per company:** 10-15 minutes
 
 **Steps:**
@@ -126,12 +126,12 @@ Tier 3 (Strategic):
 1. Go to nyne.com
 2. Search by company + role keywords
 3. Get results with:
-   ✅ Name
-   ✅ Current title
-   ✅ Email
-   ✅ Phone
-   ✅ Work history
-   
+   âœ… Name
+   âœ… Current title
+   âœ… Email
+   âœ… Phone
+   âœ… Work history
+
 4. Use if Gem doesn't have complete coverage
 ```
 
@@ -139,32 +139,32 @@ Tier 3 (Strategic):
 
 ### Option C: Dover Recruiter Intros (Strategic)
 
-**What it is:** Marketplace of vetted independent recruiters  
-**SPC Deal:** Free intro calls with 3 recruiters  
+**What it is:** Marketplace of vetted independent recruiters
+**SPC Deal:** Free intro calls with 3 recruiters
 **Time:** 30 min call + async follow-up
 
 **Steps:**
 
 ```
 1. Book Dover intro call with a recruiter
-2. Ask: "For [Company] Engineering Manager roles, who should I reach out to? 
+2. Ask: "For [Company] Engineering Manager roles, who should I reach out to?
    Can you share names, titles, and internal structure?"
 3. They provide:
-   ✅ Specific names + titles
-   ✅ Org chart context
-   ✅ Warm intro offers
-   ✅ Hiring patterns/timing
+   âœ… Specific names + titles
+   âœ… Org chart context
+   âœ… Warm intro offers
+   âœ… Hiring patterns/timing
 4. They may make warm intros directly
 ```
 
 **Best for:** Verification + warm intros + strategic context
 
-## Step 2 — Contact List Template (Gem/Nyne Output)
+## Step 2 â€” Contact List Template (Gem/Nyne Output)
 
 After sourcing with Gem or Nyne, organize into `data/outreach/{company-slug}-{role-slug}-contacts.md`:
 
 ```markdown
-# Outreach Campaign: [Company] — [Role]
+# Outreach Campaign: [Company] â€” [Role]
 
 **Status:** [Sourcing / In Progress / Applied / Offer Received]
 **Job URL:** [JD link]
@@ -173,12 +173,12 @@ After sourcing with Gem or Nyne, organize into `data/outreach/{company-slug}-{ro
 **Target Archetypes:** [which archetype(s) match]
 **Comp Alignment:** [$range]
 
-## Tier 1 — Direct Hiring Power
+## Tier 1 â€” Direct Hiring Power
 
 ### Hiring Manager
 - **Name:** [from Gem/Nyne export]
 - **Title:** [from source]
-- **Email:** [verified from Gem/Nyne] ✅
+- **Email:** [verified from Gem/Nyne] âœ…
 - **Phone:** [if available]
 - **Key detail:** [from work history or title context]
 - **Status:** [Not contacted / Message drafted / Sent / Replied]
@@ -188,19 +188,19 @@ After sourcing with Gem or Nyne, organize into `data/outreach/{company-slug}-{ro
 ### Recruiting Lead / Technical Recruiter
 - **Name:** [from Gem/Nyne export]
 - **Title:** [Recruiter, Technical Recruiter, TA Manager]
-- **Email:** [verified from Gem/Nyne] ✅
+- **Email:** [verified from Gem/Nyne] âœ…
 - **Phone:** [if available]
 - **Key detail:** [team they cover]
 - **Status:** [Not contacted / Message drafted / Sent / Replied]
 - **Outreach date:** [YYYY-MM-DD]
 - **Notes:** [first point of contact typically]
 
-## Tier 2 — Credibility & Team Fit
+## Tier 2 â€” Credibility & Team Fit
 
 ### Team IC / Senior Individual Contributor
 - **Name:** [from Gem/Nyne export]
 - **Title:** [Senior Engineer, Staff Engineer, Principal]
-- **Email:** [verified from Gem/Nyne] ✅
+- **Email:** [verified from Gem/Nyne] âœ…
 - **Phone:** [if available]
 - **Key detail:** [tech stack, recent projects from work history]
 - **Status:** [Not contacted / Message drafted / Sent / Replied]
@@ -210,19 +210,19 @@ After sourcing with Gem or Nyne, organize into `data/outreach/{company-slug}-{ro
 ### Team Lead / Skip-Level Manager
 - **Name:** [from Gem/Nyne export]
 - **Title:** [Engineering Manager, Director, VP]
-- **Email:** [verified from Gem/Nyne] ✅
+- **Email:** [verified from Gem/Nyne] âœ…
 - **Phone:** [if available]
 - **Key detail:** [team size, reporting line, leadership scope]
 - **Status:** [Not contacted / Message drafted / Sent / Replied]
 - **Outreach date:** [YYYY-MM-DD]
 - **Notes:** [strategic sponsor angle]
 
-## Tier 3 — Strategic (Optional)
+## Tier 3 â€” Strategic (Optional)
 
 ### Department VP / Head
 - **Name:** [from Gem/Nyne if available]
 - **Title:** [VP, SVP, C-level]
-- **Email:** [verified from Gem/Nyne] ✅
+- **Email:** [verified from Gem/Nyne] âœ…
 - **Phone:** [if available]
 - **Key detail:** [org they lead, strategic direction]
 - **Status:** [Reserved for warm intro / Not contacted]
@@ -231,31 +231,31 @@ After sourcing with Gem or Nyne, organize into `data/outreach/{company-slug}-{ro
 
 ## Outreach Sequencing & Drafts
 
-### Day 1 — Hiring Manager (Direct Ask)
+### Day 1 â€” Hiring Manager (Direct Ask)
 **Goal:** Get on calendar
 **Timing:** Tuesday-Thursday, 10am-2pm PT
 
 [DRAFT MESSAGE]
 
-### Day 2-3 — Team IC / Senior IC (Credibility Play)
+### Day 2-3 â€” Team IC / Senior IC (Credibility Play)
 **Goal:** Validate technical fit + request referral
 **Timing:** Stagger across 2 days
 
 [DRAFT MESSAGE]
 
-### Day 4-5 — Skip-Level (Strategic Intro)
+### Day 4-5 â€” Skip-Level (Strategic Intro)
 **Goal:** Warm up the relationship, demonstrate vision alignment
 **Timing:** Stagger across 2 days
 
 [DRAFT MESSAGE]
 
-### Day 7 — Recruiter (Coordinated Handoff)
+### Day 7 â€” Recruiter (Coordinated Handoff)
 **Goal:** Synchronize with formal process
 **Timing:** Monday, 9am-10am PT
 
 [DRAFT MESSAGE]
 
-### Day 14 — Follow-up (Gentle Nudge)
+### Day 14 â€” Follow-up (Gentle Nudge)
 **Goal:** Reactivate without being pushy
 **Timing:** Mid-week
 
@@ -268,16 +268,16 @@ After sourcing with Gem or Nyne, organize into `data/outreach/{company-slug}-{ro
 | [Name] | 1 | YYYY-MM-DD | Replied | YYYY-MM-DD | [action] | [context] |
 ```
 
-## Step 3 — Message Templates by Contact Type
+## Step 3 â€” Message Templates by Contact Type
 
 ### Template A: Hiring Manager (Cold)
 
 ```
-Subject: [Team] at [Company] — [Your Specific Skill] + [Company Product Interest]
+Subject: [Team] at [Company] â€” [Your Specific Skill] + [Company Product Interest]
 
 Hi [Name],
 
-I came across [Company]'s [specific product/initiative] and [one-sentence specific observation]. I've spent the last [timeframe] building [one proof point — e.g., "forecasting systems that outperform public company benchmarks"] and think there's a real fit here.
+I came across [Company]'s [specific product/initiative] and [one-sentence specific observation]. I've spent the last [timeframe] building [one proof point â€” e.g., "forecasting systems that outperform public company benchmarks"] and think there's a real fit here.
 
 [one specific thing you noticed about their team/direction]
 
@@ -288,7 +288,7 @@ Would you have 15 minutes this week to explore fit?
 ```
 
 Key principles:
-- No "Hi, I'm interested in your role" — too generic
+- No "Hi, I'm interested in your role" â€” too generic
 - ONE specific thing about company/product (not generic "excited about AI")
 - ONE proof point that maps to their needs
 - Short. Respectful of their time.
@@ -296,11 +296,11 @@ Key principles:
 ### Template B: Team IC / Senior IC (Peer Ask)
 
 ```
-Subject: [Company] [Team] — your work on [specific project/tech]
+Subject: [Company] [Team] â€” your work on [specific project/tech]
 
 Hi [Name],
 
-Your [recent post/project] on [specific thing] caught my eye — I've done similar work with [brief proof point]. 
+Your [recent post/project] on [specific thing] caught my eye â€” I've done similar work with [brief proof point].
 
 I'm exploring joining [Company] as a [role] and think I'd be a strong fit on [Team]. Do you have 20 minutes to talk about the culture, tech stack, and whether you'd consider putting in a referral?
 
@@ -316,7 +316,7 @@ Key principles:
 ### Template C: Skip-Level / Team Lead (Strategic)
 
 ```
-Subject: [Company]'s direction in [domain] — quick chat?
+Subject: [Company]'s direction in [domain] â€” quick chat?
 
 Hi [Name],
 
@@ -336,7 +336,7 @@ Key principles:
 ### Template D: Recruiter (Coordinated)
 
 ```
-Subject: [Role] application — [Your Name] — referred by [Hiring Manager]
+Subject: [Role] application â€” [Your Name] â€” referred by [Hiring Manager]
 
 Hi [Recruiter Name],
 
@@ -352,20 +352,20 @@ Looking forward to moving forward.
 
 Key principles:
 - Mention the hiring manager (social proof)
-- Keep it brief — they have your formal app
+- Keep it brief â€” they have your formal app
 - Focus on "coordinating" not "pushing"
 
-## Step 4 — Campaign Status in Tracker
+## Step 4 â€” Campaign Status in Tracker
 
 After identifying contacts, update `data/tracker/applications.md` with new column:
 
 ```
 | # | Date | Company | Role | Score | Status | PDF | Report | Outreach | Notes |
 |---|------|---------|------|-------|--------|-----|--------|----------|-------|
-| N | DATE | Co | Role | X.X/5 | Applied | ✅ | [link] | 🔗 [Company-Role-Contacts](data/outreach/...) | [summary] |
+| N | DATE | Co | Role | X.X/5 | Applied | âœ… | [link] | ðŸ”— [Company-Role-Contacts](data/outreach/...) | [summary] |
 ```
 
-## Step 5 — Auto-Generate Message Drafts
+## Step 5 â€” Auto-Generate Message Drafts
 
 For each contact, generate personalized drafts using:
 1. Key detail from their profile (post, role, team affiliation)
@@ -386,7 +386,7 @@ Replace placeholders with real names, titles, and specifics.
 
 ## When NOT to Use
 
-- **Sub-4.0 scores:** Don't bother with outreach — your time is better spent elsewhere
+- **Sub-4.0 scores:** Don't bother with outreach â€” your time is better spent elsewhere
 - **Already connected:** If you know someone at the company, message them directly (skip generic outreach)
 - **Companies with hiring freezes:** Check company news before investing time
 
@@ -397,21 +397,21 @@ Replace placeholders with real names, titles, and specifics.
 **This mode complements `/career-ops sourcing`:**
 
 ```
-Daily Sourcing (8am ET) → /career-ops sourcing
-  ↓
+Daily Sourcing (8am ET) â†’ /career-ops sourcing
+  â†“
 Outputs: data/sourcing-daily-[date].md (5-15 new roles/day)
-  ↓
+  â†“
 For top 3 roles (score 4.0+):
-  ↓
+  â†“
 Use /career-ops outreach-campaign + Gem
-  ↓
+  â†“
 Outputs: data/outreach/[company]-contacts.md (5-10 verified contacts + drafts)
-  ↓
+  â†“
 Execute sequenced outreach (5 min/day)
 ```
 
 **Weekly rhythm:**
-- **Mon 8am:** Sourcing runs → identify top roles
+- **Mon 8am:** Sourcing runs â†’ identify top roles
 - **Mon 10am:** Source contacts with Gem (3 companies, 45 min)
 - **Tue-Fri:** Execute outreach sequencing (5 min/day)
 - **Next Mon:** Follow-up + new sourcing cycle
@@ -424,7 +424,7 @@ Track over time:
 - **Contact sourcing efficiency:** Avg time to get 5-10 verified contacts per company
 - **Email accuracy:** % of non-bouncing emails from Gem
 - **Response rate by tier:** Which tiers respond most?
-- **Conversion funnel:** Messaged → Reply → Coffee chat → Interview → Offer
+- **Conversion funnel:** Messaged â†’ Reply â†’ Coffee chat â†’ Interview â†’ Offer
 - **Time to response:** Average days by contact type
 - **Best templates:** Which message structures get replies?
 - **Outreach-to-application ratio:** % of sourced contacts who end up applying
@@ -441,4 +441,4 @@ Adapt templates and company targeting based on what works.
 | **Nyne** | People search + enrichment (backup) | 10 min/company | Low | 30% off |
 | **Dover** | Recruiter marketplace + warm intros | 30 min call | Medium | 3 free intro calls |
 
-**Best workflow:** Gem first (15 min) → Nyne if gaps (10 min) → Dover for warm intros (optional)
+**Best workflow:** Gem first (15 min) â†’ Nyne if gaps (10 min) â†’ Dover for warm intros (optional)

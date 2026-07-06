@@ -69,7 +69,7 @@ Auto-memory **never** holds content claims about the user's work, technical acco
 Rules belong in files the harness reads automatically — `CLAUDE.md`, `AGENTS.md`, `modes/*.md`, `MEMORY.md`. Do not create sidecar documentation that requires manual loading. Reinforcement-without-enforcement decays.
 
 - Before live outreach, refresh the latest branch/PR state and outreach ledger so parallel agents stay aligned.
-- Use `data/outreach-operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach-log.md` as the live-send ledger.
+- Use `data/outreach/operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach/log.md` as the live-send ledger.
 - Do not split outreach state across drafts, queue, and log; the queue is the worklist and the log is the source of truth.
 
 ## Update Check

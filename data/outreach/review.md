@@ -6,10 +6,10 @@ Date: 2026-07-05
 
 - Gmail inbox/search results for messages from and to `daniel@homecastr.com`
 - LinkedIn Messaging preview threads in the authenticated browser
-- `data/outreach-targets.tsv`
-- `data/outreach-operator-card.md`
-- `data/outreach-template-evidence.md`
-- `data/outreach-scripts.md`
+- `data/outreach/targets.tsv`
+- `data/outreach/operator-card.md`
+- `data/outreach/template-evidence.md`
+- `data/outreach/scripts.md`
 - `modes/contacto.md`
 - `modes/followup.md`
 - `data/cv.md`
@@ -43,9 +43,9 @@ This is a convenience sample from recent live mailbox / messaging data, not a fu
 | Design ideas | logistics | positive reply | low-friction reply | Quick reschedule/availability exchange. |
 | Your $10,000 Cloudflare credits are live | vendor/support | positive reply | direct question | Asked a concrete question; got an answer instead of a generic acknowledgement. |
 | Re: Distinguished AI Engineer (Agentic AI Platform) Role Available at capital one | scheduling | positive reply | alternate times | The ask was narrow and easy to answer. |
-| DigitalOcean Hatch – Homecastr / South Park Commons Application | follow-up | pending | warm follow-up | One-line status nudge, but no visible response in the preview. |
-| Homecastr x Paces – David referred me your way | intro / follow-up | pending | referral context | Strong hook, but still waiting on visible movement. |
-| Strategy call. Dynamite Growth × Daniel Lewis | sales follow-up | pending | direct check-in | Straightforward follow-up, but no visible reply in the preview. |
+| DigitalOcean Hatch â€“ Homecastr / South Park Commons Application | follow-up | pending | warm follow-up | One-line status nudge, but no visible response in the preview. |
+| Homecastr x Paces â€“ David referred me your way | intro / follow-up | pending | referral context | Strong hook, but still waiting on visible movement. |
+| Strategy call. Dynamite Growth Ã— Daniel Lewis | sales follow-up | pending | direct check-in | Straightforward follow-up, but no visible reply in the preview. |
 | Infisical access needed for Belleau DB-backed verification | request | positive reply | concrete ask | Specific request, immediate resolution-oriented wording. |
 | Thanks for your time today! | interview follow-up | positive reply | post-call gratitude | Good post-conversation energy and forward motion. |
 
@@ -99,8 +99,8 @@ I widened the sample by searching live Gmail results and LinkedIn message previe
 - `Coffee Chat - Homecastr`
 - `Daniel Lewis <> Joshuah Touyz`
 - `Intro: Susannah (SPC) <> Jonas (The Collective)`
-- `Opportunity for startups in FinTech` — warm email follow-up that immediately references the LinkedIn discussion, then asks one direct question.
-- `Google x Homecastr | Meet your Startup Team` — warm intro follow-up that thanks the introducer and moves straight to the next step.
+- `Opportunity for startups in FinTech` â€” warm email follow-up that immediately references the LinkedIn discussion, then asks one direct question.
+- `Google x Homecastr | Meet your Startup Team` â€” warm intro follow-up that thanks the introducer and moves straight to the next step.
 
 ### Additional LinkedIn examples found in live preview
 
@@ -203,26 +203,26 @@ Decision rule:
 - "just checking in"
 - "touching base"
 - "circling back"
-- "I’m passionate about..."
+- "Iâ€™m passionate about..."
 - "wanted to reach out and see if there are any opportunities"
 
 ## Template library
 
 ### 300-char LinkedIn request
 
-`Loved your work on [specific thing]. I’m building [relevant project] and have solved [proof point]. Would be great to connect.`
+`Loved your work on [specific thing]. Iâ€™m building [relevant project] and have solved [proof point]. Would be great to connect.`
 
 ### Recruiter DM
 
-`Hi [Name] - I just applied for [role]. I’m a [current role] with [proof point]. Happy to share more if useful.`
+`Hi [Name] - I just applied for [role]. Iâ€™m a [current role] with [proof point]. Happy to share more if useful.`
 
 ### Hiring manager DM
 
-`Hi [Name] - your work on [specific thing] stood out. I’ve built [proof point] and would love to hear how your team is thinking about [problem].`
+`Hi [Name] - your work on [specific thing] stood out. Iâ€™ve built [proof point] and would love to hear how your team is thinking about [problem].`
 
 ### Peer / referral DM
 
-`Hi [Name] - I liked your post on [specific thing]. I’m working on [adjacent thing] and would love to hear your take.`
+`Hi [Name] - I liked your post on [specific thing]. Iâ€™m working on [adjacent thing] and would love to hear your take.`
 
 ### Interviewer DM
 
@@ -232,11 +232,11 @@ Decision rule:
 
 `Subject: Re: [Role] at [Company]`
 
-`Hi [Name], I applied for the [role] on [date]. I thought I’d share that [proof point] maps closely to the work described in the posting. If helpful, I’d be glad to share more or talk this week.`
+`Hi [Name], I applied for the [role] on [date]. I thought Iâ€™d share that [proof point] maps closely to the work described in the posting. If helpful, Iâ€™d be glad to share more or talk this week.`
 
 ### Research collaboration reply
 
-`Hi [Name] - that makes sense. I’ve been building a publishable world-model stack with reproducible Modal runs, durable R2 manifests/logs, and a research-grade evaluation loop. If it would be useful, I’d love to compare notes on experiment design and evaluation, especially around diffusion or flow matching.`
+`Hi [Name] - that makes sense. Iâ€™ve been building a publishable world-model stack with reproducible Modal runs, durable R2 manifests/logs, and a research-grade evaluation loop. If it would be useful, Iâ€™d love to compare notes on experiment design and evaluation, especially around diffusion or flow matching.`
 
 ## Notes
 

@@ -1,6 +1,6 @@
 # Current Outreach Batch
 
-Canonical source: `data/outreach-drafts.md`.
+Canonical source: `data/outreach/drafts.md`.
 This file is the compact mirror view for the next send batch. Do not edit it independently.
 Before sending any work-related pitch, confirm the recipient is not SPC-affiliated in the South Park Commons directory PDF; if the result is unclear, keep it to a non-work reconnect or pause.
 
@@ -19,7 +19,7 @@ Best,
 Daniel
 
 ## Christopher Munsell <cwm2132@columbia.edu>
-Status: Sent 2026-07-05
+Status: Sent 2026-07-06
 
 Subject: Thank you from GSAPP
 
@@ -33,7 +33,7 @@ Best,
 Daniel
 
 ## Paola Passalacqua <ppassalacqua@ethz.ch>
-Status: Sent 2026-07-05
+Status: Sent 2026-07-06
 
 Subject: Reconnecting after TACC
 
@@ -42,6 +42,38 @@ Hi Paola,
 I saw your work on hydrology and river system science at ETH Zurich and Eawag, and that river-delta / connectivity angle still maps closely to the flood-resilience modeling I keep building at Homecastr. Our TACC disaster-resiliency work still feels like the clearest shared thread.
 
 If you have a few minutes, I'd love to reconnect and hear what you're focused on at ETH Zurich.
+
+Best,
+Daniel
+
+## Columbia Tech Ventures / SBIR-STTR
+Status: Draft only, not sent
+
+Subject: Homecastr NSF routing: SBIR/STTR + L2M
+
+Hi Columbia Tech Ventures team,
+
+I'm working on Homecastr, a nationwide tract-level probabilistic forecasting platform with a production ML stack and external validation. I'm at the NSF Project Pitch stage, but the NSF portal is still blocked at account creation, so I want to get the Columbia commercialization lane right before I go further.
+
+CTV's SBIR/STTR support page says your team can review the commercialization section of an SBIR/STTR application and can provide letters of support. Could you route me to the right TLO and tell me whether CTV SBIR/STTR or L2M should be the first Columbia stop for this project?
+
+If helpful, I can send the pitch deck, technical overview, traction evidence, and EIN packet in whatever format you prefer.
+
+Best,
+Daniel
+
+## Columbia Lab-to-Market Network / L2M
+Status: Draft only, not sent
+
+Subject: Where Homecastr fits in L2M
+
+Hi L2M team,
+
+I'm trying to place Homecastr in the shortest Columbia commercialization lane. It's a nationwide tract-level probabilistic forecasting platform, and I'm already at the NSF Project Pitch stage, but the NSF portal is still blocked at account creation.
+
+Because L2M exists to help commercialize academic research and its network spans AI, smart cities, and other deep-tech pathways, I wanted to ask whether Homecastr should be routed through L2M directly or whether CTV SBIR/STTR should stay the first stop.
+
+If there is a better home for this work inside the network, I would really appreciate the short routing note.
 
 Best,
 Daniel

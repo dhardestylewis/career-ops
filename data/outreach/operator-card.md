@@ -22,16 +22,19 @@ Use this first if you are the next agent picking up live outreach.
 ## Read Order
 
 1. `modes/_profile.md`
-2. `data/outreach-log.md`
-3. `data/outreach-template-evidence.md`
-4. `data/outreach-scripts.md`
-5. `data/outreach-review.md`
+2. `data/outreach/log.md`
+3. `data/outreach/template-evidence.md`
+4. `data/outreach/scripts.md`
+5. `data/outreach/review.md`
 
 ## Operating Rule
 
 - Use one hook, one proof point, one ask.
 - Keep LinkedIn short and email only when more context is needed.
 - Do not send if the path is blocked or the message needs more than one proof point.
+- Stage every live send in `data/outreach/*send-packet.md` and run `node src/dataOps/outreach-preflight.mjs --packet <path>` before pasting anything into a composer.
+- If preflight fails, stop. Re-open the dossier and fix the packet before doing anything else.
+- Preflight will block a packet that repeats a message already mirrored in `data/outreach/drafts.md` and recorded in `data/outreach/log.md`.
 - If a reply needs judgment, stop and notify the user.
 - If there is no reply, use the first follow-up after 3 to 5 business days and the second after another 3 to 5 business days.
 

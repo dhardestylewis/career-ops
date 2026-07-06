@@ -8,8 +8,8 @@ Track follow-up cadence for active GTM lead threads. Flag overdue follow-ups, ex
 
 - `data/gtm-outreach-contact-dossier.md` - GTM dossier and send gate
 - `data/gtm-outreach-scripts.md` - Draft templates
-- `data/outreach-log.md` - Live send history and existing thread context
-- `data/outreach-drafts.md` - Draft-only workspace when a thread already exists
+- `data/outreach/log.md` - Live send history and existing thread context
+- `data/outreach/drafts.md` - Draft-only workspace when a thread already exists
 
 ## Step 1 - Check the Current State
 
