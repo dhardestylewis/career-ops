@@ -1,0 +1,34 @@
+{
+  "payload": {
+    "company": "Databricks",
+    "role": "AI Engineer - FDE (Forward Deployed Engineer)",
+    "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8099751002",
+    "submittedAt": "2026-07-06T06:27:33.721Z",
+    "fields": {
+      "#first_name": "Daniel",
+      "#last_name": "Lewis",
+      "#preferred_name": "Daniel",
+      "#email": "daniel@homecastr.com",
+      "#country": "United States",
+      "#phone": "7133717875",
+      "#resume": "C:/Users/dhl/data/Portfolio/career-ops/data/assets/resume-dhl-20260630-causal-mle.pdf",
+      "#school--0": "Concordia University Texas",
+      "#degree--0": "Bachelor's Degree",
+      "#discipline--0": "Mathematics",
+      "#start-year--0": "2012",
+      "#end-year--0": "2018",
+      "#question_32621541002": "https://www.linkedin.com/in/dhardestylewis/",
+      "#question_32662345002": "Yes",
+      "#question_35110995002[]_221058443002": "Checked",
+      "#question_35114682002[]_221078005002": "Checked",
+      "#question_35114682002[]_221078021002": "Checked",
+      "#question_36078523002": "No"
+    }
+  },
+  "post": {
+    "submittedAt": "2026-07-06T06:27:33.721Z",
+    "url": "https://databricks.com/company/careers/open-positions/job?gh_jid=8099751002",
+    "invalidCount": 0,
+    "success": true
+  }
+}

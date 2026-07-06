@@ -1,0 +1,12 @@
+{
+  "targetUrl": "https://job-boards.greenhouse.io/scaleai/jobs/4593571005",
+  "resumePath": "C:/Users/dhl/data/Portfolio/career-ops/data/assets/resume-dhl-20260630-causal-mle.pdf",
+  "timestamp": "2026-07-06T17:49:26.923Z",
+  "metrics": {
+    "total": 9,
+    "filled": 9,
+    "fillPercentage": 100,
+    "missingDOM": [],
+    "status": "Success"
+  }
+}

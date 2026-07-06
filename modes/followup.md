@@ -1,5 +1,7 @@
 # Mode: followup -- Follow-up Cadence Tracker
 
+> This mode is job-search specific. For GTM lead follow-ups, use `modes/gtm-followup.md`.
+
 ## Purpose
 
 Track follow-up cadence for active applications and live outreach threads. Flag overdue follow-ups, extract contacts from notes, and generate tailored follow-up email/LinkedIn drafts using report context or the outreach queue.

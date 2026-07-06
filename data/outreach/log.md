@@ -1,11 +1,12 @@
 # Outreach Log
 
-Date: 2026-07-05
+Date: 2026-07-06
 
 This log records live outbound messages sent from the current browser session so future agents can avoid duplicates.
 
 | Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
 |---|---|---|---|---|---|---|
+| Email | Kelsey Richmond | `kelsey.richmond@newlab.com` | startup membership reply | `Re: Newlab Contact Form Submission` | Sent | Submitted the Newlab startup membership application and replied in-thread with a short confirmation. |
 | LinkedIn DM | Alexander Nevedovsky | LinkedIn message thread | warm reply / product-interest | Audos experiment reply | Sent | Replied in the existing 1st-degree thread after checking the current profile; asked to try Audos via a referral link and kept the note short. |
 | Email | Christopher Munsell | `cwm2132@columbia.edu` | warm academic reconnect | Reconnecting from GSAPP | Sent | Sent from the live Gmail compose thread with the GSAPP / Homecastr bridge and the coffee-chat / research-assistantship ask. |
 | Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | warm academic reconnect | Reconnecting from TACC | Sent | Sent from the live Gmail compose thread with the TACC / flood-resilience bridge and the catch-up ask. |

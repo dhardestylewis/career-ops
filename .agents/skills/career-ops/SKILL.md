@@ -18,6 +18,8 @@ Determine the mode from `{{mode}}`:
 | `oferta` | `oferta` |
 | `ofertas` | `ofertas` |
 | `contacto` | `contacto` |
+| `gtm-outreach` | `gtm-outreach` |
+| `gtm-followup` | `gtm-followup` |
 | `deep` | `deep` |
 | `pdf` | `pdf` |
 | `training` | `training` |
@@ -46,6 +48,8 @@ Available commands:
   /career-ops oferta    → Evaluation only A-F (no auto PDF)
   /career-ops ofertas   → Compare and rank multiple offers
   /career-ops contacto  → LinkedIn power move: find contacts + draft message
+  /career-ops gtm-outreach → GTM lead outreach: source-backed lead/customer/partner note
+  /career-ops gtm-followup → GTM follow-up cadence and next-touch drafts
   /career-ops deep      → Deep research prompt about company
   /career-ops pdf       → PDF only, ATS-optimized CV
   /career-ops training  → Evaluate course/cert against North Star
@@ -76,6 +80,8 @@ Load `modes/_shared.md` plus the mode file for:
 - `scan`
 - `batch`
 - `followup`
+- `gtm-outreach`
+- `gtm-followup`
 - `patterns`
 
 Load only the mode file for:
