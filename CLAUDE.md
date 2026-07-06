@@ -18,7 +18,7 @@ There are two layers. Read `DATA_CONTRACT.md` for the full list.
 
 **Canonical Resume Attachment:**
 - `config/profile.yml` should point `execution.resume_path` at:
-  `C:\Users\dhl\data\Portfolio\cv-dhl.git\resume\2-page\without-cover-letter\resume-dhl-20260630-causal-mle\resume-dhl-20260630-causal-mle.pdf`
+  `data/assets/resume-dhl-20260630-causal-mle.pdf`
 - Treat that file as the default resume for all application, outreach, and test workflows unless the user explicitly changes it.
 
 **System Layer (auto-updatable, DON'T put user data here):**

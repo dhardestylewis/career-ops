@@ -3,8 +3,8 @@
 Read `CLAUDE.md` for all project instructions, routing, and behavioral rules. They apply equally to Codex.
 
 Key points:
-- The canonical resume attachment is fixed in `config/profile.yml` at:
-  `C:\Users\dhl\data\Portfolio\cv-dhl.git\resume\2-page\without-cover-letter\resume-dhl-20260630-causal-mle\resume-dhl-20260630-causal-mle.pdf`
+- The canonical resume attachment is the tracked repo asset at:
+  `data/assets/resume-dhl-20260630-causal-mle.pdf`
 - Do not fall back to older PDFs unless the user explicitly says the resume changed.
 - Reuse the existing modes, scripts, templates, and tracker flow - do not create parallel logic.
 - Prefer safe durable action over narration. If a change can be made safely in the repo, make it and record it instead of only describing the next step.

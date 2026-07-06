@@ -1,1 +1,3 @@
-../../../.agents/skills/career-ops/SKILL.md
+# Career-Ops Skill
+
+Read `CLAUDE.md` for the canonical project instructions, routing, and behavioral rules.
