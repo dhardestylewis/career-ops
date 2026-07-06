@@ -75,23 +75,6 @@ spc_checked_at:
 - If `action_state` is `blocked`, `research`, or `no-contact`, do not send the work pitch.
 - If a reply changes strategy or is ambiguous, pause and notify the user instead of guessing.
 
-## Prior Labs reconnect
-
-contact: Noah Hollmann
-relationship: prior warm company contact from the Prior Labs interview thread
-lane: hiring-manager
-source_refs: Gmail thread `Pre-Meeting Brief for Interview with Prior Labs` (Feb 26, 2026); Prior Labs careers page; Prior Labs about page; Noah Hollmann LinkedIn; Prior Labs LinkedIn company page
-last_touch: 2026-02-26
-why_now: Prior Labs is hiring again, and the current roles line up with my production ML, evaluation, and distributed-systems background.
-hook: TabPFN and tabular foundation models, especially the bridge from research into dependable production systems.
-proof_point: production ML, evaluation/reliability, distributed systems, and geospatial/time-series forecasting
-ask: ask whether Noah is still the right technical owner for the current hiring push, or who I should speak with next
-avoid: sounding like a cold application blast, dumping a full resume, or assuming SPC affiliation
-status: research
-next_followup: hold until SPC affiliation is checked; if cleared, send a short reconnect note and then wait 5 business days before any nudge
-spc_affiliation: unchecked
-spc_checked_at:
-
 ## Built In Shortlist
 
 ### LTS - Catherine Del Hierro

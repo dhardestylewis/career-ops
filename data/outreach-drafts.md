@@ -57,47 +57,6 @@ Best,
 Daniel
 ```
 
-## Prior Labs reconnect
-
-**To:** Noah Hollmann
-
-**Channel:** LinkedIn or email
-
-**Status:** Draft only, not sent. Work pitch is still gated until SPC affiliation is checked.
-
-**LinkedIn / public check:** Co-founder & CTO route at Prior Labs. The current careers page shows roles including ML Engineer, Cloud Platform; Research Engineer, Foundation Model; Research Scientist, Foundation Model; Research Scientist Intern (PhD); Applied Scientist, Data Science; and ML Engineer, Forward Deployed.
-
-**Dossier**
-- Relationship: prior warm company contact from the Prior Labs interview thread.
-- Last touch: Feb 26, 2026 in the Gmail thread `Pre-Meeting Brief for Interview with Prior Labs`.
-- Why now: Prior Labs is hiring again, and the current roles map well to my production ML / evaluation background.
-- Hook: TabPFN and the research-to-production bridge around tabular foundation models.
-- Proof point: Homecastr's production ML, evaluation/reliability, distributed systems, and geospatial/time-series forecasting work.
-- Ask: ask whether Noah is still the right technical owner for the current hiring push, or who I should speak with next.
-- Attachment plan: if sending by email, attach `C:\Users\dhl\data\Portfolio\cv-dhl.git\resume\2-page\without-cover-letter\resume-dhl-20260630-causal-mle\resume-dhl-20260630-causal-mle.pdf`.
-- Avoid: making it read like a cold job blast or a giant resume dump.
-- Status: draft only while SPC affiliation remains unchecked.
-- Next follow-up: if the SPC gate clears, send once and wait 5 business days before any nudge.
-
-**LinkedIn note**
-
-```text
-Hi Noah - following up on our Prior Labs thread. I saw the current hiring push and wanted to reconnect. If you're still the right technical owner, I'd love to continue the conversation; otherwise I'd appreciate a pointer to the right person.
-```
-
-**Email subject:** Reconnecting on Prior Labs
-
-```text
-Hi Noah,
-
-Following up on our Prior Labs thread from February, I saw the current hiring push and wanted to reconnect.
-
-If you're still the right person to speak with on the technical side, I'd love to reconnect; otherwise I'd appreciate it if you could point me to the right owner for the current roles.
-
-Best,
-Daniel
-```
-
 ## Warm Network: Aaron Wilson
 
 **To:** Aaron Wilson
@@ -106,7 +65,7 @@ Daniel
 
 **Status:** Watch / no further contact
 
-**Context:** Founder of Belleau Labs. David sent my `C:\Users\dhl\data\Portfolio\cv-dhl.git\resume\2-page\without-cover-letter\resume-dhl-20260630-causal-mle\resume-dhl-20260630-causal-mle.pdf` his way and we had a short call on the warm intro thread.
+**Context:** Founder of Belleau Labs. David sent my resume his way and we had a short call on the warm intro thread.
 
 **Dossier**
 - Relationship: warm founder contact.
