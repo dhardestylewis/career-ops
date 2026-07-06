@@ -1,6 +1,6 @@
-# Daily Sourcing Report — 2026-06-13 (LIVE DATA)
+# Daily Sourcing Report â€” 2026-06-13 (LIVE DATA)
 
-**Auto-generated: Last 24 hours of NYC ML roles**  
+**Auto-generated: Last 24 hours of NYC ML roles**
 **Sources:** Built In NYC, Wellfound, LinkedIn, Company Career Pages
 
 ---
@@ -49,45 +49,45 @@
 
 ## High Priority (Est. Score 4.0+)
 
-**Tier 1 — Strong Fit + Your Target Comp**
+**Tier 1 â€” Strong Fit + Your Target Comp**
 
-1. **Databricks** — Staff ML Engineer, Model Serving  
-   Comp: $210K-$280K | Archetype: Infrastructure | Location: NYC Hybrid  
+1. **Databricks** â€” Staff ML Engineer, Model Serving
+   Comp: $210K-$280K | Archetype: Infrastructure | Location: NYC Hybrid
    *Why: Direct infrastructure match, proven growth-stage company*
 
-2. **Figma** — Senior ML Engineer, Foundation  
-   Comp: $200K-$313K | Archetype: Infrastructure | Location: NYC Hybrid  
+2. **Figma** â€” Senior ML Engineer, Foundation
+   Comp: $200K-$313K | Archetype: Infrastructure | Location: NYC Hybrid
    *Why: Product ML + infrastructure blend, strong technical culture*
 
-3. **Cohere Health** — Staff ML Engineer  
-   Comp: $225K-$265K | Archetype: Product ML | Location: NYC Hybrid  
+3. **Cohere Health** â€” Staff ML Engineer
+   Comp: $225K-$265K | Archetype: Product ML | Location: NYC Hybrid
    *Why: Healthtech focus, recent posting, reposted indicates active hiring*
 
-**Tier 2 — Stretch (Higher Comp, Research Focus)**
+**Tier 2 â€” Stretch (Higher Comp, Research Focus)**
 
-4. **Jane Street** — Quantitative Researcher / ML  
-   Comp: $300K-$500K+ | Archetype: Research | Location: NYC On-site  
+4. **Jane Street** â€” Quantitative Researcher / ML
+   Comp: $300K-$500K+ | Archetype: Research | Location: NYC On-site
    *Why: Highest comp, your quant background, finance affinity*
 
-5. **Two Sigma** — Senior ML Researcher  
-   Comp: $280K-$450K | Archetype: Research | Location: NYC Hybrid  
+5. **Two Sigma** â€” Senior ML Researcher
+   Comp: $280K-$450K | Archetype: Research | Location: NYC Hybrid
    *Why: Research + production blend, strong quant reputation*
 
-**Tier 3 — Emerging (Outreach Opportunity)**
+**Tier 3 â€” Emerging (Outreach Opportunity)**
 
-6. **OXMAN** — ML Research Engineer  
-   Comp: $200K-$250K | Archetype: Research | Location: NYC Hybrid  
-   *Why: Already in your pipeline (Jun 5 interview) — prioritize follow-up*
+6. **OXMAN** â€” ML Research Engineer
+   Comp: $200K-$250K | Archetype: Research | Location: NYC Hybrid
+   *Why: Already in your pipeline (Jun 5 interview) â€” prioritize follow-up*
 
 ---
 
 ## Comp Analysis
 
-**Average Posting:** $265K (includes research roles at $300K+)  
-**Median Posting:** $242.5K  
-**Your Target Range:** $180K-$250K ✅ **6 of 13 postings fit perfectly**
+**Average Posting:** $265K (includes research roles at $300K+)
+**Median Posting:** $242.5K
+**Your Target Range:** $180K-$250K âœ… **6 of 13 postings fit perfectly**
 
-**Market Insight:**  
+**Market Insight:**
 - Infrastructure roles cluster at $210K-$280K (sweet spot)
 - Research roles start at $250K+ (higher barrier)
 - Finance (Jane Street, Two Sigma, Morgan Stanley) command 20-100% premium
@@ -96,8 +96,8 @@
 
 ## NYC vs. Remote Reality
 
-**Posted:** 13 NYC-based roles  
-**Found:** 0 remote-only positions today  
+**Posted:** 13 NYC-based roles
+**Found:** 0 remote-only positions today
 
 **Implication:** Your NYC location is a **major advantage**. These roles are NYC-biased because:
 - Finance/quant talent pool is Manhattan-dense (Jane Street, Two Sigma, State Street, Morgan Stanley all trading floor heritage)
@@ -129,7 +129,7 @@
 
 - [ ] Apply to all Tier 1 roles (Databricks, Figma, Cohere Health)
 - [ ] Deep research + warm intro outreach for Jane Street + Two Sigma
-- [ ] **URGENT:** Follow up on OXMAN (you had Jun 5 interview — status?)
+- [ ] **URGENT:** Follow up on OXMAN (you had Jun 5 interview â€” status?)
 - [ ] Research Goldman Sachs Marquee (director-level, high-touch recruiting)
 
 ### Ongoing

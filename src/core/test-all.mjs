@@ -69,6 +69,7 @@ const scripts = [
   { name: 'src/dataOps/dedup-tracker.mjs', expectExit: 0 },
   { name: 'src/dataOps/merge-tracker.mjs', expectExit: 0 },
   { name: 'src/dataOps/outreach-ledger.mjs --dry-run', expectExit: 0 },
+  { name: 'src/dataOps/outreach-preflight.mjs --self-test', expectExit: 0 },
   { name: 'src/core/update-system.mjs check', expectExit: 0 },
 ];
 
@@ -156,7 +157,7 @@ for (const f of systemFiles) {
 
 // Check user files are NOT tracked (gitignored)
 const userFiles = [
-  'config/profile.yml', 'modes/_profile.md', 'portals.yml',
+  'config/profile.yml', 'modes/_profile.md', 'modes/_custom.md', 'portals.yml',
 ];
 for (const f of userFiles) {
   const tracked = run(`git ls-files ${f}`);

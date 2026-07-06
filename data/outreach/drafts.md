@@ -2,7 +2,7 @@
 
 Date: 2026-07-05
 
-Draft-only workspace. Nothing below has been sent yet. Check `data/outreach-log.md` for the live-send ledger.
+Draft-only workspace. Nothing below has been sent yet. Check `data/outreach/log.md` for the live-send ledger. The send preflight will hard-stop if a packet tries to resend something already mirrored here and recorded in the live log.
 
 Send gate:
 
@@ -322,7 +322,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-06
 
 **LinkedIn / public check:** Professor of Hydrology and River System Science at ETH Zurich and Eawag. Her work spans river deltas, hydrological connectivity, and flood risk.
 
@@ -356,7 +356,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-06
 
 **LinkedIn / public check:** Columbia professor who directs the Financial Engineering Program and the Center for AI in Business Analytics & FinTech.
 
@@ -390,7 +390,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-06
 
 **LinkedIn / public check:** Columbia GSAPP professor of Real Estate Development Finance who teaches MSRED finance courses.
 
@@ -410,9 +410,9 @@ Daniel
 ```text
 Hi Christopher,
 
-I wanted to reconnect from the GSAPP side. I saw your current work in Real Estate Development Finance at Columbia and the overlap with Homecastr's housing and geospatial forecasting still feels strong.
+I wanted to reconnect from GSAPP, and Iâ€™ve been thinking about how closely your real estate finance work connects to what Iâ€™m building at Homecastr.
 
-If you are open, I would love to catch up and hear what you are focused on lately.
+If youâ€™re open, Iâ€™d love to hear your thoughts on Homecastr and catch up over coffee sometime. Iâ€™d also be grateful for any roles or research assistantships you think I should keep in mind.
 
 Best,
 Daniel
@@ -424,7 +424,7 @@ Daniel
 
 **Channel:** Email
 
-**Status:** Draft only, not sent
+**Status:** Sent on 2026-07-06
 
 **Subject:** Columbia alum looking for the right routing path
 
@@ -455,6 +455,78 @@ Hi Columbia IEOR / GSAPP / Data Science Institute team,
 I am a Columbia M.S. Urban Planning student and the founder of Homecastr, where I have been building production geospatial ML systems. I am hoping to find the right faculty or staff contact for work that sits at the intersection of spatial data, ML systems, and applied research.
 
 If there is a better person or lab to route this to, I would be very grateful.
+
+Best,
+Daniel
+```
+
+## Columbia Tech Ventures / SBIR-STTR
+
+**To:** Columbia Technology Ventures <techventures@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Organization page:** CTV's SBIR/STTR support page is current; use this as the routing hub rather than guessing at a named person.
+
+**Dossier**
+- Relationship: cold org-routing lane for Columbia commercialization support.
+- Last touch: none.
+- Why now: NSF Project Pitch is still blocked at account creation, and CTV explicitly offers SBIR/STTR mentorship, commercialization-section review, letter support, and workshops.
+- Hook: CTV says its technology licensing officers can review SBIR/STTR commercialization language and can provide letters of support.
+- Proof point: Homecastr is a nationwide tract-level probabilistic forecasting platform with a production ML stack and external validation.
+- Ask: route me to the right TLO and confirm whether CTV SBIR/STTR or L2M should be the first Columbia stop for Homecastr.
+- Avoid: a full pitch, any request to create an NSF account, or asking for more than one routing path.
+- Status: draft only.
+- Next follow-up: if no reply after 4 business days, send a shorter routing nudge.
+
+**Subject:** Homecastr NSF routing: SBIR/STTR + L2M
+
+```text
+Hi Columbia Tech Ventures team,
+
+I'm working on Homecastr, a nationwide tract-level probabilistic forecasting platform with a production ML stack and external validation. I'm at the NSF Project Pitch stage, but the NSF portal is still blocked at account creation, so I want to get the Columbia commercialization lane right before I go further.
+
+CTV's SBIR/STTR support page says your team can review the commercialization section of an SBIR/STTR application and can provide letters of support. Could you route me to the right TLO and tell me whether CTV SBIR/STTR or L2M should be the first Columbia stop for this project?
+
+If helpful, I can send the pitch deck, technical overview, traction evidence, and EIN packet in whatever format you prefer.
+
+Best,
+Daniel
+```
+
+## Columbia Lab-to-Market Network / L2M
+
+**To:** Columbia Lab-to-Market Accelerator Network <L2M@ctv.columbia.edu>
+
+**Channel:** Email
+
+**Status:** Draft only, not sent
+
+**Organization page:** L2M's about page is current; Maria Rahmany, Jack Steele, and Ananya Karanam are the public routing contacts.
+
+**Dossier**
+- Relationship: cold org-routing lane for Columbia commercialization support.
+- Last touch: none.
+- Why now: L2M exists to commercialize academic research and provides a shared infrastructure across Columbia's deep-tech accelerator programs.
+- Hook: the network explicitly covers AI, smart cities, advanced materials, and other deep-tech pathways.
+- Proof point: Homecastr is a nationwide tract-level probabilistic forecasting platform with a production ML stack and external validation.
+- Ask: tell me whether Homecastr should enter L2M directly or whether CTV SBIR/STTR should stay the first stop.
+- Avoid: a broad ask for every program, or a pitch that assumes smart-cities fit without confirmation.
+- Status: draft only.
+- Next follow-up: if no reply after 4 business days, send a shorter routing note or ask Maria/Jack for the right program.
+
+**Subject:** Where Homecastr fits in L2M
+
+```text
+Hi L2M team,
+
+I'm trying to place Homecastr in the shortest Columbia commercialization lane. It's a nationwide tract-level probabilistic forecasting platform, and I'm already at the NSF Project Pitch stage, but the NSF portal is still blocked at account creation.
+
+Because L2M exists to help commercialize academic research and its network spans AI, smart cities, and other deep-tech pathways, I wanted to ask whether Homecastr should be routed through L2M directly or whether CTV SBIR/STTR should stay the first stop.
+
+If there is a better home for this work inside the network, I would really appreciate the short routing note.
 
 Best,
 Daniel
