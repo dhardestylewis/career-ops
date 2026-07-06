@@ -1,11 +1,14 @@
 # Outreach Log
 
-Date: 2026-07-05
+Date: 2026-07-06
 
 This log records live outbound messages sent from the current browser session so future agents can avoid duplicates.
 
 | Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
 |---|---|---|---|---|---|---|
+| LinkedIn DM | Wen Yao | LinkedIn message thread | recruiter bridge / direct-message fallback | Plaid transaction foundation model | Sent | Search-result and profile-header verification both matched Wen Yao (2nd, ML/AI Lead @ Plaid); the connect-note modal stalled in this browser, so the direct-message composer was used instead. |
+| LinkedIn DM | Rico Curry | LinkedIn message thread | recruiter bridge / direct-message fallback | Plaid recruiting across AI/LLM/NLP and Applied ML | Sent | Search-result and profile-header verification both matched Rico Curry (2nd, Senior Technical Recruiter / Recruiting Leader at Plaid); the direct-message composer was used. |
+| LinkedIn DM | Julia Tupy | LinkedIn message thread | recruiter bridge / direct-message fallback | Modal talent partner / AI infra-platform lane | Sent | Search-result and profile-header verification both matched Julia Tupy (2nd, Talent Partner at Modal); the direct-message composer was used. |
 | LinkedIn DM | Alexander Nevedovsky | LinkedIn message thread | warm reply / product-interest | Audos experiment reply | Sent | Replied in the existing 1st-degree thread after checking the current profile; asked to try Audos via a referral link and kept the note short. |
 | Email | Christopher Munsell | `cwm2132@columbia.edu` | warm academic reconnect | Reconnecting from GSAPP | Sent | Sent from the live Gmail compose thread with the GSAPP / Homecastr bridge and the coffee-chat / research-assistantship ask. |
 | Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | warm academic reconnect | Reconnecting from TACC | Sent | Sent from the live Gmail compose thread with the TACC / flood-resilience bridge and the catch-up ask. |
@@ -31,5 +34,11 @@ This log records live outbound messages sent from the current browser session so
 | LinkedIn Connect | Michael Franchi | LinkedIn invite note | recruiter bridge | Consumer product ML fit | Sent | Short connect note asking whether he owns the relevant role or can route it. |
 | LinkedIn DM | Michael Jaffe | LinkedIn message thread | recruiter bridge | Data-focused technical recruiting fit | Sent | Short DM asking whether he handles engineering or data roles. |
 | LinkedIn Connect | Miguel Valle | LinkedIn invite note | recruiter bridge | Talent and technical recruiting fit | Sent | Short connect note asking which recruiting lane is the best fit. |
+| Email | James Pickard | `james.pickard@accenture.com` | recruiter bridge | Accenture AI Transformation & Solutions Lead | Sent | Sent from Gmail to the Accenture address after confirming the thread was already in flight; no duplicate send. |
+| Email | Oliver Doering | `oliver@thestartupclub.net` | conference reply | Opportunity for startups in FinTech | Sent | Existing reply-all thread; asked for pitch-deck format and deadline. |
+| Email | Oliver Doering | `oliver@thestartupclub.net` | conference follow-up | Re: Opportunity for startups in FinTech | Sent | Replied to confirm the 6pm CET / 12 noon EST autumn slot works and asked for preferred format and deadline. |
+| LinkedIn DM | Catherine Del Hierro | LinkedIn message thread | recruiter bridge | LTS Lead Forward Deployed Engineer | Sent | Current profile showed 1st-degree message access; sent from the live LinkedIn compose thread after verifying the recipient chip and the URL. |
+| LinkedIn DM | Harrison Zolot | LinkedIn message thread | recruiter bridge / direct-message | Trexquant Quantitative Researcher | Sent | Current profile showed 1st-degree message access; the message appeared in the live conversation list after send. |
+| LinkedIn DM | Bernd Wuebben | LinkedIn message thread | recruiter bridge / reconnect | AllianceBernstein systematic fixed income | Sent | Current profile showed 1st-degree message access; the message appeared in the live conversation list after send. |
 | 2026-07-05 | warm-academic | Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | professor-reconnect | Reconnecting after TACC | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from TACC` conversation. |
 | 2026-07-05 | warm-academic | Email | Christopher Munsell | `cwm2132@columbia.edu` | professor-reconnect | Thank you from GSAPP | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from GSAPP` conversation. |

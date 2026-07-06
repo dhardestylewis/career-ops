@@ -238,3 +238,21 @@ action_state: sent
 next_followup: Wait for his reply; only follow up if he responds or asks for more context.
 spc_affiliation: not checked; non-work lane
 spc_checked_at: n/a
+
+### AllianceBernstein - Bernd Wuebben
+
+contact: Bernd Wuebben
+relationship: cold executive reconnect; Global Head - Fixed Income Systematic Investing and Quantitative Research at AllianceBernstein
+lane: executive / boss-of-boss
+source_refs: https://www.linkedin.com/in/berndwuebben
+last_touch: none
+why_now: The live LinkedIn profile showed 1st-degree access and the role is adjacent to systematic fixed income, ML, and agentic AI.
+hook: A current-relevance bridge to forecasting, model validation, and systematic alpha.
+proof_point: I have been building ML systems at Homecastr.
+ask: Quick conversation on how he thinks about systematic alpha and portfolio construction in fixed income.
+avoid: Making it feel like a long pitch or leading with product jargon.
+status: sent
+action_state: sent
+next_followup: Wait for his reply; only follow up if he responds or asks for more context.
+spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+spc_checked_at: 2026-07-06
