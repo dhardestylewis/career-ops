@@ -6,6 +6,8 @@ This log records live outbound messages sent from the current browser session so
 
 | Date | Lane | Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
 |---|---|---|---|---|---|---|---|---|
+| 2026-07-06 | hiring-manager | LinkedIn DM | Noah Hollmann | LinkedIn message thread | hiring-manager-note | Following up since we last spoke | Sent | Short reconnect note about the current Prior Labs hiring push and continuing the technical-owner conversation. |
+| 2026-07-06 | hiring-manager | Email | Noah Hollmann | noah@priorlabs.ai | hiring-manager-note | Following up since we last spoke | Sent | Same short reconnect note sent to Noah's public contact address from his site. |
 | 2026-07-05 | warm-network | LinkedIn DM | Li-Yun (James) Wang, PhD | LinkedIn message thread | founder-style intro, bridge-first | Collaboration note on the CV side project post | Sent | Short, specific note referencing production ML, geospatial forecasting, and flood-resilience work. |
 | 2026-07-05 | warm-academic | Email | Ali Hirsa | Gmail message | professor-reconnect | Columbia reconnect | Sent | Short reconnect note on Columbia latent factor models and geospatial forecasting. |
 | 2026-07-05 | nonprofit-gov | Email | 3Dtrees team | `info@3dtrees.earth` | direct contact / contribution ask | `3Dtrees contribution workflow` | Sent | Public site contact email on 3Dtrees.earth; message asked for the best path for contributing forest data. |
