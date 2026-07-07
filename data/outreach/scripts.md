@@ -229,7 +229,7 @@ Before any send, write down:
 6. Smallest sensible ask
 7. What to avoid
 8. Send state and follow-up rule
-9. South Park Commons affiliation check if the outreach is about work, money, gigs, contracts, or jobs
+9. South Park Commons directory export check if the outreach is about work, money, gigs, contracts, or jobs; record whether it was a clean no-match or whether Slack/Pando was needed as a tie-breaker
 
 Then stage the final outbound copy in `data/outreach/*send-packet.md` and run:
 
@@ -282,7 +282,7 @@ Hi [Name] - thanks again for the intro / earlier discussion. Just checking wheth
 - The contact dossier is complete and source-backed.
 - The exact outbound text has passed `node src/dataOps/outreach-preflight.mjs --packet <send-packet-path>`.
 - The current LinkedIn role or org page has been checked when the recipient could have moved.
-- The South Park Commons affiliation check is complete for any work, money, gigs, contracts, or jobs pitch.
+- The South Park Commons directory export has been checked for any work, money, gigs, contracts, or jobs pitch, and a clean no-match is recorded unless the contact is SPC-adjacent or the result is still ambiguous.
 - You can write the message with one hook, one proof point, and one ask.
 - The role, project, or post is clearly relevant.
 - The thread is not blocked by CAPTCHA or login friction.
@@ -298,7 +298,7 @@ Hi [Name] - thanks again for the intro / earlier discussion. Just checking wheth
 - The dossier has missing source refs, missing last touch, or a missing why-now.
 - The recipient's current role has changed and the note has not been rewritten as a reconnect/current-role note.
 - The South Park Commons affiliation is unclear for a work-related pitch.
-- The preflight reports a wrong greeting, another recipient's name, or a missing dossier field.
+- The preflight reports a wrong greeting, another recipient's name, a missing dossier field, or a follow-up that is too soon.
 
 ## Response Handling
 
@@ -307,8 +307,8 @@ Use this after a message goes out:
 - If they reply with a clear yes/no or simple scheduling question, answer directly and keep it short.
 - If they reply with a question that changes the strategy, pause and notify the user for human judgment.
 - If there is no reply, follow the standard follow-up cadence:
-  - First follow-up: 3 to 5 business days after the send.
-  - Second follow-up: 3 to 5 business days after the first follow-up.
+  - First follow-up: 5 business days after the send by default, and never sooner than 3 business days.
+  - Second follow-up: 5 business days after the first follow-up by default, and never sooner than 3 business days.
   - After that, stop unless the user explicitly wants another pass.
 - If the thread is warm or already in motion, use the warm-thread nudge variant instead of a cold restart.
 - If LinkedIn or email blocks the send path, do not improvise around CAPTCHA or access friction; mark the route blocked and try a different contact path.

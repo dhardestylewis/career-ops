@@ -49,6 +49,19 @@ function normalizeMessageBody(value) {
   return normalizeKey(value).replace(/\s+/g, ' ').trim();
 }
 
+function isExplicitSpcNoMatch(value) {
+  const text = normalizeKey(value);
+  if (!text) return false;
+  return /\b(no match|no exact name hit|no exact hit|no exact match|clean no match|not affiliated|not spc affiliated|not spc adjacent|no relation|directory pdf no match|directory export no match|pdf decisive|user confirmed no relation)\b/i.test(text);
+}
+
+function isSpcAffiliationBlocked(value) {
+  const text = normalizeKey(value);
+  if (!text) return false;
+  if (isExplicitSpcNoMatch(text)) return false;
+  return /\b(yes|member|affiliate|affiliated|unclear|unknown|blocked|adjacent)\b/i.test(text);
+}
+
 function extractRecipientName(value) {
   return normalizeText(value).replace(/\s*<[^>]+>\s*$/, '');
 }
@@ -354,7 +367,7 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
     if (isWorkPitch(body)) {
       if (!dossier.spcAffiliation) errors.push(`${message.heading}: SPC affiliation check is missing.`);
       if (!dossier.spcCheckedAt) errors.push(`${message.heading}: SPC checked date is missing.`);
-      if (/\b(yes|member|affiliate|affiliated|unclear|unknown|blocked)\b/i.test(dossier.spcAffiliation)) {
+      if (isSpcAffiliationBlocked(dossier.spcAffiliation)) {
         errors.push(`${message.heading}: SPC status "${dossier.spcAffiliation}" blocks a work pitch.`);
       }
     }
@@ -417,8 +430,8 @@ hook: Her current Cohere Labs and MILA research path is the specific bridge.
 proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
 ask: Stay in touch and compare notes briefly.
 status: ready to send
-spc_affiliation: not-affiliated
-spc_checked_at: 2026-07-05
+spc_affiliation: clean no-match in archived SPC PDF; not SPC-adjacent
+spc_checked_at: 2026-07-07
 `);
   const goodDrafts = parseDraftMirrorContent(`
 ## Julia Kreutzer

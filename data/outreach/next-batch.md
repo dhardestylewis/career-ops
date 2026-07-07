@@ -2,10 +2,10 @@
 
 Canonical source: `data/outreach/drafts.md`.
 This file is the compact mirror view for the next send batch. Do not edit it independently.
-Before sending any work-related pitch, confirm the recipient is not SPC-affiliated in the South Park Commons directory PDF; if the result is unclear, keep it to a non-work reconnect or pause.
+Before sending any work-related pitch, check the South Park Commons directory export first. If it gives a clean no-match and the contact is not SPC-adjacent, that is enough to send; use Slack or Pando only when the result is ambiguous, OCR-noisy, or SPC-adjacent.
 
 ## Ali Hirsa <ah2347@columbia.edu>
-Status: Sent 2026-07-05
+Status: Sent 2026-07-07
 
 Subject: Quick catch-up on our Columbia research
 
@@ -17,6 +17,8 @@ If you have a few minutes sometime soon, I'd love to catch up and hear your thou
 
 Best,
 Daniel
+
+Note: two additional Columbia touches were sent on July 7; anchor any future follow-up from the latest live send.
 
 ## Christopher Munsell <cwm2132@columbia.edu>
 Status: Sent 2026-07-06
@@ -125,9 +127,9 @@ Status: Follow-up draft
 Warm sales / partnership thread. Ask only about next steps or upcoming calls and keep it warm.
 
 ## Robbie Bent / Othership
-Status: Ready to send
+Status: Sent 2026-07-06
 
-Warm founder/community note from the Othership credit thread. Keep it light and not pitchy.
+Already sent reply to the Othership credit thread. No new outreach needed.
 
 ## Joshua Lesser / LinkedIn
 Status: Watch / no contact
@@ -152,13 +154,25 @@ Status: Draft / research / LinkedIn checked (all Terra AI targets here are 2nd-d
 | David Wilmot | LTS | LinkedIn note | Draft ready for send | Chief Medical Officer, executive sponsor |
 | James Pickard | Accenture | LinkedIn note | Draft ready for send | Talent Acquisition Lead |
 | Jim Murrin | Accenture | LinkedIn note | Draft ready for send | Global executive search, AI & data |
-| Iliana Lytton | Billtrust | LinkedIn note | Draft ready for send | Lead Talent Acquisition Partner |
-| Lee An Schommer | Billtrust | LinkedIn note | Draft ready for send | Chief Product Officer |
-| Harrison Zolot | Trexquant | LinkedIn note | Draft ready for send | Head of Talent Acquisition |
-| Denis Lapitski | Trexquant | LinkedIn note | Draft ready for send | Director of Strategy Research |
+| Iliana Lytton | Billtrust | LinkedIn note | Draft held pending location confirmation | Lead Talent Acquisition Partner |
+| Lee An Schommer | Billtrust | LinkedIn note | Draft held pending location confirmation | Chief Product Officer |
+| Harrison Zolot | Trexquant | LinkedIn note | Draft held pending location confirmation | Head of Talent Acquisition |
+| Denis Lapitski | Trexquant | LinkedIn note | Draft held pending location confirmation | Director of Strategy Research |
 
 ## Notes
 
-- All of these are work-related pitches, and the South Park Commons directory PDF does not show an SPC match for these contacts.
+- All of these are work-related pitches, and the South Park Commons directory export shows clean no-match results for the LTS and Accenture contacts.
 - The source-backed current-role check is complete from the public LinkedIn profiles and company pages.
 - These can move from draft to ready without rewriting the skeleton.
+- Scheduled next review: Catherine Del Hierro and David Wilmot on 2026-07-20; James Pickard and Jim Murrin on 2026-07-21.
+- The clean no-match result is enough for those four; Slack is only a tie-breaker if the directory result turns noisy or ambiguous.
+- Billtrust and Trexquant stay held until the public location signal is cleaner.
+
+## Geography-Safe Research Targets
+
+| Contact | Company | Channel | Status | Note |
+|---|---|---|---|---|
+| Alyssa Alvarez | Figma | LinkedIn note | Draft ready for send | Recruiting @ Figma; target the Software Engineer, AI Product (London, United Kingdom) lane. |
+| Kimberly Taylor | Harvey | LinkedIn note | Draft ready for send | Leads recruiting for Harvey's Central AI org; target the Staff Software Engineer, Agents lane in San Francisco. |
+| Janelle Bullock | Notion | LinkedIn note | Draft ready for send | Technical Recruiter in New York; target the Software Engineer, AI Workflows lane in SF/NY. |
+| Etienne Metzger | Mistral AI | LinkedIn note | Draft ready for send | Head of TA in Paris; target the Applied AI, Forward Deployed Machine Learning Engineer - EMEA lane. |
