@@ -45,6 +45,19 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Keep the discovery trail in the appropriate TSV or note file so future agents can recover the context without reopening the browser session.
 - Do not invent contact details, application links, or replies.
 
+## Backup / Recovery
+
+- Treat `docs/outreach-state-map.md` as the compact file map for the outreach workspace.
+- After a live send burst or any major outreach-state change, run `npm run outreach:backup`.
+- The default backup target is outside the repo at `C:\Users\<you>\.codex\backups\career-ops-outreach\`.
+- Keep `credentials.json` and `token.json` machine-local or encrypted. Do not push them to GitHub.
+
+## Commit Guard
+
+- Before staging or committing, run `npm run guard:private-data`.
+- The tracked `.githooks/pre-commit` hook runs the same check once `git config core.hooksPath .githooks` is set for this repo.
+- If you need shareable fixtures, keep redacted copies under `examples/` instead of copying private user-layer data into GitHub.
+
 ## Discovery Sources
 
 - LinkedIn feed and profile notes: `docs/linkedin-feed-observations.md`

@@ -26,6 +26,7 @@ All scripts live in the project root as `.mjs` modules and are exposed via `npm 
 | `npm run tracker` | `tracker.mjs` | SQLite derived index over applications.md — sync/query/history/export |
 | `npm run find` | `find.mjs` | Resolve a report#/tracker#/company query to its full pipeline identity |
 | `npm run outreach:audit -- "Name"` | `src/dataOps/outreach-recipient-audit.mjs` | Audit outreach state for a recipient before any live send |
+| `npm run guard:private-data` | `src/core/private-data-guard.mjs` | Block staged private data before commit |
 
 ---
 
@@ -341,3 +342,30 @@ Use it immediately before drafting final send copy or replying in a live session
 - `2` prior send or live thread found; do not send a new intro
 - `3` recipient already exists in a draft, research, or blocked workflow; resolve that state first
 - `1` usage error or runtime failure
+
+## outreach:backup
+
+Snapshots the local-only outreach workspace to an off-GitHub backup root by default. It copies `data/outreach/*` plus the current Newlab application archive artifacts into a timestamped snapshot, and it excludes `credentials.json` and `token.json` unless you explicitly ask for them.
+
+```bash
+npm run outreach:backup
+npm run outreach:backup -- --dest "C:\\backups\\career-ops-outreach"
+npm run outreach:backup -- --include-auth   # only if you intentionally want auth files in the local snapshot
+```
+
+Use this after live send bursts or any other major outreach-state change.
+
+## guard:private-data
+
+Blocks private user-layer files, private outreach artifacts, and auth files from being staged.
+
+```bash
+npm run guard:private-data
+```
+
+Use it before staging or committing private data. The repo also includes `.githooks/pre-commit` for local enforcement when `core.hooksPath` points at `.githooks`.
+
+**Exit codes:**
+
+- `0` snapshot created successfully
+- `1` usage error, runtime failure, or destination blocked because it was inside the repo
