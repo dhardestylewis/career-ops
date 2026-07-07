@@ -20,7 +20,15 @@ const isHostOrSubdomain = (value, domain) => {
     return host === domain || host.endsWith(`.${domain}`);
 };
 
-const cssIdSelector = (value) => `#${cssEscape(String(value))}`;
+const escapeCssIdentifier = (value) =>
+    cssEscape(String(value));
+
+const escapeXPathLiteral = (value) => {
+    const text = String(value);
+    if (!text.includes('"')) return `"${text}"`;
+    if (!text.includes("'")) return `'${text}'`;
+    return 'concat(' + text.split('"').map((part) => `"${part}"`).join(', \'"\', ') + ')';
+};
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -459,10 +467,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Check if it's a hidden React-Select input or base ID doesn't exist
             if (await input.count() === 0 || await input.getAttribute('type') === 'hidden') {
                 // Try dynamically generated react-select IDs first
-                const reactSelectInput = page.locator(`#react-select-${cssEscape(String(targetId))}-input`).first();
+                const reactSelectInput = page.locator(`#react-select-${escapeCssIdentifier(targetId)}-input`).first();
                 if (await reactSelectInput.count() > 0) {
                     input = reactSelectInput;
-                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${cssEscape(String(targetId))}-input)`);
+                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${escapeCssIdentifier(targetId)}-input)`);
                 } else {
                     if (await input.count() === 0) {
                         console.log(`[Mapper] Failed to find input with ID: ${targetId}`);
@@ -1237,7 +1245,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             for (const q of emptyFields) {
                 if (synthesizedMap[q.id]) {
                     console.log(`[LLM] Injecting synthesized answer for: "${q.label.substring(0,30)}..."`);
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id=${JSON.stringify(q.id)}]`) : page.locator(`${cssIdSelector(q.id)}, [data-llm-id=${JSON.stringify(q.id)}]`);
+                    const safeQId = escapeCssIdentifier(q.id);
+                    const safeQAttr = escapeCssAttributeValue(q.id);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     if (await loc.count() > 0) {
                         await loc.first().pressSequentially(synthesizedMap[q.id], { delay: Math.floor(Math.random() * 40) + 20 });
                         const isCombo = await loc.first().evaluate(el => el.getAttribute('role') === 'combobox').catch(()=>false);
@@ -1249,8 +1259,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                 } else {
                     // Brute force fallback if LLM failed
-                    const llmSelector = `[data-llm-id=${JSON.stringify(q.id)}]`;
-                    const loc = q.id.includes('.') ? page.locator(llmSelector) : page.locator(`${cssIdSelector(q.id)}, ${llmSelector}`);
+                    const safeQId = escapeCssIdentifier(q.id);
+                    const safeQAttr = escapeCssAttributeValue(q.id);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     try {
                         if (await loc.count() > 0) {
                             const tagAndRole = await loc.first().evaluate(el => ({ tag: el.tagName, role: el.getAttribute('role') })).catch(()=>({}));
@@ -1276,6 +1287,40 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         console.error("⚠️ Synthesizer Fallback Error:", e.message);
     }
 
+    // Stripe-specific hard fixes for comboboxes that can still be re-rendered as "Yes"
+    // by broader fallback heuristics after the correct option has been selected.
+    try {
+        const forceReactSelectChoice = async (fieldId, desiredText) => {
+            const safeFieldId = escapeCssIdentifier(fieldId);
+            const field = page.locator(`#${safeFieldId}`).first();
+            if (await field.count() === 0) return false;
+            await field.click({ force: true }).catch(()=>{});
+            await field.fill("").catch(()=>{});
+            await field.pressSequentially(desiredText, { delay: 25 }).catch(()=>{});
+            await page.waitForTimeout(1200);
+
+            const listboxId = (await field.getAttribute('aria-controls').catch(()=>null)) || (await field.getAttribute('aria-owns').catch(()=>null));
+            const safeListboxId = listboxId ? cssEscape(listboxId) : '';
+            const optionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : '[role="option"], li[role="option"]';
+            const options = await page.$$(optionSelector);
+            for (const opt of options) {
+                const text = (await opt.innerText().catch(()=>'' )).replace(/\s+/g, ' ').trim();
+                if (!text) continue;
+                if (text.toLowerCase() === desiredText.toLowerCase() || text.toLowerCase().startsWith(desiredText.toLowerCase())) {
+                    await opt.click({ force: true }).catch(()=>{});
+                    await field.press('Enter').catch(()=>{});
+                    await page.waitForTimeout(300);
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        await forceReactSelectChoice('question_62689507', 'No');
+        await forceReactSelectChoice('question_62689509', 'No');
+    } catch (e) {
+        console.error("Stripe hard-fix fallback failed:", e.message);
+    }
     // -------------------------------------------------------------------------
     // BATCH EVALUATION TELEMETRY DOM HOOK
     // -------------------------------------------------------------------------
@@ -1300,7 +1345,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
                 if (el.name) {
-                   const cleanName = el.name.split('[')[0]; 
+                   const cleanName = el.name.split('[')[0];
                    const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
@@ -1542,8 +1587,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const preferredProfilePath = profileConfig.execution.chrome_profilePath;
         let context;
         try {
-            context = await chromium.launchPersistentContext(preferredProfilePath, { 
-                headless: false, 
+            context = await chromium.launchPersistentContext(preferredProfilePath, {
+                headless: false,
                 args: launchArgs,
                 userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
             });
@@ -1555,8 +1600,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
             const fallbackProfilePath = path.resolve('data/tmp/chrome-bot-profile-fallback');
             fs.mkdirSync(fallbackProfilePath, { recursive: true });
             console.log(`âš ï¸ Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
-            context = await chromium.launchPersistentContext(fallbackProfilePath, { 
-                headless: false, 
+            context = await chromium.launchPersistentContext(fallbackProfilePath, {
+                headless: false,
                 args: launchArgs,
                 userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
             });
