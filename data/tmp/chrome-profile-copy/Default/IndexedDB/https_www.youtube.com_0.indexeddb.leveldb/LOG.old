@@ -1,0 +1,19 @@
+2026/04/23-22:26:24.034 60e0 Reusing MANIFEST C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
+2026/04/23-22:26:24.037 60e0 Recovering log #3
+2026/04/23-22:26:24.040 60e0 Reusing old log C:\Users\dhl\data\Portfolio\career-ops\data\chrome-bot-profile\Default\IndexedDB\https_www.youtube.com_0.indexeddb.leveldb/000003.log 
+2026/04/23-22:26:34.619 1b68 Level-0 table #5: started
+2026/04/23-22:26:34.633 1b68 Level-0 table #5: 40735 bytes OK
+2026/04/23-22:26:34.638 1b68 Delete type=0 #3
+2026/04/23-22:26:34.641 60e0 Manual compaction at level-0 from '\x00\x02\x00\x00\x00' @ 72057594037927935 : 1 .. '\x00\x03\x00\x00\x00' @ 0 : 0; will stop at (end)
+2026/04/23-22:29:00.323 a0e0 Level-0 table #7: started
+2026/04/23-22:29:00.337 a0e0 Level-0 table #7: 71240 bytes OK
+2026/04/23-22:29:00.340 a0e0 Delete type=0 #4
+2026/04/23-22:29:00.342 a0e0 Manual compaction at level-0 from (begin) .. (end); will stop at (end)
+2026/04/23-22:29:00.343 a0e0 Manual compaction at level-1 from (begin) .. (end); will stop at '\x00\x05\x01\x1f\x04\x03\x01\x03\x00N\x00E\x00W\x03\x00\x00\x00\x00\x00\x00L@\x03\x00\x00r\x1a\xd5\xdbyB\x00\x03\x00\x00\x00\x00\x00\x00\x00@' @ 1031 : 1
+2026/04/23-22:29:00.343 a0e0 Compacting 1@1 + 1@2 files
+2026/04/23-22:29:00.360 a0e0 Generated table #8@1: 102 keys, 12389 bytes
+2026/04/23-22:29:00.360 a0e0 Compacted 1@1 + 1@2 files => 12389 bytes
+2026/04/23-22:29:00.364 a0e0 compacted to: files[ 0 0 1 0 0 0 0 ]
+2026/04/23-22:29:00.366 a0e0 Delete type=2 #5
+2026/04/23-22:29:00.366 a0e0 Delete type=2 #7
+2026/04/23-22:29:00.370 a0e0 Manual compaction at level-1 from '\x00\x05\x01\x1f\x04\x03\x01\x03\x00N\x00E\x00W\x03\x00\x00\x00\x00\x00\x00L@\x03\x00\x00r\x1a\xd5\xdbyB\x00\x03\x00\x00\x00\x00\x00\x00\x00@' @ 1031 : 1 .. (end); will stop at (end)
