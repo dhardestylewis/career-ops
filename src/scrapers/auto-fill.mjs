@@ -1,5 +1,18 @@
 import { spawn } from 'child_process';
 
+const getHostname = (value) => {
+    try {
+        return new URL(value).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
+
 const url = process.argv[2];
 const args = process.argv.slice(3);
 
@@ -15,11 +28,11 @@ const runEngine = (engine) => {
     child.on('exit', code => process.exit(code));
 };
 
-if (url.includes('lever.co')) {
+if (isHostOrSubdomain(url, 'lever.co')) {
     runEngine('lever');
-} else if (url.includes('greenhouse.io') || url.includes('gh_jid=')) {
+} else if (isHostOrSubdomain(url, 'greenhouse.io') || new URL(url).searchParams.has('gh_jid')) {
     runEngine('greenhouse');
-} else if (url.includes('ashbyhq.com')) {
+} else if (isHostOrSubdomain(url, 'ashbyhq.com')) {
     runEngine('ashby');
 } else {
     console.error(`\n❌ [ROUTER] Unsupported or unmapped ATS architecture for: ${url}`);

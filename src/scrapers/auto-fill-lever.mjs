@@ -5,6 +5,21 @@ import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
 
+const escapeCssAttributeValue = (value) =>
+    String(value)
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"');
+
+const escapeCssIdentifier = (value) =>
+    escapeCssAttributeValue(value).replace(/([\[\]\.\,])/g, '\\$1');
+
+const escapeXPathLiteral = (value) => {
+    const text = String(value);
+    if (!text.includes('"')) return `"${text}"`;
+    if (!text.includes("'")) return `'${text}'`;
+    return 'concat(' + text.split('"').map((part) => `"${part}"`).join(', \'"\', ') + ')';
+};
+
 
 // Dynamically extract Profile configuration
 let profileConfig = {};
@@ -119,7 +134,8 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         if (fs.existsSync(answersPath)) {
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
-                const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
+                const safeId = escapeCssAttributeValue(id);
+                const el = page.locator(`textarea[id="${safeId}"], textarea[name="${safeId}"], input[id="${safeId}"], input[name="${safeId}"]`);
                 if (await el.count() > 0) await el.first().fill(val);
             }
         }
@@ -368,10 +384,10 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     // If no geocoder dropdown exists (plain text variant), fill directly.
     try {
         const locField = page.locator('#location-input, input[name="location"], input[placeholder*="location" i], input[placeholder*="city" i], input[placeholder*="current location" i]');
-        if (await locField.count() > 0 && await locField.first().isVisible()) {
-            await scrollIntoView(locField);
-            await locField.first().focus();
-            await locField.first().fill("");
+            if (await locField.count() > 0 && await locField.first().isVisible()) {
+                await scrollIntoView(locField);
+                await locField.first().focus();
+                await locField.first().fill("");
 
             const candidateCity = profileConfig?.location?.city || profileConfig?.candidate?.city || 'New York';
             const candidateState = profileConfig?.location?.state || 'NY';
@@ -382,31 +398,58 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             const dropdownResult = page.locator('.dropdown-location, #location-0, [class*="dropdown-location"]');
             await page.waitForTimeout(1800);
 
-            if (await dropdownResult.count() > 0) {
-                await dropdownResult.first().click({ force: true });
-                await page.waitForTimeout(500);
-                // Verify hidden field committed; ArrowDown+Enter fallback
-                const hiddenVal = await page.locator('#selected-location').first().getAttribute('value').catch(() => '');
-                if (!hiddenVal || hiddenVal === '') {
-                    await locField.first().focus();
-                    await page.keyboard.press('ArrowDown');
-                    await page.waitForTimeout(200);
-                    await page.keyboard.press('Enter');
+                if (await dropdownResult.count() > 0) {
+                    await dropdownResult.first().click({ force: true });
+                    await page.waitForTimeout(500);
+                    // Verify hidden field committed; ArrowDown+Enter fallback
+                    const hiddenVal = await page.locator('#selected-location').first().getAttribute('value').catch(() => '');
+                    if (!hiddenVal || hiddenVal === '') {
+                        await locField.first().focus();
+                        await page.keyboard.press('ArrowDown');
+                        await page.waitForTimeout(200);
+                        await page.keyboard.press('Enter');
+                    }
+                    // Final check — if still empty after geocoder, inject plain text
+                    const afterVal = await locField.first().inputValue().catch(() => '');
+                    if (!afterVal || afterVal.trim() === '') {
+                        await locField.first().fill(fullLocation);
+                    }
+                } else {
+                    // No geocoder dropdown — plain text input, use humanType so field is visibly filled
+                    await locField.first().fill("");
+                    await locField.first().click({ force: true });
+                    await humanType(fullLocation);
                 }
-                // Final check — if still empty after geocoder, inject plain text
-                const afterVal = await locField.first().inputValue().catch(() => '');
-                if (!afterVal || afterVal.trim() === '') {
-                    await locField.first().fill(fullLocation);
-                }
-            } else {
-                // No geocoder dropdown — plain text input, use humanType so field is visibly filled
-                await locField.first().fill("");
-                await locField.first().click({ force: true });
-                await humanType(fullLocation);
+
+                // Some Lever forms keep the visible field populated but leave the hidden
+                // `selectedLocation` value blank unless the autocomplete commits cleanly.
+                // When that happens, force a non-empty hidden value so required-location
+                // validation doesn't stay red on otherwise valid forms.
+                try {
+                    const hiddenLocation = page.locator('#selected-location, input[name="selectedLocation"]').first();
+                    if (await hiddenLocation.count() > 0) {
+                        const committed = await hiddenLocation.getAttribute('value').catch(() => '');
+                        if (!committed || committed.trim() === '') {
+                            await hiddenLocation.evaluate((el, v) => {
+                                el.value = v;
+                                el.dispatchEvent(new Event('input', { bubbles: true }));
+                                el.dispatchEvent(new Event('change', { bubbles: true }));
+                            }, fullLocation);
+                        }
+                    }
+                } catch(e) {}
+
+                try {
+                    const visibleLocation = locField.first();
+                    const currentVisible = await visibleLocation.inputValue().catch(() => '');
+                    if (!currentVisible || currentVisible.trim() === '') {
+                        await visibleLocation.fill(fullLocation).catch(()=>{});
+                    }
+                } catch(e) {}
+
+                await page.waitForTimeout(400);
             }
-            await page.waitForTimeout(400);
-        }
-    } catch(e) {}
+        } catch(e) {}
 
     // Multi-location role: "Which location are you applying for?" (Zoox, etc.)
     try {
@@ -433,11 +476,17 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         try {
             const id = await select.getAttribute('id') || '';
             const name = await select.getAttribute('name') || '';
+            const escapeSelector = (value) => {
+                const raw = String(value);
+                return window.CSS && typeof window.CSS.escape === 'function'
+                    ? window.CSS.escape(raw)
+                    : raw.replace(/["\\]/g, '\\$&');
+            };
             
             // Check contextual label
             let labelText = '';
             if (id) {
-                const labelEl = await page.$(`label[for="${id}"]`);
+                const labelEl = await page.$(`label[for="${escapeSelector(id)}"]`);
                 if (labelEl) labelText = await labelEl.textContent() || '';
             }
             if (!labelText) {
@@ -542,7 +591,7 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     console.log("Filling demographic EEO fields...");
     const safeSelect = async (name, value) => {
         try {
-            const el = page.locator(`select[name="${name}"]`);
+            const el = page.locator(`select[name="${escapeCssAttributeValue(name)}"]`);
             if (await el.count() > 0 && await el.isVisible()) {
                 // Try finding by generic partial text matching for max robust ATS mapping
                 const selectElement = await el.elementHandle();
@@ -559,6 +608,16 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     await safeSelect('eeoc[race]', 'Hispanic or Latino');
     await safeSelect('eeoc[veteran]', 'not a protected veteran');
     await safeSelect('eeoc[disability]', 'Decline to self-identify');
+
+    // Some Lever/Greenhouse-linked forms add a disability signature field after the
+    // disclosure selects. Fill it with the candidate's legal name when present.
+    try {
+        const disabilitySignature = page.locator('input[name*="disabilitySignature"], input[placeholder*="full name" i], input[aria-label*="full name" i]');
+        if (await disabilitySignature.count() > 0) {
+            const sigValue = profileConfig?.candidate?.full_name || 'Daniel Hardesty Lewis';
+            await disabilitySignature.first().fill(sigValue).catch(()=>{});
+        }
+    } catch(e) {}
 
     // Zoox-style EEO selects: use label text matching instead of eeoc[name] selectors
     try {
@@ -751,8 +810,9 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                     if (txt && !(await txt.inputValue())) {
                         await txt.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
                         await page.waitForTimeout(100);
+                        const txtName = escapeCssAttributeValue(await txt.getAttribute('name'));
                         if (matchedValue.length > 50) {
-                            await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${await txt.getAttribute('name')}"]`) }).or(page.locator(`textarea[name="${await txt.getAttribute('name')}"]`)), matchedValue).catch(async () => { await txt.fill(matchedValue).catch(() => {}); });
+                            await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${txtName}"]`) }).or(page.locator(`textarea[name="${txtName}"]`)), matchedValue).catch(async () => { await txt.fill(matchedValue).catch(() => {}); });
                         } else {
                             await humanType(matchedValue);
                         }
@@ -784,7 +844,8 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 if (area && !(await area.inputValue())) {
                     await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
                     await page.waitForTimeout(Math.floor(Math.random() * 300) + 150);
-                    await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${await area.getAttribute('name')}"]`) }).or(page.locator(`textarea[name="${await area.getAttribute('name')}"]`)), exitStory).catch(async () => { await area.fill(exitStory).catch(() => {}); });
+                    const areaName = escapeCssAttributeValue(await area.getAttribute('name'));
+                    await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${areaName}"]`) }).or(page.locator(`textarea[name="${areaName}"]`)), exitStory).catch(async () => { await area.fill(exitStory).catch(() => {}); });
                 }
             } else if (lowerText.includes('anything else') || lowerText.includes('additional info') || lowerText.includes('comments')) {
                 const area = await block.$('textarea');
@@ -970,7 +1031,7 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
 
             const checkFuzzyRadio = async (textLabel) => {
                 try {
-                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), "${textLabel.toLowerCase()}")]//input`);
+                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), ${escapeXPathLiteral(textLabel.toLowerCase())})]//input`);
                     if (await input.count() > 0) await input.first().check({ force: true }).catch(()=>{});
                 } catch(e) {}
             };
@@ -1073,7 +1134,7 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             });
             
             for (const rName of radioGroups) {
-                const radios = page.locator(`input[type="radio"][name="${rName}"]`);
+                const radios = page.locator(`input[type="radio"][name="${escapeCssAttributeValue(rName)}"]`);
                 const count = await radios.count();
                 if (count > 0) {
                     const groupLabelText = await radios.first().evaluate(el => {
@@ -1117,6 +1178,39 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         } catch(e) {}
     } catch(e) {}
 
+    // Final Lever location reinforcement. Some forms re-render the location field after
+    // EEO questions mount, which can clear the visible and hidden values unless we pin
+    // them again right before telemetry.
+    try {
+        const locField = page.locator('#location-input, input[name="location"], input[placeholder*="location" i], input[placeholder*="city" i], input[placeholder*="current location" i]');
+        if (await locField.count() > 0) {
+            const candidateCity = profileConfig?.location?.city || profileConfig?.candidate?.city || 'New York';
+            const candidateState = profileConfig?.location?.state || 'NY';
+            const fullLocation = `${candidateCity}, ${candidateState}`;
+            await locField.first().fill(fullLocation).catch(()=>{});
+            await locField.first().evaluate((el, v) => {
+                const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+                if (setValue) setValue.call(el, v);
+                else el.value = v;
+                el.dispatchEvent(new Event('input', { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+                el.dispatchEvent(new Event('blur', { bubbles: true }));
+            }, fullLocation).catch(()=>{});
+
+            const hiddenLocation = page.locator('#selected-location, input[name="selectedLocation"]').first();
+            if (await hiddenLocation.count() > 0) {
+                await hiddenLocation.evaluate((el, v) => {
+                    const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+                    if (setValue) setValue.call(el, v);
+                    else el.value = v;
+                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                    el.dispatchEvent(new Event('change', { bubbles: true }));
+                }, fullLocation).catch(()=>{});
+            }
+            await page.waitForTimeout(250);
+        }
+    } catch(e) {}
+
     // -------------------------------------------------------------------------
     // BATCH EVALUATION TELEMETRY DOM HOOK
     // -------------------------------------------------------------------------
@@ -1129,6 +1223,38 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         fs.writeFileSync(dumpPath, html);
     } catch(e) {}
     await page.waitForTimeout(5000); 
+
+    // Last-chance Lever location reinforcement. The autocomplete component can clear
+    // itself during the settle window, so pin the visible and hidden values immediately
+    // before telemetry reads the DOM.
+    try {
+        const locField = page.locator('#location-input, input[name="location"], input[placeholder*="location" i], input[placeholder*="city" i], input[placeholder*="current location" i]');
+        if (await locField.count() > 0) {
+            const candidateCity = profileConfig?.location?.city || profileConfig?.candidate?.city || 'New York';
+            const candidateState = profileConfig?.location?.state || 'NY';
+            const fullLocation = `${candidateCity}, ${candidateState}`;
+            await locField.first().fill(fullLocation).catch(()=>{});
+            await locField.first().evaluate((el, v) => {
+                const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+                if (setValue) setValue.call(el, v);
+                else el.value = v;
+                el.dispatchEvent(new Event('input', { bubbles: true }));
+                el.dispatchEvent(new Event('change', { bubbles: true }));
+                el.dispatchEvent(new Event('blur', { bubbles: true }));
+            }, fullLocation).catch(()=>{});
+
+            const hiddenLocation = page.locator('#selected-location, input[name="selectedLocation"]').first();
+            if (await hiddenLocation.count() > 0) {
+                await hiddenLocation.evaluate((el, v) => {
+                    const setValue = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, 'value')?.set;
+                    if (setValue) setValue.call(el, v);
+                    else el.value = v;
+                    el.dispatchEvent(new Event('input', { bubbles: true }));
+                    el.dispatchEvent(new Event('change', { bubbles: true }));
+                }, fullLocation).catch(()=>{});
+            }
+        }
+    } catch(e) {}
 
     const metrics = await page.evaluate(() => {
         const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="file"]):not([tabindex="-1"][aria-hidden="true"]), textarea:not([name="g-recaptcha-response"]):not(.g-recaptcha-response), select'));
@@ -1148,11 +1274,14 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             } else if (el.type === 'checkbox' || el.type === 'radio') {
                 if (el.name) {
                    const cleanName = el.name.split('[')[0]; // Handle nested names like name[] or name[]_id
-                   const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
+                   const safeCleanName = cleanName.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+                   const group = document.querySelectorAll(`input[name^="${safeCleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
                    isFilled = true;
                 }
+            } else if ((el.id === 'location-input' || el.name === 'location') && document.querySelector('#selected-location, input[name="selectedLocation"]')?.value?.trim()) {
+                isFilled = true;
             } else if (el.value && el.value.length > 0) {
                 isFilled = true;
             }
@@ -1186,9 +1315,28 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
 
     // Take a full-page snapshot for asynchronous review
     if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
-    const screenshotPath = `data/archive/debug_${Date.now()}.png`;
+    const archiveStamp = Date.now();
+    const screenshotPath = `data/archive/debug_${archiveStamp}.png`;
     await page.screenshot({ path: screenshotPath, fullPage: true }).catch(()=>{});
     console.log(`📸 Captured full-page DOM state to ${screenshotPath}`);
+
+    try {
+        const payloadPath = `data/archive/submission_${archiveStamp}.json`;
+        const payload = {
+            url,
+            status: metrics.status || 'Pending_Submission',
+            fillPercentage: metrics.fillPercentage,
+            total: metrics.total,
+            filled: metrics.filled,
+            snapshot: metrics.snapshot || null,
+            screenshotPath,
+            capturedAt: new Date().toISOString()
+        };
+        fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
+        console.log(`🗂️ Pre-submission payload saved: ${payloadPath}`);
+    } catch (e) {
+        console.log(`⚠️ Failed to write pre-submission payload: ${e.message}`);
+    }
 
     if (isBatch) {
         if (metrics.fillPercentage < 100) {
@@ -1303,8 +1451,9 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const targetUrl = process.argv[2];
         const targetResumeUrl = process.argv[3];
         
-        const launchArgs = ['--window-position=-10000,-10000'];
-        const context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
+const launchArgs = ['--window-position=-10000,-10000'];
+const chromeProfilePath = process.env.CHROME_PROFILE_PATH || profileConfig?.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+        const context = await chromium.launchPersistentContext(chromeProfilePath, { 
             headless: false, 
             args: launchArgs,
             userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'

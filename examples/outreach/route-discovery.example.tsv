@@ -1,0 +1,3 @@
+lane	person_org	channel	route_kind	profile_url	route_url	status	discovered_on	notes
+recruiter	Example Recruiter	LinkedIn connection note	profile message	https://www.linkedin.com/in/example-recruiter/	https://www.linkedin.com/messaging/compose/?profileUrn=urn%3Ali%3Afsd_profile%3AEXAMPLE&recipient=EXAMPLE&screenContext=NON_SELF_PROFILE_VIEW&interop=msgOverlay	ready	2026-07-06	Sanitized example only; keep real route-discovery data in local user-layer files.
+executive	Example Executive	Email	public contact email	https://www.example.com/about/	mailto:example@example.com	ready	2026-07-06	Sanitized example only; do not use real private contact routes in GitHub PRs.

@@ -11,7 +11,7 @@
  *   node test-all.mjs --quick   # Skip dashboard build (faster)
  */
 
-import { execSync } from 'child_process';
+import { execFileSync } from 'child_process';
 import { readFileSync, existsSync, readdirSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
@@ -31,12 +31,20 @@ function pass(msg) { console.log(`  ✅ ${msg}`); passed++; }
 function fail(msg) { console.log(`  ❌ ${msg}`); failed++; }
 function warn(msg) { console.log(`  ⚠️  ${msg}`); warnings++; }
 
-function run(cmd, opts = {}) {
+function runCommand(command, args = [], opts = {}) {
   try {
-    return execSync(cmd, { cwd: ROOT, encoding: 'utf-8', timeout: 30000, ...opts }).trim();
+    return execFileSync(command, args, { cwd: ROOT, encoding: 'utf-8', timeout: 30000, ...opts }).trim();
   } catch (e) {
     return null;
   }
+}
+
+function runNode(args, opts = {}) {
+  return runCommand('node', args, opts);
+}
+
+function runGit(args, opts = {}) {
+  return runCommand('git', args, opts);
 }
 
 function fileExists(path) { return existsSync(join(ROOT, path)); }
@@ -50,7 +58,7 @@ console.log('1. Syntax checks');
 
 const mjsFiles = readdirSync(ROOT).filter(f => f.endsWith('.mjs'));
 for (const f of mjsFiles) {
-  const result = run(`node --check ${f}`);
+  const result = runNode(['--check', f]);
   if (result !== null) {
     pass(`${f} syntax OK`);
   } else {
@@ -70,11 +78,13 @@ const scripts = [
   { name: 'src/dataOps/merge-tracker.mjs', expectExit: 0 },
   { name: 'src/dataOps/outreach-ledger.mjs --dry-run', expectExit: 0 },
   { name: 'src/dataOps/outreach-preflight.mjs --self-test', expectExit: 0 },
+  { name: 'src/dataOps/outreach-recipient-audit.mjs --self-test', expectExit: 0 },
   { name: 'src/core/update-system.mjs check', expectExit: 0 },
 ];
 
 for (const { name, allowFail } of scripts) {
-  const result = run(`node ${name} 2>&1`);
+  const [script, ...scriptArgs] = name.split(' ');
+  const result = runNode([script, ...scriptArgs]);
   if (result !== null) {
     pass(`${name} runs OK`);
   } else if (allowFail) {
@@ -124,7 +134,7 @@ try {
 
 if (!QUICK) {
   console.log('\n4. Dashboard build');
-  const goBuild = run('cd dashboard && go build -o /tmp/career-dashboard-test . 2>&1');
+  const goBuild = runCommand('go', ['build', '-o', '/tmp/career-dashboard-test', '.'], { cwd: join(ROOT, 'dashboard') });
   if (goBuild !== null) {
     pass('Dashboard compiles');
   } else {
@@ -160,7 +170,7 @@ const userFiles = [
   'config/profile.yml', 'modes/_profile.md', 'modes/_custom.md', 'portals.yml',
 ];
 for (const f of userFiles) {
-  const tracked = run(`git ls-files ${f}`);
+  const tracked = runGit(['ls-files', f]);
   if (tracked === '') {
     pass(`User file gitignored: ${f}`);
   } else if (tracked === null) {
@@ -199,13 +209,11 @@ const allowedFiles = [
 // untracked files (debate artifacts, AI tool scratch, local plans/) and
 // gitignored files can't trigger false positives because they were never
 // going to reach a commit anyway.
-const grepPathspec = scanExtensions.map(e => `'*.${e}'`).join(' ');
+const grepPathspec = scanExtensions.map(e => `*.${e}`);
 
 let leakFound = false;
 for (const pattern of leakPatterns) {
-  const result = run(
-    `git grep -n "${pattern}" -- ${grepPathspec} 2>/dev/null`
-  );
+  const result = runGit(['grep', '-n', pattern, '--', ...grepPathspec]);
   if (result) {
     for (const line of result.split('\n')) {
       const file = line.split(':')[0];
@@ -226,13 +234,19 @@ console.log('\n7. Absolute path check');
 
 // Same git grep approach: only scans tracked files. Untracked AI tool
 // outputs, local debate artifacts, etc. can't false-positive here.
-const absPathResult = run(
-  `git grep -n "/Users/" -- '*.mjs' '*.sh' '*.md' '*.go' '*.yml' 2>/dev/null | grep -v README.md | grep -v LICENSE | grep -v CLAUDE.md | grep -v test-all.mjs`
-);
-if (!absPathResult) {
+const absPathResult = runGit(['grep', '-n', '/Users/', '--', '*.mjs', '*.sh', '*.md', '*.go', '*.yml']);
+const absPathLines = absPathResult
+  ? absPathResult.split('\n').filter(Boolean).filter(line =>
+      !line.includes('README.md') &&
+      !line.includes('LICENSE') &&
+      !line.includes('CLAUDE.md') &&
+      !line.includes('test-all.mjs')
+    )
+  : [];
+if (absPathLines.length === 0) {
   pass('No absolute paths in code files');
 } else {
-  for (const line of absPathResult.split('\n').filter(Boolean)) {
+  for (const line of absPathLines) {
     fail(`Absolute path: ${line.slice(0, 100)}`);
   }
 }

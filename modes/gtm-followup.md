@@ -28,10 +28,12 @@ Use these states for GTM work:
 
 ## Step 3 - Cadence Rules
 
-- First follow-up: 3 to 5 business days after the send.
-- Second follow-up: 3 to 5 business days after the first follow-up.
+- First follow-up: 5 business days after the send by default, and never sooner than 3 business days.
+- Second follow-up: 5 business days after the first follow-up by default, and never sooner than 3 business days.
 - After that, stop unless the user explicitly wants another pass.
 - For hot inbound leads, respond the same day if possible.
+- If the dossier's `next_followup` is still in the future, or it says to wait for a reply / acceptance, hold the thread and do not send yet.
+- For hot inbound leads, respond the same day if possible. That is a reply rule, not a no-response follow-up rule.
 - If the dossier's `next_followup` is still in the future, or it says to wait for a reply / acceptance, hold the thread and do not send yet.
 
 ## Step 4 - Drafting Rules
@@ -59,7 +61,7 @@ Use these states for GTM work:
 
 - Simple yes/no or scheduling question: reply directly and keep it short.
 - Strategic or ambiguous reply: pause and notify the user.
-- No response: schedule the next follow-up on the same 3 to 5 business day cadence.
+- No response: schedule the next follow-up on the same conservative business-day cadence.
 
 ## Step 6 - Output
 
