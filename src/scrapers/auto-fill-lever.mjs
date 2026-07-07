@@ -5,6 +5,21 @@ import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
 
+const escapeCssAttributeValue = (value) =>
+    String(value)
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"');
+
+const escapeCssIdentifier = (value) =>
+    escapeCssAttributeValue(value).replace(/([\[\]\.\,])/g, '\\$1');
+
+const escapeXPathLiteral = (value) => {
+    const text = String(value);
+    if (!text.includes('"')) return `"${text}"`;
+    if (!text.includes("'")) return `'${text}'`;
+    return 'concat(' + text.split('"').map((part) => `"${part}"`).join(', \'"\', ') + ')';
+};
+
 
 // Dynamically extract Profile configuration
 let profileConfig = {};
@@ -119,7 +134,8 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         if (fs.existsSync(answersPath)) {
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
-                const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
+                const safeId = escapeCssAttributeValue(id);
+                const el = page.locator(`textarea[id="${safeId}"], textarea[name="${safeId}"], input[id="${safeId}"], input[name="${safeId}"]`);
                 if (await el.count() > 0) await el.first().fill(val);
             }
         }
@@ -575,7 +591,7 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
     console.log("Filling demographic EEO fields...");
     const safeSelect = async (name, value) => {
         try {
-            const el = page.locator(`select[name="${name}"]`);
+            const el = page.locator(`select[name="${escapeCssAttributeValue(name)}"]`);
             if (await el.count() > 0 && await el.isVisible()) {
                 // Try finding by generic partial text matching for max robust ATS mapping
                 const selectElement = await el.elementHandle();
@@ -794,8 +810,9 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                     if (txt && !(await txt.inputValue())) {
                         await txt.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
                         await page.waitForTimeout(100);
+                        const txtName = escapeCssAttributeValue(await txt.getAttribute('name'));
                         if (matchedValue.length > 50) {
-                            await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${await txt.getAttribute('name')}"]`) }).or(page.locator(`textarea[name="${await txt.getAttribute('name')}"]`)), matchedValue).catch(async () => { await txt.fill(matchedValue).catch(() => {}); });
+                            await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${txtName}"]`) }).or(page.locator(`textarea[name="${txtName}"]`)), matchedValue).catch(async () => { await txt.fill(matchedValue).catch(() => {}); });
                         } else {
                             await humanType(matchedValue);
                         }
@@ -827,7 +844,8 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
                 if (area && !(await area.inputValue())) {
                     await area.evaluate(el => el.scrollIntoView({ behavior: 'smooth', block: 'center' }));
                     await page.waitForTimeout(Math.floor(Math.random() * 300) + 150);
-                    await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${await area.getAttribute('name')}"]`) }).or(page.locator(`textarea[name="${await area.getAttribute('name')}"]`)), exitStory).catch(async () => { await area.fill(exitStory).catch(() => {}); });
+                    const areaName = escapeCssAttributeValue(await area.getAttribute('name'));
+                    await humanPaste(page.locator('textarea').filter({ has: page.locator(`[name="${areaName}"]`) }).or(page.locator(`textarea[name="${areaName}"]`)), exitStory).catch(async () => { await area.fill(exitStory).catch(() => {}); });
                 }
             } else if (lowerText.includes('anything else') || lowerText.includes('additional info') || lowerText.includes('comments')) {
                 const area = await block.$('textarea');
@@ -1013,7 +1031,7 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
 
             const checkFuzzyRadio = async (textLabel) => {
                 try {
-                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), "${textLabel.toLowerCase()}")]//input`);
+                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), ${escapeXPathLiteral(textLabel.toLowerCase())})]//input`);
                     if (await input.count() > 0) await input.first().check({ force: true }).catch(()=>{});
                 } catch(e) {}
             };
@@ -1116,7 +1134,7 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             });
             
             for (const rName of radioGroups) {
-                const radios = page.locator(`input[type="radio"][name="${rName}"]`);
+                const radios = page.locator(`input[type="radio"][name="${escapeCssAttributeValue(rName)}"]`);
                 const count = await radios.count();
                 if (count > 0) {
                     const groupLabelText = await radios.first().evaluate(el => {
@@ -1256,7 +1274,8 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
             } else if (el.type === 'checkbox' || el.type === 'radio') {
                 if (el.name) {
                    const cleanName = el.name.split('[')[0]; // Handle nested names like name[] or name[]_id
-                   const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
+                   const safeCleanName = cleanName.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+                   const group = document.querySelectorAll(`input[name^="${safeCleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
                    isFilled = true;
