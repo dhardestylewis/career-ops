@@ -238,3 +238,89 @@ action_state: sent
 next_followup: Wait for his reply; only follow up if he responds or asks for more context.
 spc_affiliation: not checked; non-work lane
 spc_checked_at: n/a
+
+### Plaid - Wen Yao
+
+contact: Wen Yao
+relationship: cold hiring-manager target; ML/AI Lead at Plaid and Machine Learning Engineering Manager for Data Foundation & AI / Credit per public LinkedIn profile snippets.
+lane: hiring-manager
+source_refs: https://www.linkedin.com/in/wen-yao-a1497715 ; https://www.linkedin.com/posts/wen-yao-a1497715_plaid-senior-data-scientist-data-foundations-activity-7451077582076198912-D3Qp ; https://plaid.com/careers/ ; reports/024-plaid-2026-07-06-staff-ml-engineer-research-scientist-dfai.md ; reports/025-plaid-2026-07-06-senior-machine-learning-engineer-credit.md
+last_touch: LinkedIn connection note sent 2026-07-06 from Modal / Plaid post-application send packet.
+why_now: I applied on 2026-07-06 to Plaid's Staff Machine Learning Engineer (Research Scientist) - DFAI and Senior Machine Learning Engineer - Credit roles.
+hook: Wen publicly posted that Plaid is hiring Senior ML Engineer / Research Scientists for the Data Foundation AI team, with a rare research-plus-production systems scope.
+proof_point: I have production ML systems experience plus TACC-scale distributed modeling and validation work, which maps to research that ships.
+ask: Ask whether it is worth a quick connect or whether there is a better owner for the Plaid ML loop.
+avoid: Sending a long founder biography or mentioning every Plaid role at once.
+status: sent
+next_followup: Only after a reply or connection acceptance; otherwise first follow-up no earlier than 2026-07-10.
+spc_affiliation: clear_no_match_local_spc_export
+spc_checked_at: 2026-07-06
+
+### Plaid - Rico Curry
+
+contact: Rico Curry
+relationship: cold recruiter/router target; public LinkedIn snippet says Recruiting at Plaid and currently recruiting Data Scientists, AI/LLM/NLP Research Scientists, AI Engineers, Applied ML, Machine Learning Engineering, and Product.
+lane: recruiter
+source_refs: https://www.linkedin.com/in/rico-curry-20516040 ; https://plaid.com/careers/ ; reports/024-plaid-2026-07-06-staff-ml-engineer-research-scientist-dfai.md ; reports/025-plaid-2026-07-06-senior-machine-learning-engineer-credit.md
+last_touch: LinkedIn connection note sent 2026-07-06 from Modal / Plaid post-application send packet.
+why_now: I applied on 2026-07-06 to two current Plaid ML roles and need a clean recruiting route without over-contacting the company.
+hook: Rico's public profile snippet directly names Plaid recruiting across AI/LLM/NLP, Applied ML, and Machine Learning Engineering.
+proof_point: I am a senior ML engineer with production AI systems, Python/PyTorch, and TACC-scale distributed modeling experience.
+ask: Ask whether he owns the Plaid ML searches or can route me to the right recruiting owner.
+avoid: Contacting multiple Plaid recruiters with the same copy or implying he personally owns both roles.
+status: sent
+next_followup: Only after a reply or connection acceptance; otherwise first follow-up no earlier than 2026-07-10.
+spc_affiliation: clear_no_match_local_spc_export
+spc_checked_at: 2026-07-06
+
+### Modal - Julia Tupy
+
+contact: Julia Tupy
+relationship: cold talent/router target; public LinkedIn snippet identifies her as a Talent Partner at Modal in New York.
+lane: recruiter
+source_refs: https://www.linkedin.com/in/julia-tupy-a0b009b4 ; https://modal.com/company ; reports/021-modal-2026-07-06-forward-deployed-engineer-ml.md ; reports/022-modal-2026-07-06-forward-deployed-engineer-systems.md ; reports/023-modal-2026-07-06-mts-platform-engineering.md
+last_touch: LinkedIn connection note sent 2026-07-06 from Modal / Plaid post-application send packet.
+why_now: I applied on 2026-07-06 to Modal's Forward Deployed Engineer - ML, Forward Deployed Engineer - Systems, and MTS Platform Engineering roles.
+hook: Julia is a named Modal talent partner, and Modal's company page lists active AI infrastructure/platform engineering roles in New York.
+proof_point: I have built production ML stacks and run TACC-scale distributed jobs, which maps to Modal's AI infrastructure and platform work.
+ask: Ask whether there is a best person to route the Modal applications to.
+avoid: Reaching out to Modal's CEO first or sending separate notes for every Modal application.
+status: sent
+next_followup: Only after a reply or connection acceptance; otherwise first follow-up no earlier than 2026-07-10.
+spc_affiliation: clear_no_match_local_spc_export
+spc_checked_at: 2026-07-06
+
+## Next 10 post-application outreach
+
+Date: 2026-07-06
+
+Packet: `data/outreach/next10-post-application-2026-07-06-send-packet.md`
+
+Status: sent_with_correction
+
+Channel: LinkedIn via authenticated in-app browser.
+
+SPC gate: clear_no_match_local_spc_export for all 10 names against `data/spc-contacts.tsv` and `data/archive/south-park-commons-members-2026-07-05.md`.
+
+Browser check: LinkedIn profile pages verified signed-in on 2026-07-06. Each valid company route was sent and verified as Pending or conversation text sent.
+
+Contacts:
+
+- Pradeep Dorairaj - Snowflake, Engineering Manager; post-application route for #26 Snowflake ML Platform Inference.
+- Robbie Maasberg - Graphcore, Principal Talent Partner; post-application route for #27 Graphcore AI Platform Architect.
+- Stella E. / Stella Ernster - Judi Health, Talent Acquisition Manager; post-application route for #28 Capital Rx / Judi Health Senior Applied AI/ML Scientist.
+- Muskan Kukreja - Checkr, ML/AI leader; post-application route for #29 Checkr Staff Applied AI Engineer.
+- Marwan Mattar - Sigma, VP of AI; post-application route for #30 Sigma Senior AI/ML Engineer.
+- Chris Westerhold - Thoughtworks, Global Practice Director; replacement post-application route for #31 Thoughtworks Principal AI Architect.
+- James Melville - Vivodyne, software/data science route; post-application route for #32 Vivodyne AI Senior Scientist.
+- Mor Adato - DoubleVerify, Senior Director of Engineering / Analytics Platform; post-application route for #33 DoubleVerify Data Platform & AI Enablement.
+- Debarshi Kar - Instawork, CTO; post-application route for #34 Instawork Robotics ML Engineer.
+- Laura Woodruff - Neuralink, Senior Technical Recruiter; post-application route for #35 Neuralink Machine Learning Engineer.
+
+Outcome:
+
+- Sent and verified valid company routes for Snowflake, Graphcore, Capital Rx / Judi Health, Checkr, Sigma Computing, Thoughtworks, Vivodyne, DoubleVerify, Instawork, and Neuralink.
+- Jaydeep Chakrabarty was sent before LinkedIn post-send verification showed his current company as Piramal Finance, not Thoughtworks. This is logged as an extra misrouted touch and not counted as the Thoughtworks route.
+- Chris Westerhold was then verified as a current Thoughtworks AI-transformation leader and sent as the corrected Thoughtworks route.
+- Muskan Kukreja's direct Message route surfaced a Premium/InMail upsell, so the paid/direct message path was avoided and a normal connection note was sent instead.
+- Result artifact: `data/artifacts/next10-outreach-results-2026-07-06.json`.

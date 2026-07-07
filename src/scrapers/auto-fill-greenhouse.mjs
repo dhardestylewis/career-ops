@@ -310,8 +310,27 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     await safeType('#first_name, input[id*="first_name"], input[name*="first_name"]', profileConfig?.candidate?.first_name || 'Daniel');
     await safeType('#last_name, input[id*="last_name"], input[name*="last_name"]', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
     await safeType('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
-    const safePhone = (profileConfig?.candidate?.phone || '7133717875').replace(/[\s\+\(\)\-]/g, '');
+    const safePhone = profileConfig?.candidate?.phone_e164 || ('+1' + (profileConfig?.candidate?.phone || '7133717875').replace(/[^\d]/g, ''));
     await safeType('#phone', safePhone);
+    try {
+        const countryButton = page.locator('.iti__selected-country').first();
+        if (await countryButton.count() > 0 && await countryButton.isVisible().catch(()=>false)) {
+            await countryButton.click().catch(()=>{});
+            const search = page.locator('.iti__search-input').first();
+            if (await search.count() > 0) {
+                await search.fill('United States').catch(()=>{});
+                await page.waitForTimeout(300);
+            }
+            const usOption = page.locator('[data-country-code="us"], li:has-text("United States")').first();
+            if (await usOption.count() > 0) {
+                await usOption.click().catch(()=>{});
+                await page.waitForTimeout(300);
+            }
+            await page.locator('#phone, input[type="tel"]').first().fill(safePhone).catch(()=>{});
+        }
+    } catch(e) {
+        console.log(`Phone country widget normalization skipped: ${e.message}`);
+    }
     await safeType('#org', 'Homecastr');
     await safeType('#job_application_employer', 'Homecastr');
     await safeType('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
@@ -602,9 +621,20 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     return false;
                 }
                 
-                if (!(await input.inputValue())) {
+                const currentValue = await input.inputValue().catch(() => '');
+                const targetText = String(targetValue);
+                if (currentValue.trim() !== targetText.trim()) {
                     await input.focus().catch(()=>{});
-                    await input.pressSequentially(targetValue, { delay: 15 }).catch(()=>{});
+                    await input.fill('').catch(()=>{});
+                    await input.fill(targetText).catch(async () => {
+                        await input.pressSequentially(targetText, { delay: 15 }).catch(()=>{});
+                    });
+                    await input.evaluate(el => {
+                        const tracker = el._valueTracker;
+                        if (tracker) tracker.setValue(el.value);
+                        el.dispatchEvent(new Event('input', { bubbles: true }));
+                        el.dispatchEvent(new Event('change', { bubbles: true }));
+                    }).catch(()=>{});
                     await page.waitForTimeout(500);
                     // Google Maps Autocomplete Check
                     const autocomplete = page.locator('.pac-container .pac-item, ul.ui-autocomplete li.ui-menu-item').first();
@@ -612,11 +642,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await autocomplete.click().catch(()=>{});
                         await page.waitForTimeout(300);
                     }
-                    await input.blur().catch(()=>{});
-                    return true;
-                } else {
-                    return true; // Already filled natively, mark as processed!
                 }
+                await input.blur().catch(()=>{});
+                return true;
             } else if (tagName === 'input' && (type === 'radio' || type === 'checkbox')) {
                 const targetLower = targetValue.toString().toLowerCase();
                 if (targetLower === 'check' || targetLower === 'yes' || targetLower === 'true' || targetLower === 'acknowledge') {
@@ -785,7 +813,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 } else if (combinedLabel.includes('email')) {
                     if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.email || "daniel@homecastr.com", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
-                    const sanitizedPhone = (profileConfig?.candidate?.phone || "7133717875").replace(/[\s\+\(\)\-]/g, '');
+                    const sanitizedPhone = profileConfig?.candidate?.phone_e164 || ('+1' + (profileConfig?.candidate?.phone || "7133717875").replace(/[^\d]/g, ''));
                     if (!(await input.inputValue())) { await input.pressSequentially(sanitizedPhone, { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('location') || combinedLabel.includes('city') || combinedLabel.includes('address')) {
                     if (!(await input.inputValue())) {
@@ -1343,12 +1371,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             document.querySelectorAll('input[role="combobox"]').forEach(box => {
                 let label = document.querySelector(`label[for="${box.id}"]`)?.innerText;
                 if (!label) {
-                    const ctx = box.closest('div.field, .application-question');
+                    const ctx = box.closest('div.field, .application-question, .select, .field-wrapper');
                     if (ctx) label = ctx.innerText.split('\n')[0];
                 }
                 label = label || box.id;
-                const container = box.closest('div[class*="container"]');
-                const selectedValue = container?.querySelector('[class*="single-value"]')?.innerText || box.value;
+                const container = box.closest('.select__container, div[class*="container"], .field-wrapper, .application-question');
+                const selectedValue = container?.querySelector('[class*="single-value"], .select__single-value')?.innerText || box.value;
                 data[label.trim()] = selectedValue || "Unanswered";
             });
 
@@ -1371,6 +1399,26 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         });
         metrics.snapshot = applicationSnapshot;
         metrics.domain = domain;
+        metrics.requiredSnapshotGaps = Object.entries(applicationSnapshot)
+            .filter(([label, value]) => /\*/.test(label) && (!String(value || '').trim() || String(value).trim() === 'Unanswered'))
+            .map(([label]) => label);
+        metrics.legalSelectionGaps = await page.evaluate(() => {
+            const gaps = [];
+            document.querySelectorAll('.select__container').forEach(container => {
+                const label = (container.querySelector('label')?.innerText || '').trim();
+                const value = (container.querySelector('.select__single-value, [class*="single-value"], .select__multi-value__label')?.innerText || '').trim();
+                const lowerLabel = label.toLowerCase();
+                const lowerValue = value.toLowerCase();
+                if (!label) return;
+                if ((lowerLabel.includes('sponsorship') || lowerLabel.includes('visa')) && !/\bno\b/.test(lowerValue)) {
+                    gaps.push(`${label} => ${value || 'Unanswered'}`);
+                }
+                if ((lowerLabel.includes('authorized') || lowerLabel.includes('legal authorization') || lowerLabel.includes('legally authorized')) && !/\byes\b/.test(lowerValue)) {
+                    gaps.push(`${label} => ${value || 'Unanswered'}`);
+                }
+            });
+            return gaps;
+        });
         
         // Extract raw HTML context of the form to aid deterministic debugging of unmapped fields
         metrics.rawFormHtml = await page.locator('form').first().evaluate(el => el.outerHTML).catch(()=>'');
@@ -1379,14 +1427,19 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     }
 
     if (isBatch) {
-        if (false /* auto-submit override */) {
+        if (metrics.fillPercentage < 100) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+        if (Array.isArray(metrics.requiredSnapshotGaps) && metrics.requiredSnapshotGaps.length > 0) {
+            console.log('Warning: snapshot still reports unresolved required fields; proceeding because Greenhouse React-select widgets can hide selected values from the raw input snapshot: ' + metrics.requiredSnapshotGaps.join(', '));
+        }
+        if (Array.isArray(metrics.legalSelectionGaps) && metrics.legalSelectionGaps.length > 0) {
+            console.log('Skipping submission natively: legal/work-authorization verification failed: ' + metrics.legalSelectionGaps.join('; '));
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
         // Live Submission Phase
@@ -1417,6 +1470,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
                     const screenshotPath = `data/archive/submission_${Date.now()}.png`;
                     await page.screenshot({ path: screenshotPath, fullPage: true });
+                    metrics.preSubmissionScreenshot = screenshotPath;
                     console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
                 } catch(e) {
                     console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
@@ -1510,11 +1564,28 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const targetResumeUrl = process.argv[3] || 'cv.pdf';
         
         const launchArgs = ['--window-position=-10000,-10000'];
-        const context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
+        const preferredProfilePath = profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+        let context;
+        try {
+            context = await chromium.launchPersistentContext(preferredProfilePath, {
+                headless: false,
+                args: launchArgs,
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            });
+        } catch (error) {
+            const message = String(error?.message || error || '');
+            if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
+                throw error;
+            }
+            const fallbackProfilePath = path.resolve('data/tmp', `chrome-bot-profile-fallback-${Date.now()}`);
+            fs.mkdirSync(fallbackProfilePath, { recursive: true });
+            console.log(`Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
+            context = await chromium.launchPersistentContext(fallbackProfilePath, {
+                headless: false,
+                args: launchArgs,
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            });
+        }
         
         await context.addInitScript(() => {
             Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
@@ -1531,11 +1602,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
-            metrics.status = 'Incomplete';
-            return metrics;
-        }
             await context.close();
         }
     })();

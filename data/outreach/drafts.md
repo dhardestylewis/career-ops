@@ -318,7 +318,7 @@ Daniel
 
 ## Warm Academic: Paola Passalacqua
 
-**To:** Paola Passalacqua <ppassalacqua@ethz.ch>
+**Archived To:** Paola Passalacqua <ppassalacqua@ethz.ch>
 
 **Channel:** Email
 
@@ -386,7 +386,7 @@ Daniel
 
 ## Warm Academic: Christopher Munsell
 
-**To:** Christopher Munsell <cwm2132@columbia.edu>
+**Archived To:** Christopher Munsell <cwm2132@columbia.edu>
 
 **Channel:** Email
 
@@ -614,5 +614,118 @@ If there is a better contact path, I would be grateful for the direction.
 
 Best,
 Daniel
+```
+
+## South Park Commons Slack batch
+
+Date: 2026-07-06
+
+Status: Sent
+
+Channel: direct Slack DMs from the South Park Commons workspace
+
+Notes: Each note used the same community / compare-notes structure: Homecastr's physical-world forecasting stack, no pitch, quick coffee or 20-minute chat. The Slack app_redirect pages were resolved to browser DM URLs before sending.
+
+- Will Sentance - embodied AI and VLA fine-tuning; world models and evaluation.
+- Aayush Agarwal - AI-driven SaaS and enterprise products; how AI changes operator workflows.
+- Sandor Felber - whole-body control and reinforcement learning; sim-to-real transfer and control loops.
+- Raghavendra Prabhu - the autonomous AI recruiting agent Tezi; agent workflows and UX.
+- Kara Buckley - sports, media, entertainment, and athlete marketing; storytelling and community-building around a consumer product.
+- Robert Ochshorn - transcript-driven video tooling; turning dense signal into usable interfaces.
+- Muhammad Bilal - robotics foundation models and world models; how to evaluate physical-world models.
+- Won-Seok Yoo - consumer startup building; fast iteration and founder workflow.
+- Owen Kent - HCI and alternative interfaces; making complex systems legible to real users.
+- Raunaq Bhirangi - hardware and autonomous systems; robotics research and sim-to-real.
+- Tinghui Zhou - 3D foundation models; spatial representations and world models.
+- Yuguang (Yg) Yuan - embodied-AI data infrastructure; data plumbing for physical-world models.
+- Bhav Ashok - computer vision and robotics; perception and scene understanding.
+- Nagasrikanth Kallakuri - perception and national-scale infrastructure; reliability in critical systems.
+- Sarthak Bhagat - sim-to-real transfer and world models; evaluation.
+- Aayush Naik - legacy-system knowledge retention and robotics research; memory, retrieval, and long-lived systems.
+- Kun Wang - embodied-AI data pipelines; data pipelines that support autonomy.
+- Kavan Mceachern - tactile intelligence for robots; high-signal sensing and uncertainty.
+- Jeremy Ebobisse - athlete investment and AI in sports; sports decision-making and data.
+- Jingxiang Mo - autonomous robots for critical infrastructure; reliability and deployment in the real world.
+
+## South Park Commons LinkedIn reconnect
+
+Date: 2026-07-06
+
+Status: Partial
+
+Notes: Use the same non-work reconnect structure as the Slack batch. One verified live DM went out to Will Sentance; the rest of the LinkedIn batch could not be fully verified because the browser surface reset and stopped attaching cleanly mid-run. The browser reattached later and Muhammad Bilal was verified sent in the resumed session, and Won-seok Yoo was later sent as a verified connect invite note. Owen Kent, Raunaq Bhirangi, Tinghui Zhou, Yuguang (Yg) Yuan, Bhav Ashok, Nagasrikanth Kallakuri, Sarthak Bhagat, Aayush Naik, Kun Wang, Kavan Mceachern, Jeremy Ebobisse, and Jingxiang Mo were later sent successfully as verified connect invite notes, kept non-work only because they are SPC-affiliated. Raghavendra Prabhu was blocked by LinkedIn's email-verification requirement, and I did not use email for this non-work reconnect.
+
+## Next 10 Post-Application LinkedIn Routing
+
+Date: 2026-07-06
+
+Status: Sent with correction.
+
+Packet: `data/outreach/next10-post-application-2026-07-06-send-packet.md`
+
+Channel: LinkedIn. Authenticated in-app browser verified each profile route on 2026-07-06. Valid company routes are sent and verified as Pending or conversation text sent.
+
+SPC gate: no local SPC matches found for the 10 names in `data/spc-contacts.tsv` or `data/archive/south-park-commons-members-2026-07-05.md`.
+
+Outcome: 10 valid company routes were sent. Jaydeep Chakrabarty was also sent before post-send verification showed he is currently at Piramal Finance rather than Thoughtworks, so Chris Westerhold was verified and sent as the corrected Thoughtworks route. Muskan Kukreja's direct Message route surfaced a Premium/InMail upsell, so a normal connection note was sent instead.
+
+### Pradeep Dorairaj - Snowflake
+
+```text
+Hi Pradeep - I applied to Snowflake's ML Platform Inference role. Your team's inference/ML Ops work is close to my TACC-scale distributed modeling + production ML stack work. If useful, I'd love to connect or be routed to the right owner.
+```
+
+### Robbie Maasberg - Graphcore
+
+```text
+Hi Robbie - I applied for Graphcore's AI Platform Architect role in Austin. My background spans production ML systems, distributed compute at TACC, and geospatial AI. If this is in your lane, I'd appreciate a quick connect or route to the owner.
+```
+
+### Stella E. / Stella Ernster - Capital Rx / Judi Health
+
+```text
+Hi Stella - I applied to the Senior Applied AI/ML Scientist role at Judi Health / Capital Rx. I've built production ML systems in high-stakes settings and would appreciate a quick connect if you own or can route this search.
+```
+
+### Muskan Kukreja - Checkr
+
+```text
+Hi Muskan - I applied to Checkr's Staff Applied AI Engineer role. Your post on agents/evals/model serving maps closely to my production ML + TACC-scale systems background. If useful, I'd love to connect or be routed to the right owner.
+```
+
+### Marwan Mattar - Sigma Computing
+
+```text
+Hi Marwan - I applied to Sigma's Senior AI/ML Engineer role. I've built production forecasting/ML systems and large-scale data pipelines, and Sigma's AI-for-data-workflows direction feels close. Would value a quick connect if useful.
+```
+
+### Chris Westerhold - Thoughtworks
+
+```text
+Hi Chris - I applied for Thoughtworks' Principal AI Architect role. Your AI-first software engineering transformation work maps closely to my production ML + distributed modeling background. If you're close to this lane, I'd value a quick connect or route.
+```
+
+### James Melville - Vivodyne
+
+```text
+Hi James - I applied for Vivodyne's AI Senior Scientist role. I've built production ML systems for physical-world forecasting and validation, and your software/data science bridge at Vivodyne looks like the right context. Would value a quick connect.
+```
+
+### Mor Adato - DoubleVerify
+
+```text
+Hi Mor - I applied to DoubleVerify's Senior Manager, Data Platform & AI Enablement role. My background spans production ML, data pipelines, APIs, and reliability for high-stakes decisions. If this is near your platform lane, I'd value a quick connect.
+```
+
+### Debarshi Kar - Instawork
+
+```text
+Hi Debarshi - I applied for the ML Engineer role on Instawork Robotics. I've built production ML systems, data pipelines, and physical-world forecasting models, and the robotics data flywheel is exactly the systems problem I like. Would value a quick connect.
+```
+
+### Laura Woodruff - Neuralink
+
+```text
+Hi Laura - I applied to Neuralink's Machine Learning Engineer role. My background is production ML, signal-heavy predictive modeling, and high-performance systems; I'd love to connect if you're the right recruiter for the AI/ML lane or can route me.
 ```
 
