@@ -407,3 +407,29 @@ Channel notes: public-source verified broker/advisory contacts only. To avoid sa
 | Email | Cushman & Wakefield Data Center Advisory Group | `rick.hughes@cushwake.com`; cc `alex.smith@cushwake.com`, `kevin.imboden@cushwake.com`, `don.rodie@cushwake.com`, `anne.rosenau@cushwake.com` | data-center GTM compare-notes | Data-center advisory, regional market signals, and location-risk forecasting | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39cff3b29ad90`; public Cushman & Wakefield data-center market reports. |
 | Email | CBRE Data Center Solutions North America | `molly.sackles@cbre.com`; cc `gordon.dolven@cbre.com`, `william.hassan@cbre.com`, `todd.bateman@cbre.com` | data-center GTM compare-notes | Data-center research, site selection, and forecastable location risk | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39cff2e4bbedb`; public CBRE data-center reports and property materials. |
 | Email | CBRE Data Centre Solutions Europe | `andrew.jay@cbre.com`; cc `kevin.restivo@cbre.com` | data-center GTM compare-notes | European data-centre markets and location-risk signals | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39cff545ce388`; public CBRE data-centre reports. |
+
+### Response Handling
+
+| Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
+|---|---|---|---|---|---|---|
+| Email reply | Gordon Dolven | `Gordon.Dolven@cbre.com` | availability response | 7/20-7/24 availability for CBRE market-dynamics call | Sent | Gmail API in-thread reply from `daniel@homecastr.com`; message id `19f39e2729491053`; calendar invite deferred until Gordon selects a slot. |
+
+## Data Center GTM Thirteenth Wave: Global Sustainable Compute Operators
+
+Date: 2026-07-06
+
+Status: Sent
+
+Channel notes: public or business-listing email routes only; no guessed personal inboxes. This wave expanded into sustainable, high-density, AI/HPC-ready data-centre operators across Europe and Africa.
+
+| Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
+|---|---|---|---|---|---|---|
+| Email | EcoDataCenter | `sales@ecodatacenter.se` | data-center GTM compare-notes | Sustainable high-density data centres and location-risk forecasting | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4a0cde8b3d`; official EcoDataCenter sales route. |
+| Email | Green Mountain | `simon.justnes@greenmountain.no` | data-center GTM compare-notes | Nordic renewable data centres and AI/HPC location risk | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4a301bf30c`; official Green Mountain commercial leadership contact. |
+| Email | Kao Data | `info@kaodata.com` | data-center GTM compare-notes | AI and advanced-compute data centres in the UK | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4a506c2513`; official Kao Data contact route. |
+| Email | Ark Data Centres | `info@arkdatacentres.co.uk` | data-center GTM compare-notes | UK sovereign data centres and resilient location planning | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4a6ad88a96`; official Ark Data Centres sales/contact route. |
+| Email | maincubes | `sales@maincubes.com` | data-center GTM compare-notes | Germany/EU cloud and AI data-centre market signals | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4a8791d02f`; official maincubes sales route. |
+| Email | Verne | `info@verne.co` | data-center GTM compare-notes | Renewable-powered HPC colocation and market screening | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4abf9e5d5d`; official Verne enquiries and sales route. |
+| Email | Bulk Infrastructure | `post@bulk.no` | data-center GTM compare-notes | Nordic AI-ready data centres, fiber, and industrial real estate | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4ae05484a4`; official Bulk Infrastructure contact route. |
+| Email | Africa Data Centres | `enquiries@africadatacentres.com` | data-center GTM compare-notes | Pan-African data-centre markets and location-risk forecasting | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4b3e80ee03`; official Africa Data Centres enquiry route. |
+| Email | VIRTUS Data Centres | `sales@virtusdcs.com` | data-center GTM compare-notes | UK and European HPC/data-centre capacity and location risk | Sent | Gmail API send from `daniel@homecastr.com`; message id `19f39e4b5d72b30f`; official VIRTUS sales route. |
