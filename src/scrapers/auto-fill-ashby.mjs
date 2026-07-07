@@ -5,14 +5,37 @@ import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
 
+const escapeCssAttributeValue = (value) =>
+    String(value)
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"');
+
+const escapeLocatorText = (value) =>
+    String(value)
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"');
+
+const getHostname = (value) => {
+    try {
+        return new URL(value).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
+
 export async function populateAshby(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     let url = targetUrl;
-    if (url && url.includes('jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
+    if (url && isHostOrSubdomain(url, 'jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
         url = url.replace(/\/$/, '') + '/application';
     }
 
     console.log(`Navigating to ${url}...`);
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
     console.log("Waiting for form elements to load...");
     await page.waitForSelector('input', { timeout: 10000 }).catch(() => {});
@@ -89,7 +112,8 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
         if (fs.existsSync(answersPath)) {
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
-                const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
+                const safeId = escapeCssAttributeValue(id);
+                const el = page.locator(`textarea[id="${safeId}"], textarea[name="${safeId}"], input[id="${safeId}"], input[name="${safeId}"]`);
                 if (await el.count() > 0) await el.first().fill(val);
             }
         }
@@ -184,7 +208,13 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
              try {
                  const id = await input.getAttribute('id');
                  if (!id) continue;
-                 const labelEl = await page.$(`label[for="${id}"]`);
+                 const escapeSelector = (value) => {
+                     const raw = String(value);
+                     return window.CSS && typeof window.CSS.escape === 'function'
+                         ? window.CSS.escape(raw)
+                         : raw.replace(/["\\]/g, '\\$&');
+                 };
+                 const labelEl = await page.$(`label[for="${escapeSelector(id)}"]`);
                  const labelText = labelEl ? (await labelEl.textContent() || '').toLowerCase() : '';
                  const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
                  const nameAttr = (await input.getAttribute('name') || '').toLowerCase();
@@ -198,10 +228,10 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                          if (matchedValue === 'check' || matchedValue.toLowerCase() === 'acknowledge') {
                              if (!(await input.isChecked())) await input.check({ force: true }).catch(()=>{});
                          }
-                     } else if (typeAttr === 'radio') {
-                         // Find the label for this specific radio button to see if it matches the target value ('Yes', 'No', etc)
-                         let radioLabelEl = await page.$(`label[for="${id}"]`);
-                         if (!radioLabelEl) radioLabelEl = await input.evaluateHandle(el => el.closest('label')).catch(()=>null);
+                      } else if (typeAttr === 'radio') {
+                          // Find the label for this specific radio button to see if it matches the target value ('Yes', 'No', etc)
+                          let radioLabelEl = await page.$(`label[for="${escapeSelector(id)}"]`);
+                          if (!radioLabelEl) radioLabelEl = await input.evaluateHandle(el => el.closest('label')).catch(()=>null);
                          
                          const radioLabelText = radioLabelEl ? (await radioLabelEl.textContent() || '').toLowerCase() : '';
                          if (radioLabelText.includes(matchedValue.toLowerCase()) || (matchedValue.toLowerCase() === 'check' && radioLabelText.includes('acknowledge'))) {
@@ -245,7 +275,13 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 const id = await area.getAttribute('id');
                 let labelText = '';
                 if (id) {
-                    const labelEl = await page.$(`label[for="${id}"]`);
+                    const escapeSelector = (value) => {
+                        const raw = String(value);
+                        return window.CSS && typeof window.CSS.escape === 'function'
+                            ? window.CSS.escape(raw)
+                            : raw.replace(/["\\]/g, '\\$&');
+                    };
+                    const labelEl = await page.$(`label[for="${escapeSelector(id)}"]`);
                     labelText = labelEl ? (await labelEl.textContent() || '').toLowerCase() : '';
                 }
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
@@ -334,18 +370,18 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             // Generic structural answer picker for Ashby's complex grouped radio blocks
             const answerComplexRadio = async (qText, ansText) => {
                 try {
-                    const locs = page.locator(`:text-matches("${qText}", "i")`);
+                    const locs = page.locator(`:text-matches("${escapeLocatorText(qText)}", "i")`);
                     if (await locs.count() > 0) {
                         const parent = locs.first().locator('xpath=..');
-                        const opt = parent.locator(`label:text-is("${ansText}")`);
+                        const opt = parent.locator(`label:text-is("${escapeLocatorText(ansText)}")`);
                         if (await opt.count() > 0) await opt.first().click({force: true});
                         else {
                             const p2 = parent.locator('xpath=..');
-                            const o2 = p2.locator(`label:text-is("${ansText}")`);
+                            const o2 = p2.locator(`label:text-is("${escapeLocatorText(ansText)}")`);
                             if (await o2.count() > 0) await o2.first().click({force: true});
                             else {
                                 const p3 = p2.locator('xpath=..');
-                                const o3 = p3.locator(`label:text-is("${ansText}")`);
+                                const o3 = p3.locator(`label:text-is("${escapeLocatorText(ansText)}")`);
                                 if (await o3.count() > 0) await o3.first().click({force: true});
                             }
                         }
@@ -422,7 +458,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             });
             
             for (const rName of radioGroups) {
-                const radios = page.locator(`input[type="radio"][name="${rName}"]`);
+                const radios = page.locator(`input[type="radio"][name="${escapeCssAttributeValue(rName)}"]`);
                 const count = await radios.count();
                 if (count > 0) {
                     const groupLabelText = await radios.first().evaluate(el => {
@@ -491,11 +527,12 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             if (el.tagName === 'SELECT') {
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
-                if (el.name) {
-                   const cleanName = el.name.split('[')[0]; 
-                   const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
-                   if (Array.from(group).some(r => r.checked)) isFilled = true;
-                } else if (el.checked) {
+            if (el.name) {
+               const cleanName = el.name.split('[')[0]; 
+               const safeCleanName = cleanName.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+               const group = document.querySelectorAll(`input[name^="${safeCleanName}"]`);
+               if (Array.from(group).some(r => r.checked)) isFilled = true;
+            } else if (el.checked) {
                    isFilled = true;
                 }
             } else if (el.value && el.value.length > 0) {
@@ -533,6 +570,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
         if (metrics.fillPercentage < 100) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
         // Live Submission Phase & Pagination Loop
@@ -557,6 +595,31 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                         await page.mouse.move(box.x + (box.width / 2), box.y + (box.height / 2), { steps: Math.floor(Math.random() * 15) + 10 });
                     }
                     await page.waitForTimeout(Math.floor(Math.random() * 400) + 200);
+
+                    try {
+                        const fs = await import('fs');
+                        if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
+                        const archiveStamp = Date.now();
+                        const screenshotPath = `data/archive/submission_${archiveStamp}.png`;
+                        await page.screenshot({ path: screenshotPath, fullPage: true });
+                        metrics.preSubmissionScreenshot = screenshotPath;
+                        console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
+                        const payloadPath = `data/archive/submission_${archiveStamp}.json`;
+                        const payload = {
+                            url,
+                            status: metrics.status || 'Pending_Submission',
+                            fillPercentage: metrics.fillPercentage,
+                            total: metrics.total,
+                            filled: metrics.filled,
+                            snapshot: metrics.snapshot || null,
+                            screenshotPath,
+                            capturedAt: new Date().toISOString()
+                        };
+                        fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
+                        console.log(`🗂️ Pre-submission payload saved: ${payloadPath}`);
+                    } catch(e) {
+                        console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
+                    }
                     
                     await submitBtn.first().click();
                     console.log("Ashby Submission Button Clicked.");
@@ -669,12 +732,29 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
                     } catch (e) {}
 
                     const launchArgs = ['--window-position=-10000,-10000'];
-                    const context = await chromium.launchPersistentContext(profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile', { 
-                        headless: false, 
-                        args: launchArgs,
-                        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-                    });
-                    
+                    const preferredProfilePath = profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+                    let context;
+                    try {
+                        context = await chromium.launchPersistentContext(preferredProfilePath, {
+                            headless: false,
+                            args: launchArgs,
+                            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                        });
+                    } catch (error) {
+                        const message = String(error?.message || error || '');
+                        if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
+                            throw error;
+                        }
+                        const fallbackProfilePath = path.resolve('data/tmp', `chrome-bot-profile-fallback-${Date.now()}`);
+                        fs.mkdirSync(fallbackProfilePath, { recursive: true });
+                        console.log(`Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
+                        context = await chromium.launchPersistentContext(fallbackProfilePath, {
+                            headless: false,
+                            args: launchArgs,
+                            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                        });
+                    }
+
                     await context.addInitScript(() => {
                         Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
                         window.navigator.chrome = { runtime: {} };

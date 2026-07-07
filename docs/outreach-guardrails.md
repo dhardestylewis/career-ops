@@ -36,6 +36,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - End with one small ask.
 - Keep the first sentence specific.
 - Keep the message short enough that it can be read in one glance.
+- For career-routing contacts like program staff, alumni office staff, or career-services staff, treat them as routers, not collaborators. Ask for specific names or an introduction, and attach the current resume if it helps them route you.
 
 ## Logging
 

@@ -159,6 +159,7 @@ export function buildHumanizer(page) {
             await page.keyboard.press('Backspace');
             await page.waitForTimeout(Math.floor(Math.random() * 70) + 25);
             await humanType(value);
+            await el.first().blur().catch(() => {});
             await page.waitForTimeout(Math.floor(Math.random() * 280) + 120);
         } catch(_) {}
     };
@@ -173,6 +174,7 @@ export function buildHumanizer(page) {
             if (current && current.trim().length > 0) return;
             await scrollIntoView(el);
             await humanPaste(el, value);
+            await el.first().blur().catch(() => {});
         } catch(_) {}
     };
 
