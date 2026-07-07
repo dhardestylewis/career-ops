@@ -150,6 +150,26 @@ A mode may tell you to run work in a background subagent (e.g. `scan`, or parall
 
 ---
 
+## Outreach Style
+
+When generating outreach emails, DMs, or routing notes, default to this order:
+
+1. Name the truthful relationship or bridge first.
+2. Name the recipient's current work or current lane second.
+3. Put Homecastr or any other proof point in the support line, not the subject or opener.
+4. End with one small ask only.
+
+Use these guardrails:
+
+- If a subject could fit three different people, it is too generic.
+- If the opener only says "reconnecting" without the bridge, make the bridge explicit.
+- If the note reads like a pitch before it reads like a person-to-person message, move the proof point down or cut it.
+- For professors and former instructors, name the class, thesis, project, or public work rather than the school alone.
+- For recruiters and school-routing contacts, ask for direction or the right person instead of a broad pitch.
+- For dormant warm ties, re-anchor the earlier thread before anything else.
+
+---
+
 ## Voice DNA (writing guardrail)
 
 If `voice-dna.md` exists in the project root, it is a writing guardrail for generated prose. It is user-layer and optional — never assume it exists, and skip this block silently if it doesn't. It layers **under** the user's personal style: it catches AI-slop and fills gaps, but it always defers to the user's own voice rules in `_profile.md` (see Precedence below).

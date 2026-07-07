@@ -1,0 +1,30 @@
+{
+  "payload": {
+    "company": "Scale AI",
+    "role": "Forward Deployed Engineer, GenAI",
+    "url": "https://job-boards.greenhouse.io/scaleai/jobs/4593571005",
+    "submittedAt": "2026-07-06T06:56:33.215Z",
+    "fields": {
+      "#first_name": "Daniel",
+      "#last_name": "Lewis",
+      "#email": "daniel@homecastr.com",
+      "#resume": "C:/Users/dhl/data/Portfolio/career-ops/data/assets/resume-dhl-20260630-causal-mle.pdf",
+      "#question_8373827005": "https://www.linkedin.com/in/dhardestylewis/",
+      "#question_8373828005": "https://dlewis.ai",
+      "#question_8373832005": "Yes",
+      "#question_8373833005": "No",
+      "#country": "United States +1",
+      "#phone": "7133717875",
+      "#gender": "Male",
+      "#hispanic_ethnicity": "Decline To Self Identify",
+      "#veteran_status": "I am not a protected veteran",
+      "#disability_status": "No, I do not have a disability and have not had one in the past"
+    }
+  },
+  "post": {
+    "submittedAt": "2026-07-06T06:56:33.215Z",
+    "url": "https://job-boards.greenhouse.io/scaleai/jobs/4593571005",
+    "invalidCount": 0,
+    "success": true
+  }
+}
