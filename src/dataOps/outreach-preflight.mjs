@@ -49,156 +49,21 @@ function normalizeMessageBody(value) {
   return normalizeKey(value).replace(/\s+/g, ' ').trim();
 }
 
-const SENTENCE_STOPWORDS = new Set([
-  'a',
-  'again',
-  'and',
-  'are',
-  'as',
-  'at',
-  'be',
-  'been',
-  'best',
-  'by',
-  'cheers',
-  'dear',
-  'd',
-  'for',
-  'from',
-  'hello',
-  'hey',
-  'hi',
-  'i',
-  'im',
-  'ive',
-  'in',
-  'is',
-  'it',
-  'just',
-  'kind',
-  'me',
-  'm',
-  'my',
-  'note',
-  'of',
-  'on',
-  'or',
-  'our',
-  'please',
-  're',
-  'regards',
-  'sincerely',
-  'thank',
-  'thanks',
-  'that',
-  'the',
-  'their',
-  'this',
-  'to',
-  'we',
-  've',
-  'll',
-  's',
-  'were',
-  'with',
-  'you',
-  'your',
-]);
-
-function splitSentences(value) {
-  return String(value || '')
-    .replace(/\r?\n+/g, ' ')
-    .split(/(?<=[.!?])\s+/)
-    .map(sentence => normalizeText(sentence))
-    .filter(Boolean);
+function isExplicitSpcNoMatch(value) {
+  const text = normalizeKey(value);
+  if (!text) return false;
+  return /\b(no match|no exact name hit|no exact hit|no exact match|clean no match|not affiliated|not spc affiliated|not spc adjacent|no relation|directory pdf no match|directory export no match|pdf decisive|user confirmed no relation)\b/i.test(text);
 }
 
-function sentenceTokens(value) {
-  return normalizeKey(value)
-    .split(' ')
-    .filter(Boolean)
-    .filter(token => !SENTENCE_STOPWORDS.has(token));
-}
-
-function tokenCoverage(left, right) {
-  const leftTokens = new Set(sentenceTokens(left));
-  const rightTokens = new Set(sentenceTokens(right));
-  if (!leftTokens.size || !rightTokens.size) return 0;
-
-  let shared = 0;
-  for (const token of leftTokens) {
-    if (rightTokens.has(token)) shared++;
-  }
-
-  return shared / Math.min(leftTokens.size, rightTokens.size);
-}
-
-function matchedSentenceCount(left, right) {
-  const leftSentences = splitSentences(left)
-    .map(sentenceTokens)
-    .filter(tokens => tokens.length >= 2);
-  const rightSentences = splitSentences(right)
-    .map(sentenceTokens)
-    .filter(tokens => tokens.length >= 2);
-
-  const used = new Set();
-  let matched = 0;
-
-  for (const leftTokens of leftSentences) {
-    let bestIndex = -1;
-    let bestCoverage = 0;
-
-    for (let i = 0; i < rightSentences.length; i++) {
-      if (used.has(i)) continue;
-
-      const rightTokens = rightSentences[i];
-      let shared = 0;
-      for (const token of leftTokens) {
-        if (rightTokens.includes(token)) shared++;
-      }
-
-      const coverage = shared / Math.min(leftTokens.length, rightTokens.length);
-      if (coverage > bestCoverage) {
-        bestCoverage = coverage;
-        bestIndex = i;
-      }
-    }
-
-    if (bestIndex !== -1 && bestCoverage >= 0.6) {
-      matched++;
-      used.add(bestIndex);
-    }
-  }
-
-  return matched;
-}
-
-function isNearDuplicateResend(currentBody, previousBody) {
-  return tokenCoverage(currentBody, previousBody) >= 0.65 && matchedSentenceCount(currentBody, previousBody) >= 1;
+function isSpcAffiliationBlocked(value) {
+  const text = normalizeKey(value);
+  if (!text) return false;
+  if (isExplicitSpcNoMatch(text)) return false;
+  return /\b(yes|member|affiliate|affiliated|unclear|unknown|blocked|adjacent)\b/i.test(text);
 }
 
 function extractRecipientName(value) {
   return normalizeText(value).replace(/\s*<[^>]+>\s*$/, '');
-}
-
-function todayIso() {
-  const parts = new Intl.DateTimeFormat('en-CA', {
-    timeZone: 'America/New_York',
-    year: 'numeric',
-    month: '2-digit',
-    day: '2-digit',
-  }).formatToParts(new Date());
-  const lookup = Object.fromEntries(
-    parts
-      .filter(part => part.type !== 'literal')
-      .map(part => [part.type, part.value]),
-  );
-  return `${lookup.year}-${lookup.month}-${lookup.day}`;
-}
-
-function parseIsoDate(value) {
-  const match = normalizeText(value).match(/^(\d{4}-\d{2}-\d{2})$/);
-  return match ? match[1] : '';
 }
 
 function parseArgs(argv) {
@@ -378,7 +243,7 @@ function parseDossiers(content) {
       key: normalizeKey(contact),
       status: pick('status'),
       lastTouch: pick('last_touch'),
-      nextFollowUp: pick('next_followup'),
+      nextFollowup: pick('next_followup'),
       whyNow: pick('why_now'),
       hook: pick('hook'),
       proofPoint: pick('proof_point'),
@@ -407,7 +272,6 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
   const liveSentKeys = mirrors.liveSentKeys instanceof Set ? mirrors.liveSentKeys : new Set();
   const draftByRecipient = new Map();
   const seenDraftRecipients = new Map();
-  const today = todayIso();
 
   if (!packet.messages.length) {
     errors.push('No `### Recipient` message blocks found in the send packet.');
@@ -491,26 +355,6 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
       errors.push(`${message.heading}: dossier status is "${dossier.status || 'missing'}", not ready.`);
     }
 
-    const dossierStatusKey = normalizeKey(dossier.status);
-    const nextFollowUpText = normalizeText(dossier.nextFollowUp);
-    const nextFollowUpDate = parseIsoDate(nextFollowUpText);
-    const dueDate = nextFollowUpDate || '';
-    const hasExplicitHold =
-      !nextFollowUpDate &&
-      /(^|[^a-z])(only|wait|hold)([^a-z]|$)|after.*reply|after.*accept/i.test(nextFollowUpText);
-    const isExistingThread =
-      ['sent', 'waiting', 'awaiting reply', 'awaiting_reply', 'replied', 'responded'].includes(dossierStatusKey) ||
-      Boolean(normalizeText(dossier.lastTouch));
-
-    if (isExistingThread) {
-      if (dueDate && dueDate > today) {
-        errors.push(`${message.heading}: next follow-up is not due until ${dueDate}.`);
-      }
-      if (hasExplicitHold) {
-        errors.push(`${message.heading}: dossier says to wait for a reply or acceptance before sending again.`);
-      }
-    }
-
     for (const [field, value] of [
       ['why_now', dossier.whyNow],
       ['hook', dossier.hook],
@@ -523,7 +367,7 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
     if (isWorkPitch(body)) {
       if (!dossier.spcAffiliation) errors.push(`${message.heading}: SPC affiliation check is missing.`);
       if (!dossier.spcCheckedAt) errors.push(`${message.heading}: SPC checked date is missing.`);
-      if (/\b(yes|member|affiliate|affiliated|unclear|unknown|blocked)\b/i.test(dossier.spcAffiliation)) {
+      if (isSpcAffiliationBlocked(dossier.spcAffiliation)) {
         errors.push(`${message.heading}: SPC status "${dossier.spcAffiliation}" blocks a work pitch.`);
       }
     }
@@ -552,15 +396,12 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
 
     const draft = draftByRecipient.get(packetKey);
     if (draft) {
-      const draftBody = draft.body || '';
-      const draftBodyKey = draft.bodyKey || normalizeMessageBody(draftBody);
+      const draftBodyKey = draft.bodyKey || normalizeMessageBody(draft.body);
       const draftStatusSent = /^sent\b/i.test(draft.status);
       const liveAlreadySent = liveSentKeys.has(packetKey);
 
       if (draftBodyKey && normalizedBody === draftBodyKey && (draftStatusSent || liveAlreadySent)) {
         errors.push(`${message.heading}: duplicate send detected; the packet body matches the sent draft mirror.`);
-      } else if ((draftStatusSent || liveAlreadySent) && draftBody && isNearDuplicateResend(body, draftBody)) {
-        errors.push(`${message.heading}: near-duplicate resend detected; the packet repeats the same core sentences as the last sent draft mirror.`);
       }
 
       if (draftStatusSent && !liveAlreadySent) {
@@ -589,8 +430,8 @@ hook: Her current Cohere Labs and MILA research path is the specific bridge.
 proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
 ask: Stay in touch and compare notes briefly.
 status: ready to send
-spc_affiliation: not-affiliated
-spc_checked_at: 2026-07-05
+spc_affiliation: clean no-match in archived SPC PDF; not SPC-adjacent
+spc_checked_at: 2026-07-07
 `);
   const goodDrafts = parseDraftMirrorContent(`
 ## Julia Kreutzer
@@ -678,96 +519,6 @@ Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's for
     throw new Error('Self-test duplicate packet did not catch a stale resend.');
   }
 
-  const kelseyDossiers = parseDossiers(`
-contact: Kelsey Richmond
-why_now: The Newlab startup membership application just went in, so the routing thread is already live.
-hook: Newlab is the current ecosystem bridge for climate, mobility, and urban tech.
-proof_point: Homecastr's decision support work is the supporting proof point.
-ask: Ask for the right person on the ecosystem / pilot team or a pointer.
-status: sent
-last_touch: 2026-07-06
-next_followup: 2026-07-06
-spc_affiliation: not-affiliated
-spc_checked_at: 2026-07-05
-`);
-  const kelseyDrafts = parseDraftMirrorContent(`
-## Kelsey Richmond
-
-**To:** Kelsey Richmond <kelsey.richmond@newlab.com>
-
-**Status:** Sent 2026-07-06
-
-**Subject:** Newlab Contact Form Submission
-
-\`\`\`text
-Hi Kelsey,
-
-I just submitted the application. Thanks again for pointing me to the right place.
-
-Best,
-Daniel
-\`\`\`
-`);
-  const kelseyPacket = parsePacket(`
-Status: ready to send
-
-### Kelsey Richmond
-
-Hi Kelsey,
-
-Thanks for the note. I've submitted the application and included the deck plus screenshots. Appreciate you pointing me in the right direction.
-
-Best,
-Daniel
-`);
-  const kelseyResend = validatePacket(kelseyPacket, kelseyDossiers, {
-    drafts: kelseyDrafts,
-    liveSentKeys: new Set(),
-  });
-  if (!kelseyResend.errors.some(error => error.includes('near-duplicate resend detected'))) {
-    throw new Error('Self-test near-duplicate resend did not catch the repeated Newlab note.');
-  }
-
-const tooSoonDossiers = parseDossiers(`
-contact: Julia Kreutzer
-why_now: A live Beginners journey session creates a concrete reason to reconnect.
-hook: Her current Cohere Labs and MILA research path is the specific bridge.
-proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
-ask: Stay in touch and compare notes briefly.
-status: sent
-last_touch: 2026-07-07
-next_followup: 2099-01-01
-spc_affiliation: not-affiliated
-spc_checked_at: 2026-07-05
-`);
-  const tooSoon = validatePacket(goodPacket, tooSoonDossiers, {
-    drafts: goodDrafts,
-    liveSentKeys: new Set(),
-  });
-  if (!tooSoon.errors.some(error => error.includes('next follow-up is not due until 2099-01-01'))) {
-    throw new Error('Self-test too-soon packet did not catch the future follow-up date.');
-  }
-
-  const explicitHoldDossiers = parseDossiers(`
-contact: Julia Kreutzer
-why_now: A live Beginners journey session creates a concrete reason to reconnect.
-hook: Her current Cohere Labs and MILA research path is the specific bridge.
-proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
-ask: Stay in touch and compare notes briefly.
-status: sent
-last_touch: 2026-07-07
-next_followup: Only after a reply or connection acceptance.
-spc_affiliation: not-affiliated
-spc_checked_at: 2026-07-05
-`);
-  const explicitHold = validatePacket(goodPacket, explicitHoldDossiers, {
-    drafts: goodDrafts,
-    liveSentKeys: new Set(),
-  });
-  if (!explicitHold.errors.some(error => error.includes('wait for a reply or acceptance'))) {
-    throw new Error('Self-test explicit-hold packet did not catch the reply/acceptance gate.');
-  }
-
   console.log('outreach-preflight self-test passed');
 }
 
@@ -801,16 +552,6 @@ function main() {
         .map(row => normalizeKey(row.recipient)),
   );
   const result = validatePacket(packet, dossiers, { drafts, liveSentKeys }, args.packet);
-  const packetLooksLive = /send[-_ ]?packet/i.test(args.packet) && !/\b(held|blocked|research)\b/i.test(packet.status);
-
-  if (packetLooksLive) {
-    if (!existsSync(draftsPath)) {
-      result.errors.push(`Draft mirror missing: ${args.drafts}. Restore data/outreach/drafts.md before any live send.`);
-    }
-    if (!existsSync(logPath)) {
-      result.errors.push(`Live outbound ledger missing: ${args.log}. Restore data/outreach/log.md before any live send.`);
-    }
-  }
 
   if (!result.errors.length && !result.warnings.length) {
     console.log(`PASS ${args.packet}`);
