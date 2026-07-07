@@ -801,6 +801,16 @@ function main() {
         .map(row => normalizeKey(row.recipient)),
   );
   const result = validatePacket(packet, dossiers, { drafts, liveSentKeys }, args.packet);
+  const packetLooksLive = /send[-_ ]?packet/i.test(args.packet) && !/\b(held|blocked|research)\b/i.test(packet.status);
+
+  if (packetLooksLive) {
+    if (!existsSync(draftsPath)) {
+      result.errors.push(`Draft mirror missing: ${args.drafts}. Restore data/outreach/drafts.md before any live send.`);
+    }
+    if (!existsSync(logPath)) {
+      result.errors.push(`Live outbound ledger missing: ${args.log}. Restore data/outreach/log.md before any live send.`);
+    }
+  }
 
   if (!result.errors.length && !result.warnings.length) {
     console.log(`PASS ${args.packet}`);

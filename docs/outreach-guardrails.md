@@ -9,8 +9,10 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 ## Send Gate
 
 - Draft first.
+- Before you type into Gmail, confirm that both `data/outreach/log.md` and `data/outreach/drafts.md` exist. If either file is missing, restore it before sending anything live.
 - Do not send anything until the user has approved the recipient batch, unless the user explicitly asks for a specific send.
 - Before any live send or follow-up, run `npm run outreach:audit -- "Recipient Name"`. If it exits `2`, do not send a new intro; if it exits `3`, resolve the existing draft / research / blocked state first.
+- If the only identifier you have is an email address, audit that too. An archive-only hit is not a green light.
 - Before any follow-up, check the dossier's `next_followup`. If it is a future date or says to wait for a reply / acceptance, the thread is `hold` and the send stops.
 - If thread context is unclear, stop at `draft only`.
 - Never "fix" a bad send with a second apology or self-correction unless the user explicitly asks for it.
@@ -42,6 +44,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 ## Logging
 
 - Log every live outbound touch in `data/outreach/log.md` before moving to the next recipient.
+- Treat the Gmail sent folder as evidence, not the ledger. `data/outreach/log.md` is the source of truth for future agents.
 - Re-run `npm run outreach:audit -- "Recipient Name"` after logging if the next step is unclear; the audit should now point to the existing thread instead of a fresh send.
 - If the follow-up is just a paraphrase of the prior touch, do not log a new send. Wait for a real reply or a genuinely new angle.
 - Keep the discovery trail in the appropriate TSV or note file so future agents can recover the context without reopening the browser session.
