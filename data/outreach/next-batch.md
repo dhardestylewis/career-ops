@@ -79,7 +79,7 @@ Best,
 Daniel
 
 ## Bernd Wuebben
-Status: Draft
+Status: Sent
 
 Channel: LinkedIn
 
@@ -186,17 +186,18 @@ Outcome: 10 valid company routes sent and verified as Pending or conversation te
 
 | Contact | Company | Channel | Status | Note |
 |---|---|---|---|---|
-| Catherine Del Hierro | LTS | LinkedIn note | Draft ready for send | Lead FDE recruiter / talent acquisition lead |
-| David Wilmot | LTS | LinkedIn note | Draft ready for send | Chief Medical Officer, executive sponsor |
-| James Pickard | Accenture | LinkedIn note | Draft ready for send | Talent Acquisition Lead |
-| Jim Murrin | Accenture | LinkedIn note | Draft ready for send | Global executive search, AI & data |
-| Iliana Lytton | Billtrust | LinkedIn note | Draft ready for send | Lead Talent Acquisition Partner |
-| Lee An Schommer | Billtrust | LinkedIn note | Draft ready for send | Chief Product Officer |
-| Harrison Zolot | Trexquant | LinkedIn note | Draft ready for send | Head of Talent Acquisition |
-| Denis Lapitski | Trexquant | LinkedIn note | Draft ready for send | Director of Strategy Research |
+| Catherine Del Hierro | LTS | LinkedIn note | Sent | Lead FDE recruiter / talent acquisition lead |
+| David Wilmot | LTS | LinkedIn note | Pending on LinkedIn | Chief Medical Officer, executive sponsor |
+| James Pickard | Accenture | LinkedIn note | Sent | Talent Acquisition Lead |
+| Jim Murrin | Accenture | LinkedIn note | Pending on LinkedIn | Global executive search, AI & data |
+| Iliana Lytton | Billtrust | LinkedIn note | Pending on LinkedIn | Lead Talent Acquisition Partner |
+| Lee An Schommer | Billtrust | LinkedIn note | Pending on LinkedIn | Chief Product Officer |
+| Harrison Zolot | Trexquant | LinkedIn note | Sent | Head of Talent Acquisition |
+| Denis Lapitski | Trexquant | LinkedIn note | Pending on LinkedIn | Director of Strategy Research |
 
 ## Notes
 
 - All of these are work-related pitches, and the South Park Commons directory PDF does not show an SPC match for these contacts.
 - The source-backed current-role check is complete from the public LinkedIn profiles and company pages.
+- Some live LinkedIn profiles were already in `Pending` status, so those were not resent.
 - These can move from draft to ready without rewriting the skeleton.

@@ -68,7 +68,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const targetResumeUrl = process.argv[3];
         
         const launchArgs = ['--window-position=-10000,-10000'];
-        const context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
+        const chromeProfilePath = profileConfig?.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+        const context = await chromium.launchPersistentContext(chromeProfilePath, { 
             headless: false, 
             args: launchArgs,
             userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'

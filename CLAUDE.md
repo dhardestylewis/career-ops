@@ -304,6 +304,14 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 - `src/core/resume-asset.mjs` is the single source of truth for that path.
 - `data/assets/resume-dhl-20260421-staff-mle.pdf` is a legacy artifact and should not be used by default.
 
+### Outreach Funnel Estimation
+
+- Use human-readable counts first: sends, replies, booked meetings, screens, final rounds, offers.
+- If a funnel is normalized, define the anchor explicitly. `1.00` should mean one offer-equivalent.
+- Count booked meetings as real conversions when they are tied to source-linked outreach.
+- Separate observed same-day activity from expected downstream conversions when comparing days.
+- Turn daily guidance into actions per day before EV-days so the next agent can tell the user what to do tomorrow morning.
+
 ---
 
 ## Ethical Use -- CRITICAL
