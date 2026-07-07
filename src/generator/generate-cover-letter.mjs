@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { execSync } from 'child_process';
 import * as dotenv from 'dotenv';
 
@@ -80,17 +80,24 @@ dotenv.config({ path: path.resolve('.env') });
         }
 
         const escapeLatex = (str) => {
-            return str
-                .replace(/\\/g, '\\textbackslash ')
-                .replace(/&/g, '\\&')
-                .replace(/%/g, '\\%')
-                .replace(/\$/g, '\\$')
-                .replace(/#/g, '\\#')
-                .replace(/_/g, '\\_')
-                .replace(/\{/g, '\\{')
-                .replace(/\}/g, '\\}')
-                .replace(/~/g, '\\textasciitilde ')
-                .replace(/\^/g, '\\textasciicircum ');
+            const replacements = {
+                '\\': '\\textbackslash{}',
+                '&': '\\&',
+                '%': '\\%',
+                '$': '\\$',
+                '#': '\\#',
+                '_': '\\_',
+                '{': '\\{',
+                '}': '\\}',
+                '~': '\\textasciitilde{}',
+                '^': '\\textasciicircum{}',
+            };
+
+            let out = '';
+            for (const ch of String(str)) {
+                out += replacements[ch] || ch;
+            }
+            return out;
         };
 
         const safeText = escapeLatex(generatedText);

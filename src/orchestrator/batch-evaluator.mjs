@@ -7,6 +7,27 @@ import { getResumePath, loadProfileConfig } from '../core/profile.mjs';
 chromium.use(stealthPlugin());
 import { pathToFileURL } from 'url';
 
+const getHostname = (value) => {
+    try {
+        return new URL(value).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
+
+const hasQueryParam = (value, name) => {
+    try {
+        return new URL(value).searchParams.has(name);
+    } catch {
+        return false;
+    }
+};
+
 // Dynamically extract Profile configuration
 const profileConfig = loadProfileConfig();
 
@@ -65,9 +86,9 @@ for (let i = 1; i < rawBatch.length; i++) {
 
     const rawUrl = parts[1].trim();
     const url = rawUrl.split('?')[0]; 
-    if (url.includes('lever.co')) leverUrls.push(url);
-    if (url.includes('greenhouse.io') || rawUrl.includes('gh_jid=')) greenhouseUrls.push(rawUrl);
-    if (url.includes('ashbyhq.com')) ashbyUrls.push(url);
+    if (isHostOrSubdomain(url, 'lever.co')) leverUrls.push(url);
+    if (isHostOrSubdomain(url, 'greenhouse.io') || hasQueryParam(rawUrl, 'gh_jid')) greenhouseUrls.push(rawUrl);
+    if (isHostOrSubdomain(url, 'ashbyhq.com')) ashbyUrls.push(url);
 }
 
 // Aggregate the massive subset of targets for concurrent Multi-Tab execution
@@ -79,13 +100,13 @@ let targets = [
 
 const getCompany = (urlStr) => {
     try {
-        if(urlStr.includes('job-boards.greenhouse.io') || urlStr.includes('boards.greenhouse.io')) {
+        if(isHostOrSubdomain(urlStr, 'job-boards.greenhouse.io') || isHostOrSubdomain(urlStr, 'boards.greenhouse.io')) {
              return new URL(urlStr).pathname.split('/')[1].toLowerCase();
         }
-        if(urlStr.includes('jobs.lever.co')) {
+        if(isHostOrSubdomain(urlStr, 'jobs.lever.co')) {
              return new URL(urlStr).pathname.split('/')[1].toLowerCase();
         }
-        if(urlStr.includes('jobs.ashbyhq.com')) {
+        if(isHostOrSubdomain(urlStr, 'jobs.ashbyhq.com')) {
              return new URL(urlStr).pathname.split('/')[1].toLowerCase();
         }
     } catch(e) {}
@@ -111,6 +132,7 @@ const RUN_LIMIT = targets.length;
 const selectedTargets = targets.slice(0, RUN_LIMIT);
 
 console.log(`Starting headless multi-tab validation over ${selectedTargets.length} queued endpoints (from total ${targets.length})...`);
+import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
 
 (async () => {
     const statsStore = [];
@@ -118,19 +140,22 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
     // Concurrent Multi-Tab Execution (Batching 5 tabs per unified Chromium Window)
     const chunkSize = 5;
     
-    console.log(`Launching Unified Persistent Chrome Context from ${profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile'}`);
+    console.log('Launching multi-tab browser runtime...');
     const launchArgs = ['--disable-blink-features=AutomationControlled']; // Hide headless properties natively
     const audioPath = path.resolve('data/assets/pronunciation.wav');
     if (fs.existsSync(audioPath)) {
         launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
     }
 
-    const context = await chromium.launchPersistentContext(profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile', { 
-        headless: false, 
-        args: launchArgs,
-        ignoreDefaultArgs: ["--enable-automation"],
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    const runtime = await launchAutomationContext({
+        chromium,
+        profileConfig,
+        defaultLane: 'local_headed',
+        purpose: 'batch evaluator',
+        launchArgs,
     });
+    const { context } = runtime;
+    console.log(`Browser lane: ${describeBrowserLane(runtime.laneConfig)}`);
 
     console.log("\n==================================");
     console.log("⌨️  PRESS [ENTER] AT ANY TIME TO PULL THE BROWSER ON SCREEN");
@@ -149,17 +174,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
         }
     });
 
-    await context.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-        window.navigator.chrome = { runtime: {} };
-        
-        // --- WAF VISIBILITY SPOOFING ---
-        // Prevent WAFs from detecting concurrent background tab execution.
-        // If a WAF sees 80 WPM typing on a tab with visibilityState === 'hidden', it flags it as a bot instantly.
-        Object.defineProperty(document, 'visibilityState', { get: () => 'visible' });
-        Object.defineProperty(document, 'hidden', { get: () => false });
-        Object.defineProperty(document, 'hasFocus', { value: () => true });
-    });
+    await installAutomationStealth(context, { visibilitySpoof: true });
 
     for (let i = 0; i < selectedTargets.length; i += chunkSize) {
         const chunk = selectedTargets.slice(i, i + chunkSize);
@@ -243,7 +258,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
         } catch(e) {}
         let trackerData = '';
         for (const stat of statsStore) {
-            const domain = stat.domain || (stat.url.includes('greenhouse.io') || stat.url.includes('gh_jid') ? 'greenhouse' : 'unknown');
+            const domain = stat.domain || (isHostOrSubdomain(stat.url, 'greenhouse.io') || hasQueryParam(stat.url, 'gh_jid') ? 'greenhouse' : 'unknown');
             const unmappedCount = stat.missingDOM ? stat.missingDOM.length : 0;
             trackerData += `${timestamp}\t${gitHash}\t${domain}\t${stat.url}\t${stat.fillPercentage || 0}\t${stat.filled || 0}\t${stat.total || 0}\t${unmappedCount}\n`;
         }

@@ -30,6 +30,9 @@ package-lock.json
 data/chrome-bot-profile/
 scratch/
 logs/
+data/tmp/browser-attach-runtime.json
+data/chrome-attach-profile/
+data/tmp/chrome-attach-profile-fallback-*/
 
 credentials.json
 token.json
@@ -39,6 +42,8 @@ data/chrome-bot-profile*/
 artifacts/
 
 data/archive/chrome-bot-profile*/
+data/archive/submission_*.json
+data/archive/submission_*.png
 
 # User data (personalization — never commit)
 config/profile.yml
@@ -48,6 +53,10 @@ portals.yml
 data/cv.md
 data/bio.md
 data/follow-ups.md
+data/outreach/log.md
+data/outreach/columbia-*.md
+data/outreach/homecastr-*.md
+data/outreach/csl-*.md
 article-digest.md
 reports/
 
