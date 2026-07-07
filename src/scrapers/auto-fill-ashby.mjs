@@ -12,7 +12,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
     }
 
     console.log(`Navigating to ${url}...`);
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
     console.log("Waiting for form elements to load...");
     await page.waitForSelector('input', { timeout: 10000 }).catch(() => {});
@@ -105,8 +105,8 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             console.log("✅ Resume attached.");
     console.log("Waiting for Ashby to finish parsing resume and stabilize DOM...");
     try {
-        console.log("Waiting up to 45 seconds for Ashby parsing engine to complete...");
-        await page.waitForSelector('text="Autofill completed!"', { timeout: 45000 });
+        console.log("Waiting up to 20 seconds for Ashby parsing engine to complete...");
+        await page.waitForSelector('text="Autofill completed!"', { timeout: 20000 });
         console.log("✅ Resume parse completed by Ashby backend.");
         await page.waitForTimeout(1000); // Give React an extra second to reconcile the DOM
     } catch(e) {
@@ -183,18 +183,9 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
         for (const input of allInputs) {
              try {
                  const id = await input.getAttribute('id');
-                 let labelText = '';
-                 if (id) {
-                     const labelEl = await page.$(`label[for="${id}"]`);
-                     labelText = labelEl ? (await labelEl.textContent() || '').toLowerCase() : '';
-                 }
-                 if (!labelText) {
-                     labelText = await input.evaluate(el => {
-                         const wrap = el.closest('label, fieldset, .field, .application-question, div');
-                         const txt = (wrap ? wrap.textContent : '') || el.getAttribute('placeholder') || el.getAttribute('aria-label') || el.getAttribute('name') || '';
-                         return txt.toLowerCase();
-                     }).catch(() => '');
-                 }
+                 if (!id) continue;
+                 const labelEl = await page.$(`label[for="${id}"]`);
+                 const labelText = labelEl ? (await labelEl.textContent() || '').toLowerCase() : '';
                  const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
                  const nameAttr = (await input.getAttribute('name') || '').toLowerCase();
                  
@@ -343,20 +334,19 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             // Generic structural answer picker for Ashby's complex grouped radio blocks
             const answerComplexRadio = async (qText, ansText) => {
                 try {
-                    const blocks = page.locator('fieldset, div, label').filter({ hasText: qText });
-                    if (await blocks.count() > 0) {
-                        const block = blocks.first();
-                        const candidates = [
-                            block.getByRole('button', { name: ansText, exact: true }),
-                            block.locator(`button:has-text("${ansText}")`),
-                            block.locator(`label:has-text("${ansText}")`),
-                            block.locator(`[role="radio"]:has-text("${ansText}")`),
-                            block.locator(`[role="button"]:has-text("${ansText}")`)
-                        ];
-                        for (const opt of candidates) {
-                            if (await opt.count().catch(() => 0)) {
-                                await opt.first().click({ force: true }).catch(() => {});
-                                return;
+                    const locs = page.locator(`:text-matches("${qText}", "i")`);
+                    if (await locs.count() > 0) {
+                        const parent = locs.first().locator('xpath=..');
+                        const opt = parent.locator(`label:text-is("${ansText}")`);
+                        if (await opt.count() > 0) await opt.first().click({force: true});
+                        else {
+                            const p2 = parent.locator('xpath=..');
+                            const o2 = p2.locator(`label:text-is("${ansText}")`);
+                            if (await o2.count() > 0) await o2.first().click({force: true});
+                            else {
+                                const p3 = p2.locator('xpath=..');
+                                const o3 = p3.locator(`label:text-is("${ansText}")`);
+                                if (await o3.count() > 0) await o3.first().click({force: true});
                             }
                         }
                     }
@@ -366,134 +356,17 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             // Catch custom Visa questions 
             await answerComplexRadio('legal right to work', 'Yes');
             await answerComplexRadio('authorized to work', 'Yes');
-            await answerComplexRadio('background check', 'Yes');
             
             const sponsor = profileConfig?.eeo_demographics?.requires_sponsorship?.toLowerCase() || 'no';
             await answerComplexRadio('sponsor a visa', sponsor === 'no' ? 'No' : 'Yes');
             await answerComplexRadio('require sponsorship', sponsor === 'no' ? 'No' : 'Yes');
             await answerComplexRadio('require visa', sponsor === 'no' ? 'No' : 'Yes');
-
-            // Generic combobox support for location fields rendered as Ashby React controls
-            try {
-                const locationField = page.getByPlaceholder('Start typing...');
-                if (await locationField.count() > 0) {
-                    await locationField.first().focus().catch(()=>{});
-                    await locationField.first().fill('').catch(()=>{});
-                    await locationField.first().pressSequentially('New York City', { delay: 30 }).catch(()=>{});
-                    await page.waitForTimeout(500);
-                    await locationField.first().press('ArrowDown').catch(()=>{});
-                    await locationField.first().press('Enter').catch(()=>{});
-                    await page.waitForTimeout(300);
-                }
-            } catch(e) {}
             
             // Hear about us
             await answerComplexRadio('hear about from', 'LinkedIn');
             await answerComplexRadio('hear about us', 'LinkedIn');
             
             // Handle specific ATS array fields like "Skills" or "Cloud tools" mapping
-            try {
-                const allCheckboxes = await page.$$('input[type="checkbox"]');
-                for (const check of allCheckboxes) {
-                    try {
-                        let labelText = (await check.getAttribute('aria-label') || '').toLowerCase();
-                        if (!labelText) {
-                             const lbl = await page.evaluateHandle(el => el.closest('label') || el.parentElement, check);
-                             if (lbl) labelText = ((await lbl.textContent()) || '').toLowerCase();
-                        }
-                        if (!labelText) continue;
-                        if (labelText.includes('agree') || labelText.includes('consent') || labelText.includes('privacy')) {
-                            if (!(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
-                        }
-                        if (labelText.includes('new york city') || labelText.includes('new york') || labelText.includes('nyc')) {
-                            if (!(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
-                        }
-                    } catch(e) {}
-                }
-            } catch(e) {}
-
-            try {
-                const nycCheckbox = page.getByRole('checkbox', { name: 'New York City' });
-                if (await nycCheckbox.count() > 0 && !(await nycCheckbox.first().isChecked().catch(()=>false))) {
-                    await nycCheckbox.first().check({ force: true }).catch(()=>{});
-                }
-
-                const agreeCheckbox = page.getByRole('checkbox', { name: 'I agree' });
-                if (await agreeCheckbox.count() > 0 && !(await agreeCheckbox.first().isChecked().catch(()=>false))) {
-                    await agreeCheckbox.first().check({ force: true }).catch(()=>{});
-                }
-
-                const clickFollowingButton = async (questionText, optionText) => {
-                    try {
-                        const question = page.getByText(questionText, { exact: false });
-                        if (await question.count() > 0) {
-                            const button = question.first().locator(`xpath=following::button[normalize-space()="${optionText}"][1]`);
-                            if (await button.count() > 0) await button.first().click({ force: true }).catch(()=>{});
-                        }
-                    } catch(e) {}
-                };
-
-                await clickFollowingButton('Are you legally authorized to work full-time in the country where this job is based?', 'Yes');
-                await clickFollowingButton('Will you now or in the future require employer sponsorship for employment authorization in the country where this job is based?', 'No');
-                await clickFollowingButton('Background Check Consent', 'Yes');
-
-                const authBlock = page.locator('fieldset').filter({ hasText: 'Are you legally authorized to work full-time in the country where this job is based?' });
-                if (await authBlock.count() > 0) {
-                    const yesBtn = authBlock.first().getByRole('button', { name: 'Yes', exact: true });
-                    if (await yesBtn.count() > 0) await yesBtn.first().click({ force: true }).catch(()=>{});
-                }
-
-                const sponsorBlock = page.locator('fieldset').filter({ hasText: 'Will you now or in the future require employer sponsorship for employment authorization in the country where this job is based?' });
-                if (await sponsorBlock.count() > 0) {
-                    const noBtn = sponsorBlock.first().getByRole('button', { name: 'No', exact: true });
-                    if (await noBtn.count() > 0) await noBtn.first().click({ force: true }).catch(()=>{});
-                }
-
-                const bgBlock = page.locator('fieldset').filter({ hasText: 'Background Check Consent' });
-                if (await bgBlock.count() > 0) {
-                    const yesBtn = bgBlock.first().getByRole('button', { name: 'Yes', exact: true });
-                    if (await yesBtn.count() > 0) await yesBtn.first().click({ force: true }).catch(()=>{});
-                }
-
-                const yesButtons = page.getByRole('button', { name: 'Yes' });
-                const noButtons = page.getByRole('button', { name: 'No' });
-                if (await yesButtons.count() >= 3 && await noButtons.count() >= 3) {
-                    await yesButtons.nth(0).click({ force: true }).catch(()=>{});
-                    await noButtons.nth(1).click({ force: true }).catch(()=>{});
-                    await yesButtons.nth(2).click({ force: true }).catch(()=>{});
-                }
-
-                const allButtons = page.locator('button');
-                if (await allButtons.count() >= 10) {
-                    const isAshbyToggleActive = async (btn) => {
-                        return await btn.evaluate(el => {
-                            const cls = el.className || '';
-                            const style = getComputedStyle(el);
-                            return cls.includes('_active_') || cls.includes('active') || style.backgroundColor !== 'rgba(0, 0, 0, 0)';
-                        }).catch(() => false);
-                    };
-
-                    const clickButtonIndex = async (index) => {
-                        const btn = allButtons.nth(index);
-                        await btn.scrollIntoViewIfNeeded().catch(()=>{});
-                        if (await isAshbyToggleActive(btn)) return;
-                        await btn.click({ force: true }).catch(async () => {
-                            const box = await btn.boundingBox().catch(() => null);
-                            if (box) {
-                                await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2).catch(()=>{});
-                                await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2).catch(()=>{});
-                            }
-                        });
-                    };
-                    // Legora renders the three yes/no groups in DOM order after the resume controls.
-                    await clickButtonIndex(7);
-                    await page.waitForTimeout(250);
-                    await clickButtonIndex(8);
-                    await page.waitForTimeout(250);
-                    await clickButtonIndex(4);
-                }
-            } catch(e) {}
-
             const skillsMap = profileConfig?.narrative?.skills || [];
             if (skillsMap.length > 0) {
                 const allCheckboxes = await page.$$('input[type="checkbox"]');
@@ -593,41 +466,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 }
             }
         } catch(e) {}
-
-        // Final reinforcement for Ashby button-based consent questions.
-        // Some forms reflow after downstream checkbox/radio work, so we reassert the
-        // required Legora toggles immediately before the metrics pass.
-        try {
-            const finalButtons = page.locator('button');
-            if (await finalButtons.count() >= 10) {
-                const isAshbyToggleActive = async (btn) => {
-                    return await btn.evaluate(el => {
-                        const cls = el.className || '';
-                        const style = getComputedStyle(el);
-                        return cls.includes('_active_') || cls.includes('active') || style.backgroundColor !== 'rgba(0, 0, 0, 0)';
-                    }).catch(() => false);
-                };
-
-                const clickButtonIndex = async (index) => {
-                    const btn = finalButtons.nth(index);
-                    await btn.scrollIntoViewIfNeeded().catch(()=>{});
-                    if (await isAshbyToggleActive(btn)) return;
-                    await btn.click({ force: true }).catch(async () => {
-                        const box = await btn.boundingBox().catch(() => null);
-                        if (box) {
-                            await page.mouse.move(box.x + box.width / 2, box.y + box.height / 2).catch(()=>{});
-                            await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2).catch(()=>{});
-                        }
-                    });
-                };
-                await clickButtonIndex(7);
-                await page.waitForTimeout(150);
-                await clickButtonIndex(8);
-                await page.waitForTimeout(150);
-                await clickButtonIndex(4);
-            }
-        } catch(e) {}
-
+        
     } catch(e) {}
 
     // -------------------------------------------------------------------------
@@ -649,12 +488,6 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 total--; continue; // Skip actual non-interactable
             }
 
-            const textContext = ((el.closest('div, label')?.textContent || '') || el.getAttribute('placeholder') || el.getAttribute('aria-label') || el.getAttribute('name') || '').toLowerCase();
-            if (textContext.includes('optional note')) {
-                total--;
-                continue;
-            }
-
             if (el.tagName === 'SELECT') {
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
@@ -664,14 +497,6 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
                    isFilled = true;
-                }
-            } else if (el.getAttribute('role') === 'combobox' || (el.classList && el.classList.contains('select__input'))) {
-                const container = el.closest('div');
-                const containerText = (container ? container.textContent : '') || '';
-                if (el.value && el.value.length > 0) {
-                    isFilled = true;
-                } else if (container && !/start typing|select|choose/i.test(containerText) && /new york|united states|location/i.test(containerText.toLowerCase())) {
-                    isFilled = true;
                 }
             } else if (el.value && el.value.length > 0) {
                 isFilled = true;
@@ -700,73 +525,15 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 missingDOM.push(container.outerHTML.substring(0, 1500));
             }
         }
-
-        // Ashby often renders required yes/no questions as paired buttons instead of inputs.
-        // Count each visible Yes/No pair once so the submission gate reflects the real form state.
-        const toggleGroups = new Map();
-        const toggleButtons = Array.from(document.querySelectorAll('button')).filter(btn => {
-            const text = (btn.textContent || '').trim();
-            if (text !== 'Yes' && text !== 'No') return false;
-            const rect = btn.getBoundingClientRect();
-            if (!rect || rect.width === 0 || rect.height === 0) return false;
-            const style = window.getComputedStyle(btn);
-            if (style.display === 'none' || style.visibility === 'hidden') return false;
-            return true;
-        });
-
-        for (const btn of toggleButtons) {
-            const rect = btn.getBoundingClientRect();
-            const key = Math.round(rect.top);
-            if (!toggleGroups.has(key)) toggleGroups.set(key, []);
-            toggleGroups.get(key).push(btn);
-        }
-
-        for (const group of toggleGroups.values()) {
-            if (group.length < 2) continue;
-            total += 1;
-            const active = group.some(btn => {
-                const cls = btn.className || '';
-                const style = window.getComputedStyle(btn);
-                return cls.includes('_active_') || cls.includes('active') || style.backgroundColor !== 'rgba(0, 0, 0, 0)';
-            });
-            if (active) {
-                filled += 1;
-            } else {
-                const groupText = group.map(btn => (btn.outerHTML || '').substring(0, 300)).join('\n');
-                missingDOM.push(groupText);
-            }
-        }
         
         return { total, filled, fillPercentage: total > 0 ? Math.round((filled / total) * 100) : 0, missingDOM };
     });
-
-    try {
-        if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
-        const archiveStamp = Date.now();
-        const screenshotPath = `data/archive/submission_${archiveStamp}.png`;
-        await page.screenshot({ path: screenshotPath, fullPage: true }).catch(()=>{});
-        console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
-        const payloadPath = `data/archive/submission_${archiveStamp}.json`;
-        const payload = {
-            url,
-            status: metrics.status || 'Pending_Submission',
-            fillPercentage: metrics.fillPercentage,
-            total: metrics.total,
-            filled: metrics.filled,
-            snapshot: metrics.snapshot || null,
-            screenshotPath,
-            capturedAt: new Date().toISOString()
-        };
-        fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
-        console.log(`🗂️ Pre-submission payload saved: ${payloadPath}`);
-    } catch (e) {
-        console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
-    }
 
     if (isBatch) {
         if (metrics.fillPercentage < 100) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
         // Live Submission Phase & Pagination Loop
@@ -791,6 +558,17 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                         await page.mouse.move(box.x + (box.width / 2), box.y + (box.height / 2), { steps: Math.floor(Math.random() * 15) + 10 });
                     }
                     await page.waitForTimeout(Math.floor(Math.random() * 400) + 200);
+
+                    try {
+                        const fs = await import('fs');
+                        if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
+                        const screenshotPath = `data/archive/submission_${Date.now()}.png`;
+                        await page.screenshot({ path: screenshotPath, fullPage: true });
+                        metrics.preSubmissionScreenshot = screenshotPath;
+                        console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
+                    } catch(e) {
+                        console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
+                    }
                     
                     await submitBtn.first().click();
                     console.log("Ashby Submission Button Clicked.");
@@ -902,14 +680,30 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
                         profileConfig = yaml.load(fileContents);
                     } catch (e) {}
 
-        const launchArgs = ['--window-position=-10000,-10000'];
-        const chromeProfilePath = process.env.CHROME_PROFILE_PATH || profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
-        const context = await chromium.launchPersistentContext(chromeProfilePath, { 
-                        headless: false, 
-                        args: launchArgs,
-                        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-                    });
-                    
+                    const launchArgs = ['--window-position=-10000,-10000'];
+                    const preferredProfilePath = profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+                    let context;
+                    try {
+                        context = await chromium.launchPersistentContext(preferredProfilePath, {
+                            headless: false,
+                            args: launchArgs,
+                            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                        });
+                    } catch (error) {
+                        const message = String(error?.message || error || '');
+                        if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
+                            throw error;
+                        }
+                        const fallbackProfilePath = path.resolve('data/tmp', `chrome-bot-profile-fallback-${Date.now()}`);
+                        fs.mkdirSync(fallbackProfilePath, { recursive: true });
+                        console.log(`Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
+                        context = await chromium.launchPersistentContext(fallbackProfilePath, {
+                            headless: false,
+                            args: launchArgs,
+                            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                        });
+                    }
+
                     await context.addInitScript(() => {
                         Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
                         window.navigator.chrome = { runtime: {} };
