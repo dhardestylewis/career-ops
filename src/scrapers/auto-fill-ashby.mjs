@@ -12,7 +12,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
     }
 
     console.log(`Navigating to ${url}...`);
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await page.goto(url, { waitUntil: 'domcontentloaded', timeout: 60000 });
 
     console.log("Waiting for form elements to load...");
     await page.waitForSelector('input', { timeout: 10000 }).catch(() => {});
@@ -545,6 +545,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
         if (metrics.fillPercentage < 100) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
         // Live Submission Phase & Pagination Loop
@@ -569,6 +570,17 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                         await page.mouse.move(box.x + (box.width / 2), box.y + (box.height / 2), { steps: Math.floor(Math.random() * 15) + 10 });
                     }
                     await page.waitForTimeout(Math.floor(Math.random() * 400) + 200);
+
+                    try {
+                        const fs = await import('fs');
+                        if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
+                        const screenshotPath = `data/archive/submission_${Date.now()}.png`;
+                        await page.screenshot({ path: screenshotPath, fullPage: true });
+                        metrics.preSubmissionScreenshot = screenshotPath;
+                        console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
+                    } catch(e) {
+                        console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
+                    }
                     
                     await submitBtn.first().click();
                     console.log("Ashby Submission Button Clicked.");
@@ -681,12 +693,29 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
                     } catch (e) {}
 
                     const launchArgs = ['--window-position=-10000,-10000'];
-                    const context = await chromium.launchPersistentContext(profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile', { 
-                        headless: false, 
-                        args: launchArgs,
-                        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-                    });
-                    
+                    const preferredProfilePath = profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+                    let context;
+                    try {
+                        context = await chromium.launchPersistentContext(preferredProfilePath, {
+                            headless: false,
+                            args: launchArgs,
+                            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                        });
+                    } catch (error) {
+                        const message = String(error?.message || error || '');
+                        if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
+                            throw error;
+                        }
+                        const fallbackProfilePath = path.resolve('data/tmp', `chrome-bot-profile-fallback-${Date.now()}`);
+                        fs.mkdirSync(fallbackProfilePath, { recursive: true });
+                        console.log(`Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
+                        context = await chromium.launchPersistentContext(fallbackProfilePath, {
+                            headless: false,
+                            args: launchArgs,
+                            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+                        });
+                    }
+
                     await context.addInitScript(() => {
                         Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
                         window.navigator.chrome = { runtime: {} };

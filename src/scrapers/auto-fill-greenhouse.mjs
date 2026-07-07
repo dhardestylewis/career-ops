@@ -317,8 +317,27 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     await safeType('#first_name, input[id*="first_name"], input[name*="first_name"]', profileConfig?.candidate?.first_name || 'Daniel');
     await safeType('#last_name, input[id*="last_name"], input[name*="last_name"]', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
     await safeType('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
-    const safePhone = (profileConfig?.candidate?.phone || '7133717875').replace(/[\s\+\(\)\-]/g, '');
+    const safePhone = profileConfig?.candidate?.phone_e164 || ('+1' + (profileConfig?.candidate?.phone || '7133717875').replace(/[^\d]/g, ''));
     await safeType('#phone', safePhone);
+    try {
+        const countryButton = page.locator('.iti__selected-country').first();
+        if (await countryButton.count() > 0 && await countryButton.isVisible().catch(()=>false)) {
+            await countryButton.click().catch(()=>{});
+            const search = page.locator('.iti__search-input').first();
+            if (await search.count() > 0) {
+                await search.fill('United States').catch(()=>{});
+                await page.waitForTimeout(300);
+            }
+            const usOption = page.locator('[data-country-code="us"], li:has-text("United States")').first();
+            if (await usOption.count() > 0) {
+                await usOption.click().catch(()=>{});
+                await page.waitForTimeout(300);
+            }
+            await page.locator('#phone, input[type="tel"]').first().fill(safePhone).catch(()=>{});
+        }
+    } catch(e) {
+        console.log(`Phone country widget normalization skipped: ${e.message}`);
+    }
     await safeType('#org', 'Homecastr');
     await safeType('#job_application_employer', 'Homecastr');
     await safeType('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
@@ -358,6 +377,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     // -------------------------------------------------------------------------
     console.log("Executing Deterministic Strategy Mapper...");
 
+    const processedFieldIds = new Set();
     const fillDeterministicField = async (page, questionRegex, targetValue) => {
         try {
             const isMatchOption = (optText, targetValue) => {
@@ -370,7 +390,16 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 
                 let isMatch = lowerOpt === lowerTarget || lowerOpt.startsWith(lowerTarget) || lowerOpt.includes(lowerTarget);
                 if (!isMatch && lowerTarget.includes('texas at austin')) {
-                    isMatch = lowerOpt.includes('texas at austin') || lowerOpt.includes('texas - austin') || lowerOpt.includes('texas, austin');
+                    isMatch = lowerOpt.includes('texas at austin') || lowerOpt.includes('texas - austin') || lowerOpt.includes('texas, austin') || (lowerOpt.includes('texas') && lowerOpt.includes('austin')) || lowerOpt.includes('ut austin') || lowerOpt.includes('university of texas');
+                }
+                if (!isMatch && lowerTarget.includes('mathematics')) {
+                    isMatch = lowerOpt.includes('mathematics');
+                }
+                if (!isMatch && lowerTarget.includes('united states')) {
+                    isMatch = lowerOpt === 'us' || lowerOpt === 'usa' || lowerOpt.includes('united states') || lowerOpt.includes('united states of america') || lowerOpt.includes('u.s.') || lowerOpt.includes('america');
+                }
+                if (!isMatch && lowerTarget.includes('new york')) {
+                    isMatch = lowerOpt.includes('new york') || lowerOpt.includes('nyc') || lowerOpt.includes('new york city');
                 }
                 if (!isMatch && lowerTarget === 'decline') {
                     isMatch = lowerOpt.includes('prefer not') || lowerOpt.includes('decline') || lowerOpt.includes('do not wish');
@@ -426,6 +455,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             }
 
             if (!targetId) return false;
+            if (processedFieldIds.has(targetId)) {
+                console.log(`[Mapper] Skipping already processed ID: ${targetId}`);
+                return true;
+            }
+            const markProcessed = () => processedFieldIds.add(targetId);
 
             // Use locator with ID because IDs might have weird characters in modern react
             const safeId = targetId.replace(/([":\[\]\.\,])/g, '\\$1');
@@ -468,21 +502,43 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 await input.focus({ force: true }).catch(()=>{});
                 await input.fill("").catch(()=>{});
                 
-                // If target is Decline or Acknowledge, don't filter aggressively because the literal text varies
-                const searchStr = ['decline', 'acknowledge', 'expert', 'proficient'].includes(targetValue.toLowerCase()) ? ' ' : targetValue;
+                const targetLower = targetValue.toLowerCase();
+                // Stripe's country selectors often search by "US" rather than the full country name.
+                const searchStr = ['decline', 'acknowledge', 'expert', 'proficient'].includes(targetLower)
+                    ? ' '
+                    : targetLower.includes('united states')
+                        ? 'US'
+                        : targetValue;
+                const optionSelector = '[role="option"], div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"], li[role="option"]';
+                const listboxId = (await input.getAttribute('aria-controls').catch(()=>null)) || (await input.getAttribute('aria-owns').catch(()=>null));
+                const safeListboxId = listboxId ? listboxId.replace(/([":\[\]\.\,])/g, '\\$1') : '';
+                const scopedOptionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : optionSelector;
                 
                 await input.pressSequentially(searchStr, { delay: 50 }).catch(()=>{});
                 await page.waitForTimeout(2000); // Wait for options to render from API
                 
                 // Try to click the exact option
-                let options = await page.$$('div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"]');
+                let options = await page.$$(scopedOptionSelector);
+                if (!safeListboxId) {
+                    options = await Promise.all(options.map(async opt => (await opt.isVisible().catch(()=>false)) ? opt : null));
+                    options = options.filter(Boolean);
+                }
                 
                 // Fallback: If no options, clear and open dropdown manually
                 if (options.length === 0) {
                     await input.fill("").catch(()=>{});
                     await input.press('ArrowDown').catch(()=>{});
                     await page.waitForTimeout(1000);
-                    options = await page.$$('div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"]');
+                    const fallbackOptions = await page.$$(scopedOptionSelector);
+                    if (safeListboxId) {
+                        options = fallbackOptions;
+                    } else {
+                        options = (await Promise.all(fallbackOptions.map(async opt => (await opt.isVisible().catch(()=>false)) ? opt : null))).filter(Boolean);
+                    }
+                    if (options.length === 0 && scopedOptionSelector !== optionSelector) {
+                        const globalFallbackOptions = await page.$$(optionSelector);
+                        options = (await Promise.all(globalFallbackOptions.map(async opt => (await opt.isVisible().catch(()=>false)) ? opt : null))).filter(Boolean);
+                    }
                 }
                 
                 let clicked = false;
@@ -499,11 +555,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await opt.click({ delay: 50, force: true }).catch(()=>{});
                         await input.press('Enter').catch(()=>{}); // Explicit commit
                         clicked = true;
+                        markProcessed();
                         break;
                     }
                 }
                 if (!clicked) {
                     console.log(`[Mapper] React-Select: Searched "${targetValue}", No exact match found. Skipping to avoid selecting incorrect default.`);
+                    return false;
                 }
                 await page.waitForTimeout(300);
                 await input.press('Escape').catch(()=>{}); // Safely close dropdown without auto-committing like Tab might
@@ -528,9 +586,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     
                     // Type into the active search field (Select2 appends this to the body usually)
                     const searchField = page.locator('input.select2-search__field').last();
-                    if (await searchField.isVisible().catch(()=>false)) {
-                        await searchField.fill("");
-                        await searchField.pressSequentially(targetValue, { delay: 50 });
+                        if (await searchField.isVisible().catch(()=>false)) {
+                            await searchField.fill("");
+                            await searchField.pressSequentially(targetValue, { delay: 50 });
                         await page.waitForTimeout(2000); // Wait for AJAX API to fetch options
                         
                         // Explicitly find the best matching option and click it
@@ -565,6 +623,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         
                         await page.waitForTimeout(300);
                         await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                        markProcessed();
                         return true;
                     } else {
                         // If no search field, try to click a matching option directly
@@ -576,6 +635,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                                 await opt.click().catch(()=>{});
                                 await page.waitForTimeout(300);
                                 await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                                markProcessed();
                                 return true;
                             }
                         }
@@ -600,6 +660,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         node.dispatchEvent(new Event('change', { bubbles: true }));
                     }).catch(()=>{});
                     await page.waitForTimeout(200);
+                    markProcessed();
                     return true;
                 }
             } else if ((tagName === 'input' && ['text', 'tel', 'email', 'url', 'number', 'password'].includes(type.toLowerCase())) || tagName === 'textarea') {
@@ -609,9 +670,20 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     return false;
                 }
                 
-                if (!(await input.inputValue())) {
+                const currentValue = await input.inputValue().catch(() => '');
+                const targetText = String(targetValue);
+                if (currentValue.trim() !== targetText.trim()) {
                     await input.focus().catch(()=>{});
-                    await input.pressSequentially(targetValue, { delay: 15 }).catch(()=>{});
+                    await input.fill('').catch(()=>{});
+                    await input.fill(targetText).catch(async () => {
+                        await input.pressSequentially(targetText, { delay: 15 }).catch(()=>{});
+                    });
+                    await input.evaluate(el => {
+                        const tracker = el._valueTracker;
+                        if (tracker) tracker.setValue(el.value);
+                        el.dispatchEvent(new Event('input', { bubbles: true }));
+                        el.dispatchEvent(new Event('change', { bubbles: true }));
+                    }).catch(()=>{});
                     await page.waitForTimeout(500);
                     // Google Maps Autocomplete Check
                     const autocomplete = page.locator('.pac-container .pac-item, ul.ui-autocomplete li.ui-menu-item').first();
@@ -619,23 +691,24 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await autocomplete.click().catch(()=>{});
                         await page.waitForTimeout(300);
                     }
-                    await input.blur().catch(()=>{});
-                    return true;
-                } else {
-                    return true; // Already filled natively, mark as processed!
                 }
+                markProcessed();
+                await input.blur().catch(()=>{});
+                return true;
             } else if (tagName === 'input' && (type === 'radio' || type === 'checkbox')) {
                 const targetLower = targetValue.toString().toLowerCase();
                 if (targetLower === 'check' || targetLower === 'yes' || targetLower === 'true' || targetLower === 'acknowledge') {
                     if (!(await input.isChecked().catch(()=>false))) {
                         await input.check({ force: true }).catch(()=>{});
                         await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                        markProcessed();
                         return true;
                     }
                 } else if (targetLower === 'uncheck' || targetLower === 'no' || targetLower === 'false') {
                     if (await input.isChecked().catch(()=>false)) {
                         await input.uncheck({ force: true }).catch(()=>{});
                         await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
+                        markProcessed();
                         return true;
                     }
                 } else {
@@ -653,6 +726,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                                         await radio.check({ force: true }).catch(()=>{});
                                         await radio.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
                                     }
+                                    markProcessed();
                                     return true;
                                 }
                             }
@@ -804,7 +878,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 } else if (combinedLabel.includes('email')) {
                     if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.email || "daniel@homecastr.com", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
-                    const sanitizedPhone = (profileConfig?.candidate?.phone || "7133717875").replace(/[\s\+\(\)\-]/g, '');
+                    const sanitizedPhone = profileConfig?.candidate?.phone_e164 || ('+1' + (profileConfig?.candidate?.phone || "7133717875").replace(/[^\d]/g, ''));
                     if (!(await input.inputValue())) { await input.pressSequentially(sanitizedPhone, { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('location') || combinedLabel.includes('city') || combinedLabel.includes('address')) {
                     if (!(await input.inputValue())) {
@@ -900,6 +974,30 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             } catch(e) {}
         }
 
+        // Stripe-style country-of-work checklists surface the question in the checkbox `description`
+        // attribute and render each option as a standalone label, so we need a direct pass here.
+        for (const check of consentChecks) {
+            try {
+                const desc = (await check.getAttribute('description') || '').toLowerCase();
+                if (!desc.includes('country or countries you anticipate working in')) continue;
+                const labelText = await check.evaluate(el => {
+                    const id = el.id;
+                    if (id) {
+                        const lbl = document.querySelector(`label[for="${id}"]`);
+                        if (lbl) return (lbl.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+                    }
+                    const parentLabel = el.closest('label');
+                    if (parentLabel) return (parentLabel.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
+                    const parent = el.parentElement || el.parentElement?.parentElement;
+                    return parent ? (parent.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase() : '';
+                }).catch(()=> '');
+
+                if (labelText === 'us' || labelText.includes('united states') || labelText.includes('u.s.') || labelText.includes('america')) {
+                    if (!(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
+                }
+            } catch(e) {}
+        }
+
         // Scan custom checkboxes specifically using their 'description' tag (like "Where did you hear about us") 
         const allCheckboxes = await page.$$('input[type="checkbox"]');
         let hearAboutFilled = false;
@@ -956,6 +1054,24 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             if (lowerText.includes('privacy') || lowerText.includes('consent') || lowerText.includes('future') || lowerText.includes('acknowledge') || lowerText.includes('agree') || lowerText.includes('terms')) {
                 const check = await block.$('input[type="checkbox"]');
                 if (check && !(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
+            }
+
+            // Heuristic 1b: Country-of-work checkbox arrays. Stripe and similar Greenhouse forms
+            // often render a long country checklist and require only one selection.
+            if (lowerText.includes('country or countries you anticipate working in') || lowerText.includes('country where you currently reside') || lowerText.includes('current residence') || lowerText.includes('where you currently live')) {
+                const countryChecks = await block.$$('input[type="checkbox"]');
+                for (const check of countryChecks) {
+                    try {
+                        const labelText = ((await check.getAttribute('aria-label') || await check.getAttribute('description') || '') || await check.evaluate(el => {
+                            const lbl = el.closest('label') || el.parentElement || el.parentElement?.parentElement;
+                            return lbl ? (lbl.textContent || '') : '';
+                        }).catch(() => '')).toLowerCase();
+                        if (labelText.includes('united states') || labelText.includes('usa') || labelText.includes('u.s.') || labelText.includes('america')) {
+                            if (!(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
+                            break;
+                        }
+                    } catch(e) {}
+                }
             }
 
             // Heuristic 2: Compensation / Salary Target
@@ -1208,7 +1324,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const empty = [];
             const fields = document.querySelectorAll('input[type="text"]:not([type="hidden"]), textarea, input[role="combobox"]');
             for (const el of fields) {
-                if (!el.value || el.value.trim() === '') {
+                const role = el.getAttribute('role') || '';
+                const isCombo = role === 'combobox';
+                const container = el.closest('.select, .select__container, .iti, .iti__country-container, .select-shell, .select-shell.remix-css-b62m3t-container');
+                const hasRenderedSelection = isCombo && container && (
+                    container.querySelector('.select__single-value, .iti__selected-country, .iti__selected-country-primary')
+                );
+
+                if ((!el.value || el.value.trim() === '') && !hasRenderedSelection) {
                     // Try to find its label
                     let labelText = '';
                     const id = el.id;
@@ -1275,6 +1398,40 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         }
     } catch (e) {
         console.error("⚠️ Synthesizer Fallback Error:", e.message);
+    }
+
+    // Stripe-specific hard fixes for comboboxes that can still be re-rendered as "Yes"
+    // by broader fallback heuristics after the correct option has been selected.
+    try {
+        const forceReactSelectChoice = async (fieldId, desiredText) => {
+            const field = page.locator(`#${fieldId}`).first();
+            if (await field.count() === 0) return false;
+            await field.click({ force: true }).catch(()=>{});
+            await field.fill("").catch(()=>{});
+            await field.pressSequentially(desiredText, { delay: 25 }).catch(()=>{});
+            await page.waitForTimeout(1200);
+
+            const listboxId = (await field.getAttribute('aria-controls').catch(()=>null)) || (await field.getAttribute('aria-owns').catch(()=>null));
+            const safeListboxId = listboxId ? listboxId.replace(/([":\[\]\.\,])/g, '\\$1') : '';
+            const optionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : '[role="option"], li[role="option"]';
+            const options = await page.$$(optionSelector);
+            for (const opt of options) {
+                const text = (await opt.innerText().catch(()=>'' )).replace(/\s+/g, ' ').trim();
+                if (!text) continue;
+                if (text.toLowerCase() === desiredText.toLowerCase() || text.toLowerCase().startsWith(desiredText.toLowerCase())) {
+                    await opt.click({ force: true }).catch(()=>{});
+                    await field.press('Enter').catch(()=>{});
+                    await page.waitForTimeout(300);
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        await forceReactSelectChoice('question_62689507', 'No');
+        await forceReactSelectChoice('question_62689509', 'No');
+    } catch (e) {
+        console.error("Stripe hard-fix fallback failed:", e.message);
     }
 
     // -------------------------------------------------------------------------
@@ -1386,12 +1543,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             document.querySelectorAll('input[role="combobox"]').forEach(box => {
                 let label = document.querySelector(`label[for="${escapeSelector(box.id)}"]`)?.innerText;
                 if (!label) {
-                    const ctx = box.closest('div.field, .application-question');
+                    const ctx = box.closest('div.field, .application-question, .select, .field-wrapper');
                     if (ctx) label = ctx.innerText.split('\n')[0];
                 }
                 label = label || box.id;
-                const container = box.closest('div[class*="container"]');
-                const selectedValue = container?.querySelector('[class*="single-value"]')?.innerText || box.value;
+                const container = box.closest('.select__container, div[class*="container"], .field-wrapper, .application-question');
+                const selectedValue = container?.querySelector('[class*="single-value"], .select__single-value')?.innerText || box.value;
                 data[label.trim()] = selectedValue || "Unanswered";
             });
 
@@ -1414,6 +1571,26 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         });
         metrics.snapshot = applicationSnapshot;
         metrics.domain = domain;
+        metrics.requiredSnapshotGaps = Object.entries(applicationSnapshot)
+            .filter(([label, value]) => /\*/.test(label) && (!String(value || '').trim() || String(value).trim() === 'Unanswered'))
+            .map(([label]) => label);
+        metrics.legalSelectionGaps = await page.evaluate(() => {
+            const gaps = [];
+            document.querySelectorAll('.select__container').forEach(container => {
+                const label = (container.querySelector('label')?.innerText || '').trim();
+                const value = (container.querySelector('.select__single-value, [class*="single-value"], .select__multi-value__label')?.innerText || '').trim();
+                const lowerLabel = label.toLowerCase();
+                const lowerValue = value.toLowerCase();
+                if (!label) return;
+                if ((lowerLabel.includes('sponsorship') || lowerLabel.includes('visa')) && !/\bno\b/.test(lowerValue)) {
+                    gaps.push(`${label} => ${value || 'Unanswered'}`);
+                }
+                if ((lowerLabel.includes('authorized') || lowerLabel.includes('legal authorization') || lowerLabel.includes('legally authorized')) && !/\byes\b/.test(lowerValue)) {
+                    gaps.push(`${label} => ${value || 'Unanswered'}`);
+                }
+            });
+            return gaps;
+        });
         
         // Extract raw HTML context of the form to aid deterministic debugging of unmapped fields
         metrics.rawFormHtml = await page.locator('form').first().evaluate(el => el.outerHTML).catch(()=>'');
@@ -1422,14 +1599,19 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     }
 
     if (isBatch) {
-        if (false /* auto-submit override */) {
+        if (metrics.fillPercentage < 100) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+        if (Array.isArray(metrics.requiredSnapshotGaps) && metrics.requiredSnapshotGaps.length > 0) {
+            console.log('Warning: snapshot still reports unresolved required fields; proceeding because Greenhouse React-select widgets can hide selected values from the raw input snapshot: ' + metrics.requiredSnapshotGaps.join(', '));
+        }
+        if (Array.isArray(metrics.legalSelectionGaps) && metrics.legalSelectionGaps.length > 0) {
+            console.log('Skipping submission natively: legal/work-authorization verification failed: ' + metrics.legalSelectionGaps.join('; '));
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
         // Live Submission Phase
@@ -1458,9 +1640,24 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 try {
                     const fs = await import('fs');
                     if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
-                    const screenshotPath = `data/archive/submission_${Date.now()}.png`;
+                    const archiveStamp = Date.now();
+                    const screenshotPath = `data/archive/submission_${archiveStamp}.png`;
                     await page.screenshot({ path: screenshotPath, fullPage: true });
+                    metrics.preSubmissionScreenshot = screenshotPath;
                     console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
+                    const payloadPath = `data/archive/submission_${archiveStamp}.json`;
+                    const payload = {
+                        url,
+                        status: metrics.status || 'Pending_Submission',
+                        fillPercentage: metrics.fillPercentage,
+                        total: metrics.total,
+                        filled: metrics.filled,
+                        snapshot: metrics.snapshot || null,
+                        screenshotPath,
+                        capturedAt: new Date().toISOString()
+                    };
+                    fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
+                    console.log(`🗂️ Pre-submission payload saved: ${payloadPath}`);
                 } catch(e) {
                     console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
                 }
@@ -1553,11 +1750,28 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const targetResumeUrl = process.argv[3] || 'cv.pdf';
         
         const launchArgs = ['--window-position=-10000,-10000'];
-        const context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
+        const preferredProfilePath = profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+        let context;
+        try {
+            context = await chromium.launchPersistentContext(preferredProfilePath, {
+                headless: false,
+                args: launchArgs,
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            });
+        } catch (error) {
+            const message = String(error?.message || error || '');
+            if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
+                throw error;
+            }
+            const fallbackProfilePath = path.resolve('data/tmp', `chrome-bot-profile-fallback-${Date.now()}`);
+            fs.mkdirSync(fallbackProfilePath, { recursive: true });
+            console.log(`Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
+            context = await chromium.launchPersistentContext(fallbackProfilePath, {
+                headless: false,
+                args: launchArgs,
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            });
+        }
         
         await context.addInitScript(() => {
             Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
@@ -1574,11 +1788,6 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
-            metrics.status = 'Incomplete';
-            return metrics;
-        }
             await context.close();
         }
     })();
