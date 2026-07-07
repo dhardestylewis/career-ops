@@ -9,10 +9,10 @@ import fs from 'fs';
 import yaml from 'js-yaml';
 import { populateLever } from '../scrapers/auto-fill-lever.mjs';
 import { getResumePath } from '../core/profile.mjs';
+import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
 
 const profileConfig = yaml.load(fs.readFileSync('config/profile.yml', 'utf8'));
 const resumePath = getResumePath(profileConfig);
-const chromePath = profileConfig?.execution?.chrome_profilePath || './data/chrome-bot-profile';
 
 // ── TARGETS ─────────────────────────────────────────────────────────────────
 const targets = [
@@ -25,15 +25,17 @@ const targets = [
 // ────────────────────────────────────────────────────────────────────────────
 
 (async () => {
-    const context = await chromium.launchPersistentContext(chromePath, {
-        headless: false,
-        args: [
-            '--window-position=-10000,-10000',
-            '--disable-blink-features=AutomationControlled',
-            '--no-sandbox',
-        ],
-        viewport: null,
+    const runtime = await launchAutomationContext({
+        chromium,
+        profileConfig,
+        defaultLane: 'local_headed',
+        purpose: 'manual CAPTCHA runner',
+        launchArgs: ['--disable-blink-features=AutomationControlled', '--no-sandbox'],
+        launchOptions: { viewport: null },
     });
+    const { context } = runtime;
+    console.log(`Browser lane: ${describeBrowserLane(runtime.laneConfig)}`);
+    await installAutomationStealth(context);
 
     console.log("\n==================================");
     console.log("⌨️  PRESS [ENTER] AT ANY TIME TO PULL THE BROWSER ON SCREEN");

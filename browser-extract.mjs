@@ -33,6 +33,7 @@ import { join, dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
 import yaml from 'js-yaml';
 import { LIVENESS_CONTEXT_OPTIONS, rejectPrivateOrInvalid } from './liveness-browser.mjs';
+import { launchAutomationContext } from './src/core/browser-lane.mjs';
 
 const CAREER_OPS = dirname(fileURLToPath(import.meta.url));
 
@@ -202,10 +203,18 @@ async function main() {
     process.exit(1);
   }
 
-  let browser;
+  let runtime;
   try {
-    browser = await chromium.launch({ headless: true });
-    const context = await browser.newContext(LIVENESS_CONTEXT_OPTIONS);
+    runtime = await launchAutomationContext({
+      chromium,
+      profileConfig: existsSync(join(CAREER_OPS, 'config/profile.yml'))
+        ? (yaml.load(readFileSync(join(CAREER_OPS, 'config/profile.yml'), 'utf-8')) || {})
+        : {},
+      defaultLane: 'local_headless',
+      purpose: 'browser-extract',
+      contextOptions: LIVENESS_CONTEXT_OPTIONS,
+    });
+    const { context } = runtime;
     // Block every request (main navigation, redirect hop, or subresource) to a
     // private/loopback/link-local or non-http(s) host. Guarding only the initial
     // URL isn't enough once we return page CONTENT: a server-side redirect could
@@ -236,7 +245,7 @@ async function main() {
     console.error(JSON.stringify({ error: `navigation error: ${String(err.message).split('\n')[0]}`, code: 'navigation_error' }));
     process.exitCode = 1;
   } finally {
-    if (browser) await browser.close().catch(() => {});
+    if (runtime) await runtime.close().catch(() => {});
   }
 }
 

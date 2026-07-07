@@ -1445,24 +1445,21 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
 
 
 import { fileURLToPath } from 'url';
+import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async () => {
         const isBatch = process.env.BATCH_EVAL_MODE === 'true';
         const targetUrl = process.argv[2];
         const targetResumeUrl = process.argv[3];
-        
-const launchArgs = ['--window-position=-10000,-10000'];
-const chromeProfilePath = process.env.CHROME_PROFILE_PATH || profileConfig?.execution?.chrome_profilePath || 'data/chrome-bot-profile';
-        const context = await chromium.launchPersistentContext(chromeProfilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        const runtime = await launchAutomationContext({
+            chromium,
+            profileConfig,
+            defaultLane: 'local_headed',
+            purpose: 'Lever autofill',
         });
-        
-        await context.addInitScript(() => {
-            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-            window.navigator.chrome = { runtime: {} };
-        });
+        const { context } = runtime;
+        console.log(`Browser lane: ${describeBrowserLane(runtime.laneConfig)}`);
+        await installAutomationStealth(context);
 
         const page = await context.newPage();
         
@@ -1474,7 +1471,7 @@ const chromeProfilePath = process.env.CHROME_PROFILE_PATH || profileConfig?.exec
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-            await context.close();
+            await runtime.close();
         }
     })();
 }

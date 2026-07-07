@@ -92,6 +92,34 @@ cv:
   # The ID starts with "D" and is 11 characters long.
   # canva_resume_design_id: "DAxxxxxxxxx"
 
+# Optional browser automation lane controls. These affect the local helper
+# scripts (`browser-extract.mjs`, ATS auto-fill runners, and manual/batch
+# browser helpers). MCP-hosted browser tools still read the host's MCP config.
+#
+# execution:
+#   # local_headless (default for extraction), local_headed (default for apply),
+#   # or remote_cdp for a remote Chrome/Cloudflare Browser Run-compatible CDP session.
+#   browser_lane: "local_headless"
+#   # Existing dedicated local browser profile for headed automation.
+#   chrome_profilePath: "data/chrome-bot-profile"
+#   # Optional alias for the same path:
+#   # browser_user_data_dir: "data/chrome-bot-profile"
+#   # Browser channel for local launches: chrome | msedge | chromium
+#   browser_channel: "chrome"
+#   # Keep headed automation off-screen when possible.
+#   browser_headed_offscreen: true
+#   # Optional remote CDP endpoint for cloud/off-device browsing.
+#   # browser_remote_cdp_url: "wss://example-cdp-endpoint"
+#   # Optional attach endpoint for reusing an existing browser session via CDP.
+#   # browser_attach_cdp_url: "http://127.0.0.1:9222"
+#   # Optional local attach-browser launcher settings.
+#   # browser_attach_port: 9222
+#   # browser_attach_host: "127.0.0.1"
+#   # browser_attach_executable: "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe"
+#   # browser_attach_profile_path: "data/chrome-attach-profile"
+#   # Optional Playwright storage state file for headless/remote sessions.
+#   # browser_storage_state: "data/auth-state.json"
+
 # ── Culture Screen ───────────────────────────────────────────────────────────
 #
 # Enforces structural capping on the "Cultural signals" dimension during evaluation.
