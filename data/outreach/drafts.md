@@ -316,40 +316,6 @@ Best,
 Daniel
 ```
 
-## Warm Academic: Paola Passalacqua
-
-**Archived To:** Paola Passalacqua <ppassalacqua@ethz.ch>
-
-**Channel:** Email
-
-**Status:** Sent on 2026-07-06
-
-**LinkedIn / public check:** Professor of Hydrology and River System Science at ETH Zurich and Eawag. Her work spans river deltas, hydrological connectivity, and flood risk.
-
-**Dossier**
-- Relationship: former collaborator on national disaster resiliency work at TACC.
-- Last touch: archived collaborator thread in the Anthropic Fellows reference data plus our TACC history.
-- Why now: the ETH move makes the reconnect feel timely, and the flood / river systems angle is still directly relevant.
-- Hook: her hydrology and river-system work is a clean bridge to the flood-resilience systems I've built.
-- Proof point: I scaled climate and flood models on world-leading supercomputers at TACC and now run Homecastr's forecasting stack.
-- Ask: a quick catch-up and any advice on current research directions.
-- Avoid: vague "just checking in" language or a generic alumni-style note.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if useful, otherwise stop.
-
-**Subject:** Reconnecting from TACC
-
-```text
-Hi Paola,
-
-I was thinking about our TACC work on disaster resiliency and wanted to reconnect. I saw your work on hydrology and river system science at ETH Zurich and Eawag, and it maps closely to the flood-resilience work I have kept building at Homecastr.
-
-If you are open to it, I would love to catch up and hear what you are working on these days.
-
-Best,
-Daniel
-```
-
 ## Warm Academic: Ali Hirsa
 
 **To:** Ali Hirsa <ah2347@columbia.edu>
@@ -379,40 +345,6 @@ Hi Ali,
 I wanted to share a quick update from the Columbia side. I saw your current work directing Financial Engineering and the Center for AI in Business Analytics & FinTech, and the latent-factor research has continued to shape how I think about production ML at Homecastr.
 
 If you have time, I would be glad to catch up and hear whether there are any new research directions you would want me to keep in mind.
-
-Best,
-Daniel
-```
-
-## Warm Academic: Christopher Munsell
-
-**Archived To:** Christopher Munsell <cwm2132@columbia.edu>
-
-**Channel:** Email
-
-**Status:** Sent on 2026-07-06
-
-**LinkedIn / public check:** Columbia GSAPP professor of Real Estate Development Finance who teaches MSRED finance courses.
-
-**Dossier**
-- Relationship: academic reference from the MS in Urban Planning program.
-- Last touch: GSAPP reference / prior academic relationship.
-- Why now: his current finance-and-development role is a clean bridge to the housing / real-estate angle in Homecastr.
-- Hook: his real estate finance teaching and development work pair naturally with the housing forecasting product.
-- Proof point: Homecastr forecasts property value trajectories at scale and I've built the geospatial/urban-planning side of that system.
-- Ask: a quick catch-up plus any advice on the real-estate / housing side of my work.
-- Avoid: generic GSAPP gratitude without mentioning the real-estate finance bridge.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if useful.
-
-**Subject:** Reconnecting from GSAPP
-
-```text
-Hi Christopher,
-
-I wanted to reconnect from GSAPP, and Iâ€™ve been thinking about how closely your real estate finance work connects to what Iâ€™m building at Homecastr.
-
-If youâ€™re open, Iâ€™d love to hear your thoughts on Homecastr and catch up over coffee sometime. Iâ€™d also be grateful for any roles or research assistantships you think I should keep in mind.
 
 Best,
 Daniel
@@ -616,116 +548,140 @@ Best,
 Daniel
 ```
 
-## South Park Commons Slack batch
+## Columbia / housing research routing: Douglas Woodward
 
-Date: 2026-07-06
+**To:** Douglas Woodward <dw38@columbia.edu>
 
-Status: Sent
+**Channel:** Email
 
-Channel: direct Slack DMs from the South Park Commons workspace
+**Status:** Sent 2026-07-06
 
-Notes: Each note used the same community / compare-notes structure: Homecastr's physical-world forecasting stack, no pitch, quick coffee or 20-minute chat. The Slack app_redirect pages were resolved to browser DM URLs before sending.
+**LinkedIn check:** Columbia GSAPP. Current-role routing contact, not a collaborator.
 
-- Will Sentance - embodied AI and VLA fine-tuning; world models and evaluation.
-- Aayush Agarwal - AI-driven SaaS and enterprise products; how AI changes operator workflows.
-- Sandor Felber - whole-body control and reinforcement learning; sim-to-real transfer and control loops.
-- Raghavendra Prabhu - the autonomous AI recruiting agent Tezi; agent workflows and UX.
-- Kara Buckley - sports, media, entertainment, and athlete marketing; storytelling and community-building around a consumer product.
-- Robert Ochshorn - transcript-driven video tooling; turning dense signal into usable interfaces.
-- Muhammad Bilal - robotics foundation models and world models; how to evaluate physical-world models.
-- Won-Seok Yoo - consumer startup building; fast iteration and founder workflow.
-- Owen Kent - HCI and alternative interfaces; making complex systems legible to real users.
-- Raunaq Bhirangi - hardware and autonomous systems; robotics research and sim-to-real.
-- Tinghui Zhou - 3D foundation models; spatial representations and world models.
-- Yuguang (Yg) Yuan - embodied-AI data infrastructure; data plumbing for physical-world models.
-- Bhav Ashok - computer vision and robotics; perception and scene understanding.
-- Nagasrikanth Kallakuri - perception and national-scale infrastructure; reliability in critical systems.
-- Sarthak Bhagat - sim-to-real transfer and world models; evaluation.
-- Aayush Naik - legacy-system knowledge retention and robotics research; memory, retrieval, and long-lived systems.
-- Kun Wang - embodied-AI data pipelines; data pipelines that support autonomy.
-- Kavan Mceachern - tactile intelligence for robots; high-signal sensing and uncertainty.
-- Jeremy Ebobisse - athlete investment and AI in sports; sports decision-making and data.
-- Jingxiang Mo - autonomous robots for critical infrastructure; reliability and deployment in the real world.
+**Dossier**
+- Relationship: career-routing contact in the Columbia GSAPP urban planning program.
+- Last touch: 2026-07-06 reply in the Columbia GSAPP thread.
+- Why now: Douglas asked for more specificity, and I now have the named contacts plus a current resume to make the routing easier.
+- Hook: GSAPP lists him as the Associate Director for Professional Development and Practice and the Urban Planning career-services contact.
+- Proof point: current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+- Ask: names or an introduction to the best current contact for affordable housing or housing-data / innovation work.
+- Avoid: collaborator language, abstract lane-narrowing language, or a long status update.
+- Status: sent.
+- Next follow-up: wait for reply; if none, one brief nudge after 4 business days.
 
-## South Park Commons LinkedIn reconnect
-
-Date: 2026-07-06
-
-Status: Partial
-
-Notes: Use the same non-work reconnect structure as the Slack batch. One verified live DM went out to Will Sentance; the rest of the LinkedIn batch could not be fully verified because the browser surface reset and stopped attaching cleanly mid-run. The browser reattached later and Muhammad Bilal was verified sent in the resumed session, and Won-seok Yoo was later sent as a verified connect invite note. Owen Kent, Raunaq Bhirangi, Tinghui Zhou, Yuguang (Yg) Yuan, Bhav Ashok, Nagasrikanth Kallakuri, Sarthak Bhagat, Aayush Naik, Kun Wang, Kavan Mceachern, Jeremy Ebobisse, and Jingxiang Mo were later sent successfully as verified connect invite notes, kept non-work only because they are SPC-affiliated. Raghavendra Prabhu was blocked by LinkedIn's email-verification requirement, and I did not use email for this non-work reconnect.
-
-## Next 10 Post-Application LinkedIn Routing
-
-Date: 2026-07-06
-
-Status: Sent with correction.
-
-Packet: `data/outreach/next10-post-application-2026-07-06-send-packet.md`
-
-Channel: LinkedIn. Authenticated in-app browser verified each profile route on 2026-07-06. Valid company routes are sent and verified as Pending or conversation text sent.
-
-SPC gate: no local SPC matches found for the 10 names in `data/spc-contacts.tsv` or `data/archive/south-park-commons-members-2026-07-05.md`.
-
-Outcome: 10 valid company routes were sent. Jaydeep Chakrabarty was also sent before post-send verification showed he is currently at Piramal Finance rather than Thoughtworks, so Chris Westerhold was verified and sent as the corrected Thoughtworks route. Muskan Kukreja's direct Message route surfaced a Premium/InMail upsell, so a normal connection note was sent instead.
-
-### Pradeep Dorairaj - Snowflake
+**Subject:** Re: Opportunity routing from Homecastr
 
 ```text
-Hi Pradeep - I applied to Snowflake's ML Platform Inference role. Your team's inference/ML Ops work is close to my TACC-scale distributed modeling + production ML stack work. If useful, I'd love to connect or be routed to the right owner.
+Hi Douglas,
+
+Thanks again for the pointers and for narrowing the lane. I’ve attached my current 06/30 causal MLE resume in case it helps with routing. If one or two specific contacts come to mind for affordable housing or housing-data and innovation roles, I’d be grateful for the names or an introduction.
+
+Best,
+Daniel
 ```
 
-### Robbie Maasberg - Graphcore
+## Columbia / housing research routing: Brad Greenburg
+
+**To:** Brad Greenburg <brad.greenburg@nyu.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** Furman / quick routing question
 
 ```text
-Hi Robbie - I applied for Graphcore's AI Platform Architect role in Austin. My background spans production ML systems, distributed compute at TACC, and geospatial AI. If this is in your lane, I'd appreciate a quick connect or route to the owner.
+Hi Brad,
+
+Douglas Woodward pointed me to Furman as one of the strongest housing research homes in the field. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know who at Furman is the best person to speak with about housing research and data work.
+
+If someone else is a better first stop, I’d appreciate the pointer.
+
+Best,
+Daniel
 ```
 
-### Stella E. / Stella Ernster - Capital Rx / Judi Health
+## Columbia / housing research routing: Galia Solomonoff
+
+**To:** Galia Solomonoff <gs66@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** GSAPP Housing Lab / quick routing question
 
 ```text
-Hi Stella - I applied to the Senior Applied AI/ML Scientist role at Judi Health / Capital Rx. I've built production ML systems in high-stakes settings and would appreciate a quick connect if you own or can route this search.
+Hi Galia,
+
+Douglas Woodward pointed me to the GSAPP Housing Lab, and the lab page says you direct it. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a good Columbia contact for housing research that touches student collaboration too.
+
+If another person on the GSAPP side is better, I’d appreciate the pointer.
+
+Best,
+Daniel
 ```
 
-### Muskan Kukreja - Checkr
+## Columbia / housing research routing: Howard Slatkin
+
+**To:** Howard Slatkin <info@chpcny.org>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** CHPC / quick routing question
 
 ```text
-Hi Muskan - I applied to Checkr's Staff Applied AI Engineer role. Your post on agents/evals/model serving maps closely to my production ML + TACC-scale systems background. If useful, I'd love to connect or be routed to the right owner.
+Hi Howard,
+
+Douglas Woodward pointed me to CHPC as a housing NGO think tank worth knowing. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know who at CHPC is the best person to speak with about housing research and data work.
+
+If someone else is the better first stop, I’d appreciate the pointer.
+
+Best,
+Daniel
 ```
 
-### Marwan Mattar - Sigma Computing
+## Columbia / housing research routing: Weiping Wu
+
+**To:** Weiping Wu <weiping.wu@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** Columbia housing initiative / quick routing question
 
 ```text
-Hi Marwan - I applied to Sigma's Senior AI/ML Engineer role. I've built production forecasting/ML systems and large-scale data pipelines, and Sigma's AI-for-data-workflows direction feels close. Would value a quick connect if useful.
+Hi Weiping,
+
+GSAPP Academic and Student Affairs pointed me your way, and Douglas Woodward also mentioned Columbia’s housing initiative. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a good Columbia contact for housing research or student-facing work this summer.
+
+If another person would be better, I’d appreciate the pointer.
+
+Best,
+Daniel
 ```
 
-### Chris Westerhold - Thoughtworks
+## Columbia / housing research routing: Kerry Donahue
+
+**To:** Kerry Donahue <kerry_donahue@harvard.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** JCHS / quick routing question
 
 ```text
-Hi Chris - I applied for Thoughtworks' Principal AI Architect role. Your AI-first software engineering transformation work maps closely to my production ML + distributed modeling background. If you're close to this lane, I'd value a quick connect or route.
-```
+Hi Kerry,
 
-### James Melville - Vivodyne
+Douglas Woodward mentioned the Joint Center as one of the strongest housing research groups to know. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a better person at JCHS to speak with about housing research or fellowship paths.
 
-```text
-Hi James - I applied for Vivodyne's AI Senior Scientist role. I've built production ML systems for physical-world forecasting and validation, and your software/data science bridge at Vivodyne looks like the right context. Would value a quick connect.
-```
+If you’re the right contact, I’d appreciate the pointer.
 
-### Mor Adato - DoubleVerify
-
-```text
-Hi Mor - I applied to DoubleVerify's Senior Manager, Data Platform & AI Enablement role. My background spans production ML, data pipelines, APIs, and reliability for high-stakes decisions. If this is near your platform lane, I'd value a quick connect.
-```
-
-### Debarshi Kar - Instawork
-
-```text
-Hi Debarshi - I applied for the ML Engineer role on Instawork Robotics. I've built production ML systems, data pipelines, and physical-world forecasting models, and the robotics data flywheel is exactly the systems problem I like. Would value a quick connect.
-```
-
-### Laura Woodruff - Neuralink
-
-```text
-Hi Laura - I applied to Neuralink's Machine Learning Engineer role. My background is production ML, signal-heavy predictive modeling, and high-performance systems; I'd love to connect if you're the right recruiter for the AI/ML lane or can route me.
+Best,
+Daniel
 ```
 
