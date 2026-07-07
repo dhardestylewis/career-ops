@@ -112,7 +112,7 @@ Cap: 3 sends
 
 - `recruiter / Gabriel Schook` is a draft-only Bellwether reconnect for separate X openings; do not treat it as an active Bellwether follow-up.
 - `hiring-manager / Apurva Singh CGeog(GIS)` stays `blocked` because the LinkedIn send path hit CAPTCHA.
-- `hiring-manager / Bernd Wuebben` is queued for a LinkedIn note after the SPC affiliation check.
+- `hiring-manager / Bernd Wuebben` is sent as a LinkedIn note after the live profile check and SPC offline-export pass.
 - `founder-ecosystem / Oliver Doering` is queued for a short pitch-deck reply to the virtual FinTech Investment Conference invite.
 - `warm-network / Aaron Wilson` is a warm founder follow-up from the Belleau Labs call thread.
 - `recruiter / Jill Cherrstrom` is a Bellwether reconnect only; keep it out of the active application thread.

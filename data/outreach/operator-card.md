@@ -16,16 +16,22 @@ Use this first if you are the next agent picking up live outreach.
 - Recruiter discovery must use new companies only. Do not add more people from Harvey, Guardian, Elwood, Tech Holding, or AdAstra unless the user explicitly asks for a separate referral path.
 - Exclude Databricks from the current recruiter batch per user instruction; keep it out of drafts and sends unless the user explicitly reopens that lane.
 - Ignore Toptal entirely. Do not create, queue, revive, or route outreach to any Toptal contacts in future sessions.
+- Douglas Woodward is a career-routing contact, not a collaborator. If he asks for more specificity, answer with named contacts or an introduction and treat the current resume as the routing aid.
 - Harvey is the main company lane to keep watching. Prioritize `Software Engineer, Agents`, then `Data Scientist, Marketing`, with `Applied Legal Researcher` as a stretch backup.
 - Current mailbox access in this session is only `daniel@homecastr.com` in Gmail. Columbia/UT inboxes are not connected here yet, and Superhuman mail is not exposed in this thread.
+- July 6 added calendar-visible conversions from the outreach stream. Count booked meetings as real conversions when they can be tied back to a source thread. If provenance is unclear, mark the event unassigned and exclude it from funnel math.
+- Current planning heuristic: `8-12` meaningful actions per day, with `3-4` new touches, `1-2` follow-ups, `1` warm routing ask, and `1-2` application reviews or submissions.
+- Current EV planning anchor: roughly `20-40 EV-days` per offer-equivalent, with `~25 EV-days` as the midpoint until a new sample says otherwise.
+- The biggest improvement lever is warm routing and current-role reconnects. Short, one-ask notes are outperforming generic cold pitches.
 
 ## Read Order
 
 1. `modes/_profile.md`
 2. `data/outreach/log.md`
-3. `data/outreach/template-evidence.md`
-4. `data/outreach/scripts.md`
-5. `data/outreach/review.md`
+3. `data/outreach/drafts.md`
+4. `data/outreach/template-evidence.md`
+5. `data/outreach/scripts.md`
+6. `data/outreach/review.md`
 
 ## Operating Rule
 
@@ -54,3 +60,4 @@ Use this first if you are the next agent picking up live outreach.
 - Do not re-send duplicates already recorded in the log.
 - Do not reopen the rejected Bellwether interview as if it were still active.
 - Do not draft outreach without first checking LinkedIn for current company/role when the contact could have moved.
+- Do not use vague narrowing language like "affordable-housing lane versus innovation and data lane" for Douglas Woodward; ask for specific contacts or an introduction instead.

@@ -127,6 +127,8 @@ Career-ops is a single slash command with multiple modes:
 /career-ops apply          → Fill application forms with AI
 /career-ops pipeline       → Process pending URLs
 /career-ops contacto       → LinkedIn outreach message with a source-backed contact dossier and SPC affiliation gate
+/career-ops gtm-outreach   → GTM lead outreach with source-backed lead dossier and translation layer
+/career-ops gtm-followup   → GTM follow-up cadence for active lead threads
 /career-ops deep           → Deep company research
 /career-ops training       → Evaluate a course/cert
 /career-ops project        → Evaluate a portfolio project
@@ -136,6 +138,8 @@ Live outreach is dossier-driven: gather sources, the last touch, the reason now,
 If the Chrome profile already has authenticated LinkedIn, Pando, or Superhuman tabs open, keep those tabs as handoff state and use Chrome first. Login state is not permanent across brand-new sessions, so the in-app browser should be treated as a backup Gmail surface rather than the only durable surface.
 
 Or just paste a job URL or description directly -- career-ops auto-detects it and runs the full pipeline.
+
+If you are doing GTM lead, customer, partner, or advisor outreach instead of job search, use the gtm-* fork so the wording stays in lead language instead of application language.
 
 ## How It Works
 

@@ -1,11 +1,14 @@
 # Outreach Log
 
-Date: 2026-07-05
+Date: 2026-07-06
 
 This log records live outbound messages sent from the current browser session so future agents can avoid duplicates.
 
 | Channel | Recipient | Destination | Template | Subject / Context | Status | Notes |
 |---|---|---|---|---|---|---|
+| LinkedIn DM | Wen Yao | LinkedIn message thread | recruiter bridge / direct-message fallback | Plaid transaction foundation model | Sent | Search-result and profile-header verification both matched Wen Yao (2nd, ML/AI Lead @ Plaid); the connect-note modal stalled in this browser, so the direct-message composer was used instead. |
+| LinkedIn DM | Rico Curry | LinkedIn message thread | recruiter bridge / direct-message fallback | Plaid recruiting across AI/LLM/NLP and Applied ML | Sent | Search-result and profile-header verification both matched Rico Curry (2nd, Senior Technical Recruiter / Recruiting Leader at Plaid); the direct-message composer was used. |
+| LinkedIn DM | Julia Tupy | LinkedIn message thread | recruiter bridge / direct-message fallback | Modal talent partner / AI infra-platform lane | Sent | Search-result and profile-header verification both matched Julia Tupy (2nd, Talent Partner at Modal); the direct-message composer was used. |
 | LinkedIn DM | Alexander Nevedovsky | LinkedIn message thread | warm reply / product-interest | Audos experiment reply | Sent | Replied in the existing 1st-degree thread after checking the current profile; asked to try Audos via a referral link and kept the note short. |
 | Email | Christopher Munsell | `cwm2132@columbia.edu` | warm academic reconnect | Reconnecting from GSAPP | Sent | Sent from the live Gmail compose thread with the GSAPP / Homecastr bridge and the coffee-chat / research-assistantship ask. |
 | Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | warm academic reconnect | Reconnecting from TACC | Sent | Sent from the live Gmail compose thread with the TACC / flood-resilience bridge and the catch-up ask. |
@@ -31,10 +34,24 @@ This log records live outbound messages sent from the current browser session so
 | LinkedIn Connect | Michael Franchi | LinkedIn invite note | recruiter bridge | Consumer product ML fit | Sent | Short connect note asking whether he owns the relevant role or can route it. |
 | LinkedIn DM | Michael Jaffe | LinkedIn message thread | recruiter bridge | Data-focused technical recruiting fit | Sent | Short DM asking whether he handles engineering or data roles. |
 | LinkedIn Connect | Miguel Valle | LinkedIn invite note | recruiter bridge | Talent and technical recruiting fit | Sent | Short connect note asking which recruiting lane is the best fit. |
+| Email | James Pickard | `james.pickard@accenture.com` | recruiter bridge | Accenture AI Transformation & Solutions Lead | Sent | Sent from Gmail to the Accenture address after confirming the thread was already in flight; no duplicate send. |
+| Email | Oliver Doering | `oliver@thestartupclub.net` | conference reply | Opportunity for startups in FinTech | Sent | Existing reply-all thread; asked for pitch-deck format and deadline. |
+| Email | Oliver Doering | `oliver@thestartupclub.net` | conference follow-up | Re: Opportunity for startups in FinTech | Sent | Replied to confirm the 6pm CET / 12 noon EST autumn slot works and asked for preferred format and deadline. |
+| LinkedIn DM | Catherine Del Hierro | LinkedIn message thread | recruiter bridge | LTS Lead Forward Deployed Engineer | Sent | Current profile showed 1st-degree message access; sent from the live LinkedIn compose thread after verifying the recipient chip and the URL. |
+| LinkedIn DM | Harrison Zolot | LinkedIn message thread | recruiter bridge / direct-message | Trexquant Quantitative Researcher | Sent | Current profile showed 1st-degree message access; the message appeared in the live conversation list after send. |
+| LinkedIn DM | Bernd Wuebben | LinkedIn message thread | recruiter bridge / reconnect | AllianceBernstein systematic fixed income | Sent | Current profile showed 1st-degree message access; the message appeared in the live conversation list after send. |
+| Email | Douglas Woodward | `dw38@columbia.edu` | Columbia routing reply | Opportunity routing from Homecastr | Sent | Replied with the current Furman, GSAPP Housing Lab, CHPC, Columbia planning, and JCHS contacts after sending separate notes to each of them. |
+| Email | Douglas Woodward | `dw38@columbia.edu` | Columbia routing follow-up | Re: Opportunity routing from Homecastr | Sent | Sent the current 06/30 causal MLE resume and asked for specific names or an introduction instead of vague lane narrowing. |
+| Email | Brad Greenburg | `brad.greenburg@nyu.edu` | housing research routing note | Furman / quick routing question | Sent | Routed to the current Furman Center executive director after Douglas Woodward pointed to Furman as a housing research home. |
+| Email | Galia Solomonoff | `gs66@columbia.edu` | lab routing note | GSAPP Housing Lab / quick routing question | Sent | Routed to the current GSAPP Housing Lab director with a student-collaboration question. |
+| Email | Howard Slatkin | `info@chpcny.org` | public-interest routing note | CHPC / quick routing question | Sent | Routed to CHPC's public contact for the current executive director and housing policy lane. |
+| Email | Weiping Wu | `weiping.wu@columbia.edu` | Columbia program routing note | Columbia housing initiative / quick routing question | Sent | Routed to the Columbia GSAPP planning director after the GSAPP student-affairs pointer. |
+| Email | Kerry Donahue | `kerry_donahue@harvard.edu` | research center routing note | JCHS / quick routing question | Sent | Routed to the JCHS communications director and public contact for fellowship / research pointers. |
+| Email | Kelsey Richmond | `kelsey.richmond@newlab.com` | startup membership reply | `Re: Newlab Contact Form Submission` | Sent | Submitted the Newlab startup membership application and replied in-thread with a short confirmation. |
 | Email | Jessie Miller | `baseline-recruiting@palantir.com` | recruiter bridge | Forward Deployed AI Engineer application | Sent | Sent via Gmail API with the canonical resume attached; asked whether she owns the Palantir FDE search or can route it. |
 | Email | Arielle Mills | `contact@legora.com` | recruiter bridge | AI Marketing Engineer application | Sent | Sent via Gmail API with the canonical resume attached; asked whether she owns the Legora search or can route it. |
 | Email | Ashish Kapadia | `recruiting@omadahealth.com` | recruiter bridge | Director, Cardiometabolic Health Product Marketing application | Sent | Sent via Gmail API with the canonical resume attached; asked whether he owns the Omada search or can route it. |
 | Email | Jasmine Cheng | `jobs@mixpanel.com` | recruiter bridge | Software Engineer, AI Product Insights application | Sent | Sent via Gmail API with the canonical resume attached; asked whether she owns the Mixpanel search or can route it. |
+| 2026-07-06 | non-work-reconnect | Email | Elsa Bismuth | `fear-of-missing-out@mail.beehiiv.com` | reconnect | Good to stay in touch | Sent | Sent via Gmail API from the vetted FOMO reconnect draft; kept it non-work because the SPC gate remains unresolved for work pitches. |
 | 2026-07-05 | warm-academic | Email | Paola Passalacqua | `ppassalacqua@ethz.ch` | professor-reconnect | Reconnecting after TACC | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from TACC` conversation. |
 | 2026-07-05 | warm-academic | Email | Christopher Munsell | `cwm2132@columbia.edu` | professor-reconnect | Thank you from GSAPP | Sent | Live UTmail send; Gmail search also surfaced an earlier same-day `Reconnecting from GSAPP` conversation. |
-| 2026-07-06 | non-work-reconnect | Email | Elsa Bismuth | `fear-of-missing-out@mail.beehiiv.com` | reconnect | Good to stay in touch | Sent | Sent via Gmail API from the vetted FOMO reconnect draft; kept it non-work because the SPC gate remains unresolved for work pitches. |

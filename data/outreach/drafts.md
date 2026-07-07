@@ -11,6 +11,74 @@ Send gate:
 - Keep Bellwether closed as an application thread; use Gabriel only as a warm contact for other X openings.
 - Org items stay in discovery until a human contact is identified on LinkedIn.
 
+## Warm Academic: Christopher Munsell
+
+**To:** Christopher Munsell <cwm2132@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-05
+
+**LinkedIn check:** Columbia GSAPP. Current-role reconnect, not a cold outreach.
+
+**Dossier**
+- Relationship: academic reference from the MS in Urban Planning program.
+- Last touch: 2026-07-05 in UTmail; search surfaced an earlier same-day `Reconnecting from GSAPP` thread and the latest `Thank you from GSAPP` send.
+- Why now: the GSAPP / housing / development finance bridge is still live and specific.
+- Hook: the housing / development finance overlap with Homecastr is the clearest shared thread.
+- Proof point: Columbia MS in Urban Planning work plus Homecastr's applied modeling background.
+- Ask: quick catch-up and any advice on the housing / real-estate side of the work.
+- Avoid: making it sound like a generic cold pitch or an active job ask.
+- Status: sent.
+- Next follow-up: 2026-07-10 if no reply.
+
+**Subject:** Thank you from GSAPP
+
+```text
+Hi Christopher,
+
+I saw your work in Real Estate Development Finance at Columbia, and the housing / development finance overlap with Homecastr still feels very real. The GSAPP reference from my MS in Urban Planning work still comes up whenever I think about the next step here.
+
+If you're open to it, I'd love a quick catch-up and any advice you have on the housing / real-estate side of the work.
+
+Best,
+Daniel
+```
+
+## Warm Academic: Paola Passalacqua
+
+**To:** Paola Passalacqua <ppassalacqua@ethz.ch>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-05
+
+**LinkedIn check:** ETH Zurich / Eawag. Current-role reconnect, not an active UT Austin follow-up.
+
+**Dossier**
+- Relationship: former collaborator on national disaster resiliency work.
+- Last touch: 2026-07-05 in UTmail; search surfaced an earlier same-day `Reconnecting from TACC` thread and the latest `Reconnecting after TACC` send.
+- Why now: the ETH Zurich / Eawag role and the TACC collaboration are still the clearest shared bridge.
+- Hook: the river-delta / connectivity angle maps closely to the flood-resilience modeling I keep building at Homecastr.
+- Proof point: TACC disaster-resiliency work plus Homecastr's flood and spatial modeling.
+- Ask: reconnect and hear what she is focused on at ETH Zurich.
+- Avoid: treating this like a cold pitch or a work request.
+- Status: sent.
+- Next follow-up: 2026-07-10 if no reply.
+
+**Subject:** Reconnecting after TACC
+
+```text
+Hi Paola,
+
+I saw your work on hydrology and river system science at ETH Zurich and Eawag, and that river-delta / connectivity angle still maps closely to the flood-resilience modeling I keep building at Homecastr. Our TACC disaster-resiliency work still feels like the clearest shared thread.
+
+If you have a few minutes, I'd love to reconnect and hear what you're focused on at ETH Zurich.
+
+Best,
+Daniel
+```
+
 ## Bellwether re-engagement
 
 **To:** Gabriel Schook <schook@xwf.x.team>
@@ -248,40 +316,6 @@ Best,
 Daniel
 ```
 
-## Warm Academic: Paola Passalacqua
-
-**To:** Paola Passalacqua <ppassalacqua@ethz.ch>
-
-**Channel:** Email
-
-**Status:** Sent on 2026-07-06
-
-**LinkedIn / public check:** Professor of Hydrology and River System Science at ETH Zurich and Eawag. Her work spans river deltas, hydrological connectivity, and flood risk.
-
-**Dossier**
-- Relationship: former collaborator on national disaster resiliency work at TACC.
-- Last touch: archived collaborator thread in the Anthropic Fellows reference data plus our TACC history.
-- Why now: the ETH move makes the reconnect feel timely, and the flood / river systems angle is still directly relevant.
-- Hook: her hydrology and river-system work is a clean bridge to the flood-resilience systems I've built.
-- Proof point: I scaled climate and flood models on world-leading supercomputers at TACC and now run Homecastr's forecasting stack.
-- Ask: a quick catch-up and any advice on current research directions.
-- Avoid: vague "just checking in" language or a generic alumni-style note.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if useful, otherwise stop.
-
-**Subject:** Reconnecting from TACC
-
-```text
-Hi Paola,
-
-I was thinking about our TACC work on disaster resiliency and wanted to reconnect. I saw your work on hydrology and river system science at ETH Zurich and Eawag, and it maps closely to the flood-resilience work I have kept building at Homecastr.
-
-If you are open to it, I would love to catch up and hear what you are working on these days.
-
-Best,
-Daniel
-```
-
 ## Warm Academic: Ali Hirsa
 
 **To:** Ali Hirsa <ah2347@columbia.edu>
@@ -315,41 +349,6 @@ If you have time, I would be glad to catch up and hear whether there are any new
 Best,
 Daniel
 ```
-
-## Warm Academic: Christopher Munsell
-
-**To:** Christopher Munsell <cwm2132@columbia.edu>
-
-**Channel:** Email
-
-**Status:** Sent on 2026-07-06
-
-**LinkedIn / public check:** Columbia GSAPP professor of Real Estate Development Finance who teaches MSRED finance courses.
-
-**Dossier**
-- Relationship: academic reference from the MS in Urban Planning program.
-- Last touch: GSAPP reference / prior academic relationship.
-- Why now: his current finance-and-development role is a clean bridge to the housing / real-estate angle in Homecastr.
-- Hook: his real estate finance teaching and development work pair naturally with the housing forecasting product.
-- Proof point: Homecastr forecasts property value trajectories at scale and I've built the geospatial/urban-planning side of that system.
-- Ask: a quick catch-up plus any advice on the real-estate / housing side of my work.
-- Avoid: generic GSAPP gratitude without mentioning the real-estate finance bridge.
-- Status: draft only.
-- Next follow-up: one soft nudge after 7 business days if useful.
-
-**Subject:** Reconnecting from GSAPP
-
-```text
-Hi Christopher,
-
-I wanted to reconnect from GSAPP, and Iâ€™ve been thinking about how closely your real estate finance work connects to what Iâ€™m building at Homecastr.
-
-If youâ€™re open, Iâ€™d love to hear your thoughts on Homecastr and catch up over coffee sometime. Iâ€™d also be grateful for any roles or research assistantships you think I should keep in mind.
-
-Best,
-Daniel
-```
-
 ## Alumni Career Services: Columbia University
 
 **To:** Columbia Career Services / Alumni Office
@@ -548,6 +547,254 @@ Best,
 Daniel
 ```
 
+## Accenture AI Transformation & Solutions Lead
+
+**To:** James Pickard <james.pickard@accenture.com>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Accenture Talent Acquisition Lead. Current-role work pitch, not a reconnect.
+
+**Dossier**
+- Relationship: cold recruiter target.
+- Last touch: none.
+- Why now: Accenture is actively surfacing AI Transformation & Solutions roles and related AI / data careers.
+- Hook: He owns sourcing and recruiting for the kind of enterprise AI transformation lane this role sits in.
+- Proof point: I have shipped production ML, validated models rigorously, and worked across technical and non-technical stakeholders.
+- Ask: Ask for the right owner for the AI Transformation & Solutions Lead role and whether the team is open to a brief connect.
+- Avoid: Sending a long technical bio or leading with salary.
+- Status: sent.
+- Next follow-up: 2026-07-10 if no reply.
+
+**Subject:** Accenture AI Transformation & Solutions Lead
+
+```text
+Hi James - I saw Accenture's AI Transformation & Solutions Lead role and wanted to reach out. I've been building production ML and model-validation systems, and I thought it could be worth a brief connect to make sure I'm talking to the right owner.
+```
+
+## Opportunity for startups in FinTech
+
+**To:** Oliver Doering <oliver@thestartupclub.net>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** The Startup Club / current conference thread. Existing thread, not a cold outreach.
+
+**Dossier**
+- Relationship: founder-ecosystem contact from the FinTech Investment Conference invite.
+- Last touch: live Gmail thread.
+- Why now: Oliver asked for a pitch deck and confirmed a future conference slot.
+- Hook: The pitch-deck and conference slot details are the current live thread.
+- Proof point: Homecastr's pitch deck / production ML systems.
+- Ask: clarify format, deadline, and pitch length.
+- Avoid: sending a long pitch or assuming the conference timing without confirming.
+- Status: sent.
+- Next follow-up: after his reply.
+
+**Subject:** Opportunity for startups in FinTech
+
+```text
+Hi Oliver,
+
+Yes, I would be glad to pitch. I can send a deck and keep it concise. What format, deadline, and pitch length should I plan for?
+
+Best,
+Daniel
+```
+
+## LTS - Catherine Del Hierro
+
+**To:** Catherine Del Hierro
+
+**Channel:** LinkedIn DM
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Current live profile showed 1st-degree access at LTS.
+
+**Message**
+```text
+Hi Catherine - I saw the Lead Forward Deployed Engineer opening at LTS and wanted to connect. My background in production ML and public-interest infrastructure feels like a strong fit, so I thought it could be worth a short note on who owns the FDE lane.
+```
+
+## Trexquant - Harrison Zolot
+
+**To:** Harrison Zolot
+
+**Channel:** LinkedIn DM
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Current live profile showed 1st-degree access at Trexquant.
+
+**Message**
+```text
+Hi Harrison - I saw Trexquant's Quantitative Researcher opening and wanted to ask if you own the intake for that search. My background blends ML, statistics, and engineering, so I thought it could be worth a short connect.
+```
+
+## AllianceBernstein - Bernd Wuebben
+
+**To:** Bernd Wuebben
+
+**Channel:** LinkedIn DM
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Current live profile showed 1st-degree access at AllianceBernstein.
+
+**Message**
+```text
+Hi Bernd,
+
+I came across your profile and the way you describe systematic fixed income, machine learning, and agentic AI at AllianceBernstein. That blend feels unusually close to the forecasting and model-validation work I have been building at Homecastr.
+
+If you are open to it, I would love a quick conversation and to hear how you think about systematic alpha and portfolio construction in fixed income.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Douglas Woodward
+
+**To:** Douglas Woodward <dw38@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**LinkedIn check:** Columbia GSAPP. Current-role routing contact, not a collaborator.
+
+**Dossier**
+- Relationship: career-routing contact in the Columbia GSAPP urban planning program.
+- Last touch: 2026-07-06 reply in the Columbia GSAPP thread.
+- Why now: Douglas asked for more specificity, and I now have the named contacts plus a current resume to make the routing easier.
+- Hook: GSAPP lists him as the Associate Director for Professional Development and Practice and the Urban Planning career-services contact.
+- Proof point: current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
+- Ask: names or an introduction to the best current contact for affordable housing or housing-data / innovation work.
+- Avoid: collaborator language, abstract lane-narrowing language, or a long status update.
+- Status: sent.
+- Next follow-up: wait for reply; if none, one brief nudge after 4 business days.
+
+**Subject:** Re: Opportunity routing from Homecastr
+
+```text
+Hi Douglas,
+
+Thanks again for the pointers and for narrowing the lane. I’ve attached my current 06/30 causal MLE resume in case it helps with routing. If one or two specific contacts come to mind for affordable housing or housing-data and innovation roles, I’d be grateful for the names or an introduction.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Brad Greenburg
+
+**To:** Brad Greenburg <brad.greenburg@nyu.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** Furman / quick routing question
+
+```text
+Hi Brad,
+
+Douglas Woodward pointed me to Furman as one of the strongest housing research homes in the field. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know who at Furman is the best person to speak with about housing research and data work.
+
+If someone else is a better first stop, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Galia Solomonoff
+
+**To:** Galia Solomonoff <gs66@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** GSAPP Housing Lab / quick routing question
+
+```text
+Hi Galia,
+
+Douglas Woodward pointed me to the GSAPP Housing Lab, and the lab page says you direct it. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a good Columbia contact for housing research that touches student collaboration too.
+
+If another person on the GSAPP side is better, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Howard Slatkin
+
+**To:** Howard Slatkin <info@chpcny.org>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** CHPC / quick routing question
+
+```text
+Hi Howard,
+
+Douglas Woodward pointed me to CHPC as a housing NGO think tank worth knowing. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know who at CHPC is the best person to speak with about housing research and data work.
+
+If someone else is the better first stop, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Weiping Wu
+
+**To:** Weiping Wu <weiping.wu@columbia.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** Columbia housing initiative / quick routing question
+
+```text
+Hi Weiping,
+
+GSAPP Academic and Student Affairs pointed me your way, and Douglas Woodward also mentioned Columbia’s housing initiative. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a good Columbia contact for housing research or student-facing work this summer.
+
+If another person would be better, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
+## Columbia / housing research routing: Kerry Donahue
+
+**To:** Kerry Donahue <kerry_donahue@harvard.edu>
+
+**Channel:** Email
+
+**Status:** Sent 2026-07-06
+
+**Subject:** JCHS / quick routing question
+
+```text
+Hi Kerry,
+
+Douglas Woodward mentioned the Joint Center as one of the strongest housing research groups to know. I’m building Homecastr’s housing forecasting and validation stack, and I’d love to know whether there is a better person at JCHS to speak with about housing research or fellowship paths.
+
+If you’re the right contact, I’d appreciate the pointer.
+
+Best,
+Daniel
+```
+
 ## Palantir - Jessie Miller
 
 **To:** Jessie Miller <baseline-recruiting@palantir.com>
@@ -595,9 +842,9 @@ Daniel
 **Dossier**
 - Relationship: cold recruiter target; current recruiting point for Legora.
 - Last touch: none.
-- Why now: Legora's careers page is live and the company is hiring into AI-forward legal work.
+- Why now: Legora's careers page is live and the company is hiring into AI-forward legal work right now.
 - Hook: she is the current recruiter at Legora and the public contact page is the routing path.
-- Proof point: production ML systems with a reliability and evaluation focus, shipped end to end.
+- Proof point: production ML systems with a reliability and evaluation focus and have shipped them end to end.
 - Ask: route me to the right recruiter or hiring manager for the AI Marketing Engineer search.
 - Avoid: over-indexing on marketing jargon or writing a mass job spray.
 - Status: sent.

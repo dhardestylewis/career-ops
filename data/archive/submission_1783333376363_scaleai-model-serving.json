@@ -1,0 +1,37 @@
+{
+  "payload": {
+    "company": "Scale AI",
+    "role": "Senior AI Infrastructure Engineer, Model Serving Platform",
+    "url": "https://job-boards.greenhouse.io/scaleai/jobs/4520320005",
+    "submittedAt": "2026-07-06T10:22:56.363Z",
+    "fields": {
+      "#first_name": "Daniel",
+      "#last_name": "Lewis",
+      "#preferred_name": "Daniel",
+      "#email": "daniel@homecastr.com",
+      "#resume": "C:/Users/dhl/data/Portfolio/career-ops/data/assets/resume-dhl-20260630-causal-mle.pdf",
+      "#question_8362346005": "https://www.linkedin.com/in/dhardestylewis/",
+      "#question_8362347005": "https://dlewis.ai",
+      "#question_8362349005": "No",
+      "#question_8362351005": "Yes",
+      "#question_8362352005": "No",
+      "#country": "United States +1",
+      "#phone": "7133717875",
+      "#gender": "Male",
+      "#hispanic_ethnicity": "Decline To Self Identify",
+      "#veteran_status": "I don't wish to answer",
+      "#disability_status": "No, I do not have a disability and have not had one in the past"
+    },
+    "meta": {
+      "resumeMode": "native-upload",
+      "resumeSource": "C:/Users/dhl/data/Portfolio/career-ops/data/assets/resume-dhl-20260630-causal-mle.pdf",
+      "confirmationScreenshot": "C:/Users/dhl/data/Portfolio/career-ops/data/archive/submission_1783333376363.png"
+    }
+  },
+  "post": {
+    "submittedAt": "2026-07-06T10:22:56.363Z",
+    "url": "https://job-boards.greenhouse.io/scaleai/jobs/4520320005",
+    "invalidCount": 0,
+    "success": true
+  }
+}

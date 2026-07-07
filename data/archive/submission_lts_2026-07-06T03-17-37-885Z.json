@@ -1,0 +1,52 @@
+{
+  "payload": {
+    "company": "LTS",
+    "role": "Lead Forward Deployed Engineer (FDE)",
+    "url": "https://job-boards.greenhouse.io/lts/jobs/4305368009",
+    "submittedAt": "2026-07-06T03:17:37.885Z",
+    "fields": {
+      "#first_name": "Daniel",
+      "#last_name": "Hardesty Lewis",
+      "#preferred_name": "Daniel",
+      "#email": "daniel@homecastr.com",
+      "#country": "United States",
+      "#phone": "7133717875",
+      "#resume": "C:/Users/dhl/data/Portfolio/career-ops/data/assets/resume-dhl-20260630-causal-mle.pdf",
+      "#degree--0": "Bachelor's Degree",
+      "#start-year--0": "2013",
+      "#end-year--0": "2017",
+      "#question_6584886009": "Immediately",
+      "#question_6584864009": "155 Claremont Ave, New York, NY 10027",
+      "#question_6584865009": "New York, NY",
+      "#question_6584866009": "Yes",
+      "#question_6584867009": "U.S. Citizen",
+      "#question_6584868009": "No",
+      "question_6584869009[]": "N/A",
+      "#question_6584870009": "None",
+      "#question_6584871009": "Production ML, forecasting, geospatial systems, Python, data systems",
+      "#question_6584872009": "8",
+      "#question_6584873009": "Homecastr",
+      "#question_6584874009": "Founder / Staff ML Engineer",
+      "#question_6584875009": "$200,000+",
+      "#question_6584876009": "$200,000+",
+      "#question_6584877009": "100%",
+      "#question_6584878009": "No",
+      "#question_6584879009": "No",
+      "#question_6584880009": "LinkedIn",
+      "#question_6584881009": "N/A",
+      "#question_6584882009": "No",
+      "#question_6584883009": "N/A",
+      "#question_6584889009": "Man",
+      "#question_6584890009": "Not Specified",
+      "#question_6584891009": "No",
+      "#question_6584892009": "I am not a veteran or active member",
+      "#question_6584893009": "No"
+    }
+  },
+  "post": {
+    "submittedAt": "2026-07-06T03:17:37.885Z",
+    "url": "https://job-boards.greenhouse.io/lts/jobs/4305368009",
+    "invalidCount": 0,
+    "success": true
+  }
+}
