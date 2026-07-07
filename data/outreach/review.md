@@ -245,3 +245,18 @@ Decision rule:
 - Confidence is highest on structure and tone, lower on exact historical counts.
 - The sample is biased toward recent live threads and visible previews, so treat the counts as directional rather than exhaustive.
 - Even with the follow-up search, this is still not a causal study. It is enough to justify the writing rules, not enough to claim a hard reply-rate uplift.
+
+## July 6 operating update
+
+The July 6 pass confirmed a few tighter operating rules:
+
+- Some DM and email threads are turning into actual calendar bookings. Count those as booked meetings, not as abstract fractions.
+- The funnel should be read in human units first: sends, replies, booked meetings, screens, finals, offers.
+- When normalizing the funnel, define the unit. If `1.00` appears, it should mean one offer-equivalent.
+- The current planning heuristic is `8-12` meaningful actions per day, with a midpoint of roughly `25 EV-days` per offer-equivalent.
+- Warm routing, current-role reconnects, and short one-ask messages are still the clearest conversion levers.
+- Broad cold outreach is still useful, but it should not crowd out the warmer routing and follow-up work.
+- Better role targeting showed up in the July 6 public-sector batch, where four NYC roles scored 4.0+ and were marked `APPLY`.
+- The clean booked-meeting examples from the current log are `coffee: Daniel Lewis / Yash`, `Piyush <> Daniel`, and `Coffee with Joshua Lesser`.
+- Any calendar item that cannot be linked back to outreach should stay unassigned and out of the funnel math.
+- Future estimates should separate observed same-day activity from expected downstream conversions, then state the bottleneck in plain English.
