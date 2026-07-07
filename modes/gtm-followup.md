@@ -32,6 +32,7 @@ Use these states for GTM work:
 - Second follow-up: 3 to 5 business days after the first follow-up.
 - After that, stop unless the user explicitly wants another pass.
 - For hot inbound leads, respond the same day if possible.
+- If the dossier's `next_followup` is still in the future, or it says to wait for a reply / acceptance, hold the thread and do not send yet.
 
 ## Step 4 - Drafting Rules
 

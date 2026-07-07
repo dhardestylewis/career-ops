@@ -11,6 +11,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Draft first.
 - Do not send anything until the user has approved the recipient batch, unless the user explicitly asks for a specific send.
 - Before any live send or follow-up, run `npm run outreach:audit -- "Recipient Name"`. If it exits `2`, do not send a new intro; if it exits `3`, resolve the existing draft / research / blocked state first.
+- Before any follow-up, check the dossier's `next_followup`. If it is a future date or says to wait for a reply / acceptance, the thread is `hold` and the send stops.
 - If thread context is unclear, stop at `draft only`.
 - Never "fix" a bad send with a second apology or self-correction unless the user explicitly asks for it.
 
@@ -18,7 +19,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 
 - `new outreach` if there is no inbound response.
 - `reply` only if there is a real visible reply from the recipient.
-- `hold` if the thread is ambiguous or stale.
+- `hold` if the thread is ambiguous, stale, or not yet due for the next touch.
 - Never use reply language like `Thanks`, `Following up`, or `Appreciate your reply` unless a real response is visible.
 
 ## Channel Routing

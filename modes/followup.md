@@ -91,6 +91,7 @@ Use the same cadence discipline unless the lane notes say otherwise:
 - Second follow-up: 3 to 5 business days after the first follow-up
 - After that, stop unless the user explicitly wants another pass
 - For no-response outreach, auto-schedule the next follow-up on that same 3 to 5 business day cadence rather than calendar days.
+- If the dossier's `next_followup` is still in the future, or it says to wait for a reply / acceptance, do not send yet. The thread is on hold, even if it is already open.
 
 Lane-specific reminders:
 
