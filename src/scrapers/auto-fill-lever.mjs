@@ -460,11 +460,17 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
         try {
             const id = await select.getAttribute('id') || '';
             const name = await select.getAttribute('name') || '';
+            const escapeSelector = (value) => {
+                const raw = String(value);
+                return window.CSS && typeof window.CSS.escape === 'function'
+                    ? window.CSS.escape(raw)
+                    : raw.replace(/["\\]/g, '\\$&');
+            };
             
             // Check contextual label
             let labelText = '';
             if (id) {
-                const labelEl = await page.$(`label[for="${id}"]`);
+                const labelEl = await page.$(`label[for="${escapeSelector(id)}"]`);
                 if (labelEl) labelText = await labelEl.textContent() || '';
             }
             if (!labelText) {

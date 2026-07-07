@@ -1,0 +1,16 @@
+{
+  "submitted_at": "2026-07-06T22:15:43.714Z",
+  "target": {
+    "ats": "ashby",
+    "company": "Unstructured",
+    "role": "Forward Deployed Engineer",
+    "location": "Remote",
+    "score": "4.4/5",
+    "url": "https://jobs.ashbyhq.com/unstructured/d0c516ec-cbb2-4560-99d9-abdc535ed645/application",
+    "rationale": "Remote FDE lane at an unstructured-data AI company, aligned to customer-facing AI systems and Python delivery."
+  },
+  "resume_path": "C:\\Users\\dhl\\data\\Portfolio\\career-ops\\data\\assets\\resume-dhl-20260630-causal-mle.pdf",
+  "process_exit_code": 0,
+  "telemetry": null,
+  "output_tail": "Navigating to https://jobs.ashbyhq.com/unstructured/d0c516ec-cbb2-4560-99d9-abdc535ed645/application...\nWaiting for form elements to load...\nExtracting Job Description context for Synthesizer...\nMapping Dynamic QA responses to the DOM...\n◇ injected env (8) from .env // tip: ⌁ auth for agents [www.vestauth.com]\nNo job description found at data/job_description.txt\nAttaching Resume natively...\n❌ No file inputs found on the page.\nAttaching Cover Letter (if exists)...\nScanning for Custom ATS questions via Heuristic Engine...\nAnalyzing form fill completion metrics...\nSkipping submission natively: Fill criteria not met (0%).\n"
+}

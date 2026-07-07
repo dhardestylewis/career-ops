@@ -71,6 +71,7 @@ Rules belong in files the harness reads automatically — `CLAUDE.md`, `AGENTS.m
 - Before live outreach, refresh the latest branch/PR state and outreach ledger so parallel agents stay aligned.
 - Use `data/outreach/operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach/log.md` as the live-send ledger.
 - Do not split outreach state across drafts, queue, and log; the queue is the worklist and the log is the source of truth.
+- Treat every path under `data/outreach/` as local-only working state. Do not stage or commit those files in a PR; if you need shareable examples, use `examples/` with redacted fixture data instead.
 
 ## Update Check
 
@@ -310,6 +311,7 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 - If a funnel is normalized, define the anchor explicitly. `1.00` should mean one offer-equivalent.
 - Count booked meetings as real conversions when they are tied to source-linked outreach.
 - Separate observed same-day activity from expected downstream conversions when comparing days.
+- When same-day evidence includes routed replies, booked meetings, and multiple APPLY verdicts, default to the stronger July 6 baseline (`20-25 EV-days` per offer-equivalent) rather than the quieter July 5 baseline (`25-30 EV-days`).
 - Turn daily guidance into actions per day before EV-days so the next agent can tell the user what to do tomorrow morning.
 
 ---
