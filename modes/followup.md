@@ -91,7 +91,6 @@ Use the same cadence discipline unless the lane notes say otherwise:
 - Second follow-up: 5 business days after the first follow-up by default, and never sooner than 3 business days
 - After that, stop unless the user explicitly wants another pass
 - For no-response outreach, auto-schedule the next follow-up on that same conservative business-day cadence rather than calendar days.
-- If the dossier's `next_followup` is still in the future, or it says to wait for a reply / acceptance, do not send yet. The thread is on hold, even if it is already open.
 
 Lane-specific reminders:
 
@@ -157,7 +156,6 @@ Reuse the contacto framework: 3 sentences, 300 character max.
 Shorter than first (2-3 sentences). Take a **new angle**:
 - Share a relevant insight, article, or project update
 - Don't repeat the first follow-up's content
-- If the new draft only rewords the prior follow-up, stop instead of sending it. A second follow-up needs a genuinely new angle, not a cosmetic rewrite.
 - Still reference the role specifically
 
 ### Cold Application (followupCount >= 2)

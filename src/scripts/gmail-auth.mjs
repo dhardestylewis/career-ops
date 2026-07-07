@@ -2,7 +2,10 @@ import fs from 'fs';
 import path from 'path';
 import { google } from 'googleapis';
 
-const MIRROR_ROOT = 'C:/Users/dhl/data/Portfolio/career-ops';
+function getMirrorRoot() {
+  const userProfile = process.env.USERPROFILE || process.env.HOME || null;
+  return userProfile ? path.join(userProfile, 'data', 'Portfolio', 'career-ops') : null;
+}
 
 function fileExists(filePath) {
   try {
@@ -21,11 +24,12 @@ function unique(values) {
 }
 
 function candidateRoots() {
+  const mirrorRoot = getMirrorRoot();
   return unique([
     normalizePath(process.env.GMAIL_AUTH_ROOT),
     normalizePath(process.env.CAREER_OPS_HOME),
     process.cwd(),
-    MIRROR_ROOT,
+    mirrorRoot,
   ]);
 }
 
@@ -60,7 +64,8 @@ export function resolveGmailAuthLocation({ requireToken = true } = {}) {
   }
 
   const currentRoot = path.resolve(process.cwd()).toLowerCase();
-  const mirrorRoot = path.resolve(MIRROR_ROOT).toLowerCase();
+  const mirrorRoot = getMirrorRoot();
+  const mirrorRootNormalized = mirrorRoot ? path.resolve(mirrorRoot).toLowerCase() : null;
 
   for (const root of candidateRoots()) {
     const credentialsPath = path.join(root, 'credentials.json');
@@ -77,7 +82,7 @@ export function resolveGmailAuthLocation({ requireToken = true } = {}) {
     return {
       source: root.toLowerCase() === currentRoot
         ? 'cwd'
-        : root.toLowerCase() === mirrorRoot
+        : mirrorRootNormalized && root.toLowerCase() === mirrorRootNormalized
           ? 'mirror-root'
           : 'external-root',
       credentialsPath,
