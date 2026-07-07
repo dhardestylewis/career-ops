@@ -1,0 +1,18 @@
+{
+  "page": "https://www.newlab.com/apply",
+  "form": "startup-founder",
+  "values": {
+    "firstname": "Daniel",
+    "lastname": "Lewis",
+    "linkedin": "https://www.linkedin.com/in/dhardestylewis/",
+    "company": "Homecastr",
+    "website": "https://homecastr.com",
+    "email": "daniel@homecastr.com",
+    "role": "I'm the founder of a startup",
+    "why": "Homecastr turns physical-world uncertainty into decision support for housing and infrastructure. Newlab's ecosystem feels like a strong place to meet pilot partners, collaborators, and operators who care about deploying real-world technology.",
+    "hear": "Web Search",
+    "location": "Brooklyn",
+    "companyDeckUrl": ""
+  },
+  "blocker": "No source-backed public pitch deck URL was available, so the required deck field was left blank and submit was not attempted."
+}
