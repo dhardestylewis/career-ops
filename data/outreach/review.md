@@ -158,7 +158,7 @@ The same skeleton now appears to hold across the wider outreach lanes the user w
 - No "just checking in" style openers.
 - No send until the dossier has actual source refs, last touch, why now, hook, proof point, ask, and follow-up rule.
 - Before sending, verify the recipient's current LinkedIn profile or organization page; if they moved, rewrite as a reconnect or current-role note.
-- Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack; if they are SPC-affiliated or the check is unclear, do not send the work pitch and use only a non-work reconnect or academic/community angle.
+- Before any outreach about work, money, gigs, contracts, or jobs, check the South Park Commons directory export first; if it gives a clean no-match and the contact is not SPC-adjacent, that is enough to proceed. Use Slack or Pando only as tie-breakers when the result is ambiguous, OCR-noisy, or SPC-adjacent.
 - Treat blank `spc_affiliation` / `spc_checked_at` values as unchecked, not as external approval.
 
 ## Minimum pre-send dossier

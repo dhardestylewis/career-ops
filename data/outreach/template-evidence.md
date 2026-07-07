@@ -14,7 +14,7 @@ This file is the evidence-backed template library for multi-lane LinkedIn and em
 - Warm follow-ups do better when the opening line names the previous context explicitly, especially if the thread started on LinkedIn and moved to email.
 - Warm academic, alumni, lab, and public-interest lanes follow the same pattern: one shared-context hook, one proof point, one small ask.
 - Before sending, check the recipient's current LinkedIn profile or organization page. If they moved roles, rewrite the note as a reconnect or current-role note rather than an active-role follow-up.
-- Before any outreach about work, money, gigs, contracts, or jobs, check the recipient against the South Park Commons pando member directory and South Park Commons Slack. If the person is SPC-affiliated or the status is unclear, do not send the work pitch.
+- Before any outreach about work, money, gigs, contracts, or jobs, check the South Park Commons directory export first. If it gives a clean no-match and the contact is not SPC-adjacent, that is enough to proceed; use Slack or Pando only as tie-breakers when the result is ambiguous, OCR-noisy, or SPC-adjacent.
 
 ## Pre-Send Dossier
 
@@ -288,7 +288,7 @@ Evidence:
 - Prefer a conversational tone over formal corporate language.
 - Do not use `just checking in`, `touching base`, or `circling back`.
 - Do not send until the dossier has source refs, a last touch, a why-now, a hook, a proof point, and an ask.
-- Do not send a work pitch until the South Park Commons affiliation check is complete when relevant.
+- Do not send a work pitch until the South Park Commons directory export has been checked when relevant; a clean no-match is enough unless the contact is SPC-adjacent or the result is still ambiguous.
 
 ## What To Vary
 

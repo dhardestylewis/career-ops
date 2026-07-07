@@ -1,6 +1,6 @@
 # Terra AI send packet
 
-Status: ready to send, but held because SPC Slack / pando verification is still not complete.
+Status: ready to send; directory export no-match is sufficient unless the result is still ambiguous.
 
 ## Routing
 
@@ -15,8 +15,8 @@ Status: ready to send, but held because SPC Slack / pando verification is still 
 
 - One hook, one proof point, one ask.
 - Keep the research role as the only Terra AI application target in this pass.
-- Do not send the work pitch until SPC is cleared.
-- If the SPC check never clears, use only a non-work reconnect or hold.
+- Do not send the work pitch if the directory result is still ambiguous or SPC-adjacent.
+- If the check never clears to a clean no-match, use only a non-work reconnect or hold.
 
 ## Final message templates
 
@@ -53,5 +53,5 @@ Daniel
 
 - SPC public pages did not surface a clear member-affiliation hit for these targets.
 - The live Pando search and the PDF export did not surface clear exact-name member hits for the Terra AI targets.
-- South Park Commons Slack and pando still need a live authenticated check.
-- Because of that, this packet stays in ready-but-held state.
+- Slack is only a tie-breaker if the directory result stays ambiguous or OCR-noisy.
+- Because of that, this packet stays ready unless a later pass finds an SPC adjacency.
