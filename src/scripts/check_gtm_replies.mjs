@@ -5,6 +5,7 @@ import { google } from 'googleapis';
 const TOKEN_PATH = path.resolve('token.json');
 const CREDENTIALS_PATH = path.resolve('credentials.json');
 const FROM_ACCOUNT = 'daniel@homecastr.com';
+const SINCE_QUERY = process.argv[2] ?? 'newer_than:12h';
 
 function decodePart(part) {
   if (!part?.body?.data) return '';
@@ -50,15 +51,27 @@ function threadHasGtmSentMessage(messages) {
 
     const subject = getHeader(message, 'Subject').toLowerCase();
     const body = extractText(message.payload).toLowerCase();
-    return (
+    const hasDataCenterContext =
       subject.includes('data-center') ||
       subject.includes('data center') ||
       subject.includes('data-centre') ||
       subject.includes('data centre') ||
-      subject.includes('location risk') ||
-      body.includes('homecastr') ||
-      body.includes('probabilistic real-estate forecasting') ||
-      body.includes('compare-notes conversation')
+      body.includes('data-center') ||
+      body.includes('data center') ||
+      body.includes('data-centre') ||
+      body.includes('data centre');
+
+    return (
+      hasDataCenterContext &&
+      (
+        subject.includes('location risk') ||
+        subject.includes('forecast') ||
+        body.includes('probabilistic real-estate forecasting') ||
+        body.includes('compare-notes conversation') ||
+        body.includes('site-screening') ||
+        body.includes('site screening') ||
+        body.includes('power-aware')
+      )
     );
   });
 }
@@ -86,7 +99,7 @@ function summarizeMessage(message) {
   oAuth2Client.setCredentials(JSON.parse(fs.readFileSync(TOKEN_PATH, 'utf8')));
 
   const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
-  const query = 'in:inbox newer_than:2d -from:daniel@homecastr.com';
+  const query = `in:inbox ${SINCE_QUERY} -from:daniel@homecastr.com`;
   const listed = await gmail.users.messages.list({
     userId: 'me',
     q: query,
