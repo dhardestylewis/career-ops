@@ -5,6 +5,11 @@ import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
 import { getDeterministicMappings } from './heuristics.mjs';
 
+const escapeCssAttributeValue = (value) =>
+    String(value)
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"');
+
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
 try {
@@ -435,7 +440,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                     if (!tempId) continue;
                     
-                    const safeId = tempId.replace(/([":\[\]\.\,])/g, '\\$1');
+                    const safeId = escapeCssAttributeValue(tempId).replace(/([\[\]\.\,])/g, '\\$1');
                     const inputCheck = page.locator(`[id="${safeId}"]`).first();
                     const isVis = await inputCheck.isVisible().catch(()=>false);
                     const typeAttr = await inputCheck.getAttribute('type').catch(()=>null);
@@ -462,7 +467,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const markProcessed = () => processedFieldIds.add(targetId);
 
             // Use locator with ID because IDs might have weird characters in modern react
-            const safeId = targetId.replace(/([":\[\]\.\,])/g, '\\$1');
+            const safeId = escapeCssAttributeValue(targetId).replace(/([\[\]\.\,])/g, '\\$1');
             let input = page.locator(`[id="${safeId}"]`).first();
             
             // Check if it's a hidden React-Select input or base ID doesn't exist
@@ -511,7 +516,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         : targetValue;
                 const optionSelector = '[role="option"], div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"], li[role="option"]';
                 const listboxId = (await input.getAttribute('aria-controls').catch(()=>null)) || (await input.getAttribute('aria-owns').catch(()=>null));
-                const safeListboxId = listboxId ? listboxId.replace(/([":\[\]\.\,])/g, '\\$1') : '';
+                const safeListboxId = listboxId ? escapeCssAttributeValue(listboxId).replace(/([\[\]\.\,])/g, '\\$1') : '';
                 const scopedOptionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : optionSelector;
                 
                 await input.pressSequentially(searchStr, { delay: 50 }).catch(()=>{});
@@ -1412,7 +1417,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             await page.waitForTimeout(1200);
 
             const listboxId = (await field.getAttribute('aria-controls').catch(()=>null)) || (await field.getAttribute('aria-owns').catch(()=>null));
-            const safeListboxId = listboxId ? listboxId.replace(/([":\[\]\.\,])/g, '\\$1') : '';
+            const safeListboxId = listboxId ? escapeCssAttributeValue(listboxId).replace(/([\[\]\.\,])/g, '\\$1') : '';
             const optionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : '[role="option"], li[role="option"]';
             const options = await page.$$(optionSelector);
             for (const opt of options) {
