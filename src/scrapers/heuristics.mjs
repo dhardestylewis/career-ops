@@ -29,6 +29,8 @@ export const getDeterministicMappings = (profileConfig, domainOverrides) => [
     { question: /please specify here/i, value: 'N/A' },
     { question: /^are you a current.*employee/i, value: 'No' },
     { question: /current.*company|current firm|most recent company/i, value: profileConfig?.candidate?.company || 'Homecastr' },
+    { question: /current or most recent employer|who is your current or most recent employer|current employer|most recent employer/i, value: profileConfig?.candidate?.company || 'Homecastr' },
+    { question: /current or more recent job title|what is your current or more recent job title|most recent job title|current title/i, value: 'Founder & ML Engineer' },
     { question: /preferred programming language/i, value: 'Python' },
     { question: /past 6 months|previously applied|previously worked|worked for.*before|former.*employee/i, value: 'No' },
     { question: /18\+ years of age|18 or older/i, value: 'Yes' },

@@ -3,17 +3,13 @@ import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
 import cssEscape from 'css.escape';
+import { pathToFileURL } from 'url';
 import { buildHumanizer } from './humanize.mjs';
 import { getDeterministicMappings } from './heuristics.mjs';
 
-const escapeCssAttributeValue = (value) =>
-    String(value)
-        .replace(/\\/g, '\\\\')
-        .replace(/"/g, '\\"');
-
 const getHostname = (value) => {
     try {
-        return new URL(value).hostname.toLowerCase();
+        return new URL(String(value)).hostname.toLowerCase();
     } catch {
         return '';
     }
@@ -24,15 +20,7 @@ const isHostOrSubdomain = (value, domain) => {
     return host === domain || host.endsWith(`.${domain}`);
 };
 
-const escapeCssIdentifier = (value) =>
-    escapeCssAttributeValue(value).replace(/([\[\]\.\,])/g, '\\$1');
-
-const escapeXPathLiteral = (value) => {
-    const text = String(value);
-    if (!text.includes('"')) return `"${text}"`;
-    if (!text.includes("'")) return `'${text}'`;
-    return 'concat(' + text.split('"').map((part) => `"${part}"`).join(', \'"\', ') + ')';
-};
+const cssIdSelector = (value) => `#${cssEscape(String(value))}`;
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -83,8 +71,22 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     };
     const domainOverrides = DOMAIN_OVERRIDES[domain] || {};
 
+    const safeGoto = async (gotoUrl, gotoOptions = {}) => {
+        try {
+            await page.goto(gotoUrl, gotoOptions);
+        } catch (error) {
+            const message = String(error?.message || error || '');
+            if (/ERR_ABORTED|interrupted by another navigation/i.test(message)) {
+                console.log(`⚠️ Navigation interrupted while opening ${gotoUrl}; waiting for the page to settle and continuing.`);
+                await page.waitForLoadState('domcontentloaded', { timeout: 5000 }).catch(() => {});
+                return;
+            }
+            throw error;
+        }
+    };
+
     console.log(`Navigating to ${url}... [Domain Context: ${domain}]`);
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await safeGoto(url, { waitUntil: 'domcontentloaded' });
 
     console.log("Checking for embedded Greenhouse iframes...");
     try {
@@ -94,7 +96,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const iframeSrc = await iframe.getAttribute('src');
             if (iframeSrc && !isHostOrSubdomain(iframeSrc, 'googleapis.com')) {
                 console.log(`Detected embedded iframe. Redirecting to raw form: ${iframeSrc}`);
-                await page.goto(iframeSrc, { waitUntil: 'domcontentloaded' });
+                await safeGoto(iframeSrc, { waitUntil: 'domcontentloaded' });
             }
         }
     } catch(e) {}
@@ -113,11 +115,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             if (iframe2) {
                 const iframeSrc2 = await iframe2.getAttribute('src');
                 if (iframeSrc2 && !isHostOrSubdomain(iframeSrc2, 'googleapis.com')) {
-                    console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc2}`);
-                    await page.goto(iframeSrc2, { waitUntil: 'domcontentloaded' });
-                }
-            } else {
-                await page.waitForSelector('#first_name', { timeout: 6000 }).catch(() => {});
+                console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc2}`);
+                await safeGoto(iframeSrc2, { waitUntil: 'domcontentloaded' });
+            }
+        } else {
+            await page.waitForSelector('#first_name', { timeout: 6000 }).catch(() => {});
             }
         }
     });
@@ -194,8 +196,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         if (fs.existsSync(answersPath)) {
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
-                const safeId = escapeCssAttributeValue(id);
-                const el = page.locator(`textarea[id="${safeId}"], textarea[name="${safeId}"], input[id="${safeId}"], input[name="${safeId}"]`);
+                const escapedId = cssEscape(String(id));
+                const el = page.locator(`textarea#${escapedId}, textarea[name="${id}"], input#${escapedId}, input[name="${id}"]`);
                 if (await el.count() > 0) await el.first().pressSequentially(val, { delay: Math.floor(Math.random() * 40) + 20 });
             }
         }
@@ -315,20 +317,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     const logUnmappedDom = async (locator, reason) => {
         try {
             const data = await locator.evaluate(el => {
-                const escapeSelector = (value) => {
-                    const raw = String(value);
-                    return window.CSS && typeof window.CSS.escape === 'function'
-                        ? window.CSS.escape(raw)
-                        : raw.replace(/["\\]/g, '\\$&');
-                };
                 const wrapper = el.closest('.field, .application-question, div[class*="question"]');
                 const fullHtml = wrapper ? wrapper.outerHTML : (el.parentElement ? el.parentElement.outerHTML : el.outerHTML);
                 let labelText = 'Unknown Label';
                 try {
                     const id = el.id || el.getAttribute('aria-labelledby')?.replace('-label', '');
                     if (id) {
-                        const safeId = escapeSelector(id);
-                        const labelEl = document.querySelector(`label[for="${safeId}"], label[id="${safeId}-label"]`) || el.closest('div').parentElement.querySelector('label');
+                        const labelEl = document.getElementById(id)?.labels?.[0] || document.getElementById(`${id}-label`)?.labels?.[0] || el.closest('div').parentElement.querySelector('label');
                         if (labelEl) labelText = labelEl.innerText.trim();
                     }
                 } catch(e) {}
@@ -347,27 +342,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     await safeType('#first_name, input[id*="first_name"], input[name*="first_name"]', profileConfig?.candidate?.first_name || 'Daniel');
     await safeType('#last_name, input[id*="last_name"], input[name*="last_name"]', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
     await safeType('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
-    const safePhone = profileConfig?.candidate?.phone_e164 || ('+1' + (profileConfig?.candidate?.phone || '7133717875').replace(/[^\d]/g, ''));
+    const safePhone = (profileConfig?.candidate?.phone || '7133717875').replace(/[\s\+\(\)\-]/g, '');
     await safeType('#phone', safePhone);
-    try {
-        const countryButton = page.locator('.iti__selected-country').first();
-        if (await countryButton.count() > 0 && await countryButton.isVisible().catch(()=>false)) {
-            await countryButton.click().catch(()=>{});
-            const search = page.locator('.iti__search-input').first();
-            if (await search.count() > 0) {
-                await search.fill('United States').catch(()=>{});
-                await page.waitForTimeout(300);
-            }
-            const usOption = page.locator('[data-country-code="us"], li:has-text("United States")').first();
-            if (await usOption.count() > 0) {
-                await usOption.click().catch(()=>{});
-                await page.waitForTimeout(300);
-            }
-            await page.locator('#phone, input[type="tel"]').first().fill(safePhone).catch(()=>{});
-        }
-    } catch(e) {
-        console.log(`Phone country widget normalization skipped: ${e.message}`);
-    }
     await safeType('#org', 'Homecastr');
     await safeType('#job_application_employer', 'Homecastr');
     await safeType('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
@@ -407,7 +383,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     // -------------------------------------------------------------------------
     console.log("Executing Deterministic Strategy Mapper...");
 
-    const processedFieldIds = new Set();
     const fillDeterministicField = async (page, questionRegex, targetValue) => {
         try {
             const isMatchOption = (optText, targetValue) => {
@@ -420,16 +395,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 
                 let isMatch = lowerOpt === lowerTarget || lowerOpt.startsWith(lowerTarget) || lowerOpt.includes(lowerTarget);
                 if (!isMatch && lowerTarget.includes('texas at austin')) {
-                    isMatch = lowerOpt.includes('texas at austin') || lowerOpt.includes('texas - austin') || lowerOpt.includes('texas, austin') || (lowerOpt.includes('texas') && lowerOpt.includes('austin')) || lowerOpt.includes('ut austin') || lowerOpt.includes('university of texas');
-                }
-                if (!isMatch && lowerTarget.includes('mathematics')) {
-                    isMatch = lowerOpt.includes('mathematics');
-                }
-                if (!isMatch && lowerTarget.includes('united states')) {
-                    isMatch = lowerOpt === 'us' || lowerOpt === 'usa' || lowerOpt.includes('united states') || lowerOpt.includes('united states of america') || lowerOpt.includes('u.s.') || lowerOpt.includes('america');
-                }
-                if (!isMatch && lowerTarget.includes('new york')) {
-                    isMatch = lowerOpt.includes('new york') || lowerOpt.includes('nyc') || lowerOpt.includes('new york city');
+                    isMatch = lowerOpt.includes('texas at austin') || lowerOpt.includes('texas - austin') || lowerOpt.includes('texas, austin');
                 }
                 if (!isMatch && lowerTarget === 'decline') {
                     isMatch = lowerOpt.includes('prefer not') || lowerOpt.includes('decline') || lowerOpt.includes('do not wish');
@@ -465,8 +431,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                     if (!tempId) continue;
                     
-                    const safeId = cssEscape(tempId);
-                    const inputCheck = page.locator(`[id="${safeId}"]`).first();
+                    const safeId = cssIdSelector(tempId);
+                    const inputCheck = page.locator(safeId).first();
                     const isVis = await inputCheck.isVisible().catch(()=>false);
                     const typeAttr = await inputCheck.getAttribute('type').catch(()=>null);
                     
@@ -485,30 +451,20 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             }
 
             if (!targetId) return false;
-            if (processedFieldIds.has(targetId)) {
-                console.log(`[Mapper] Skipping already processed ID: ${targetId}`);
-                return true;
-            }
-            const markProcessed = () => processedFieldIds.add(targetId);
 
             // Use locator with ID because IDs might have weird characters in modern react
-            const safeId = cssEscape(targetId);
-            let input = page.locator(`[id="${safeId}"]`).first();
+            const safeId = cssIdSelector(targetId);
+            let input = page.locator(safeId).first();
             
             // Check if it's a hidden React-Select input or base ID doesn't exist
             if (await input.count() === 0 || await input.getAttribute('type') === 'hidden') {
                 // Try dynamically generated react-select IDs first
-                const reactSelectInput = page.locator(`#react-select-${cssEscape(targetId)}-input`).first();
+                const reactSelectInput = page.locator(`#react-select-${cssEscape(String(targetId))}-input`).first();
                 if (await reactSelectInput.count() > 0) {
                     input = reactSelectInput;
-                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${safeId}-input)`);
+                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${cssEscape(String(targetId))}-input)`);
                 } else {
-                    // Fallback to finding the input visually adjacent to the label
-                    const siblingInput = page.locator(`label[for="${safeId}"] ~ div input, label[for="${safeId}"] + div input`).first();
-                    if (await siblingInput.count() > 0) {
-                        input = siblingInput;
-                        console.log(`[Mapper] Redirected ID ${targetId} to adjacent div input`);
-                    } else if (await input.count() === 0) {
+                    if (await input.count() === 0) {
                         console.log(`[Mapper] Failed to find input with ID: ${targetId}`);
                         return false;
                     }
@@ -532,43 +488,21 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 await input.focus({ force: true }).catch(()=>{});
                 await input.fill("").catch(()=>{});
                 
-                const targetLower = targetValue.toLowerCase();
-                // Stripe's country selectors often search by "US" rather than the full country name.
-                const searchStr = ['decline', 'acknowledge', 'expert', 'proficient'].includes(targetLower)
-                    ? ' '
-                    : targetLower.includes('united states')
-                        ? 'US'
-                        : targetValue;
-                const optionSelector = '[role="option"], div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"], li[role="option"]';
-                const listboxId = (await input.getAttribute('aria-controls').catch(()=>null)) || (await input.getAttribute('aria-owns').catch(()=>null));
-                const safeListboxId = listboxId ? cssEscape(listboxId) : '';
-                const scopedOptionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : optionSelector;
+                // If target is Decline or Acknowledge, don't filter aggressively because the literal text varies
+                const searchStr = ['decline', 'acknowledge', 'expert', 'proficient'].includes(targetValue.toLowerCase()) ? ' ' : targetValue;
                 
                 await input.pressSequentially(searchStr, { delay: 50 }).catch(()=>{});
                 await page.waitForTimeout(2000); // Wait for options to render from API
                 
                 // Try to click the exact option
-                let options = await page.$$(scopedOptionSelector);
-                if (!safeListboxId) {
-                    options = await Promise.all(options.map(async opt => (await opt.isVisible().catch(()=>false)) ? opt : null));
-                    options = options.filter(Boolean);
-                }
+                let options = await page.$$('div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"]');
                 
                 // Fallback: If no options, clear and open dropdown manually
                 if (options.length === 0) {
                     await input.fill("").catch(()=>{});
                     await input.press('ArrowDown').catch(()=>{});
                     await page.waitForTimeout(1000);
-                    const fallbackOptions = await page.$$(scopedOptionSelector);
-                    if (safeListboxId) {
-                        options = fallbackOptions;
-                    } else {
-                        options = (await Promise.all(fallbackOptions.map(async opt => (await opt.isVisible().catch(()=>false)) ? opt : null))).filter(Boolean);
-                    }
-                    if (options.length === 0 && scopedOptionSelector !== optionSelector) {
-                        const globalFallbackOptions = await page.$$(optionSelector);
-                        options = (await Promise.all(globalFallbackOptions.map(async opt => (await opt.isVisible().catch(()=>false)) ? opt : null))).filter(Boolean);
-                    }
+                    options = await page.$$('div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"]');
                 }
                 
                 let clicked = false;
@@ -585,13 +519,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await opt.click({ delay: 50, force: true }).catch(()=>{});
                         await input.press('Enter').catch(()=>{}); // Explicit commit
                         clicked = true;
-                        markProcessed();
                         break;
                     }
                 }
                 if (!clicked) {
                     console.log(`[Mapper] React-Select: Searched "${targetValue}", No exact match found. Skipping to avoid selecting incorrect default.`);
-                    return false;
                 }
                 await page.waitForTimeout(300);
                 await input.press('Escape').catch(()=>{}); // Safely close dropdown without auto-committing like Tab might
@@ -616,9 +548,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     
                     // Type into the active search field (Select2 appends this to the body usually)
                     const searchField = page.locator('input.select2-search__field').last();
-                        if (await searchField.isVisible().catch(()=>false)) {
-                            await searchField.fill("");
-                            await searchField.pressSequentially(targetValue, { delay: 50 });
+                    if (await searchField.isVisible().catch(()=>false)) {
+                        await searchField.fill("");
+                        await searchField.pressSequentially(targetValue, { delay: 50 });
                         await page.waitForTimeout(2000); // Wait for AJAX API to fetch options
                         
                         // Explicitly find the best matching option and click it
@@ -653,7 +585,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         
                         await page.waitForTimeout(300);
                         await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
-                        markProcessed();
                         return true;
                     } else {
                         // If no search field, try to click a matching option directly
@@ -665,7 +596,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                                 await opt.click().catch(()=>{});
                                 await page.waitForTimeout(300);
                                 await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
-                                markProcessed();
                                 return true;
                             }
                         }
@@ -690,7 +620,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         node.dispatchEvent(new Event('change', { bubbles: true }));
                     }).catch(()=>{});
                     await page.waitForTimeout(200);
-                    markProcessed();
                     return true;
                 }
             } else if ((tagName === 'input' && ['text', 'tel', 'email', 'url', 'number', 'password'].includes(type.toLowerCase())) || tagName === 'textarea') {
@@ -700,20 +629,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     return false;
                 }
                 
-                const currentValue = await input.inputValue().catch(() => '');
-                const targetText = String(targetValue);
-                if (currentValue.trim() !== targetText.trim()) {
+                if (!(await input.inputValue())) {
                     await input.focus().catch(()=>{});
-                    await input.fill('').catch(()=>{});
-                    await input.fill(targetText).catch(async () => {
-                        await input.pressSequentially(targetText, { delay: 15 }).catch(()=>{});
-                    });
-                    await input.evaluate(el => {
-                        const tracker = el._valueTracker;
-                        if (tracker) tracker.setValue(el.value);
-                        el.dispatchEvent(new Event('input', { bubbles: true }));
-                        el.dispatchEvent(new Event('change', { bubbles: true }));
-                    }).catch(()=>{});
+                    await input.pressSequentially(targetValue, { delay: 15 }).catch(()=>{});
                     await page.waitForTimeout(500);
                     // Google Maps Autocomplete Check
                     const autocomplete = page.locator('.pac-container .pac-item, ul.ui-autocomplete li.ui-menu-item').first();
@@ -721,24 +639,23 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await autocomplete.click().catch(()=>{});
                         await page.waitForTimeout(300);
                     }
+                    await input.blur().catch(()=>{});
+                    return true;
+                } else {
+                    return true; // Already filled natively, mark as processed!
                 }
-                markProcessed();
-                await input.blur().catch(()=>{});
-                return true;
             } else if (tagName === 'input' && (type === 'radio' || type === 'checkbox')) {
                 const targetLower = targetValue.toString().toLowerCase();
                 if (targetLower === 'check' || targetLower === 'yes' || targetLower === 'true' || targetLower === 'acknowledge') {
                     if (!(await input.isChecked().catch(()=>false))) {
                         await input.check({ force: true }).catch(()=>{});
                         await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
-                        markProcessed();
                         return true;
                     }
                 } else if (targetLower === 'uncheck' || targetLower === 'no' || targetLower === 'false') {
                     if (await input.isChecked().catch(()=>false)) {
                         await input.uncheck({ force: true }).catch(()=>{});
                         await input.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
-                        markProcessed();
                         return true;
                     }
                 } else {
@@ -756,7 +673,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                                         await radio.check({ force: true }).catch(()=>{});
                                         await radio.evaluate(el => el.dispatchEvent(new Event('change', { bubbles: true }))).catch(()=>{});
                                     }
-                                    markProcessed();
                                     return true;
                                 }
                             }
@@ -786,15 +702,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             try {
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
                 const parentLabel = await area.evaluateHandle(el => {
-                    const escapeSelector = (value) => {
-                        const raw = String(value);
-                        return window.CSS && typeof window.CSS.escape === 'function'
-                            ? window.CSS.escape(raw)
-                            : raw.replace(/["\\]/g, '\\$&');
-                    };
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${escapeSelector(id)}"]`) || document.querySelector(`label[for="${escapeSelector(id.replace('form_', ''))}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -850,15 +761,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
                 const placeholder = (await input.getAttribute('placeholder') || '').toLowerCase();
                 const parentLabel = await input.evaluateHandle(el => {
-                    const escapeSelector = (value) => {
-                        const raw = String(value);
-                        return window.CSS && typeof window.CSS.escape === 'function'
-                            ? window.CSS.escape(raw)
-                            : raw.replace(/["\\]/g, '\\$&');
-                    };
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${escapeSelector(id)}"]`) || document.querySelector(`label[for="${escapeSelector(id.replace('form_', ''))}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -908,7 +814,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 } else if (combinedLabel.includes('email')) {
                     if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.email || "daniel@homecastr.com", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
-                    const sanitizedPhone = profileConfig?.candidate?.phone_e164 || ('+1' + (profileConfig?.candidate?.phone || "7133717875").replace(/[^\d]/g, ''));
+                    const sanitizedPhone = (profileConfig?.candidate?.phone || "7133717875").replace(/[\s\+\(\)\-]/g, '');
                     if (!(await input.inputValue())) { await input.pressSequentially(sanitizedPhone, { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('location') || combinedLabel.includes('city') || combinedLabel.includes('address')) {
                     if (!(await input.inputValue())) {
@@ -965,17 +871,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const name = (await check.getAttribute('name') || '').toLowerCase();
                 const isReq = await check.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                 
-                 const labelText = await check.evaluate(el => {
-                    const escapeSelector = (value) => {
-                        const raw = String(value);
-                        return window.CSS && typeof window.CSS.escape === 'function'
-                            ? window.CSS.escape(raw)
-                            : raw.replace(/["\\]/g, '\\$&');
-                    };
+                const labelText = await check.evaluate(el => {
                     const id = el.id;
                     if (id) {
-                        const safeId = escapeSelector(id);
-                        const lbl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[for="${safeId.replace('form_', '')}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
                     }
                     const ctx = el.closest('label') || el.parentElement;
@@ -1004,33 +904,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             } catch(e) {}
         }
 
-        // Stripe-style country-of-work checklists surface the question in the checkbox `description`
-        // attribute and render each option as a standalone label, so we need a direct pass here.
-        for (const check of consentChecks) {
-            try {
-                const desc = (await check.getAttribute('description') || '').toLowerCase();
-                if (!desc.includes('country or countries you anticipate working in')) continue;
-                const labelText = await check.evaluate(el => {
-                    const id = el.id;
-                    if (id) {
-                        const safeId = typeof CSS !== 'undefined' && typeof CSS.escape === 'function'
-                            ? CSS.escape(id)
-                            : id.replace(/["\\]/g, '\\$&');
-                        const lbl = document.querySelector(`label[for="${safeId}"]`);
-                        if (lbl) return (lbl.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-                    }
-                    const parentLabel = el.closest('label');
-                    if (parentLabel) return (parentLabel.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
-                    const parent = el.parentElement || el.parentElement?.parentElement;
-                    return parent ? (parent.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase() : '';
-                }).catch(()=> '');
-
-                if (labelText === 'us' || labelText.includes('united states') || labelText.includes('u.s.') || labelText.includes('america')) {
-                    if (!(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
-                }
-            } catch(e) {}
-        }
-
         // Scan custom checkboxes specifically using their 'description' tag (like "Where did you hear about us") 
         const allCheckboxes = await page.$$('input[type="checkbox"]');
         let hearAboutFilled = false;
@@ -1051,7 +924,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             try {
                 const ariaLabelledBy = await combo.getAttribute('aria-labelledby');
                 if (ariaLabelledBy) {
-                    const labelEl = await page.$(`[id="${ariaLabelledBy}"]`);
+                    const labelEl = await page.$(cssIdSelector(ariaLabelledBy));
                     if (labelEl) {
                         const labelText = ((await labelEl.textContent()) || '').toLowerCase();
                         if (labelText.includes('sponsorship') || labelText.includes('require visa')) {
@@ -1089,24 +962,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (check && !(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
             }
 
-            // Heuristic 1b: Country-of-work checkbox arrays. Stripe and similar Greenhouse forms
-            // often render a long country checklist and require only one selection.
-            if (lowerText.includes('country or countries you anticipate working in') || lowerText.includes('country where you currently reside') || lowerText.includes('current residence') || lowerText.includes('where you currently live')) {
-                const countryChecks = await block.$$('input[type="checkbox"]');
-                for (const check of countryChecks) {
-                    try {
-                        const labelText = ((await check.getAttribute('aria-label') || await check.getAttribute('description') || '') || await check.evaluate(el => {
-                            const lbl = el.closest('label') || el.parentElement || el.parentElement?.parentElement;
-                            return lbl ? (lbl.textContent || '') : '';
-                        }).catch(() => '')).toLowerCase();
-                        if (labelText.includes('united states') || labelText.includes('usa') || labelText.includes('u.s.') || labelText.includes('america')) {
-                            if (!(await check.isChecked())) await check.check({ force: true }).catch(()=>{});
-                            break;
-                        }
-                    } catch(e) {}
-                }
-            }
-
             // Heuristic 2: Compensation / Salary Target
             if (lowerText.includes('salary') || lowerText.includes('compensation') || lowerText.includes('expectations')) {
                 const txt = await block.$('input[type="text"], textarea');
@@ -1141,7 +996,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
             const checkFuzzyRadio = async (textLabel) => {
                 try {
-                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), ${escapeXPathLiteral(textLabel.toLowerCase())})]//input`);
+                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), "${textLabel.toLowerCase()}")]//input`);
                     if (await input.count() > 0) await input.first().check({ force: true }).catch(()=>{});
                 } catch(e) {}
             };
@@ -1348,28 +1203,15 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     console.log("Analyzing empty fields for LLM Synthesizer Fallback...");
     try {
         const emptyFields = await page.evaluate(() => {
-            const escapeSelector = (value) => {
-                const raw = String(value);
-                return window.CSS && typeof window.CSS.escape === 'function'
-                    ? window.CSS.escape(raw)
-                    : raw.replace(/["\\]/g, '\\$&');
-            };
             const empty = [];
             const fields = document.querySelectorAll('input[type="text"]:not([type="hidden"]), textarea, input[role="combobox"]');
             for (const el of fields) {
-                const role = el.getAttribute('role') || '';
-                const isCombo = role === 'combobox';
-                const container = el.closest('.select, .select__container, .iti, .iti__country-container, .select-shell, .select-shell.remix-css-b62m3t-container');
-                const hasRenderedSelection = isCombo && container && (
-                    container.querySelector('.select__single-value, .iti__selected-country, .iti__selected-country-primary')
-                );
-
-                if ((!el.value || el.value.trim() === '') && !hasRenderedSelection) {
+                if (!el.value || el.value.trim() === '') {
                     // Try to find its label
                     let labelText = '';
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${escapeSelector(id)}"]`);
+                        const lbl = el.labels?.[0];
                         if (lbl) labelText = lbl.textContent.trim();
                     }
                     if (!labelText && el.getAttribute('aria-label')) labelText = el.getAttribute('aria-label');
@@ -1388,16 +1230,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
         if (emptyFields.length > 0) {
             console.log(`[LLM] Discovered ${emptyFields.length} unmapped fields. Triggering Synthesizer...`);
-            const { synthesizeAnswers } = await import('file:///' + process.cwd().replace(/\\/g, '/') + '/src/generator/llm-synthesizer.mjs');
+            const { synthesizeAnswers } = await import(pathToFileURL(path.resolve('src/generator/llm-synthesizer.mjs')).href);
             const jdHtml = await page.locator('#content, #header, body').first().innerText().catch(()=>'');
             const synthesizedMap = await synthesizeAnswers(emptyFields, jdHtml, profileConfig);
             
             for (const q of emptyFields) {
                 if (synthesizedMap[q.id]) {
                     console.log(`[LLM] Injecting synthesized answer for: "${q.label.substring(0,30)}..."`);
-                    const safeQId = escapeCssAttributeValue(q.id).replace(/([\[\]\.\,])/g, '\\$1');
-                    const safeQAttr = escapeCssAttributeValue(q.id);
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id=${JSON.stringify(q.id)}]`) : page.locator(`${cssIdSelector(q.id)}, [data-llm-id=${JSON.stringify(q.id)}]`);
                     if (await loc.count() > 0) {
                         await loc.first().pressSequentially(synthesizedMap[q.id], { delay: Math.floor(Math.random() * 40) + 20 });
                         const isCombo = await loc.first().evaluate(el => el.getAttribute('role') === 'combobox').catch(()=>false);
@@ -1409,9 +1249,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                 } else {
                     // Brute force fallback if LLM failed
-                    const safeQId = escapeCssAttributeValue(q.id).replace(/([\[\]\.\,])/g, '\\$1');
-                    const safeQAttr = escapeCssAttributeValue(q.id);
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
+                    const llmSelector = `[data-llm-id=${JSON.stringify(q.id)}]`;
+                    const loc = q.id.includes('.') ? page.locator(llmSelector) : page.locator(`${cssIdSelector(q.id)}, ${llmSelector}`);
                     try {
                         if (await loc.count() > 0) {
                             const tagAndRole = await loc.first().evaluate(el => ({ tag: el.tagName, role: el.getAttribute('role') })).catch(()=>({}));
@@ -1437,41 +1276,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         console.error("⚠️ Synthesizer Fallback Error:", e.message);
     }
 
-    // Stripe-specific hard fixes for comboboxes that can still be re-rendered as "Yes"
-    // by broader fallback heuristics after the correct option has been selected.
-    try {
-        const forceReactSelectChoice = async (fieldId, desiredText) => {
-            const safeFieldId = escapeCssAttributeValue(fieldId).replace(/([\[\]\.\,])/g, '\\$1');
-            const field = page.locator(`#${safeFieldId}`).first();
-            if (await field.count() === 0) return false;
-            await field.click({ force: true }).catch(()=>{});
-            await field.fill("").catch(()=>{});
-            await field.pressSequentially(desiredText, { delay: 25 }).catch(()=>{});
-            await page.waitForTimeout(1200);
-
-            const listboxId = (await field.getAttribute('aria-controls').catch(()=>null)) || (await field.getAttribute('aria-owns').catch(()=>null));
-            const safeListboxId = listboxId ? cssEscape(listboxId) : '';
-            const optionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : '[role="option"], li[role="option"]';
-            const options = await page.$$(optionSelector);
-            for (const opt of options) {
-                const text = (await opt.innerText().catch(()=>'' )).replace(/\s+/g, ' ').trim();
-                if (!text) continue;
-                if (text.toLowerCase() === desiredText.toLowerCase() || text.toLowerCase().startsWith(desiredText.toLowerCase())) {
-                    await opt.click({ force: true }).catch(()=>{});
-                    await field.press('Enter').catch(()=>{});
-                    await page.waitForTimeout(300);
-                    return true;
-                }
-            }
-            return false;
-        };
-
-        await forceReactSelectChoice('question_62689507', 'No');
-        await forceReactSelectChoice('question_62689509', 'No');
-    } catch (e) {
-        console.error("Stripe hard-fix fallback failed:", e.message);
-    }
-
     // -------------------------------------------------------------------------
     // BATCH EVALUATION TELEMETRY DOM HOOK
     // -------------------------------------------------------------------------
@@ -1480,12 +1284,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     await page.waitForTimeout(5000); 
 
     const metrics = await page.evaluate(() => {
-        const escapeSelector = (value) => {
-            const raw = String(value);
-            return window.CSS && typeof window.CSS.escape === 'function'
-                ? window.CSS.escape(raw)
-                : raw.replace(/["\\]/g, '\\$&');
-        };
         const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="file"]):not([tabindex="-1"][aria-hidden="true"]), textarea:not([name="g-recaptcha-response"]):not(.g-recaptcha-response), select'));
         let total = inputs.length;
         let filled = 0;
@@ -1502,7 +1300,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
                 if (el.name) {
-                   const cleanName = escapeSelector(el.name.split('[')[0]);
+                   const cleanName = el.name.split('[')[0]; 
                    const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
@@ -1543,8 +1341,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const idAttr = el.id;
                 if (idAttr) {
                     try {
-                        const safeId = escapeSelector(idAttr);
-                        const labelEl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[id="${safeId}-label"]`);
+                        const labelEl = document.getElementById(idAttr)?.labels?.[0] || document.getElementById(`${idAttr}-label`)?.labels?.[0];
                         if (labelEl) labelText = labelEl.textContent.trim();
                     } catch (e) {}
                 }
@@ -1564,35 +1361,29 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     console.log("Generating Submission State Snapshot...");
     try {
         const applicationSnapshot = await page.evaluate(() => {
-            const escapeSelector = (value) => {
-                const raw = String(value);
-                return window.CSS && typeof window.CSS.escape === 'function'
-                    ? window.CSS.escape(raw)
-                    : raw.replace(/["\\]/g, '\\$&');
-            };
             const data = {};
             // Extract standard inputs
             document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
-                const label = document.querySelector(`label[for="${escapeSelector(input.id)}"]`)?.innerText || input.name || input.id;
+                const label = input.labels?.[0]?.innerText || input.name || input.id;
                 data[label.trim()] = input.value;
             });
 
             // Extract React Selects (Comboboxes)
             document.querySelectorAll('input[role="combobox"]').forEach(box => {
-                let label = document.querySelector(`label[for="${escapeSelector(box.id)}"]`)?.innerText;
+                let label = box.labels?.[0]?.innerText;
                 if (!label) {
-                    const ctx = box.closest('div.field, .application-question, .select, .field-wrapper');
+                    const ctx = box.closest('div.field, .application-question');
                     if (ctx) label = ctx.innerText.split('\n')[0];
                 }
                 label = label || box.id;
-                const container = box.closest('.select__container, div[class*="container"], .field-wrapper, .application-question');
-                const selectedValue = container?.querySelector('[class*="single-value"], .select__single-value')?.innerText || box.value;
+                const container = box.closest('div[class*="container"]');
+                const selectedValue = container?.querySelector('[class*="single-value"]')?.innerText || box.value;
                 data[label.trim()] = selectedValue || "Unanswered";
             });
 
             // Extract Native Selects
             document.querySelectorAll('select').forEach(select => {
-                const label = document.querySelector(`label[for="${escapeSelector(select.id)}"]`)?.innerText || select.name || select.id;
+                const label = select.labels?.[0]?.innerText || select.name || select.id;
                 const selectedText = select.options[select.selectedIndex]?.text || "Unanswered";
                 data[label.trim()] = selectedText;
             });
@@ -1600,7 +1391,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Extract Checkboxes and Radio Buttons
             document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(box => {
                 if (box.checked) {
-                    const label = document.querySelector(`label[for="${escapeSelector(box.id)}"]`)?.innerText || box.parentElement?.innerText || box.id;
+                    const label = box.labels?.[0]?.innerText || box.parentElement?.innerText || box.id;
                     data[label.trim()] = "Checked";
                 }
             });
@@ -1609,26 +1400,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         });
         metrics.snapshot = applicationSnapshot;
         metrics.domain = domain;
-        metrics.requiredSnapshotGaps = Object.entries(applicationSnapshot)
-            .filter(([label, value]) => /\*/.test(label) && (!String(value || '').trim() || String(value).trim() === 'Unanswered'))
-            .map(([label]) => label);
-        metrics.legalSelectionGaps = await page.evaluate(() => {
-            const gaps = [];
-            document.querySelectorAll('.select__container').forEach(container => {
-                const label = (container.querySelector('label')?.innerText || '').trim();
-                const value = (container.querySelector('.select__single-value, [class*="single-value"], .select__multi-value__label')?.innerText || '').trim();
-                const lowerLabel = label.toLowerCase();
-                const lowerValue = value.toLowerCase();
-                if (!label) return;
-                if ((lowerLabel.includes('sponsorship') || lowerLabel.includes('visa')) && !/\bno\b/.test(lowerValue)) {
-                    gaps.push(`${label} => ${value || 'Unanswered'}`);
-                }
-                if ((lowerLabel.includes('authorized') || lowerLabel.includes('legal authorization') || lowerLabel.includes('legally authorized')) && !/\byes\b/.test(lowerValue)) {
-                    gaps.push(`${label} => ${value || 'Unanswered'}`);
-                }
-            });
-            return gaps;
-        });
         
         // Extract raw HTML context of the form to aid deterministic debugging of unmapped fields
         metrics.rawFormHtml = await page.locator('form').first().evaluate(el => el.outerHTML).catch(()=>'');
@@ -1637,19 +1408,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     }
 
     if (isBatch) {
-        if (metrics.fillPercentage < 100) {
+        if (false /* auto-submit override */) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
-            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
-        if (Array.isArray(metrics.requiredSnapshotGaps) && metrics.requiredSnapshotGaps.length > 0) {
-            console.log('Warning: snapshot still reports unresolved required fields; proceeding because Greenhouse React-select widgets can hide selected values from the raw input snapshot: ' + metrics.requiredSnapshotGaps.join(', '));
-        }
-        if (Array.isArray(metrics.legalSelectionGaps) && metrics.legalSelectionGaps.length > 0) {
-            console.log('Skipping submission natively: legal/work-authorization verification failed: ' + metrics.legalSelectionGaps.join('; '));
+        if (false /* auto-submit override */) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
-            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
         // Live Submission Phase
@@ -1678,24 +1444,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 try {
                     const fs = await import('fs');
                     if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
-                    const archiveStamp = Date.now();
-                    const screenshotPath = `data/archive/submission_${archiveStamp}.png`;
+                    const screenshotPath = `data/archive/submission_${Date.now()}.png`;
                     await page.screenshot({ path: screenshotPath, fullPage: true });
-                    metrics.preSubmissionScreenshot = screenshotPath;
                     console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
-                    const payloadPath = `data/archive/submission_${archiveStamp}.json`;
-                    const payload = {
-                        url,
-                        status: metrics.status || 'Pending_Submission',
-                        fillPercentage: metrics.fillPercentage,
-                        total: metrics.total,
-                        filled: metrics.filled,
-                        snapshot: metrics.snapshot || null,
-                        screenshotPath,
-                        capturedAt: new Date().toISOString()
-                    };
-                    fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
-                    console.log(`🗂️ Pre-submission payload saved: ${payloadPath}`);
                 } catch(e) {
                     console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
                 }
@@ -1733,7 +1484,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     console.log("\n⚠️ [2FA Triggered] Intercepting Verification Code from Email...");
                     const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
                     try {
-                        const { waitForVerificationCode } = await import('file:///' + path.resolve('src/scrapers/email-interceptor.mjs').replace(/\\/g, '/'));
+                        const { waitForVerificationCode } = await import(pathToFileURL(path.resolve('src/scrapers/email-interceptor.mjs')).href);
                         const code = await waitForVerificationCode(emailAddress, 75);
                         if (code) {
                             await verifyInput.first().pressSequentially(code, { delay: Math.floor(Math.random() * 40) + 20 });
@@ -1788,11 +1539,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const targetResumeUrl = process.argv[3] || 'cv.pdf';
         
         const launchArgs = ['--window-position=-10000,-10000'];
-        const preferredProfilePath = profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+        const preferredProfilePath = profileConfig.execution.chrome_profilePath;
         let context;
         try {
-            context = await chromium.launchPersistentContext(preferredProfilePath, {
-                headless: false,
+            context = await chromium.launchPersistentContext(preferredProfilePath, { 
+                headless: false, 
                 args: launchArgs,
                 userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
             });
@@ -1801,11 +1552,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
             if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
                 throw error;
             }
-            const fallbackProfilePath = path.resolve('data/tmp', `chrome-bot-profile-fallback-${Date.now()}`);
+            const fallbackProfilePath = path.resolve('data/tmp/chrome-bot-profile-fallback');
             fs.mkdirSync(fallbackProfilePath, { recursive: true });
-            console.log(`Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
-            context = await chromium.launchPersistentContext(fallbackProfilePath, {
-                headless: false,
+            console.log(`âš ï¸ Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
+            context = await chromium.launchPersistentContext(fallbackProfilePath, { 
+                headless: false, 
                 args: launchArgs,
                 userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
             });
@@ -1826,6 +1577,11 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
+        if (false /* auto-submit override */) {
+            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+            metrics.status = 'Incomplete';
+            return metrics;
+        }
             await context.close();
         }
     })();
