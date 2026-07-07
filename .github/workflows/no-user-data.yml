@@ -2,11 +2,10 @@ name: No user data in PRs
 
 # Hard-blocks any PR that adds or modifies user-layer (private data) files.
 # These live ONLY on the candidate's machine per DATA_CONTRACT.md and must never
-# enter the repo. Sample/fixture data belongs under examples/. Tracked
-# scaffolding (.gitkeep keepers, dir READMEs) is exempt.
-#
-# This guard uses explicit private-file patterns instead of a blanket `data/`
-# rule so public-safe archive/assets files do not get swept up by mistake.
+# enter the repo — they are personal job-search data. Sample/fixture data belongs
+# under examples/. Tracked scaffolding (.gitkeep keepers, dir READMEs) is exempt.
+# Paths mirror USER_PATHS in update-system.mjs. Uses the API (listFiles) so it
+# works for fork PRs too.
 
 on:
   pull_request:
@@ -25,37 +24,25 @@ jobs:
           script: |
             const { owner, repo } = context.repo;
             const pull_number = context.payload.pull_request.number;
-            const headRef = context.payload.pull_request.head.ref;
-            const headSha = context.payload.pull_request.head.sha;
-            const baseRef = context.payload.pull_request.base.ref;
             const files = await github.paginate(github.rest.pulls.listFiles, {
               owner, repo, pull_number, per_page: 100,
             });
 
-            // Mirror the private surfaces that this repo actually treats as
-            // user-layer. Keep this list explicit so the guard blocks real
-            // personal data without tripping on public-safe archive/assets files.
+            // USER_PATHS (update-system.mjs). voice-dna.md is omitted on purpose:
+            // it ships as a populated system default, so edits to it are legit.
             const USER_PATHS = [
               /^cv\.md$/,
               /^config\/profile\.yml$/,
               /^modes\/_profile\.md$/,
-              /^modes\/_custom\.md$/,
-              /^voice-dna\.md$/,
               /^portals\.yml$/,
               /^article-digest\.md$/,
-              /^data\/(?:bio|cv)\.md$/,
-              /^data\/(?:applications\.md|applications\.db|pipeline\.md|scan-history\.tsv|follow-ups\.md)$/,
-              /^data\/tracker\//,
-              /^data\/state\//,
-              /^data\/outreach-[^/]+$/,
-              /^data\/outreach\//,
               /^interview-prep\//,
+              /^data\//,
               /^reports\//,
               /^output\//,
               /^jds\//,
               /^writing-samples\//,
             ];
-
             // Tracked scaffolding that legitimately lives under those dirs.
             const isScaffold = (f) => /(^|\/)\.gitkeep$/.test(f) || /(^|\/)README\.md$/.test(f);
 
@@ -66,10 +53,10 @@ jobs:
 
             if (bad.length) {
               core.setFailed(
-                `This PR adds/modifies user-layer (private data) files on ${headRef}@${headSha.slice(0, 7)} ` +
-                `(base ${baseRef}). These live ONLY on your machine per DATA_CONTRACT.md and must never be committed — use examples/ for sample data.\n` +
-                'Offending files:\n  ' + bad.join('\n  ')
+                'This PR adds/modifies user-layer (private data) files. These live ONLY on your ' +
+                'machine per DATA_CONTRACT.md and must never be committed — use examples/ for ' +
+                'sample data.\nOffending files:\n  ' + bad.join('\n  ')
               );
             } else {
-              core.info(`OK — no user-layer (private data) files touched in ${headRef}@${headSha.slice(0, 7)} against ${baseRef}.`);
+              core.info('OK — no user-layer (private data) files touched.');
             }

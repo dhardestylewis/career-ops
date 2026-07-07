@@ -10,6 +10,7 @@ Key sections:
 - **narrative**: Your headline, exit story, superpowers, proof points
 - **compensation**: Target range, minimum, currency
 - **location**: Country, timezone, visa status, on-site availability
+- **culture_screen**: Structural criteria for team culture (the `deprioritize_if_absent` strict flag caps the culture score at 2/5 if evidence is entirely missing)
 
 ## Target Roles (modes/_profile.md)
 
@@ -67,14 +68,6 @@ Career-ops can integrate with external systems via Claude Code hooks. Example ho
 ```
 
 Save hooks in `.claude/settings.json` (Claude Code). OpenCode does not support hooks. For equivalent functionality, use custom commands (`.opencode/commands/`) or agents (`.opencode/agents/`) — see https://opencode.ai/docs/commands/.
-
-## Resume Asset
-
-For outreach and application workflows, the canonical resume attachment is:
-
-- `data/assets/resume-dhl-20260630-causal-mle.pdf`
-
-If that file is missing, consult `docs/resume-attachment.md` for the source path and restore the PDF before sending anything that expects an attachment.
 
 ## States (templates/states.yml)
 

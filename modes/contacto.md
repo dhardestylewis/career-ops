@@ -1,7 +1,5 @@
 # Mode: contacto -- Outreach messages
 
-> This mode is job-search specific. For GTM lead, customer, partner, or advisor outreach, use `modes/gtm-outreach.md`.
-
 > Apply `voice-dna.md` (if present) to every generated message — full guardrail, conversational voice included (Tier 1 + Tier 2). See `_shared.md` → Voice DNA.
 
 This mode has two variants that share the same persona engine (recruiter → hard
@@ -83,7 +81,6 @@ not quote the note verbatim in a public-facing message.
 - Something that makes them want to respond
 - NEVER share phone number
 - The contact type changes the EMPHASIS, not the structure
-- Before any live send, stage the exact copy in `data/outreach/*send-packet.md` and run `node src/dataOps/outreach-preflight.mjs --packet <path>`. If it fails, stop at draft-only.
 
 ---
 

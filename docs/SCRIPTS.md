@@ -20,12 +20,12 @@ All scripts live in the project root as `.mjs` modules and are exposed via `npm 
 | `npm run update` | `update-system.mjs apply` | Apply upstream update |
 | `npm run rollback` | `update-system.mjs rollback` | Rollback last update |
 | `npm run liveness` | `check-liveness.mjs` | Test if job URLs are still active |
+| `npm run extract` | `browser-extract.mjs` | Headless read-only page extractor (opt-in `scan.extractor: cli`) — compact JSON for scan/JD |
 | `npm run scan` | `scan.mjs` | Zero-token portal scanner |
 | `npm run scan:full` | `scan-ats-full.mjs` | Reverse ATS discovery scanner |
 | `npm run validate:portals` | `validate-portals.mjs` | Validate portals.yml shape before scanning |
 | `npm run tracker` | `tracker.mjs` | SQLite derived index over applications.md — sync/query/history/export |
 | `npm run find` | `find.mjs` | Resolve a report#/tracker#/company query to its full pipeline identity |
-| `npm run outreach:audit -- "Name"` | `src/dataOps/outreach-recipient-audit.mjs` | Audit outreach state for a recipient before any live send |
 
 ---
 
@@ -166,6 +166,28 @@ node analyze-patterns.mjs --self-test
 ```
 
 **Exit codes:** `0` analysis succeeded, `1` insufficient data or parser self-test failure.
+
+---
+
+## salary-gap
+
+Folds compensation observations into per-application desired/advertised/actual values and gap aggregates. Sources: `reports/*.md` Machine Summary `advertised_comp` (advertised, source `jd` — historical reports backfill automatically), `data/salary-observations.tsv` (desired/actual, append-only), and `config/profile.yml` `compensation.target_range` (desired default). Fold precedence: highest trust tier wins, then latest date (`actual`: contract > offer-letter > recruiter-verbal > user). Aggregates group by (company, role) and per currency — no FX conversion. Unparseable amounts, orphaned tracker numbers, sample sizes, and staleness are always reported.
+
+```bash
+node salary-gap.mjs             # JSON
+node salary-gap.mjs --summary   # table + data-quality section
+node salary-gap.mjs --self-test
+```
+
+Observation line format (TSV, one per line, `#`-prefixed lines are comments):
+
+```text
+{tracker#}\t{YYYY-MM-DD}\t{desired|advertised|actual}\t{amount}\t{currency}\t{source}\t{note}
+```
+
+Amounts: number + optional k/K suffix, ranges allowed ("80-90k"), annual gross unless noted. Sources: jd | profile | user | recruiter-verbal | offer-letter | contract.
+
+**Exit codes:** `0` always (missing sources produce an explanatory empty result), `1` self-test failure.
 
 ---
 
@@ -321,23 +343,3 @@ node find.mjs acme --json       # machine-readable output
 Multiple matches print as a table; zero matches print a clean message.
 
 **Exit codes:** `0` at least one match, `1` no match, missing query, or no `applications.md`.
-
----
-
-## outreach:audit
-
-Audits outreach state for one recipient before any live send or follow-up. It checks the outreach ledger, targets, routes, log, drafts, dossier, operator card, next-batch mirror, and LinkedIn feed captures for prior-touch evidence.
-
-```bash
-npm run outreach:audit -- "Li-Yun (James) Wang"
-npm run outreach:audit -- "Li-Yun (James) Wang" --json
-```
-
-Use it immediately before drafting final send copy or replying in a live session.
-
-**Exit codes:**
-
-- `0` no prior-send evidence found; a new outreach may be possible if the dossier and SPC checks also clear
-- `2` prior send or live thread found; do not send a new intro
-- `3` recipient already exists in a draft, research, or blocked workflow; resolve that state first
-- `1` usage error or runtime failure
