@@ -12,6 +12,7 @@ It is the fork of the job-search outreach rules, not a copy of them.
 - Before any live send or follow-up, run the existing outreach audit for the recipient. If it finds a prior thread or prior send, continue there instead of opening a fresh intro.
 - If the current role, company, or context has changed, rewrite the note as a reconnect or current-role note.
 - If the message needs more than one proof point, shorten it.
+- Keep the main queue to direct-fit operators, owners, investors, and routing contacts. If the account is only adjacent through cooling hardware, power equipment, or another supplier layer, move it to hold instead of the active queue.
 
 ## Thread State
 
