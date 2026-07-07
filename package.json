@@ -15,6 +15,8 @@
     "dedup": "node dedup-tracker.mjs",
     "merge": "node merge-tracker.mjs",
     "reconcile": "node reconcile-pipeline.mjs",
+    "guard:private-data": "node src/core/private-data-guard.mjs",
+    "outreach:backup": "node src/dataOps/outreach-backup.mjs",
     "pdf": "node generate-pdf.mjs",
     "cover-letter": "node generate-cover-letter.mjs --payload",
     "sync-check": "node cv-sync-check.mjs",

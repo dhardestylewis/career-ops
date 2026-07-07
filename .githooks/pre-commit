@@ -1,0 +1,4 @@
+#!/bin/sh
+set -eu
+
+node src/core/private-data-guard.mjs

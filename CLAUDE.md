@@ -72,6 +72,7 @@ Rules belong in files the harness reads automatically — `CLAUDE.md`, `AGENTS.m
 - Use `data/outreach/operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach/log.md` as the live-send ledger.
 - Do not split outreach state across drafts, queue, and log; the queue is the worklist and the log is the source of truth.
 - Treat every path under `data/outreach/` as local-only working state. Do not stage or commit those files in a PR; if you need shareable examples, use `examples/` with redacted fixture data instead.
+- Before staging or committing, run `npm run guard:private-data`; it blocks user-layer files, private application artifacts, and auth files. The tracked `.githooks/pre-commit` hook runs the same check when `core.hooksPath` points at `.githooks`.
 
 ## Update Check
 
