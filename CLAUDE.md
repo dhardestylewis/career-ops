@@ -310,6 +310,7 @@ Default modes are in `modes/` (English). Language-specific modes live in `modes/
 - If a funnel is normalized, define the anchor explicitly. `1.00` should mean one offer-equivalent.
 - Count booked meetings as real conversions when they are tied to source-linked outreach.
 - Separate observed same-day activity from expected downstream conversions when comparing days.
+- When same-day evidence includes routed replies, booked meetings, and multiple APPLY verdicts, default to the stronger July 6 baseline (`20-25 EV-days` per offer-equivalent) rather than the quieter July 5 baseline (`25-30 EV-days`).
 - Turn daily guidance into actions per day before EV-days so the next agent can tell the user what to do tomorrow morning.
 
 ---

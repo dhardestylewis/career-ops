@@ -239,130 +239,88 @@ next_followup: Wait for his reply; only follow up if he responds or asks for mor
 spc_affiliation: not checked; non-work lane
 spc_checked_at: n/a
 
-### AllianceBernstein - Bernd Wuebben
+### Plaid - Wen Yao
 
-contact: Bernd Wuebben
-relationship: cold executive reconnect; Global Head - Fixed Income Systematic Investing and Quantitative Research at AllianceBernstein
-lane: executive / boss-of-boss
-source_refs: https://www.linkedin.com/in/berndwuebben
-last_touch: none
-why_now: The live LinkedIn profile showed 1st-degree access and the role is adjacent to systematic fixed income, ML, and agentic AI.
-hook: A current-relevance bridge to forecasting, model validation, and systematic alpha.
-proof_point: I have been building ML systems at Homecastr.
-ask: Quick conversation on how he thinks about systematic alpha and portfolio construction in fixed income.
-avoid: Making it feel like a long pitch or leading with product jargon.
+contact: Wen Yao
+relationship: cold hiring-manager target; ML/AI Lead at Plaid and Machine Learning Engineering Manager for Data Foundation & AI / Credit per public LinkedIn profile snippets.
+lane: hiring-manager
+source_refs: https://www.linkedin.com/in/wen-yao-a1497715 ; https://www.linkedin.com/posts/wen-yao-a1497715_plaid-senior-data-scientist-data-foundations-activity-7451077582076198912-D3Qp ; https://plaid.com/careers/ ; reports/024-plaid-2026-07-06-staff-ml-engineer-research-scientist-dfai.md ; reports/025-plaid-2026-07-06-senior-machine-learning-engineer-credit.md
+last_touch: LinkedIn connection note sent 2026-07-06 from Modal / Plaid post-application send packet.
+why_now: I applied on 2026-07-06 to Plaid's Staff Machine Learning Engineer (Research Scientist) - DFAI and Senior Machine Learning Engineer - Credit roles.
+hook: Wen publicly posted that Plaid is hiring Senior ML Engineer / Research Scientists for the Data Foundation AI team, with a rare research-plus-production systems scope.
+proof_point: I have production ML systems experience plus TACC-scale distributed modeling and validation work, which maps to research that ships.
+ask: Ask whether it is worth a quick connect or whether there is a better owner for the Plaid ML loop.
+avoid: Sending a long founder biography or mentioning every Plaid role at once.
 status: sent
-action_state: sent
-next_followup: Wait for his reply; only follow up if he responds or asks for more context.
-spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+next_followup: Only after a reply or connection acceptance; otherwise first follow-up no earlier than 2026-07-10.
+spc_affiliation: clear_no_match_local_spc_export
 spc_checked_at: 2026-07-06
 
-## Columbia / housing research routing
+### Plaid - Rico Curry
 
-### Douglas Woodward
-
-contact: Douglas Woodward
-relationship: Columbia GSAPP career-routing contact; not a collaborator
-lane: Columbia program routing
-source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.arch.columbia.edu/faculty/353-douglas-woodward; https://www.arch.columbia.edu/career-services; https://www.arch.columbia.edu/programs/10-m-s-urban-planning
-last_touch: 2026-07-06 reply in the Columbia GSAPP thread asking what mission or housing lane I was targeting.
-why_now: Douglas asked for more specificity, and I now have the named contacts plus a current resume to make the routing easier.
-hook: GSAPP lists him as the Associate Director for Professional Development and Practice and the Urban Planning career-services contact.
-proof_point: Attached current 06/30 causal MLE resume plus Homecastr's housing forecasting and validation stack.
-ask: Ask for the names or an introduction to the best current contact for affordable housing or housing-data / innovation work.
-avoid: Collaborator language, abstract lane-narrowing language, or broad follow-up phrasing like "if helpful, I can narrow this more."
+contact: Rico Curry
+relationship: cold recruiter/router target; public LinkedIn snippet says Recruiting at Plaid and currently recruiting Data Scientists, AI/LLM/NLP Research Scientists, AI Engineers, Applied ML, Machine Learning Engineering, and Product.
+lane: recruiter
+source_refs: https://www.linkedin.com/in/rico-curry-20516040 ; https://plaid.com/careers/ ; reports/024-plaid-2026-07-06-staff-ml-engineer-research-scientist-dfai.md ; reports/025-plaid-2026-07-06-senior-machine-learning-engineer-credit.md
+last_touch: LinkedIn connection note sent 2026-07-06 from Modal / Plaid post-application send packet.
+why_now: I applied on 2026-07-06 to two current Plaid ML roles and need a clean recruiting route without over-contacting the company.
+hook: Rico's public profile snippet directly names Plaid recruiting across AI/LLM/NLP, Applied ML, and Machine Learning Engineering.
+proof_point: I am a senior ML engineer with production AI systems, Python/PyTorch, and TACC-scale distributed modeling experience.
+ask: Ask whether he owns the Plaid ML searches or can route me to the right recruiting owner.
+avoid: Contacting multiple Plaid recruiters with the same copy or implying he personally owns both roles.
 status: sent
-action_state: sent
-next_followup: wait for reply; if none, one brief nudge after 4 business days.
-spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+next_followup: Only after a reply or connection acceptance; otherwise first follow-up no earlier than 2026-07-10.
+spc_affiliation: clear_no_match_local_spc_export
 spc_checked_at: 2026-07-06
 
-### Brad Greenburg
+### Modal - Julia Tupy
 
-contact: Brad Greenburg
-relationship: cold institutional contact; current executive director of the NYU Furman Center
-lane: research routing
-source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.furmancenter.org/people/brad-greenburg/; https://www.furmancenter.org/contact/; https://www.furmancenter.org/for-the-media/
-last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, which named Furman as a housing research home worth contacting.
-why_now: Douglas pointed me to Furman while I was narrowing the housing and urban-data lane, and Furman is currently active on housing research and data inquiries.
-hook: Brad is the current executive director, and Furman routes media inquiries through Donna Borak and data inquiries through Rohun Iyer.
-proof_point: Homecastr's housing forecasting and validation stack plus my production ML background fit a data and research conversation.
-ask: Ask for the best person at Furman to speak with about housing research and data work.
-avoid: Turning it into a broad job pitch, leading with salary, or overexplaining the full founder story.
-status: ready to send
-action_state: ready
-next_followup: 2026-07-13 if no reply.
-spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
+contact: Julia Tupy
+relationship: cold talent/router target; public LinkedIn snippet identifies her as a Talent Partner at Modal in New York.
+lane: recruiter
+source_refs: https://www.linkedin.com/in/julia-tupy-a0b009b4 ; https://modal.com/company ; reports/021-modal-2026-07-06-forward-deployed-engineer-ml.md ; reports/022-modal-2026-07-06-forward-deployed-engineer-systems.md ; reports/023-modal-2026-07-06-mts-platform-engineering.md
+last_touch: LinkedIn connection note sent 2026-07-06 from Modal / Plaid post-application send packet.
+why_now: I applied on 2026-07-06 to Modal's Forward Deployed Engineer - ML, Forward Deployed Engineer - Systems, and MTS Platform Engineering roles.
+hook: Julia is a named Modal talent partner, and Modal's company page lists active AI infrastructure/platform engineering roles in New York.
+proof_point: I have built production ML stacks and run TACC-scale distributed jobs, which maps to Modal's AI infrastructure and platform work.
+ask: Ask whether there is a best person to route the Modal applications to.
+avoid: Reaching out to Modal's CEO first or sending separate notes for every Modal application.
+status: sent
+next_followup: Only after a reply or connection acceptance; otherwise first follow-up no earlier than 2026-07-10.
+spc_affiliation: clear_no_match_local_spc_export
 spc_checked_at: 2026-07-06
 
-### Galia Solomonoff
+## Next 10 post-application outreach
 
-contact: Galia Solomonoff
-relationship: cold Columbia faculty contact; director of the GSAPP Housing Lab
-lane: lab routing
-source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.arch.columbia.edu/research/labs/15-housing-lab; https://www.arch.columbia.edu/faculty/201-galia-solomonoff
-last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, which named the GSAPP Housing Lab.
-why_now: Douglas pointed me to the Housing Lab, and the lab page currently lists Galia as Director and gives the current faculty and alumni routing addresses.
-hook: Galia directs the lab, and the page routes faculty to facultyaffairs@arch.columbia.edu and alums or professionals to gsappalumni@columbia.edu.
-proof_point: Homecastr's housing forecasting and validation stack gives me a concrete way into housing research.
-ask: Ask whether there is a Columbia contact for housing research that could include student collaboration.
-avoid: Making it sound like a generic cold pitch or an active hiring request.
-status: ready to send
-action_state: ready
-next_followup: 2026-07-13 if no reply.
-spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
-spc_checked_at: 2026-07-06
+Date: 2026-07-06
 
-### Howard Slatkin
+Packet: `data/outreach/next10-post-application-2026-07-06-send-packet.md`
 
-contact: Howard Slatkin
-relationship: cold institutional contact; executive director of CHPC
-lane: public-interest routing
-source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://chpcny.org/about-us/our-staff/; https://chpcny.org/chpc-welcomes-new-executive-director-howard-slatkin/
-last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, which named CHPC as a housing NGO think tank worth knowing.
-why_now: Douglas pointed me to CHPC as a housing nonprofit worth knowing, and CHPC is currently active on housing policy and planning.
-hook: Howard is the current executive director, and CHPC's public contact is info@chpcny.org.
-proof_point: Homecastr's housing forecasting and validation stack plus my applied ML background fit a data and policy conversation.
-ask: Ask for the best person at CHPC to speak with about housing research and data work.
-avoid: Overloading him with a long founder bio or a broad ask.
-status: ready to send
-action_state: ready
-next_followup: 2026-07-13 if no reply.
-spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
-spc_checked_at: 2026-07-06
+Status: sent_with_correction
 
-### Weiping Wu
+Channel: LinkedIn via authenticated in-app browser.
 
-contact: Weiping Wu
-relationship: cold Columbia faculty contact; Professor and Director of the M.S. in Urban Planning program
-lane: Columbia program routing
-source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://provost.columbia.edu/people/weiping-wu; https://www.arch.columbia.edu/research/labs/15-housing-lab
-last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, plus the GSAPP Academic and Student Affairs note that pointed me to Weiping Wu.
-why_now: Columbia is putting together a housing initiative this summer, and GSAPP academic staff already pointed to Weiping as the director of planning.
-hook: Weiping currently directs the urban planning program and works on housing and infrastructure.
-proof_point: Homecastr's housing forecasting and validation stack gives a concrete applied-ML bridge.
-ask: Ask whether there is a Columbia contact for housing research or student-facing work this summer.
-avoid: Treating it like a generic cold pitch or sounding like I am trying to force a match.
-status: ready to send
-action_state: ready
-next_followup: 2026-07-13 if no reply.
-spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
-spc_checked_at: 2026-07-06
+SPC gate: clear_no_match_local_spc_export for all 10 names against `data/spc-contacts.tsv` and `data/archive/south-park-commons-members-2026-07-05.md`.
 
-### Kerry Donahue
+Browser check: LinkedIn profile pages verified signed-in on 2026-07-06. Each valid company route was sent and verified as Pending or conversation text sent.
 
-contact: Kerry Donahue
-relationship: cold institutional contact; director of communications at the Harvard Joint Center for Housing Studies
-lane: research center routing
-source_refs: Gmail: 2026-07-06 Columbia GSAPP thread with Douglas Woodward reply; https://www.jchs.harvard.edu/staff/kerry-donahue; https://www.jchs.harvard.edu/staff; https://www.jchs.harvard.edu/state-nations-housing-2026
-last_touch: 2026-07-06 Douglas Woodward reply in the Columbia GSAPP thread, which named the Harvard Joint Center as a respected housing research home.
-why_now: Douglas pointed me to JCHS as a respected housing research group, and the 2026 State of the Nation's Housing page lists Kerry as the current media contact.
-hook: Kerry is the communications director and the public contact for interview requests at JCHS.
-proof_point: Homecastr's housing forecasting and validation stack plus my applied ML background are a credible bridge into housing research.
-ask: Ask whether there is a better person at JCHS to speak with about housing research or fellowship paths.
-avoid: Making it sound like a blanket networking blast or a direct pitch for a specific opening.
-status: ready to send
-action_state: ready
-next_followup: 2026-07-13 if no reply.
-spc_affiliation: no match in South Park Commons directory PDF; Slack not checked in this session
-spc_checked_at: 2026-07-06
+Contacts:
+
+- Pradeep Dorairaj - Snowflake, Engineering Manager; post-application route for #26 Snowflake ML Platform Inference.
+- Robbie Maasberg - Graphcore, Principal Talent Partner; post-application route for #27 Graphcore AI Platform Architect.
+- Stella E. / Stella Ernster - Judi Health, Talent Acquisition Manager; post-application route for #28 Capital Rx / Judi Health Senior Applied AI/ML Scientist.
+- Muskan Kukreja - Checkr, ML/AI leader; post-application route for #29 Checkr Staff Applied AI Engineer.
+- Marwan Mattar - Sigma, VP of AI; post-application route for #30 Sigma Senior AI/ML Engineer.
+- Chris Westerhold - Thoughtworks, Global Practice Director; replacement post-application route for #31 Thoughtworks Principal AI Architect.
+- James Melville - Vivodyne, software/data science route; post-application route for #32 Vivodyne AI Senior Scientist.
+- Mor Adato - DoubleVerify, Senior Director of Engineering / Analytics Platform; post-application route for #33 DoubleVerify Data Platform & AI Enablement.
+- Debarshi Kar - Instawork, CTO; post-application route for #34 Instawork Robotics ML Engineer.
+- Laura Woodruff - Neuralink, Senior Technical Recruiter; post-application route for #35 Neuralink Machine Learning Engineer.
+
+Outcome:
+
+- Sent and verified valid company routes for Snowflake, Graphcore, Capital Rx / Judi Health, Checkr, Sigma Computing, Thoughtworks, Vivodyne, DoubleVerify, Instawork, and Neuralink.
+- Jaydeep Chakrabarty was sent before LinkedIn post-send verification showed his current company as Piramal Finance, not Thoughtworks. This is logged as an extra misrouted touch and not counted as the Thoughtworks route.
+- Chris Westerhold was then verified as a current Thoughtworks AI-transformation leader and sent as the corrected Thoughtworks route.
+- Muskan Kukreja's direct Message route surfaced a Premium/InMail upsell, so the paid/direct message path was avoided and a normal connection note was sent instead.
+- Result artifact: `data/artifacts/next10-outreach-results-2026-07-06.json`.
