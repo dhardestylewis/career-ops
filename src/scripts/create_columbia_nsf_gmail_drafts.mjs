@@ -36,6 +36,19 @@ Best,
 Daniel`,
   },
   {
+    key: 'columbia-l2m-routing',
+    to: 'L2M@ctv.columbia.edu',
+    subject: 'Homecastr routing to Lab-to-Market and commercialization support',
+    body: `Hi Lab-to-Market team,
+
+I am a recent Columbia alum building Homecastr, a probabilistic property-forecasting platform. I am preparing an NSF SBIR/STTR Project Pitch and wanted to ask whether there is an L2M accelerator or commercialization route that fits this venture.
+
+If there is a better contact or a member program I should be speaking with, I would appreciate the pointer. I can send a short one-pager and the draft Project Pitch immediately.
+
+Best,
+Daniel`,
+  },
+  {
     key: 'columbia-alumni-routing',
     to: 'cce-alumni@columbia.edu',
     subject: 'Columbia alumni routing for Homecastr',
