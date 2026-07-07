@@ -5,6 +5,16 @@ import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
 
+const escapeCssAttributeValue = (value) =>
+    String(value)
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"');
+
+const escapeLocatorText = (value) =>
+    String(value)
+        .replace(/\\/g, '\\\\')
+        .replace(/"/g, '\\"');
+
 export async function populateAshby(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     let url = targetUrl;
     if (url && url.includes('jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
@@ -89,7 +99,8 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
         if (fs.existsSync(answersPath)) {
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
-                const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
+                const safeId = escapeCssAttributeValue(id);
+                const el = page.locator(`textarea[id="${safeId}"], textarea[name="${safeId}"], input[id="${safeId}"], input[name="${safeId}"]`);
                 if (await el.count() > 0) await el.first().fill(val);
             }
         }
@@ -346,18 +357,18 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             // Generic structural answer picker for Ashby's complex grouped radio blocks
             const answerComplexRadio = async (qText, ansText) => {
                 try {
-                    const locs = page.locator(`:text-matches("${qText}", "i")`);
+                    const locs = page.locator(`:text-matches("${escapeLocatorText(qText)}", "i")`);
                     if (await locs.count() > 0) {
                         const parent = locs.first().locator('xpath=..');
-                        const opt = parent.locator(`label:text-is("${ansText}")`);
+                        const opt = parent.locator(`label:text-is("${escapeLocatorText(ansText)}")`);
                         if (await opt.count() > 0) await opt.first().click({force: true});
                         else {
                             const p2 = parent.locator('xpath=..');
-                            const o2 = p2.locator(`label:text-is("${ansText}")`);
+                            const o2 = p2.locator(`label:text-is("${escapeLocatorText(ansText)}")`);
                             if (await o2.count() > 0) await o2.first().click({force: true});
                             else {
                                 const p3 = p2.locator('xpath=..');
-                                const o3 = p3.locator(`label:text-is("${ansText}")`);
+                                const o3 = p3.locator(`label:text-is("${escapeLocatorText(ansText)}")`);
                                 if (await o3.count() > 0) await o3.first().click({force: true});
                             }
                         }
@@ -434,7 +445,7 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             });
             
             for (const rName of radioGroups) {
-                const radios = page.locator(`input[type="radio"][name="${rName}"]`);
+                const radios = page.locator(`input[type="radio"][name="${escapeCssAttributeValue(rName)}"]`);
                 const count = await radios.count();
                 if (count > 0) {
                     const groupLabelText = await radios.first().evaluate(el => {
@@ -503,11 +514,12 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
             if (el.tagName === 'SELECT') {
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
-                if (el.name) {
-                   const cleanName = el.name.split('[')[0]; 
-                   const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
-                   if (Array.from(group).some(r => r.checked)) isFilled = true;
-                } else if (el.checked) {
+            if (el.name) {
+               const cleanName = el.name.split('[')[0]; 
+               const safeCleanName = cleanName.replace(/\\/g, '\\\\').replace(/"/g, '\\"');
+               const group = document.querySelectorAll(`input[name^="${safeCleanName}"]`);
+               if (Array.from(group).some(r => r.checked)) isFilled = true;
+            } else if (el.checked) {
                    isFilled = true;
                 }
             } else if (el.value && el.value.length > 0) {

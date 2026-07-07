@@ -10,6 +10,16 @@ const escapeCssAttributeValue = (value) =>
         .replace(/\\/g, '\\\\')
         .replace(/"/g, '\\"');
 
+const escapeCssIdentifier = (value) =>
+    escapeCssAttributeValue(value).replace(/([\[\]\.\,])/g, '\\$1');
+
+const escapeXPathLiteral = (value) => {
+    const text = String(value);
+    if (!text.includes('"')) return `"${text}"`;
+    if (!text.includes("'")) return `'${text}'`;
+    return 'concat(' + text.split('"').map((part) => `"${part}"`).join(', \'"\', ') + ')';
+};
+
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
 try {
@@ -170,7 +180,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         if (fs.existsSync(answersPath)) {
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
-                const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
+                const safeId = escapeCssAttributeValue(id);
+                const el = page.locator(`textarea[id="${safeId}"], textarea[name="${safeId}"], input[id="${safeId}"], input[name="${safeId}"]`);
                 if (await el.count() > 0) await el.first().pressSequentially(val, { delay: Math.floor(Math.random() * 40) + 20 });
             }
         }
@@ -988,7 +999,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const labelText = await check.evaluate(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`);
+                        const safeId = id.replace(/["\\]/g, '\\$&');
+                        const lbl = document.querySelector(`label[for="${safeId}"]`);
                         if (lbl) return (lbl.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
                     }
                     const parentLabel = el.closest('label');
@@ -1113,7 +1125,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
             const checkFuzzyRadio = async (textLabel) => {
                 try {
-                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), "${textLabel.toLowerCase()}")]//input`);
+                    const input = page.locator(`xpath=//label[contains(translate(., "ABCDEFGHIJKLMNOPQRSTUVWXYZ", "abcdefghijklmnopqrstuvwxyz"), ${escapeXPathLiteral(textLabel.toLowerCase())})]//input`);
                     if (await input.count() > 0) await input.first().check({ force: true }).catch(()=>{});
                 } catch(e) {}
             };
@@ -1367,7 +1379,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             for (const q of emptyFields) {
                 if (synthesizedMap[q.id]) {
                     console.log(`[LLM] Injecting synthesized answer for: "${q.label.substring(0,30)}..."`);
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${q.id}"]`) : page.locator(`#${q.id.replace(/([\[\]\.\,])/g, '\\$1')}, [data-llm-id="${q.id}"]`);
+                    const safeQId = escapeCssAttributeValue(q.id).replace(/([\[\]\.\,])/g, '\\$1');
+                    const safeQAttr = escapeCssAttributeValue(q.id);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     if (await loc.count() > 0) {
                         await loc.first().pressSequentially(synthesizedMap[q.id], { delay: Math.floor(Math.random() * 40) + 20 });
                         const isCombo = await loc.first().evaluate(el => el.getAttribute('role') === 'combobox').catch(()=>false);
@@ -1379,7 +1393,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                 } else {
                     // Brute force fallback if LLM failed
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${q.id}"]`) : page.locator(`#${q.id.replace(/([\[\]\.\,])/g, '\\$1')}, [data-llm-id="${q.id}"]`);
+                    const safeQId = escapeCssAttributeValue(q.id).replace(/([\[\]\.\,])/g, '\\$1');
+                    const safeQAttr = escapeCssAttributeValue(q.id);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     try {
                         if (await loc.count() > 0) {
                             const tagAndRole = await loc.first().evaluate(el => ({ tag: el.tagName, role: el.getAttribute('role') })).catch(()=>({}));
@@ -1409,7 +1425,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     // by broader fallback heuristics after the correct option has been selected.
     try {
         const forceReactSelectChoice = async (fieldId, desiredText) => {
-            const field = page.locator(`#${fieldId}`).first();
+            const safeFieldId = escapeCssAttributeValue(fieldId).replace(/([\[\]\.\,])/g, '\\$1');
+            const field = page.locator(`#${safeFieldId}`).first();
             if (await field.count() === 0) return false;
             await field.click({ force: true }).catch(()=>{});
             await field.fill("").catch(()=>{});
