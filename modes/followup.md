@@ -46,7 +46,7 @@ node src/dataOps/outreach-ledger.mjs
 
 The ledger builds `data/outreach/universe.tsv` and `data/outreach/queue.tsv`. Treat `data/outreach/queue.tsv` as the active outreach work queue and sort by `action_state`:
 
-- `followup_due` - send the lane-specific follow-up now
+- `followup_due` - send the lane-specific follow-up now, but only once the recorded `next_followup` date is due
 - `ready` - send the first touch if the contact is approved, unblocked, and the dossier is complete
 - `research` - find the right route before drafting
 - `blocked` - pause for human judgment or route access
@@ -87,10 +87,11 @@ Prioritize by `action_state`:
 
 Use the same cadence discipline unless the lane notes say otherwise:
 
-- First follow-up: 3 to 5 business days after the send
-- Second follow-up: 3 to 5 business days after the first follow-up
+- First follow-up: 5 business days after the send by default, and never sooner than 3 business days
+- Second follow-up: 5 business days after the first follow-up by default, and never sooner than 3 business days
 - After that, stop unless the user explicitly wants another pass
-- For no-response outreach, auto-schedule the next follow-up on that same 3 to 5 business day cadence rather than calendar days.
+- For no-response outreach, auto-schedule the next follow-up on that same conservative business-day cadence rather than calendar days.
+- If the dossier's `next_followup` is still in the future, or it says to wait for a reply / acceptance, do not send yet. The thread is on hold, even if it is already open.
 
 Lane-specific reminders:
 
@@ -156,6 +157,7 @@ Reuse the contacto framework: 3 sentences, 300 character max.
 Shorter than first (2-3 sentences). Take a **new angle**:
 - Share a relevant insight, article, or project update
 - Don't repeat the first follow-up's content
+- If the new draft only rewords the prior follow-up, stop instead of sending it. A second follow-up needs a genuinely new angle, not a cosmetic rewrite.
 - Still reference the role specifically
 
 ### Cold Application (followupCount >= 2)
@@ -174,7 +176,7 @@ Keep the action state explicit for the next agent:
 |---|---|---|
 | Simple yes/no or scheduling question | Reply directly with a short answer | Do not draft a new follow-up; stay in the thread |
 | Strategic or ambiguous reply | Pause and notify the user | Wait for human judgment before answering |
-| No response | Schedule the next follow-up automatically | Use the existing 3 to 5 business day cadence |
+| No response | Schedule the next follow-up automatically | Use the conservative business-day cadence and do not send before the recorded `next_followup` date |
 
 ## Step 4 - Present Drafts
 
