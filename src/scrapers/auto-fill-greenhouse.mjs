@@ -2,8 +2,25 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import cssEscape from 'css.escape';
+import { pathToFileURL } from 'url';
 import { buildHumanizer } from './humanize.mjs';
 import { getDeterministicMappings } from './heuristics.mjs';
+
+const getHostname = (value) => {
+    try {
+        return new URL(String(value)).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
+
+const cssIdSelector = (value) => `#${cssEscape(String(value))}`;
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -18,11 +35,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     const url = targetUrl;
     
     let domain = 'default';
-    if (url.includes('roblox.com') || url.includes('for=roblox')) domain = 'roblox';
-    else if (url.includes('databricks.com') || url.includes('for=databricks')) domain = 'databricks';
-    else if (url.includes('coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
-    else if (url.includes('appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
-    else if (url.includes('nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
+    if (isHostOrSubdomain(url, 'roblox.com') || url.includes('for=roblox')) domain = 'roblox';
+    else if (isHostOrSubdomain(url, 'databricks.com') || url.includes('for=databricks')) domain = 'databricks';
+    else if (isHostOrSubdomain(url, 'coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
+    else if (isHostOrSubdomain(url, 'appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
+    else if (isHostOrSubdomain(url, 'nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
 
     const DOMAIN_OVERRIDES = {
         roblox: {
@@ -77,7 +94,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         const iframe = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
         if (iframe) {
             const iframeSrc = await iframe.getAttribute('src');
-            if (iframeSrc && !iframeSrc.includes('googleapis.com')) {
+            if (iframeSrc && !isHostOrSubdomain(iframeSrc, 'googleapis.com')) {
                 console.log(`Detected embedded iframe. Redirecting to raw form: ${iframeSrc}`);
                 await safeGoto(iframeSrc, { waitUntil: 'domcontentloaded' });
             }
@@ -97,7 +114,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const iframe2 = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
             if (iframe2) {
                 const iframeSrc2 = await iframe2.getAttribute('src');
-            if (iframeSrc2 && !iframeSrc2.includes('googleapis.com')) {
+                if (iframeSrc2 && !isHostOrSubdomain(iframeSrc2, 'googleapis.com')) {
                 console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc2}`);
                 await safeGoto(iframeSrc2, { waitUntil: 'domcontentloaded' });
             }
@@ -179,7 +196,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         if (fs.existsSync(answersPath)) {
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
-                const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
+                const escapedId = cssEscape(String(id));
+                const el = page.locator(`textarea#${escapedId}, textarea[name="${id}"], input#${escapedId}, input[name="${id}"]`);
                 if (await el.count() > 0) await el.first().pressSequentially(val, { delay: Math.floor(Math.random() * 40) + 20 });
             }
         }
@@ -305,7 +323,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 try {
                     const id = el.id || el.getAttribute('aria-labelledby')?.replace('-label', '');
                     if (id) {
-                        const labelEl = document.querySelector(`label[for="${id}"], label[id="${id}-label"]`) || el.closest('div').parentElement.querySelector('label');
+                        const labelEl = document.getElementById(id)?.labels?.[0] || document.getElementById(`${id}-label`)?.labels?.[0] || el.closest('div').parentElement.querySelector('label');
                         if (labelEl) labelText = labelEl.innerText.trim();
                     }
                 } catch(e) {}
@@ -413,8 +431,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                     if (!tempId) continue;
                     
-                    const safeId = tempId.replace(/([":\[\]\.\,])/g, '\\$1');
-                    const inputCheck = page.locator(`[id="${safeId}"]`).first();
+                    const safeId = cssIdSelector(tempId);
+                    const inputCheck = page.locator(safeId).first();
                     const isVis = await inputCheck.isVisible().catch(()=>false);
                     const typeAttr = await inputCheck.getAttribute('type').catch(()=>null);
                     
@@ -435,23 +453,18 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             if (!targetId) return false;
 
             // Use locator with ID because IDs might have weird characters in modern react
-            const safeId = targetId.replace(/([":\[\]\.\,])/g, '\\$1');
-            let input = page.locator(`[id="${safeId}"]`).first();
+            const safeId = cssIdSelector(targetId);
+            let input = page.locator(safeId).first();
             
             // Check if it's a hidden React-Select input or base ID doesn't exist
             if (await input.count() === 0 || await input.getAttribute('type') === 'hidden') {
                 // Try dynamically generated react-select IDs first
-                const reactSelectInput = page.locator(`#react-select-${safeId}-input`).first();
+                const reactSelectInput = page.locator(`#react-select-${cssEscape(String(targetId))}-input`).first();
                 if (await reactSelectInput.count() > 0) {
                     input = reactSelectInput;
-                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${safeId}-input)`);
+                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${cssEscape(String(targetId))}-input)`);
                 } else {
-                    // Fallback to finding the input visually adjacent to the label
-                    const siblingInput = page.locator(`label[for="${safeId}"] ~ div input, label[for="${safeId}"] + div input`).first();
-                    if (await siblingInput.count() > 0) {
-                        input = siblingInput;
-                        console.log(`[Mapper] Redirected ID ${targetId} to adjacent div input`);
-                    } else if (await input.count() === 0) {
+                    if (await input.count() === 0) {
                         console.log(`[Mapper] Failed to find input with ID: ${targetId}`);
                         return false;
                     }
@@ -691,7 +704,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const parentLabel = await area.evaluateHandle(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`) || document.querySelector(`label[for="${id.replace('form_', '')}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -749,7 +763,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const parentLabel = await input.evaluateHandle(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`) || document.querySelector(`label[for="${id.replace('form_', '')}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -859,8 +874,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const labelText = await check.evaluate(el => {
                     const id = el.id;
                     if (id) {
-                        const safeId = id.replace(/([":\[\]\.\,])/g, '\\$1');
-                        const lbl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[for="${safeId.replace('form_', '')}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
                     }
                     const ctx = el.closest('label') || el.parentElement;
@@ -909,7 +924,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             try {
                 const ariaLabelledBy = await combo.getAttribute('aria-labelledby');
                 if (ariaLabelledBy) {
-                    const labelEl = await page.$(`[id="${ariaLabelledBy}"]`);
+                    const labelEl = await page.$(cssIdSelector(ariaLabelledBy));
                     if (labelEl) {
                         const labelText = ((await labelEl.textContent()) || '').toLowerCase();
                         if (labelText.includes('sponsorship') || labelText.includes('require visa')) {
@@ -1196,7 +1211,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     let labelText = '';
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`);
+                        const lbl = el.labels?.[0];
                         if (lbl) labelText = lbl.textContent.trim();
                     }
                     if (!labelText && el.getAttribute('aria-label')) labelText = el.getAttribute('aria-label');
@@ -1215,14 +1230,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
         if (emptyFields.length > 0) {
             console.log(`[LLM] Discovered ${emptyFields.length} unmapped fields. Triggering Synthesizer...`);
-            const { synthesizeAnswers } = await import('file:///' + process.cwd().replace(/\\/g, '/') + '/src/generator/llm-synthesizer.mjs');
+            const { synthesizeAnswers } = await import(pathToFileURL(path.resolve('src/generator/llm-synthesizer.mjs')).href);
             const jdHtml = await page.locator('#content, #header, body').first().innerText().catch(()=>'');
             const synthesizedMap = await synthesizeAnswers(emptyFields, jdHtml, profileConfig);
             
             for (const q of emptyFields) {
                 if (synthesizedMap[q.id]) {
                     console.log(`[LLM] Injecting synthesized answer for: "${q.label.substring(0,30)}..."`);
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${q.id}"]`) : page.locator(`#${q.id.replace(/([\[\]\.\,])/g, '\\$1')}, [data-llm-id="${q.id}"]`);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id=${JSON.stringify(q.id)}]`) : page.locator(`${cssIdSelector(q.id)}, [data-llm-id=${JSON.stringify(q.id)}]`);
                     if (await loc.count() > 0) {
                         await loc.first().pressSequentially(synthesizedMap[q.id], { delay: Math.floor(Math.random() * 40) + 20 });
                         const isCombo = await loc.first().evaluate(el => el.getAttribute('role') === 'combobox').catch(()=>false);
@@ -1325,8 +1340,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const idAttr = el.id;
                 if (idAttr) {
                     try {
-                        const safeId = idAttr.replace(/([\[\]\.\,])/g, '\\$1');
-                        const labelEl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[id="${safeId}-label"]`);
+                        const labelEl = document.getElementById(idAttr)?.labels?.[0] || document.getElementById(`${idAttr}-label`)?.labels?.[0];
                         if (labelEl) labelText = labelEl.textContent.trim();
                     } catch (e) {}
                 }
@@ -1349,13 +1363,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const data = {};
             // Extract standard inputs
             document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
-                const label = document.querySelector(`label[for="${input.id}"]`)?.innerText || input.name || input.id;
+                const label = input.labels?.[0]?.innerText || input.name || input.id;
                 data[label.trim()] = input.value;
             });
 
             // Extract React Selects (Comboboxes)
             document.querySelectorAll('input[role="combobox"]').forEach(box => {
-                let label = document.querySelector(`label[for="${box.id}"]`)?.innerText;
+                let label = box.labels?.[0]?.innerText;
                 if (!label) {
                     const ctx = box.closest('div.field, .application-question');
                     if (ctx) label = ctx.innerText.split('\n')[0];
@@ -1368,7 +1382,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
             // Extract Native Selects
             document.querySelectorAll('select').forEach(select => {
-                const label = document.querySelector(`label[for="${select.id}"]`)?.innerText || select.name || select.id;
+                const label = select.labels?.[0]?.innerText || select.name || select.id;
                 const selectedText = select.options[select.selectedIndex]?.text || "Unanswered";
                 data[label.trim()] = selectedText;
             });
@@ -1376,7 +1390,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Extract Checkboxes and Radio Buttons
             document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(box => {
                 if (box.checked) {
-                    const label = document.querySelector(`label[for="${box.id}"]`)?.innerText || box.parentElement?.innerText || box.id;
+                    const label = box.labels?.[0]?.innerText || box.parentElement?.innerText || box.id;
                     data[label.trim()] = "Checked";
                 }
             });
@@ -1469,7 +1483,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     console.log("\n⚠️ [2FA Triggered] Intercepting Verification Code from Email...");
                     const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
                     try {
-                        const { waitForVerificationCode } = await import('file:///' + path.resolve('src/scrapers/email-interceptor.mjs').replace(/\\/g, '/'));
+                        const { waitForVerificationCode } = await import(pathToFileURL(path.resolve('src/scrapers/email-interceptor.mjs')).href);
                         const code = await waitForVerificationCode(emailAddress, 75);
                         if (code) {
                             await verifyInput.first().pressSequentially(code, { delay: Math.floor(Math.random() * 40) + 20 });
