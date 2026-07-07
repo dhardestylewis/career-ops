@@ -29,16 +29,17 @@ const ARCHIVE_FILE = join(ROOT, 'data/archive/submission_anthropic_fellows_2026.
 const UNIVERSE_FILE = join(ROOT, 'data/outreach/universe.tsv');
 const QUEUE_FILE = join(ROOT, 'data/outreach/queue.tsv');
 const DRY_RUN = process.argv.includes('--dry-run');
+const DEFAULT_FOLLOWUP_BUSINESS_DAYS = 5;
 
 const LANE_META = {
-  'warm-network': { priority: 95, followupDays: 5, template: 'warm-network-note' },
-  'warm-academic': { priority: 100, followupDays: 5, template: 'professor-reconnect' },
+  'warm-network': { priority: 95, followupDays: DEFAULT_FOLLOWUP_BUSINESS_DAYS, template: 'warm-network-note' },
+  'warm-academic': { priority: 100, followupDays: DEFAULT_FOLLOWUP_BUSINESS_DAYS, template: 'professor-reconnect' },
   'alumni-career-services': { priority: 92, followupDays: 7, template: 'alumni-career-services-note' },
-  'hiring-manager': { priority: 90, followupDays: 4, template: 'hiring-manager-note' },
-  'recruiter': { priority: 88, followupDays: 3, template: 'recruiter-note' },
+  'hiring-manager': { priority: 90, followupDays: DEFAULT_FOLLOWUP_BUSINESS_DAYS, template: 'hiring-manager-note' },
+  'recruiter': { priority: 88, followupDays: DEFAULT_FOLLOWUP_BUSINESS_DAYS, template: 'recruiter-note' },
   'lab-research': { priority: 86, followupDays: 7, template: 'lab-research-note' },
   'nonprofit-gov': { priority: 84, followupDays: 7, template: 'public-sector-note' },
-  'founder-ecosystem': { priority: 82, followupDays: 5, template: 'ecosystem-bridge-note' },
+  'founder-ecosystem': { priority: 82, followupDays: DEFAULT_FOLLOWUP_BUSINESS_DAYS, template: 'ecosystem-bridge-note' },
   'dormant-warm': { priority: 80, followupDays: 7, template: 'warm-followup-nudge' },
   'mailbox': { priority: 100, followupDays: 0, template: 'mailbox-discovery' },
 };
@@ -325,7 +326,7 @@ function inferStatusRank(status) {
 }
 
 function laneMeta(lane) {
-  return LANE_META[lane] || { priority: 50, followupDays: 5, template: 'general-outreach' };
+  return LANE_META[lane] || { priority: 50, followupDays: DEFAULT_FOLLOWUP_BUSINESS_DAYS, template: 'general-outreach' };
 }
 
 function inferScopeFromText(...parts) {
