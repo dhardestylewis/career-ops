@@ -8,6 +8,7 @@ Use this first if you are the next agent picking up live outreach.
 
 - The live LinkedIn send state has been verified.
 - Sent: Li-Yun (James) Wang, 3Dtrees team, Kyle Baranko, Maxime Meilland, Vrushali Mundhe.
+- Li-Yun (James) Wang replied on July 5, 2026 that the project is research-oriented and aimed at a workshop or conference; keep the reply research-only and use the draft in `data/outreach/drafts.md`.
 - Blocked route: Apurva Singh due to LinkedIn verification / CAPTCHA.
 - Google X / Bellwether was rejected after the late-stage process. Do not send a normal follow-up on the old role; only draft a re-engagement note if a warm Bellwether contact surfaces a clearly separate opening.
 - Bellwether recruiter contact surfaced in Gmail: Gabriel Schook <schook@xwf.x.team>. Keep that thread separate from the rejected application and only use it for other X/Bellwether openings.
