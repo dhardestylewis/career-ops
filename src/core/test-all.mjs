@@ -171,7 +171,10 @@ const userFiles = [
   'config/profile.yml', 'modes/_profile.md', 'modes/_custom.md', 'portals.yml',
 ];
 for (const f of userFiles) {
-  const tracked = runGit(['ls-files', f]);
+  // Inspect the committed tree instead of the checkout index.
+  // PR merge worktrees can retain stale index entries even when HEAD no longer
+  // contains the user file, and the data contract is about what is committed.
+  const tracked = runGit(['ls-tree', '-r', '--name-only', 'HEAD', '--', f]);
   if (tracked === '') {
     pass(`User file gitignored: ${f}`);
   } else if (tracked === null) {
