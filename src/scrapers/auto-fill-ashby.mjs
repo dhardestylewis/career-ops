@@ -562,10 +562,24 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                     try {
                         const fs = await import('fs');
                         if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
-                        const screenshotPath = `data/archive/submission_${Date.now()}.png`;
+                        const archiveStamp = Date.now();
+                        const screenshotPath = `data/archive/submission_${archiveStamp}.png`;
                         await page.screenshot({ path: screenshotPath, fullPage: true });
                         metrics.preSubmissionScreenshot = screenshotPath;
                         console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
+                        const payloadPath = `data/archive/submission_${archiveStamp}.json`;
+                        const payload = {
+                            url,
+                            status: metrics.status || 'Pending_Submission',
+                            fillPercentage: metrics.fillPercentage,
+                            total: metrics.total,
+                            filled: metrics.filled,
+                            snapshot: metrics.snapshot || null,
+                            screenshotPath,
+                            capturedAt: new Date().toISOString()
+                        };
+                        fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
+                        console.log(`🗂️ Pre-submission payload saved: ${payloadPath}`);
                     } catch(e) {
                         console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
                     }
