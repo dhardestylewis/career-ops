@@ -9,6 +9,9 @@ const DEFAULT_PACKET = 'data/outreach/terra-ai-send-packet.md';
 const DEFAULT_DOSSIER = 'data/outreach/contact-dossier.md';
 const DEFAULT_DRAFTS = 'data/outreach/drafts.md';
 const DEFAULT_LOG = 'data/outreach/log.md';
+const MIN_FOLLOWUP_BUSINESS_DAYS = 3;
+const DEFAULT_FOLLOWUP_BUSINESS_DAYS = 5;
+const TODAY_START = startOfUtcDay(new Date());
 
 function normalizeText(value) {
   return String(value || '').trim();
@@ -46,8 +49,156 @@ function normalizeMessageBody(value) {
   return normalizeKey(value).replace(/\s+/g, ' ').trim();
 }
 
+const SENTENCE_STOPWORDS = new Set([
+  'a',
+  'again',
+  'and',
+  'are',
+  'as',
+  'at',
+  'be',
+  'been',
+  'best',
+  'by',
+  'cheers',
+  'dear',
+  'd',
+  'for',
+  'from',
+  'hello',
+  'hey',
+  'hi',
+  'i',
+  'im',
+  'ive',
+  'in',
+  'is',
+  'it',
+  'just',
+  'kind',
+  'me',
+  'm',
+  'my',
+  'note',
+  'of',
+  'on',
+  'or',
+  'our',
+  'please',
+  're',
+  'regards',
+  'sincerely',
+  'thank',
+  'thanks',
+  'that',
+  'the',
+  'their',
+  'this',
+  'to',
+  'we',
+  've',
+  'll',
+  's',
+  'were',
+  'with',
+  'you',
+  'your',
+]);
+
+function splitSentences(value) {
+  return String(value || '')
+    .replace(/\r?\n+/g, ' ')
+    .split(/(?<=[.!?])\s+/)
+    .map(sentence => normalizeText(sentence))
+    .filter(Boolean);
+}
+
+function sentenceTokens(value) {
+  return normalizeKey(value)
+    .split(' ')
+    .filter(Boolean)
+    .filter(token => !SENTENCE_STOPWORDS.has(token));
+}
+
+function tokenCoverage(left, right) {
+  const leftTokens = new Set(sentenceTokens(left));
+  const rightTokens = new Set(sentenceTokens(right));
+  if (!leftTokens.size || !rightTokens.size) return 0;
+
+  let shared = 0;
+  for (const token of leftTokens) {
+    if (rightTokens.has(token)) shared++;
+  }
+
+  return shared / Math.min(leftTokens.size, rightTokens.size);
+}
+
+function matchedSentenceCount(left, right) {
+  const leftSentences = splitSentences(left)
+    .map(sentenceTokens)
+    .filter(tokens => tokens.length >= 2);
+  const rightSentences = splitSentences(right)
+    .map(sentenceTokens)
+    .filter(tokens => tokens.length >= 2);
+
+  const used = new Set();
+  let matched = 0;
+
+  for (const leftTokens of leftSentences) {
+    let bestIndex = -1;
+    let bestCoverage = 0;
+
+    for (let i = 0; i < rightSentences.length; i++) {
+      if (used.has(i)) continue;
+
+      const rightTokens = rightSentences[i];
+      let shared = 0;
+      for (const token of leftTokens) {
+        if (rightTokens.includes(token)) shared++;
+      }
+
+      const coverage = shared / Math.min(leftTokens.length, rightTokens.length);
+      if (coverage > bestCoverage) {
+        bestCoverage = coverage;
+        bestIndex = i;
+      }
+    }
+
+    if (bestIndex !== -1 && bestCoverage >= 0.6) {
+      matched++;
+      used.add(bestIndex);
+    }
+  }
+
+  return matched;
+}
+
+function isNearDuplicateResend(currentBody, previousBody) {
+  return tokenCoverage(currentBody, previousBody) >= 0.65 && matchedSentenceCount(currentBody, previousBody) >= 1;
+}
+
 function extractRecipientName(value) {
   return normalizeText(value).replace(/\s*<[^>]+>\s*$/, '');
+}
+
+function todayIso() {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/New_York',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date());
+  const lookup = Object.fromEntries(
+    parts
+      .filter(part => part.type !== 'literal')
+      .map(part => [part.type, part.value]),
+  );
+  return `${lookup.year}-${lookup.month}-${lookup.day}`;
+}
+
+function parseIsoDate(value) {
+  const match = normalizeText(value).match(/^(\d{4}-\d{2}-\d{2})$/);
+  return match ? match[1] : '';
 }
 
 function parseArgs(argv) {
@@ -71,6 +222,41 @@ function parseArgs(argv) {
 
 function resolvePath(pathLike) {
   return join(ROOT, pathLike);
+}
+
+function startOfUtcDay(date) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+}
+
+function formatDate(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function parseDate(value) {
+  const text = normalizeText(value);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) return null;
+  return new Date(`${text}T00:00:00Z`);
+}
+
+function extractDateToken(value) {
+  const match = normalizeText(value).match(/\d{4}-\d{2}-\d{2}/);
+  return match ? parseDate(match[0]) : null;
+}
+
+function addBusinessDays(date, days) {
+  if (!date || !Number.isFinite(days) || days <= 0) return null;
+  const result = new Date(date);
+  let remaining = Math.floor(days);
+  while (remaining > 0) {
+    result.setUTCDate(result.getUTCDate() + 1);
+    const day = result.getUTCDay();
+    if (day !== 0 && day !== 6) remaining--;
+  }
+  return result;
+}
+
+function isFollowupPacketPath(pathLike) {
+  return /follow[-_ ]?up|nudge|bump/i.test(normalizeText(pathLike));
 }
 
 function parsePacket(content) {
@@ -191,6 +377,8 @@ function parseDossiers(content) {
       contact,
       key: normalizeKey(contact),
       status: pick('status'),
+      lastTouch: pick('last_touch'),
+      nextFollowUp: pick('next_followup'),
       whyNow: pick('why_now'),
       hook: pick('hook'),
       proofPoint: pick('proof_point'),
@@ -212,13 +400,14 @@ function greetingTarget(body) {
   return normalizeText(match?.[2] || '');
 }
 
-function validatePacket(packet, dossiers, mirrors = {}) {
+function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
   const errors = [];
   const warnings = [];
   const draftSections = Array.isArray(mirrors.drafts) ? mirrors.drafts : [];
   const liveSentKeys = mirrors.liveSentKeys instanceof Set ? mirrors.liveSentKeys : new Set();
   const draftByRecipient = new Map();
   const seenDraftRecipients = new Map();
+  const today = todayIso();
 
   if (!packet.messages.length) {
     errors.push('No `### Recipient` message blocks found in the send packet.');
@@ -302,6 +491,26 @@ function validatePacket(packet, dossiers, mirrors = {}) {
       errors.push(`${message.heading}: dossier status is "${dossier.status || 'missing'}", not ready.`);
     }
 
+    const dossierStatusKey = normalizeKey(dossier.status);
+    const nextFollowUpText = normalizeText(dossier.nextFollowUp);
+    const nextFollowUpDate = parseIsoDate(nextFollowUpText);
+    const dueDate = nextFollowUpDate || '';
+    const hasExplicitHold =
+      !nextFollowUpDate &&
+      /(^|[^a-z])(only|wait|hold)([^a-z]|$)|after.*reply|after.*accept/i.test(nextFollowUpText);
+    const isExistingThread =
+      ['sent', 'waiting', 'awaiting reply', 'awaiting_reply', 'replied', 'responded'].includes(dossierStatusKey) ||
+      Boolean(normalizeText(dossier.lastTouch));
+
+    if (isExistingThread) {
+      if (dueDate && dueDate > today) {
+        errors.push(`${message.heading}: next follow-up is not due until ${dueDate}.`);
+      }
+      if (hasExplicitHold) {
+        errors.push(`${message.heading}: dossier says to wait for a reply or acceptance before sending again.`);
+      }
+    }
+
     for (const [field, value] of [
       ['why_now', dossier.whyNow],
       ['hook', dossier.hook],
@@ -319,14 +528,39 @@ function validatePacket(packet, dossiers, mirrors = {}) {
       }
     }
 
+    const isFollowupPacket = isFollowupPacketPath(packetPath);
+    if (isFollowupPacket) {
+      const lastTouch = extractDateToken(dossier.lastTouch);
+      const nextFollowup = extractDateToken(dossier.nextFollowup);
+
+      if (!lastTouch) {
+        errors.push(`${message.heading}: follow-up packet is missing a parseable last_touch date.`);
+      }
+      if (!nextFollowup) {
+        errors.push(`${message.heading}: follow-up packet is missing a parseable next_followup date.`);
+      }
+      if (nextFollowup && TODAY_START < nextFollowup) {
+        errors.push(`${message.heading}: follow-up is not due until ${formatDate(nextFollowup)}.`);
+      }
+      if (lastTouch) {
+        const minimumDate = addBusinessDays(lastTouch, MIN_FOLLOWUP_BUSINESS_DAYS);
+        if (minimumDate && TODAY_START < minimumDate) {
+          errors.push(`${message.heading}: follow-up is too soon; wait at least ${MIN_FOLLOWUP_BUSINESS_DAYS} business days after ${formatDate(lastTouch)}. Default cadence is ${DEFAULT_FOLLOWUP_BUSINESS_DAYS} business days.`);
+        }
+      }
+    }
+
     const draft = draftByRecipient.get(packetKey);
     if (draft) {
-      const draftBodyKey = draft.bodyKey || normalizeMessageBody(draft.body);
+      const draftBody = draft.body || '';
+      const draftBodyKey = draft.bodyKey || normalizeMessageBody(draftBody);
       const draftStatusSent = /^sent\b/i.test(draft.status);
       const liveAlreadySent = liveSentKeys.has(packetKey);
 
       if (draftBodyKey && normalizedBody === draftBodyKey && (draftStatusSent || liveAlreadySent)) {
         errors.push(`${message.heading}: duplicate send detected; the packet body matches the sent draft mirror.`);
+      } else if ((draftStatusSent || liveAlreadySent) && draftBody && isNearDuplicateResend(body, draftBody)) {
+        errors.push(`${message.heading}: near-duplicate resend detected; the packet repeats the same core sentences as the last sent draft mirror.`);
       }
 
       if (draftStatusSent && !liveAlreadySent) {
@@ -444,6 +678,96 @@ Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's for
     throw new Error('Self-test duplicate packet did not catch a stale resend.');
   }
 
+  const kelseyDossiers = parseDossiers(`
+contact: Kelsey Richmond
+why_now: The Newlab startup membership application just went in, so the routing thread is already live.
+hook: Newlab is the current ecosystem bridge for climate, mobility, and urban tech.
+proof_point: Homecastr's decision support work is the supporting proof point.
+ask: Ask for the right person on the ecosystem / pilot team or a pointer.
+status: sent
+last_touch: 2026-07-06
+next_followup: 2026-07-06
+spc_affiliation: not-affiliated
+spc_checked_at: 2026-07-05
+`);
+  const kelseyDrafts = parseDraftMirrorContent(`
+## Kelsey Richmond
+
+**To:** Kelsey Richmond <kelsey.richmond@newlab.com>
+
+**Status:** Sent 2026-07-06
+
+**Subject:** Newlab Contact Form Submission
+
+\`\`\`text
+Hi Kelsey,
+
+I just submitted the application. Thanks again for pointing me to the right place.
+
+Best,
+Daniel
+\`\`\`
+`);
+  const kelseyPacket = parsePacket(`
+Status: ready to send
+
+### Kelsey Richmond
+
+Hi Kelsey,
+
+Thanks for the note. I've submitted the application and included the deck plus screenshots. Appreciate you pointing me in the right direction.
+
+Best,
+Daniel
+`);
+  const kelseyResend = validatePacket(kelseyPacket, kelseyDossiers, {
+    drafts: kelseyDrafts,
+    liveSentKeys: new Set(),
+  });
+  if (!kelseyResend.errors.some(error => error.includes('near-duplicate resend detected'))) {
+    throw new Error('Self-test near-duplicate resend did not catch the repeated Newlab note.');
+  }
+
+const tooSoonDossiers = parseDossiers(`
+contact: Julia Kreutzer
+why_now: A live Beginners journey session creates a concrete reason to reconnect.
+hook: Her current Cohere Labs and MILA research path is the specific bridge.
+proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
+ask: Stay in touch and compare notes briefly.
+status: sent
+last_touch: 2026-07-07
+next_followup: 2099-01-01
+spc_affiliation: not-affiliated
+spc_checked_at: 2026-07-05
+`);
+  const tooSoon = validatePacket(goodPacket, tooSoonDossiers, {
+    drafts: goodDrafts,
+    liveSentKeys: new Set(),
+  });
+  if (!tooSoon.errors.some(error => error.includes('next follow-up is not due until 2099-01-01'))) {
+    throw new Error('Self-test too-soon packet did not catch the future follow-up date.');
+  }
+
+  const explicitHoldDossiers = parseDossiers(`
+contact: Julia Kreutzer
+why_now: A live Beginners journey session creates a concrete reason to reconnect.
+hook: Her current Cohere Labs and MILA research path is the specific bridge.
+proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
+ask: Stay in touch and compare notes briefly.
+status: sent
+last_touch: 2026-07-07
+next_followup: Only after a reply or connection acceptance.
+spc_affiliation: not-affiliated
+spc_checked_at: 2026-07-05
+`);
+  const explicitHold = validatePacket(goodPacket, explicitHoldDossiers, {
+    drafts: goodDrafts,
+    liveSentKeys: new Set(),
+  });
+  if (!explicitHold.errors.some(error => error.includes('wait for a reply or acceptance'))) {
+    throw new Error('Self-test explicit-hold packet did not catch the reply/acceptance gate.');
+  }
+
   console.log('outreach-preflight self-test passed');
 }
 
@@ -474,9 +798,19 @@ function main() {
   const liveSentKeys = new Set(
     parseMarkdownTable(logPath)
       .filter(row => /^sent\b/i.test(normalizeText(row.status)))
-      .map(row => normalizeKey(row.recipient)),
+        .map(row => normalizeKey(row.recipient)),
   );
-  const result = validatePacket(packet, dossiers, { drafts, liveSentKeys });
+  const result = validatePacket(packet, dossiers, { drafts, liveSentKeys }, args.packet);
+  const packetLooksLive = /send[-_ ]?packet/i.test(args.packet) && !/\b(held|blocked|research)\b/i.test(packet.status);
+
+  if (packetLooksLive) {
+    if (!existsSync(draftsPath)) {
+      result.errors.push(`Draft mirror missing: ${args.drafts}. Restore data/outreach/drafts.md before any live send.`);
+    }
+    if (!existsSync(logPath)) {
+      result.errors.push(`Live outbound ledger missing: ${args.log}. Restore data/outreach/log.md before any live send.`);
+    }
+  }
 
   if (!result.errors.length && !result.warnings.length) {
     console.log(`PASS ${args.packet}`);

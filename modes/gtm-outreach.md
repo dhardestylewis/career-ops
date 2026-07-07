@@ -49,6 +49,7 @@ This mode is the GTM fork of the outreach system. Use it for lead, customer, par
 - Do not lead with your full backstory.
 - Do not sound like a mass outreach sequence.
 - Do not use vague openers like `just checking in`.
+- Do not send a cosmetic rewrite of the previous note. If the next draft only paraphrases the last touch, stop until there is a real reply or a new source-backed angle.
 - Do not send if the conflict check is unclear for a revenue, partnership, or customer pitch.
 
 ## Channel Guidance

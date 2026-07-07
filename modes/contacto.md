@@ -83,7 +83,9 @@ not quote the note verbatim in a public-facing message.
 - Something that makes them want to respond
 - NEVER share phone number
 - The contact type changes the EMPHASIS, not the structure
+- If the next message is only a paraphrase of the last outbound touch, stop and wait for a real reply or a genuinely new angle.
 - Before any live send, stage the exact copy in `data/outreach/*send-packet.md` and run `node src/dataOps/outreach-preflight.mjs --packet <path>`. If it fails, stop at draft-only.
+- If the dossier or queue says `next_followup` is still in the future, or it says to wait for a reply / acceptance, stop at draft-only. An open thread is not a reason to send early.
 
 ---
 
