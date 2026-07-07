@@ -25,7 +25,7 @@ const isHostOrSubdomain = (value, domain) => {
 };
 
 const escapeCssIdentifier = (value) =>
-    escapeCssAttributeValue(value).replace(/([\[\]\.\,])/g, '\\$1');
+    cssEscape(String(value));
 
 const escapeXPathLiteral = (value) => {
     const text = String(value);
@@ -498,7 +498,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Check if it's a hidden React-Select input or base ID doesn't exist
             if (await input.count() === 0 || await input.getAttribute('type') === 'hidden') {
                 // Try dynamically generated react-select IDs first
-                const reactSelectInput = page.locator(`#react-select-${cssEscape(targetId)}-input`).first();
+                const reactSelectInput = page.locator(`#react-select-${escapeCssIdentifier(targetId)}-input`).first();
                 if (await reactSelectInput.count() > 0) {
                     input = reactSelectInput;
                     console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${safeId}-input)`);
@@ -1395,7 +1395,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             for (const q of emptyFields) {
                 if (synthesizedMap[q.id]) {
                     console.log(`[LLM] Injecting synthesized answer for: "${q.label.substring(0,30)}..."`);
-                    const safeQId = escapeCssAttributeValue(q.id).replace(/([\[\]\.\,])/g, '\\$1');
+                    const safeQId = escapeCssIdentifier(q.id);
                     const safeQAttr = escapeCssAttributeValue(q.id);
                     const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     if (await loc.count() > 0) {
@@ -1409,7 +1409,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                 } else {
                     // Brute force fallback if LLM failed
-                    const safeQId = escapeCssAttributeValue(q.id).replace(/([\[\]\.\,])/g, '\\$1');
+                    const safeQId = escapeCssIdentifier(q.id);
                     const safeQAttr = escapeCssAttributeValue(q.id);
                     const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     try {
@@ -1441,7 +1441,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     // by broader fallback heuristics after the correct option has been selected.
     try {
         const forceReactSelectChoice = async (fieldId, desiredText) => {
-            const safeFieldId = escapeCssAttributeValue(fieldId).replace(/([\[\]\.\,])/g, '\\$1');
+            const safeFieldId = escapeCssIdentifier(fieldId);
             const field = page.locator(`#${safeFieldId}`).first();
             if (await field.count() === 0) return false;
             await field.click({ force: true }).catch(()=>{});
