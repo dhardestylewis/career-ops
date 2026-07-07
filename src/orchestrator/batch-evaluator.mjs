@@ -7,6 +7,27 @@ import { getResumePath, loadProfileConfig } from '../core/profile.mjs';
 chromium.use(stealthPlugin());
 import { pathToFileURL } from 'url';
 
+const getHostname = (value) => {
+    try {
+        return new URL(value).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
+
+const hasQueryParam = (value, name) => {
+    try {
+        return new URL(value).searchParams.has(name);
+    } catch {
+        return false;
+    }
+};
+
 // Dynamically extract Profile configuration
 const profileConfig = loadProfileConfig();
 
@@ -65,9 +86,9 @@ for (let i = 1; i < rawBatch.length; i++) {
 
     const rawUrl = parts[1].trim();
     const url = rawUrl.split('?')[0]; 
-    if (url.includes('lever.co')) leverUrls.push(url);
-    if (url.includes('greenhouse.io') || rawUrl.includes('gh_jid=')) greenhouseUrls.push(rawUrl);
-    if (url.includes('ashbyhq.com')) ashbyUrls.push(url);
+    if (isHostOrSubdomain(url, 'lever.co')) leverUrls.push(url);
+    if (isHostOrSubdomain(url, 'greenhouse.io') || hasQueryParam(rawUrl, 'gh_jid')) greenhouseUrls.push(rawUrl);
+    if (isHostOrSubdomain(url, 'ashbyhq.com')) ashbyUrls.push(url);
 }
 
 // Aggregate the massive subset of targets for concurrent Multi-Tab execution
@@ -79,13 +100,13 @@ let targets = [
 
 const getCompany = (urlStr) => {
     try {
-        if(urlStr.includes('job-boards.greenhouse.io') || urlStr.includes('boards.greenhouse.io')) {
+        if(isHostOrSubdomain(urlStr, 'job-boards.greenhouse.io') || isHostOrSubdomain(urlStr, 'boards.greenhouse.io')) {
              return new URL(urlStr).pathname.split('/')[1].toLowerCase();
         }
-        if(urlStr.includes('jobs.lever.co')) {
+        if(isHostOrSubdomain(urlStr, 'jobs.lever.co')) {
              return new URL(urlStr).pathname.split('/')[1].toLowerCase();
         }
-        if(urlStr.includes('jobs.ashbyhq.com')) {
+        if(isHostOrSubdomain(urlStr, 'jobs.ashbyhq.com')) {
              return new URL(urlStr).pathname.split('/')[1].toLowerCase();
         }
     } catch(e) {}
@@ -243,7 +264,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
         } catch(e) {}
         let trackerData = '';
         for (const stat of statsStore) {
-            const domain = stat.domain || (stat.url.includes('greenhouse.io') || stat.url.includes('gh_jid') ? 'greenhouse' : 'unknown');
+            const domain = stat.domain || (isHostOrSubdomain(stat.url, 'greenhouse.io') || hasQueryParam(stat.url, 'gh_jid') ? 'greenhouse' : 'unknown');
             const unmappedCount = stat.missingDOM ? stat.missingDOM.length : 0;
             trackerData += `${timestamp}\t${gitHash}\t${domain}\t${stat.url}\t${stat.fillPercentage || 0}\t${stat.filled || 0}\t${stat.total || 0}\t${unmappedCount}\n`;
         }
