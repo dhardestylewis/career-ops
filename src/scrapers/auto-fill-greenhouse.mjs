@@ -1,9 +1,10 @@
 import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import cssEscape from 'css.escape';
-import { pathToFileURL } from 'url';
+import { fileURLToPath } from 'url';
+import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
 import { buildHumanizer } from './humanize.mjs';
 import { getDeterministicMappings } from './heuristics.mjs';
 
@@ -1572,45 +1573,20 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     }
     return metrics;
 }
-
-
-
-
-import { fileURLToPath } from 'url';
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async () => {
         const isBatch = process.env.BATCH_EVAL_MODE === 'true';
         const targetUrl = process.argv[2];
         const targetResumeUrl = process.argv[3] || 'cv.pdf';
-        
-        const launchArgs = ['--window-position=-10000,-10000'];
-        const preferredProfilePath = profileConfig.execution.chrome_profilePath;
-        let context;
-        try {
-            context = await chromium.launchPersistentContext(preferredProfilePath, {
-                headless: false,
-                args: launchArgs,
-                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-            });
-        } catch (error) {
-            const message = String(error?.message || error || '');
-            if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
-                throw error;
-            }
-            const fallbackProfilePath = path.resolve('data/tmp/chrome-bot-profile-fallback');
-            fs.mkdirSync(fallbackProfilePath, { recursive: true });
-            console.log(`âš ï¸ Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
-            context = await chromium.launchPersistentContext(fallbackProfilePath, {
-                headless: false,
-                args: launchArgs,
-                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-            });
-        }
-        
-        await context.addInitScript(() => {
-            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-            window.navigator.chrome = { runtime: {} };
+        const runtime = await launchAutomationContext({
+            chromium,
+            profileConfig,
+            defaultLane: 'local_headed',
+            purpose: 'Greenhouse autofill',
         });
+        const { context } = runtime;
+        console.log(`Browser lane: ${describeBrowserLane(runtime.laneConfig)}`);
+        await installAutomationStealth(context);
 
         const page = await context.newPage();
         
@@ -1620,20 +1596,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
             console.error(e);
         }
         
-        // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
-            metrics.status = 'Incomplete';
-            return metrics;
-        }
-            await context.close();
+            await runtime.close();
         }
     })();
 }
-
-
-
-
-
-
