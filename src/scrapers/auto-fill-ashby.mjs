@@ -184,7 +184,13 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
              try {
                  const id = await input.getAttribute('id');
                  if (!id) continue;
-                 const labelEl = await page.$(`label[for="${id}"]`);
+                 const escapeSelector = (value) => {
+                     const raw = String(value);
+                     return window.CSS && typeof window.CSS.escape === 'function'
+                         ? window.CSS.escape(raw)
+                         : raw.replace(/["\\]/g, '\\$&');
+                 };
+                 const labelEl = await page.$(`label[for="${escapeSelector(id)}"]`);
                  const labelText = labelEl ? (await labelEl.textContent() || '').toLowerCase() : '';
                  const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
                  const nameAttr = (await input.getAttribute('name') || '').toLowerCase();
@@ -198,10 +204,10 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                          if (matchedValue === 'check' || matchedValue.toLowerCase() === 'acknowledge') {
                              if (!(await input.isChecked())) await input.check({ force: true }).catch(()=>{});
                          }
-                     } else if (typeAttr === 'radio') {
-                         // Find the label for this specific radio button to see if it matches the target value ('Yes', 'No', etc)
-                         let radioLabelEl = await page.$(`label[for="${id}"]`);
-                         if (!radioLabelEl) radioLabelEl = await input.evaluateHandle(el => el.closest('label')).catch(()=>null);
+                      } else if (typeAttr === 'radio') {
+                          // Find the label for this specific radio button to see if it matches the target value ('Yes', 'No', etc)
+                          let radioLabelEl = await page.$(`label[for="${escapeSelector(id)}"]`);
+                          if (!radioLabelEl) radioLabelEl = await input.evaluateHandle(el => el.closest('label')).catch(()=>null);
                          
                          const radioLabelText = radioLabelEl ? (await radioLabelEl.textContent() || '').toLowerCase() : '';
                          if (radioLabelText.includes(matchedValue.toLowerCase()) || (matchedValue.toLowerCase() === 'check' && radioLabelText.includes('acknowledge'))) {
@@ -245,7 +251,13 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
                 const id = await area.getAttribute('id');
                 let labelText = '';
                 if (id) {
-                    const labelEl = await page.$(`label[for="${id}"]`);
+                    const escapeSelector = (value) => {
+                        const raw = String(value);
+                        return window.CSS && typeof window.CSS.escape === 'function'
+                            ? window.CSS.escape(raw)
+                            : raw.replace(/["\\]/g, '\\$&');
+                    };
+                    const labelEl = await page.$(`label[for="${escapeSelector(id)}"]`);
                     labelText = labelEl ? (await labelEl.textContent() || '').toLowerCase() : '';
                 }
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
