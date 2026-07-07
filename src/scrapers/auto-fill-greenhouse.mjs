@@ -299,13 +299,20 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     const logUnmappedDom = async (locator, reason) => {
         try {
             const data = await locator.evaluate(el => {
+                const escapeSelector = (value) => {
+                    const raw = String(value);
+                    return window.CSS && typeof window.CSS.escape === 'function'
+                        ? window.CSS.escape(raw)
+                        : raw.replace(/["\\]/g, '\\$&');
+                };
                 const wrapper = el.closest('.field, .application-question, div[class*="question"]');
                 const fullHtml = wrapper ? wrapper.outerHTML : (el.parentElement ? el.parentElement.outerHTML : el.outerHTML);
                 let labelText = 'Unknown Label';
                 try {
                     const id = el.id || el.getAttribute('aria-labelledby')?.replace('-label', '');
                     if (id) {
-                        const labelEl = document.querySelector(`label[for="${CSS.escape(id)}"], label[id="${CSS.escape(id)}-label"]`) || el.closest('div').parentElement.querySelector('label');
+                        const safeId = escapeSelector(id);
+                        const labelEl = document.querySelector(`label[for="${safeId}"], label[id="${safeId}-label"]`) || el.closest('div').parentElement.querySelector('label');
                         if (labelEl) labelText = labelEl.innerText.trim();
                     }
                 } catch(e) {}
@@ -324,8 +331,27 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     await safeType('#first_name, input[id*="first_name"], input[name*="first_name"]', profileConfig?.candidate?.first_name || 'Daniel');
     await safeType('#last_name, input[id*="last_name"], input[name*="last_name"]', profileConfig?.candidate?.last_name || 'Hardesty Lewis');
     await safeType('#email, input[id*="email"], input[name*="email"], input[type="email"]', profileConfig?.candidate?.email || 'daniel@homecastr.com');
-    const safePhone = (profileConfig?.candidate?.phone || '7133717875').replace(/[\s\+\(\)\-]/g, '');
+    const safePhone = profileConfig?.candidate?.phone_e164 || ('+1' + (profileConfig?.candidate?.phone || '7133717875').replace(/[^\d]/g, ''));
     await safeType('#phone', safePhone);
+    try {
+        const countryButton = page.locator('.iti__selected-country').first();
+        if (await countryButton.count() > 0 && await countryButton.isVisible().catch(()=>false)) {
+            await countryButton.click().catch(()=>{});
+            const search = page.locator('.iti__search-input').first();
+            if (await search.count() > 0) {
+                await search.fill('United States').catch(()=>{});
+                await page.waitForTimeout(300);
+            }
+            const usOption = page.locator('[data-country-code="us"], li:has-text("United States")').first();
+            if (await usOption.count() > 0) {
+                await usOption.click().catch(()=>{});
+                await page.waitForTimeout(300);
+            }
+            await page.locator('#phone, input[type="tel"]').first().fill(safePhone).catch(()=>{});
+        }
+    } catch(e) {
+        console.log(`Phone country widget normalization skipped: ${e.message}`);
+    }
     await safeType('#org', 'Homecastr');
     await safeType('#job_application_employer', 'Homecastr');
     await safeType('input[id*="employer"], input[id*="company"], input[name*="employer"]', 'Homecastr');
@@ -658,9 +684,20 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     return false;
                 }
                 
-                if (!(await input.inputValue())) {
+                const currentValue = await input.inputValue().catch(() => '');
+                const targetText = String(targetValue);
+                if (currentValue.trim() !== targetText.trim()) {
                     await input.focus().catch(()=>{});
-                    await input.pressSequentially(targetValue, { delay: 15 }).catch(()=>{});
+                    await input.fill('').catch(()=>{});
+                    await input.fill(targetText).catch(async () => {
+                        await input.pressSequentially(targetText, { delay: 15 }).catch(()=>{});
+                    });
+                    await input.evaluate(el => {
+                        const tracker = el._valueTracker;
+                        if (tracker) tracker.setValue(el.value);
+                        el.dispatchEvent(new Event('input', { bubbles: true }));
+                        el.dispatchEvent(new Event('change', { bubbles: true }));
+                    }).catch(()=>{});
                     await page.waitForTimeout(500);
                     // Google Maps Autocomplete Check
                     const autocomplete = page.locator('.pac-container .pac-item, ul.ui-autocomplete li.ui-menu-item').first();
@@ -668,13 +705,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await autocomplete.click().catch(()=>{});
                         await page.waitForTimeout(300);
                     }
-                    await input.blur().catch(()=>{});
-                    markProcessed();
-                    return true;
-                } else {
-                    markProcessed();
-                    return true; // Already filled natively, mark as processed!
                 }
+                markProcessed();
+                await input.blur().catch(()=>{});
+                return true;
             } else if (tagName === 'input' && (type === 'radio' || type === 'checkbox')) {
                 const targetLower = targetValue.toString().toLowerCase();
                 if (targetLower === 'check' || targetLower === 'yes' || targetLower === 'true' || targetLower === 'acknowledge') {
@@ -736,9 +770,15 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             try {
                 const ariaLabel = (await area.getAttribute('aria-label') || '').toLowerCase();
                 const parentLabel = await area.evaluateHandle(el => {
+                    const escapeSelector = (value) => {
+                        const raw = String(value);
+                        return window.CSS && typeof window.CSS.escape === 'function'
+                            ? window.CSS.escape(raw)
+                            : raw.replace(/["\\]/g, '\\$&');
+                    };
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${CSS.escape(id)}"]`) || document.querySelector(`label[for="${CSS.escape(id.replace('form_', ''))}"]`);
+                        const lbl = document.querySelector(`label[for="${escapeSelector(id)}"]`) || document.querySelector(`label[for="${escapeSelector(id.replace('form_', ''))}"]`);
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -794,9 +834,15 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const ariaLabel = (await input.getAttribute('aria-label') || '').toLowerCase();
                 const placeholder = (await input.getAttribute('placeholder') || '').toLowerCase();
                 const parentLabel = await input.evaluateHandle(el => {
+                    const escapeSelector = (value) => {
+                        const raw = String(value);
+                        return window.CSS && typeof window.CSS.escape === 'function'
+                            ? window.CSS.escape(raw)
+                            : raw.replace(/["\\]/g, '\\$&');
+                    };
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${CSS.escape(id)}"]`) || document.querySelector(`label[for="${CSS.escape(id.replace('form_', ''))}"]`);
+                        const lbl = document.querySelector(`label[for="${escapeSelector(id)}"]`) || document.querySelector(`label[for="${escapeSelector(id.replace('form_', ''))}"]`);
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -846,7 +892,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 } else if (combinedLabel.includes('email')) {
                     if (!(await input.inputValue())) { await input.pressSequentially(profileConfig?.candidate?.email || "daniel@homecastr.com", { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('phone') || combinedLabel.includes('mobile')) {
-                    const sanitizedPhone = (profileConfig?.candidate?.phone || "7133717875").replace(/[\s\+\(\)\-]/g, '');
+                    const sanitizedPhone = profileConfig?.candidate?.phone_e164 || ('+1' + (profileConfig?.candidate?.phone || "7133717875").replace(/[^\d]/g, ''));
                     if (!(await input.inputValue())) { await input.pressSequentially(sanitizedPhone, { delay: 15 }); await input.blur().catch(()=>{}); }
                 } else if (combinedLabel.includes('location') || combinedLabel.includes('city') || combinedLabel.includes('address')) {
                     if (!(await input.inputValue())) {
@@ -903,10 +949,16 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const name = (await check.getAttribute('name') || '').toLowerCase();
                 const isReq = await check.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                 
-                const labelText = await check.evaluate(el => {
+                 const labelText = await check.evaluate(el => {
+                    const escapeSelector = (value) => {
+                        const raw = String(value);
+                        return window.CSS && typeof window.CSS.escape === 'function'
+                            ? window.CSS.escape(raw)
+                            : raw.replace(/["\\]/g, '\\$&');
+                    };
                     const id = el.id;
                     if (id) {
-                        const safeId = CSS.escape(id);
+                        const safeId = escapeSelector(id);
                         const lbl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[for="${safeId.replace('form_', '')}"]`);
                         if (lbl) return lbl.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
                     }
@@ -1277,6 +1329,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     console.log("Analyzing empty fields for LLM Synthesizer Fallback...");
     try {
         const emptyFields = await page.evaluate(() => {
+            const escapeSelector = (value) => {
+                const raw = String(value);
+                return window.CSS && typeof window.CSS.escape === 'function'
+                    ? window.CSS.escape(raw)
+                    : raw.replace(/["\\]/g, '\\$&');
+            };
             const empty = [];
             const fields = document.querySelectorAll('input[type="text"]:not([type="hidden"]), textarea, input[role="combobox"]');
             for (const el of fields) {
@@ -1292,7 +1350,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     let labelText = '';
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${CSS.escape(id)}"]`);
+                        const lbl = document.querySelector(`label[for="${escapeSelector(id)}"]`);
                         if (lbl) labelText = lbl.textContent.trim();
                     }
                     if (!labelText && el.getAttribute('aria-label')) labelText = el.getAttribute('aria-label');
@@ -1398,6 +1456,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     await page.waitForTimeout(5000); 
 
     const metrics = await page.evaluate(() => {
+        const escapeSelector = (value) => {
+            const raw = String(value);
+            return window.CSS && typeof window.CSS.escape === 'function'
+                ? window.CSS.escape(raw)
+                : raw.replace(/["\\]/g, '\\$&');
+        };
         const inputs = Array.from(document.querySelectorAll('input:not([type="hidden"]):not([type="submit"]):not([type="file"]):not([tabindex="-1"][aria-hidden="true"]), textarea:not([name="g-recaptcha-response"]):not(.g-recaptcha-response), select'));
         let total = inputs.length;
         let filled = 0;
@@ -1414,7 +1478,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
                 if (el.name) {
-                   const cleanName = el.name.split('[')[0]; 
+                   const cleanName = escapeSelector(el.name.split('[')[0]);
                    const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
@@ -1455,7 +1519,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const idAttr = el.id;
                 if (idAttr) {
                     try {
-                        const safeId = CSS.escape(idAttr);
+                        const safeId = escapeSelector(idAttr);
                         const labelEl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[id="${safeId}-label"]`);
                         if (labelEl) labelText = labelEl.textContent.trim();
                     } catch (e) {}
@@ -1476,29 +1540,35 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     console.log("Generating Submission State Snapshot...");
     try {
         const applicationSnapshot = await page.evaluate(() => {
+            const escapeSelector = (value) => {
+                const raw = String(value);
+                return window.CSS && typeof window.CSS.escape === 'function'
+                    ? window.CSS.escape(raw)
+                    : raw.replace(/["\\]/g, '\\$&');
+            };
             const data = {};
             // Extract standard inputs
             document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
-                const label = document.querySelector(`label[for="${CSS.escape(input.id)}"]`)?.innerText || input.name || input.id;
+                const label = document.querySelector(`label[for="${escapeSelector(input.id)}"]`)?.innerText || input.name || input.id;
                 data[label.trim()] = input.value;
             });
 
             // Extract React Selects (Comboboxes)
             document.querySelectorAll('input[role="combobox"]').forEach(box => {
-                let label = document.querySelector(`label[for="${CSS.escape(box.id)}"]`)?.innerText;
+                let label = document.querySelector(`label[for="${escapeSelector(box.id)}"]`)?.innerText;
                 if (!label) {
-                    const ctx = box.closest('div.field, .application-question');
+                    const ctx = box.closest('div.field, .application-question, .select, .field-wrapper');
                     if (ctx) label = ctx.innerText.split('\n')[0];
                 }
                 label = label || box.id;
-                const container = box.closest('div[class*="container"]');
-                const selectedValue = container?.querySelector('[class*="single-value"]')?.innerText || box.value;
+                const container = box.closest('.select__container, div[class*="container"], .field-wrapper, .application-question');
+                const selectedValue = container?.querySelector('[class*="single-value"], .select__single-value')?.innerText || box.value;
                 data[label.trim()] = selectedValue || "Unanswered";
             });
 
             // Extract Native Selects
             document.querySelectorAll('select').forEach(select => {
-                const label = document.querySelector(`label[for="${CSS.escape(select.id)}"]`)?.innerText || select.name || select.id;
+                const label = document.querySelector(`label[for="${escapeSelector(select.id)}"]`)?.innerText || select.name || select.id;
                 const selectedText = select.options[select.selectedIndex]?.text || "Unanswered";
                 data[label.trim()] = selectedText;
             });
@@ -1506,7 +1576,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Extract Checkboxes and Radio Buttons
             document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(box => {
                 if (box.checked) {
-                    const label = document.querySelector(`label[for="${CSS.escape(box.id)}"]`)?.innerText || box.parentElement?.innerText || box.id;
+                    const label = document.querySelector(`label[for="${escapeSelector(box.id)}"]`)?.innerText || box.parentElement?.innerText || box.id;
                     data[label.trim()] = "Checked";
                 }
             });
@@ -1515,6 +1585,26 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         });
         metrics.snapshot = applicationSnapshot;
         metrics.domain = domain;
+        metrics.requiredSnapshotGaps = Object.entries(applicationSnapshot)
+            .filter(([label, value]) => /\*/.test(label) && (!String(value || '').trim() || String(value).trim() === 'Unanswered'))
+            .map(([label]) => label);
+        metrics.legalSelectionGaps = await page.evaluate(() => {
+            const gaps = [];
+            document.querySelectorAll('.select__container').forEach(container => {
+                const label = (container.querySelector('label')?.innerText || '').trim();
+                const value = (container.querySelector('.select__single-value, [class*="single-value"], .select__multi-value__label')?.innerText || '').trim();
+                const lowerLabel = label.toLowerCase();
+                const lowerValue = value.toLowerCase();
+                if (!label) return;
+                if ((lowerLabel.includes('sponsorship') || lowerLabel.includes('visa')) && !/\bno\b/.test(lowerValue)) {
+                    gaps.push(`${label} => ${value || 'Unanswered'}`);
+                }
+                if ((lowerLabel.includes('authorized') || lowerLabel.includes('legal authorization') || lowerLabel.includes('legally authorized')) && !/\byes\b/.test(lowerValue)) {
+                    gaps.push(`${label} => ${value || 'Unanswered'}`);
+                }
+            });
+            return gaps;
+        });
         
         // Extract raw HTML context of the form to aid deterministic debugging of unmapped fields
         metrics.rawFormHtml = await page.locator('form').first().evaluate(el => el.outerHTML).catch(()=>'');
@@ -1523,14 +1613,19 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     }
 
     if (isBatch) {
-        if (false /* auto-submit override */) {
+        if (metrics.fillPercentage < 100) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
+        if (Array.isArray(metrics.requiredSnapshotGaps) && metrics.requiredSnapshotGaps.length > 0) {
+            console.log('Warning: snapshot still reports unresolved required fields; proceeding because Greenhouse React-select widgets can hide selected values from the raw input snapshot: ' + metrics.requiredSnapshotGaps.join(', '));
+        }
+        if (Array.isArray(metrics.legalSelectionGaps) && metrics.legalSelectionGaps.length > 0) {
+            console.log('Skipping submission natively: legal/work-authorization verification failed: ' + metrics.legalSelectionGaps.join('; '));
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
         // Live Submission Phase
@@ -1562,6 +1657,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     const archiveStamp = Date.now();
                     const screenshotPath = `data/archive/submission_${archiveStamp}.png`;
                     await page.screenshot({ path: screenshotPath, fullPage: true });
+                    metrics.preSubmissionScreenshot = screenshotPath;
                     console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
                     const payloadPath = `data/archive/submission_${archiveStamp}.json`;
                     const payload = {
@@ -1667,13 +1763,29 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
         const targetUrl = process.argv[2];
         const targetResumeUrl = process.argv[3] || 'cv.pdf';
         
-const launchArgs = ['--window-position=-10000,-10000'];
-const chromeProfilePath = process.env.CHROME_PROFILE_PATH || profileConfig?.execution?.chrome_profilePath || 'data/chrome-bot-profile';
-        const context = await chromium.launchPersistentContext(chromeProfilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-        });
+        const launchArgs = ['--window-position=-10000,-10000'];
+        const preferredProfilePath = profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
+        let context;
+        try {
+            context = await chromium.launchPersistentContext(preferredProfilePath, {
+                headless: false,
+                args: launchArgs,
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            });
+        } catch (error) {
+            const message = String(error?.message || error || '');
+            if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
+                throw error;
+            }
+            const fallbackProfilePath = path.resolve('data/tmp', `chrome-bot-profile-fallback-${Date.now()}`);
+            fs.mkdirSync(fallbackProfilePath, { recursive: true });
+            console.log(`Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
+            context = await chromium.launchPersistentContext(fallbackProfilePath, {
+                headless: false,
+                args: launchArgs,
+                userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            });
+        }
         
         await context.addInitScript(() => {
             Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
@@ -1690,11 +1802,6 @@ const chromeProfilePath = process.env.CHROME_PROFILE_PATH || profileConfig?.exec
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
-            metrics.status = 'Incomplete';
-            return metrics;
-        }
             await context.close();
         }
     })();

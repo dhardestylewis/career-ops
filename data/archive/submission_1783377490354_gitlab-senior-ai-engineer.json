@@ -1,0 +1,16 @@
+{
+  "submitted_at": "2026-07-06T22:38:10.354Z",
+  "target": {
+    "ats": "greenhouse",
+    "company": "GitLab",
+    "role": "Senior AI Engineer",
+    "location": "Remote, US",
+    "score": "4.7/5",
+    "url": "https://job-boards.greenhouse.io/gitlab/jobs/8548545002",
+    "rationale": "Remote US AI engineering role focused on LLM systems, agentic architecture, APIs, and production AI delivery."
+  },
+  "resume_path": "C:\\Users\\dhl\\data\\Portfolio\\career-ops\\data\\assets\\resume-dhl-20260630-causal-mle.pdf",
+  "process_exit_code": 1,
+  "telemetry": null,
+  "output_tail": "node:internal/process/promises:394\r\n    triggerUncaughtException(err, true /* fromPromise */);\r\n    ^\r\n\r\nbrowserType.launchPersistentContext: Timeout 180000ms exceeded.\r\nCall log:\r\n\u001b[2m  - <launching> C:\\Users\\dhl\\AppData\\Local\\ms-playwright\\chromium-1217\\chrome-win64\\chrome.exe --disable-field-trial-config --disable-background-networking --disable-background-timer-throttling --disable-backgrounding-occluded-windows --disable-back-forward-cache --disable-breakpad --disable-client-side-phishing-detection --disable-component-extensions-with-background-pages --disable-component-update --no-default-browser-check --disable-default-apps --disable-dev-shm-usage --disable-extensions --disable-features=AvoidUnnecessaryBeforeUnloadCheckSync,BoundaryEventDispatchTracksNodeRemoval,DestroyProfileOnBrowserClose,DialMediaRouteProvider,GlobalMediaControls,HttpsUpgrades,LensOverlay,MediaRouter,PaintHolding,ThirdPartyStoragePartitioning,Translate,AutoDeElevate,RenderDocument,OptimizationHints --enable-features=CDPScreenshotNewSurface --allow-pre-commit-input --disable-hang-monitor --disable-ipc-flooding-protection --disable-popup-blocking --disable-prompt-on-repost --disable-renderer-backgrounding --force-color-profile=srgb --metrics-recording-only --no-first-run --password-store=basic --use-mock-keychain --no-service-autorun --export-tagged-pdf --disable-search-engine-choice-screen --unsafely-disable-devtools-self-xss-warnings --edge-skip-compat-layer-relaunch --enable-automation --disable-infobars --disable-search-engine-choice-screen --disable-sync --enable-unsafe-swiftshader --no-sandbox --window-position=-10000,-10000 --user-data-dir=C:\\Users\\dhl\\data\\Portfolio\\career-ops\\data\\chrome-bot-profile --remote-debugging-pipe about:blank\u001b[22m\r\n\u001b[2m  - <launched> pid=33520\u001b[22m\r\n\r\n    at async file:///C:/Users/dhl/data/Portfolio/career-ops/src/scrapers/auto-fill-greenhouse.mjs:1547:23 {\r\n  name: 'TimeoutError'\r\n}\r\n\r\nNode.js v22.20.0\r\n"
+}
