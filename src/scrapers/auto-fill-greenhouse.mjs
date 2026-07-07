@@ -2,13 +2,22 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import cssEscape from 'css.escape';
 import { buildHumanizer } from './humanize.mjs';
 import { getDeterministicMappings } from './heuristics.mjs';
 
-const escapeCssAttributeValue = (value) =>
-    String(value)
-        .replace(/\\/g, '\\\\')
-        .replace(/"/g, '\\"');
+const getHostname = (value) => {
+    try {
+        return new URL(value).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -23,11 +32,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     const url = targetUrl;
     
     let domain = 'default';
-    if (url.includes('roblox.com') || url.includes('for=roblox')) domain = 'roblox';
-    else if (url.includes('databricks.com') || url.includes('for=databricks')) domain = 'databricks';
-    else if (url.includes('coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
-    else if (url.includes('appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
-    else if (url.includes('nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
+    if (isHostOrSubdomain(url, 'roblox.com') || url.includes('for=roblox')) domain = 'roblox';
+    else if (isHostOrSubdomain(url, 'databricks.com') || url.includes('for=databricks')) domain = 'databricks';
+    else if (isHostOrSubdomain(url, 'coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
+    else if (isHostOrSubdomain(url, 'appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
+    else if (isHostOrSubdomain(url, 'nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
 
     const DOMAIN_OVERRIDES = {
         roblox: {
@@ -68,7 +77,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         const iframe = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
         if (iframe) {
             const iframeSrc = await iframe.getAttribute('src');
-            if (iframeSrc && !iframeSrc.includes('googleapis.com')) {
+            if (iframeSrc && !isHostOrSubdomain(iframeSrc, 'googleapis.com')) {
                 console.log(`Detected embedded iframe. Redirecting to raw form: ${iframeSrc}`);
                 await page.goto(iframeSrc, { waitUntil: 'domcontentloaded' });
             }
@@ -88,7 +97,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const iframe2 = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
             if (iframe2) {
                 const iframeSrc2 = await iframe2.getAttribute('src');
-                if (iframeSrc2 && !iframeSrc2.includes('googleapis.com')) {
+                if (iframeSrc2 && !isHostOrSubdomain(iframeSrc2, 'googleapis.com')) {
                     console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc2}`);
                     await page.goto(iframeSrc2, { waitUntil: 'domcontentloaded' });
                 }
@@ -440,7 +449,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                     if (!tempId) continue;
                     
-                    const safeId = escapeCssAttributeValue(tempId).replace(/([\[\]\.\,])/g, '\\$1');
+                    const safeId = cssEscape(tempId);
                     const inputCheck = page.locator(`[id="${safeId}"]`).first();
                     const isVis = await inputCheck.isVisible().catch(()=>false);
                     const typeAttr = await inputCheck.getAttribute('type').catch(()=>null);
@@ -467,13 +476,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const markProcessed = () => processedFieldIds.add(targetId);
 
             // Use locator with ID because IDs might have weird characters in modern react
-            const safeId = escapeCssAttributeValue(targetId).replace(/([\[\]\.\,])/g, '\\$1');
+            const safeId = cssEscape(targetId);
             let input = page.locator(`[id="${safeId}"]`).first();
             
             // Check if it's a hidden React-Select input or base ID doesn't exist
             if (await input.count() === 0 || await input.getAttribute('type') === 'hidden') {
                 // Try dynamically generated react-select IDs first
-                const reactSelectInput = page.locator(`#react-select-${safeId}-input`).first();
+                const reactSelectInput = page.locator(`#react-select-${cssEscape(targetId)}-input`).first();
                 if (await reactSelectInput.count() > 0) {
                     input = reactSelectInput;
                     console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${safeId}-input)`);
@@ -516,7 +525,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         : targetValue;
                 const optionSelector = '[role="option"], div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"], li[role="option"]';
                 const listboxId = (await input.getAttribute('aria-controls').catch(()=>null)) || (await input.getAttribute('aria-owns').catch(()=>null));
-                const safeListboxId = listboxId ? escapeCssAttributeValue(listboxId).replace(/([\[\]\.\,])/g, '\\$1') : '';
+                const safeListboxId = listboxId ? cssEscape(listboxId) : '';
                 const scopedOptionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : optionSelector;
                 
                 await input.pressSequentially(searchStr, { delay: 50 }).catch(()=>{});
@@ -940,7 +949,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const name = (await check.getAttribute('name') || '').toLowerCase();
                 const isReq = await check.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                 
-                const labelText = await check.evaluate(el => {
+                 const labelText = await check.evaluate(el => {
                     const escapeSelector = (value) => {
                         const raw = String(value);
                         return window.CSS && typeof window.CSS.escape === 'function'
@@ -988,7 +997,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const labelText = await check.evaluate(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`);
+                        const lbl = document.querySelector(`label[for="${CSS.escape(id)}"]`);
                         if (lbl) return (lbl.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
                     }
                     const parentLabel = el.closest('label');
@@ -1417,7 +1426,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             await page.waitForTimeout(1200);
 
             const listboxId = (await field.getAttribute('aria-controls').catch(()=>null)) || (await field.getAttribute('aria-owns').catch(()=>null));
-            const safeListboxId = listboxId ? escapeCssAttributeValue(listboxId).replace(/([\[\]\.\,])/g, '\\$1') : '';
+            const safeListboxId = listboxId ? cssEscape(listboxId) : '';
             const optionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : '[role="option"], li[role="option"]';
             const options = await page.$$(optionSelector);
             for (const opt of options) {
@@ -1469,7 +1478,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
                 if (el.name) {
-                   const cleanName = escapeSelector(el.name.split('[')[0]); 
+                   const cleanName = escapeSelector(el.name.split('[')[0]);
                    const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
