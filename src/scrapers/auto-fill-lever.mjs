@@ -2,6 +2,7 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import cssEscape from 'css.escape';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
 
@@ -11,7 +12,7 @@ const escapeCssAttributeValue = (value) =>
         .replace(/"/g, '\\"');
 
 const escapeCssIdentifier = (value) =>
-    escapeCssAttributeValue(value).replace(/([\[\]\.\,])/g, '\\$1');
+    cssEscape(String(value));
 
 const escapeXPathLiteral = (value) => {
     const text = String(value);
