@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { spawn, spawnSync } from 'child_process';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 
 const DEFAULT_PORT = 9222;
 const DEFAULT_HOST = '127.0.0.1';

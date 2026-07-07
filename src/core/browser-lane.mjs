@@ -180,7 +180,6 @@ export async function launchAutomationContext({
       browser,
       context,
       close: async () => {
-        if (laneConfig.lane === 'extension_attach') return;
         await browser.close().catch(() => {});
       },
     };

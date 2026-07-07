@@ -31,7 +31,7 @@
 import { readFileSync, existsSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath, pathToFileURL } from 'url';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { LIVENESS_CONTEXT_OPTIONS, rejectPrivateOrInvalid } from './liveness-browser.mjs';
 import { launchAutomationContext } from './src/core/browser-lane.mjs';
 
@@ -251,5 +251,11 @@ async function main() {
 
 // Only run main() when invoked directly, not when imported by tests.
 if (process.argv[1] && import.meta.url === pathToFileURL(process.argv[1]).href) {
-  main();
+  main()
+    .then(() => {
+      process.exit(process.exitCode ?? 0);
+    })
+    .catch(() => {
+      process.exit(process.exitCode ?? 1);
+    });
 }

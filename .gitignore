@@ -31,6 +31,7 @@ data/chrome-bot-profile/
 scratch/
 logs/
 data/tmp/browser-attach-runtime.json
+data/chrome-attach-profile/
 data/tmp/chrome-attach-profile-fallback-*/
 
 credentials.json
