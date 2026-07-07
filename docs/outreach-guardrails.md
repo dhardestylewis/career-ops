@@ -14,6 +14,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Before any follow-up, check the dossier's `next_followup`. If it is a future date or says to wait for a reply / acceptance, the thread is `hold` and the send stops.
 - If thread context is unclear, stop at `draft only`.
 - Never "fix" a bad send with a second apology or self-correction unless the user explicitly asks for it.
+- If the new draft only restates the last outbound touch with different wording, stop at draft-only. A cosmetic rewrite is not a new send.
 
 ## Thread State
 
@@ -42,6 +43,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 
 - Log every live outbound touch in `data/outreach/log.md` before moving to the next recipient.
 - Re-run `npm run outreach:audit -- "Recipient Name"` after logging if the next step is unclear; the audit should now point to the existing thread instead of a fresh send.
+- If the follow-up is just a paraphrase of the prior touch, do not log a new send. Wait for a real reply or a genuinely new angle.
 - Keep the discovery trail in the appropriate TSV or note file so future agents can recover the context without reopening the browser session.
 - Do not invent contact details, application links, or replies.
 
