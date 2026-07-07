@@ -49,6 +49,134 @@ function normalizeMessageBody(value) {
   return normalizeKey(value).replace(/\s+/g, ' ').trim();
 }
 
+const SENTENCE_STOPWORDS = new Set([
+  'a',
+  'again',
+  'and',
+  'are',
+  'as',
+  'at',
+  'be',
+  'been',
+  'best',
+  'by',
+  'cheers',
+  'dear',
+  'd',
+  'for',
+  'from',
+  'hello',
+  'hey',
+  'hi',
+  'i',
+  'im',
+  'ive',
+  'in',
+  'is',
+  'it',
+  'just',
+  'kind',
+  'me',
+  'm',
+  'my',
+  'note',
+  'of',
+  'on',
+  'or',
+  'our',
+  'please',
+  're',
+  'regards',
+  'sincerely',
+  'thank',
+  'thanks',
+  'that',
+  'the',
+  'their',
+  'this',
+  'to',
+  'we',
+  've',
+  'll',
+  's',
+  'were',
+  'with',
+  'you',
+  'your',
+]);
+
+function splitSentences(value) {
+  return String(value || '')
+    .replace(/\r?\n+/g, ' ')
+    .split(/(?<=[.!?])\s+/)
+    .map(sentence => normalizeText(sentence))
+    .filter(Boolean);
+}
+
+function sentenceTokens(value) {
+  return normalizeKey(value)
+    .split(' ')
+    .filter(Boolean)
+    .filter(token => !SENTENCE_STOPWORDS.has(token));
+}
+
+function tokenCoverage(left, right) {
+  const leftTokens = new Set(sentenceTokens(left));
+  const rightTokens = new Set(sentenceTokens(right));
+  if (!leftTokens.size || !rightTokens.size) return 0;
+
+  let shared = 0;
+  for (const token of leftTokens) {
+    if (rightTokens.has(token)) shared++;
+  }
+
+  return shared / Math.min(leftTokens.size, rightTokens.size);
+}
+
+function matchedSentenceCount(left, right) {
+  const leftSentences = splitSentences(left)
+    .map(sentenceTokens)
+    .filter(tokens => tokens.length >= 2);
+  const rightSentences = splitSentences(right)
+    .map(sentenceTokens)
+    .filter(tokens => tokens.length >= 2);
+
+  const used = new Set();
+  let matched = 0;
+
+  for (const leftTokens of leftSentences) {
+    let bestIndex = -1;
+    let bestCoverage = 0;
+
+    for (let i = 0; i < rightSentences.length; i++) {
+      if (used.has(i)) continue;
+
+      const rightTokens = rightSentences[i];
+      let shared = 0;
+      for (const token of leftTokens) {
+        if (rightTokens.includes(token)) shared++;
+      }
+
+      const coverage = shared / Math.min(leftTokens.length, rightTokens.length);
+      if (coverage > bestCoverage) {
+        bestCoverage = coverage;
+        bestIndex = i;
+      }
+    }
+
+    if (bestIndex !== -1 && bestCoverage >= 0.6) {
+      matched++;
+      used.add(bestIndex);
+    }
+  }
+
+  return matched;
+}
+
+function isNearDuplicateResend(currentBody, previousBody) {
+  return tokenCoverage(currentBody, previousBody) >= 0.65 && matchedSentenceCount(currentBody, previousBody) >= 1;
+}
+
 function extractRecipientName(value) {
   return normalizeText(value).replace(/\s*<[^>]+>\s*$/, '');
 }
@@ -424,12 +552,15 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
 
     const draft = draftByRecipient.get(packetKey);
     if (draft) {
-      const draftBodyKey = draft.bodyKey || normalizeMessageBody(draft.body);
+      const draftBody = draft.body || '';
+      const draftBodyKey = draft.bodyKey || normalizeMessageBody(draftBody);
       const draftStatusSent = /^sent\b/i.test(draft.status);
       const liveAlreadySent = liveSentKeys.has(packetKey);
 
       if (draftBodyKey && normalizedBody === draftBodyKey && (draftStatusSent || liveAlreadySent)) {
         errors.push(`${message.heading}: duplicate send detected; the packet body matches the sent draft mirror.`);
+      } else if ((draftStatusSent || liveAlreadySent) && draftBody && isNearDuplicateResend(body, draftBody)) {
+        errors.push(`${message.heading}: near-duplicate resend detected; the packet repeats the same core sentences as the last sent draft mirror.`);
       }
 
       if (draftStatusSent && !liveAlreadySent) {
@@ -545,6 +676,56 @@ Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's for
   });
   if (!duplicate.errors.some(error => error.includes('duplicate send detected'))) {
     throw new Error('Self-test duplicate packet did not catch a stale resend.');
+  }
+
+  const kelseyDossiers = parseDossiers(`
+contact: Kelsey Richmond
+why_now: The Newlab startup membership application just went in, so the routing thread is already live.
+hook: Newlab is the current ecosystem bridge for climate, mobility, and urban tech.
+proof_point: Homecastr's decision support work is the supporting proof point.
+ask: Ask for the right person on the ecosystem / pilot team or a pointer.
+status: sent
+last_touch: 2026-07-06
+next_followup: 2026-07-06
+spc_affiliation: not-affiliated
+spc_checked_at: 2026-07-05
+`);
+  const kelseyDrafts = parseDraftMirrorContent(`
+## Kelsey Richmond
+
+**To:** Kelsey Richmond <kelsey.richmond@newlab.com>
+
+**Status:** Sent 2026-07-06
+
+**Subject:** Newlab Contact Form Submission
+
+\`\`\`text
+Hi Kelsey,
+
+I just submitted the application. Thanks again for pointing me to the right place.
+
+Best,
+Daniel
+\`\`\`
+`);
+  const kelseyPacket = parsePacket(`
+Status: ready to send
+
+### Kelsey Richmond
+
+Hi Kelsey,
+
+Thanks for the note. I've submitted the application and included the deck plus screenshots. Appreciate you pointing me in the right direction.
+
+Best,
+Daniel
+`);
+  const kelseyResend = validatePacket(kelseyPacket, kelseyDossiers, {
+    drafts: kelseyDrafts,
+    liveSentKeys: new Set(),
+  });
+  if (!kelseyResend.errors.some(error => error.includes('near-duplicate resend detected'))) {
+    throw new Error('Self-test near-duplicate resend did not catch the repeated Newlab note.');
   }
 
 const tooSoonDossiers = parseDossiers(`

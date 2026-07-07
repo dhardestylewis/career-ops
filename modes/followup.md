@@ -157,6 +157,7 @@ Reuse the contacto framework: 3 sentences, 300 character max.
 Shorter than first (2-3 sentences). Take a **new angle**:
 - Share a relevant insight, article, or project update
 - Don't repeat the first follow-up's content
+- If the new draft only rewords the prior follow-up, stop instead of sending it. A second follow-up needs a genuinely new angle, not a cosmetic rewrite.
 - Still reference the role specifically
 
 ### Cold Application (followupCount >= 2)
