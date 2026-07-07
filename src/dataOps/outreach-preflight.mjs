@@ -50,6 +50,26 @@ function extractRecipientName(value) {
   return normalizeText(value).replace(/\s*<[^>]+>\s*$/, '');
 }
 
+function todayIso() {
+  const parts = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/New_York',
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+  }).formatToParts(new Date());
+  const lookup = Object.fromEntries(
+    parts
+      .filter(part => part.type !== 'literal')
+      .map(part => [part.type, part.value]),
+  );
+  return `${lookup.year}-${lookup.month}-${lookup.day}`;
+}
+
+function parseIsoDate(value) {
+  const match = normalizeText(value).match(/^(\d{4}-\d{2}-\d{2})$/);
+  return match ? match[1] : '';
+}
+
 function parseArgs(argv) {
   const args = {
     packet: DEFAULT_PACKET,
@@ -191,6 +211,8 @@ function parseDossiers(content) {
       contact,
       key: normalizeKey(contact),
       status: pick('status'),
+      lastTouch: pick('last_touch'),
+      nextFollowUp: pick('next_followup'),
       whyNow: pick('why_now'),
       hook: pick('hook'),
       proofPoint: pick('proof_point'),
@@ -219,6 +241,7 @@ function validatePacket(packet, dossiers, mirrors = {}) {
   const liveSentKeys = mirrors.liveSentKeys instanceof Set ? mirrors.liveSentKeys : new Set();
   const draftByRecipient = new Map();
   const seenDraftRecipients = new Map();
+  const today = todayIso();
 
   if (!packet.messages.length) {
     errors.push('No `### Recipient` message blocks found in the send packet.');
@@ -300,6 +323,26 @@ function validatePacket(packet, dossiers, mirrors = {}) {
 
     if (!/\bready\b/i.test(dossier.status)) {
       errors.push(`${message.heading}: dossier status is "${dossier.status || 'missing'}", not ready.`);
+    }
+
+    const dossierStatusKey = normalizeKey(dossier.status);
+    const nextFollowUpText = normalizeText(dossier.nextFollowUp);
+    const nextFollowUpDate = parseIsoDate(nextFollowUpText);
+    const dueDate = nextFollowUpDate || '';
+    const hasExplicitHold =
+      !nextFollowUpDate &&
+      /(^|[^a-z])(only|wait|hold)([^a-z]|$)|after.*reply|after.*accept/i.test(nextFollowUpText);
+    const isExistingThread =
+      ['sent', 'waiting', 'awaiting reply', 'awaiting_reply', 'replied', 'responded'].includes(dossierStatusKey) ||
+      Boolean(normalizeText(dossier.lastTouch));
+
+    if (isExistingThread) {
+      if (dueDate && dueDate > today) {
+        errors.push(`${message.heading}: next follow-up is not due until ${dueDate}.`);
+      }
+      if (hasExplicitHold) {
+        errors.push(`${message.heading}: dossier says to wait for a reply or acceptance before sending again.`);
+      }
     }
 
     for (const [field, value] of [
@@ -442,6 +485,46 @@ Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's for
   });
   if (!duplicate.errors.some(error => error.includes('duplicate send detected'))) {
     throw new Error('Self-test duplicate packet did not catch a stale resend.');
+  }
+
+const tooSoonDossiers = parseDossiers(`
+contact: Julia Kreutzer
+why_now: A live Beginners journey session creates a concrete reason to reconnect.
+hook: Her current Cohere Labs and MILA research path is the specific bridge.
+proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
+ask: Stay in touch and compare notes briefly.
+status: sent
+last_touch: 2026-07-07
+next_followup: 2099-01-01
+spc_affiliation: not-affiliated
+spc_checked_at: 2026-07-05
+`);
+  const tooSoon = validatePacket(goodPacket, tooSoonDossiers, {
+    drafts: goodDrafts,
+    liveSentKeys: new Set(),
+  });
+  if (!tooSoon.errors.some(error => error.includes('next follow-up is not due until 2099-01-01'))) {
+    throw new Error('Self-test too-soon packet did not catch the future follow-up date.');
+  }
+
+  const explicitHoldDossiers = parseDossiers(`
+contact: Julia Kreutzer
+why_now: A live Beginners journey session creates a concrete reason to reconnect.
+hook: Her current Cohere Labs and MILA research path is the specific bridge.
+proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
+ask: Stay in touch and compare notes briefly.
+status: sent
+last_touch: 2026-07-07
+next_followup: Only after a reply or connection acceptance.
+spc_affiliation: not-affiliated
+spc_checked_at: 2026-07-05
+`);
+  const explicitHold = validatePacket(goodPacket, explicitHoldDossiers, {
+    drafts: goodDrafts,
+    liveSentKeys: new Set(),
+  });
+  if (!explicitHold.errors.some(error => error.includes('wait for a reply or acceptance'))) {
+    throw new Error('Self-test explicit-hold packet did not catch the reply/acceptance gate.');
   }
 
   console.log('outreach-preflight self-test passed');
