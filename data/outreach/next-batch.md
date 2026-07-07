@@ -144,6 +144,44 @@ Status: Draft / research / LinkedIn checked (all Terra AI targets here are 2nd-d
 - Richard Rex - Senior AI/ML Engineer. LinkedIn checked: 2nd-degree, so use a short note rather than a DM. Email fallback: `contact@terraAI.earth`.
 - Terra AI contact fallback - public company email route for the research-role package.
 
+## Modal / Plaid post-application routing
+Status: Sent
+
+Packet: `data/outreach/modal-plaid-2026-07-06-send-packet.md`
+
+- Wen Yao - Plaid ML/AI lead and hiring-manager route for Staff DFAI / Credit ML. LinkedIn connection note sent 2026-07-06.
+- Rico Curry - Plaid recruiting/router route for AI/ML searches. LinkedIn connection note sent 2026-07-06.
+- Julia Tupy - Modal talent/router route for FDE ML, FDE Systems, and Platform Engineering applications. LinkedIn connection note sent 2026-07-06.
+- Alexandra Dela Torre - Plaid alternate only if Rico is blocked. Do not send both Plaid recruiter notes in the same pass unless needed.
+
+Outcome:
+
+- All three primary Modal / Plaid LinkedIn connection notes were sent from the packet.
+- Alexandra Dela Torre was not used because Rico was reached successfully.
+
+## Next 10 post-application LinkedIn routing
+
+Status: Sent with correction
+
+Packet: `data/outreach/next10-post-application-2026-07-06-send-packet.md`
+
+Channel: LinkedIn. Authenticated in-app browser verified profile pages and routes on 2026-07-06.
+
+Outcome: 10 valid company routes sent and verified as Pending or conversation text sent. Jaydeep Chakrabarty was also sent before post-send verification showed he is currently at Piramal Finance rather than Thoughtworks, so Chris Westerhold was sent as the corrected Thoughtworks route.
+
+| Contact | Company | Channel | Status | Note |
+|---|---|---|---|---|
+| Pradeep Dorairaj | Snowflake | LinkedIn Connect | Sent | Engineering Manager route for #26 ML Platform Inference; Pending verified |
+| Robbie Maasberg | Graphcore | LinkedIn Connect | Sent | Principal Talent Partner route for #27 AI Platform Architect; Pending verified |
+| Stella E. / Stella Ernster | Capital Rx / Judi Health | LinkedIn Message | Sent | Talent Acquisition Manager route for #28 Senior Applied AI/ML Scientist; conversation text verified |
+| Muskan Kukreja | Checkr | LinkedIn Connect | Sent | ML/AI leader route for #29 Staff Applied AI Engineer; Pending verified |
+| Marwan Mattar | Sigma Computing | LinkedIn Connect | Sent | VP AI route for #30 Senior AI/ML Engineer; Pending verified |
+| Chris Westerhold | Thoughtworks | LinkedIn Connect | Sent | Corrected current Thoughtworks AI-transformation route for #31 Principal AI Architect; Pending verified |
+| James Melville | Vivodyne | LinkedIn Connect | Sent | Software/data science route for #32 AI Senior Scientist; Pending verified |
+| Mor Adato | DoubleVerify | LinkedIn Connect | Sent | Analytics platform/data architecture route for #33 Data Platform & AI Enablement; Pending verified |
+| Debarshi Kar | Instawork | LinkedIn Connect | Sent | CTO route for #34 Instawork Robotics ML Engineer; Pending verified |
+| Laura Woodruff | Neuralink | LinkedIn Connect | Sent | Senior Technical Recruiter route for #35 Machine Learning Engineer; Pending verified |
+
 ## Built In shortlist
 
 | Contact | Company | Channel | Status | Note |
