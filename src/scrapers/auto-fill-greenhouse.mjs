@@ -862,9 +862,15 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const isReq = await check.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                 
                 const labelText = await check.evaluate(el => {
+                    const escapeSelector = (value) => {
+                        const raw = String(value);
+                        return window.CSS && typeof window.CSS.escape === 'function'
+                            ? window.CSS.escape(raw)
+                            : raw.replace(/["\\]/g, '\\$&');
+                    };
                     const id = el.id;
                     if (id) {
-                        const safeId = id.replace(/([":\[\]\.\,])/g, '\\$1');
+                        const safeId = escapeSelector(id);
                         const lbl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[for="${safeId.replace('form_', '')}"]`);
                         if (lbl) return lbl.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
                     }
