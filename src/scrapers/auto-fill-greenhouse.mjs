@@ -1249,7 +1249,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                 } else {
                     // Brute force fallback if LLM failed
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${q.id}"]`) : page.locator(`#${q.id.replace(/([\[\]\.\,])/g, '\\$1')}, [data-llm-id="${q.id}"]`);
+                    const llmSelector = `[data-llm-id=${JSON.stringify(q.id)}]`;
+                    const loc = q.id.includes('.') ? page.locator(llmSelector) : page.locator(`${cssIdSelector(q.id)}, ${llmSelector}`);
                     try {
                         if (await loc.count() > 0) {
                             const tagAndRole = await loc.first().evaluate(el => ({ tag: el.tagName, role: el.getAttribute('role') })).catch(()=>({}));
