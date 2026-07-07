@@ -5,9 +5,22 @@ import yaml from 'js-yaml';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
 
+const getHostname = (value) => {
+    try {
+        return new URL(value).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
+
 export async function populateAshby(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     let url = targetUrl;
-    if (url && url.includes('jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
+    if (url && isHostOrSubdomain(url, 'jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
         url = url.replace(/\/$/, '') + '/application';
     }
 

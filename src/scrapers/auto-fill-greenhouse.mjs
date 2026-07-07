@@ -2,13 +2,22 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import yaml from 'js-yaml';
+import cssEscape from 'css.escape';
 import { buildHumanizer } from './humanize.mjs';
 import { getDeterministicMappings } from './heuristics.mjs';
 
-const escapeCssAttributeValue = (value) =>
-    String(value)
-        .replace(/\\/g, '\\\\')
-        .replace(/"/g, '\\"');
+const getHostname = (value) => {
+    try {
+        return new URL(value).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -23,11 +32,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     const url = targetUrl;
     
     let domain = 'default';
-    if (url.includes('roblox.com') || url.includes('for=roblox')) domain = 'roblox';
-    else if (url.includes('databricks.com') || url.includes('for=databricks')) domain = 'databricks';
-    else if (url.includes('coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
-    else if (url.includes('appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
-    else if (url.includes('nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
+    if (isHostOrSubdomain(url, 'roblox.com') || url.includes('for=roblox')) domain = 'roblox';
+    else if (isHostOrSubdomain(url, 'databricks.com') || url.includes('for=databricks')) domain = 'databricks';
+    else if (isHostOrSubdomain(url, 'coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
+    else if (isHostOrSubdomain(url, 'appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
+    else if (isHostOrSubdomain(url, 'nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
 
     const DOMAIN_OVERRIDES = {
         roblox: {
@@ -68,7 +77,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         const iframe = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
         if (iframe) {
             const iframeSrc = await iframe.getAttribute('src');
-            if (iframeSrc && !iframeSrc.includes('googleapis.com')) {
+            if (iframeSrc && !isHostOrSubdomain(iframeSrc, 'googleapis.com')) {
                 console.log(`Detected embedded iframe. Redirecting to raw form: ${iframeSrc}`);
                 await page.goto(iframeSrc, { waitUntil: 'domcontentloaded' });
             }
@@ -88,7 +97,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const iframe2 = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
             if (iframe2) {
                 const iframeSrc2 = await iframe2.getAttribute('src');
-                if (iframeSrc2 && !iframeSrc2.includes('googleapis.com')) {
+                if (iframeSrc2 && !isHostOrSubdomain(iframeSrc2, 'googleapis.com')) {
                     console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc2}`);
                     await page.goto(iframeSrc2, { waitUntil: 'domcontentloaded' });
                 }
@@ -296,7 +305,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 try {
                     const id = el.id || el.getAttribute('aria-labelledby')?.replace('-label', '');
                     if (id) {
-                        const labelEl = document.querySelector(`label[for="${id}"], label[id="${id}-label"]`) || el.closest('div').parentElement.querySelector('label');
+                        const labelEl = document.querySelector(`label[for="${CSS.escape(id)}"], label[id="${CSS.escape(id)}-label"]`) || el.closest('div').parentElement.querySelector('label');
                         if (labelEl) labelText = labelEl.innerText.trim();
                     }
                 } catch(e) {}
@@ -414,7 +423,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                     if (!tempId) continue;
                     
-                    const safeId = escapeCssAttributeValue(tempId).replace(/([\[\]\.\,])/g, '\\$1');
+                    const safeId = cssEscape(tempId);
                     const inputCheck = page.locator(`[id="${safeId}"]`).first();
                     const isVis = await inputCheck.isVisible().catch(()=>false);
                     const typeAttr = await inputCheck.getAttribute('type').catch(()=>null);
@@ -441,13 +450,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const markProcessed = () => processedFieldIds.add(targetId);
 
             // Use locator with ID because IDs might have weird characters in modern react
-            const safeId = escapeCssAttributeValue(targetId).replace(/([\[\]\.\,])/g, '\\$1');
+            const safeId = cssEscape(targetId);
             let input = page.locator(`[id="${safeId}"]`).first();
             
             // Check if it's a hidden React-Select input or base ID doesn't exist
             if (await input.count() === 0 || await input.getAttribute('type') === 'hidden') {
                 // Try dynamically generated react-select IDs first
-                const reactSelectInput = page.locator(`#react-select-${safeId}-input`).first();
+                const reactSelectInput = page.locator(`#react-select-${cssEscape(targetId)}-input`).first();
                 if (await reactSelectInput.count() > 0) {
                     input = reactSelectInput;
                     console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${safeId}-input)`);
@@ -490,7 +499,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         : targetValue;
                 const optionSelector = '[role="option"], div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"], li[role="option"]';
                 const listboxId = (await input.getAttribute('aria-controls').catch(()=>null)) || (await input.getAttribute('aria-owns').catch(()=>null));
-                const safeListboxId = listboxId ? escapeCssAttributeValue(listboxId).replace(/([\[\]\.\,])/g, '\\$1') : '';
+                const safeListboxId = listboxId ? cssEscape(listboxId) : '';
                 const scopedOptionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : optionSelector;
                 
                 await input.pressSequentially(searchStr, { delay: 50 }).catch(()=>{});
@@ -729,7 +738,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const parentLabel = await area.evaluateHandle(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`) || document.querySelector(`label[for="${id.replace('form_', '')}"]`);
+                        const lbl = document.querySelector(`label[for="${CSS.escape(id)}"]`) || document.querySelector(`label[for="${CSS.escape(id.replace('form_', ''))}"]`);
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -787,7 +796,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const parentLabel = await input.evaluateHandle(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`) || document.querySelector(`label[for="${id.replace('form_', '')}"]`);
+                        const lbl = document.querySelector(`label[for="${CSS.escape(id)}"]`) || document.querySelector(`label[for="${CSS.escape(id.replace('form_', ''))}"]`);
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -895,13 +904,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const isReq = await check.evaluate(el => el.required || el.getAttribute('aria-required') === 'true');
                 
                 const labelText = await check.evaluate(el => {
-                    const escapeCssAttributeValue = (value) =>
-                        String(value)
-                            .replace(/\\/g, '\\\\')
-                            .replace(/"/g, '\\"');
                     const id = el.id;
                     if (id) {
-                        const safeId = escapeCssAttributeValue(id).replace(/([\[\]\.\,])/g, '\\$1');
+                        const safeId = CSS.escape(id);
                         const lbl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[for="${safeId.replace('form_', '')}"]`);
                         if (lbl) return lbl.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
                     }
@@ -940,7 +945,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const labelText = await check.evaluate(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`);
+                        const lbl = document.querySelector(`label[for="${CSS.escape(id)}"]`);
                         if (lbl) return (lbl.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase();
                     }
                     const parentLabel = el.closest('label');
@@ -1287,7 +1292,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     let labelText = '';
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`);
+                        const lbl = document.querySelector(`label[for="${CSS.escape(id)}"]`);
                         if (lbl) labelText = lbl.textContent.trim();
                     }
                     if (!labelText && el.getAttribute('aria-label')) labelText = el.getAttribute('aria-label');
@@ -1363,7 +1368,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             await page.waitForTimeout(1200);
 
             const listboxId = (await field.getAttribute('aria-controls').catch(()=>null)) || (await field.getAttribute('aria-owns').catch(()=>null));
-            const safeListboxId = listboxId ? escapeCssAttributeValue(listboxId).replace(/([\[\]\.\,])/g, '\\$1') : '';
+            const safeListboxId = listboxId ? cssEscape(listboxId) : '';
             const optionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : '[role="option"], li[role="option"]';
             const options = await page.$$(optionSelector);
             for (const opt of options) {
@@ -1450,11 +1455,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const idAttr = el.id;
                 if (idAttr) {
                     try {
-                        const escapeCssAttributeValue = (value) =>
-                            String(value)
-                                .replace(/\\/g, '\\\\')
-                                .replace(/"/g, '\\"');
-                        const safeId = escapeCssAttributeValue(idAttr).replace(/([\[\]\.\,])/g, '\\$1');
+                        const safeId = CSS.escape(idAttr);
                         const labelEl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[id="${safeId}-label"]`);
                         if (labelEl) labelText = labelEl.textContent.trim();
                     } catch (e) {}
@@ -1478,13 +1479,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const data = {};
             // Extract standard inputs
             document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
-                const label = document.querySelector(`label[for="${input.id}"]`)?.innerText || input.name || input.id;
+                const label = document.querySelector(`label[for="${CSS.escape(input.id)}"]`)?.innerText || input.name || input.id;
                 data[label.trim()] = input.value;
             });
 
             // Extract React Selects (Comboboxes)
             document.querySelectorAll('input[role="combobox"]').forEach(box => {
-                let label = document.querySelector(`label[for="${box.id}"]`)?.innerText;
+                let label = document.querySelector(`label[for="${CSS.escape(box.id)}"]`)?.innerText;
                 if (!label) {
                     const ctx = box.closest('div.field, .application-question');
                     if (ctx) label = ctx.innerText.split('\n')[0];
@@ -1497,7 +1498,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
             // Extract Native Selects
             document.querySelectorAll('select').forEach(select => {
-                const label = document.querySelector(`label[for="${select.id}"]`)?.innerText || select.name || select.id;
+                const label = document.querySelector(`label[for="${CSS.escape(select.id)}"]`)?.innerText || select.name || select.id;
                 const selectedText = select.options[select.selectedIndex]?.text || "Unanswered";
                 data[label.trim()] = selectedText;
             });
@@ -1505,7 +1506,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Extract Checkboxes and Radio Buttons
             document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(box => {
                 if (box.checked) {
-                    const label = document.querySelector(`label[for="${box.id}"]`)?.innerText || box.parentElement?.innerText || box.id;
+                    const label = document.querySelector(`label[for="${CSS.escape(box.id)}"]`)?.innerText || box.parentElement?.innerText || box.id;
                     data[label.trim()] = "Checked";
                 }
             });
