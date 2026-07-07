@@ -9,6 +9,9 @@ const DEFAULT_PACKET = 'data/outreach/terra-ai-send-packet.md';
 const DEFAULT_DOSSIER = 'data/outreach/contact-dossier.md';
 const DEFAULT_DRAFTS = 'data/outreach/drafts.md';
 const DEFAULT_LOG = 'data/outreach/log.md';
+const MIN_FOLLOWUP_BUSINESS_DAYS = 3;
+const DEFAULT_FOLLOWUP_BUSINESS_DAYS = 5;
+const TODAY_START = startOfUtcDay(new Date());
 
 function normalizeText(value) {
   return String(value || '').trim();
@@ -71,6 +74,41 @@ function parseArgs(argv) {
 
 function resolvePath(pathLike) {
   return join(ROOT, pathLike);
+}
+
+function startOfUtcDay(date) {
+  return new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+}
+
+function formatDate(date) {
+  return date.toISOString().slice(0, 10);
+}
+
+function parseDate(value) {
+  const text = normalizeText(value);
+  if (!/^\d{4}-\d{2}-\d{2}$/.test(text)) return null;
+  return new Date(`${text}T00:00:00Z`);
+}
+
+function extractDateToken(value) {
+  const match = normalizeText(value).match(/\d{4}-\d{2}-\d{2}/);
+  return match ? parseDate(match[0]) : null;
+}
+
+function addBusinessDays(date, days) {
+  if (!date || !Number.isFinite(days) || days <= 0) return null;
+  const result = new Date(date);
+  let remaining = Math.floor(days);
+  while (remaining > 0) {
+    result.setUTCDate(result.getUTCDate() + 1);
+    const day = result.getUTCDay();
+    if (day !== 0 && day !== 6) remaining--;
+  }
+  return result;
+}
+
+function isFollowupPacketPath(pathLike) {
+  return /follow[-_ ]?up|nudge|bump/i.test(normalizeText(pathLike));
 }
 
 function parsePacket(content) {
@@ -191,6 +229,8 @@ function parseDossiers(content) {
       contact,
       key: normalizeKey(contact),
       status: pick('status'),
+      lastTouch: pick('last_touch'),
+      nextFollowup: pick('next_followup'),
       whyNow: pick('why_now'),
       hook: pick('hook'),
       proofPoint: pick('proof_point'),
@@ -212,7 +252,7 @@ function greetingTarget(body) {
   return normalizeText(match?.[2] || '');
 }
 
-function validatePacket(packet, dossiers, mirrors = {}) {
+function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
   const errors = [];
   const warnings = [];
   const draftSections = Array.isArray(mirrors.drafts) ? mirrors.drafts : [];
@@ -316,6 +356,28 @@ function validatePacket(packet, dossiers, mirrors = {}) {
       if (!dossier.spcCheckedAt) errors.push(`${message.heading}: SPC checked date is missing.`);
       if (/\b(yes|member|affiliate|affiliated|unclear|unknown|blocked)\b/i.test(dossier.spcAffiliation)) {
         errors.push(`${message.heading}: SPC status "${dossier.spcAffiliation}" blocks a work pitch.`);
+      }
+    }
+
+    const isFollowupPacket = isFollowupPacketPath(packetPath);
+    if (isFollowupPacket) {
+      const lastTouch = extractDateToken(dossier.lastTouch);
+      const nextFollowup = extractDateToken(dossier.nextFollowup);
+
+      if (!lastTouch) {
+        errors.push(`${message.heading}: follow-up packet is missing a parseable last_touch date.`);
+      }
+      if (!nextFollowup) {
+        errors.push(`${message.heading}: follow-up packet is missing a parseable next_followup date.`);
+      }
+      if (nextFollowup && TODAY_START < nextFollowup) {
+        errors.push(`${message.heading}: follow-up is not due until ${formatDate(nextFollowup)}.`);
+      }
+      if (lastTouch) {
+        const minimumDate = addBusinessDays(lastTouch, MIN_FOLLOWUP_BUSINESS_DAYS);
+        if (minimumDate && TODAY_START < minimumDate) {
+          errors.push(`${message.heading}: follow-up is too soon; wait at least ${MIN_FOLLOWUP_BUSINESS_DAYS} business days after ${formatDate(lastTouch)}. Default cadence is ${DEFAULT_FOLLOWUP_BUSINESS_DAYS} business days.`);
+        }
       }
     }
 
@@ -474,9 +536,9 @@ function main() {
   const liveSentKeys = new Set(
     parseMarkdownTable(logPath)
       .filter(row => /^sent\b/i.test(normalizeText(row.status)))
-      .map(row => normalizeKey(row.recipient)),
+        .map(row => normalizeKey(row.recipient)),
   );
-  const result = validatePacket(packet, dossiers, { drafts, liveSentKeys });
+  const result = validatePacket(packet, dossiers, { drafts, liveSentKeys }, args.packet);
 
   if (!result.errors.length && !result.warnings.length) {
     console.log(`PASS ${args.packet}`);
