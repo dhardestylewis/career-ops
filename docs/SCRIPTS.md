@@ -345,7 +345,7 @@ Use it immediately before drafting final send copy or replying in a live session
 
 ## outreach:backup
 
-Snapshots the local-only outreach workspace to an off-GitHub backup root by default. It copies `data/outreach/*` plus the current Newlab application archive artifacts into a timestamped snapshot, and it excludes `credentials.json` and `token.json` unless you explicitly ask for them.
+Snapshots the local-only outreach and application workspace to an off-GitHub backup root by default. It copies `data/outreach/*`, the tracker workspace under `data/tracker/`, plus the current Newlab application archive artifacts into a timestamped snapshot, and it excludes `credentials.json` and `token.json` unless you explicitly ask for them.
 
 ```bash
 npm run outreach:backup

@@ -29,5 +29,5 @@ This repository is a durable career-ops workspace for job search, outreach, and 
 
 - Keep the outreach workflow safe, repeatable, and deduplicated.
 - Keep future agents aligned on SPC gating, reply routing, and immediate logging.
-- Keep the outreach backup snapshot outside GitHub, run `npm run guard:private-data` before staging or committing, and refresh the backup after live send bursts.
+- Keep the outreach backup snapshot outside GitHub, run `npm run guard:private-data` before staging or committing, and refresh the backup after live send bursts. The snapshot also includes the tracker workspace under `data/tracker/`.
 - Leave one canonical path for drafting, sending, and follow-up.

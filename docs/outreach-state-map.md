@@ -14,11 +14,13 @@ Use this when you need to understand where the outreach workspace lives, what is
 - `data/outreach/targets.tsv` and `data/outreach/route-discovery.tsv` are the seed and routing tables.
 - `data/outreach/operator-card.md` is the run sheet for the next agent.
 - `data/outreach/*send-packet.md` are staged live-send packets.
+- `data/tracker/applications.md`, `data/tracker/applications.md.bak`, and `data/tracker/pipeline.md` are the application tracker workspace.
 - `data/archive/newlab-application-*.json` and `data/archive/newlab-application-*.png` are the Newlab application archive artifacts from this session.
 
 ## Backup Rule
 
 - Run `npm run outreach:backup` after a live-send burst or a major outreach-state change.
+- The backup command also copies the application tracker workspace under `data/tracker/`.
 - The default backup target is outside the repo at `C:\Users\<you>\.codex\backups\career-ops-outreach\`.
 - The backup is meant for local recovery or a separate private mirror, not for the public GitHub repo.
 

@@ -49,6 +49,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 
 - Treat `docs/outreach-state-map.md` as the compact file map for the outreach workspace.
 - After a live send burst or any major outreach-state change, run `npm run outreach:backup`.
+- The snapshot also carries `data/tracker/` so the application tracker stays aligned with outreach state.
 - The default backup target is outside the repo at `C:\Users\<you>\.codex\backups\career-ops-outreach\`.
 - Keep `credentials.json` and `token.json` machine-local or encrypted. Do not push them to GitHub.
 
