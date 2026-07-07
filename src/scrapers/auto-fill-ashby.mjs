@@ -1,7 +1,7 @@
 import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { fileURLToPath } from 'url';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
