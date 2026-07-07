@@ -55,8 +55,8 @@ function processFiles() {
             let inputHtml = null;
 
             if (forAttr) {
-                // Find by ID
-                const inputEl = $(`#${forAttr.replace(/([":\[\]\.\,])/g, '\\$1')}`);
+                // Find by exact ID match to avoid CSS escaping issues
+                const inputEl = $('input, select, textarea').filter((_, el) => $(el).attr('id') === forAttr);
                 if (inputEl.length > 0) {
                     inputHtml = extractRelevantHtml($, inputEl);
                 }

@@ -4,7 +4,7 @@ import { populateAshby } from './scrapers/auto-fill-ashby.mjs';
 import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { getResumePath } from './core/profile.mjs';
 
 const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');

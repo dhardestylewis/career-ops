@@ -1,9 +1,35 @@
 import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
+import cssEscape from 'css.escape';
+import { fileURLToPath } from 'url';
+import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
 import { buildHumanizer } from './humanize.mjs';
 import { getDeterministicMappings } from './heuristics.mjs';
+
+const getHostname = (value) => {
+    try {
+        return new URL(String(value)).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+};
+
+const isHostOrSubdomain = (value, domain) => {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+};
+
+const escapeCssIdentifier = (value) =>
+    cssEscape(String(value));
+
+const escapeXPathLiteral = (value) => {
+    const text = String(value);
+    if (!text.includes('"')) return `"${text}"`;
+    if (!text.includes("'")) return `'${text}'`;
+    return 'concat(' + text.split('"').map((part) => `"${part}"`).join(', \'"\', ') + ')';
+};
 
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
@@ -18,11 +44,11 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     const url = targetUrl;
     
     let domain = 'default';
-    if (url.includes('roblox.com') || url.includes('for=roblox')) domain = 'roblox';
-    else if (url.includes('databricks.com') || url.includes('for=databricks')) domain = 'databricks';
-    else if (url.includes('coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
-    else if (url.includes('appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
-    else if (url.includes('nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
+    if (isHostOrSubdomain(url, 'roblox.com') || url.includes('for=roblox')) domain = 'roblox';
+    else if (isHostOrSubdomain(url, 'databricks.com') || url.includes('for=databricks')) domain = 'databricks';
+    else if (isHostOrSubdomain(url, 'coreweave.com') || url.includes('for=coreweave')) domain = 'coreweave';
+    else if (isHostOrSubdomain(url, 'appliedintuition.com') || url.includes('for=appliedintuition') || url.includes('appliedintuition/')) domain = 'appliedintuition';
+    else if (isHostOrSubdomain(url, 'nuro.ai') || url.includes('for=nuro')) domain = 'nuro';
 
     const DOMAIN_OVERRIDES = {
         roblox: {
@@ -54,8 +80,22 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     };
     const domainOverrides = DOMAIN_OVERRIDES[domain] || {};
 
+    const safeGoto = async (gotoUrl, gotoOptions = {}) => {
+        try {
+            await page.goto(gotoUrl, gotoOptions);
+        } catch (error) {
+            const message = String(error?.message || error || '');
+            if (/ERR_ABORTED|interrupted by another navigation/i.test(message)) {
+                console.log(`⚠️ Navigation interrupted while opening ${gotoUrl}; waiting for the page to settle and continuing.`);
+                await page.waitForLoadState('domcontentloaded', { timeout: 5000 }).catch(() => {});
+                return;
+            }
+            throw error;
+        }
+    };
+
     console.log(`Navigating to ${url}... [Domain Context: ${domain}]`);
-    await page.goto(url, { waitUntil: 'domcontentloaded' });
+    await safeGoto(url, { waitUntil: 'domcontentloaded' });
 
     console.log("Checking for embedded Greenhouse iframes...");
     try {
@@ -63,9 +103,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         const iframe = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
         if (iframe) {
             const iframeSrc = await iframe.getAttribute('src');
-            if (iframeSrc && !iframeSrc.includes('googleapis.com')) {
+            if (iframeSrc && !isHostOrSubdomain(iframeSrc, 'googleapis.com')) {
                 console.log(`Detected embedded iframe. Redirecting to raw form: ${iframeSrc}`);
-                await page.goto(iframeSrc, { waitUntil: 'domcontentloaded' });
+                await safeGoto(iframeSrc, { waitUntil: 'domcontentloaded' });
             }
         }
     } catch(e) {}
@@ -83,12 +123,12 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const iframe2 = await page.$('iframe[src*="/embed/job_app"], iframe#grnhse_iframe');
             if (iframe2) {
                 const iframeSrc2 = await iframe2.getAttribute('src');
-                if (iframeSrc2 && !iframeSrc2.includes('googleapis.com')) {
-                    console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc2}`);
-                    await page.goto(iframeSrc2, { waitUntil: 'domcontentloaded' });
-                }
-            } else {
-                await page.waitForSelector('#first_name', { timeout: 6000 }).catch(() => {});
+                if (iframeSrc2 && !isHostOrSubdomain(iframeSrc2, 'googleapis.com')) {
+                console.log(`Detected embedded iframe after clicking Apply. Redirecting: ${iframeSrc2}`);
+                await safeGoto(iframeSrc2, { waitUntil: 'domcontentloaded' });
+            }
+        } else {
+            await page.waitForSelector('#first_name', { timeout: 6000 }).catch(() => {});
             }
         }
     });
@@ -165,7 +205,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         if (fs.existsSync(answersPath)) {
             const answers = JSON.parse(fs.readFileSync(answersPath, 'utf8'));
             for (const [id, val] of Object.entries(answers)) {
-                const el = page.locator(`textarea[id="${id}"], textarea[name="${id}"], input[id="${id}"], input[name="${id}"]`);
+                const escapedId = cssEscape(String(id));
+                const el = page.locator(`textarea#${escapedId}, textarea[name="${id}"], input#${escapedId}, input[name="${id}"]`);
                 if (await el.count() > 0) await el.first().pressSequentially(val, { delay: Math.floor(Math.random() * 40) + 20 });
             }
         }
@@ -291,7 +332,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 try {
                     const id = el.id || el.getAttribute('aria-labelledby')?.replace('-label', '');
                     if (id) {
-                        const labelEl = document.querySelector(`label[for="${id}"], label[id="${id}-label"]`) || el.closest('div').parentElement.querySelector('label');
+                        const labelEl = document.getElementById(id)?.labels?.[0] || document.getElementById(`${id}-label`)?.labels?.[0] || el.closest('div').parentElement.querySelector('label');
                         if (labelEl) labelText = labelEl.innerText.trim();
                     }
                 } catch(e) {}
@@ -399,8 +440,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                     if (!tempId) continue;
                     
-                    const safeId = tempId.replace(/([":\[\]\.\,])/g, '\\$1');
-                    const inputCheck = page.locator(`[id="${safeId}"]`).first();
+                    const safeId = cssIdSelector(tempId);
+                    const inputCheck = page.locator(safeId).first();
                     const isVis = await inputCheck.isVisible().catch(()=>false);
                     const typeAttr = await inputCheck.getAttribute('type').catch(()=>null);
                     
@@ -421,23 +462,18 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             if (!targetId) return false;
 
             // Use locator with ID because IDs might have weird characters in modern react
-            const safeId = targetId.replace(/([":\[\]\.\,])/g, '\\$1');
-            let input = page.locator(`[id="${safeId}"]`).first();
+            const safeId = cssIdSelector(targetId);
+            let input = page.locator(safeId).first();
             
             // Check if it's a hidden React-Select input or base ID doesn't exist
             if (await input.count() === 0 || await input.getAttribute('type') === 'hidden') {
                 // Try dynamically generated react-select IDs first
-                const reactSelectInput = page.locator(`#react-select-${safeId}-input`).first();
+                const reactSelectInput = page.locator(`#react-select-${escapeCssIdentifier(targetId)}-input`).first();
                 if (await reactSelectInput.count() > 0) {
                     input = reactSelectInput;
-                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${safeId}-input)`);
+                    console.log(`[Mapper] Redirected ID ${targetId} to React-Select input (#react-select-${escapeCssIdentifier(targetId)}-input)`);
                 } else {
-                    // Fallback to finding the input visually adjacent to the label
-                    const siblingInput = page.locator(`label[for="${safeId}"] ~ div input, label[for="${safeId}"] + div input`).first();
-                    if (await siblingInput.count() > 0) {
-                        input = siblingInput;
-                        console.log(`[Mapper] Redirected ID ${targetId} to adjacent div input`);
-                    } else if (await input.count() === 0) {
+                    if (await input.count() === 0) {
                         console.log(`[Mapper] Failed to find input with ID: ${targetId}`);
                         return false;
                     }
@@ -677,7 +713,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const parentLabel = await area.evaluateHandle(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`) || document.querySelector(`label[for="${id.replace('form_', '')}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -735,7 +772,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const parentLabel = await input.evaluateHandle(el => {
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`) || document.querySelector(`label[for="${id.replace('form_', '')}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl;
                     }
                     const aria = el.getAttribute('aria-labelledby');
@@ -845,8 +883,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const labelText = await check.evaluate(el => {
                     const id = el.id;
                     if (id) {
-                        const safeId = id.replace(/([":\[\]\.\,])/g, '\\$1');
-                        const lbl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[for="${safeId.replace('form_', '')}"]`);
+                        const control = document.getElementById(id) || document.getElementById(id.replace('form_', ''));
+                        const lbl = control?.labels?.[0];
                         if (lbl) return lbl.textContent.replace(/\s+/g, ' ').trim().toLowerCase();
                     }
                     const ctx = el.closest('label') || el.parentElement;
@@ -895,7 +933,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             try {
                 const ariaLabelledBy = await combo.getAttribute('aria-labelledby');
                 if (ariaLabelledBy) {
-                    const labelEl = await page.$(`[id="${ariaLabelledBy}"]`);
+                    const labelEl = await page.$(cssIdSelector(ariaLabelledBy));
                     if (labelEl) {
                         const labelText = ((await labelEl.textContent()) || '').toLowerCase();
                         if (labelText.includes('sponsorship') || labelText.includes('require visa')) {
@@ -1182,7 +1220,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     let labelText = '';
                     const id = el.id;
                     if (id) {
-                        const lbl = document.querySelector(`label[for="${id}"]`);
+                        const lbl = el.labels?.[0];
                         if (lbl) labelText = lbl.textContent.trim();
                     }
                     if (!labelText && el.getAttribute('aria-label')) labelText = el.getAttribute('aria-label');
@@ -1201,14 +1239,16 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
         if (emptyFields.length > 0) {
             console.log(`[LLM] Discovered ${emptyFields.length} unmapped fields. Triggering Synthesizer...`);
-            const { synthesizeAnswers } = await import('file:///' + process.cwd().replace(/\\/g, '/') + '/src/generator/llm-synthesizer.mjs');
+            const { synthesizeAnswers } = await import(pathToFileURL(path.resolve('src/generator/llm-synthesizer.mjs')).href);
             const jdHtml = await page.locator('#content, #header, body').first().innerText().catch(()=>'');
             const synthesizedMap = await synthesizeAnswers(emptyFields, jdHtml, profileConfig);
             
             for (const q of emptyFields) {
                 if (synthesizedMap[q.id]) {
                     console.log(`[LLM] Injecting synthesized answer for: "${q.label.substring(0,30)}..."`);
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${q.id}"]`) : page.locator(`#${q.id.replace(/([\[\]\.\,])/g, '\\$1')}, [data-llm-id="${q.id}"]`);
+                    const safeQId = escapeCssIdentifier(q.id);
+                    const safeQAttr = escapeCssAttributeValue(q.id);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     if (await loc.count() > 0) {
                         await loc.first().pressSequentially(synthesizedMap[q.id], { delay: Math.floor(Math.random() * 40) + 20 });
                         const isCombo = await loc.first().evaluate(el => el.getAttribute('role') === 'combobox').catch(()=>false);
@@ -1220,7 +1260,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     }
                 } else {
                     // Brute force fallback if LLM failed
-                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${q.id}"]`) : page.locator(`#${q.id.replace(/([\[\]\.\,])/g, '\\$1')}, [data-llm-id="${q.id}"]`);
+                    const safeQId = escapeCssIdentifier(q.id);
+                    const safeQAttr = escapeCssAttributeValue(q.id);
+                    const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     try {
                         if (await loc.count() > 0) {
                             const tagAndRole = await loc.first().evaluate(el => ({ tag: el.tagName, role: el.getAttribute('role') })).catch(()=>({}));
@@ -1246,6 +1288,40 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         console.error("⚠️ Synthesizer Fallback Error:", e.message);
     }
 
+    // Stripe-specific hard fixes for comboboxes that can still be re-rendered as "Yes"
+    // by broader fallback heuristics after the correct option has been selected.
+    try {
+        const forceReactSelectChoice = async (fieldId, desiredText) => {
+            const safeFieldId = escapeCssIdentifier(fieldId);
+            const field = page.locator(`#${safeFieldId}`).first();
+            if (await field.count() === 0) return false;
+            await field.click({ force: true }).catch(()=>{});
+            await field.fill("").catch(()=>{});
+            await field.pressSequentially(desiredText, { delay: 25 }).catch(()=>{});
+            await page.waitForTimeout(1200);
+
+            const listboxId = (await field.getAttribute('aria-controls').catch(()=>null)) || (await field.getAttribute('aria-owns').catch(()=>null));
+            const safeListboxId = listboxId ? cssEscape(listboxId) : '';
+            const optionSelector = safeListboxId ? `[id="${safeListboxId}"] [role="option"], [id="${safeListboxId}"] li[role="option"]` : '[role="option"], li[role="option"]';
+            const options = await page.$$(optionSelector);
+            for (const opt of options) {
+                const text = (await opt.innerText().catch(()=>'' )).replace(/\s+/g, ' ').trim();
+                if (!text) continue;
+                if (text.toLowerCase() === desiredText.toLowerCase() || text.toLowerCase().startsWith(desiredText.toLowerCase())) {
+                    await opt.click({ force: true }).catch(()=>{});
+                    await field.press('Enter').catch(()=>{});
+                    await page.waitForTimeout(300);
+                    return true;
+                }
+            }
+            return false;
+        };
+
+        await forceReactSelectChoice('question_62689507', 'No');
+        await forceReactSelectChoice('question_62689509', 'No');
+    } catch (e) {
+        console.error("Stripe hard-fix fallback failed:", e.message);
+    }
     // -------------------------------------------------------------------------
     // BATCH EVALUATION TELEMETRY DOM HOOK
     // -------------------------------------------------------------------------
@@ -1270,7 +1346,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 if (el.selectedIndex > 0 || (el.value && el.value !== "" && el.value !== "0")) isFilled = true;
             } else if (el.type === 'checkbox' || el.type === 'radio') {
                 if (el.name) {
-                   const cleanName = el.name.split('[')[0]; 
+                   const cleanName = el.name.split('[')[0];
                    const group = document.querySelectorAll(`input[name^="${cleanName}"]`);
                    if (Array.from(group).some(r => r.checked)) isFilled = true;
                 } else if (el.checked) {
@@ -1311,8 +1387,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 const idAttr = el.id;
                 if (idAttr) {
                     try {
-                        const safeId = idAttr.replace(/([\[\]\.\,])/g, '\\$1');
-                        const labelEl = document.querySelector(`label[for="${safeId}"]`) || document.querySelector(`label[id="${safeId}-label"]`);
+                        const labelEl = document.getElementById(idAttr)?.labels?.[0] || document.getElementById(`${idAttr}-label`)?.labels?.[0];
                         if (labelEl) labelText = labelEl.textContent.trim();
                     } catch (e) {}
                 }
@@ -1335,13 +1410,13 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             const data = {};
             // Extract standard inputs
             document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
-                const label = document.querySelector(`label[for="${input.id}"]`)?.innerText || input.name || input.id;
+                const label = input.labels?.[0]?.innerText || input.name || input.id;
                 data[label.trim()] = input.value;
             });
 
             // Extract React Selects (Comboboxes)
             document.querySelectorAll('input[role="combobox"]').forEach(box => {
-                let label = document.querySelector(`label[for="${box.id}"]`)?.innerText;
+                let label = box.labels?.[0]?.innerText;
                 if (!label) {
                     const ctx = box.closest('div.field, .application-question');
                     if (ctx) label = ctx.innerText.split('\n')[0];
@@ -1354,7 +1429,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
             // Extract Native Selects
             document.querySelectorAll('select').forEach(select => {
-                const label = document.querySelector(`label[for="${select.id}"]`)?.innerText || select.name || select.id;
+                const label = select.labels?.[0]?.innerText || select.name || select.id;
                 const selectedText = select.options[select.selectedIndex]?.text || "Unanswered";
                 data[label.trim()] = selectedText;
             });
@@ -1362,7 +1437,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Extract Checkboxes and Radio Buttons
             document.querySelectorAll('input[type="checkbox"], input[type="radio"]').forEach(box => {
                 if (box.checked) {
-                    const label = document.querySelector(`label[for="${box.id}"]`)?.innerText || box.parentElement?.innerText || box.id;
+                    const label = box.labels?.[0]?.innerText || box.parentElement?.innerText || box.id;
                     data[label.trim()] = "Checked";
                 }
             });
@@ -1455,7 +1530,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     console.log("\n⚠️ [2FA Triggered] Intercepting Verification Code from Email...");
                     const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
                     try {
-                        const { waitForVerificationCode } = await import('file:///' + path.resolve('src/scrapers/email-interceptor.mjs').replace(/\\/g, '/'));
+                        const { waitForVerificationCode } = await import(pathToFileURL(path.resolve('src/scrapers/email-interceptor.mjs')).href);
                         const code = await waitForVerificationCode(emailAddress, 75);
                         if (code) {
                             await verifyInput.first().pressSequentially(code, { delay: Math.floor(Math.random() * 40) + 20 });
@@ -1498,28 +1573,20 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     }
     return metrics;
 }
-
-
-
-
-import { fileURLToPath } from 'url';
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async () => {
         const isBatch = process.env.BATCH_EVAL_MODE === 'true';
         const targetUrl = process.argv[2];
         const targetResumeUrl = process.argv[3] || 'cv.pdf';
-        
-        const launchArgs = ['--window-position=-10000,-10000'];
-        const context = await chromium.launchPersistentContext(profileConfig.execution.chrome_profilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        const runtime = await launchAutomationContext({
+            chromium,
+            profileConfig,
+            defaultLane: 'local_headed',
+            purpose: 'Greenhouse autofill',
         });
-        
-        await context.addInitScript(() => {
-            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-            window.navigator.chrome = { runtime: {} };
-        });
+        const { context } = runtime;
+        console.log(`Browser lane: ${describeBrowserLane(runtime.laneConfig)}`);
+        await installAutomationStealth(context);
 
         const page = await context.newPage();
         
@@ -1529,20 +1596,8 @@ if (process.argv[1] === fileURLToPath(import.meta.url)) {
             console.error(e);
         }
         
-        // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
-            metrics.status = 'Incomplete';
-            return metrics;
-        }
-            await context.close();
+            await runtime.close();
         }
     })();
 }
-
-
-
-
-
-

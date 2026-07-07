@@ -2,7 +2,7 @@ import { populateLever } from './scrapers/auto-fill-lever.mjs';
 import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 
 const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
 const profileConfig = yaml.load(fileContents);

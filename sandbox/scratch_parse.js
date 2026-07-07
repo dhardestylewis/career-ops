@@ -1,5 +1,18 @@
 const fs = require('fs');
 
+function getHostname(value) {
+    try {
+        return new URL(value).hostname.toLowerCase();
+    } catch {
+        return '';
+    }
+}
+
+function isHostOrSubdomain(value, domain) {
+    const host = getHostname(value);
+    return host === domain || host.endsWith(`.${domain}`);
+}
+
 if (!fs.existsSync('missing_dom.json')) {
     console.log("No missing_dom.json found");
     process.exit(0);
@@ -10,9 +23,9 @@ const stats = {};
 
 for (const [url, elements] of Object.entries(data)) {
     let platform = "unknown";
-    if (url.includes('lever.co')) platform = "Lever";
-    if (url.includes('greenhouse.io')) platform = "Greenhouse";
-    if (url.includes('ashbyhq.com')) platform = "Ashby";
+    if (isHostOrSubdomain(url, 'lever.co')) platform = "Lever";
+    if (isHostOrSubdomain(url, 'greenhouse.io')) platform = "Greenhouse";
+    if (isHostOrSubdomain(url, 'ashbyhq.com')) platform = "Ashby";
 
     for (const elHTML of elements) {
         // basic classification
