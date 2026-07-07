@@ -13,6 +13,7 @@
  * Usage:
  *   node src/dataOps/outreach-recipient-audit.mjs "Li-Yun (James) Wang"
  *   node src/dataOps/outreach-recipient-audit.mjs "Li-Yun (James) Wang" --json
+ *   node src/dataOps/outreach-recipient-audit.mjs --self-test
  */
 
 import { existsSync, readFileSync } from 'fs';
@@ -22,9 +23,10 @@ import { fileURLToPath } from 'url';
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const args = process.argv.slice(2);
 const jsonMode = args.includes('--json');
+const selfTestMode = args.includes('--self-test');
 const query = args.filter(arg => arg !== '--json').join(' ').trim();
 
-if (!query) {
+if (!query && !selfTestMode) {
   console.error('Usage: node src/dataOps/outreach-recipient-audit.mjs "Recipient Name" [--json]');
   process.exit(1);
 }
@@ -100,6 +102,110 @@ function summarizeRow(row, preferredFields) {
   return parts.join('; ');
 }
 
+function deriveDecision(matches) {
+  const universeStates = new Set(matches.universe.map(row => normalizeText(row.status)));
+  const universeResponses = new Set(matches.universe.map(row => normalizeText(row.response_state)));
+  const universeActions = new Set(matches.universe.map(row => normalizeText(row.action_state)));
+  const targetStates = new Set(matches.targets.map(row => normalizeText(row.status)));
+  const routeStates = new Set(matches.routes.map(row => normalizeText(row.status)));
+  const logHasSent = matches.log.some(entry => entry.line.includes('| Sent |'));
+  const hasReply =
+    universeStates.has('replied') ||
+    universeStates.has('responded') ||
+    universeResponses.has('replied') ||
+    universeResponses.has('responded');
+  const hasSent = hasReply || universeStates.has('sent') || targetStates.has('sent') || routeStates.has('sent') || logHasSent;
+  const hasWorkflowHold =
+    universeActions.has('draft') ||
+    universeActions.has('blocked') ||
+    universeActions.has('research') ||
+    targetStates.has('draft') ||
+    targetStates.has('queued');
+
+  let verdict = 'fresh_outreach_possible';
+  let exitCode = 0;
+  let nextStep = 'Normal dossier, SPC, and current-role checks still apply.';
+
+  if (hasReply) {
+    verdict = 'reply_in_existing_thread';
+    exitCode = 2;
+    nextStep = 'Do not send a new intro. Continue only in the existing thread.';
+  } else if (hasSent) {
+    verdict = 'existing_thread_or_prior_send';
+    exitCode = 2;
+    nextStep = 'Do not send a new intro. Use the existing thread or follow-up cadence only.';
+  } else if (hasWorkflowHold) {
+    verdict = 'existing_workflow_not_ready';
+    exitCode = 3;
+    nextStep = 'Do not send yet. Resolve the existing draft / research / blocked state first.';
+  }
+
+  return { verdict, exitCode, nextStep };
+}
+
+function runSelfTest() {
+  const blank = {
+    targets: [],
+    universe: [],
+    routes: [],
+    feedContacts: [],
+    feedObservations: [],
+    log: [],
+    drafts: [],
+    dossier: [],
+    nextBatch: [],
+    operatorCard: [],
+  };
+
+  const cases = [
+    {
+      name: 'fresh recipient',
+      matches: blank,
+      expected: { verdict: 'fresh_outreach_possible', exitCode: 0 },
+    },
+    {
+      name: 'existing replied thread',
+      matches: {
+        ...blank,
+        universe: [{ status: 'sent', response_state: 'replied', action_state: 'draft' }],
+      },
+      expected: { verdict: 'reply_in_existing_thread', exitCode: 2 },
+    },
+    {
+      name: 'prior send without reply',
+      matches: {
+        ...blank,
+        log: [{ line: '| LinkedIn DM | Someone | ... | Sent |', lineNumber: 1 }],
+      },
+      expected: { verdict: 'existing_thread_or_prior_send', exitCode: 2 },
+    },
+    {
+      name: 'blocked workflow',
+      matches: {
+        ...blank,
+        universe: [{ status: 'blocked', response_state: 'blocked', action_state: 'blocked' }],
+      },
+      expected: { verdict: 'existing_workflow_not_ready', exitCode: 3 },
+    },
+  ];
+
+  for (const testCase of cases) {
+    const actual = deriveDecision(testCase.matches);
+    if (actual.verdict !== testCase.expected.verdict || actual.exitCode !== testCase.expected.exitCode) {
+      throw new Error(
+        `${testCase.name} failed: expected ${testCase.expected.verdict}/${testCase.expected.exitCode}, got ${actual.verdict}/${actual.exitCode}`
+      );
+    }
+  }
+
+  console.log('outreach-recipient-audit self-test passed');
+}
+
+if (selfTestMode) {
+  runSelfTest();
+  process.exit(0);
+}
+
 const needle = normalizeText(query);
 const resolvedFiles = Object.fromEntries(
   Object.entries(FILES).map(([key, candidates]) => [key, firstExisting(candidates)])
@@ -118,42 +224,7 @@ const matches = {
   operatorCard: findLineMatches(resolvedFiles.operatorCard, needle),
 };
 
-const universeStates = new Set(matches.universe.map(row => normalizeText(row.status)));
-const universeResponses = new Set(matches.universe.map(row => normalizeText(row.response_state)));
-const universeActions = new Set(matches.universe.map(row => normalizeText(row.action_state)));
-const targetStates = new Set(matches.targets.map(row => normalizeText(row.status)));
-const routeStates = new Set(matches.routes.map(row => normalizeText(row.status)));
-const logHasSent = matches.log.some(entry => entry.line.includes('| Sent |'));
-const hasReply =
-  universeStates.has('replied') ||
-  universeStates.has('responded') ||
-  universeResponses.has('replied') ||
-  universeResponses.has('responded');
-const hasSent = hasReply || universeStates.has('sent') || targetStates.has('sent') || routeStates.has('sent') || logHasSent;
-const hasWorkflowHold =
-  universeActions.has('draft') ||
-  universeActions.has('blocked') ||
-  universeActions.has('research') ||
-  targetStates.has('draft') ||
-  targetStates.has('queued');
-
-let verdict = 'fresh_outreach_possible';
-let exitCode = 0;
-let nextStep = 'Normal dossier, SPC, and current-role checks still apply.';
-
-if (hasReply) {
-  verdict = 'reply_in_existing_thread';
-  exitCode = 2;
-  nextStep = 'Do not send a new intro. Continue only in the existing thread.';
-} else if (hasSent) {
-  verdict = 'existing_thread_or_prior_send';
-  exitCode = 2;
-  nextStep = 'Do not send a new intro. Use the existing thread or follow-up cadence only.';
-} else if (hasWorkflowHold) {
-  verdict = 'existing_workflow_not_ready';
-  exitCode = 3;
-  nextStep = 'Do not send yet. Resolve the existing draft / research / blocked state first.';
-}
+const { verdict, exitCode, nextStep } = deriveDecision(matches);
 
 const summary = {
   query,
