@@ -111,6 +111,10 @@ Daniel`,
   },
 ];
 
+function getHeader(message, name) {
+  return message?.payload?.headers?.find((header) => header.name.toLowerCase() === name.toLowerCase())?.value ?? '';
+}
+
 (async () => {
   const credentials = JSON.parse(fs.readFileSync(CREDENTIALS_PATH, 'utf8'));
   const { client_secret, client_id, redirect_uris } = credentials.installed;
@@ -121,7 +125,22 @@ Daniel`,
   const profile = await gmail.users.getProfile({ userId: 'me' });
   console.log(`Creating Columbia / NSF drafts in ${profile.data.emailAddress}`);
 
+  const existingDrafts = await gmail.users.drafts.list({ userId: 'me', maxResults: 100 });
+  const existingKeys = new Set();
+  for (const draft of existingDrafts.data.drafts ?? []) {
+    const fullDraft = await gmail.users.drafts.get({ userId: 'me', id: draft.id });
+    const message = fullDraft.data.message;
+    const key = `${getHeader(message, 'To').toLowerCase()}|${getHeader(message, 'Subject').toLowerCase()}`;
+    existingKeys.add(key);
+  }
+
   for (const draft of drafts) {
+    const key = `${draft.to.toLowerCase()}|${draft.subject.toLowerCase()}`;
+    if (existingKeys.has(key)) {
+      console.log(`${draft.key}\tskipped\texisting draft found`);
+      continue;
+    }
+
     const res = await gmail.users.drafts.create({
       userId: 'me',
       requestBody: {
