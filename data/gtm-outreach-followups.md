@@ -2,7 +2,7 @@
 
 Date: 2026-07-07
 
-Use this queue for the current GTM prospecting wave. The first follow-up lands 5 business days after send, and the second lands 5 business days after that if there is still no reply.
+Use this queue for the current GTM prospecting wave. Keep the active queue limited to direct-fit operators, owners, investors, and routing contacts. Supplier-adjacent names live in the hold section, not the main cadence.
 
 ## Cadence
 
@@ -10,7 +10,7 @@ Use this queue for the current GTM prospecting wave. The first follow-up lands 5
 - First follow-up: 2026-07-14
 - Second follow-up: 2026-07-21
 
-## Queue
+## Direct-Fit Queue
 
 | Contact | Company | Sent | First follow-up | Second follow-up | State | Notes |
 |---|---|---|---|---|---|---|
@@ -19,11 +19,16 @@ Use this queue for the current GTM prospecting wave. The first follow-up lands 5
 | DCI Data Centers team | DCI Data Centers | 2026-07-07 | 2026-07-14 | 2026-07-21 | waiting | APAC data center expansion and location risk. |
 | CenterSquare team | CenterSquare | 2026-07-07 | 2026-07-14 | 2026-07-21 | waiting | Data center capital and location risk. |
 | DATA4 team | DATA4 | 2026-07-07 | 2026-07-14 | 2026-07-21 | waiting | European data center campuses and location risk. |
-| Munters team | Munters Data Center Technologies | 2026-07-07 | 2026-07-14 | 2026-07-21 | waiting | Cooling, density, and site risk. |
-| Rittal team | Rittal Data Center Sales | 2026-07-07 | 2026-07-14 | 2026-07-21 | waiting | Data center design and location risk. |
-| Panduit team | Panduit SI Sales | 2026-07-07 | 2026-07-14 | 2026-07-21 | waiting | Data center connectivity and site risk. |
-| Legrand team | Legrand | 2026-07-07 | 2026-07-14 | 2026-07-21 | waiting | AI in data center infrastructure and site risk. |
-| ABB team | ABB | 2026-07-07 | 2026-07-14 | 2026-07-21 | waiting | Scaling data centers and site risk. |
+
+## Hold
+
+| Contact | Company | Why it stays out of the active queue | State |
+|---|---|---|---|
+| Munters team | Munters Data Center Technologies | Supplier-adjacent cooling vendor; hold unless a direct operator thread opens. | hold |
+| Rittal team | Rittal Data Center Sales | Supplier-adjacent hardware vendor; hold unless a direct operator thread opens. | hold |
+| Panduit team | Panduit SI Sales | Connectivity supplier; hold unless a direct operator thread opens. | hold |
+| Legrand team | Legrand | Infrastructure supplier; hold unless a direct operator thread opens. | hold |
+| ABB team | ABB | Infrastructure supplier; hold unless a direct operator thread opens. | hold |
 
 ## Reply Rule
 
