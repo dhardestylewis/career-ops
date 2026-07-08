@@ -6,6 +6,7 @@ import { fileURLToPath } from 'url';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
 import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
+import { createExcludedCompanyMetrics, getExcludedCompanyMatch } from '../core/company-exclusions.mjs';
 
 const escapeCssAttributeValue = (value) =>
     String(value)
@@ -34,6 +35,12 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
     let url = targetUrl;
     if (url && isHostOrSubdomain(url, 'jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
         url = url.replace(/\/$/, '') + '/application';
+    }
+
+    const blockMatch = getExcludedCompanyMatch({ targetUrls: [targetUrl, url, page.url()] });
+    if (blockMatch) {
+        console.log(`⛔ Blocking Ashby application because it matches the exclusion list: ${blockMatch.entry}`);
+        return createExcludedCompanyMetrics({ targetUrl: url || targetUrl || page.url(), match: blockMatch });
     }
 
     console.log(`Navigating to ${url}...`);
