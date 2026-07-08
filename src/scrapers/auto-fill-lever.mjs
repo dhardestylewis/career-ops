@@ -5,6 +5,7 @@ import * as yaml from 'js-yaml';
 import cssEscape from 'css.escape';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
+import { createExcludedCompanyMetrics, getExcludedCompanyMatch } from '../core/company-exclusions.mjs';
 
 const escapeCssAttributeValue = (value) =>
     String(value)
@@ -50,6 +51,12 @@ try {
 
 export async function populateLever(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     const url = targetUrl;
+
+    const blockMatch = getExcludedCompanyMatch({ targetUrls: [targetUrl, page.url()] });
+    if (blockMatch) {
+        console.log(`⛔ Blocking Lever application because it matches the exclusion list: ${blockMatch.entry}`);
+        return createExcludedCompanyMetrics({ targetUrl: url || targetUrl || page.url(), match: blockMatch });
+    }
 
     // Lever's application form is at /apply - the base URL is just the job listing
     const applyUrl = url.endsWith('/apply') ? url : url.replace(/\/$/, '') + '/apply';
