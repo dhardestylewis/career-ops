@@ -3,10 +3,11 @@ import path from 'path';
 import fs from 'fs';
 import * as yaml from 'js-yaml';
 import cssEscape from 'css.escape';
-import { fileURLToPath } from 'url';
+import { fileURLToPath, pathToFileURL } from 'url';
 import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
 import { buildHumanizer } from './humanize.mjs';
 import { getDeterministicMappings } from './heuristics.mjs';
+import { createExcludedCompanyMetrics, getExcludedCompanyMatch } from '../core/company-exclusions.mjs';
 
 const getHostname = (value) => {
     try {
@@ -42,6 +43,12 @@ try {
 
 export async function populateGreenhouse(page, targetUrl, resumePath, profileConfig, isBatch = false, isDryRun = false) {
     const url = targetUrl;
+
+    const blockMatch = getExcludedCompanyMatch({ targetUrls: [targetUrl, page.url()] });
+    if (blockMatch) {
+        console.log(`⛔ Blocking Greenhouse application because it matches the exclusion list: ${blockMatch.entry}`);
+        return createExcludedCompanyMetrics({ targetUrl: url || targetUrl || page.url(), match: blockMatch });
+    }
     
     let domain = 'default';
     if (isHostOrSubdomain(url, 'roblox.com') || url.includes('for=roblox')) domain = 'roblox';
