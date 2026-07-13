@@ -47,9 +47,12 @@ Use this first if you are resuming GTM outreach.
 2. `data/gtm-outreach/outcome-backfill.md`
 3. `data/gtm-outreach/review.md`
 4. `data/gtm-outreach-contact-dossier.md`
-5. `docs/homecastr-vc-agent-handoff.md`
-6. `data/gtm-outreach-translator.md`
-7. `data/gtm-outreach-scripts.md`
+5. `data/gtm-outreach/log.md`
+6. `data/gtm-outreach/drafts.md`
+7. `data/gtm-outreach/next-100-roadmap.md`
+8. `docs/homecastr-vc-agent-handoff.md`
+9. `data/gtm-outreach-translator.md`
+10. `data/gtm-outreach-scripts.md`
 
 ## Operating Rule
 

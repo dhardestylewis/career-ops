@@ -6,6 +6,15 @@ Date: 2026-07-13
 
 GTM outreach is clearer than the career lane, but it is still pre-call heavy. Email is the strongest channel. The bottleneck is turning replies into booked and then held conversations.
 
+## Raw Ledger Totals
+
+- Ledger rows: 146
+- Send rows: 131
+- Reply rows: 7
+- Pending rows: 3
+- Blocked rows: 5
+- Important gap: the ledger does not store held discovery calls as first-class outcomes, so the outcome-backfill remains the stage-level source of truth.
+
 ## What Works
 
 - One hook, one proof point, one ask.
