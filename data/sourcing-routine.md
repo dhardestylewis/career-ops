@@ -1,12 +1,12 @@
-# Daily Sourcing Routine â€” Last 24 Hours NYC ML Roles
+# Daily Sourcing Routine - Last 24 Hours NYC Data / Platform Roles
 
-**Time investment:** 5 minutes per day (best done 8am ET Mondayâ€“Friday)
+**Time investment:** 5 minutes per day (best done 8am ET Monday-Friday)
 
 ---
 
 ## Step 1: Built In NYC (2 minutes)
 
-1. Go to: https://www.builtinnyc.com/jobs/data-analytics/search/machine-learning-engineer
+1. Go to: https://www.builtinnyc.com/jobs
 2. Look for **posting date indicators** (most sites show "posted today" or "posted yesterday")
 3. **Filter manually** (if filters available):
    - Experience level: Senior, Staff, Lead
@@ -17,7 +17,7 @@
 
 ## Step 2: Wellfound NYC (2 minutes)
 
-1. Go to: https://wellfound.com/role/l/machine-learning-engineer/new-york-city-ny
+1. Go to: https://wellfound.com/jobs
 2. Wellfound **shows timestamps** (e.g., "posted 3 hours ago")
 3. **Check for roles posted in last 24 hours**
 4. Filter by:
@@ -28,10 +28,10 @@
 
 ---
 
-## Step 3: LinkedIn Jobs â€” NYC Filter (2 minutes)
+## Step 3: LinkedIn Jobs - NYC Filter (2 minutes)
 
 1. Go to: https://www.linkedin.com/jobs/
-2. **Search bar:** `machine learning engineer` OR `staff ml engineer` OR `senior ml engineer`
+2. **Search bar:** `data engineer` OR `data platform engineer` OR `ai platform engineer` OR `staff ml engineer`
 3. **Apply filters:**
    - Location: New York, NY (exact match)
    - Date posted: **Last 24 hours** (dropdown)
@@ -47,22 +47,34 @@
 Check these NYC-based companies' careers pages (bookmark these):
 
 **High-frequency posters** (check these first):
-- Figma: https://www.figma.com/careers (search "machine learning" or "ML")
-- Stripe: https://stripe.com/jobs (search "machine learning")
-- Roblox: https://careers.roblox.com (search "machine learning")
-- Databricks: https://databricks.com/careers (search "New York" + "machine learning")
+- Figma: https://www.figma.com/careers (search "data", "platform", or "machine learning")
+- Stripe: https://stripe.com/jobs (search "data engineer" or "platform")
+- Roblox: https://careers.roblox.com (search "data platform" or "machine learning")
+- Databricks: https://databricks.com/careers (search "New York" + "data engineer")
 
 **Finance/Quant:**
-- Jane Street: https://www.janestreet.com/careers (search "machine learning" or "researcher")
-- Two Sigma: https://careers.twosigma.com (search "machine learning")
-- Citi: https://jobs.citi.com (search "machine learning" + filter NYC)
-- State Street: https://careers.statestreet.com (search "machine learning")
+- Jane Street: https://www.janestreet.com/careers (search "data engineer" or "researcher")
+- Two Sigma: https://careers.twosigma.com (search "data platform" or "machine learning")
+- Citi: https://jobs.citi.com (search "data engineer" + filter NYC)
+- State Street: https://careers.statestreet.com (search "data engineer" or "machine learning")
 
 **Other NYC presence:**
-- Cohere Health: careers page (search "machine learning")
-- OXMAN: careers page (search "machine learning")
+- Cohere Health: careers page (search "data" or "machine learning")
+- OXMAN: careers page (search "data" or "machine learning")
 
 **Log any fresh postings** to tracker.
+
+## Step 5: Non-traditional Sources and Direct Contact (2 minutes)
+
+Use these when you want to widen beyond LinkedIn without falling back to traditional mass boards:
+
+- **YC Work at a Startup**: startup jobs with one profile and direct founder contact
+- **Jack & Jill**: AI career-agent style discovery that can introduce you directly to hiring managers
+- **Built In**: job search plus company research, often with stronger context than generic boards
+- **Hacker News "Who is Hiring?"**: monthly startup hiring thread, often with direct email or explicit application instructions
+- **Direct email / LinkedIn DM**: only after a real named person is verified and the ask stays candidate-seeking
+
+**Log any fresh roles or contact routes** to tracker or outreach notes, depending on whether the lane is apply-first or contact-first.
 
 ---
 
@@ -71,13 +83,13 @@ Check these NYC-based companies' careers pages (bookmark these):
 **Save as:** `data/sourcing-daily-[YYYY-MM-DD].md`
 
 ```markdown
-# Daily Sourcing Report â€” [Date]
+# Daily Sourcing Report - [Date]
 
 ## New Postings Found (Last 24 Hours)
 
 | Company | Role | Posted | Location | Comp (Listed?) | Archetype | Source | Link | Action |
 |---------|------|--------|----------|----------------|-----------|--------|------|--------|
-| [Co] | [Role] | [Time] | [NYC/Hybrid/Remote] | [Salary if visible] | [Your archetype] | [Built In/Wellfound/LinkedIn/Direct] | [URL] | [Not applied / To evaluate / Applied] |
+| [Co] | [Role] | [Time] | [NYC/Hybrid/Remote] | [Salary if visible] | [Your archetype] | [Built In/Wellfound/YC/Jack & Jill/LinkedIn/Direct/HN] | [URL] | [Not applied / To evaluate / Applied] |
 | | | | | | | | | |
 
 ## Summary
@@ -86,14 +98,14 @@ Check these NYC-based companies' careers pages (bookmark these):
 - **Target range ($180K-$250K):** [N]
 - **Stretch tier ($250K+):** [N]
 - **Lower tier (<$180K):** [N]
-- **Research archetype:** [N]
-- **Product ML archetype:** [N]
+- **Data / Platform archetype:** [N]
+- **AI Platform / ML archetype:** [N]
 - **FDE archetype:** [N]
 
 ## High-Priority Roles (Score 4.0+ estimated)
 
-1. [Company/Role] â€” Why high-priority
-2. [Company/Role] â€” Why high-priority
+1. [Company/Role] - Why high-priority
+2. [Company/Role] - Why high-priority
 
 ## Follow-ups Needed
 
@@ -111,7 +123,7 @@ If you want this **completely automated**, I can create a **scheduled Node.js sc
 1. Runs daily at 8am EST
 2. Scrapes LinkedIn Jobs API (with auth)
 3. Scrapes Built In NYC + Wellfound
-4. Filters for: NYC, last 24 hours, ML engineer roles
+4. Filters for: NYC, last 24 hours, data / AI platform / ML engineer roles
 5. Outputs to `data/sourcing-daily-[date].md` automatically
 6. Alerts you to high-signal roles
 
@@ -133,7 +145,7 @@ Would you like me to build this?
 - Research contacts with `/career-ops outreach-campaign` for top 3 (15 min)
 - **Total: 50 minutes**
 
-**Tuesdayâ€“Friday 8am:**
+**Tuesday-Friday 8am:**
 - Run daily checklist (5 min)
 - Log new postings (5 min)
 - Add to pipeline if score >4.0 (5 min)
@@ -143,11 +155,11 @@ Would you like me to build this?
 
 ## Why This Works
 
-âœ… **Last 24 hours focus** â€” catches fresh postings before competition surges
-âœ… **NYC-biased** â€” plays to your geographic advantage
-âœ… **Repeatable** â€” same checklist every day, takes 5 minutes
-âœ… **Feeds into pipeline** â€” integrates with `/career-ops pipeline` for bulk evaluation
-âœ… **Scalable to automation** â€” can upgrade to daily script if desired
+- **Last 24 hours focus** - catches fresh postings before competition surges
+- **NYC-biased** - plays to your geographic advantage
+- **Repeatable** - same checklist every day, takes 5 minutes
+- **Feeds into pipeline** - integrates with `/career-ops pipeline` for bulk evaluation
+- **Scalable to automation** - can upgrade to daily script if desired
 
 ---
 
@@ -171,6 +183,6 @@ node sourcing-automation.mjs
 # Output: data/sourcing-daily-[YYYY-MM-DD].md with today's postings
 ```
 
-This would **eliminate the manual search** entirely â€” it runs automatically, pulls the data, and waits for you to evaluate.
+This would **eliminate the manual search** entirely - it runs automatically, pulls the data, and waits for you to evaluate.
 
 **Want me to build it?**

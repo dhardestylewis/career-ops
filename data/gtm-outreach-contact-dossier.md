@@ -20,6 +20,7 @@ If the audit finds an existing thread or prior send, do not open a fresh intro. 
 6. What is the smallest sensible ask for this channel?
 7. What should we avoid mentioning because it is stale, too much, or risky?
 8. What is the send state and follow-up rule if they do not reply?
+9. Is this a direct-fit operator, owner, investor, or routing contact, or only a supplier-adjacent account?
 
 ## Minimum Source Set
 
@@ -40,6 +41,7 @@ If the audit finds an existing thread or prior send, do not open a fresh intro. 
 | `sent` | The message was sent and logged. | Move to waiting. |
 | `waiting` | The send went out and a follow-up date is set. | Follow the cadence only; do not re-pitch. |
 | `replied` | A response arrived. | Answer directly or pause for human judgment. |
+| `hold` | The account is only adjacent or should stay out of the active queue for now. | Do not draft into the main queue unless a direct-fit sponsor appears. |
 | `no-contact` | The user explicitly said no contact or watch only. | Do not revisit unless the instruction changes. |
 
 ## Conflict Check
@@ -88,6 +90,7 @@ conflict_checked_at:
 - Do not send if the hook is generic, the relationship is unclear, or the last touch is unknown.
 - For warm contacts, require at least one prior thread or shared history plus one current reason to reach out.
 - For cold contacts, require one strong public-work hook and one very small ask.
+- If the account is only adjacent through cooling hardware, power equipment, or another supplier layer, do not draft it into the main queue; move it to hold unless a direct operator or owner sponsor exists.
 - If a contact moved roles, treat that as a reconnect signal and rewrite the opener around the new role.
 - If the recipient is blocked by the conflict check, do not send a work pitch.
 - If a reply changes strategy or is ambiguous, pause and notify the user instead of guessing.
