@@ -40,6 +40,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - Keep the first sentence specific.
 - Keep the message short enough that it can be read in one glance.
 - For career-routing contacts like program staff, alumni office staff, or career-services staff, treat them as routers, not collaborators. Ask for specific names or an introduction, and attach the current resume if it helps them route you.
+- For vendor, analyst, or market-intelligence front-door contacts, treat them as routers too. Ask for the right specialist, team, or intro rather than trying to turn the intake contact into the long-term relationship.
 
 ## Logging
 
