@@ -44,6 +44,11 @@ It is the fork of the job-search outreach rules, not a copy of them.
 - Public company site, product page, release note, talk, article, or case study.
 - Internal proof point from the deck, demo, notes, or product evidence.
 
+## VC / Fundraising Boundary
+
+- If the target is an investor, allocator, or fundraising advisor, do not use this fork.
+- Route that work to `docs/homecastr-vc-agent-handoff.md` and keep the ask to investor feedback, fit, or a call only.
+
 ## Defaults
 
 - Use the smallest viable template.
