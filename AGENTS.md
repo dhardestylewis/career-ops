@@ -16,6 +16,7 @@ Key points:
 - Keep job-seeking and Homecastr hiring-source outreach in separate lanes. Do not combine candidate asks and talent/source asks in the same message, thread, or packet.
 - For every LinkedIn DM, connection note, or invite note, never send from an already-open conversation unless it is the exact requested recipient. Verify the recipient in two independent UI signals before typing and again before sending, and treat missing `Pending` or send confirmation as unsent.
 - For live email and calendar threads, open the full thread and read the newest human message before replying. Do not infer booking, confirmation, or rescheduling state from the subject line or a search preview alone.
+- Personal calendar invites and social invites are hands-off unless the user explicitly asks you to RSVP, decline, or reply.
 - Treat every path under `data/outreach/` as local-only working state. Do not stage or commit those files in a PR; if you need shareable examples, use `examples/` with redacted fixture data instead.
 - Login state is not permanent across fresh sessions. If Chrome already has authenticated LinkedIn, Pando, or Superhuman tabs open, keep those tabs alive and use the Chrome profile first; use the in-app browser only as a backup Gmail surface.
 - You are explicitly authorized to auto-submit applications on the user's behalf when fill rate is 100%. Before submitting, ensure you capture a full-page screenshot and save the JSON payload to the archive DB.
