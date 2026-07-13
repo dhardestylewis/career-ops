@@ -6,7 +6,7 @@
 import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
-import yaml from 'js-yaml';
+import * as yaml from 'js-yaml';
 import { populateLever } from '../scrapers/auto-fill-lever.mjs';
 import { getResumePath } from '../core/profile.mjs';
 

@@ -2,73 +2,31 @@
 
 Use this as the compact schedule view. Canonical draft source: `data/outreach/drafts.md`.
 
-Date: 2026-07-05
+Date: 2026-07-13
 
-Planning window: the next 10 business days starting Monday, 2026-07-06.
+Planning window: the next 5 business days starting Monday, 2026-07-13.
 
-Conservative send cap: 2 sends per business day by default, with occasional 3-send days only where a clean lane block fits together. Follow-up dates below use a conservative first-follow-up trigger of 5 business days after send, per `modes/followup.md`.
-
-Already sent ahead of the plan window: Ali Hirsa on 2026-07-05. Christopher Munsell and Paola Passalacqua were also sent on 2026-07-06, so their follow-up cadence is now tracked from those send dates and they are excluded from the scheduled first-touch batch below.
+Conservative send cap: 2 sends per business day by default. First follow-up stays 5 business days after a logged send, per `modes/followup.md`.
 
 ## Cadence Note
 
 Sent items should be logged immediately in `data/outreach/log.md`. Once logged, they move into the watch/follow-up cadence: if there is no reply, the first follow-up is due on the date listed below, then the next follow-up is 5 business days after that, and then the thread should pause or re-route instead of being pushed repeatedly.
 - Before any work, money, gigs, contracts, or jobs outreach, check South Park Commons affiliation in the pando member directory and South Park Commons Slack. If the recipient is SPC-affiliated or the status is unclear, do not send the work pitch.
 
-## 2026-07-06
+## Audit Reset
 
-Cap: 2 sends
-
-| Lane | Contact / org | Channel | Action | Follow-up date |
-|---|---|---|---|---|
-| warm-academic | Christopher Munsell / Columbia GSAPP | Email | Sent first touch | 2026-07-13 |
-| warm-academic | Paola Passalacqua / ETH Zurich / formerly UT Austin | Email | Sent first touch | 2026-07-13 |
-
-## 2026-07-07
-
-Cap: 2 sends
-
-| Lane | Contact / org | Channel | Action | Follow-up date |
-|---|---|---|---|---|
-| alumni-career-services | Columbia IEOR / GSAPP / Data Science Institute | Email | Send first touch | 2026-07-14 |
-| alumni-career-services | Columbia University / Career Services / Alumni Office | Email | Send first touch | 2026-07-14 |
-
-## 2026-07-08
-
-Cap: 2 sends
-
-| Lane | Contact / org | Channel | Action | Follow-up date |
-|---|---|---|---|---|
-| alumni-career-services | Cornell Tech / Faculty / labs / startup programs | Email | Send first touch | 2026-07-15 |
-| alumni-career-services | Cooper Union / Alumni / career services | Email | Send first touch | 2026-07-15 |
-
-## 2026-07-09
-
-Cap: 2 sends
-
-| Lane | Contact / org | Channel | Action | Follow-up date |
-|---|---|---|---|---|
-| alumni-career-services | Parsons School of Design / Alumni / career services | Email | Send first touch | 2026-07-16 |
-| alumni-career-services | Vanderbilt University / Alumni / career services | Email | Send first touch | 2026-07-16 |
-
-## 2026-07-10
-
-Cap: 3 sends
-
-| Lane | Contact / org | Channel | Action | Follow-up date |
-|---|---|---|---|---|
-| lab-research | Columbia housing / urban planning labs / Lab / program | Email | Send first touch | 2026-07-17 |
-| lab-research | Cornell Tech housing / urban tech labs / Lab / program | Email | Send first touch | 2026-07-17 |
-| lab-research | Harvard / Labs / programs / faculty | Email | Send first touch | 2026-07-17 |
+- Public ledger audit: no exact duplicate send rows were found in `data/outreach/log.md`.
+- Historical mirror warning: the private outreach mirror contains earlier repeat-thread rows plus same-day mirrored rows for Christopher Munsell and Paola Passalacqua. Treat those contacts as already sent and do not resend.
+- Schedule drift fixed: the unnamed 2026-07-07 through 2026-07-10 placeholders were not logged as sent, so they move out of the active queue and back to named-contact research.
 
 ## 2026-07-13
 
-Cap: 2 sends
+Cap: 0 new sends
 
 | Lane | Contact / org | Channel | Action | Follow-up date |
 |---|---|---|---|---|
-| lab-research | MIT / Labs / programs / faculty | Email | Send first touch | 2026-07-20 |
-| lab-research | Princeton / Labs / programs / faculty | Email | Send first touch | 2026-07-20 |
+| warm-academic | Christopher Munsell / Columbia GSAPP | Email | Waiting; first follow-up is due today if no reply | 2026-07-13 |
+| warm-academic | Paola Passalacqua / ETH Zurich / formerly UT Austin | Email | Waiting; first follow-up is due today if no reply | 2026-07-13 |
 
 ## 2026-07-14
 
@@ -76,8 +34,8 @@ Cap: 2 sends
 
 | Lane | Contact / org | Channel | Action | Follow-up date |
 |---|---|---|---|---|
-| lab-research | Stanford University / Labs / programs / faculty | Email | Send first touch | 2026-07-21 |
-| lab-research | UChicago / Labs / programs / faculty | Email | Send first touch | 2026-07-21 |
+| public-interest-routing | Katherine O'Regan / NYU Wagner and Furman Center / NYC | Email | Queue first touch | 2026-07-21 |
+| public-interest-routing | Lori Droste / SPUR / San Francisco | Email | Queue first touch | 2026-07-21 |
 
 ## 2026-07-15
 
@@ -85,28 +43,19 @@ Cap: 2 sends
 
 | Lane | Contact / org | Channel | Action | Follow-up date |
 |---|---|---|---|---|
-| lab-research | UPenn / Labs / programs / faculty | Email | Send first touch | 2026-07-22 |
-| lab-research | Yale / Labs / programs / faculty | Email | Send first touch | 2026-07-22 |
+| academic-routing | Tony Travers / LSE London / London | Email | Queue first touch | 2026-07-22 |
+| academic-routing | Charlotte Halpern / Sciences Po / Paris | Email | Queue first touch | 2026-07-22 |
 
-## 2026-07-16
+## Research Backlog
 
-Cap: 3 sends
-
-| Lane | Contact / org | Channel | Action | Follow-up date |
-|---|---|---|---|---|
-| founder-ecosystem | Betaworks / Ecosystem / founders / operators | Email | Send first touch | 2026-07-23 |
-| founder-ecosystem | Newlab / Ecosystem / founders / operators | Email | Send first touch | 2026-07-23 |
-| founder-ecosystem | Built In NYC / Ecosystem / editorial / community | Email | Send first touch | 2026-07-23 |
-
-## 2026-07-17
-
-Cap: 3 sends
-
-| Lane | Contact / org | Channel | Action | Follow-up date |
-|---|---|---|---|---|
-| nonprofit-gov | NYC coding nonprofits / Civic tech / education / workforce | Email | Send first touch | 2026-07-24 |
-| nonprofit-gov | NYC housing labs / initiatives / Public-interest / policy / housing | Email | Send first touch | 2026-07-24 |
-| nonprofit-gov | City / state / federal housing or resilience offices / Public sector | Email | Send first touch | 2026-07-24 |
+- `alumni-career-services / Columbia IEOR / GSAPP / Data Science Institute` stays research until it is reduced to a named contact with a current hook.
+- `alumni-career-services / Columbia University / Career Services / Alumni Office` stays research until it is reduced to a named contact with a current hook.
+- `alumni-career-services / Cornell Tech / Faculty / labs / startup programs` stays research until it is reduced to a named contact with a current hook.
+- `alumni-career-services / Cooper Union / Alumni / career services` stays research until it is reduced to a named contact with a current hook.
+- `alumni-career-services / Parsons School of Design / Alumni / career services` stays research until it is reduced to a named contact with a current hook.
+- `alumni-career-services / Vanderbilt University / Alumni / career services` stays research until it is reduced to a named contact with a current hook.
+- `lab-research / MIT / Labs / programs / faculty` stays research until it is reduced to a named contact with a current hook.
+- `lab-research / Princeton / Labs / programs / faculty` stays research until it is reduced to a named contact with a current hook.
 
 ## Not Scheduled
 

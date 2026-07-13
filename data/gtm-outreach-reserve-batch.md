@@ -27,3 +27,14 @@ This note holds the next reserve batch for direct-fit GTM outreach. Keep the mai
 
 - Keep precision-cooling and hardware-vendor adjacency out of the headline queue unless a direct operator or owner thread appears.
 - If a future agent wants the most current contact page or leadership name, re-check the official site before sending.
+- Operational packet: `data/outreach/gtm-direct-fit-send-packet.md`
+- Route sheet: `data/outreach/gtm-direct-fit-route-sheet.tsv`
+
+## Fresh Targets
+
+| Org | Route | Why it belongs here | State |
+|---|---|---|---|
+| Vantage Data Centers | Contact us / get in touch | Direct operator with build-to-suit, whitespace, and global data center expansion motion. | Ready for dossier and draft |
+| STACK Infrastructure | Contact page / send us a message | Global data center developer and operator with hyperscale and colocation depth. | Ready for dossier and draft |
+| Iron Mountain Data Centers | Contact us / get a quote / submit a form | Global colocation and AI infrastructure operator with a clear public sales route. | Ready for dossier and draft |
+| DataBank | Contact us / get a quote / schedule a tour | Multi-metro operator with a public sales / tour path and strong customer-facing motion. | Ready for dossier and draft |

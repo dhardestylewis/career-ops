@@ -22,6 +22,7 @@ This PDF is the offline South Park Commons members export that was used during t
 
 - Use this PDF as a provenance artifact, not as the only routing signal.
 - If you need an SPC affiliation decision for outreach, prefer a live authenticated Pando or Slack check over PDF text extraction.
+- If a Slack MCP tool is available in the current session, prefer it over the desktop Slack window for that live authenticated check.
 - If the PDF must be searched, expect bad OCR on some pages and prefer repeated exact-name checks, page-level inspection, or visual rendering over broad text assumptions.
 - Do not upgrade any Terra AI work pitch to a send just because this PDF exists; the SPC gate still needs live confirmation.
 

@@ -19,6 +19,7 @@ Use this first if you are the next agent picking up live outreach.
 - Douglas Woodward is a career-routing contact, not a collaborator. If he asks for more specificity, answer with named contacts or an introduction and treat the current resume as the routing aid.
 - Harvey is the main company lane to keep watching. Prioritize `Software Engineer, Agents`, then `Data Scientist, Marketing`, with `Applied Legal Researcher` as a stretch backup.
 - Current mailbox access in this session is only `daniel@homecastr.com` in Gmail. Columbia/UT inboxes are not connected here yet, and Superhuman mail is not exposed in this thread.
+- Slack MCP note: if a future session exposes a Slack MCP tool, prefer it for SPC verification and reply detection because it can search messages/files/members/channels, read and send messages, manage canvases, and access member profile info. If Slack MCP is not exposed, use the desktop Slack window only as a fallback and say so explicitly.
 - July 6 added calendar-visible conversions from the outreach stream. Count booked meetings as real conversions when they can be tied back to a source thread. If provenance is unclear, mark the event unassigned and exclude it from funnel math.
 - Current planning heuristic: `8-12` meaningful actions per day, with `3-4` new touches, `1-2` follow-ups, `1` warm routing ask, and `1-2` application reviews or submissions.
 - Current EV planning anchor: roughly `20-40 EV-days` per offer-equivalent, with `~25 EV-days` as the midpoint until a new sample says otherwise.
@@ -37,6 +38,7 @@ Use this first if you are the next agent picking up live outreach.
 
 - Use one hook, one proof point, one ask.
 - Keep LinkedIn short and email only when more context is needed.
+- Keep candidate-seeking and hiring-source outreach in separate lanes. Do not mix "looking for a role" language with "help me hire/source talent for Homecastr" language in the same thread or packet.
 - Do not send if the path is blocked or the message needs more than one proof point.
 - Stage every live send in `data/outreach/*send-packet.md` and run `node src/dataOps/outreach-preflight.mjs --packet <path>` before pasting anything into a composer.
 - If preflight fails, stop. Re-open the dossier and fix the packet before doing anything else.

@@ -3,6 +3,48 @@ import path from 'path';
 
 dotenv.config({ path: path.resolve('.env') });
 
+async function callAnthropic(systemPrompt, prompt, apiKey, questionCount) {
+    console.log(`[Synthesizer] Calling Anthropic API for ${questionCount} questions...`);
+    const res = await fetch("https://api.anthropic.com/v1/messages", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "x-api-key": apiKey,
+            "anthropic-version": "2023-06-01"
+        },
+        body: JSON.stringify({
+            model: "claude-3-haiku-20240307",
+            max_tokens: 1000,
+            system: systemPrompt,
+            messages: [{ role: "user", content: prompt }]
+        })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    return data.content?.[0]?.text || "";
+}
+
+async function callOpenAI(systemPrompt, prompt, apiKey, questionCount) {
+    console.log(`[Synthesizer] Calling OpenAI API for ${questionCount} questions...`);
+    const res = await fetch("https://api.openai.com/v1/chat/completions", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+            "Authorization": `Bearer ${apiKey}`
+        },
+        body: JSON.stringify({
+            model: "gpt-4o-mini",
+            messages: [
+                { role: "system", content: systemPrompt },
+                { role: "user", content: prompt }
+            ]
+        })
+    });
+    const data = await res.json();
+    if (data.error) throw new Error(data.error.message);
+    return data.choices?.[0]?.message?.content || "";
+}
+
 export async function synthesizeAnswers(questions, jdText, profileConfig) {
     if (!questions || questions.length === 0) return {};
 
@@ -37,43 +79,16 @@ Output JSON format: { "id1": "answer1", "id2": "answer2" }`;
         let generatedText = "";
 
         if (ANTHROPIC_API_KEY) {
-            console.log(`[Synthesizer] Calling Anthropic API for ${questions.length} questions...`);
-            const res = await fetch("https://api.anthropic.com/v1/messages", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "x-api-key": ANTHROPIC_API_KEY,
-                    "anthropic-version": "2023-06-01"
-                },
-                body: JSON.stringify({
-                    model: "claude-3-haiku-20240307",
-                    max_tokens: 1000,
-                    system: systemPrompt,
-                    messages: [{ role: "user", content: prompt }]
-                })
-            });
-            const data = await res.json();
-            if (data.error) throw new Error(data.error.message);
-            generatedText = data.content[0].text;
-        } else {
-            console.log(`[Synthesizer] Calling OpenAI API for ${questions.length} questions...`);
-            const res = await fetch("https://api.openai.com/v1/chat/completions", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${OPENAI_API_KEY}`
-                },
-                body: JSON.stringify({
-                    model: "gpt-4o-mini",
-                    messages: [
-                        { role: "system", content: systemPrompt },
-                        { role: "user", content: prompt }
-                    ]
-                })
-            });
-            const data = await res.json();
-            if (data.error) throw new Error(data.error.message);
-            generatedText = data.choices[0].message.content;
+            try {
+                generatedText = await callAnthropic(systemPrompt, prompt, ANTHROPIC_API_KEY, questions.length);
+            } catch (anthropicError) {
+                console.log(`[Synthesizer] Anthropic failed: ${anthropicError.message}`);
+                if (!OPENAI_API_KEY) throw anthropicError;
+            }
+        }
+
+        if (!generatedText && OPENAI_API_KEY) {
+            generatedText = await callOpenAI(systemPrompt, prompt, OPENAI_API_KEY, questions.length);
         }
 
         generatedText = generatedText.replace(/```json/g, '').replace(/```/g, '').trim();
