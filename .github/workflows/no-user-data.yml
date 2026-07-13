@@ -35,26 +35,30 @@ jobs:
             // Mirror the private surfaces that this repo actually treats as
             // user-layer. Keep this list explicit so the guard blocks real
             // personal data without tripping on public-safe archive/assets files.
-            const USER_PATHS = [
-              /^cv\.md$/,
-              /^config\/profile\.yml$/,
-              /^modes\/_profile\.md$/,
-              /^modes\/_custom\.md$/,
-              /^voice-dna\.md$/,
-              /^portals\.yml$/,
-              /^article-digest\.md$/,
-              /^data\/(?:bio|cv)\.md$/,
-              /^data\/(?:applications\.md|applications\.db|pipeline\.md|scan-history\.tsv|follow-ups\.md)$/,
-              /^data\/tracker\//,
-              /^data\/state\//,
-              /^data\/outreach-[^/]+$/,
-              /^data\/outreach\//,
-              /^interview-prep\//,
-              /^reports\//,
-              /^output\//,
-              /^jds\//,
-              /^writing-samples\//,
-            ];
+              const USER_PATHS = [
+                /^cv\.md$/,
+                /^config\/profile\.yml$/,
+                /^modes\/_profile\.md$/,
+                /^modes\/_custom\.md$/,
+                /^voice-dna\.md$/,
+                /^portals\.yml$/,
+                /^article-digest\.md$/,
+                /^data\/(?:bio|cv)\.md$/,
+                /^data\/(?:applications\.md|applications\.db|pipeline\.md|scan-history\.tsv|follow-ups\.md)$/,
+                /^data\/tracker\//,
+                /^data\/state\//,
+                /^data\/outreach-[^/]+$/,
+                /^data\/outreach\//,
+                /^data\/archive\/newlab-application-[^/]+\.(?:json|png)$/,
+                /^data\/archive\/submission_[^/]+\.(?:json|png)$/,
+                /^interview-prep\//,
+                /^reports\//,
+                /^output\//,
+                /^jds\//,
+                /^writing-samples\//,
+                /^credentials\.json$/,
+                /^token\.json$/,
+              ];
 
             // Tracked scaffolding that legitimately lives under those dirs.
             const isScaffold = (f) => /(^|\/)\.gitkeep$/.test(f) || /(^|\/)README\.md$/.test(f);

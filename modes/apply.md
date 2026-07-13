@@ -72,9 +72,10 @@ Read the entire page/form to scan for knock-out questions BEFORE generating full
 
 1. Extract company name and role title from the page
 2. Search in `reports/` by company name (case-insensitive grep)
-3. If there is a match → load the full report
-4. If there is a Section H or `## Application Answers` → load previous answers as a base
-5. If there is NO match → notify and offer to run a quick auto-pipeline
+3. Check `data/state/excluded_companies.json` and `data/state/excluded_job_targets.json` before drafting. If the company is on the company blocklist, or the company/role/ATS URL matches a job target block, stop and treat the role as blocked unless the user explicitly overrides with a known reason.
+4. If there is a match → load the full report
+5. If there is a Section H or `## Application Answers` → load previous answers as a base
+6. If there is NO match → notify and offer to run a quick auto-pipeline
 
 ## Step 3 — Detect changes in the role
 
