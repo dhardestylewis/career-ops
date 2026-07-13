@@ -9,6 +9,7 @@ This mode is the GTM fork of the outreach system. Use it for lead, customer, par
 - The user wants to reach a lead, prospect, customer, partner, advisor, or operator.
 - The user wants an outbound note for a CRM lead, warm referral, inbound response, or strategic reconnect.
 - The user wants wording, channel choice, and a follow-up plan for a GTM thread.
+- If the target is investor or fundraising related, route it to `docs/homecastr-vc-agent-handoff.md` instead of this mode.
 
 ## When Not to Use
 

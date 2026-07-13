@@ -53,6 +53,11 @@ Before any pitch about revenue, partnerships, or buying conversations, check whe
 
 If the check is unclear, use a reconnect or routing note instead of a hard pitch.
 
+## Investor / Fundraising Boundary
+
+- If the contact is an investor, allocator, or fundraising advisor, do not use this dossier for the pitch.
+- Route that work to `docs/homecastr-vc-agent-handoff.md` and keep the ask to investor feedback, fit, or a call only.
+
 ## Annotation Schema
 
 ```text
