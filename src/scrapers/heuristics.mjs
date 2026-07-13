@@ -1,16 +1,34 @@
-export const getDeterministicMappings = (profileConfig, domainOverrides) => [
+const explicitValue = (value) => {
+    if (typeof value !== 'string') return null;
+    const trimmed = value.trim();
+    return trimmed ? trimmed : null;
+};
+
+const cityRegionValue = (profileConfig) => {
+    const city = explicitValue(profileConfig?.location?.city)
+        || explicitValue(profileConfig?.candidate?.location?.split(',')?.[0]);
+    const region = explicitValue(profileConfig?.location?.region)
+        || explicitValue(profileConfig?.candidate?.location?.split(',')?.[1]);
+    if (city && region) return `${city}, ${region}`;
+    return city || explicitValue(profileConfig?.candidate?.location) || 'New York, NY';
+};
+
+export const getDeterministicMappings = (profileConfig, domainOverrides) => {
+    const eeo = profileConfig?.eeo_demographics || {};
+    const preferredCityRegion = cityRegionValue(profileConfig);
+    return [
     { question: /linkedin profile/i, value: profileConfig?.candidate?.linkedin || 'https://linkedin.com/in/dhardestylewis' },
     { question: /github/i, value: profileConfig?.candidate?.github || 'https://github.com/dhardestylewis' },
     { question: /website|portfolio/i, value: profileConfig?.candidate?.portfolio || 'https://dlewis.ai' },
     { question: /work authorization|authorized to work|right to work|eligibility|legal authorization|legally authorized|authorized.*work.*u\.?s\.?/i, value: 'Yes' },
     { question: /require.*sponsorship|need sponsorship|require visa|visa sponsorship|future.*sponsorship/i, value: 'No' },
-    { question: /gender/i, value: domainOverrides?.gender || 'Decline' },
-    { question: /hispanic|latino/i, value: 'Decline' },
-    { question: /racial|ethnic/i, value: 'Decline' },
-    { question: /sexual orientation/i, value: 'Decline' },
-    { question: /transgender/i, value: 'Decline' },
-    { question: /veteran/i, value: 'Decline' },
-    { question: /disability/i, value: 'Decline' },
+    { question: /gender/i, value: explicitValue(eeo.gender || domainOverrides?.gender) },
+    { question: /hispanic|latino/i, value: explicitValue(eeo.hispanic_latino || eeo.race || domainOverrides?.race) },
+    { question: /racial|ethnic/i, value: explicitValue(eeo.race || domainOverrides?.race) },
+    { question: /sexual orientation/i, value: explicitValue(eeo.sexual_orientation) },
+    { question: /transgender/i, value: explicitValue(eeo.transgender) },
+    { question: /veteran/i, value: explicitValue(eeo.veteran_status || eeo.veteran) },
+    { question: /disability/i, value: explicitValue(eeo.disability_status || eeo.disability) },
     { question: /^country\b/i, value: domainOverrides?.country || 'United States' },
     { question: /address|mailing address/i, value: profileConfig?.candidate?.address || profileConfig?.candidate?.location || 'New York, NY' },
     { question: /how did you.*hear|where did.*hear|first hear|find out|source/i, value: 'LinkedIn' },
@@ -21,6 +39,7 @@ export const getDeterministicMappings = (profileConfig, domainOverrides) => [
     { question: /^school\b/i, value: 'Concordia University Texas' },
     { question: /start date year|start year/i, value: '2012' },
     { question: /end date year|end year|graduation year/i, value: '2018' },
+    { question: /willing.*work.*office|work.*days.*office|san francisco office|london office|paris office/i, value: 'Yes' },
     { question: /^(?!.*(?:russia|belarus)).*(?:comfortable with this requirement|hybrid|onsite|relocat)/i, value: 'Yes' },
     { question: /do you have.*experience|years.*experience|experience with|familiar with|experience using|experience working/i, value: 'Yes' },
     { question: /quebec/i, value: 'No' },
@@ -61,9 +80,9 @@ export const getDeterministicMappings = (profileConfig, domainOverrides) => [
     { question: /discipline|what is your major/i, value: domainOverrides?.discipline || profileConfig?.candidate?.major || 'Mathematics' },
     { question: /gpa|grade/i, value: profileConfig?.candidate?.gpa || '3.49' },
     { question: /pronouns/i, value: profileConfig?.candidate?.pronouns || 'N/A' },
+    { question: /where do you intend to work/i, value: preferredCityRegion },
     { question: /^location \(city\)|^city/i, value: profileConfig?.candidate?.location || 'New York, NY' },
     { question: /privacy policy|acknowledge|outside assistance|artificial intelligence/i, value: 'acknowledge' },
-    { question: /where do you intend to work/i, value: profileConfig?.candidate?.location || 'New York, NY' },
     { question: /currently based in|live in/i, value: 'Yes' },
     { question: /clearance/i, value: 'No' },
     { question: /NeurIPS|ICML|CVPR/i, value: 'check' },
@@ -77,7 +96,8 @@ export const getDeterministicMappings = (profileConfig, domainOverrides) => [
     { question: /^none of the above$/i, value: 'check' },
     { question: /not applicable.*selected.*none of the above/i, value: 'check' },
     { question: /notice period/i, value: 'Available immediately' }
-];
+    ];
+};
 
 export const matchHeuristic = (questionText, profileConfig, domainOverrides) => {
     if (!questionText) return null;
