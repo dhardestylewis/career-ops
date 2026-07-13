@@ -2,8 +2,11 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import * as yaml from 'js-yaml';
+import { fileURLToPath } from 'url';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
+import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
+import { createExcludedCompanyMetrics, getExcludedCompanyMatch } from '../core/company-exclusions.mjs';
 
 const escapeCssAttributeValue = (value) =>
     String(value)
@@ -32,6 +35,12 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
     let url = targetUrl;
     if (url && isHostOrSubdomain(url, 'jobs.ashbyhq.com') && !url.endsWith('/application') && !url.includes('?')) {
         url = url.replace(/\/$/, '') + '/application';
+    }
+
+    const blockMatch = getExcludedCompanyMatch({ targetUrls: [targetUrl, url, page.url()] });
+    if (blockMatch) {
+        console.log(`⛔ Blocking Ashby application because it matches the exclusion list: ${blockMatch.entry}`);
+        return createExcludedCompanyMetrics({ targetUrl: url || targetUrl || page.url(), match: blockMatch });
     }
 
     console.log(`Navigating to ${url}...`);
@@ -714,67 +723,40 @@ export async function populateAshby(page, targetUrl, resumePath, profileConfig, 
     return metrics;
 }
 
-import { fileURLToPath } from 'url';
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
-    const { chromium } = await import('playwright');
-    import('path').then(path => {
-        import('fs').then(fs => {
-            import('js-yaml').then(yaml => {
-                (async () => {
-                    const isBatch = process.env.BATCH_EVAL_MODE === 'true';
-                    const targetUrl = process.argv[2];
-                    const targetResumeUrl = process.argv[3];
-                    
-                    let profileConfig = {};
-                    try {
-                        const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
-                        profileConfig = yaml.load(fileContents);
-                    } catch (e) {}
+    (async () => {
+        const isBatch = process.env.BATCH_EVAL_MODE === 'true';
+        const targetUrl = process.argv[2];
+        const targetResumeUrl = process.argv[3];
 
-                    const launchArgs = ['--window-position=-10000,-10000'];
-                    const preferredProfilePath = profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile';
-                    let context;
-                    try {
-                        context = await chromium.launchPersistentContext(preferredProfilePath, {
-                            headless: false,
-                            args: launchArgs,
-                            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-                        });
-                    } catch (error) {
-                        const message = String(error?.message || error || '');
-                        if (!/ProcessSingleton|profile directory is already in use|Lock file can not be created/i.test(message)) {
-                            throw error;
-                        }
-                        const fallbackProfilePath = path.resolve('data/tmp', `chrome-bot-profile-fallback-${Date.now()}`);
-                        fs.mkdirSync(fallbackProfilePath, { recursive: true });
-                        console.log(`Profile locked at ${preferredProfilePath}; retrying with temporary profile ${fallbackProfilePath}`);
-                        context = await chromium.launchPersistentContext(fallbackProfilePath, {
-                            headless: false,
-                            args: launchArgs,
-                            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
-                        });
-                    }
+        let profileConfig = {};
+        try {
+            const fileContents = fs.readFileSync(path.resolve('config/profile.yml'), 'utf8');
+            profileConfig = yaml.load(fileContents);
+        } catch (e) {}
 
-                    await context.addInitScript(() => {
-                        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-                        window.navigator.chrome = { runtime: {} };
-                    });
-
-                    const page = await context.newPage();
-                    
-                    try {
-                        await populateAshby(page, targetUrl, targetResumeUrl, profileConfig, isBatch);
-                    } catch (e) {
-                        console.error(e);
-                    }
-                    
-                    if (isBatch) {
-                        await context.close();
-                    }
-                })();
-            });
+        const runtime = await launchAutomationContext({
+            chromium,
+            profileConfig,
+            defaultLane: 'local_headed',
+            purpose: 'Ashby autofill',
         });
-    });
+        const { context } = runtime;
+        console.log(`Browser lane: ${describeBrowserLane(runtime.laneConfig)}`);
+        await installAutomationStealth(context);
+
+        const page = await context.newPage();
+
+        try {
+            await populateAshby(page, targetUrl, targetResumeUrl, profileConfig, isBatch);
+        } catch (e) {
+            console.error(e);
+        }
+
+        if (isBatch) {
+            await runtime.close();
+        }
+    })();
 }
 
 

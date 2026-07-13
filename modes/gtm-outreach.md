@@ -9,6 +9,7 @@ This mode is the GTM fork of the outreach system. Use it for lead, customer, par
 - The user wants to reach a lead, prospect, customer, partner, advisor, or operator.
 - The user wants an outbound note for a CRM lead, warm referral, inbound response, or strategic reconnect.
 - The user wants wording, channel choice, and a follow-up plan for a GTM thread.
+- If the target is investor or fundraising related, route it to `docs/homecastr-vc-agent-handoff.md` instead of this mode.
 
 ## When Not to Use
 
@@ -49,6 +50,7 @@ This mode is the GTM fork of the outreach system. Use it for lead, customer, par
 - Do not lead with your full backstory.
 - Do not sound like a mass outreach sequence.
 - Do not use vague openers like `just checking in`.
+- Do not send a cosmetic rewrite of the previous note. If the next draft only paraphrases the last touch, stop until there is a real reply or a new source-backed angle.
 - Do not send if the conflict check is unclear for a revenue, partnership, or customer pitch.
 
 ## Channel Guidance

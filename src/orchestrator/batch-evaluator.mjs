@@ -132,6 +132,7 @@ const RUN_LIMIT = targets.length;
 const selectedTargets = targets.slice(0, RUN_LIMIT);
 
 console.log(`Starting headless multi-tab validation over ${selectedTargets.length} queued endpoints (from total ${targets.length})...`);
+import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
 
 (async () => {
     const statsStore = [];
@@ -139,19 +140,22 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
     // Concurrent Multi-Tab Execution (Batching 5 tabs per unified Chromium Window)
     const chunkSize = 5;
     
-    console.log(`Launching Unified Persistent Chrome Context from ${profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile'}`);
+    console.log('Launching multi-tab browser runtime...');
     const launchArgs = ['--disable-blink-features=AutomationControlled']; // Hide headless properties natively
     const audioPath = path.resolve('data/assets/pronunciation.wav');
     if (fs.existsSync(audioPath)) {
         launchArgs.push('--use-fake-ui-for-media-stream', '--use-fake-device-for-media-stream', `--use-file-for-fake-audio-capture=${audioPath}`);
     }
 
-    const context = await chromium.launchPersistentContext(profileConfig.execution?.chrome_profilePath || 'data/chrome-bot-profile', { 
-        headless: false, 
-        args: launchArgs,
-        ignoreDefaultArgs: ["--enable-automation"],
-        userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+    const runtime = await launchAutomationContext({
+        chromium,
+        profileConfig,
+        defaultLane: 'local_headed',
+        purpose: 'batch evaluator',
+        launchArgs,
     });
+    const { context } = runtime;
+    console.log(`Browser lane: ${describeBrowserLane(runtime.laneConfig)}`);
 
     console.log("\n==================================");
     console.log("⌨️  PRESS [ENTER] AT ANY TIME TO PULL THE BROWSER ON SCREEN");
@@ -170,17 +174,7 @@ console.log(`Starting headless multi-tab validation over ${selectedTargets.lengt
         }
     });
 
-    await context.addInitScript(() => {
-        Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-        window.navigator.chrome = { runtime: {} };
-        
-        // --- WAF VISIBILITY SPOOFING ---
-        // Prevent WAFs from detecting concurrent background tab execution.
-        // If a WAF sees 80 WPM typing on a tab with visibilityState === 'hidden', it flags it as a bot instantly.
-        Object.defineProperty(document, 'visibilityState', { get: () => 'visible' });
-        Object.defineProperty(document, 'hidden', { get: () => false });
-        Object.defineProperty(document, 'hasFocus', { value: () => true });
-    });
+    await installAutomationStealth(context, { visibilitySpoof: true });
 
     for (let i = 0; i < selectedTargets.length; i += chunkSize) {
         const chunk = selectedTargets.slice(i, i + chunkSize);

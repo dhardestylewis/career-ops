@@ -2,8 +2,10 @@ import { chromium } from 'playwright';
 import path from 'path';
 import fs from 'fs';
 import * as yaml from 'js-yaml';
+import cssEscape from 'css.escape';
 import { buildHumanizer } from './humanize.mjs';
 import { matchHeuristic } from './heuristics.mjs';
+import { createExcludedCompanyMetrics, getExcludedCompanyMatch } from '../core/company-exclusions.mjs';
 
 const escapeCssAttributeValue = (value) =>
     String(value)
@@ -11,7 +13,7 @@ const escapeCssAttributeValue = (value) =>
         .replace(/"/g, '\\"');
 
 const escapeCssIdentifier = (value) =>
-    escapeCssAttributeValue(value).replace(/([\[\]\.\,])/g, '\\$1');
+    cssEscape(String(value));
 
 const escapeXPathLiteral = (value) => {
     const text = String(value);
@@ -49,6 +51,12 @@ try {
 
 export async function populateLever(page, targetUrl, resumePath, profileConfig, isBatch = false) {
     const url = targetUrl;
+
+    const blockMatch = getExcludedCompanyMatch({ targetUrls: [targetUrl, page.url()] });
+    if (blockMatch) {
+        console.log(`⛔ Blocking Lever application because it matches the exclusion list: ${blockMatch.entry}`);
+        return createExcludedCompanyMetrics({ targetUrl: url || targetUrl || page.url(), match: blockMatch });
+    }
 
     // Lever's application form is at /apply - the base URL is just the job listing
     const applyUrl = url.endsWith('/apply') ? url : url.replace(/\/$/, '') + '/apply';
@@ -1445,24 +1453,21 @@ export async function populateLever(page, targetUrl, resumePath, profileConfig, 
 
 
 import { fileURLToPath } from 'url';
+import { launchAutomationContext, installAutomationStealth, describeBrowserLane } from '../core/browser-lane.mjs';
 if (process.argv[1] === fileURLToPath(import.meta.url)) {
     (async () => {
         const isBatch = process.env.BATCH_EVAL_MODE === 'true';
         const targetUrl = process.argv[2];
         const targetResumeUrl = process.argv[3];
-        
-const launchArgs = ['--window-position=-10000,-10000'];
-const chromeProfilePath = process.env.CHROME_PROFILE_PATH || profileConfig?.execution?.chrome_profilePath || 'data/chrome-bot-profile';
-        const context = await chromium.launchPersistentContext(chromeProfilePath, { 
-            headless: false, 
-            args: launchArgs,
-            userAgent: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+        const runtime = await launchAutomationContext({
+            chromium,
+            profileConfig,
+            defaultLane: 'local_headed',
+            purpose: 'Lever autofill',
         });
-        
-        await context.addInitScript(() => {
-            Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-            window.navigator.chrome = { runtime: {} };
-        });
+        const { context } = runtime;
+        console.log(`Browser lane: ${describeBrowserLane(runtime.laneConfig)}`);
+        await installAutomationStealth(context);
 
         const page = await context.newPage();
         
@@ -1474,7 +1479,7 @@ const chromeProfilePath = process.env.CHROME_PROFILE_PATH || profileConfig?.exec
         
         // Let the unified handler deal with cleanup, but for CLI we kill here:
         if (isBatch) {
-            await context.close();
+            await runtime.close();
         }
     })();
 }
