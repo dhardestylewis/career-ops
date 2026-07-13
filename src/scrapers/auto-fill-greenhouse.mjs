@@ -32,6 +32,63 @@ const escapeXPathLiteral = (value) => {
     return 'concat(' + text.split('"').map((part) => `"${part}"`).join(', \'"\', ') + ')';
 };
 
+const SENSITIVE_SELF_ID_RE = /\b(gender identity|racial|ethnic|race|sexual orientation|transgender|protected veteran|armed forces|disability|chronic condition|hispanic|latino|eeo|equal employment|self-identification|self identification|demographic)\b/i;
+const LOGISTICS_RE = /\b(work authorization|authorized to work|legally authorized|right to work|sponsorship|visa|relocat|office|hybrid|onsite|country where the job)\b/i;
+const isSensitiveSelfIdText = (text = '') => SENSITIVE_SELF_ID_RE.test(text) && !LOGISTICS_RE.test(text);
+
+const collectGreenhouseSubmissionState = async (page) => page.evaluate(() => {
+    const getLabel = (el) => {
+        if (!el) return '';
+        const direct = el.labels?.[0]?.innerText || document.getElementById(`${el.id}-label`)?.innerText || el.getAttribute('aria-label') || el.name || el.id || el.tagName;
+        return String(direct || '').trim();
+    };
+    const visible = (el) => Boolean(el && el.getClientRects().length && window.getComputedStyle(el).visibility !== 'hidden' && window.getComputedStyle(el).display !== 'none');
+    const text = document.body?.innerText || '';
+    const confirmation = /thank you for applying!?/i.test(text)
+        || /your application has been received/i.test(text)
+        || /application submitted/i.test(text)
+        || /thanks for applying/i.test(text)
+        || /\/confirmation\b/i.test(window.location.pathname);
+    const invalidInputs = Array.from(document.querySelectorAll('input[aria-invalid="true"], textarea[aria-invalid="true"], select[aria-invalid="true"]'))
+        .filter(visible)
+        .map(getLabel)
+        .filter(Boolean);
+    const errorTexts = Array.from(document.querySelectorAll('[id$="-error"], .error, .field_with_errors'))
+        .filter(visible)
+        .map(el => (el.textContent || '').trim())
+        .filter(Boolean)
+        .slice(0, 25);
+    const form = document.querySelector('form#application-form');
+    return {
+        path: window.location.pathname,
+        confirmation,
+        hasForm: Boolean(form),
+        invalidInputs,
+        errorTexts,
+    };
+});
+
+const readVerificationCodeFromStdin = (maxWaitSeconds = 180) => new Promise((resolve) => {
+    let buffer = '';
+    let settled = false;
+    const cleanup = (value) => {
+        if (settled) return;
+        settled = true;
+        clearTimeout(timer);
+        process.stdin.off('data', onData);
+        resolve(value);
+    };
+    const onData = (chunk) => {
+        buffer += chunk.toString();
+        const match = buffer.match(/\b[A-Za-z0-9]{8}\b|\b\d{6}\b/);
+        if (match) cleanup(match[0]);
+    };
+    const timer = setTimeout(() => cleanup(null), maxWaitSeconds * 1000);
+    process.stdin.setEncoding('utf8');
+    process.stdin.on('data', onData);
+    process.stdin.resume();
+});
+
 // Dynamically extract Profile configuration for the Heuristics Engine
 let profileConfig = {};
 try {
@@ -59,10 +116,6 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
     const DOMAIN_OVERRIDES = {
         roblox: {
-            gender: "Man",
-            race: "Hispanic",
-            veteran: "No, I am not",
-            disability: "No, I do not",
             sponsorship: "Yes",
             authorized: "Yes",
             age: "Yes"
@@ -140,6 +193,26 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         }
     });
 
+    // Some boards validate this required free-text location field as soon as the form
+    // becomes interactive. Filling it early with trusted keystrokes keeps it from
+    // getting stuck in an error state before the deterministic mapper reaches it.
+    try {
+        const locationValue = profileConfig?.candidate?.location || 'New York, NY, USA';
+        const preferredCity = String(profileConfig?.location?.city || locationValue.split(',')[0] || 'New York').trim();
+        const preferredRegion = String(profileConfig?.location?.region || locationValue.split(',')[1] || 'NY').trim();
+        const preferredWorkLocation = preferredRegion ? `${preferredCity}, ${preferredRegion}` : preferredCity;
+        const earlyWorkLocationInput = page.locator('input[aria-label*="intend to work"], textarea[aria-label*="intend to work"]').first();
+        if (await earlyWorkLocationInput.count() > 0) {
+            const currentValue = await earlyWorkLocationInput.inputValue().catch(() => '');
+            if (!String(currentValue || '').trim()) {
+                await earlyWorkLocationInput.click({ force: true }).catch(() => {});
+                await earlyWorkLocationInput.pressSequentially(preferredWorkLocation, { delay: 20 }).catch(() => {});
+                await page.waitForTimeout(250);
+                console.log(`[Mapper] Early-filled work-intent location with "${preferredWorkLocation}".`);
+            }
+        }
+    } catch (e) {}
+
     console.log("Extracting Job Description context for Synthesizer...");
     try {
         const jdContainer = await page.locator('#header, #content');
@@ -177,8 +250,10 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                          const id = (el.getAttribute('id') || '').toLowerCase();
                          const p = (el.getAttribute('placeholder') || '').toLowerCase();
                          const v = [n, id, p, text.toLowerCase()].join(' ');
-                         const skips = ['first name', 'last name', 'email', 'phone', 'linkedin', 'github', 'portfolio', 'website', 'url', 'cover letter', 'resume', 'password', 'location', 'city', 'address', 'company'];
+                         const skips = ['first name', 'last name', 'email', 'phone', 'linkedin', 'github', 'portfolio', 'website', 'url', 'cover letter', 'resume', 'password', 'location', 'city', 'address', 'company', 'security code', 'verification code'];
                          for (const s of skips) if (v.includes(s)) return true;
+                         if (id.includes('security-input') || id.includes('verification')) return true;
+                         if (el.closest('.email-verification')) return true;
                          if (el.getAttribute('type') === 'hidden') return true;
                          return false;
                     }, labelText);
@@ -408,6 +483,31 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 // Protect against "female" matching "male"
                 if (lowerTarget === 'male' && lowerOpt.includes('female')) return false;
                 if (lowerTarget === 'man' && lowerOpt.includes('woman')) return false;
+
+                if (lowerTarget === 'no') {
+                    if (lowerOpt.startsWith('yes')) return false;
+                    return lowerOpt === 'no'
+                        || lowerOpt.startsWith('no,')
+                        || lowerOpt.startsWith('no ')
+                        || lowerOpt.startsWith('no -')
+                        || lowerOpt.includes('do not')
+                        || lowerOpt.includes('will not')
+                        || lowerOpt.includes('not require')
+                        || lowerOpt.includes('not need')
+                        || lowerOpt.includes('do not require')
+                        || lowerOpt.includes('do not need');
+                }
+
+                if (lowerTarget === 'yes') {
+                    if (lowerOpt.startsWith('no')) return false;
+                    return lowerOpt === 'yes'
+                        || lowerOpt.startsWith('yes,')
+                        || lowerOpt.startsWith('yes ')
+                        || lowerOpt.startsWith('yes -')
+                        || lowerOpt.includes('i am currently legally authorized')
+                        || lowerOpt.includes('i am authorized')
+                        || lowerOpt.includes('acknowledge');
+                }
                 
                 let isMatch = lowerOpt === lowerTarget || lowerOpt.startsWith(lowerTarget) || lowerOpt.includes(lowerTarget);
                 if (!isMatch && lowerTarget.includes('texas at austin')) {
@@ -494,6 +594,53 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             console.log(`[Mapper] Processing ID: ${targetId} | Tag: ${tagName} | Role: ${role} | Type: ${type}`);
 
             if (tagName === 'input' && role === 'combobox') {
+                if (targetId === 'candidate-location') {
+                    await input.evaluate(el => {
+                        el.style.opacity = "1";
+                        el.style.position = "static";
+                        el.style.display = "block";
+                        el.style.width = "auto";
+                    }).catch(()=>{});
+                    await input.focus({ force: true }).catch(()=>{});
+                    await input.fill("").catch(()=>{});
+
+                    const locationSearch = String(targetValue).split(',')[0].trim() || targetValue;
+                    await input.pressSequentially(locationSearch, { delay: 60 }).catch(()=>{});
+                    await page.waitForTimeout(2000);
+
+                    const options = await page.$$('[role="option"], div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"]');
+                    let clicked = false;
+                    const returnedOptions = [];
+                    for (const opt of options) {
+                        const isVisible = await opt.isVisible().catch(()=>false);
+                        if (!isVisible) continue;
+                        const optText = await opt.innerText().catch(()=> '');
+                        if (optText.trim()) returnedOptions.push(optText.trim());
+                        if (isMatchOption(optText, targetValue)) {
+                            console.log(`[Mapper] Location autocomplete: Searched "${locationSearch}", Selected: "${optText.trim()}"`);
+                            await opt.click({ delay: 50, force: true }).catch(()=>{});
+                            clicked = true;
+                            break;
+                        }
+                    }
+
+                    if (!clicked) {
+                        if (returnedOptions.length > 0) {
+                            console.log(`[Mapper] Location autocomplete: Searched "${locationSearch}", No exact match found. Selecting first visible option: "${returnedOptions[0]}"`);
+                        }
+                        for (const opt of options) {
+                            const isVisible = await opt.isVisible().catch(()=>false);
+                            if (!isVisible) continue;
+                            await opt.click({ delay: 50, force: true }).catch(()=>{});
+                            clicked = true;
+                            break;
+                        }
+                    }
+
+                    await page.waitForTimeout(400);
+                    return true;
+                }
+
                 // Strategy: React-Select
                 await input.evaluate(el => {
                     el.style.opacity = "1";
@@ -589,11 +736,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                             }
                         }
                         
-                        if (!clicked && options.length > 0) {
+                        if (!clicked && options.length > 0 && !['yes', 'no', 'decline'].includes(targetValue.toLowerCase().trim())) {
                             // If no text match but options exist, select the first one
                             const previewOptions = returnedOptions.slice(0, 5).join(', ') + (returnedOptions.length > 5 ? '...' : '');
                             console.log(`[Mapper] Select2: Searched "${targetValue}", No match found. Returned options: [${previewOptions}]. Selecting first: "${returnedOptions[0]}"`);
                             await options[0].click().catch(()=>{});
+                        } else if (!clicked && options.length > 0) {
+                            const previewOptions = returnedOptions.slice(0, 5).join(', ') + (returnedOptions.length > 5 ? '...' : '');
+                            console.log(`[Mapper] Select2: Searched "${targetValue}", No safe match found. Returned options: [${previewOptions}]. Skipping sensitive fallback.`);
                         } else if (!clicked) {
                             console.log(`[Mapper] Select2: Searched "${targetValue}", No options returned. Pressing Escape as fallback.`);
                             await searchField.press('Escape').catch(()=>{});
@@ -620,7 +770,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
 
                 // Normal Native Select fallback
                 const options = await input.evaluate(el => Array.from(el.options).map(o => o.textContent.trim()));
-                let match = options.find(o => o && o.toLowerCase().includes(targetValue.toLowerCase()));
+                let match = options.find(o => o && isMatchOption(o, targetValue));
                 if (!match && targetValue === 'I am authorized') {
                      match = options.find(o => o && o.toLowerCase().includes('yes'));
                 }
@@ -655,6 +805,8 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         await autocomplete.click().catch(()=>{});
                         await page.waitForTimeout(300);
                     }
+                    const committedValue = await input.inputValue().catch(() => targetValue);
+                    await syncControlledInput(input, committedValue || targetValue);
                     await input.blur().catch(()=>{});
                     return true;
                 } else {
@@ -700,9 +852,84 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         return false;
     };
 
+    const syncControlledInput = async (locator, value = null) => {
+        await locator.evaluate((node, nextValue) => {
+            if (typeof nextValue === 'string') {
+                const prototype = node.tagName === 'TEXTAREA'
+                    ? window.HTMLTextAreaElement.prototype
+                    : window.HTMLInputElement.prototype;
+                const setter = Object.getOwnPropertyDescriptor(prototype, 'value')?.set;
+                if (setter) setter.call(node, nextValue);
+                else node.value = nextValue;
+            }
+            const tracker = node._valueTracker;
+            if (tracker) tracker.setValue('');
+            node.dispatchEvent(new Event('input', { bubbles: true }));
+            node.dispatchEvent(new Event('change', { bubbles: true }));
+        }, value).catch(()=>{});
+    };
+
+    const refillTextField = async (locator, value) => {
+        if (await locator.count() === 0) return false;
+        await locator.click({ force: true }).catch(()=>{});
+        await locator.fill('').catch(()=>{});
+        await locator.pressSequentially(value, { delay: 20 }).catch(()=>{});
+        await syncControlledInput(locator, value);
+        await locator.blur().catch(()=>{});
+        await page.waitForTimeout(250);
+        return true;
+    };
+
+    const retrySubmissionErrors = async (invalidLabels = []) => {
+        let repaired = false;
+        const locationValue = profileConfig?.candidate?.location || 'New York, NY, USA';
+        const preferredCity = String(profileConfig?.location?.city || locationValue.split(',')[0] || 'New York').trim();
+        const preferredRegion = String(profileConfig?.location?.region || locationValue.split(',')[1] || 'NY').trim();
+        const cityRegionValue = preferredRegion ? `${preferredCity}, ${preferredRegion}` : preferredCity;
+
+        if (invalidLabels.some(label => /location/i.test(label))) {
+            const locationInput = page.locator('#candidate-location, input[aria-label="Location (City)"], input[aria-label="Candidate Location"]').first();
+            if (await locationInput.count() > 0) {
+                await locationInput.click({ force: true }).catch(()=>{});
+                await locationInput.fill('').catch(()=>{});
+                await locationInput.pressSequentially(locationValue, { delay: 25 }).catch(()=>{});
+                await page.waitForTimeout(800);
+                const option = page.locator('div[class*="menu"] div[class*="option"], div[class*="listbox"] div[class*="option"], [role="option"]').filter({ hasText: locationValue }).first();
+                if (await option.isVisible().catch(()=>false)) {
+                    await option.click({ force: true }).catch(()=>{});
+                } else {
+                    await locationInput.press('ArrowDown').catch(()=>{});
+                    await page.waitForTimeout(200);
+                    await locationInput.press('Enter').catch(()=>{});
+                }
+                await syncControlledInput(locationInput);
+                await locationInput.blur().catch(()=>{});
+                await page.waitForTimeout(300);
+                repaired = true;
+            }
+        }
+
+        if (invalidLabels.some(label => /work four days per week|san francisco office/i.test(label))) {
+            const officeInput = page.locator('input[aria-label*="San Francisco office"]').first();
+            if (await refillTextField(officeInput, 'Yes, I can work four days per week in the San Francisco office.')) {
+                repaired = true;
+            }
+        }
+
+        if (invalidLabels.some(label => /intend to work/i.test(label))) {
+            const workLocationInput = page.locator('#question_15729721004, input[aria-label*="intend to work"], textarea[aria-label*="intend to work"]').first();
+            if (await refillTextField(workLocationInput, cityRegionValue)) {
+                repaired = true;
+            }
+        }
+
+        return repaired;
+    };
+
     const mappings = getDeterministicMappings(profileConfig, domainOverrides);
 
     for (const map of mappings) {
+        if (map.value === null || map.value === undefined || String(map.value).trim() === '') continue;
         await fillDeterministicField(page, map.question, map.value);
     }
 
@@ -1148,7 +1375,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                             if (groupLabelText.includes('authorized to work') && groupLabelText.includes('sponsorship')) {
                                 const authPos = lbl1.includes('yes') ? 0 : 1;
                                 await radios.nth(authPos).check({force:true}).catch(()=>{});
-                            } else if (groupLabelText.includes('authorized') || groupLabelText.includes('legally') || groupLabelText.includes('relocat') || groupLabelText.includes('hispanic')) {
+                            } else if (groupLabelText.includes('authorized') || groupLabelText.includes('legally') || groupLabelText.includes('relocat')) {
                                 const authPos = lbl1.includes('yes') ? 0 : 1;
                                 await radios.nth(authPos).check({force:true}).catch(()=>{});
                             } else if (groupLabelText.includes('sponsorship') || groupLabelText.includes('visa')) {
@@ -1158,7 +1385,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         }
                     }
                     
-                    if (!mapped && count > 1) {
+                    if (!mapped && count > 1 && gender) {
                         if (groupLabelText.includes('gender') || groupLabelText.includes('identify') || groupLabelText.includes('sex')) {
                             // Find radio button explicitly for Male (excluding Female)
                             for (let i = 0; i < count; i++) {
@@ -1198,6 +1425,15 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             if (isReq) {
                 handledGroups.add(name);
                 const group = page.locator(`input[type="radio"][name="${name}"]`);
+                const groupText = await group.first().evaluate(el => {
+                    let n = el;
+                    for (let i = 0; i < 5; i++) { if (!n) break; n = n.parentElement; }
+                    return n ? (n.textContent || '') : '';
+                }).catch(() => '');
+                if (isSensitiveSelfIdText(groupText)) {
+                    console.log(`[Mapper] Skipping sensitive self-ID required radio group: ${name}`);
+                    continue;
+                }
                 const isChecked = await group.evaluateAll(els => els.some(el => el.checked));
                 if (!isChecked && await group.count() > 0) {
                     await logUnmappedDom(group.first(), "Radio Required Catch-All");
@@ -1219,14 +1455,24 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     console.log("Analyzing empty fields for LLM Synthesizer Fallback...");
     try {
         const emptyFields = await page.evaluate(() => {
-            const empty = [];
-            const fields = document.querySelectorAll('input[type="text"]:not([type="hidden"]), textarea, input[role="combobox"]');
-            for (const el of fields) {
-                if (!el.value || el.value.trim() === '') {
-                    // Try to find its label
-                    let labelText = '';
-                    const id = el.id;
-                    if (id) {
+                const empty = [];
+                const fields = document.querySelectorAll('input[type="text"]:not([type="hidden"]), textarea, input[role="combobox"]');
+                for (const el of fields) {
+                    const id = el.id || '';
+                    const labelForSkip = [
+                        id,
+                        el.name || '',
+                        el.getAttribute('aria-label') || '',
+                        el.placeholder || '',
+                        el.labels?.[0]?.textContent || ''
+                    ].join(' ').toLowerCase();
+                    if (el.closest('.email-verification') || id.toLowerCase().includes('security-input') || labelForSkip.includes('security code') || labelForSkip.includes('verification code')) {
+                        continue;
+                    }
+                    if (!el.value || el.value.trim() === '') {
+                        // Try to find its label
+                        let labelText = '';
+                        if (id) {
                         const lbl = el.labels?.[0];
                         if (lbl) labelText = lbl.textContent.trim();
                     }
@@ -1272,20 +1518,7 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     const loc = q.id.includes('.') ? page.locator(`[data-llm-id="${safeQAttr}"]`) : page.locator(`#${safeQId}, [data-llm-id="${safeQAttr}"]`);
                     try {
                         if (await loc.count() > 0) {
-                            const tagAndRole = await loc.first().evaluate(el => ({ tag: el.tagName, role: el.getAttribute('role') })).catch(()=>({}));
-                            if (tagAndRole.tag === 'SELECT') {
-                                await loc.first().selectOption({ index: 1 }, { force: true, timeout: 2000 });
-                            } else if (tagAndRole.role === 'combobox') {
-                                await loc.first().click({ force: true, timeout: 2000 });
-                                await page.waitForTimeout(200);
-                                await loc.first().press('ArrowDown');
-                                await page.waitForTimeout(200);
-                                await loc.first().press('ArrowDown');
-                                await page.waitForTimeout(200);
-                                await loc.first().press('Enter');
-                            } else {
-                                await loc.first().fill("N/A", { force: true, timeout: 2000 });
-                            }
+                            console.log(`Skipped unmapped fallback for ${q.id}; leaving it blank to block unsafe submission.`);
                         }
                     } catch (e) { console.log(`Skipped invisible LLM fallback for ${q.id}`); }
                 }
@@ -1293,6 +1526,37 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
         }
     } catch (e) {
         console.error("⚠️ Synthesizer Fallback Error:", e.message);
+    }
+
+    try {
+        const verificationInputs = page.locator('.email-verification input[id^="security-input"], input[aria-label*="Security code"], input[name*="code"], input[name*="verify"]');
+        const verificationVisible = await verificationInputs.first().isVisible().catch(() => false);
+        if (await verificationInputs.count() > 0 && verificationVisible) {
+            console.log("[Greenhouse] Pre-submit email verification detected. Waiting for code...");
+            const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
+            const { waitForVerificationCode } = await import(pathToFileURL(path.resolve('src/scrapers/email-interceptor.mjs')).href);
+            let code = await waitForVerificationCode(emailAddress, 75);
+            if (!code && process.env.ALLOW_STDIN_VERIFICATION === 'true') {
+                console.log("[Greenhouse] Paste the verification code into stdin.");
+                code = await readVerificationCodeFromStdin(180);
+            }
+            if (code) {
+                const inputCount = await verificationInputs.count();
+                if (inputCount > 1 && code.length >= inputCount) {
+                    for (let i = 0; i < inputCount; i++) {
+                        await verificationInputs.nth(i).fill(code[i] || '').catch(() => {});
+                    }
+                } else {
+                    await verificationInputs.first().fill(code).catch(() => {});
+                }
+                await page.waitForTimeout(2000);
+                console.log("[Greenhouse] Pre-submit email verification code entered.");
+            } else {
+                console.log("[Greenhouse] Email verification code was not available; leaving form unsubmitted.");
+            }
+        }
+    } catch (e) {
+        console.log(`[Greenhouse] Pre-submit email verification failed: ${e.message}`);
     }
 
     // Stripe-specific hard fixes for comboboxes that can still be re-rendered as "Yes"
@@ -1418,7 +1682,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
             // Extract standard inputs
             document.querySelectorAll('input[type="text"], input[type="email"], input[type="tel"]').forEach(input => {
                 const label = input.labels?.[0]?.innerText || input.name || input.id;
-                data[label.trim()] = input.value;
+                const cleanLabel = label.trim();
+                const identity = `${cleanLabel} ${input.id || ''} ${input.name || ''}`;
+                data[cleanLabel] = /security|verification|security-input/i.test(identity) ? '[verification code redacted]' : input.value;
             });
 
             // Extract React Selects (Comboboxes)
@@ -1461,16 +1727,35 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
     }
 
     if (isBatch) {
-        if (false /* auto-submit override */) {
+        if (metrics.fillPercentage < 100) {
             console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
             metrics.status = 'Incomplete';
+            console.log(`__TELEMETRY__${JSON.stringify(metrics)}__TELEMETRY__`);
             return metrics;
         }
-        if (false /* auto-submit override */) {
-            console.log('Skipping submission natively: Fill criteria not met (' + metrics.fillPercentage + '%).');
-            metrics.status = 'Incomplete';
-            return metrics;
-        }
+        let archiveStamp = null;
+        let payloadPath = null;
+        const persistArchivePayload = async () => {
+            if (!payloadPath) return;
+            const fs = await import('fs');
+            const payload = {
+                url,
+                status: metrics.status || 'Pending_Submission',
+                fillPercentage: metrics.fillPercentage,
+                total: metrics.total,
+                filled: metrics.filled,
+                snapshot: metrics.snapshot || null,
+                screenshotPath: metrics.preSubmissionScreenshot || null,
+                postSubmissionScreenshot: metrics.postSubmissionScreenshot || null,
+                finalUrl: metrics.finalUrl || null,
+                confirmationDetected: metrics.confirmationDetected || false,
+                invalidInputs: metrics.invalidInputs || [],
+                validationErrors: metrics.validationErrors || [],
+                capturedAt: metrics.capturedAt || new Date().toISOString(),
+                updatedAt: new Date().toISOString()
+            };
+            fs.writeFileSync(payloadPath, JSON.stringify(payload, null, 2));
+        };
         // Live Submission Phase
         try {
             console.log("Simulating native human intent vectors...");
@@ -1497,8 +1782,14 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                 try {
                     const fs = await import('fs');
                     if (!fs.existsSync('data/archive')) fs.mkdirSync('data/archive', { recursive: true });
-                    const screenshotPath = `data/archive/submission_${Date.now()}.png`;
+                    archiveStamp = Date.now();
+                    const screenshotPath = `data/archive/submission_${archiveStamp}.png`;
                     await page.screenshot({ path: screenshotPath, fullPage: true });
+                    metrics.preSubmissionScreenshot = screenshotPath;
+                    metrics.capturedAt = new Date().toISOString();
+                    payloadPath = `data/archive/submission_${archiveStamp}.json`;
+                    await persistArchivePayload();
+                    console.log(`Pre-submission payload saved: ${payloadPath}`);
                     console.log(`📸 Pre-submission audit snapshot saved: ${screenshotPath}`);
                 } catch(e) {
                     console.log(`⚠️ Failed to capture pre-submission snapshot: ${e.message}`);
@@ -1520,15 +1811,9 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                         page.waitForNavigation({ timeout: 10000, waitUntil: 'domcontentloaded' }),
                         page.waitForTimeout(10000)
                     ]);
-                    
-                    const errorMsg = page.locator('.error, .field_with_errors');
-                    if (await errorMsg.count() > 0 && await errorMsg.isVisible().catch(()=>false)) {
-                        metrics.status = "Submission_Error";
-                    } else {
-                        metrics.status = "Success";
-                    }
+                    await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(()=>{});
                 } catch (navError) {
-                    metrics.status = "Success";
+                    console.log(`Navigation wait ended without confirmation: ${navError.message}`);
                 }
 
                 // 2FA Email Verification Hook
@@ -1538,21 +1823,86 @@ export async function populateGreenhouse(page, targetUrl, resumePath, profileCon
                     const emailAddress = profileConfig?.candidate?.email || 'daniel@homecastr.com';
                     try {
                         const { waitForVerificationCode } = await import(pathToFileURL(path.resolve('src/scrapers/email-interceptor.mjs')).href);
-                        const code = await waitForVerificationCode(emailAddress, 75);
+                        let code = await waitForVerificationCode(emailAddress, 75);
+                        if (!code && process.env.ALLOW_STDIN_VERIFICATION === 'true') {
+                            console.log("[Greenhouse] Paste the verification code into stdin.");
+                            code = await readVerificationCodeFromStdin(180);
+                        }
                         if (code) {
                             await verifyInput.first().pressSequentially(code, { delay: Math.floor(Math.random() * 40) + 20 });
                             await page.waitForTimeout(500);
                             const confirmBtn = page.locator('button:has-text("Submit"), button:has-text("Confirm"), button:has-text("Verify")');
                             if (await confirmBtn.count() > 0) await confirmBtn.first().click().catch(()=>{});
-                            metrics.status = "Success";
                             console.log("✅ 2FA Verification successfully bypassed and injected!");
                             await Promise.race([ page.waitForNavigation({ timeout: 10000 }).catch(()=>{}), page.waitForTimeout(4000) ]);
+                            await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(()=>{});
                         } else {
                             console.log("❌ Failed to intercept validation code. Pausing for manual entry.");
                             metrics.status = "Success_Unverified";
                         }
                     } catch(err) { console.error("Email Interceptor Crash:", err.message); }
                 }
+
+                let submissionState = null;
+                for (let attempt = 0; attempt < 12; attempt++) {
+                    await page.waitForTimeout(1000);
+                    submissionState = await collectGreenhouseSubmissionState(page).catch(() => null);
+                    if (!submissionState) continue;
+                    if (submissionState.confirmation || submissionState.invalidInputs.length > 0 || submissionState.errorTexts.length > 0 || !submissionState.hasForm) {
+                        break;
+                    }
+                }
+
+                if (submissionState && (submissionState.invalidInputs.length > 0 || submissionState.errorTexts.length > 0)) {
+                    const repaired = await retrySubmissionErrors(submissionState.invalidInputs);
+                    if (repaired) {
+                        console.log(`[Greenhouse] Retrying submit after targeted fixes: ${submissionState.invalidInputs.join('; ')}`);
+                        await page.waitForTimeout(500);
+                        await biometricClick(page, submitBtn.first()).catch(()=>{});
+                        await Promise.race([
+                            page.waitForNavigation({ timeout: 10000, waitUntil: 'domcontentloaded' }).catch(()=>{}),
+                            page.waitForTimeout(4000)
+                        ]);
+                        await page.waitForLoadState('networkidle', { timeout: 5000 }).catch(()=>{});
+                        for (let attempt = 0; attempt < 8; attempt++) {
+                            await page.waitForTimeout(1000);
+                            submissionState = await collectGreenhouseSubmissionState(page).catch(() => null);
+                            if (!submissionState) continue;
+                            if (submissionState.confirmation || submissionState.invalidInputs.length > 0 || submissionState.errorTexts.length > 0 || !submissionState.hasForm) {
+                                break;
+                            }
+                        }
+                    }
+                }
+
+                if (submissionState) {
+                    metrics.finalUrl = page.url();
+                    metrics.confirmationDetected = submissionState.confirmation;
+                    metrics.invalidInputs = submissionState.invalidInputs;
+                    metrics.validationErrors = submissionState.errorTexts;
+                    if (submissionState.confirmation) {
+                        metrics.status = 'Success';
+                    } else if (submissionState.invalidInputs.length > 0 || submissionState.errorTexts.length > 0) {
+                        metrics.status = 'Submission_Error';
+                    } else if (!submissionState.hasForm) {
+                        metrics.status = 'Success_Unverified';
+                    } else {
+                        metrics.status = 'Success_Unverified';
+                    }
+                } else if (!metrics.status) {
+                    metrics.status = 'Success_Unverified';
+                }
+
+                if (archiveStamp) {
+                    try {
+                        const postScreenshotPath = `data/archive/submission_${archiveStamp}_post.png`;
+                        await page.screenshot({ path: postScreenshotPath, fullPage: true });
+                        metrics.postSubmissionScreenshot = postScreenshotPath;
+                    } catch (e) {
+                        console.log(`⚠️ Failed to capture post-submission snapshot: ${e.message}`);
+                    }
+                }
+                await persistArchivePayload().catch(()=>{});
             } else {
                 metrics.status = "Submit_Button_Missing";
             }

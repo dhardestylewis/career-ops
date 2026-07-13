@@ -13,6 +13,7 @@ It is the fork of the job-search outreach rules, not a copy of them.
 - Before any follow-up, check the dossier's `next_followup`. If it is a future date or says to wait for a reply / acceptance, treat the thread as `hold` and do not send yet.
 - If the current role, company, or context has changed, rewrite the note as a reconnect or current-role note.
 - If the message needs more than one proof point, shorten it.
+- Keep the main queue to direct-fit operators, owners, investors, and routing contacts. If the account is only adjacent through cooling hardware, power equipment, or another supplier layer, move it to hold instead of the active queue.
 
 ## Thread State
 
