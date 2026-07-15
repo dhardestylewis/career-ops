@@ -10,6 +10,7 @@ Track follow-up cadence for active GTM lead threads. Flag overdue follow-ups, ex
 - `data/gtm-outreach-scripts.md` - Draft templates
 - `data/outreach/log.md` - Live send history and existing thread context
 - `data/outreach/drafts.md` - Draft-only workspace when a thread already exists
+- `modes/_custom.md` - User-specific outreach style rules
 
 ## Step 1 - Check the Current State
 
@@ -32,6 +33,7 @@ Use these states for GTM work:
 - Second follow-up: 5 business days after the first follow-up by default, and never sooner than 3 business days.
 - After that, stop unless the user explicitly wants another pass.
 - For hot inbound leads, respond the same day if possible. That is a reply rule, not a no-response follow-up rule.
+- Do not draft if you cannot identify the last real touch, the current source-backed hook, and the smallest ask from actual thread history or public artifacts.
 
 ## Step 4 - Drafting Rules
 
@@ -53,6 +55,7 @@ Use these states for GTM work:
 - Re-anchor the prior context.
 - Keep the tone light and specific.
 - Do not restart cold.
+- Do not reuse boilerplate from a previous draft unless it is actually part of the source thread.
 
 ## Step 5 - Response Handling
 

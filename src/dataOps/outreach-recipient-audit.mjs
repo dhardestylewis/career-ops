@@ -38,6 +38,7 @@ const FILES = {
   routes: ['data/outreach-route-discovery.tsv', 'data/outreach/route-discovery.tsv'],
   drafts: ['data/outreach-drafts.md', 'data/outreach/drafts.md'],
   dossier: ['data/outreach-contact-dossier.md', 'data/outreach/contact-dossier.md'],
+  evidence: ['data/outreach-template-evidence.md', 'data/outreach/template-evidence.md'],
   nextBatch: ['data/outreach-next-batch.md', 'data/outreach/next-batch.md'],
   operatorCard: ['data/outreach-operator-card.md', 'data/outreach/operator-card.md'],
   archive: ['data/archive/submission_anthropic_fellows_2026.json'],
@@ -260,6 +261,7 @@ function runSelfTest() {
     archive: [],
     feedContacts: [],
     feedObservations: [],
+    evidence: [],
     log: [],
     drafts: [],
     dossier: [],
@@ -336,6 +338,7 @@ const matches = {
   archive: findArchiveMatches(resolvedFiles.archive, needle),
   feedContacts: findTsvMatches(resolvedFiles.feedContacts, needle),
   feedObservations: findTsvMatches(resolvedFiles.feedObservations, needle),
+  evidence: findLineMatches(resolvedFiles.evidence, needle),
   log: findLineMatches(resolvedFiles.log, needle),
   drafts: findLineMatches(resolvedFiles.drafts, needle),
   dossier: findLineMatches(resolvedFiles.dossier, needle),
@@ -356,6 +359,7 @@ for (const query of archiveQueries) {
   mergeUniqueEntries(matches.routes, findTsvMatches(resolvedFiles.routes, query), row => JSON.stringify(row));
   mergeUniqueEntries(matches.feedContacts, findTsvMatches(resolvedFiles.feedContacts, query), row => JSON.stringify(row));
   mergeUniqueEntries(matches.feedObservations, findTsvMatches(resolvedFiles.feedObservations, query), row => JSON.stringify(row));
+  mergeUniqueEntries(matches.evidence, findLineMatches(resolvedFiles.evidence, query), entry => JSON.stringify(entry));
   mergeUniqueEntries(matches.log, findLineMatches(resolvedFiles.log, query), entry => JSON.stringify(entry));
   mergeUniqueEntries(matches.drafts, findLineMatches(resolvedFiles.drafts, query), entry => JSON.stringify(entry));
   mergeUniqueEntries(matches.dossier, findLineMatches(resolvedFiles.dossier, query), entry => JSON.stringify(entry));
@@ -383,6 +387,7 @@ const summary = {
     operatorCard: matches.operatorCard.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
     feedContacts: matches.feedContacts.map(row => summarizeRow(row, ['person_org', 'follow_up', 'notes'])),
     feedObservations: matches.feedObservations.map(row => summarizeRow(row, ['person_org', 'what_it_looks_like', 'follow_up', 'notes'])),
+    evidence: matches.evidence.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
   },
 };
 
@@ -406,6 +411,7 @@ const sections = [
   ['Next batch', summary.evidence.nextBatch],
   ['Operator card', summary.evidence.operatorCard],
   ['Feed observations', summary.evidence.feedObservations],
+  ['Evidence bank', summary.evidence.evidence],
 ];
 
 for (const [label, entries] of sections) {
