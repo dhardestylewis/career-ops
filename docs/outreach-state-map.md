@@ -8,11 +8,13 @@ Use this when you need to understand where the outreach workspace lives, what is
 
 - `data/outreach/log.md` is the live send ledger.
 - `data/outreach/contact-dossier.md` is the source-backed contact state.
+- `data/outreach/template-evidence.md` is the short-form evidence bank for the exact hook/proof/ask.
 - `data/outreach/drafts.md` is the draft mirror, not the ledger.
 - `data/outreach/send-list.md` is the scheduling view.
 - `data/outreach/queue.tsv` and `data/outreach/universe.tsv` are generated planning views.
 - `data/outreach/targets.tsv` and `data/outreach/route-discovery.tsv` are the seed and routing tables.
 - `data/outreach/operator-card.md` is the run sheet for the next agent.
+- `modes/_custom.md` holds the user-specific outreach style rules.
 - `data/outreach/*send-packet.md` are staged live-send packets.
 - `data/archive/newlab-application-*.json` and `data/archive/newlab-application-*.png` are the Newlab application archive artifacts from this session.
 

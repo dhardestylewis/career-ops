@@ -10,6 +10,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 
 - Draft first.
 - Before you type into Gmail, confirm that both `data/outreach/log.md` and `data/outreach/drafts.md` exist. If either file is missing, restore it before sending anything live.
+- Before drafting, fill `data/outreach/contact-dossier.md` and `data/outreach/template-evidence.md` from actual source material. If you cannot name the last real touch, current role or public hook, and one concrete proof point, stop at `research`.
 - Do not send anything until the user has approved the recipient batch, unless the user explicitly asks for a specific send.
 - Before any live send or follow-up, run `npm run outreach:audit -- "Recipient Name"`. If it exits `2`, do not send a new intro; if it exits `3`, resolve the existing draft / research / blocked state first.
 - If the only identifier you have is an email address, audit that too. An archive-only hit is not a green light.
@@ -39,6 +40,7 @@ This is the canonical guardrails block for all outreach work in this worktree. F
 - End with one small ask.
 - Keep the first sentence specific.
 - Keep the message short enough that it can be read in one glance.
+- Avoid boilerplate process words like `routing`, `tightening`, `lane`, `quick update`, or `project pitch` unless they are directly supported by the source trail.
 - For career-routing contacts like program staff, alumni office staff, or career-services staff, treat them as routers, not collaborators. Ask for specific names or an introduction, and attach the current resume if it helps them route you.
 - For vendor, analyst, or market-intelligence front-door contacts, treat them as routers too. Ask for the right specialist, team, or intro rather than trying to turn the intake contact into the long-term relationship.
 

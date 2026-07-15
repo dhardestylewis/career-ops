@@ -26,9 +26,11 @@ If the audit finds an existing thread or prior send, do not open a fresh intro. 
 
 - CRM or inbox: latest thread, prior thread if it exists, exact subject lines, dates, asks, replies, commitments, intros, and attachments.
 - LinkedIn: profile headline, current role, recent activity, DM history, mutual connections, and obvious role changes.
+- Slack: message history or channel context when the relationship lives there.
 - Public web: 1 to 2 concrete artifacts only, such as a product page, release note, article, talk, case study, or announcement, with title and date.
 - Internal context: one matching proof point from the deck, demo notes, customer notes, or product evidence that directly supports the ask.
 - Before sending, verify the recipient's current company and role. If they moved, rewrite the note as a reconnect or current-role note.
+- Do not use boilerplate bridge language unless it is supported by the actual thread or public artifact.
 
 ## Lead State Model
 
@@ -37,7 +39,7 @@ If the audit finds an existing thread or prior send, do not open a fresh intro. 
 | `research` | You cannot yet fill the required questions from actual source material. | Keep gathering sources; do not draft or send. |
 | `blocked` | The contact path is blocked, the conflict check is unclear, or the user said no contact. | Do not send the pitch; use only a reconnect or stop. |
 | `draft` | The source-backed fields are mostly filled, but the wording or routing still needs refinement. | Continue drafting only; do not send yet. |
-| `ready` | `why_now`, `hook`, `proof_point`, and `ask` are all source-backed. | Send only after the send gate clears. |
+| `ready` | `why_now`, `hook`, `proof_point`, `ask`, and `source_refs` are all source-backed. | Send only after the send gate clears. |
 | `sent` | The message was sent and logged. | Move to waiting. |
 | `waiting` | The send went out and a follow-up date is set. | Follow the cadence only; do not re-pitch. |
 | `replied` | A response arrived. | Answer directly or pause for human judgment. |
@@ -86,7 +88,7 @@ conflict_checked_at:
 
 ## Send / No-Send Gate
 
-- Send only if `action_state` is `ready` and `why_now`, `hook`, `proof_point`, and `ask` are filled from sources.
+- Send only if `action_state` is `ready` and `why_now`, `hook`, `proof_point`, `ask`, and `source_refs` are filled from sources.
 - Do not send if the hook is generic, the relationship is unclear, or the last touch is unknown.
 - For warm contacts, require at least one prior thread or shared history plus one current reason to reach out.
 - For cold contacts, require one strong public-work hook and one very small ask.
