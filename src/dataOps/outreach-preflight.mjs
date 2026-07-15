@@ -12,6 +12,20 @@ const DEFAULT_LOG = 'data/outreach/log.md';
 const MIN_FOLLOWUP_BUSINESS_DAYS = 3;
 const DEFAULT_FOLLOWUP_BUSINESS_DAYS = 5;
 const TODAY_START = startOfUtcDay(new Date());
+const GENERIC_TEMPLATE_MARKERS = [
+  'quick update',
+  'quick note',
+  'wanted to send a quick',
+  'tightening',
+  'routing around',
+  'follow-on routing',
+  'project pitch lane',
+  'commercialization support',
+  'best columbia route',
+  'mix of academic and applied work',
+  'good sense for the right',
+  'lane around it',
+];
 
 function normalizeText(value) {
   return String(value || '').trim();
@@ -47,6 +61,11 @@ function extractFirstName(name) {
 
 function normalizeMessageBody(value) {
   return normalizeKey(value).replace(/\s+/g, ' ').trim();
+}
+
+function hasGenericTemplateLanguage(body) {
+  const text = normalizeMessageBody(body);
+  return GENERIC_TEMPLATE_MARKERS.some(marker => text.includes(normalizeMessageBody(marker)));
 }
 
 function isExplicitSpcNoMatch(value) {
@@ -242,6 +261,10 @@ function parseDossiers(content) {
       contact,
       key: normalizeKey(contact),
       status: pick('status'),
+      sourceRefs: pick('source_refs'),
+      threadHistory: pick('thread_history'),
+      publicArtifacts: pick('public_artifacts'),
+      internalProofPoint: pick('internal_proof_point'),
       lastTouch: pick('last_touch'),
       nextFollowup: pick('next_followup'),
       whyNow: pick('why_now'),
@@ -356,12 +379,18 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
     }
 
     for (const [field, value] of [
+      ['source_refs', dossier.sourceRefs],
+      ['thread_history', dossier.threadHistory],
       ['why_now', dossier.whyNow],
       ['hook', dossier.hook],
       ['proof_point', dossier.proofPoint],
       ['ask', dossier.ask],
     ]) {
       if (!value) errors.push(`${message.heading}: dossier is missing ${field}.`);
+    }
+
+    if (hasGenericTemplateLanguage(body)) {
+      errors.push(`${message.heading}: body contains boilerplate template language; rewrite it from the actual thread or source hook.`);
     }
 
     if (isWorkPitch(body)) {
@@ -379,6 +408,9 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
 
       if (!lastTouch) {
         errors.push(`${message.heading}: follow-up packet is missing a parseable last_touch date.`);
+      }
+      if (!dossier.threadHistory) {
+        errors.push(`${message.heading}: follow-up packet is missing thread_history from the real thread or DM history.`);
       }
       if (!nextFollowup) {
         errors.push(`${message.heading}: follow-up packet is missing a parseable next_followup date.`);
@@ -425,6 +457,10 @@ Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's for
 `);
   const goodDossiers = parseDossiers(`
 contact: Julia Kreutzer
+source_refs: Gmail thread history; Cohere Labs and MILA public profiles
+thread_history: Prior outbound and inbound thread in email
+public_artifacts: Cohere Labs profile; MILA profile
+internal_proof_point: Homecastr forecasting and evaluation stack
 why_now: A live Beginners journey session creates a concrete reason to reconnect.
 hook: Her current Cohere Labs and MILA research path is the specific bridge.
 proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
