@@ -9,6 +9,7 @@ It is the fork of the job-search outreach rules, not a copy of them.
 
 - Draft first.
 - Do not send until the contact dossier is complete and source-backed.
+- Do not send until the dossier can point to the full live thread or DM history, at least one current public artifact, and one concrete proof point that supports the ask.
 - Before any live send or follow-up, run the existing outreach audit for the recipient. If it finds a prior thread or prior send, continue there instead of opening a fresh intro.
 - Before any follow-up, check the dossier's `next_followup`. If it is a future date or says to wait for a reply / acceptance, treat the thread as `hold` and do not send yet.
 - If the current role, company, or context has changed, rewrite the note as a reconnect or current-role note.
@@ -37,6 +38,7 @@ It is the fork of the job-search outreach rules, not a copy of them.
 - End with one small ask.
 - Keep the first sentence specific.
 - Keep the whole message short enough to read in one glance.
+- Avoid boilerplate process words like `routing`, `tightening`, `lane`, or `quick update` unless the source trail uses them naturally.
 
 ## Discovery Sources
 

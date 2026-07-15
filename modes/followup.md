@@ -14,6 +14,8 @@ Track follow-up cadence for active applications and live outreach threads. Flag 
 - `data/outreach/log.md` - Sent outreach history and live thread context
 - `data/outreach/drafts.md` - Draft-only outreach workspace and LinkedIn-first reconnect notes
 - `data/outreach/contact-dossier.md` - Per-contact source-backed dossier and send gate
+- `data/outreach/template-evidence.md` - Short-form evidence bank for the exact hook/proof/ask
+- `modes/_custom.md` - User-specific outreach style rules
 - `reports/` - Evaluation reports (for context in drafts)
 - `config/profile.yml` - User profile (name, identity)
 - `data/cv.md` - CV for proof points in drafts
@@ -110,9 +112,12 @@ Lane-specific reminders:
 For each **overdue** or **urgent** entry only:
 
 1. Read the linked dossier (`data/outreach/contact-dossier.md` or the queue notes) for source refs, last touch, why now, hook, proof point, ask, avoid, next follow-up, and South Park Commons affiliation if the pitch is work-related.
-2. Read the linked report (`reportPath` from JSON) for company context
-3. Read `data/cv.md` for proof points
-4. Read `config/profile.yml` for candidate name and identity
+2. Read the linked report (`reportPath` from JSON) for company context.
+3. Read `data/outreach/template-evidence.md` when you need the short-form evidence trail for a warm reconnect or LinkedIn note.
+4. Read `data/cv.md` for proof points.
+5. Read `config/profile.yml` for candidate name and identity.
+
+Do not draft from a generic scaffold if the real thread or source trail is available. The opener should come from the actual last touch or a specific public hook, not from process words like `routing`, `tightening`, or `quick update`.
 
 ### Email Follow-up Framework (first follow-up, followupCount == 0)
 
@@ -131,6 +136,7 @@ Generate a 3-4 sentence email:
 - Keep under 150 words
 - Include a subject line
 - Use the candidate's name from `config/profile.yml`
+- Avoid generic process words unless they came from the source thread or public artifact.
 
 **Example tone:**
 > Subject: Re: Senior PHP/Laravel Developer - IxDF
@@ -148,7 +154,7 @@ Generate a 3-4 sentence email:
 
 Reuse the contacto framework: 3 sentences, 300 character max.
 - Hook specific to company -> proof point -> soft ask
-- Check `data/outreach/template-evidence.md` for the exact short-form variants before drafting.
+- Check `data/outreach/template-evidence.md` for the actual source-backed short-form evidence before drafting.
 - Suggest the user run `/career-ops contacto {company}` to find the right person first
 
 ### Second Follow-up (followupCount == 1)
