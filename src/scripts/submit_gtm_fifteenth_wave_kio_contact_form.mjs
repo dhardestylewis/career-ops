@@ -1,3 +1,7 @@
+import { blockLegacyDirectOutreachSend } from '../core/outreach-send-gate.mjs';
+
+blockLegacyDirectOutreachSend(import.meta.url);
+
 const portalId = '45417908';
 const formId = process.argv[2] ?? '653c8cf2-fc9a-4d66-9bb4-8eaeb05cf292';
 const endpoint = `https://api.hsforms.com/submissions/v3/integration/submit/${portalId}/${formId}`;

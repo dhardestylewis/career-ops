@@ -3,6 +3,7 @@
 import { existsSync, readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { inspectOutreachSend } from '../core/outreach-send-gate.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const DEFAULT_PACKET = 'data/outreach/terra-ai-send-packet.md';
@@ -271,6 +272,13 @@ function parseDossiers(content) {
       hook: pick('hook'),
       proofPoint: pick('proof_point'),
       ask: pick('ask'),
+      organization: pick('organization'),
+      lane: pick('lane'),
+      channel: pick('channel'),
+      relationship: pick('relationship'),
+      relationshipStatus: pick('relationship_status'),
+      relationshipNotes: pick('relationship_notes'),
+      approvalId: pick('approval_id'),
       spcAffiliation: pick('spc_affiliation'),
       spcCheckedAt: pick('spc_checked_at'),
     });
@@ -288,11 +296,23 @@ function greetingTarget(body) {
   return normalizeText(match?.[2] || '');
 }
 
+function hasEstablishedLogRelationship(message, liveLogRows) {
+  const key = normalizeKey(message.heading);
+  const first = normalizeKey(message.firstName);
+  return liveLogRows.some(row => {
+    const recipient = normalizeKey(row.recipient || row.contact || row.contact_name || row.person || '');
+    if (!recipient || !(recipient === key || recipient.includes(key) || key.includes(recipient) || (first && recipient.includes(first)))) return false;
+    const history = normalizeKey(Object.values(row).join(' '));
+    return /\b(reply|replied|responded|inbound|meeting|scheduled|warm|existing thread|active thread)\b/.test(history);
+  });
+}
+
 function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
   const errors = [];
   const warnings = [];
   const draftSections = Array.isArray(mirrors.drafts) ? mirrors.drafts : [];
   const liveSentKeys = mirrors.liveSentKeys instanceof Set ? mirrors.liveSentKeys : new Set();
+  const liveLogRows = Array.isArray(mirrors.liveLogRows) ? mirrors.liveLogRows : [];
   const draftByRecipient = new Map();
   const seenDraftRecipients = new Map();
 
@@ -370,7 +390,7 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
 
     const dossier = dossiers.find(entry => entry.key === packetKey);
     if (!dossier) {
-      warnings.push(`${message.heading}: no exact contact dossier found.`);
+      errors.push(`${message.heading}: no exact contact dossier found; relationship state cannot be verified.`);
       continue;
     }
 
@@ -381,6 +401,11 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
     for (const [field, value] of [
       ['source_refs', dossier.sourceRefs],
       ['thread_history', dossier.threadHistory],
+      ['organization', dossier.organization],
+      ['lane', dossier.lane],
+      ['channel', dossier.channel],
+      ['relationship', dossier.relationship],
+      ['relationship_status', dossier.relationshipStatus],
       ['why_now', dossier.whyNow],
       ['hook', dossier.hook],
       ['proof_point', dossier.proofPoint],
@@ -391,6 +416,28 @@ function validatePacket(packet, dossiers, mirrors = {}, packetPath = '') {
 
     if (hasGenericTemplateLanguage(body)) {
       errors.push(`${message.heading}: body contains boilerplate template language; rewrite it from the actual thread or source hook.`);
+    }
+
+    const logShowsEstablishedRelationship = hasEstablishedLogRelationship(message, liveLogRows);
+    const relationshipCheck = inspectOutreachSend({
+      recipient: message.heading,
+      heading: message.heading,
+      organization: dossier.organization,
+      lane: dossier.lane,
+      channel: dossier.channel,
+      message: body,
+      relationship: dossier.relationship,
+      relationshipStatus: logShowsEstablishedRelationship ? 'established' : dossier.relationshipStatus,
+      relationshipNotes: dossier.relationshipNotes,
+      history: logShowsEstablishedRelationship ? 'existing thread with reply or live relationship evidence' : '',
+      approvalId: dossier.approvalId,
+    }, {
+      registryRows: mirrors.registryRows,
+      approvalRows: mirrors.approvalRows,
+      now: mirrors.now,
+    });
+    for (const error of relationshipCheck.errors) {
+      errors.push(`${message.heading}: ${error}`);
     }
 
     if (isWorkPitch(body)) {
@@ -461,6 +508,11 @@ source_refs: Gmail thread history; Cohere Labs and MILA public profiles
 thread_history: Prior outbound and inbound thread in email
 public_artifacts: Cohere Labs profile; MILA profile
 internal_proof_point: Homecastr forecasting and evaluation stack
+organization: Cohere Labs
+channel: LinkedIn connection note
+lane: candidate-seeking
+relationship: no prior relationship found after person and organization audit
+relationship_status: cold
 why_now: A live Beginners journey session creates a concrete reason to reconnect.
 hook: Her current Cohere Labs and MILA research path is the specific bridge.
 proof_point: Homecastr forecasting and evaluation work is the supporting proof point.
@@ -555,6 +607,32 @@ Hi Julia - I saw your work at Cohere Labs and MILA. I'm building Homecastr's for
     throw new Error('Self-test duplicate packet did not catch a stale resend.');
   }
 
+  const establishedDossiers = parseDossiers(`
+contact: Julia Kreutzer
+organization: Cohere Labs
+channel: LinkedIn DM
+lane: candidate-seeking
+relationship: existing warm thread
+relationship_status: established
+why_now: A current source-backed reason.
+hook: Specific current work.
+proof_point: Matching proof.
+ask: One small ask.
+status: ready to send
+spc_affiliation: clean no-match in archived SPC PDF; not SPC-adjacent
+spc_checked_at: 2026-07-07
+`);
+  const established = validatePacket(goodPacket, establishedDossiers, {
+    drafts: goodDrafts,
+    liveSentKeys: new Set(),
+    registryRows: [],
+    approvalRows: [],
+    now: new Date('2026-07-16T12:00:00Z'),
+  });
+  if (!established.errors.some(error => error.includes('approval_id'))) {
+    throw new Error('Self-test established relationship did not require exact current-chat approval.');
+  }
+
   console.log('outreach-preflight self-test passed');
 }
 
@@ -578,16 +656,25 @@ function main() {
     console.error(`Dossier not found: ${args.dossier}`);
     process.exit(1);
   }
+  if (!existsSync(draftsPath)) {
+    console.error(`Draft mirror not found: ${args.drafts}. Fail closed until outreach state is restored.`);
+    process.exit(1);
+  }
+  if (!existsSync(logPath)) {
+    console.error(`Outreach log not found: ${args.log}. Fail closed until outreach state is restored.`);
+    process.exit(1);
+  }
 
   const packet = parsePacket(readFileSync(packetPath, 'utf8'));
   const dossiers = parseDossiers(readFileSync(dossierPath, 'utf8'));
   const drafts = parseDraftMirror(draftsPath);
+  const liveLogRows = parseMarkdownTable(logPath);
   const liveSentKeys = new Set(
-    parseMarkdownTable(logPath)
+    liveLogRows
       .filter(row => /^sent\b/i.test(normalizeText(row.status)))
         .map(row => normalizeKey(row.recipient)),
   );
-  const result = validatePacket(packet, dossiers, { drafts, liveSentKeys }, args.packet);
+  const result = validatePacket(packet, dossiers, { drafts, liveSentKeys, liveLogRows }, args.packet);
 
   if (!result.errors.length && !result.warnings.length) {
     console.log(`PASS ${args.packet}`);

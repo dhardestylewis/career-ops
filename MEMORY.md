@@ -26,6 +26,8 @@ This file stores behavioral steering and operational state for future agents in 
   - `npm run mail:auth`
 - Resolve duplicate or existing outreach before sending by running:
   - `npm run outreach:audit -- "Recipient Name"`
+- Exit code `4` means an established/protected relationship. Show the exact copy in the current chat and wait for explicit approval; do not infer consent from a batch goal, private channel, prior thread, or old approval.
+- Treat unknown relationship status as protected. The gate covers people, organizations, alternate contacts, and fallback inboxes across job-search and Homecastr lanes.
 - Keep LinkedIn DM work separate from Gmail/API work unless a real API or attach-browser path is required.
 
 ## Application / Submission Truthfulness

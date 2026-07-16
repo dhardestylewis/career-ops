@@ -19,6 +19,13 @@ short message; otherwise run the LinkedIn power move below.
 
 ## LinkedIn power move (default)
 
+### Relationship authorization gate
+
+- Before drafting, audit both the recipient and organization with `npm run outreach:audit -- "..."`, inspect the full live thread and sent history, and classify `relationship_status` as `cold`, `established`, or `unknown`.
+- `established` includes 1st-degree contacts, active/prior threads, prior replies, former colleagues/classmates/instructors, warm intros, customers/partners/advisors, and any person at an organization where the user already has a relationship. `unknown` is a hard stop.
+- For `established`, draft the exact message and show the exact recipient, organization, candidate-seeking lane, channel, and copy in the current chat. Do not send until the user explicitly approves that exact message. Approval is one-time, expires within 24 hours, and is invalidated by any change.
+- Private-channel routing, an existing thread, a follow-up rewrite, a batch goal, general send permission, an old approval, or a fallback inbox never clears this gate.
+
 1. **Identify targets** via WebSearch:
    - Hiring manager of the team
    - Assigned recruiter
@@ -83,7 +90,7 @@ not quote the note verbatim in a public-facing message.
 - Something that makes them want to respond
 - NEVER share phone number
 - The contact type changes the EMPHASIS, not the structure
-- If the recipient already has an existing thread or reply on record, stop and write a follow-up or reconnect note. Do not draft a first-touch opener for a conversation that already exists.
+- If the recipient already has an existing thread or reply on record, stop and write a follow-up or reconnect draft. Keep it draft-only until the protected-relationship gate clears. Do not draft a first-touch opener for a conversation that already exists.
 - If the next message is only a paraphrase of the last outbound touch, stop and wait for a real reply or a genuinely new angle.
 - Before any live send, stage the exact copy in `data/outreach/*send-packet.md` and run `node src/dataOps/outreach-preflight.mjs --packet <path>`. If it fails, stop at draft-only.
 - If the dossier or queue says `next_followup` is still in the future, or it says to wait for a reply / acceptance, stop at draft-only. An open thread is not a reason to send early.
