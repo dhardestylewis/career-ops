@@ -387,7 +387,7 @@ Replace placeholders with real names, titles, and specifics.
 ## When NOT to Use
 
 - **Sub-4.0 scores:** Don't bother with outreach â€” your time is better spent elsewhere
-- **Already connected:** If you know someone at the company, message them directly (skip generic outreach)
+- **Already connected / existing organization relationship:** Treat as protected. Draft the exact note, show recipient + organization + candidate-seeking lane + channel + final copy in the current chat, and wait for explicit approval before any send. Skip generic outreach, but do not infer permission to message directly.
 - **Companies with hiring freezes:** Check company news before investing time
 
 ---

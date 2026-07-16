@@ -69,6 +69,8 @@ Auto-memory **never** holds content claims about the user's work, technical acco
 Rules belong in files the harness reads automatically — `CLAUDE.md`, `AGENTS.md`, `modes/*.md`, `MEMORY.md`. Do not create sidecar documentation that requires manual loading. Reinforcement-without-enforcement decays.
 
 - Before live outreach, refresh the latest branch/PR state and outreach ledger so parallel agents stay aligned.
+- Existing relationships require manual screening in the current chat before any send. Treat 1st-degree contacts, active/prior threads, prior replies, warm/shared history, and organizations with an existing relationship as protected. Private routing or rewriting as a follow-up does not authorize a send. Exact recipient, organization, lane, channel, and final copy must be approved; approval is one-time and expires within 24 hours.
+- Before live outreach, run the recipient audit. Exit code `4` means protected relationship: stop at draft-only until exact current-chat approval exists. Relationship status `unknown` is also a hard stop.
 - For live email and calendar threads, always inspect the complete chain and newest human message before drafting a reply. Treat search-result previews, subject lines, and earlier context as hints only; they are not the source of truth for scheduling state.
 - Personal calendar invites and social invites are hands-off unless the user explicitly asks you to RSVP, decline, or reply.
 - Keep job-seeking outreach and Homecastr hiring-source outreach in separate lanes across repos, worktrees, and branches. Do not combine a candidate ask and a talent/source ask in the same thread or packet.

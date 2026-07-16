@@ -53,6 +53,8 @@ The ledger builds `data/outreach/universe.tsv` and `data/outreach/queue.tsv`. Tr
 - `research` - find the right route before drafting
 - `blocked` - pause for human judgment or route access
 
+Before treating `ready` or `followup_due` as sendable, audit both recipient and organization and classify the relationship. Any 1st-degree/prior-thread/reply/shared-history signal is `established`; missing context is `unknown`. Both are draft-only until the user approves the exact recipient, organization, candidate-seeking lane, channel, and final copy in the current chat. Queue state and due date do not grant authorization.
+
 ## Step 2 - Display Dashboard
 
 Show a cadence dashboard sorted by urgency (urgent > overdue > waiting > cold):

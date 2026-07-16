@@ -1,6 +1,9 @@
 import fs from 'fs';
 import path from 'path';
 import { google } from 'googleapis';
+import { blockLegacyDirectOutreachSend } from '../core/outreach-send-gate.mjs';
+
+blockLegacyDirectOutreachSend(import.meta.url);
 
 const TOKEN_PATH = path.resolve('token.json');
 const CREDENTIALS_PATH = path.resolve('credentials.json');

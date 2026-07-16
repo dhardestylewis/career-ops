@@ -15,6 +15,8 @@ Track follow-up cadence for active GTM lead threads. Flag overdue follow-ups, ex
 ## Step 1 - Check the Current State
 
 - Run the existing outreach audit for the recipient before any live send or follow-up.
+- Run it again for the organization. Exit code `4`, a 1st-degree/prior-thread/reply/shared-history signal, or unknown relationship status means draft-only.
+- For an established relationship, show the exact recipient, organization, GTM lane, channel, and final copy in the current chat and wait for explicit approval. Follow-up due state, a reply-in-thread route, generic batch permission, or old approval is not authorization.
 - If it finds a prior thread or prior send, continue there instead of opening a fresh intro.
 - If it finds an unresolved draft or blocked state, fix that first.
 

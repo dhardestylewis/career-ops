@@ -18,6 +18,13 @@ This mode is the GTM fork of the outreach system. Use it for lead, customer, par
 
 ## Workflow
 
+0. Clear the relationship authorization gate.
+   - Audit both recipient and organization; inspect full live thread and sent history.
+   - Classify `relationship_status` as `cold`, `established`, or `unknown`. Unknown stops.
+   - 1st-degree, active/prior thread, prior reply, warm/shared history, customer/partner/advisor, or an existing organization relationship means established.
+   - Show established-relationship copy in the current chat and wait for explicit approval of the exact recipient, organization, GTM lane, channel, and final text. Approval is one-time, expires within 24 hours, and any change invalidates it.
+   - Alternate people, channels, and company/fallback inboxes inherit protected organization status.
+
 1. Identify the lead type.
    - Inbound lead
    - Cold outbound prospect
@@ -57,7 +64,8 @@ This mode is the GTM fork of the outreach system. Use it for lead, customer, par
 
 ## Channel Guidance
 
-- 1st-degree or active thread: reply in thread.
+- Channel choice does not authorize a send.
+- 1st-degree or active thread: reply in thread only after exact current-chat approval.
 - 2nd/3rd-degree: note-style connect or short email.
 - Inbound lead: acknowledge quickly and move toward a small next step.
 - Warm partner or advisor: keep the ask light and specific.
