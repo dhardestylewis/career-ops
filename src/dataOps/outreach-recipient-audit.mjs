@@ -9,6 +9,7 @@
  * 1 = usage or runtime error
  * 2 = prior send / live thread found; do not send a new intro
  * 3 = recipient already exists in draft / research / blocked workflow; resolve that state first
+ * 4 = established/protected relationship; exact copy requires approval in the current chat
  *
  * Usage:
  *   node src/dataOps/outreach-recipient-audit.mjs "Li-Yun (James) Wang"
@@ -19,6 +20,7 @@
 import { existsSync, readFileSync } from 'fs';
 import { join, dirname } from 'path';
 import { fileURLToPath } from 'url';
+import { loadRelationshipRegistry, matchProtectedRelationships } from '../core/outreach-send-gate.mjs';
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), '../..');
 const args = process.argv.slice(2);
@@ -44,6 +46,9 @@ const FILES = {
   archive: ['data/archive/submission_anthropic_fellows_2026.json'],
   feedContacts: ['data/state/linkedin-feed-contacts.tsv'],
   feedObservations: ['data/state/linkedin-feed-observations.tsv'],
+  gtmLog: ['data/gtm-outreach/log.md'],
+  gtmDrafts: ['data/gtm-outreach/drafts.md'],
+  gtmDossier: ['data/gtm-outreach-contact-dossier.md'],
 };
 
 function normalizeText(value) {
@@ -213,13 +218,17 @@ function deriveDecision(matches) {
   const targetStates = new Set(matches.targets.map(row => normalizeText(row.status)));
   const routeStates = new Set(matches.routes.map(row => normalizeText(row.status)));
   const archiveHits = Array.isArray(matches.archive) ? matches.archive : [];
+  const registryHits = Array.isArray(matches.relationshipRegistry) ? matches.relationshipRegistry : [];
   const logHasSent = matches.log.some(entry => entry.line.includes('| Sent |'));
+  const gtmLogHasSent = matches.gtmLog.some(entry => /\|\s*sent\s*\|/i.test(entry.line));
+  const gtmLogHasRelationship = matches.gtmLog.some(entry => /\|\s*(reply|replied|responded|inbound|meeting|scheduled|booked_discovery|held_discovery)\s*\|/i.test(entry.line));
   const hasReply =
     universeStates.has('replied') ||
     universeStates.has('responded') ||
     universeResponses.has('replied') ||
-    universeResponses.has('responded');
-  const hasSent = hasReply || universeStates.has('sent') || targetStates.has('sent') || routeStates.has('sent') || logHasSent;
+    universeResponses.has('responded') ||
+    gtmLogHasRelationship;
+  const hasSent = hasReply || universeStates.has('sent') || targetStates.has('sent') || routeStates.has('sent') || logHasSent || gtmLogHasSent;
   const hasWorkflowHold =
     universeActions.has('draft') ||
     universeActions.has('blocked') ||
@@ -232,10 +241,10 @@ function deriveDecision(matches) {
   let exitCode = 0;
   let nextStep = 'Normal dossier, SPC, and current-role checks still apply.';
 
-  if (hasReply) {
-    verdict = 'reply_in_existing_thread';
-    exitCode = 2;
-    nextStep = 'Do not send a new intro. Continue only in the existing thread.';
+  if (registryHits.length || hasReply || hasArchiveContact) {
+    verdict = 'established_relationship_manual_approval_required';
+    exitCode = 4;
+    nextStep = 'Do not send. Draft the exact message, show it to the user in the current chat, and wait for explicit recipient-and-copy approval.';
   } else if (hasSent) {
     verdict = 'existing_thread_or_prior_send';
     exitCode = 2;
@@ -244,10 +253,6 @@ function deriveDecision(matches) {
     verdict = 'existing_workflow_not_ready';
     exitCode = 3;
     nextStep = 'Do not send yet. Resolve the existing draft / research / blocked state first.';
-  } else if (hasArchiveContact) {
-    verdict = 'existing_workflow_not_ready';
-    exitCode = 3;
-    nextStep = 'Do not send yet. The contact already appears in the archive dossier; promote it into the tracked outreach state first.';
   }
 
   return { verdict, exitCode, nextStep };
@@ -267,6 +272,10 @@ function runSelfTest() {
     dossier: [],
     nextBatch: [],
     operatorCard: [],
+    gtmLog: [],
+    gtmDrafts: [],
+    gtmDossier: [],
+    relationshipRegistry: [],
   };
 
   const cases = [
@@ -281,7 +290,7 @@ function runSelfTest() {
         ...blank,
         universe: [{ status: 'sent', response_state: 'replied', action_state: 'draft' }],
       },
-      expected: { verdict: 'reply_in_existing_thread', exitCode: 2 },
+      expected: { verdict: 'established_relationship_manual_approval_required', exitCode: 4 },
     },
     {
       name: 'prior send without reply',
@@ -300,12 +309,20 @@ function runSelfTest() {
       expected: { verdict: 'existing_workflow_not_ready', exitCode: 3 },
     },
     {
+      name: 'protected organization',
+      matches: {
+        ...blank,
+        relationshipRegistry: [{ subject: 'Mach9', send_policy: 'manual_approval_required' }],
+      },
+      expected: { verdict: 'established_relationship_manual_approval_required', exitCode: 4 },
+    },
+    {
       name: 'archive-only contact',
       matches: {
         ...blank,
         archive: [{ path: 'references[0].email', value: 'ppassalacqua@ethz.ch' }],
       },
-      expected: { verdict: 'existing_workflow_not_ready', exitCode: 3 },
+      expected: { verdict: 'established_relationship_manual_approval_required', exitCode: 4 },
     },
   ];
 
@@ -344,6 +361,10 @@ const matches = {
   dossier: findLineMatches(resolvedFiles.dossier, needle),
   nextBatch: findLineMatches(resolvedFiles.nextBatch, needle),
   operatorCard: findLineMatches(resolvedFiles.operatorCard, needle),
+  gtmLog: findLineMatches(resolvedFiles.gtmLog, needle),
+  gtmDrafts: findLineMatches(resolvedFiles.gtmDrafts, needle),
+  gtmDossier: findLineMatches(resolvedFiles.gtmDossier, needle),
+  relationshipRegistry: matchProtectedRelationships({ recipient: query, organization: query, email: query }, loadRelationshipRegistry()),
 };
 
 const archiveQueries = unique(
@@ -365,6 +386,9 @@ for (const query of archiveQueries) {
   mergeUniqueEntries(matches.dossier, findLineMatches(resolvedFiles.dossier, query), entry => JSON.stringify(entry));
   mergeUniqueEntries(matches.nextBatch, findLineMatches(resolvedFiles.nextBatch, query), entry => JSON.stringify(entry));
   mergeUniqueEntries(matches.operatorCard, findLineMatches(resolvedFiles.operatorCard, query), entry => JSON.stringify(entry));
+  mergeUniqueEntries(matches.gtmLog, findLineMatches(resolvedFiles.gtmLog, query), entry => JSON.stringify(entry));
+  mergeUniqueEntries(matches.gtmDrafts, findLineMatches(resolvedFiles.gtmDrafts, query), entry => JSON.stringify(entry));
+  mergeUniqueEntries(matches.gtmDossier, findLineMatches(resolvedFiles.gtmDossier, query), entry => JSON.stringify(entry));
 }
 
 const { verdict, exitCode, nextStep } = deriveDecision(matches);
@@ -385,6 +409,10 @@ const summary = {
     dossier: matches.dossier.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
     nextBatch: matches.nextBatch.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
     operatorCard: matches.operatorCard.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
+    gtmLog: matches.gtmLog.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
+    gtmDrafts: matches.gtmDrafts.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
+    gtmDossier: matches.gtmDossier.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
+    relationshipRegistry: matches.relationshipRegistry.map(entry => `${entry.subject} (${entry.send_policy})`),
     feedContacts: matches.feedContacts.map(row => summarizeRow(row, ['person_org', 'follow_up', 'notes'])),
     feedObservations: matches.feedObservations.map(row => summarizeRow(row, ['person_org', 'what_it_looks_like', 'follow_up', 'notes'])),
     evidence: matches.evidence.slice(0, 5).map(entry => `line ${entry.lineNumber}: ${entry.line.trim()}`),
@@ -410,6 +438,10 @@ const sections = [
   ['Dossier', summary.evidence.dossier],
   ['Next batch', summary.evidence.nextBatch],
   ['Operator card', summary.evidence.operatorCard],
+  ['GTM log', summary.evidence.gtmLog],
+  ['GTM drafts', summary.evidence.gtmDrafts],
+  ['GTM dossier', summary.evidence.gtmDossier],
+  ['Protected relationship registry', summary.evidence.relationshipRegistry],
   ['Feed observations', summary.evidence.feedObservations],
   ['Evidence bank', summary.evidence.evidence],
 ];

@@ -8,6 +8,9 @@ It is the fork of the job-search outreach rules, not a copy of them.
 ## Send Gate
 
 - Draft first.
+- Relationship authorization comes before channel routing. Treat 1st-degree contacts, live/prior threads, prior replies, warm/shared history, customers, partners, advisors, and organizations with an existing relationship as protected.
+- Run `npm run outreach:audit -- "Recipient"` and again for the organization. Exit `4`, `relationship_status: established`, or `relationship_status: unknown` means draft-only until the user approves the exact recipient, organization, GTM lane, channel, and final copy in the current chat.
+- A batch goal, generic send permission, old approval, or instruction to reply in-thread is not approval. Approval is one-time, expires within 24 hours, and is invalidated by any change. Alternate contacts and fallback/company inboxes inherit organization protection.
 - Do not send until the contact dossier is complete and source-backed.
 - Do not send until the dossier can point to the full live thread or DM history, at least one current public artifact, and one concrete proof point that supports the ask.
 - Before any live send or follow-up, run the existing outreach audit for the recipient. If it finds a prior thread or prior send, continue there instead of opening a fresh intro.
@@ -25,7 +28,8 @@ It is the fork of the job-search outreach rules, not a copy of them.
 
 ## Contact Routing
 
-- 1st-degree or active thread: reply in thread.
+- Channel choice never grants send permission.
+- 1st-degree or active thread: reply in thread only after the protected-relationship gate clears.
 - 2nd/3rd-degree: use a note-style connect or a short email opener.
 - Inbound lead: acknowledge quickly, then qualify with one clear next step.
 - Customer or partner: route toward fit, timing, or next-step discovery.
@@ -55,10 +59,11 @@ It is the fork of the job-search outreach rules, not a copy of them.
 ## Defaults
 
 - Use the smallest viable template.
-- Prefer direct reply for warm threads.
+- Prefer direct reply for warm threads only after exact current-chat approval clears the protected-relationship gate.
 - Prefer a short note for cold 2nd/3rd-degree contacts.
 - Do not lead with a full background dump.
 - Do not send mass-blast style outreach.
+- Every lead block must include `organization`, `channel`, `relationship`, `relationship_status` (`cold`, `established`, or `unknown`), and `approval_id` when required. Missing or unknown relationship state is a hard stop.
 
 ## Job-Search Boundary
 

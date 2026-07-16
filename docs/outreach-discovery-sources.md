@@ -25,7 +25,7 @@ Use this note when expanding beyond the current LinkedIn feed sample.
 
 ## Routing Reminder
 
-- 1st-degree or active thread: DM
+- 1st-degree or active thread: protected relationship; draft a DM, then require exact current-chat approval before sending
 - 2nd/3rd-degree: note-style connection request
 - No default InMail
 - Draft first, send only after approval
