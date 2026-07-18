@@ -70,6 +70,7 @@ Rules belong in files the harness reads automatically — `CLAUDE.md`, `AGENTS.m
 
 - Before live outreach, refresh the latest branch/PR state and outreach ledger so parallel agents stay aligned.
 - For live email and calendar threads, always inspect the complete chain and newest human message before drafting a reply. Treat search-result previews, subject lines, and earlier context as hints only; they are not the source of truth for scheduling state.
+- For scheduling, do not describe a proposed time as available, mutual, free, or calendar-vetted unless you have checked live calendar data for the relevant calendar(s) and exact time window, using a calendar connector or `npm run calendar:freebusy -- --time-min ... --time-max ...`. Gmail-visible invites, snippets, cached mail, or search results are not a calendar availability check; if live Calendar access is unavailable, say that plainly and label any slot as only "not contradicted by Gmail/invite search."
 - Personal calendar invites and social invites are hands-off unless the user explicitly asks you to RSVP, decline, or reply.
 - Keep job-seeking outreach and Homecastr hiring-source outreach in separate lanes across repos, worktrees, and branches. Do not combine a candidate ask and a talent/source ask in the same thread or packet.
 - Use `data/outreach/operator-card.md` as the canonical outreach run sheet. Before any live send, run the session preflight there, and treat `data/outreach/log.md` as the live-send ledger.

@@ -36,9 +36,12 @@ Use the Gmail CLI lane before opening a browser:
 npm run mail:latest
 npm run mail:search -- "from:recruiter OR subject:follow up"
 npm run mail:auth
+npm run calendar:freebusy -- --time-min 2026-07-22T11:30:00-04:00 --time-max 2026-07-22T12:00:00-04:00
 ```
 
 The Gmail scripts resolve OAuth files from the current repository root first, then the mirrored workspace root on this machine. If both are missing, set `GMAIL_AUTH_ROOT`, `GMAIL_CREDENTIALS_PATH`, and `GMAIL_TOKEN_PATH`.
+
+Use `calendar:freebusy` before calling a scheduling slot available, mutual, free, or calendar-vetted. If it reports that the current token lacks Calendar scope, run `node src/scripts/auth_gmail.mjs --force` to re-authorize with the `calendar.freebusy` scope. Gmail search can only show invite evidence; it is not a live calendar availability check.
 
 LinkedIn DM automation is still browser-only here unless a partner-scoped API is available, so keep that lane separate from the Gmail/API path.
 
