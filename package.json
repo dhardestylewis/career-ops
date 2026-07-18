@@ -22,6 +22,7 @@
     "mail:auth": "node src/scripts/auth_gmail.mjs",
     "mail:latest": "node src/scripts/read_latest_email.mjs",
     "mail:search": "node src/scripts/search_gmail.mjs",
+    "calendar:freebusy": "node src/scripts/check_calendar_freebusy.mjs",
     "browser:lane": "node src/scripts/set_browser_lane.mjs",
     "browser:attach:start": "node src/scripts/start_attachable_browser.mjs",
     "browser:attach:status": "node src/scripts/check_attachable_browser.mjs",

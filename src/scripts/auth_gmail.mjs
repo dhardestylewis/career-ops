@@ -8,9 +8,11 @@ const SCOPES = [
   'https://www.googleapis.com/auth/gmail.readonly',
   'https://www.googleapis.com/auth/gmail.send',
   'https://www.googleapis.com/auth/gmail.modify',
+  'https://www.googleapis.com/auth/calendar.freebusy',
 ];
 
 (async () => {
+  const forceReauth = process.argv.includes('--force') || process.argv.includes('--reauth');
   const location = resolveGmailAuthLocation({ requireToken: false });
   if (!location?.credentialsPath) {
     console.error('No Gmail credentials.json found in the current root or mirrored workspace.');
@@ -25,10 +27,23 @@ const SCOPES = [
   const oAuth2Client = new google.auth.OAuth2(oauth.client_id, oauth.client_secret, redirectUri);
 
   const tokenPath = location.tokenPath || path.join(path.dirname(location.credentialsPath), 'token.json');
+  const existingToken = fs.existsSync(tokenPath)
+    ? JSON.parse(fs.readFileSync(tokenPath, 'utf8'))
+    : null;
 
-  if (fs.existsSync(tokenPath)) {
-    const token = fs.readFileSync(tokenPath, 'utf8');
-    oAuth2Client.setCredentials(JSON.parse(token));
+  if (existingToken && !forceReauth) {
+    const grantedScopes = new Set(String(existingToken.scope || '').split(/\s+/).filter(Boolean));
+    const missingScopes = SCOPES.filter((scope) => !grantedScopes.has(scope));
+    if (missingScopes.length > 0) {
+      console.error('Token already exists but is missing required scopes:');
+      for (const scope of missingScopes) {
+        console.error(`- ${scope}`);
+      }
+      console.error(`Run node src/scripts/auth_gmail.mjs --force to re-authorize and update ${tokenPath}.`);
+      process.exit(2);
+    }
+
+    oAuth2Client.setCredentials(existingToken);
     console.log('Token already exists. Testing connection...');
     const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
     try {
@@ -43,6 +58,8 @@ const SCOPES = [
 
   const authUrl = oAuth2Client.generateAuthUrl({
     access_type: 'offline',
+    include_granted_scopes: true,
+    prompt: forceReauth ? 'consent' : undefined,
     scope: SCOPES,
   });
   console.log('Authorize this app by visiting this url:\n');
@@ -58,6 +75,9 @@ const SCOPES = [
     rl.close();
     oAuth2Client.getToken(code, (err, token) => {
       if (err) return console.error('Error retrieving access token', err);
+      if (existingToken?.refresh_token && !token.refresh_token) {
+        token.refresh_token = existingToken.refresh_token;
+      }
       oAuth2Client.setCredentials(token);
       fs.writeFileSync(tokenPath, JSON.stringify(token, null, 2));
       console.log('Token stored to', tokenPath);
