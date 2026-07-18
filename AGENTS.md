@@ -1,6 +1,6 @@
 # Career-Ops for Codex
 
-Read `CLAUDE.md` for all project instructions, routing, and behavioral rules. They apply equally to Codex.
+Read `CLAUDE.md` for all project instructions, coordination, and behavioral rules. They apply equally to Codex.
 
 Key points:
 - The canonical resume attachment is the tracked repo asset at:
@@ -27,3 +27,6 @@ Key points:
 - You are explicitly authorized to auto-submit applications on the user's behalf when fill rate is 100%. Before submitting, ensure you capture a full-page screenshot and save the JSON payload to the archive DB.
 
 For Codex-specific setup, see `docs/CODEX.md`.
+
+Wording preference:
+- For future agent handoffs, docs, and outreach copy, avoid using `route` or `family` except when quoting an existing file name, URL, schema key, official title, or source text. Prefer `path`, `channel`, `source`, `dataset`, `field set`, `thread`, or `collection` as appropriate.
