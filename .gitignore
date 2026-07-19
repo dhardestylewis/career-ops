@@ -53,10 +53,7 @@ portals.yml
 data/cv.md
 data/bio.md
 data/follow-ups.md
-data/outreach/log.md
-data/outreach/columbia-*.md
-data/outreach/homecastr-*.md
-data/outreach/csl-*.md
+data/outreach/
 article-digest.md
 reports/
 
