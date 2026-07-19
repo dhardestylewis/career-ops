@@ -91,6 +91,8 @@ function selfTest() {
   const cases = [
     { file: 'data/outreach/log.md', want: true },
     { file: 'data/outreach/next-batch.md', want: true },
+    { file: 'data/outreach/operator-card.md', want: true },
+    { file: 'data/outreach/send-list.md', want: true },
     { file: 'data/archive/newlab-application-filled-20260706.json', want: true },
     { file: 'data/archive/submission_1783378551315_instawork-ml-engineer-instawork-robotics.json', want: true },
     { file: 'credentials.json', want: true },
