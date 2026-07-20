@@ -32,3 +32,4 @@ For Codex-specific setup, see `docs/CODEX.md`.
 
 Wording preference:
 - For future agent handoffs, docs, and outreach copy, avoid using `route` or `family` except when quoting an existing file name, URL, schema key, official title, or source text. Prefer `path`, `channel`, `source`, `dataset`, `field set`, `thread`, or `collection` as appropriate.
+- When describing Homecastr, do not call it a `probabilistic decision system`. Prefer `foundation model for the built environment`, `built-environment world model`, or `foundation model for physical development`. For public-sector outreach or notes, keep that company framing and position Homecastr as an additive forecast, validation, or calibration layer for existing planning and model stacks.
