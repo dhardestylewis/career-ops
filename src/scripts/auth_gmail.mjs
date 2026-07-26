@@ -9,6 +9,8 @@ const SCOPES = [
   'https://www.googleapis.com/auth/gmail.send',
   'https://www.googleapis.com/auth/gmail.modify',
   'https://www.googleapis.com/auth/calendar.freebusy',
+  'https://www.googleapis.com/auth/calendar.calendarlist.readonly',
+  'https://www.googleapis.com/auth/calendar.events.owned',
 ];
 
 (async () => {
@@ -39,7 +41,7 @@ const SCOPES = [
       for (const scope of missingScopes) {
         console.error(`- ${scope}`);
       }
-      console.error(`Run node src/scripts/auth_gmail.mjs --force to re-authorize and update ${tokenPath}.`);
+      console.error(`Run npm run mail:auth -- --force to re-authorize and update ${tokenPath}.`);
       process.exit(2);
     }
 
