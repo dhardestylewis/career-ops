@@ -186,3 +186,45 @@ npm run browser:lane -- local-headed --write-profile
 npm run browser:lane -- remote-cdp --cdp-url http://127.0.0.1:9222 --write-profile
 npm run browser:lane -- extension-attach --cdp-url http://127.0.0.1:9222 --write-profile
 ```
+
+## Timeout-safe application form recovery
+
+Application forms are high-stakes, stateful pages. A timeout is not permission
+to reload the page, open a duplicate form, switch control surfaces, or assume
+that the most recent action failed.
+
+Before entering data, the private application packet should record:
+
+- the exact target URL
+- the expected page title
+- `review_before_submit: true`
+- every authorized upload path
+- the last verified section and timestamp
+
+Keep personal answers and upload paths in the private packet. Do not commit
+them to this repository.
+
+Use this recovery sequence:
+
+1. Claim or open the exact form tab and verify both its title and URL.
+2. Use the smallest stable observation available. Prefer a bounded visible DOM
+   view and one field action at a time over full-page snapshots or screenshots.
+3. Verify the changed field or section before moving on. Update the private
+   packet only after the value is visibly confirmed.
+4. If an observation times out before an action, preserve the tab and reacquire
+   it from a fresh browser tab listing. Match the exact title and URL again.
+5. If a timeout occurs during or after an input action, treat the result as
+   unknown. Reacquire the same tab, inspect the field, and resume only after its
+   current value is known. Do not repeat the input blindly.
+6. Do not use Windows desktop controls for recovery unless the control layer
+   can independently verify the active browser URL. If it cannot, stop that
+   control attempt and return to the verified browser tab.
+7. Do not use raw HTTP, private site APIs, cookies, browser profiles, or hidden
+   page state to bypass the rendered form.
+8. After all supported fields and authorized files are visibly verified, leave
+   the form open as a handoff and stop before Submit, Send, or Apply. Report
+   every unresolved field and the exact items requiring final user review.
+
+Large observations are optional diagnostics, not prerequisites. If visible DOM
+inspection is working, keep using it in small increments instead of escalating
+to a more invasive control surface.

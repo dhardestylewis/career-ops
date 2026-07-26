@@ -302,9 +302,34 @@ for (const section of requiredSections) {
   }
 }
 
-// ── 10. VERSION FILE ─────────────────────────────────────────────
+// ── 10. AGENT APPLICATION SAFEGUARDS ─────────────────────────────
 
-console.log('\n10. Version file');
+console.log('\n10. Agent application safeguards');
+
+const agents = readFile('AGENTS.md');
+const browserAutomation = readFile('docs/BROWSER_AUTOMATION.md');
+
+if (agents.includes('Never submit an application without the user reviewing the exact filled form')) {
+  pass('AGENTS.md requires current-task review before application submission');
+} else {
+  fail('AGENTS.md is missing the application review gate');
+}
+
+if (!agents.includes('auto-submit applications')) {
+  pass('AGENTS.md does not authorize automatic application submission');
+} else {
+  fail('AGENTS.md still authorizes automatic application submission');
+}
+
+if (browserAutomation.includes('## Timeout-safe application form recovery')) {
+  pass('Browser guidance includes state-preserving application recovery');
+} else {
+  fail('Browser guidance is missing state-preserving application recovery');
+}
+
+// ── 11. VERSION FILE ─────────────────────────────────────────────
+
+console.log('\n11. Version file');
 
 if (fileExists('VERSION')) {
   const version = parseVersion(readFile('VERSION'));

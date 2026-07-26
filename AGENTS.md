@@ -26,7 +26,8 @@ Key points:
 - Personal calendar invites and social invites are hands-off unless the user explicitly asks you to RSVP, decline, or reply.
 - Treat every path under `data/outreach/` as local-only working state. Do not stage or commit those files in a PR; if you need shareable examples, use `examples/` with redacted fixture data instead.
 - Login state is not permanent across fresh sessions. If Chrome already has authenticated LinkedIn, Pando, or Superhuman tabs open, keep those tabs alive and use the Chrome profile first; use the in-app browser only as a backup Gmail surface.
-- You are explicitly authorized to auto-submit applications on the user's behalf when fill rate is 100%. Before submitting, ensure you capture a full-page screenshot and save the JSON payload to the archive DB.
+- Never submit an application without the user reviewing the exact filled form in the current task and explicitly approving submission. Populate supported fields, upload authorized artifacts, verify the entries, and stop before the final Submit, Send, or Apply action. A prior general authorization, a 100% fill rate, or an earlier approval does not authorize the current final submission.
+- For application-form browser recovery, follow `docs/BROWSER_AUTOMATION.md` under `Timeout-safe application form recovery`. Preserve a partially filled tab, reacquire it only from a fresh browser tab listing, verify its exact title and URL, and resume with the smallest browser control that was already working. Never switch to desktop controls when the active URL cannot be independently verified.
 
 For Codex-specific setup, see `docs/CODEX.md`.
 
