@@ -32,6 +32,34 @@ function readHeader(headers, name) {
   return headers.find((header) => header.name.toLowerCase() === name.toLowerCase())?.value || '';
 }
 
+function sleep(milliseconds) {
+  return new Promise((resolve) => setTimeout(resolve, milliseconds));
+}
+
+function isRateLimitError(error) {
+  const reason = error?.response?.data?.error?.details?.find(
+    (detail) => detail?.['@type'] === 'type.googleapis.com/google.rpc.ErrorInfo',
+  )?.reason;
+  return error?.code === 403 && reason === 'RATE_LIMIT_EXCEEDED';
+}
+
+async function loadMetadataBatch(gmail, batch) {
+  const retryDelays = [15_000, 30_000, 45_000];
+  for (let attempt = 0; ; attempt += 1) {
+    try {
+      return await Promise.all(batch.map((ref) => gmail.users.messages.get({
+        userId: 'me',
+        id: ref.id,
+        format: 'metadata',
+        metadataHeaders: ['From', 'To', 'Cc', 'Subject', 'Date', 'Message-ID'],
+      })));
+    } catch (error) {
+      if (!isRateLimitError(error) || attempt >= retryDelays.length) throw error;
+      await sleep(retryDelays[attempt]);
+    }
+  }
+}
+
 function inferLane(subject, snippet) {
   const text = `${subject} ${snippet}`.toLowerCase();
   if (/homecastr|properlytic/.test(text)) return 'homecastr-email';
@@ -90,12 +118,7 @@ const rows = [];
 
 for (let offset = 0; offset < refs.length; offset += 20) {
   const batch = refs.slice(offset, offset + 20);
-  const responses = await Promise.all(batch.map((ref) => gmail.users.messages.get({
-    userId: 'me',
-    id: ref.id,
-    format: 'metadata',
-    metadataHeaders: ['From', 'To', 'Cc', 'Subject', 'Date', 'Message-ID'],
-  })));
+  const responses = await loadMetadataBatch(gmail, batch);
   for (let index = 0; index < responses.length; index += 1) {
     const ref = batch[index];
     const message = responses[index].data;
@@ -132,6 +155,7 @@ for (let offset = 0; offset < refs.length; offset += 20) {
       notes: 'Gmail metadata and provider receipt imported. Message body remains in Gmail.',
     });
   }
+  if (offset + batch.length < refs.length) await sleep(800);
 }
 
 let importResult = { rows_seen: 0, rows_written: 0 };
