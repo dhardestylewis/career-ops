@@ -327,6 +327,16 @@ if (browserAutomation.includes('## Timeout-safe application form recovery')) {
   fail('Browser guidance is missing state-preserving application recovery');
 }
 
+if (
+  browserAutomation.includes('Do not force a pointer click through an overlay')
+  && browserAutomation.includes("Never confuse an attachment")
+  && browserAutomation.includes("Upload button with the form's final Submit button")
+) {
+  pass('Browser guidance distinguishes overlays and staged uploads from final submission');
+} else {
+  fail('Browser guidance is missing overlay or staged-upload safeguards');
+}
+
 // ── 11. VERSION FILE ─────────────────────────────────────────────
 
 console.log('\n11. Version file');

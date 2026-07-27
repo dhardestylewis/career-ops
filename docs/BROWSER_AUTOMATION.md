@@ -209,21 +209,31 @@ Use this recovery sequence:
 1. Claim or open the exact form tab and verify both its title and URL.
 2. Use the smallest stable observation available. Prefer a bounded visible DOM
    view and one field action at a time over full-page snapshots or screenshots.
-3. Verify the changed field or section before moving on. Update the private
+3. Check for rendered consent dialogs, attachment dialogs, and other overlays
+   before concluding that a field or button is unresponsive. Use an exact
+   accessible name to close or answer the overlay. If an overlay intercepts a
+   verified button, focus that exact button and activate it from the keyboard.
+   Do not force a pointer click through an overlay.
+4. Treat attachment selection and attachment upload as separate actions when
+   the rendered dialog presents both. Verify the local filename in the staged
+   list, activate the exact attachment upload control, wait for the dialog to
+   close, and confirm the filename on the form. Never confuse an attachment
+   Upload button with the form's final Submit button.
+5. Verify the changed field or section before moving on. Update the private
    packet only after the value is visibly confirmed.
-4. If an observation times out before an action, preserve the tab and reacquire
+6. If an observation times out before an action, preserve the tab and reacquire
    it from a fresh browser tab listing. Match the exact title and URL again.
-5. If a timeout occurs during or after an input action, treat the result as
+7. If a timeout occurs during or after an input action, treat the result as
    unknown. Reacquire the same tab, inspect the field, and resume only after its
    current value is known. Do not repeat the input blindly.
-6. Do not use Windows desktop controls for recovery unless the control layer
+8. Do not use Windows desktop controls for recovery unless the control layer
    can independently verify the active browser URL. If it cannot, stop that
    control attempt and return to the verified browser tab.
-7. Do not use raw HTTP, private site APIs, cookies, browser profiles, or hidden
+9. Do not use raw HTTP, private site APIs, cookies, browser profiles, or hidden
    page state to bypass the rendered form.
-8. After all supported fields and authorized files are visibly verified, leave
-   the form open as a handoff and stop before Submit, Send, or Apply. Report
-   every unresolved field and the exact items requiring final user review.
+10. After all supported fields and authorized files are visibly verified, leave
+    the form open as a handoff and stop before Submit, Send, or Apply. Report
+    every unresolved field and the exact items requiring final user review.
 
 Large observations are optional diagnostics, not prerequisites. If visible DOM
 inspection is working, keep using it in small increments instead of escalating
